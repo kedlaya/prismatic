@@ -1,0 +1,88 @@
+﻿<section xml:id="sec_delta-rings">
+  <title><m>\delta</m>-rings</title>
+  <introduction>
+    <paragraphs>
+      <title>References</title>
+      <p>
+        See the papers of Joyal and Buium listed below, and also <xref ref="bib-Borger-course"/>.
+      </p>
+    </paragraphs>
+    <p>
+      We begin with the fundamental notion of a <term><m>\delta</m>-ring</term>.
+      This definition was introduced by Joyal <xref ref="bib-Joyal1"/>, <xref ref="bib-Joyal2"/> with a view towards applications in <m>K</m>-theory; 
+      it is closely related to the older notion of 
+      a <term><m>\lambda</m>-ring</term>.
+      However, this development did not gain much attention until the same idea was rediscovered by Buium <xref ref="bib-Buium1"/> 
+      under the guise of <term>arithmetic differentiation</term> in the service of a particular goal (adapting Manin's proof of the finiteness of the set of torsion
+      points on a hyperbolic algebraic curve embedded into its Jacobian from the function field case to the number field case)
+      see <xref ref="bib-Buium2"/> for a slightly later treatment focusing specifically on arithmetic differentiation.
+    </p>
+  </introduction>
+  <subsection>
+    <definition>
+      <p>
+        Fix a prime number <m>p</m>.
+        Following Joyal, we define a <term><m>\delta</m>-ring</term> to be a pair <m>(A, \delta)</m> in which <m>A</m> is a commutative (unital) ring and <m>\delta: A \to A</m>
+        is a map of sets satisfying the following conditions.
+        <md>
+          <mrow>\delta(0) = \delta(1) = 0;</mrow>
+          <mrow>\delta(xy) = x^p \delta(y) + y^p \delta(x) + p \delta(x) \delta(y);</mrow>
+          <mrow>\delta(x+y) = \delta(x) + \delta(y) - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x^i p^{y-i}.</mrow>
+        </md>
+        The last condition implies that
+        <me>
+          p (\delta(x+y) - \delta(x) - \delta(y)) = x^p + y^p - (x+y)^p
+        </me>
+        and is equivalent if <m>A</m> is <m>p</m>-torsion-free. (In some sources, a map <m>\delta</m> satisfying these conditions is called a <term><m>p</m>-derivation</term>.)
+      </p>
+    </definition>
+    <p>
+      The form of the previous definition is partly explained by the following construction.
+    </p>
+    <lemma>
+      <statement>
+        <p>
+          Let <m>A</m> be a commutative ring.
+        </p>
+        <ol>
+          <li>
+            <p>
+              Suppose that <m>\delta: A \to A</m> is a <m>p</m>-derivation (that is, <m>(A, \delta)</m> is a <m>\delta</m>-ring).
+              Then the map <m>\phi: A \to A</m> given by <m>\phi(x) = x^p + p \delta(x)</m> is a ring homomorphism that induces the Frobenius endomorphism on <m>A/pA</m>
+              (a/k/a a <term>Frobenius lift</term> on <m>A</m>).
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>A</m> is <m>p</m>-torsion-free, then this construction defines a bijection between <m>p</m>-derivations on <m>A</m> and Frobenius lifts on <m>A</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          Left to the reader.
+        </p>
+      </proof>
+    </lemma>
+  </subsection>
+  <subsection>
+    <title>Examples of <m>\delta</m>-rings</title>
+    <example>
+      <p>
+        For <m>R</m> a perfect ring of
+      </p>
+    </example>
+    <example>
+    </example>
+  </subsection>
+  <subsection>
+    <title>The category of <m>\delta</m>-rings</title>
+    <definition>
+      <p>
+        A <term>morphism</term> of <m>\delta</m>-rings <m>(A, \delta) \to (A', \delta')</m> is a morphism <m>f: A \to A'</m> of rings such that <m>f \circ \delta = \delta' \circ f</m>  (again as maps of sets only).
+        It is evident that with this definition, <m>\delta</m>-rings form a category. We will often abuse notation and terminology and say that <q><m>A</m> is a <m>\delta</m>-ring</q> when it is meant to be clear from context what the map <m>\delta</m> is supposed to be.        
+      </p>      
+    </definition>
+  </subsection>
+</section>

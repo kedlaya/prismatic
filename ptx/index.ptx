@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+<docinfo>
+<macros>
+\def\AA{\mathbb{A}}
+\def\CC{\mathbb{C}}
+\def\FF{\mathbb{F}}
+\def\PP{\mathbb{P}}
+\def\QQ{\mathbb{Q}}
+\def\RR{\mathbb{R}}
+\def\ZZ{\mathbb{Z}}
+\def\frakX{\mathfrak{X}}
+\def\dual{\vee}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\an}{an}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\cyc}{cyc}
+\DeclareMathOperator{\disc}{Disc}
+\DeclareMathOperator{\dR}{dR}
+\DeclareMathOperator{\fin}{fin}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Inf}{Inf}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Norm}{Norm}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\sep}{sep}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Trace}{Trace}
+\DeclareMathOperator{\unr}{unr}
+\DeclareMathOperator{\Ver}{Ver}
+
+\usepackage{relsize}
+\usepackage[bbgreekl]{mathbbol}
+\usepackage{amsfonts}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb} %to ensure that the meaning of \mathbb does not change
+\DeclareSymbolFontAlphabet{\mathbbl}{bbold}
+\newcommand{\Prism}{{\mathlarger{\mathbbl{\Delta}}}} 
+</macros>
+<latex-image-preamble>
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usepackage{tkz-euclide}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{through,intersections,decorations,shadows,fadings}
+\usepackage{pgfplots}
+\usepackage[all]{xy}
+</latex-image-preamble>
+  </docinfo>
+  <article xml:id="prismatic">
+    <title>Notes on prismatic cohomology</title>
+    <frontmatter>
+      <titlepage>
+        <author>
+          <personname>Kiran S. Kedlaya</personname>
+          <department>Department of Mathematics</department>
+          <institution>
+            <line>University of California San Diego</line>
+            <line>La Jolla, CA, USA</line>
+          </institution>
+          <email>kedlaya@ucsd.edu</email>
+        </author>
+        <date><today /></date>
+      </titlepage>
+      <abstract>
+        These are notes from a <url href="https://www.math.ucsd.edu/~kkedlaya/math206/">graduate topics course</url> given at University of California San Diego 
+        during the spring 2021 quarter, modeled on <xref ref="bib-Bhatt-course"/>.
+        Recordings of the lectures can be found at the same web site.
+      </abstract>
+    </frontmatter>
+    <xi:include href="./sec_overview.ptx"/>
+    <xi:include href="./sec_prisms.ptx"/>
+    <xi:include href="./sec_delta-rings.ptx"/>
+    <backmatter>
+      <xi:include href="./bibliography.ptx"/>
+    </backmatter>
+  </article>
+</pretext>

@@ -1,0 +1,169 @@
+﻿<section xml:id="sec_overview">
+  <title>Introduction and overview</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-course"/>, Lecture 1.
+      </p>
+    </paragraphs>
+    <p>
+      We begin by describing some of the (global) context for the study of prisms and prismatic cohomology.
+      We then take a more local view to explain what we are trying to do (with no proofs at this point).
+      Keep in mind that it is <em>not</em> necessary to know about all of the topics I describe here in order to understand the rest of the course!
+    </p>
+  </introduction>
+  <subsection>
+    <title>Motivation from complex geometry</title>
+    <p>
+      The dual notions of <term>homology</term> and <term>cohomology</term> first appeared in topology as ways to <q>linearize nonlinear geometry</q>;
+      that is, to attach <q>linear</q> invariants (abelian groups, modules over commutative rings) to complicated geometric objects. This project proved to be
+      quite successful, to the point that nowadays there are even significant <em>real-life</em> applications of these constructions; see for example
+      <xref ref="bib-Ghrist"/>.
+    </p>
+    <p>
+      In the theory of manifolds, there are two traditional approaches to homology and cohomology.
+      <ol>
+        <li>
+          <p>
+            One is the combinatorial approach, in which one views a global space as being glued together from a small number of simple pieces (e.g., a triangulation of a surface).
+            One can then extract the desired invariants by careful bookkeeping on the interactions between the pieces. The most robust version of this is 
+            <term>singular homology/cohomology</term>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The other is the <term>cohomology of differential forms</term>, which developed from the classical theorems in multivariable calculus about the relationship between
+            integrals over a region and integrals over its boundary (and the physical laws from electromagnetism related to these), culminating in <term>Stokes's theorem</term>.
+            The relationship between this and the singular theory was put on firm footing by the work of Georges de Rham, in whose honor the cohomology of differential forms
+            is commonly referred to as <term>de Rham cohomology</term>.
+          </p>
+          <p>
+            Note that one cannot speak of differential forms without some additional structure on a manifold, at least a smooth (<m>C^\infty</m>) structure.
+            For a complex manifold, one can do better: by Dolbeaut's theorem, one can compute de Rham cohomology using exclusively <em>holomorphic</em> forms
+            (see <xref ref="bib-Griffiths-Harris"/>, Chapter 3).
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      These two constructions are closely related via integration: for <m>C</m> a homology class of dimension <m>k</m> and <m>\omega</m> a <m>k</m>-form on a complex manifold <m>X</m>,
+      there is a well-defined integral <m>\int_C \omega</m>. Stokes's theorem then asserts that
+      <me>
+        \int_C d\omega = \int_{\delta(C)} \omega;
+      </me>
+      we thus obtain a pairing
+      <me>
+         H_i(X, \CC) \cong H^i_{\dR}(X) \to \CC
+      </me>
+      which by the de Rham and Dolbeaut theorems is a perfect pairing; that is, the induced map
+      <me>
+        H^i_{\dR}(X) \cong H_i(X, \CC)^\dual \cong H^i(X, \CC)
+      </me>
+      is an isomorphism.
+    </p>
+    <p>
+      While one can think of this isomorphism as asserting that singular and de Rham cohomology are <q>the same</q>, this is not the most useful conclusion to draw;
+      it is better to interpret this as saying that <q>the whose is greater than the parts</q>.
+      <ol>
+        <li>
+          <p>
+            The space <m>H^i(X, \CC)</m> is really the base extension to <m>\CC</m> of the <m>\QQ</m>-vector space <m>H^i(X, \QQ)</m>. One can transport this rational subspace over to de Rham cohomology,
+            but the result is rather mysterious! It can be described in terms of integrals of differential forms over rational homology classes (often called <term>periods</term> because the most basic example is the
+            number <m>\pi</m>) but the arithmetic of these is quite subtle.
+          </p>
+        </li>
+        <li>
+          <p>
+            The singular cohomology depends only on the original manifold, whereas the de Rham cohomology depends on the extra data of a complex structure. For example, 
+            for Riemann surfaces of some genus <m>g \geq 2</m>, the underlying manifolds are all homeomorphic, so all of the variation comes from the complex structure.
+          </p>
+        </li>
+        <li>
+          <p>
+            By Hodge's theorem, every real cohomology class admits a unique harmonic representative. This then leads to the <term>Hodge decomposition</term> on the de Rham side.
+          </p>
+        </li>
+        <li>
+          <p>
+            When <m>X</m> is the base extension of an algebraic variety over a subfield <m>K</m> of <m>\CC</m>, <m>H^i_{\dR}(X)</m> can also be computed using <em>algebraic</em> differential forms
+            (thanks to Serre's GAGA theorem),
+            and therefore is really the base extension to <m>\CC</m> of a certain <m>K</m>-vector space. One interesting consequence of this is that there is a strong relationship
+            between the underlying topological spaces of the spaces obtained by taking different embeddings of <m>K</m> into <m>\CC</m>; this becomes more interesting when you realize that these spaces
+            need not in general be homeomorphic! For instance, Serre found examples for which these spaces have distinct fundamental groups <xref ref="bib-Serre-conjugate"/>;
+            see also <xref ref="bib-Borovoi-Cornulier"/>, <xref ref="bib-Milne-Suh"/>, <xref ref="bib-Rajan"/>.
+          </p>
+          <p>
+            Note that the Hodge decomposition does not survive the descent to <m>K</m>, but one of the filtrations derived from it does: this is the <term>Hodge filtration</term>.
+          </p>
+        </li>
+      </ol>
+      To retain all of this data at once, Deligne defined the notion of a <term>Hodge structure</term> consisting of a <m>\CC</m>-vector space with a filtration plus a <m>\ZZ</m>-lattice.
+      This captures much of the interesting data in the above picture; for example, from the Hodge structure of an abelian variety, one can recover the abelian variety by forming a complex torus
+      (taking the quotient of the <m>\CC</m>-vector space by the <m>\ZZ</m>-lattice).
+    </p>
+  </subsection>
+  <subsection>
+    <title>The trouble with torsion</title>
+    <p>
+      One thing that is missing from the previous discussion is the fact that singular homology can be defined over <m>\ZZ</m>, and is <em>not</em> in general a subspace of the singular homology over <m>\QQ</m>;
+      that is, the singular homology can be nontrivial. This is true even for algebraic varieties; one classical source of examples is the family of <term>Enriques surfaces</term>, whose homology can have 2-torsion.
+      The comparison isomorphism as formulated cannot really say anything meaningful about this torsion; one of the goals of prismatic cohomology is to provide a mechanism for interpreting this torsion via
+      reductions to positive characteristic.
+      Here is a sample statement.
+    </p>
+    <theorem xml:id="T-torsion-cohomology-comparison">
+      <statement>
+        <p>
+          Let <m>X</m> be a smooth projective variety over <m>\QQ</m>. Choose a prime number <m>p</m> for which <m>X</m> can be extended to a smooth proper scheme <m>\frakX</m> over <m>\ZZ_{(p)}</m>,
+          and put <m>X_p = \frakX \times_{\ZZ_{(p)}} \FF_p</m>. Then
+          <me>
+            \dim_{\FF_p} H^i(X^{\an}, \FF_p) \leq \dim_{\FF_p} H^i_{\dR}(X_p).
+          </me>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-Morrow-Scholze1"/>, Theorem 1.1.
+        </p>
+      </proof>
+    </theorem>
+    <p>
+      One way to think of <xref ref="T-torsion-cohomology-comparison"/> is that while a nonzero rational homology class constitutes an obstruction to integrating differentials in characteristic 0, a nonzero <m>p</m>-torsion homology class
+      constitutes an obstruction to integrating differentials in characteristic <m>p</m>.
+    </p>
+    <remark>
+      <p>
+        For various reasons, the inequality in <xref ref="T-torsion-cohomology-comparison"/> can be strict. One reason is that the left-hand side is not uniquely determined by <m>X_p</m>.
+        See <xref ref="bib-Bhatt-Morrow-Scholze1"/>, 2.1 for an example (a threefold which admits a nonsplit elliptic fibration over an Enriques surface, as compared with the split fibration).
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>The <m>p</m>-adic situation</title>
+    <p>
+      With the previous discussion in mind, let us now transition to the analogous discussion for algebraic varieties over not <m>\CC</m> but a <m>p</m>-adic field (where <m>p</m> denotes a fixed prime).
+    </p>
+    <p>
+      The discussion we conducted in over <m>\CC</m> falls under the label of <term>Hodge theory</term>. There is a parallel discussion that happens for algebraic varieties over
+      <m>p</m>-adic fields that is covered by the label of <term><m>p</m>-adic Hodge theory</term>. In that context, there is no good analague of singular (Betti) homology or cohomology, because
+      the underlying topological spaces don't have the <q>right</q> homotopy type. (The homotopy type generally misses all of the <q>good reduction</q> information and only picks up <q>bad reduction</q> data.)
+    </p>
+    <p>
+      The best available replacement for singular homology/cohomology is <term>etale homology/cohomology</term> with <m>p</m>-adic coefficients, where crucially this is <em>the same</em> prime <m>p</m> as the residue
+      characteristic. This choice of characteristic can be thought of as an <q>ugly duckling</q>: underappreciated at first, but in fact a beautiful swan in the making.
+    </p>
+    <p>
+      One thing that etale cohomology with <m>p</m>-adic coefficients does not do gracefully is specialize to characteristic <m>p</m>; it does not give a Weil cohomology in that setting (that is, you cannot use it
+      to keep track of zeta functions and <m>L</m>-functions with complete accuracy). There are various ways to control this, which all amount to switching over to de Rham cohomology and making that work better in characteristic
+      <m>p</m>; some effort is needed because the Poincare lemma doesn't hold in positive characteristic (the issue being that there are <q>too many constants</q>: in a characteristic-<m>p</m> setting
+      the formal derivative of any <m>p</m>-th power vanishes). 
+    </p>
+    <p>
+      In this course we will consider an approach to <m>p</m>-adic cohomology via the mechanism of <term>prisms</term>. One benefit of this point of view is that almost everything we want to say appears already
+      in a local setting, where we can talk very concretely about rings and complexes without having to keep track of too much fancy stuff (derived categories, simplicial objects, etc.). Another point of view is that 
+      it keeps track of <q>everything at once</q>; instead of constructing different cohomology theories and asserting <term>comparison isomorphisms</term> between them, we'll construct <q>one theory to rule them all</q>,
+      in the manner of the universal coefficient theorem of algebraic topology (that is, we have a single functor which we can postcompose with various simple algebraic functors to recover more classical constructions).
+    </p>
+  </subsection>
+</section>

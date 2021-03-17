@@ -1,0 +1,49 @@
+﻿<references>
+  <title>Bibliography</title>
+  <biblio type="raw" xml:id="bib-Bhatt-course">
+    B. Bhatt, <url href="http://www-personal.umich.edu/~bhattb/teaching/prismatic-columbia/">Eilenberg lectures at Columbia University</url>, fall 2018.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-Morrow-Scholze1">
+    B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Integral <m>p</m>-adic Hodge theory</articletitle>, <journal>Publications Mathématiques de l'IHÉS</journal> <volume>128</volume> <year>2018</year>, 219<ndash/>397.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-Scholze">
+    B. Bhatt and P. Scholze, <articletitle> Prisms and prismatic cohomology</articletitle>, <url href="https://arxiv.org/abs/1905.08229">arXiv:1905.08229v2</url> (2019).
+  </biblio>
+  <biblio type="raw" xml:id="bib-Borger-course">
+    J. Borger, Witt vectors, lambda-rings, and arithmetic jet spaces, course notes available at <href url="https://maths-people.anu.edu.au/~borger/classes/copenhagen-2016/index.html"/>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Borovoi-Cornulier">
+    M. Borovoi and Y. Cornulier, <articletitle>Conjugate complex homogeneous spaces with non-isomorphic fundamental groups</articletitle>, <journal>C. R. Acad. Sci. Paris</journal> <volume>353</volume> <year>2015</year>, 1001<ndash/>1005.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Buium1">
+    A. Buium, <articletitle>Differential characters of abelian varieties over <m>p</m>-adic fields</articletitle>, <journal>Inventiones Mathematicae</journal> <volume>122</volume> <year>1995</year>, 309<ndash/>340.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Buium2">
+    A. Buium, <articletitle>Arithmetic analogues of derivations</articletitle>, <journal>Journal of Algebra</journal> <volume>198</volume> <year>1997</year>, 290--299.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Ghrist">
+    R. Ghrist, <articletitle>Three examples of applied and computational homology</articletitle>, <journal>Nieuw Archief voor Wiskunde</journal> <volume>9</volume>
+    <year>2008</year>, 122<ndash/>125.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Griffiths-Harris">
+    P. Griffiths and J. Harris, <pubtitle>Principles of Algebraic Geometry</pubtitle>, John Wiley &amp; Sons, New York, 1978.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Joyal1">
+    A. Joyal, <articletitle><m>\delta</m>-anneau et vecteurs de Witt</articletitle>, <journal>C.R. Math. Rep. Acad. Sci. Canada</journal> <volume>7</volume> <year>1985</year>, 177<ndash/>182.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Joyal1">
+    A. Joyal, <articletitle><m>\delta</m>-anneau et <m>\lambda</m>-anneaux, II</articletitle>, <journal>C.R. Math. Rep. Acad. Sci. Canada</journal> <volume>7</volume> <year>1985</year>, 227<ndash/>232.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Milne-Suh">
+    J.S. Milne and J. Suh, <articletitle>Nonhomeomorphic conjugates of connected Shimura varieties</articletitle>, <journal>American Journal of Mathematics</journal> <volume>132</volume> <year>2010</year>, 731<ndash/>750.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Rajan">
+    C.S. Rajan, <articletitle>An example of non-homeomorphic conjugate varieties</articletitle>, <journal>Mathematics Research Letters</journal> <volume>18</volume> <year>2011</year>, 937<ndash/>942.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Rezk">
+    C. Rezk, <articletitle>Etale extensions of <m>\lambda</m>-rings</articletitle>, <href url="https://faculty.math.illinois.edu/~rezk/etale-lambda.pdf"/> <year>2019</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Serre-conjugate">
+    J.-P. Serre, <articletitle>Exemples de variétés projectives conjuguées non homéomorphes</articletitle>, <journal>C. R. Acad. Sci. Paris</journal> <volume>258</volume> <year>1964</year>, 4194<ndash/>4196.
+  </biblio>
+</references>
