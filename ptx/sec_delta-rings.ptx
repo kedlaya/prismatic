@@ -4,52 +4,77 @@
     <paragraphs>
       <title>References</title>
       <p>
-        See the papers of Joyal and Buium listed below, and also <xref ref="bib-Borger-course"/>.
+        In addition to the papers of Joyal and Buium listed below, see also <xref ref="bib-Borger-course"/> for the perspective of <m>\lambda</m>-rings,
+        and <xref ref="bib-Yau"/> for a comprehensive treatment.
+      </p>
+      <p>
+        We have followed <xref ref="bib-Bhatt-course"/>, Lecture 2, fairly closely. Some of the exercises were taken from <xref ref="bib-Borger-course"/>.
       </p>
     </paragraphs>
     <p>
-      We begin with the fundamental notion of a <term><m>\delta</m>-ring</term>.
+      In this section, we introduce the fundamental notion of a <term><m>\delta</m>-ring</term>.
       This definition was introduced by Joyal <xref ref="bib-Joyal1"/>, <xref ref="bib-Joyal2"/> with a view towards applications in <m>K</m>-theory; 
       it is closely related to the older notion of 
-      a <term><m>\lambda</m>-ring</term>.
+      a <term><m>\lambda</m>-ring</term>, which we will discuss briefly at the end of this section (<xref ref="subsec-big-Witt"/>).
       However, this development did not gain much attention until the same idea was rediscovered by Buium <xref ref="bib-Buium1"/> 
-      under the guise of <term>arithmetic differentiation</term> in the service of a particular goal (adapting Manin's proof of the finiteness of the set of torsion
-      points on a hyperbolic algebraic curve embedded into its Jacobian from the function field case to the number field case)
-      see <xref ref="bib-Buium2"/> for a slightly later treatment focusing specifically on arithmetic differentiation.
+      under the guise of <term>arithmetic differentiation</term>.
+      (Buium had the original goal of adapting Manin's proof of the finiteness of the set of torsion
+      points on a hyperbolic algebraic curve embedded into its Jacobian from the function field case to the number field case;
+      see <xref ref="bib-Buium2"/> for a slightly later treatment presenting arithmetic differentiation on its own terms.)
     </p>
-  </introduction>
-  <subsection>
     <definition>
       <p>
-        Fix a prime number <m>p</m>.
-        Following Joyal, we define a <term><m>\delta</m>-ring</term> to be a pair <m>(A, \delta)</m> in which <m>A</m> is a commutative (unital) ring and <m>\delta: A \to A</m>
-        is a map of sets satisfying the following conditions.
-        <md>
-          <mrow>\delta(0) = \delta(1) = 0;</mrow>
-          <mrow>\delta(xy) = x^p \delta(y) + y^p \delta(x) + p \delta(x) \delta(y);</mrow>
-          <mrow>\delta(x+y) = \delta(x) + \delta(y) - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x^i p^{y-i}.</mrow>
-        </md>
+        Throughout this lecture (and indeed for most of the course), fix a prime number <m>p</m>.
+        Let <m>\Ring</m> denote the category of commutative unital rings.
+      </p>
+    </definition>
+  </introduction>
+  <subsection>
+    <title><m>p</m>-derivations, <m>\delta</m>-rings, and Frobenius lifts</title>
+    <definition xml:id="def-delta-ring">
+      <p>
+        Following Joyal, we define a <term><m>\delta</m>-ring</term> to be a pair <m>(A, \delta)</m> in which <m>A \in \Ring</m> and <m>\delta: A \to A</m>
+        is a map of sets satisfying the following conditions for all <m>x,y \in A</m>.
+        <mdn>
+          <mrow xml:id="eq-delta-ring-value-at-1">\delta(1) = 0;</mrow>
+          <mrow xml:id="eq-delta-ring-product">\delta(xy) = x^p \delta(y) + y^p \delta(x) + p \delta(x) \delta(y);</mrow>
+          <mrow xml:id="eq-delta-ring-sum">\delta(x+y) = \delta(x) + \delta(y) - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x^i y^{p-i}.</mrow>
+        </mdn>
         The last condition implies that
         <me>
           p (\delta(x+y) - \delta(x) - \delta(y)) = x^p + y^p - (x+y)^p
         </me>
-        and is equivalent if <m>A</m> is <m>p</m>-torsion-free. (In some sources, a map <m>\delta</m> satisfying these conditions is called a <term><m>p</m>-derivation</term>.)
+        and conversely if <m>A</m> is <m>p</m>-torsion-free. (In some sources, a map <m>\delta</m> satisfying these conditions is called a <term><m>p</m>-derivation</term>.)
+      </p>
+      <p>
+        We will habitually abuse notation and terminology and say that <q><m>A</m> is a <m>\delta</m>-ring</q> when it is meant to be clear from context what the map <m>\delta</m> is supposed to be.
       </p>
     </definition>
+    <remark>
+      <p>
+        Note that <xref ref="eq-delta-ring-sum"/> also implies that <m>\delta(0) = 0</m>, so we don't need to include this condition separately.
+        By contrast, <xref ref="eq-delta-ring-product"/> does not by itself imply that <m>\delta(1) = 0</m>; see <xref ref="exer-delta-ring-normalization"/>.
+      </p>
+    </remark>
     <p>
       The form of the previous definition is partly explained by the following construction.
     </p>
-    <lemma>
+    <lemma xml:id="lem-delta-ring-Frobenius-lift">
       <statement>
         <p>
-          Let <m>A</m> be a commutative ring.
+          Choose <m>A \in \Ring</m>.
         </p>
         <ol>
           <li>
             <p>
               Suppose that <m>\delta: A \to A</m> is a <m>p</m>-derivation (that is, <m>(A, \delta)</m> is a <m>\delta</m>-ring).
-              Then the map <m>\phi: A \to A</m> given by <m>\phi(x) = x^p + p \delta(x)</m> is a ring homomorphism that induces the Frobenius endomorphism on <m>A/pA</m>
+              Then the map <m>\phi: A \to A</m> given by 
+              <me>
+                \phi(x) = x^p + p \delta(x)
+              </me>
+              is a ring homomorphism that induces the Frobenius endomorphism on <m>A/pA</m>
               (a/k/a a <term>Frobenius lift</term> on <m>A</m>).
+              We will refer to <m>\phi</m> as the <term>associated Frobenius lift</term> on <m>(A, \delta)</m>.
             </p>
           </li>
           <li>
@@ -61,28 +86,848 @@
       </statement>
       <proof>
         <p>
-          Left to the reader.
+          It was already pointed out in <xref ref="def-delta-ring"/> that <m>\delta</m> satisfies <xref ref="eq-delta-ring-sum"/> if and only if 
+          <m>\phi</m> is additive, and conversely if <m>A</m> is <m>p</m>-torsion-free. Meanwhile, <xref ref="eq-delta-ring-value-at-1"/> implies that <m>\phi(1) = 0</m>,
+          and conversely if <m>A</m> is <m>p</m>-torsion-free; while <xref ref="eq-delta-ring-product"/> implies that <m>\phi(xy) = \phi(x) \phi(y)</m>,
+          and conversely if <m>A</m> is <m>p</m>-torsion-free.
+        </p>
+      </proof>
+    </lemma>
+    <definition>
+      <p>
+        By <xref ref="eq-delta-ring-value-at-1"/> and <xref ref="eq-delta-ring-product"/>, in any <m>\delta</m>-ring <m>A</m> the elements <m>x \in A</m> for which <m>\delta(x) = 0</m> form a monoid under multiplication.
+        By analogy with the case of an ordinary derivation, we call these the <term><m>\delta</m>-constant elements</term> of <m>A</m>.
+        These elements also satisfy <m>\phi(x) = x^p</m>, and conversely if <m>A</m> is <m>p</m>-torsion free.
+      </p>
+    </definition>
+  </subsection>
+  <subsection>
+    <title>Examples of <m>\delta</m>-rings</title>
+    <p>
+      Using <xref ref="lem-delta-ring-Frobenius-lift"/>, it is not difficult to generate examples of <m>\delta</m>-rings. Here are a few illustrative cases.
+    </p>
+    <example xml:id="exa-delta-ring-p-invertible">
+      <p>
+        If <m>p</m> is invertible in the ring <m>A</m>, then <em>every</em> endomorphism of <m>A</m> is a Frobenius lift, and thus gives rise to a <m>p</m>-derivation.
+      </p>
+    </example>
+    <example xml:id="exa-delta-ring-Z">
+      <p>
+        By <xref ref="lem-delta-ring-Frobenius-lift"/>, there is a unique way to equip <m>\ZZ</m> with the structure of a <m>\delta</m>-ring, namely via the map
+        <men xml:id="eq-delta-on-Z">
+          \delta(x) = \frac{x^p-x}{p}.
+        </men>
+        The <m>\delta</m>-constant elements are <m>\{0,1\}</m>.
+      </p>
+      <p>
+        By the same token, <m>\ZZ_p</m> has trivial automorphism group (even if we ignore its topology!) and so 
+        admits a unique <m>\delta</m>-ring structure. The <m>\delta</m>-constant elements are <m>\{0\} \cup \mu_{p-1}</m>.
+        This example is the first case of the general construction of rings of Witt vectors; see <xref ref="subsec-Witt-vectors"/>.
+      </p>
+    </example>
+    <remark xml:id="rmk-delta-ring-image-of-Z">
+      <p>
+        Using <xref ref="eq-delta-ring-sum"/>, we can start from the equality <m>\delta(0) = \delta(1) = 1</m> and reconstruct the values of <m>\delta</m>
+        on arbitrary integers. Consequently, for any <m>\delta</m>-ring <m>A</m>, the action of <m>\delta</m> on integers is given by
+        <xref ref="eq-delta-on-Z"/> <em>even if <m>A</m> is not <m>p</m>-torsion-free</em>. In particular, for any positive integer <m>n</m>,
+        <me>
+          \delta(p^n) = p^{n-1} (1 - p^{n(p-1)})
+        </me>
+        and the second factor is not divisible by <m>p</m> unless <m>p</m> is invertible in <m>A</m> (see <xref ref="exa-delta-ring-p-invertible"/>);
+        that is, <m>\delta</m> <q>lowers the <m>p</m>-adic order of vanishing by 1</q>.
+        By the same token, for any <m>x \in A</m>,
+        <me>
+          \delta(p^n x) = p^{np} \delta(x) + x^p \delta(p^n) + p \delta(x) \delta(p^n) \equiv p^{n-1} x^p \pmod{p^n}.
+        </me>
+      </p>
+    </remark>
+    <example xml:id="exa-delta-ring-cyclotomic">
+      <p>
+        Building on <xref ref="exa-delta-ring-Z"/>, take <m>A = \ZZ[\mu_n: \gcd(n,p) = 1]</m>. The automorphism <m>\phi: A \to A</m> taking <m>\zeta_n</m>
+        to <m>\zeta_n^p</m> for every positive integer <m>n</m> coprime to <m>p</m> is a Frobenius lift; for <m>\delta</m> the corresponding <m>p</m>-derivation, the
+        <m>\delta</m>-constant elements are <m>\{0\} \cup \bigcup_{\gcd(n,p)=1} \mu_n</m>.
+      </p>
+    </example>
+    <example>
+      <p>
+        Take <m>A = \ZZ[x]</m>. For any <m>y \in A</m>, there is a unique Frobenius lift <m>\phi</m> of <m>A</m> for which <m>\phi(x) = x^p + py</m>;
+        consequently, there is a unique <m>p</m>-derivation <m>\delta</m> on <m>A</m> with <m>\delta(x) = y</m>. It is tempting to interpret this as the statement that
+        <q>the set of <m>p</m>-derivations on <m>A</m> is a free <m>A</m>-module of rank <m>1</m></q>, but in fact there is no natural module structure
+        on the set of <m>p</m>-derivations on a general ring.
+      </p>
+    </example>
+    <p>
+      You may have noticed that none of these examples has <m>p</m>-torsion. That is not entirely an accident.
+    </p>
+    <lemma xml:id="lem-delta-ring-killed-by-p">
+      <statement>
+        <p>
+          Let <m>(A, \delta)</m> be a <m>\delta</m>-ring such that for some nonnegative integer <m>n</m>, <m>p^n = 0</m> in <m>A</m>. Then <m>A = 0</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We prove the claim by induction on <m>n</m>, with the base case <m>n=0</m> being vacuously true.
+        </p>
+        <p>
+          Suppose that <m>n>0</m>. Then <m>A</m> is a <m>\ZZ_{(p)}</m>-algebra. Consequently,
+          by <xref ref="eq-delta-on-Z"/> and <xref ref="rmk-delta-ring-image-of-Z"/>, 
+          <me>
+            0 = \delta(0) = \delta(p^n) = p^{n-1} (1 - p^{np-n})
+          </me>
+          and the second factor is a unit in <m>A</m>. Hence <m>p^{n-1} = 0</m> in <m>A</m> also, and the induction hypothesis applies.
+        </p>
+      </proof>
+    </lemma>
+    <remark>
+      <p>
+        Notwithstanding <xref ref="lem-delta-ring-killed-by-p"/>, there do exist examples of <m>\delta</m>-rings in which the 
+        underlying ring is not <m>p</m>-torsion-free; it is difficult to write these down concretely (in part because it is not enough to specify the
+        associated Frobenius lift), but they will be generated naturally by <xref ref="def-delta-ring-right-adjoint"/>.
+      </p>
+      <p>
+        Fortunately, quite often we can ignore these examples when checking basic properties of <m>\delta</m>-rings by appealing to the existence of free <m>\delta</m>-rings; see again <xref ref="def-delta-ring-left-adjoint"/>.
+        See also <xref ref="exer-delta-ring-p-power-torsion"/> for a variant of <xref ref="lem-delta-ring-killed-by-p"/> that applies to this situation.
+      </p>
+    </remark>
+    <lemma xml:id="lem-delta-p-torsion">
+      <statement>
+        <p>
+          Let <m>A</m> be a <m>\delta</m>-ring. For any <m>x \in A</m> with <m>px = 0</m>, <m>\phi(x) = 0</m>.
+          In particular, if <m>\phi</m> is injective, then <m>A</m> is <m>p</m>-torsion-free.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Since <m>x</m> maps to zero in <m>A[p^{-1}]</m>, so then does <m>\phi(x)</m>. It is thus sufficient to check the claim after localizing at <m>(p)</m>,
+          that is, we may assume that <m>A</m> is a <m>\ZZ_{(p)}</m>-algebra. Now apply <xref ref="eq-delta-ring-product"/> to write
+          <me>
+            0 = \delta(0) = \delta(px) = x^p \delta(p) + p^p \delta(x) + p \delta(x) \delta(p) = p^p \delta(x) + \phi(x) \delta(p).
+          </me>
+          By <xref ref="rmk-delta-ring-image-of-Z"/>, <m>\delta(p)</m> is a unit in <m>A</m>; it will thus suffice to check that <m>p^p \delta(x) = 0</m>. This follows by writing
+          <me>
+            p^p \delta(x) = p^{p-1} (\phi(x) - x^p) = p^{p-2} (\phi(px) - px^p) = 0.
+          </me>
         </p>
       </proof>
     </lemma>
   </subsection>
-  <subsection>
-    <title>Examples of <m>\delta</m>-rings</title>
-    <example>
+  
+  <subsection xml:id="subsec-truncated-Witt">
+    <title>Truncated Witt vectors</title>
+    <p>
+      Just as derivations can be naturally interpreted as giving first-order deformations of a ring, one can interpret <m>p</m>-derivations in the following manner.
+    </p>
+    <definition xml:id="def-W2-interpretation">
       <p>
-        For <m>R</m> a perfect ring of
+        For <m>A</m> a ring, let <m>W_2(A)</m> be the set <m>A \times A</m> equipped with binary operations <m>+, \times</m> defined as follows:
+        <md>
+          <mrow>(x_1, y_1) + (x_2, y_2) &amp;= (x_1+x_2, y_1 + y_2 - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x_1^i x_2^{p-i})</mrow>
+          <mrow>(x_1, y_1) \times (x_2, y_2) &amp;= (x_1 x_2, x_1^p y_2 + x_2^p y_1 + p y_1 y_2).</mrow> 
+        </md>
       </p>
-    </example>
-    <example>
-    </example>
+    </definition>
+    <lemma xml:id="lem-W2-ring">
+      <statement>
+        <p>
+          The set <m>W_2(A)</m> with the operations <m>+, \times</m> is a commutative ring.
+          Moreover, the operation <m>A \mapsto W_2(A)</m> defines a functor from <m>\Ring</m> to <m>\Ring</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          One may see directly from the definitions that:
+          <ul>
+            <li>
+              <p>
+                addition is commutative and the element <me>0 = (0, 0)</me> is an identity element;
+              </p>
+            </li>
+            <li>
+              <p>
+                every element has an additive inverse;
+              </p>
+            </li>
+            <li>
+              <p>
+                multiplication is commutative and the element <m>1 = (1, 0)</m> is an identity element;
+              </p>
+            </li>
+            <li>
+              <p>
+                the operation <m>A \mapsto W_2(A)</m> defines a functor from the category of commutative rings to the category of sets equipped with
+                two binary operations.
+              </p>
+            </li>
+          </ul>
+          We thus need to check that addition and multiplication are associative and that multiplication distributes over addition.
+          These are all conditions asserting the validity of certain polynomial identities in two arbitrary elements <m>x,y \in A</m>;
+          thanks to the functoriality, these can be checked after lifting from <m>A</m> to some ring that surjects onto it. In particular,
+          we may take <m>A</m> to be a polynomial ring over <m>\ZZ</m>, which in particular is <m>p</m>-torsion-free.
+        </p>
+        <p>
+          In this setting, the map
+          <me>
+            W_2(A) \to A \times A, \qquad (x_1, y_1) \mapsto (x_1, x_1^p + py_1)
+          </me>
+          is an injective morphism of sets with two operations for the <em>usual</em> ring operations on <m>A \times A</m>.
+          Consequently, we may deduce the desired properties by transferring the knowledge from <m>A \times A</m>.
+        </p>
+      </proof>
+    </lemma>
+    <remark xml:id="rmk-W2-interpretation">
+      <p>
+        Ignoring the second component defines a ring homomorphism <m>\epsilon: W_2(A) \to A</m>. In this notation, a <m>\delta</m>-ring structure on <m>A</m>
+        corresponds to a ring homomorphism <m>w: A \to W_2(A)</m> such that <m> \epsilon \circ w = \id_A</m>.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        For <m>A</m> a <m>p</m>-torsion-free ring, <m>W_2(A)</m> can also be described as the fiber product of the reduction map <m>A \to A/(p)</m>
+        with the composition <m>A \to A/(p) \stackrel{\phi}{\to} A/(p)</m> where <m>\phi</m> denotes the Frobenius on <m>A/(p)</m>. That is,
+        <m>\Spec W_2(A)</m> consists of two copies of <m>\Spec A</m> glued along <m>\Spec A/(p)</m> via Frobenius.
+      </p>
+      <p>
+        In <xref ref="bib-Bhatt-course"/>, Remark 2.3.4, Bhatt also suggests a version of this statement without the <m>p</m>-torsion-free condition:
+        for a general ring <m>A</m>, a <m>\delta</m>-structure on <m>A</m> corresponds to an endomorphism <m>\phi: A \to A</m> which is a <q>derived Frobenius lift</q>.
+        That is, for <m>\overline{A} = A \otimes^L_{\ZZ} \ZZ/(p)</m>,
+        there exists (and is specified!) a homotopy between the composition <m>A \stackrel{\phi}{\to} A \to \overline{A}</m>
+        and the composition <m>A \to \overline{A} \stackrel{\mathrm{Frob}}{\to} \overline{A}</m>. This description follows from the previous discussion by interpreting
+        <m>W_2(A)</m> as the fiber product of <m>A \to \overline{A}</m> and <m>A \to \overline{A} \stackrel{\mathrm{Frob}}{\to} \overline{A}</m>.
+      </p>
+    </remark>
   </subsection>
   <subsection>
     <title>The category of <m>\delta</m>-rings</title>
     <definition>
       <p>
-        A <term>morphism</term> of <m>\delta</m>-rings <m>(A, \delta) \to (A', \delta')</m> is a morphism <m>f: A \to A'</m> of rings such that <m>f \circ \delta = \delta' \circ f</m>  (again as maps of sets only).
-        It is evident that with this definition, <m>\delta</m>-rings form a category. We will often abuse notation and terminology and say that <q><m>A</m> is a <m>\delta</m>-ring</q> when it is meant to be clear from context what the map <m>\delta</m> is supposed to be.        
-      </p>      
+        A <term>morphism</term> of <m>\delta</m>-rings <m>(A, \delta) \to (A', \delta')</m> is a homomorphism <m>f: A \to A'</m> of rings such that <m>f \circ \delta = \delta' \circ f</m>  (again as maps of sets only).
+        It is evident that with this definition, <m>\delta</m>-rings form a category, denoted <m>\Ring_\delta</m>.
+      </p>
     </definition>
+    <lemma xml:id="lem-delta-ring-quotient">
+      <statement>
+        <p>
+          Let <m>A</m> be a <m>\delta</m>-ring. Let <m>I</m> be an ideal of <m>A</m> such that <m>\delta(I) \subseteq I</m>. Then
+          <m>A/I</m> admits a unique <m>\delta</m>-ring structure compatible with the map <m>A \to A/I</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          All we need to check is that if <m>x \equiv y \pmod{I}</m>, then <m>\delta(x) \equiv \delta(y) \pmod{I}</m>.
+          This is apparent from <xref ref="eq-delta-ring-sum"/>, which implies that <m>\delta(x) \equiv \delta(y) + \delta(x-y) \pmod{x-y}</m>.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-delta-ring-limits-colimits">
+      <title>Limits and colimits</title>
+      <statement>
+        <p>
+          The category <m>\Ring_\delta</m> admits arbitrary limits and colimits. Moreover, the formation of these commutes with the forgetful functor to <m>\Ring</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          For limits, this is pretty straightforward. For colimits, it is perhaps easiest to use <xref ref="rmk-W2-interpretation"/>: if <m>A</m>
+          is the colimit of a diagram <m>\{A_i\}</m>, then we get a map <m>\colim A_i \to \colim W_2(A_i) = W_2(\colim A_i)</m> splitting the projection map,
+          and then we recover a <m>\delta</m>-structure on <m>\colim A_i</m>.
+        </p>
+      </proof>
+    </lemma>
+    <definition xml:id="def-delta-ring-left-adjoint">
+      <p>
+        By <xref ref="lem-delta-ring-limits-colimits"/> plus Freyd's adjoint functor theorem (see <xref ref="bib-Maclane"/>, section V.8), 
+        the forgetful functor <m>\Ring_\delta \to \Ring</m> admits both a left adjoint and a right adjoint.
+        The left adjoint can be described concretely in the case of the polynomial ring <m>\ZZ[S]</m> (for <m>S</m> an arbitrary set, not necessarily finite); it produces
+        the <term>free <m>\delta</m>-ring</term> on <m>S</m> which we denote by <m>\ZZ\{S\}</m>.
+        Concretely, the underlying ring of <m>\ZZ\{S\}</m> is given by <m>\ZZ[S_0, S_1, \dots]</m> where each <m>S_i</m> is a copy of <m>S</m>. The map <m>\delta</m> acts on these elements as follows:
+        for <m>s \in S</m> corresponding to <m>s_i \in S_i</m>, we have <m>\delta(s_i) = s_{i+1}</m>.
+        (To evaluate the left adjoint on an arbitrary ring, we can write it as a quotient of <m>\ZZ[S]</m> for some <m>S</m>, say by using the adjunction between
+        commutative rings and sets, and then take a quotient of the resulting free <m>\delta</m>-ring using <xref ref="lem-delta-ring-quotient"/>.)
+      </p>
+      <p>
+        An important corollary of this observation is that every <m>\delta</m>-ring can be written as a quotient of a <m>p</m>-torsion-free <m>\delta</m>-ring;
+        this will allow us to reduce many computations to the <m>p</m>-torsion-free case.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        Note that in <xref ref="def-delta-ring-left-adjoint"/>, applying the left adjoint to a finitely generated polynomial ring over <m>\ZZ</m> produces a <m>\delta</m>-ring
+        whose underlying ring is <em>not noetherian</em>. This suggests that we cannot entertain any hope of staying within the noetherian realm as we go along.
+        This is similar to what happens in <term>difference algebra</term>, the study of rings equipped with an endomorphism.
+      </p>
+    </remark>
+    <lemma>
+      <statement>
+        <p>
+          Let <m>(A, \delta)</m> be a <m>\delta</m>-ring and let <m>\phi</m> be the associated Frobenius lift.
+          Then <m>\phi</m> is an endomorphism of <m>(A, \delta)</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We are claiming that <m>\delta \circ \phi = \phi \circ \delta</m>; this is a polynomial identity on a single element <m>x \in A</m> and its image under <m>\delta</m>, so by
+          lifting to a free <m>\delta</m>-ring we may reduce to the case where <m>A</m> is <m>p</m>-torsion-free. In this case, the claim reduces to checking
+          that <m>\phi</m> is an endomorphism of the difference ring <m>(A, \phi)</m>, which is obviously true.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-delta-ring-localization">
+      <statement>
+        <p>
+          Let <m>A</m> be a <m>\delta</m>-ring. Let <m>S</m> be a multiplicative subset of <m>A</m> such that <m>\phi(S) \subseteq S</m>.
+          Then there is a unique way to equip <m>S^{-1} A</m> with the structure of a <m>\delta</m>-ring so that the localization homomorphism
+          <m>A \to S^{-1} A</m> becomes a morphism of <m>\delta</m>-rings.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Suppose first that <m>A</m> is <m>p</m>-torsion-free; then so is <m>S^{-1} A</m>. Since <m>\phi(S) \subseteq S</m>, the map <m>\phi: A \to A</m>
+          extends uniquely to a morphism <m>\phi: S^{-1} A \to S^{-1} A</m> which is again a Frobenius lift. We thus recover a unique <m>\delta</m>-structure
+          on <m>S^{-1} A</m>.
+        </p>
+        <p>
+          In the general case, form a surjection <m>F \to A</m> of <m>\delta</m>-rings with <m>F</m> being <m>p</m>-torsion-free.
+          Let <m>T</m> be the preimage of <m>S</m> in <m>F</m>; it is again a multiplicative subset such that <m>\phi(T) \subseteq T</m>, so we 
+          may uniquely promote <m>T^{-1} F</m> to a <m>\delta</m>-ring over <m>T</m>. Since <xref ref="fig-delta-rings-1"/>
+          is a pushout diagram in <m>\Ring</m>, the pushout in <m>\Ring_\delta</m> (which is a colimit, and hence covered by <xref ref="lem-delta-ring-limits-colimits"/>)
+          gives us the unique <m>\delta</m>-ring structure on <m>S^{-1} A</m>. (One can also argue more explicitly using <xref ref="lem-delta-ring-quotient"/>.)
+        </p>
+        <figure xml:id="fig-delta-rings-1">
+          <image>
+            <latex-image>
+              \xymatrix{
+                F \ar[r] \ar[d] &amp; T^{-1} F \ar[d] \\
+                A \ar[r] &amp; S^{-1} A
+              }
+            </latex-image>
+          </image>
+        </figure>
+      </proof>
+    </lemma>
+    <remark>
+      <p>
+        One might be wondering what the analogue of <xref ref="lem-delta-ring-localization"/> is when the localization map <m>A \to S^{-1} A</m> is replaced
+        by a more general étale morphism <m>A \to B</m>. The right hypothesis to promote this morphism from <m>\Ring</m> to <m>\Ring_\delta</m> should be the
+        choice of an morphism <m>B \otimes_{A, \phi} A \to B</m>.
+      </p>
+    </remark>
   </subsection>
+  <subsection xml:id="subsec-Witt-vectors">
+    <title>Witt vectors</title>
+    <p>
+      We take advantage of our knowledge so far to recover some basic (and crucial) facts about Witt vectors, building upon our work with truncated Witt vectors in 
+      <xref ref="subsec-truncated-Witt"/>.
+    </p>
+    <definition xml:id="def-delta-ring-right-adjoint">
+      <p>
+        As indicated in <xref ref="def-delta-ring-left-adjoint"/>, the forgetful functor <m>\Ring_\delta \to \Ring</m> admits a right adjoint <m>W</m>.
+        To identify the image of a ring <m>A</m> under this functor, we write
+        <md>
+          <mrow>W(A) &amp;= \Hom_{\Ring_\delta}(\ZZ\{y\}, W(A))</mrow> 
+          <mrow>     &amp;= \Hom_{\Ring}(\ZZ[y_0, y_1, \dots], A)</mrow> 
+          <mrow>     &amp;= A \times A \times \cdots.</mrow>
+        </md>
+        However, we will prefer to use this set-theoretic identification using a second set of generators <m>x_0, x_1, \dots</m> of the polynomial ring <m>\ZZ[y_0, y_1, \dots]</m>,
+        given by <xref ref="lem-unipotent-Witt"/> below.
+        Using these coordinates, <m>W(A)</m> becomes none other than the ring of <term><m>p</m>-typical Witt vectors</term> over <m>A</m>.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        Before continuing, we record a statement which will come up repeatedly:
+        <men xml:id="eq-promote-congruence">
+          x \equiv y \pmod{p^m} \Rightarrow x^p \equiv y^p \pmod{p^{m+1}}.
+        </men>
+       </p>
+    </remark>
+    <lemma xml:id="lem-unipotent-Witt">
+      <statement>
+        <p>
+          With notation as in <xref ref="def-delta-ring-right-adjoint"/>, there exist polynomials
+          <me>
+            P_n \in \ZZ[y_0,\dots,y_{n-1}] \qquad (n=0,1,\dots)
+          </me>
+          such that the elements <m>x_n = y_n + p P_n(y_0,\dots,y_{n-1})</m> satisfy
+          <me> 
+            \phi^n(x_0) = x_0^{p^n} + p x_1^{p^{n-1}} + \cdots + p^n x_n \qquad (n=0,1,\dots).
+          </me>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We may take <m>P_0 = P_1 = 0</m>. Given <m>P_0,\dots,P_{n-1}</m>, write
+          <md>
+            <mrow>\phi^n(x_0) &amp;= \phi(\phi^{n-1}(x_0)) </mrow>
+            <mrow> &amp;= \phi(x_0)^{p^{n-1}} + \cdots + p^{n-2} \phi(x_{n-2})^p + p^{n-1} \phi(x_{n-1}) </mrow>
+            <mrow> &amp;\equiv x_0^{p^n} + \cdots + p^{n-2} x_{n-2}^{p^2} + p^{n-1} x_{n-1}^p + p^n y_n \pmod{p^{n+1}} </mrow>
+          </md>
+          by making repeated use of <xref ref="eq-promote-congruence"/>.
+          From this, we read off the claim.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-char-p-Witt-frob">
+      <statement>
+        <p>
+          For <m>A</m> a ring of characteristic <m>p</m>, the map <m>\phi</m> on <m>W(A)</m> coincides with the map induced by functoriality by the Frobenius on <m>A</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The elements <m>y_0, y_1, \dots</m> of the representing ring <m>\ZZ[y_0, y_1, \dots]</m> satisfy <m>\phi(y_n) = y_n^p + py_{n+1} \equiv y_n^p \pmod{p}</m>.
+          By this plus <xref ref="lem-unipotent-Witt"/>, we see that also <m>\phi(x_n) \equiv x_n^p \pmod{p}</m>; this proves the claim. 
+        </p>
+      </proof>
+    </lemma>
+    <definition xml:id="def-Witt-structures-p-typical">
+      <p>
+        The arithmetic operations on Witt vectors are given by certain universal polynomials in the entries of the Witt vectors.
+        We may read off properties of these polynomials using suitable test objects; this is similar to a more typical proof of the existence of the functor <m>W</m>,
+        except that now we don't need to worry about its existence!
+      </p>
+      <p>
+        Here are some examples of properties that can be checked in this manner. We omit further details.
+      </p>
+      <ul>
+        <li>
+          <p>
+            The <term>ghost map</term>
+            <me>
+              W(A) \to A \times A \times \cdots, \qquad (x_n)_{n=0}^\infty \mapsto \left( \sum_{m=0}^n p^m x_m^{p^{n-m}} \right)_{n=0}^\infty
+            </me>
+            is a homomorphism of rings for the usual product ring structure on the target.
+          </p>
+        </li>
+        <li>
+          <p>
+            For each positive integer <m>n</m>, there is a natural transformation from <m>W</m> to another functor <m>W_n</m> on <m>\Ring</m> which on sets 
+            corresponds to the projection
+            <me>
+              (x_0, x_1, \dots) \mapsto (x_0, \dots, x_{n-1}).
+            </me>
+            (This has a similar effect on the other side of the ghost map.)
+            The ring <m>W_n(A)</m> is called the ring of <term>truncated <m>p</m>-typical Witt vectors of length <m>n</m></term> over <m>A</m>;
+            for <m>n=1</m> we get <m>A</m> itself, while for <m>n=2</m> we recover the construction of <xref ref="def-W2-interpretation"/>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The action of <m>\phi</m> on <m>W(A)</m> corresponds via the ghost map to the left shift operator on <m>A \times A \times \cdots</m>.
+            In particular, it does not induce an endomorphism of <m>W_n(A)</m> in general (unless <m>p=0</m> in <m>A</m>, in which case 
+            <xref ref="lem-char-p-Witt-frob"/> applies), but it does induce a homomorphism <m>W_{n+1}(A) \to W_n(A)</m>
+            (the <term>Witt vector Frobenius</term>).
+          </p>
+        </li>
+        <li>
+          <p>
+            The map <m>[\cdot]: A \to W(A)</m> given by <m>[x] = (x, 0, 0, \dots)</m> is multiplicative; 
+            it corresponds via the ghost map to <m>x \mapsto (x, x^p, x^{p^2}, \dots)</m>. 
+            We call it the <term>multiplicative section</term> of the projection <m>W(A) \to W_1(A) = A</m>
+            (see <xref ref="rmk-multiplicative-section"/>; we refer to <m>[x]</m> as the <term>multiplicative lift</term> of <m>x \in A</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The <term>Verschiebung</term> map <m>V: W(A) \to W(A)</m> defined by <m>V(x_0, x_1, \dots) = (0, x_0, x_1, \dots)</m> is additive (but not multiplicative);
+            it corresponds via the ghost map to <m>(x_0, x_1, \dots) \mapsto (0, px_0, px_1, \dots)</m>. In particular, <m>\phi \circ V</m> acts via multiplication by <m>p</m>
+          </p>
+        </li>
+      </ul>
+    </definition>
+    <remark xml:id="rmk-multiplicative-section">
+      <p>
+        Our term <term>multiplicative section</term> is meant to suggest the fact that when <m>A</m> is a perfect ring of characteristic <m>p</m>,
+        there is a <em>unique</em> multiplicative section of the projection <m>W(A) \to A</m>; namely, this follows from the fact that for <m>x,y \in A</m>, 
+        the congruence <m>x \equiv y \pmod{p}</m> implies the congruence <m>x^{p^{n-1}} \equiv y^{p^{n-1}} \pmod{p^n}</m>. In particular, this section
+        must coincide with the one we defined in terms of Witt vectors.
+      </p>
+      <p>
+        In addition, we have another purpose behind the choice of terminology.
+        In light of the role of Oswald Teichmüller in the early development of the theory of Witt vectors, 
+        what I am calling the multiplicative section is often commonly known as the <term>Teichmüller map</term>.
+        However, in light of Teichmüller's role in the Nazi Party and in denunciation of Jewish mathematicians in Germany during the 1930s,
+        I think it would be most appropriate to avoid this usage going forward.
+      </p>
+    </remark>
+    <lemma xml:id="lem-witt-vectors-perfect-ring">
+      <statement>
+        <p>
+          For <m>A</m> a ring of characteristic <m>p</m> which is <term>perfect</term> (meaning that its Frobenius endomorphism is an isomorphism),
+          the ring <m>W(A)</m> is <m>p</m>-torsion-free and <m>p</m>-adically complete, and <m>W(A)/(p) \cong A</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="lem-char-p-Witt-frob"/>, <m>\phi</m> is an automorphism of <m>W(A)</m>.
+          By <xref ref="lem-delta-p-torsion"/>, the ring <m>W(A)</m> is <m>p</m>-torsion-free. 
+          Since <m>\phi \circ V</m> is multiplication by <m>p</m> and <m>\phi</m> is bijective, the ideal <m>pW(A)</m> coincides with the image of <m>V</m>,
+          which in turn equals the kernel of the map <m>W(A) \to A</m>; hence <m>W(A)/(p) \cong A</m>. By similar logic, for each positive integer <m>n</m>,
+          the ideal <m>p^n W(A)</m> coincides with the image of <m>V^n</m>; from this, we see that <m>W(A)</m> is <m>p</m>-adically complete.
+        </p>
+      </proof>
+    </lemma>
+    <definition xml:id="def-multiplicative-lift">
+      <p>
+        For <m>A</m> a perfect ring of characteristic <m>p</m>, <xref ref="lem-witt-vectors-perfect-ring"/>
+        implies that each element of <m>A</m> can be written uniquely as a <m>p</m>-adically convergent sum 
+        <m>\sum_{n=0}^\infty p^n [x_n]</m> with <m>x_n \in A/(p)</m> (where again <m>[x_n]</m> denotes the multiplicative lift).
+      </p>
+    </definition>
+    <proposition xml:id="prop-perfect-delta-rings">
+      <statement>
+        <p>
+          The following categories are equivalent (via the functors described below).
+          <ol>
+            <li>
+              <p>
+                The category of <m>p</m>-adically complete <m>\delta</m>-rings which are <term>perfect</term> (i.e., the Frobenius lift <m>\phi</m> is an isomorphism).
+              </p>
+            </li>
+            <li>
+              <p>
+                The category of <m>p</m>-torsion-free, <m>p</m>-adically complete rings whose reductions modulo <m>p</m> are perfect.
+              </p>
+            </li>
+            <li>
+              <p>
+                The category of perfect rings of characteristic <m>p</m>.
+              </p>
+            </li>
+          </ol>
+          The functor from (1) to (2) is the forgetful functor; the functor from (2) to (3) is <m>A \mapsto A/pA</m>;
+          the functor from (3) to (1) is <m>W</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The composition from (3) to (1) to (2) to (3) is an equivalence by <xref ref="lem-witt-vectors-perfect-ring"/>.
+          In particular, the functor from (2) to (3) is essentially surjective. It will suffice to check that the composition from (3) to (1) to (2)
+          is also essentially surjective, as then (2) and (3) will be equivalent and we can use <xref ref="lem-delta-p-torsion"/>
+          and <xref ref="lem-char-p-Witt-frob"/> to add (1) to the loop.
+        </p>
+        <p>
+          So now let <m>A</m> be a ring as in (2). Using <xref ref="eq-promote-congruence"/>, we may first see that the map <m>A \to A/(p)</m> has a unique
+          multiplicative section <m>[\bullet]</m>, and then that every element has a unique representation as in <xref ref="def-multiplicative-lift"/>.
+          This gives us a bijection <m>A \to W(A)</m> of sets by matching up these presentations, which induces an isomorphism modulo <m>p</m>.
+          One then needs to check by induction on <m>n</m> that the induced map modulo <m>p^n</m> is also an isomorphism for each positive integer <m>n</m>.
+          This is not too onerous to prove by direct computation;
+          see for example <xref ref="bib-Kedlaya-new-methods"/>, Theorem 1.1.8).
+          A second, more conceptual approach is to apply the fact that if <m>A</m> is a perfect ring of characteristic <m>p</m>, then the cotangent complex
+          <m>L_{A/\FF_p}</m> vanishes (compare <xref ref="bib-Bhatt-course"/>, Lemma 2.3.5).
+        </p>
+      </proof>
+    </proposition>
+    <p>
+      We insert some observations about <m>p</m>-adically complete <m>\delta</m>-rings which are not perfect.
+    </p>
+    <remark>
+      <p>
+        Let <m>A</m> be a <m>p</m>-torsion-free, <m>p</m>-adically complete <m>\delta</m>-ring.
+        Let <m>R</m> be the colimit of <m>A/(p) \to A/(p) \cdots</m> where the transition maps are Frobenius; one might call this the <term>coperfection</term> 
+        of <m>A/(p)</m>. Using <xref ref="prop-perfect-delta-rings"/>, we obtain a morphism <m>A \to W(R)</m> in <m>\Ring_\delta</m>;
+        this map is injective if <m>A/(p)</m> is reduced. If we fix <m>A</m> as an underlying ring while varying its <m>\delta</m>-ring structure,
+        the target <m>W(R)</m> remains fixed while the morphism <m>A \to W(R)</m> varies.
+      </p>
+    </remark>
+    <lemma>
+      <statement>
+        <p>
+          Let <m>A \to B</m> be a morphism of <m>p</m>-torsion-free, <m>p</m>-adically complete rings. 
+          Suppose that <m>A</m> is equipped with a <m>\delta</m>-ring structure and that <m>A/(p) \to B/(p)</m> is étale.
+          Then <m>B</m> admits a unique <m>\delta</m>-ring structure compatible with <m>A</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-course"/>, Lecture 2, Lemma 2.9. See also <xref ref="bib-Rezk"/> for a supplemental argument that can be used to 
+          eliminate the <m>p</m>-torsion-free hypothesis.
+        </p>
+      </proof>
+    </lemma>
+    <remark>
+      <p>
+        Let <m>R</m> be the limit of <m>\cdots \to A/(p) \to A/(p)</m> where the transition maps are Frobenius 
+        (one might call this the <term>perfection</term> of <m>A/(p)</m>).
+        <me>
+          \varprojlim_{\phi} W(A) \to \varprojlim_{\phi} W(A/(p)) \to W(R).
+        </me>
+      </p>
+    </remark>
+  </subsection>
+  <subsection xml:id="subsec-big-Witt">
+    <title>Big Witt vectors and <m>\lambda</m>-rings</title>
+    <p>
+      Although we won't be using this anytime soon, I want to put the previous discussion in some context which <em>might</em> become relevant in the future.
+    </p>
+    <proposition xml:id="prop-big-Witt">
+      <statement>
+        <p>
+          There is a unique functor <m>\WW</m> from <m>\Ring</m> to <m>\Ring</m> such that the underlying functor to sets is 
+          <me>
+            \WW(A) = A \times A \times \cdots
+          </me>
+          and there is a natural transformation <m>w</m> from <m>W</m> to the ordinary product <m>A \mapsto A^{\NN}</m> given by the <term>ghost map</term>:
+          <me>
+            (x_n)_{n=1}^\infty \mapsto \left( \sum_{d|n} d x_d^{n/d} \right).
+          </me>
+          The ring <m>\WW(A)</m> is called the <term>ring of big Witt vectors</term> over <m>A</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The ghost map dictates the values of <m>\WW</m> on <m>\QQ_p</m>-algebras, and in particular ensures that the ring operations are specified by
+          certain polynomials over <m>\QQ</m> satisfying various identities that express the various properties of the operations of a commutative ring. 
+          To prove the claim, it will suffice to check that these polynomials have coefficients over <m>\ZZ</m>; this can be done one prime at a time.
+          We may thus fix a prime <m>p</m> and restrict to consideration of <m>\ZZ_{(p)}</m>-algebras; in this case, <m>\WW(A)</m> splits into a collection
+          of copies of <m>W(A)</m> indexed by positive integers coprime to <m>p</m>.
+        </p>
+      </proof>
+    </proposition>
+    <definition xml:id="def-Witt-structures-global">
+      <p>
+        By analogy with <xref ref="def-Witt-structures-p-typical"/>, we can detect various additional structures on <m>\WW(A)</m> using the ghost map.
+      </p>
+        <li>
+          <p>
+            For any nonempty subset <m>S</m> of the positive integers which is closed under taking divisors,
+            there is a natural transformation from <m>\WW</m> to another functor <m>\WW_S</m> on <m>\Ring</m> which on sets 
+            corresponds to the projection
+            <me>
+              (x_1, x_2, \dots) \mapsto (x_d)_{d \in S}.
+            </me>
+            (This has a similar effect on the other side of the ghost map.)
+            In the case where <m>S = \{1,p,p^2,\dots\}</m> for some prime <m>p</m>, this yields a projection <m>\WW(A) \to W(A)</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            There is a family of commuting endomorphisms <m>F_n: \WW(A) \to \WW(A)</m> indexed by positive integers <m>n</m>,
+            which are natural in <m>A</m> and correspond via the ghost map to
+            <me>
+              (x_1, x_2, \dots) \mapsto (x_n, x_{2n}, \dots).
+            </me>
+          </p>
+        </li>
+        <li>
+          <p>
+            The map <m>[\cdot]: A \to \WW(A)</m> given by <m>[x] = (x, 0, 0, \dots)</m> is multiplicative; 
+            it corresponds via the ghost map to <m>x \mapsto (x, x^2, x^{3}, \dots)</m>. 
+            We again call it the <term>multiplicative section</term> of the projection <m>\WW(A) \to W_1(A) = A</m>,
+            and refer to <m>[x]</m> as the <term>multiplicative lift</term> of <m>x \in A</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The <term>Verschiebung</term> maps <m>V_n: \WW(A) \to \WW(A)</m> defined by 
+            <me>
+              V_n((x_m)_{m=1}^\infty) = (y_m)_{m=1}^\infty, \qquad y_m = \begin{cases} x_{m/n} &amp; m \equiv 0 \pmod{n} \\ 0 &amp; m \not\equiv 0 \pmod{n} \end{cases},
+            </me>
+            for <m>n</m> a positive integer, form a commuting family of additive maps satisfying <m>V_n \circ F_n = n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            There is a natural transformation <m>\Delta: \WW \to \WW \circ \WW</m> (the <term>diagonal</term>) such that <m>\Delta([x]) = [[x]]</m> for all <m>x \in A</m>.
+          </p>
+        </li>
+    </definition>
+    <remark xml:id="rmk-Almkvist-interpretation">
+        <p>
+          Another interpretation of <m>\WW(A)</m> can be given starting with the bijection of <m>\WW(A)</m> with <m>1 + T A \llbracket T \rrbracket</m> given by
+          <men xml:id="eq-Witt-series-mult">
+            (x_1, x_2, \dots) \mapsto \prod_{n=1}^\infty (1 - x_n T^n)^{-1}.
+          </men>
+          When <m>A</m> is a <m>\QQ</m>-algebra, the addition operation on <m>\WW(A)</m> imposed by the ghost map corresponds to the multiplication
+          of formal power series in <m>1 + T A \llbracket T \rrbracket</m>. This gives us the underlying additive group on <m>\WW(A)</m>.
+        </p>
+        <p>
+          One then shows that there is a <m>T</m>-adically continuous map <m>\otimes</m> which is natural in <m>A</m>, distributes over addition, and satisfies
+          <men xml:id="eq-Witt-series-Frobenius-product">
+            (1-aT)^{-1} \otimes (1-bT)^{-1} = (1-abT)^{-1}.
+          </men>
+          A more conceptual way to express this last condition is that given two finite projective <m>A</m>-modules <m>M_1, M_2</m> equipped with <m>A</m>-linear endomorphisms <m>S_1, S_2</m>,
+          <me>
+            \det(1 - T S_1, M_1)^{-1} \otimes \det(1 - T S_2, M_2)^{-1} = \det(1 - T (S_1 \otimes S_2), M_1 \otimes M_2)^{-1}.
+          </me>
+          This construction of <m>\WW(A)</m> is due to Almkvist <xref ref="bib-Almkvist"/>; see <xref ref="bib-Grayson1"/> for an alternate exposition,
+          and <xref ref="bib-Grayson"/> for more on this construction in the context of <m>K</m>-theory of endomorphisms.
+        </p>
+    </remark>
+    <definition>
+      <p>
+        The interpretation from <xref ref="rmk-Almkvist-interpretation"/> leads naturally to the related notion of a <term><m>\lambda</m>-ring</term>.
+        This consists of a ring <m>A</m> together with operations <m>\lambda^n: A \to A</m> for <m>n=0,1,\dots</m> satisfying various conditions.
+        To begin with,
+        <me>
+          \lambda^0(x) = 1, \lambda^1(x) = x (x \in A), \qquad \lambda^n(1) = 0 (n \geq 2).
+        </me>
+        To state the remaining conditions, define the object
+        <me>
+          \Lambda(x) = (1 - \lambda_1(x) T + \lambda_2(x) T^2 - \cdots)^{-1} \in 1 + T A \llbracket T \rrbracket.
+        </me>
+        We then have
+        <md>
+          <mrow>\Lambda(x + y) = \Lambda(x) \Lambda(y)</mrow>
+          <mrow>\Lambda(xy) = \Lambda(x) \otimes \Lambda(y)</mrow>
+          <mrow>\Lambda(\lambda^m(x)) = \wedge^m \Lambda(x)</mrow>
+        </md>
+        where <m>\otimes</m> is the map described in <xref ref="rmk-Almkvist-interpretation"/> and <m>\wedge^m</m> is similar;
+        it is the <m>T</m>-adically continuous map characterized by
+        <me>
+          \wedge^m \det(1 - T S, M)^{-1} = \det(1 - T (\wedge^m S), \wedge^m M)^{-1}.
+        </me>
+        We define in the obvious way a morphism of <m>\lambda</m>-rings (as a morphism of underlying rings which commute with the maps <m>\lambda^n</m>),
+        and hence the category <m>\Ring_\lambda</m> of <m>\lambda</m>-rings.
+      </p>
+      <p>
+        With this definition, we can show that there is a unique way to promote <m>\WW</m> to a functor from <m>\Ring</m> to <m>\Ring_\lambda</m>
+        such that <m>\Lambda([x]) = (1-xT)^{-1}</m> for every ring <m>A</m> and every element <m>x \in A</m>.
+        We omit details here.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        In any <m>\lambda</m>-ring, we can define additional maps <m>\psi^n</m> for <m>n =0,1,\dots</m> 
+        called <term>Adams operations</term>. In the case of <m>\WW(A)</m>, these are characterized by
+        <m>T</m>-adic continuity and the property
+        <me>
+            \psi^n \det(1 - T S, M)^{-1} = \det(1 - T (S^{\otimes n}, M^{\otimes n})^{-1};
+        </me>
+        this implies that
+        <me>
+          \psi^n([x]) = [x^n],
+        </me>
+        from which we can deduce that in fact <m>\psi^n = F_n</m>. In general, the maps <m>\psi^n</m> similarly form a family of pairwise commuting Frobenius lifts;
+        moreover, a <m>\lambda</m>-ring is a <m>\delta</m>-ring for every prime <m>p</m>.
+      </p>
+      <p>
+        Additional examples of <m>\lambda</m>-rings occurring <q>in nature</q> include:
+        <ul>
+          <li>
+            the ring of symmetric polynomials over <m>\ZZ</m>;
+          </li>
+          <li>
+            the representation ring of a finite group (see <xref ref="bib-Knutson"/> for more on the relationship with the previous example);
+          </li>
+          <li>
+            the Grothendieck ring of the category of finite projective modules over a commutative ring;
+          </li>
+          <li>
+            the <m>K</m>-theory of a topological space.
+          </li>
+        </ul>
+      </p>
+    </remark>
+    <remark>
+      <p>
+        Yet another point of view on the functor <m>\WW</m>can be found in <xref ref="bib-Borger-Wieland"/>, based on ideas from <xref ref="bib-Tall-Wraith"/>.
+        In this approach, one considers objects (called <term>plethories</term>) that act on commutative rings in much the same way that rings acts on modules;
+        the functor <m>\WW</m> is represented by a specific one of these, which can be constructed (almost) entirely conceptually.
+      </p>
+    </remark>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-delta-ring-normalization">
+      <statement>
+        <p>
+          Show that in <xref ref="def-delta-ring"/>, condition <xref ref="eq-delta-ring-value-at-1"/> cannot be omitted.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Check that the map <m>\delta(x) = -x^p</m> satisfies the other conditions. (Note that it corresponds to <m>\phi</m> being the zero map, which is additive
+          and multiplicative but not a homomorphism of unital rings.)
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Suppose that <m>p=2</m>. For <m>x,y</m> in a <m>\delta</m>-ring, compute <m>\delta(\delta(xy))</m> and <m>\delta(\delta(x+y))</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Assume that <m>p > 2</m>.
+          Show that the identity map on  <xref ref="exa-delta-ring-cyclotomic"/>, if we replace <m>A</m> with <m>A[\zeta_p]</m> to <m>A</m> and extends <m>\phi</m> so that it fixes <m>\zeta_p</m>, then the resulting map
+          is still an endomorphism but not a Frobenius lift.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-delta-ring-p-power-torsion">
+      <statement>
+        <p>
+          Prove the following refinement of <xref ref="lem-delta-ring-killed-by-p"/>: in any <m>\delta</m>-ring, every <m>p</m>-power-torsion element is nilpotent.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>A</m> be a <m>\delta</m>-ring whose underlying ring is <m>p</m>-adically separated. Show that any element of <m>A</m> which admits <m>p^n</m>-th roots in <m>A</m> for all positive integers <m>n</m> must be <m>\delta</m>-constant.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          It is enough to show that for each positive integer <m>n</m>, for any <m>y \in A</m> we have <m>\delta(y^{p^n}) \in p^n A</m>.
+          This can be checked by reducing to the <m>p</m>-torsion-free case and computing in terms of <m>\phi</m>.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>A</m> be a <m>\delta</m>-ring. Let <m>I</m> be a finitely generated ideal of <m>A</m> containing <m>p</m> (we do not assume any compatibility with <m>\delta</m>).
+          Then the <m>I</m>-adic completion of <m>A</m> adimts a unique <m>\delta</m>-structure compatible with <m>A</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Check that the map <xref ref="eq-Witt-series-mult"/> defines a homomorphism between the additive group of <m>\WW(A)</m> and the multiplicative group
+          <m>1 + T A \llbracket T \rrbracket</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>X,Y</m> be two schemes of finite type over a finite field <m>\FF_q</m>.
+          Let <m>Z(X/\FF_q,T)</m> and <m>Z(Y/\FF_q,T)</m> be the zeta functions of <m>X</m> and <m>Y</m>, respectively. 
+          <ol>
+            <li>
+              <p>
+                Prove that 
+                <me>
+                  Z((X \times_{\FF_q} Y)/\FF_q, T) = Z(X/\FF_q, T) \otimes Z(Y/\FF_q, T)
+                </me>
+                where <m>\otimes</m> is the operation on <m>1 + T \ZZ \llbracket T \rrbracket</m> corresponding to multiplication in <m>\WW(\ZZ)</m> 
+                via the isomorphism <xref ref="eq-Witt-series-mult"/>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that for any positive integer <m>n</m>,
+                <me>
+                  Z((X \times_{\FF_q} \FF_{q^n})/\FF_{q^n}) = F_n(Z(X,T))
+                </me>
+                where <m>F_n</m> is the operation on <m>\WW(\ZZ)</m> described in <xref ref="def-Witt-structures-global"/>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Note that the second statement is a special case of the first. To prove the first,
+          write <m>Z(X,T)</m> as the product of <m>(1 - T^{\deg(x/\FF_q)})^{-1}</m> as <m>x</m> varies over closed points of <m>X</m>,
+          and similarly for <m>Y</m>; then describe the closed points of <m>X \times_{\FF_q} Y</m> and appeal to <xref ref="eq-Witt-series-Frobenius-product"/>.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
 </section>
