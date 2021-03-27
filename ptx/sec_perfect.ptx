@@ -6,11 +6,111 @@
       <p>
         <xref ref="bib-Bhatt-course"/>, Lecture 4.
       </p>
+      <p>
+        The theory of perfectoid rings has been described in numerous sources. Instead of recapping this history here, see
+        <xref ref="bib-Kedlaya-AWS"/> (especially Remark 2.3.18).
+      </p>
     </paragraphs>
     <p>
-      Details to be added.
+      In this lecture, we study perfect prisms in detail. These end up being closely related to <term>perfectoid rings</term>,
+      which appear frequently in <m>p</m>-adic Hodge theory.
     </p>
   </introduction>
   <subsection>
+    <title>Distinguished elements in perfect <m>\delta</m>-rings</title>
+    <p>
+      Recall that the condition of an element of a <m>\delta</m>-ring being distinguished is meant to capture the idea that
+      <q>the <m>p</m>-adic order of vanishing equals 1</q>. For perfect <m>\delta</m>-rings, we can further develop this metaphor to assert that
+      <q>the linear coefficient in <m>p</m> is a unit</q>.
+    </p>
+    <lemma xml:id="lem-distinguished-perfect">
+      <statement>
+        <p>
+        Let <m>R</m> be a perfect <m>\FF_p</m>-algebra.
+        </p>
+        <ol>
+          <li>
+            <p>
+              An element <m>d \in W(R)</m> is distinguished if and only if its series expansion <m>\sum_{n=0}^\infty [x_n] p^n</m>, the coefficient
+              <m>x_1</m> is a unit.
+            </p>
+          </li>
+          <li>
+            <p>
+              Any distinguished element is a non-zerodivisor.
+            </p>
+          </li>
+          <li>
+            <p>
+              For a distinguished element <m>d \in W(R)</m>, the <m>p</m>-power torsion in <m>W(R)/(d)</m> is killed by <m>p</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          We prove (1) and leave the rest as an exercise (<xref ref="exer-distinguished-perfect"/>). For <m>d = \sum_{n=0}^\infty [x_n]</m>,
+          use <xref ref="eq-promote-congruence"/> to write <m>d^p \equiv [x_0]^p \pmod{p^2}</m> and
+          <me>
+            p\delta(d) = \phi(d)-d^p \equiv p [x_1]^p \pmod{p^2}.
+          </me>
+          Then note that <m>[x_1]</m> is a unit if and only if <m>x_1</m> is a unit.
+        </p>
+      </proof>
+    </lemma>
+    <remark>
+      <p>
+        The criterion for distinguished elements in <xref ref="lem-distinguished-perfect"/> coincides with Fontaine's notion of a
+        <term>primitive element of degree 1</term> (terminology introduced in <xref ref="bib-Fontaine-Bourbaki"/>).
+      </p>
+    </remark>
   </subsection>
+  <subsection>
+    <title>Perfect prisms and perfectoid rings</title>
+    <definition>
+      <p>
+        A prism <m>(A,I)</m> is <term>perfect</term> if <m>A</m> is a perfect <m>\delta</m>-ring.
+      </p>
+    </definition>
+    
+    <lemma>
+      <statement>
+        <p>
+          Let <m>(A, I)</m> be a perfect prism. Then <m>I</m> is principal and any generator of it is a distinguished element.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This is immediate from <xref ref="lem-prism-ideal-generator"/>.
+        </p>
+      </proof>
+    </lemma>
+    <lemma>
+      <statement>
+        <p>
+          The inclusion of perfect prisms into the category of prisms admits a left adjoint. Given a prism <m>(A, I)</m>, the left adjoint is obtained by taking
+          the derived <m>(p,I)</m>-completion of the coperfection of <m>A</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.9.
+        </p>
+      </proof>
+    </lemma>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-distinguished-perfect">
+      <statement>
+        <p>
+          Complete the proof of <xref ref="lem-distinguished-perfect"/>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.34.
+        </p>
+      </proof>
+    </exercise>
+  </exercises>
 </section>

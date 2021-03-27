@@ -14,4 +14,29 @@
   </introduction>
   <subsection>
   </subsection>
+  <subsection xml:id="subsec-derived-complete-derived">
+    <title>Derived completeness revisited</title>
+    <example xml:id="exa-derived-example-QZ">
+      <p>
+        Take <m>A = \ZZ, I = (p), M = \QQ/\ZZ</m>. Then the ordinary completion of <m>M</m> vanishes, as does the derived completion of <m>M</m>
+        <em>as a module</em>, but the derived completion of <m>M</m> <em>as a complex</em> is the group <m>\ZZ_p</m> concentrated in degree 1.
+      </p>
+    </example>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-derived-completion-delta">
+      <statement>
+        <p>
+          Let <m>A</m> be a <m>\delta</m>-ring and let <m>I</m> be a finitely generated ideal of <m>A</m> containing <m>p</m>.
+          Prove that the derived <m>I</m>-completion of <m>A</m> (as a module) admits a unique <m>\delta</m>-ring structure compatible with <m>A</m>.
+          (That is, <xref ref="exer-delta-ring-completion"/> remains true when the classical completion is replaced by the derived completion.)
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use the characterization of <m>\delta</m>-structures on <m>A</m> in terms of <m>W_2(A)</m> (<xref ref="rmk-W2-interpretation"/>).
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
 </section>

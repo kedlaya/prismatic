@@ -7,6 +7,7 @@
     <package>relsize</package>
   </latex-preamble>
   <macros>
+    \frenchspacing
     \def\AA{\mathbb{A}}
     \def\CC{\mathbb{C}}
     \def\FF{\mathbb{F}}
@@ -16,9 +17,12 @@
     \def\RR{\mathbb{R}}
     \def\WW{\mathbb{W}}
     \def\ZZ{\mathbb{Z}}
+    \def\calC{\mathcal{C}}
+    \def\frako{\mathfrak{o}}
     \def\frakX{\mathfrak{X}}
     \def\dual{\vee}
     \def\Prism{\mathbf{\Delta}}
+    \def\Ainf{\mathbf{A}_{\mathrm{inf}}}
 
     \DeclareMathOperator{\ab}{ab}
     \DeclareMathOperator{\an}{an}
@@ -31,6 +35,7 @@
     \DeclareMathOperator{\disc}{Disc}
     \DeclareMathOperator{\dR}{dR}
     \DeclareMathOperator{\et}{et}
+    \DeclareMathOperator{\Ext}{Ext}
     \DeclareMathOperator{\fin}{fin}
     \DeclareMathOperator{\Fix}{Fix}
     \DeclareMathOperator{\Frob}{Frob}
@@ -44,12 +49,15 @@
     \DeclareMathOperator{\inv}{inv}
     \DeclareMathOperator{\lcm}{lcm}
     \DeclareMathOperator{\Norm}{Norm}
+    \DeclareMathOperator{\Pic}{Pic}
+    \DeclareMathOperator{\Rad}{Rad}
     \DeclareMathOperator{\Real}{Re}
     \DeclareMathOperator{\Res}{Res}
     \DeclareMathOperator{\Ring}{\mathbf{Ring}}
     \DeclareMathOperator{\sep}{sep}
     \DeclareMathOperator{\sign}{sign}
     \DeclareMathOperator{\Spec}{Spec}
+    \DeclareMathOperator{\Tor}{Tor}
     \DeclareMathOperator{\Trace}{Trace}
     \DeclareMathOperator{\unr}{unr}
     \DeclareMathOperator{\Ver}{Ver}
@@ -91,6 +99,7 @@
     </frontmatter>
     <xi:include href="./sec_overview.ptx"/>
     <xi:include href="./sec_delta-rings.ptx"/>
+    <xi:include href="./sec_Witt.ptx"/>
     <xi:include href="./sec_prisms.ptx"/>
     <xi:include href="./sec_perfect.ptx"/>
     <xi:include href="./sec_derived-categories.ptx"/>

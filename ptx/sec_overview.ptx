@@ -64,7 +64,7 @@
     </p>
     <p>
       While one can think of this isomorphism as asserting that singular and de Rham cohomology are <q>the same</q>, this is not the most useful conclusion to draw;
-      it is better to interpret this as saying that <q>the whose is greater than the parts</q>.
+      it is better to interpret this as saying that <q>the whole is greater than the parts</q>.
       <ol>
         <li>
           <p>
@@ -86,8 +86,8 @@
         </li>
         <li>
           <p>
-            When <m>X</m> is the base extension of an algebraic variety over a subfield <m>K</m> of <m>\CC</m>, <m>H^i_{\dR}(X)</m> can also be computed using <em>algebraic</em> differential forms
-            (thanks to Serre's GAGA theorem),
+            When <m>X</m> is the base extension of an algebraic variety over a subfield <m>K</m> of <m>\CC</m>, <m>H^i_{\dR}(X)</m> can also be computed using <em>algebraic</em> differential forms,
+            by an argument of Grothendieck <xref ref="bib-Grothendieck-deRham"/> using Serre's GAGA theorem <xref ref="bib-Serre-GAGA"/>,
             and therefore is really the base extension to <m>\CC</m> of a certain <m>K</m>-vector space. One interesting consequence of this is that there is a strong relationship
             between the underlying topological spaces of the spaces obtained by taking different embeddings of <m>K</m> into <m>\CC</m>; this becomes more interesting when you realize that these spaces
             need not in general be homeomorphic! For instance, Serre found examples for which these spaces have distinct fundamental groups <xref ref="bib-Serre-conjugate"/>;
@@ -147,7 +147,8 @@
     <p>
       The discussion we conducted in over <m>\CC</m> falls under the label of <term>Hodge theory</term>. There is a parallel discussion that happens for algebraic varieties over
       <m>p</m>-adic fields that is covered by the label of <term><m>p</m>-adic Hodge theory</term>. In that context, there is no good analague of singular (Betti) homology or cohomology, because
-      the underlying topological spaces don't have the <q>right</q> homotopy type. (The homotopy type generally misses all of the <q>good reduction</q> information and only picks up <q>bad reduction</q> data.)
+      the underlying topological spaces don't have the <q>right</q> homotopy type. (The homotopy type generally misses all of the <q>good reduction</q> information and 
+      only picks up <q>bad reduction</q> data. There is an extensive literature on this point; see <xref ref="bib-Ducros-homotopy"/> for an introduction.)
     </p>
     <p>
       The best available replacement for singular homology/cohomology is <term>étale homology/cohomology</term> with <m>p</m>-adic coefficients, where crucially this is <em>the same</em> prime <m>p</m> as the residue
@@ -155,13 +156,15 @@
     </p>
     <p>
       One thing that étale cohomology with <m>p</m>-adic coefficients does not do gracefully is specialize to characteristic <m>p</m>; it does not give a Weil cohomology in that setting (that is, you cannot use it
-      to keep track of zeta functions and <m>L</m>-functions with complete accuracy). There are various ways to control this (notably <term>crystalline cohomology</term>), 
-      which all amount to switching over to de Rham cohomology and making that work better in characteristic
-      <m>p</m>; some effort is needed because the Poincaré lemma doesn't hold in positive characteristic (the issue being that there are <q>too many constants</q>: in a characteristic-<m>p</m> setting
-      the formal derivative of any <m>p</m>-th power vanishes). 
+      to keep track of zeta functions and <m>L</m>-functions with complete accuracy). There are various ways to control this, which all amount to switching over to de Rham cohomology and making that work better in characteristic
+      <m>p</m>; a notable example is <term>crystalline cohomology</term>,
+      which builds on Grothendieck's interpretation of de Rham cohomology via the infinitesimal site <xref ref="bib-Grothendieck-infinitesimal"/>).
+      In any approach of this type, some effort is needed to overcome the fact that the Poincaré lemma doesn't hold in positive characteristic, the issue being that there are <q>too many constants</q>: in a characteristic-<m>p</m> setting
+      the formal derivative of any <m>p</m>-th power vanishes.
     </p>
     <p>
-      In this course we will consider an approach to <m>p</m>-adic cohomology via the mechanism of <term>prisms</term>. One benefit of this point of view is that almost everything we want to say appears already
+      In this course we will consider an approach to <m>p</m>-adic cohomology via the mechanism of <term>prisms</term> (see <xref ref="def-prism"/> for the definition). 
+      One benefit of this point of view is that almost everything we want to say appears already
       in a local setting, where we can talk very concretely about rings and complexes without having to keep track of too much fancy stuff (derived categories, simplicial objects, etc.). Another point of view is that 
       it keeps track of <q>everything at once</q>; instead of constructing different cohomology theories and asserting <term>comparison isomorphisms</term> between them, we'll construct <q>one theory to rule them all</q>,
       in the manner of the <term>universal coefficient theorem</term> of algebraic topology (that is, we have a single functor which we can postcompose with various simple algebraic functors to recover more classical constructions).
@@ -177,7 +180,7 @@
         Fix a prime <m>p</m> and define the ring <m>A = \ZZ_p \llbracket u \rrbracket</m>; this is a regular noetherian local ring of dimension 2 with residue field <m>\FF_p</m>.
         Let <m>\phi: A \to A</m> be the continuous homomorphism with <m>\phi(u) = u^p</m>; this lifts the Frobenius endomorphism on <m>A/(p)</m>.
         Let <m>I</m> be the ideal <m>(u-p)</m> of <m>A</m>; let <m>\theta: A \to \ZZ_p</m> be the identification of <m>A/I</m> with <m>\ZZ_p</m> taking <m>u</m> to <m>p</m>.
-        The triple <m>(A, \phi, I)</m> will later form a basic example of a <term>prism</term>.
+        The triple <m>(A, \phi, I)</m> will later form a basic example of a <term>prism</term>; see <xref ref="sec_prisms"/> for the general definition.
       </p>
       <p>
         The action of <m>\phi^*</m> on <m>\Spec A</m> fixes the axial points <m>(u)</m> and <m>(p)</m> and the closed point <m>(u,p)</m>, but acts nontrivially on other points.
@@ -203,7 +206,7 @@
             <p>
               There is a natural quasi-isomorphism
               <me>
-                \phi^* \Prism_{R/A} \otimes^L_A \FF_p \cong \Omega^*_{R_{\FF_p}/\FF_p}.
+                \phi^* \Prism_{R/A} \widehat{\otimes}^L_A \FF_p \cong \Omega^*_{R_{\FF_p}/\FF_p}.
               </me>
               That is, at the closed point of <m>\Spec A</m>, <m>\phi^* \Prism_{R/A}</m> computes de Rham cohomology of <m>R_{\FF_p}</m>.
               (There is also a version over <m>\ZZ_p</m> using continuous differentials, 
@@ -214,9 +217,9 @@
             <p>
               There is a quasi-isomorphism
               <me>
-                (\Prism_{R/A} \otimes^L_A \overline{\FF_p((u))})^{\phi_{R/A} \otimes \phi=1} \cong R\Gamma_{\et}(\Spec R_{\CC_p}, \FF_p)
+                (\Prism_{R/A} \widehat{\otimes}^L_A \overline{\FF_p((u))})^{\phi_{R/A} \otimes \phi=1} \cong R\Gamma_{\et}(\Spec R_{\CC_p}, \FF_p)
               </me>
-              where <m>\CC_p</m> is a completed algebraic closure of <m>\CC_p</m>. That is, at the point <m>(p)</m> of <m>\Spec A</m>, <m>\Prism_{R/A}</m>
+              where <m>\CC_p</m> is a completed algebraic closure of <m>\CC_p</m> (and <m>\phi</m> denotes the absolute Frobenius on <m>\overline{\FF_p((u))}</m>. That is, at the point <m>(p)</m> of <m>\Spec A</m>, <m>\Prism_{R/A}</m>
               computes the <m>\FF_p</m>-étale cohomology of <m>R_{\CC_p}</m>. Warning: to make this canonical, one needs to be more careful about the choices
               of algebraic closures on both sides. (There is also a version with <m>\ZZ/(p^n)</m>-coefficients.)
              </p>
@@ -225,7 +228,7 @@
             <p>
               There is a natural identification
               <me>
-                H^i(\Prism_{R/A} \otimes^L_{A,\theta} \ZZ_p) \cong \Omega^i_{R/\ZZ_p}.
+                H^i(\Prism_{R/A} \widehat{\otimes}^L_{A,\theta} \ZZ_p) \cong \Omega^i_{R/\ZZ_p}.
               </me>
               That is, at the point <m>(u-p)</m> of <m>\Spec A</m>, <m>\Prism_{R/A}</m> computes the Hodge cohomology of <m>R</m>.
               (A more robust version of this statement would include a twist; we'll come back to this later.)
@@ -239,6 +242,9 @@
         One important aspect of <xref ref="thm-prismatic-values"/> is that we are <em>not</em> asserting a functorial construction of a complex of <m>A</m>-modules
         <q>on the nose</q>, but only in the derived category. This is in contrast with, say, de Rham cohomology, which is computed by a specific meaningful complex; it
         is more akin to the situation for étale cohomology in this respect.
+      </p>
+      <p>
+        However, in the local development one can mostly ignore derived aspects. They become unavoidable at the point when one wants to glue local structures together.
       </p>
     </remark>
     <remark>
