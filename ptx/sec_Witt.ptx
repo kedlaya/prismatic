@@ -288,11 +288,33 @@
     <definition xml:id="def-multiplicative-lift">
       <p>
         For <m>A</m> a perfect ring of characteristic <m>p</m>, <xref ref="lem-witt-vectors-perfect-ring"/>
-        implies that each element of <m>W(A)</m> can be written uniquely as a <m>p</m>-adically convergent sum 
+        implies that each element <m>x</m> of <m>W(A)</m> can be written uniquely as a <m>p</m>-adically convergent sum 
         <m>\sum_{n=0}^\infty p^n [x_n]</m> with <m>x_n \in A</m>, where <m>[x_n]</m> denotes the constant lift
-        (<xref ref="def-constant-lift"/>).
+        (<xref ref="def-constant-lift"/>). We call this the <term>series representation</term> of <m>x</m>.
       </p>
     </definition>
+    <lemma xml:id="lem-maps-from-Witt-rings">
+      <statement>
+        <p>
+          Let <m>R</m> be a perfect ring of characteristic <m>p</m>. Let <m>S</m> be a <m>p</m>-adically complete ring.
+          Then any morphism <m>R \to S/(p)</m> lifts uniquely to a morphism <m>W(R) \to S</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We first use <xref ref="eq-promote-congruence2"/> to lift <m>R \to S/(p)</m> to a multiplicative map <m>R \to S</m>.
+          Using the series representations from <xref ref="def-multiplicative-lift"/>, we then obtain a set-theoretic map <m>W(R) \to S</m>
+          which we must show is an isomorphism; it is enough to check that it induces a homomorphism <m>W(R) \to S/p^n</m> for each <m>n</m>.
+          This is not too onerous to prove by direct computation;
+          see for example <xref ref="bib-Kedlaya-new-methods"/>, Lemma 1.1.7.
+        </p>
+        <p>
+          A second, more conceptual approach is to apply the fact that if <m>A</m> is a perfect ring of characteristic <m>p</m>, then the cotangent complex
+          <m>L_{A/\FF_p}</m> vanishes: Frobenius acts on it both as an isomorphism (trivially) and as zero (by computation on polynomial algebras).
+          Compare <xref ref="bib-Bhatt-course"/>, Lecture II, Lemma 3.5.
+        </p>
+      </proof>
+    </lemma>
     <proposition xml:id="prop-perfect-delta-rings">
       <statement>
         <p>
@@ -321,22 +343,10 @@
       <proof>
         <p>
           The composition from (3) to (1) to (2) to (3) is an equivalence by <xref ref="lem-witt-vectors-perfect-ring"/>.
-          In particular, the functor from (2) to (3) is essentially surjective. It will suffice to check that the composition from (3) to (1) to (2)
-          is also essentially surjective, as then (2) and (3) will be equivalent and we can use <xref ref="lem-delta-p-torsion"/>
+          In particular, the functor from (2) to (3) is essentially surjective.
+          By <xref ref="lem-maps-from-Witt-rings"/>, the composition from (3) to (1) to (2) is also essentially surjective;
+          hence (2) and (3) are equivalent. We can now use <xref ref="lem-delta-p-torsion"/>
           and <xref ref="lem-char-p-Witt-frob"/> to add (1) to the loop.
-        </p>
-        <p>
-          So now let <m>A</m> be a ring as in (2). Using <xref ref="eq-promote-congruence2"/>, we may first see that the map <m>A \to A/(p)</m> has a unique
-          multiplicative section <m>[\bullet]</m>, and then that every element has a unique representation as in <xref ref="def-multiplicative-lift"/>.
-          This gives us a bijection <m>A \to W(A)</m> of sets by matching up these presentations, which induces an isomorphism modulo <m>p</m>.
-        </p>
-        <p>
-          One then needs to check by induction on <m>n</m> that the induced map modulo <m>p^n</m> is also an isomorphism for each positive integer <m>n</m>.
-          This is not too onerous to prove by direct computation;
-          see for example <xref ref="bib-Kedlaya-new-methods"/>, Theorem 1.1.8.
-          A second, more conceptual approach is to apply the fact that if <m>A</m> is a perfect ring of characteristic <m>p</m>, then the cotangent complex
-          <m>L_{A/\FF_p}</m> vanisehs: Frobenius acts on it both as an isomorphism (trivially) and as zero (by computation on polynomial algebras).
-          Compare <xref ref="bib-Bhatt-course"/>, Lecture 2, Lemma 3.5.
         </p>
       </proof>
     </proposition>
@@ -365,7 +375,7 @@
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-course"/>, Lecture 2, Lemma 2.9. See also <xref ref="bib-Rezk"/> for a supplemental argument that can be used to 
+          See <xref ref="bib-Bhatt-course"/>, Lecture II, Lemma 2.9. See also <xref ref="bib-Rezk"/> for a supplemental argument that can be used to 
           eliminate the <m>p</m>-torsion-free hypothesis.
         </p>
       </proof>

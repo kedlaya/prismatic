@@ -3,6 +3,9 @@
   <biblio type="raw" xml:id="bib-Almkvist">
     G. Almkvist, <articletitle>The Grothendieck ring of the category of endomorphisms</articletitle>, <journal>Journal of Algebra</journal> <volume>28</volume> <year>1974</year>, 375<ndash/>388.
   </biblio>
+  <biblio type="raw" xml:id="bib-Ax">
+    J. Ax, <articletitle>Zeros of polynomials over local fields<mdash/>the Galois action</articletitle>, <journal>Journal of Algebra</journal> <volume>15</volume> <year>1970</year>, 417<ndash/>428.
+  </biblio>
   <biblio type="raw" xml:id="bib-Berger-limites">
     L. Berger, <articletitle>Limites de représentations cristallines</articletitle>, <journal>Compositio Mathematica</journal> <volume>140</volume> <year>2004</year>, 1473<ndash/>1498.
   </biblio>
@@ -55,6 +58,9 @@
   <biblio type="raw" xml:id="bib-Ducros-homotopy">
     A. Ducros, <articletitle>About Hrushovski and Loeser's work on the homotopy type of Berkovich spaces</articletitle>, in <pubtitle>Nonarchimedean and Tropical Geometry</pubtitle>, Simons Symposia, Springer International <year>2016</year>, 99<ndash/>131.
   </biblio>
+  <biblio type="raw" xml:id="bib-Fargues-Scholze">
+    L. Fargues and P. Scholze, <articletitle>Geometrization of the local Langlands correspondence</articletitle>, <url href="https://arxiv.org/abs/2102.13459">arXiv:2102.13459v1</url> <year>2021</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Fontaine1">
     J.-M. Fontaine, <articletitle>Représentations <m>p</m>-adiques des corps locaux, I</articletitle>, in <pubtitle>The Grothendieck Festschrift, volume II</pubtitle>, Progress in Mathematics 87, Birkhäuser, Boston <year>1990</year>, 249<ndash/>309.
   </biblio>
@@ -96,6 +102,9 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Joyal2">
     A. Joyal, <articletitle><m>\delta</m>-anneau et <m>\lambda</m>-anneaux, II</articletitle>, <journal>C.R. Math. Rep. Acad. Sci. Canada</journal> <volume>7</volume> <year>1985</year>, 227<ndash/>232.
   </biblio>
+  <biblio type="raw" xml:id="bib-Kedlaya-NG">
+    K.S. Kedlaya, <articletitle>Nonarchimedean geometry of Witt vectors</articletitle>, <journal>Nagoya Mathematical Journal</journal> <volume>209</volume> <year>2013</year>, 111<ndash/>165.
+  </biblio>
   <biblio type="raw" xml:id="bib-Kedlaya-new-methods">
     K.S. Kedlaya, <articletitle>New methods for <m>(\varphi, \Gamma)</m>-modules</articletitle>, <journal>Research in the Mathematical Sciences</journal> <volume>2</volume> <year>2015</year>.
   </biblio>
@@ -108,6 +117,12 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   </biblio>
   <biblio type="raw" xml:id="bib-Knutson">
     D. Knutson, <pubtitle><m>\lambda</m>-Rings and the Representation Theory of the Symmetric Group</pubtitle>, Lecture Notes in Mathematics 308, Springer,  Berlin <year>1973</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Kontsevich-Zagier">
+    M. Kontsevich and D. Zagier, <articletitle>Periods</articletitle>, in <pubtitle>Mathematics Unlimited<mdash/>2001 and Beyond</pubtitle>, Springer, Berlin <year>2001</year>, 771<ndash/>808.
+  </biblio>
+  <biblio type="raw" xml:id="bib-VLafforgue">
+    V. Lafforgue, <articletitle>Chtoucas pour les groups réductifs et paramétrisaton de Langlands globale</articletitle>, <pubtitle>Journal of the American Mathematical Society</pubtitle> <volume>31</volume> <year>2018</year>, 719<ndash/>891.
   </biblio>
   <biblio type="raw" xml:id="bib-Maclane">
     S. Mac Lane, <pubtitle>Categories for the Working Mathematician</pubtitle>, second edition, Graduate Texts in Mathematics 5, Springer, New York <year>1978</year>.

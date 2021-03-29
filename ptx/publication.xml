@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<publication>
+
+    <!-- Common Options -->
+    <common>
+        <!-- How deep to go for separate files, in HTML the -->
+        <!-- default for an article with sections is 1      -->
+        <chunking level="1"/>
+        <tableofcontents level="1"/>
+    </common>
+
+    <numbering>
+        <divisions level="3"/>
+        <blocks    level="1"/>
+        <projects  level="1"/>
+        <equations level="1"/>
+        <footnotes level="1"/>
+    </numbering>
+
+    <!-- HTML-Specific Options -->
+    <html>
+        <baseurl href="https://kskedlaya.org/prismatic/html/"/>
+        <knowl example="no" remark="no"/>
+    </html>
+
+</publication>

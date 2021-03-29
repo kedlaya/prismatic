@@ -4,7 +4,7 @@
     <paragraphs>
       <title>Reference</title>
       <p>
-        <xref ref="bib-Bhatt-course"/>, Lecture 1.
+        <xref ref="bib-Bhatt-course"/>, Lecture I.
       </p>
     </paragraphs>
     <p>
@@ -28,7 +28,7 @@
           <p>
             One is the combinatorial approach, in which one views a global space as being glued together from a small number of simple pieces (e.g., a triangulation of a surface).
             One can then extract the desired invariants by careful bookkeeping on the interactions between the pieces. The most robust version of this is 
-            <term>singular homology/cohomology</term>.
+            <term>singular homology/cohomology</term> (also called <term>Betti homology/cohomology</term>).
           </p>
         </li>
         <li>
@@ -70,7 +70,7 @@
           <p>
             The space <m>H^i(X, \CC)</m> is really the base extension to <m>\CC</m> of the <m>\QQ</m>-vector space <m>H^i(X, \QQ)</m>. One can transport this rational subspace over to de Rham cohomology,
             but the result is rather mysterious! It can be described in terms of integrals of differential forms over rational homology classes (often called <term>periods</term> because the most basic example is the
-            number <m>\pi</m>) but the arithmetic of these is quite subtle.
+            number <m>\pi</m>) but the arithmetic of these is quite subtle; there is a far-reaching conjecture about this due to Kontsevich and Zagier <xref ref="bib-Kontsevich-Zagier"/>.
           </p>
         </li>
         <li>
@@ -107,8 +107,18 @@
     <title>The trouble with torsion</title>
     <p>
       One thing that is missing from the previous discussion is the fact that singular homology can be defined over <m>\ZZ</m>, and is <em>not</em> in general a subspace of the singular homology over <m>\QQ</m>;
-      that is, the singular homology can be nontrivial. This is true even for algebraic varieties; one classical source of examples is the family of <term>Enriques surfaces</term>, whose homology can have 2-torsion.
-      The comparison isomorphism as formulated cannot really say anything meaningful about this torsion; one of the goals of prismatic cohomology is to provide a mechanism for interpreting this torsion via
+      that is, the singular homology can be nontrivial. This is true even for algebraic varieties.
+    </p>
+    <example>
+      <p>
+        An <term>Enriques surface</term> (over an algebraically closed field) is a projective algebraic surface with irregularity 0 (in the sense of Riemann-Roch)
+        for which the canonical bundle is nontrivial but its square is trivial
+        (e.g., the quotient of a K3 surface by a fixed-point-free involution).
+        The cycle class of the canonical bundle defines a nontrivial 2-torsion element of <m>H^2</m>.
+      </p>
+    </example>
+    <p>
+      The comparison isomorphism as formulated cannot really say anything meaningful about torsion in homology; one of the goals of prismatic cohomology is to provide a mechanism for interpreting this torsion via
       reductions to positive characteristic.
       Here is a sample statement.
     </p>
@@ -191,15 +201,14 @@
       <statement>
         <p>
           For <m>R</m> the <m>p</m>-adic completion of a smooth <m>\ZZ_p</m>-algebra, we can functorially define a complex <m>\Prism_{R/A}</m> consisting of
-          <m>(p, u)</m>-adically complete <m>A</m>-modules, as an object in the derived category <m>D(A)</m> of <m>A</m>-modules together with an isomorphism
+          <m>(p, u)</m>-adically complete <m>A</m>-modules, as an object in the derived category <m>D(A)</m> of <m>A</m>-modules; together with an isomorphism
           <m>\phi_{R/A}: \phi^* \Prism_{R/A} \to \Prism_{R/A}</m> in <m>D(A)</m> (so in particular <m>\phi^*</m> is an operation in <m>D(A)</m>). Moreover, the pair
           <m>(\Prism_{R/A}, \phi_{R/A})</m> will have the following additional properties.
         </p>
         <ol>
           <li>
             <p>
-              The map <m>\phi_{R/A}</m> becomes a quasi-isomorphism after inverting <m>u-p</m>. (In case you know what this means,
-              this is similar to a central restriction in the definition of a <term>shtuka</term>, or more precisely a <term>shtuka with one leg</term>.)
+              The map <m>\phi_{R/A}</m> becomes a quasi-isomorphism after inverting <m>u-p</m>. 
             </p>
           </li>
           <li>
@@ -210,7 +219,7 @@
               </me>
               That is, at the closed point of <m>\Spec A</m>, <m>\phi^* \Prism_{R/A}</m> computes de Rham cohomology of <m>R_{\FF_p}</m>.
               (There is also a version over <m>\ZZ_p</m> using continuous differentials, 
-              which amounts to working at the point <m>(u-p^p)</m> which pulls back to <m>(u-p)</m> via <m>\phi</m>.)
+              which amounts to working at the point <m>(u-p^p)</m>.)
             </p>
           </li>
           <li>
@@ -219,7 +228,7 @@
               <me>
                 (\Prism_{R/A} \widehat{\otimes}^L_A \overline{\FF_p((u))})^{\phi_{R/A} \otimes \phi=1} \cong R\Gamma_{\et}(\Spec R_{\CC_p}, \FF_p)
               </me>
-              where <m>\CC_p</m> is a completed algebraic closure of <m>\CC_p</m> (and <m>\phi</m> denotes the absolute Frobenius on <m>\overline{\FF_p((u))}</m>. That is, at the point <m>(p)</m> of <m>\Spec A</m>, <m>\Prism_{R/A}</m>
+              where <m>\CC_p</m> is a completed algebraic closure of <m>\QQ_p</m> and <m>\phi</m> denotes the absolute Frobenius on <m>\overline{\FF_p((u))}</m>. That is, at the point <m>(p)</m> of <m>\Spec A</m>, <m>\Prism_{R/A}</m>
               computes the <m>\FF_p</m>-étale cohomology of <m>R_{\CC_p}</m>. Warning: to make this canonical, one needs to be more careful about the choices
               of algebraic closures on both sides. (There is also a version with <m>\ZZ/(p^n)</m>-coefficients.)
              </p>
@@ -239,6 +248,15 @@
     </theorem>
     <remark>
       <p>
+        In case you know what this means,  
+        condition 1 in <xref ref="thm-prismatic-values"/> is similar to a central restriction in the definition of a <term>shtuka</term>, or more precisely a <term>shtuka with one leg</term>.
+        Recent developments in the Langlands correspondence over function fields, particularly the work of V. Lafforgue <xref ref="bib-VLafforgue"/>,
+        makes heavy use of <term>shtukas with multiple legs</term>; while these have a geometric interpretation (see <xref ref="bib-Fargues-Scholze"/>),
+        it is far from clear whether this can be integrated with the prismatic point of view.
+      </p>
+    </remark>
+    <remark>
+      <p>
         One important aspect of <xref ref="thm-prismatic-values"/> is that we are <em>not</em> asserting a functorial construction of a complex of <m>A</m>-modules
         <q>on the nose</q>, but only in the derived category. This is in contrast with, say, de Rham cohomology, which is computed by a specific meaningful complex; it
         is more akin to the situation for étale cohomology in this respect.
@@ -253,31 +271,32 @@
         One can also observe in this picture the metaphor behind the term <term>prism</term>: the prism is an object that <q>refracts</q> the 
         information from the original space into a <q>spectrum</q> of cohomological invariants.
       </p>
+    </remark>
       <figure xml:id="fig-schematic-prismatic">
         <caption>
           The <q>values</q> of <m>\Prism_{R/A}</m> at various points of <m>\Spec A = \ZZ_p\llbracket u \rrbracket</m> as described by <xref ref="thm-prismatic-values"/>. The dashed arrow indicates where <m>\phi_{R/A}</m> fails to be a quasi-isomorphism.
-          Adapted from <xref ref="bib-Bhatt-course"/>. 
+          Adapted from <xref ref="bib-Bhatt-course"/>, Lecture I. 
         </caption>
         <image>
           <latex-image>
             \begin{tikzpicture}[every loop/.style={&lt;-,shorten &lt;=1pt}]
+            \path (8,9) node(x) {$\Spec A = \ZZ_p\llbracket u \rrbracket$};
             \path (-1.2,-1.2) node(x) {\scriptsize de Rham cohomology of $R_{\mathbf{F}_p}$};
             \draw[->] (-1,-1) -- (-0.2,-0.2) ;
             \filldraw[black] (0,0) circle (3pt);
-            \draw[thick,->] (0,0) -- (9,0) node(p=0)[pos=1.1,below]{\scriptsize $u$-axis, $p=0$} node[midway,above] {\scriptsize $\mathbf{F}_p$-\'etale cohomology of $R_C$};
+            \draw[thick,->] (0,0) -- (9,0) node(p=0)[pos=1.1,below]{\scriptsize $u$-axis, $p=0$} node[midway,above] {\scriptsize $\mathbf{F}_p$-\'etale cohomology of $R_{\CC_p}$};
             \draw[thick,->] (0,0) -- (0,9) node(u=0)[pos=1.1, below]{\scriptsize $p$-axis, $u=0$} node[midway,above, sloped] {\scriptsize Crystalline cohomology of $R_{\mathbf{F}_p}$};
             \path[thick,->](p=0) edge[thick,loop above] node[above]{\scriptsize $\phi^*$} (p=0);
             \draw[thick,->] (u=0) edge[thick,loop right] node[below]{\scriptsize $\phi^*$} (u=0);
             \draw[thick,->] (0,0) -- (5,8) node(u=pp)[very near end, below, sloped]{\scriptsize $u=p^p$} node[midway,above, sloped] {\scriptsize de Rham cohomology of $R$};
             \draw[thick,->,dashed] (0,0) -- (6.6,6.6) node(u=p)[very near end, below, sloped]{\scriptsize $u=p$} node[midway,above, sloped] {\scriptsize Hodge-Tate cohomology of $R$};
             \path[thick,->] (6.85,6.85) edge [bend right] node[above] {\scriptsize $\phi^*$} (5.25, 8.25);
-            \path (7,2) node(x) {\scriptsize $\mathbf{Z}_p$-\'etale cohomology of $R_C$};
+            \path (7,2) node(x) {\scriptsize $\mathbf{Z}_p$-\'etale cohomology of $R_{\CC_p}$};
   %          \draw[thick,->] (6.85,6.85) -- (5.25, 8.25) node[midway,above] {\scriptsize $\phi^*$};
   %          \draw[thick,->] arc [start angle=45, end angle=60, radius=10] node[midway,above] {\scriptsize $\phi^*$};
             \end{tikzpicture}
           </latex-image>
         </image>
       </figure>
-    </remark>
    </subsection>
 </section>

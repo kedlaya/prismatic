@@ -4,7 +4,7 @@
     <paragraphs>
       <title>References</title>
       <p>
-        We have followed <xref ref="bib-Bhatt-course"/>, Lecture 2, fairly closely. Some of the exercises were taken from <xref ref="bib-Borger-course"/>,
+        We have followed <xref ref="bib-Bhatt-course"/>, Lecture II, fairly closely. Some of the exercises were taken from <xref ref="bib-Borger-course"/>,
         others from <xref ref="bib-Bhatt-Scholze"/>, section 2.
       </p>
     </paragraphs>
@@ -76,7 +76,7 @@
                 \phi(x) = x^p + p \delta(x)
               </me>
               is a ring homomorphism that induces the Frobenius endomorphism on <m>A/pA</m>
-              (a/k/a a <term>Frobenius lift</term> on <m>A</m>).
+              (i.e., a <term>Frobenius lift</term> on <m>A</m>).
               We will refer to <m>\phi</m> as the <term>associated Frobenius lift</term> on <m>(A, \delta)</m>.
             </p>
           </li>
@@ -111,7 +111,7 @@
         One answer to this question can be found in <xref ref="bib-Buium2"/>: one can define the notion of a <term>jet operator</term> <m>\delta</m>
         on a local domain <m>A</m> of characteristic 0 and show that any such map is either an ordinary derivation, a <m>\pi</m>-difference operator
         for some <m>\pi \in A</m> (i.e., <m>x \mapsto x + \pi \delta(x)</m> is a ring homomorphism), or a <m>\pi</m>-derivation for some <m>\pi \in A</m>
-        dividing a prime <m>p</m> (where <m>x \mapsto x^q + \pi \delta(x)</m> is a ring homomorphism for some power of <m>p</m>). This can be thought of
+        (i.e., <m>x \mapsto x^q + \pi \delta(x)</m> is a ring homomorphism for some prime power <m>q</m>). This can be thought of
         as a loose analogue of Ostrowski's classification of valuations.
       </p>
     </remark>
@@ -130,7 +130,7 @@
       <p>
         By <xref ref="lem-delta-ring-Frobenius-lift"/>, there is a unique way to equip <m>\ZZ</m> with the structure of a <m>\delta</m>-ring, namely via the map
         <men xml:id="eq-delta-on-Z">
-          \delta(x) = \frac{x^p-x}{p}.
+          \delta(x) = \frac{x-x^p}{p}.
         </men>
         The <m>\delta</m>-constant elements are <m>\{0,1\}</m>.
       </p>
@@ -307,7 +307,7 @@
         <m>\Spec W_2(A)</m> consists of two copies of <m>\Spec A</m> glued along <m>\Spec A/(p)</m> via Frobenius.
       </p>
       <p>
-        In <xref ref="bib-Bhatt-course"/>, Lecture 2, Remark 3.4, Bhatt also suggests a version of this statement without the <m>p</m>-torsion-free condition:
+        In <xref ref="bib-Bhatt-course"/>, Lecture II, Remark 3.4, Bhatt also suggests a version of this statement without the <m>p</m>-torsion-free condition:
         for a general ring <m>A</m>, a <m>\delta</m>-structure on <m>A</m> corresponds to an endomorphism <m>\phi: A \to A</m> which is a <q>derived Frobenius lift</q>.
         That is, for <m>\overline{A} = A \otimes^L_{\ZZ} \ZZ/(p)</m>,
         there exists (and is specified!) a homotopy between the composition <m>A \stackrel{\phi}{\to} A \to \overline{A}</m>
@@ -361,8 +361,8 @@
     </remark>
     <definition xml:id="def-delta-ring-left-adjoint">
       <p>
-        By <xref ref="lem-delta-ring-limits-colimits"/> plus Freyd's adjoint functor theorem (see <xref ref="bib-Maclane"/>, section V.8), 
-        the forgetful functor <m>\Ring_\delta \to \Ring</m> admits both a left adjoint and a right adjoint.        
+        By <xref ref="lem-delta-ring-limits-colimits"/> plus Freyd's adjoint functor theorem (see <xref ref="bib-Maclane"/>, section V.8 or <xref ref="bib-Stacks"/>, tag 0AHM),
+        the forgetful functor <m>\Ring_\delta \to \Ring</m> admits both a left adjoint and a right adjoint.
         The right adjoint gives rise to Witt vectors; see <xref ref="sec_Witt"/>.
       </p>
       <p>
@@ -499,7 +499,22 @@
     <exercise>
       <statement>
         <p>
-          Let <m>A</m> be a <m>\delta</m>-ring whose underlying ring is <m>p</m>-adically separated. Show that any element of <m>A</m> which admits <m>p^n</m>-th roots in <m>A</m> for all positive integers <m>n</m> must be <m>\delta</m>-constant.
+          (Emerton) Prove that for any <m>\delta</m>-ring <m>A</m> and any <m>x \in A</m>, 
+          <me>
+            \phi(x) = p^{p-1} x^p + \delta(px).
+          </me>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Reduce to the <m>p</m>-torsion-free case.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>A</m> be a <m>p</m>-adically separated <m>\delta</m>-ring. Show that any element of <m>A</m> which admits <m>p^n</m>-th roots in <m>A</m> for all positive integers <m>n</m> must be <m>\delta</m>-constant.
         </p>
       </statement>
       <hint>
@@ -513,7 +528,7 @@
       <statement>
         <p>
           Let <m>A</m> be a <m>\delta</m>-ring and let <m>x \in A</m> be an element. Prove that there exists a faithfully flat map <m>A \to B</m> of <m>\delta</m>-rings such that the image of <m>x</m> in <m>B</m> belongs to the image of <m>\phi</m>.
-          That is, <q><m>\phi</m> is fpqc-locally surjective</q>.
+          That is, <q><m>\phi</m> is fpqc-locally surjective.</q>
         </p>
       </statement>
       <hint>
@@ -521,6 +536,39 @@
           See <xref ref="bib-Bhatt-Scholze"/>, Corollary 2.12.
         </p>
       </hint>
+    </exercise>
+    <exercise xml:id="exer-delta-ring-completion">
+      <statement>
+        <p>
+          Let <m>A</m> be a <m>\delta</m>-ring. Let <m>I</m> be a finitely generated ideal of <m>A</m> containing <m>p</m> (we do not assume any compatibility with <m>\delta</m>).
+          Then the <m>I</m>-adic completion of <m>A</m> admits a unique <m>\delta</m>-structure compatible with <m>A</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          See <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.17.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-category-Frobenius-lift">
+      <statement>
+        <p>
+          Let <m>\Ring_\phi</m> be the category of rings equipped with a Frobenius lift.
+        </p>
+        <ol>
+          <li>
+            <p>
+              Show that <m>\Ring_\phi</m> admits arbitrary colimits and products, and that these commute with the forgetful functor to rings.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>\Ring_\phi</m> does <em>not</em> admit equalizers (and hence does not admit arbitrary limits). This is a reason why to prefer the category
+              <m>\Ring_\delta</m> over <m>\Ring_\phi</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
     </exercise>
     <exercise xml:id="exer-delta-divided-power">
       <statement>
@@ -541,7 +589,7 @@
     <exercise>
       <statement>
         <p>
-          Starting with the ring <m>A = \ZZ_{(p)}\{x\}</m> (the free <m>\delta</m>-ring in <m>x</m> over <m>\ZZ_{(p)}</m>), let <m>D</m> be the <term>divided power envelope</term>
+          Let <m>A = \ZZ_{(p)}\{x\}</m> and let <m>D</m> be the <term>divided power envelope</term>
           of <m>A</m> with respect to the ideal <m>(x)</m>, that is, the smallest subring of <m>A[p^{-1}]</m> with the property that the divided power operations
           (<xref ref="exer-delta-divided-power"/>) carry every element of the ideal <m>xA</m> into <m>D</m>. (They also carry every element of the ideal <m>xD</m> into <m>D</m>.)
           Prove that <m>D = \ZZ_{(p)}\{x, \frac{\phi(x)}{p} \}</m>.
@@ -552,38 +600,6 @@
           See <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.36.  
         </p>
       </hint>
-    </exercise>
-    <exercise xml:id="exer-delta-ring-completion">
-      <statement>
-        <p>
-          Let <m>A</m> be a <m>\delta</m>-ring. Let <m>I</m> be a finitely generated ideal of <m>A</m> containing <m>p</m> (we do not assume any compatibility with <m>\delta</m>).
-          Then the <m>I</m>-adic completion of <m>A</m> admits a unique <m>\delta</m>-structure compatible with <m>A</m>.
-        </p>
-      </statement>
-      <hint>
-        <p>
-          See <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.17.
-        </p>
-      </hint>
-    </exercise>
-    <exercise xml:id="exer-category-Frobenius-lift">
-      <statement>
-        <p>
-          Let <m>\calC</m> be the category of rings equipped with a Frobenius lift.
-        </p>
-        <ol>
-          <li>
-            <p>
-              Show that <m>\calC</m> admits arbitrary colimits and products, and that these commute with the forgetful functor to rings.
-            </p>
-          </li>
-          <li>
-            <p>
-              Show that <m>\calC</m> does <em>not</em> admit equalizers (and hence does not admit arbitrary limits).
-            </p>
-          </li>
-        </ol>
-      </statement>
     </exercise>
   </exercises>
 </section>

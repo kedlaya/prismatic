@@ -4,17 +4,21 @@
     <paragraphs>
       <title>Reference</title>
       <p>
-        <xref ref="bib-Bhatt-course"/>, Lecture 4.
-      </p>
-      <p>
-        The theory of perfectoid rings has been described in numerous sources. Instead of recapping this history here, see
-        <xref ref="bib-Kedlaya-AWS"/> (especially Remark 2.3.18).
+        <xref ref="bib-Bhatt-course"/>, Lecture 4. The theory of perfectoid fields, rings, and spaces has been described in numerous sources; 
+        instead of recapping this history here, see <xref ref="bib-Kedlaya-AWS"/> (especially Remark 2.3.18).
       </p>
     </paragraphs>
     <p>
-      In this lecture, we study perfect prisms in detail. These end up being closely related to <term>perfectoid rings</term>,
-      which appear frequently in <m>p</m>-adic Hodge theory.
+      In this lecture, we study perfect prisms (i.e., prisms with a bijective Frobenius map) in detail. These end up being closely related to <term>perfectoid rings</term>,
+      which appear frequently in <m>p</m>-adic Hodge theory; however, we will not use too much of the existing theory of perfectoid rings, and in fact we will end
+      up recovering some of it via a different approach.
     </p>
+    <paragraphs>
+      <title>Notation</title>
+      <p>
+        For <m>I</m> an ideal in a commutative ring, write <m>\sqrt{I}</m> for its radical.
+      </p>
+    </paragraphs>
   </introduction>
   <subsection>
     <title>Distinguished elements in perfect <m>\delta</m>-rings</title>
@@ -61,43 +65,393 @@
     <remark>
       <p>
         The criterion for distinguished elements in <xref ref="lem-distinguished-perfect"/> coincides with Fontaine's notion of a
-        <term>primitive element of degree 1</term> (terminology introduced in <xref ref="bib-Fontaine-Bourbaki"/>).
+        <term>primitive element of degree 1</term>. While this terminology was introduced in <xref ref="bib-Fontaine-Bourbaki"/>, it echoes similar constructions found elsewhere
+        (e.g., <xref ref="bib-Kedlaya-NG"/>.
       </p>
     </remark>
   </subsection>
   <subsection>
-    <title>Perfect prisms and perfectoid rings</title>
+    <title>Perfect prisms</title>
     <definition>
       <p>
         A prism <m>(A,I)</m> is <term>perfect</term> if <m>A</m> is a perfect <m>\delta</m>-ring.
       </p>
     </definition>
-    
-    <lemma>
+    <theorem xml:id="lem-perfect-prisms-structure">
       <statement>
         <p>
-          Let <m>(A, I)</m> be a perfect prism. Then <m>I</m> is principal and any generator of it is a distinguished element.
+          Let <m>(A, I)</m> be a perfect prism.
         </p>
+        <ol>
+          <li>
+            <p>
+              The ideal <m>I</m> is principal, and any generator <m>d</m> of <m>I</m> is a distinguished element and a non-zerodivisor.
+            </p>
+          </li>
+          <li>
+            <p>
+              The ring <m>A</m> is <m>p</m>-torsion-free and classically <m>(p, I)</m>-complete. 
+            </p>
+          </li>
+          <li>
+            <p>
+              We have a canonical isomorphism <m>A \cong W(A/(p))</m> of <m>\delta</m>-rings.
+            </p>
+          </li>
+          <li>
+            <p>
+              We have <m>(A/I)[p^\infty] = (A/I)[p]</m> and <m>(A/p)[I^\infty] = (A/p)[I]</m>. In particular, <m>(A,I)</m> is a bounded prism.
+            </p>
+          </li>
+        </ol>
       </statement>
       <proof>
         <p>
-          This is immediate from <xref ref="lem-prism-ideal-generator"/>.
+          By <xref ref="lem-prism-ideal-generator"/>, the ideal <m>I</m> is principal and any generator <m>d</m> of <m>I</m> is a distinguished element.
+          By <xref ref="lem-delta-p-torsion"/>, <m>A</m> is <m>p</m>-torsion-free.
+        </p>
+        <p>
+          The ring <m>A/(p)</m> is perfect (by functoriality) and derived <m>I</m>-complete (by <xref ref="prop-derived-complete-abelian"/>,
+          it being the cokernel of <m>A \stackrel{\times p}{\to} A</m>). By <xref ref="lem-perfect-derived-completion"/>, <m>A/(p)</m>
+          is also classically <m>I</m>-complete. By induction on <m>n</m> using the exact sequence
+          <me>
+            0 p^{n-1}A/p^n A \to \to A/p^n \to A/p^{n-1} \to 0
+          </me>
+          and the isomorphism <m>A/p \cong p^{n-1}A/p^n A</m> of <m>A</m>-modules (a consequence of <m>A</m> being <m>p</m>-torsion-free),
+          we deduce that each quotient <m>A/(p^n)</m> is classically <m>I</m>-complete.
+        </p>
+        <p>
+          Since <m>A</m> is <m>p</m>-torsion-free and derived <m>p</m>-complete, it is also classically <m>p</m>-complete by <xref ref="lem-bounded-torsion-derived-complete"/>.
+          By the previous paragraph, it is also classically <m>(p, I)</m>-complete.
+        </p>
+        <p>
+          By <xref ref="prop-perfect-delta-rings"/>, <m>A \cong W(A/p)</m>.
+          By <xref ref="lem-distinguished-perfect"/>, any generator <m>d</m> of <m>I</m> is a non-zerodivisor.
+          By <xref ref="lem-perfect-derived-completion"/>, <m>(A/p)[I^\infty] = (A/p)[I]</m>. By <xref ref="lem-distinguished-perfect"/>, <m>(A/I)[p^\infty] = (A/I)[p]</m>.
         </p>
       </proof>
-    </lemma>
-    <lemma>
+    </theorem>
+    <prop>
       <statement>
         <p>
           The inclusion of perfect prisms into the category of prisms admits a left adjoint. Given a prism <m>(A, I)</m>, the left adjoint is obtained by taking
-          the derived <m>(p,I)</m>-completion of the coperfection of <m>A</m>.
+          the classical <m>(p,I)</m>-completion of the coperfection of <m>A</m> (which we call the <term>coperfection</term> of <m>(A,I)</m>).
         </p>
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.9.
+          Let <m>A'</m> be the coperfection of <m>A</m>; by <xref ref="lem-delta-p-torsion"/>, <m>A'</m> is <m>p</m>-torsion-free. 
+          Let <m>A''</m> be the classical <m>p</m>-completion of <m>A'</m>; by <xref ref="lem-bounded-torsion-derived-complete"/>, <m>A''</m> is also the derived <m>p</m>-completion.
+          By <xref ref="exer-delta-ring-completion"/>, <m>A''</m> can be canonically promoted to a <m>\delta</m>-ring over <m>A</m>.
+          Now <xref ref="prop-perfect-delta-rings"/> implies <m>A'' \cong W(A''/p)</m>.
+        </p>
+        <p>
+          For each positive integer <m>n</m>, we may now argue as in the proof of <xref ref="lem-perfect-prisms-structure"/> that the derived <m>I</m>-completion of <m>A/p^n</m>
+          coincides with the classical completion. Consequently, if we take <m>A'''</m> to be the classical <m>(p, I)</m>-completion of <m>A''</m> (or equivalently of <m>A'</m>), 
+          then <m>A'''</m> also equals the derived <m>(p,I)</m>-completion of either <m>A'</m> or <m>A''</m>.
+          By <xref ref="exer-delta-ring-completion"/>, <m>A'''</m> can be canonically promoted to a <m>\delta</m>-ring over <m>A''</m>.
+          Again, <xref ref="prop-perfect-delta-rings"/> implies <m>A''' \cong W(A'''/p)</m>.
+        </p>
+        <p>
+          At this point, <m>(A''', IA''')</m> is a prism (the conditions on the ideal <m>IA'''</m> are implied by the corresponding conditions on <m>I</m>)
+          and <m>A'''</m> is universal for maps of <m>A</m> to derived <m>(p,I)</m>-complete <m>\delta</m>-rings. Thus the proof is complete.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Lemma 1.3 or "<xref ref="bib-Bhatt-Scholze"/>, Lemma 3.9.)
+        </p>
+      </proof>
+    </prop>
+  </subsection>
+  <subsection>
+    <title>Tilting and untilting</title>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>(A,I)</m> be a perfect prism and define <m>R = A/I</m>. Let <m>R^\flat = \lim_\phi R/p</m> be the perfection of <m>R/p</m>.
+          We then have a commutative diagram as in <xref ref="fig-tilting-diagram"/> 
+          in which the horizontal arrows are all surjective,
+          the vertical arrows are all reductions modulo <m>p</m>,
+          and the diagonal arrows are all isomorphisms. Moreover, this diagram is natural in <m>A</m>.
+        </p>
+          <figure xml:id="fig-tilting-diagram">
+            <image>
+              <latex-image>
+                \xymatrix{
+                  A \ar[rr] \ar[dd] \ar^{\sim}[rd] &amp; &amp; R \ar[dd] \ar@{=}[rd] \\
+                  &amp; W(R^\flat) \ar[rr] \ar[dd] &amp; &amp; R \ar[dd] \\
+                  A/p \ar[rr] \ar^{\sim}[rd] &amp; &amp; R/p \ar@{=}[rd] \\
+                  &amp; R^\flat \ar@{->>}[rr] &amp; &amp; R/p
+                }
+              </latex-image>
+            </image>
+          </figure>
+      </statement>
+      <proof>
+        <p>
+          Everything will follow once we construct a natural isomorphism <m>A \cong W(R^\flat)</m>. By <xref ref="lem-perfect-prisms-structure"/>,
+          it will suffice to construct a natural isomorphism <m>A/p \cong R^\flat</m>.
+        </p>
+        <p>
+          By <xref ref="lem-perfect-prisms-structure"/>), <m>I</m> admits a generator <m>d</m> which is a distinguished element.
+          By definition, we have <m>A/p = R/(p,d)</m>. For each positive integer <m>n</m>, the <m>n</m>-fold Frobenius
+          <m>A/(p,d) \to A/(p,d)</m> identifies with the canonical map <m>A/(p,d^n) \to A/(p,d)</m> compatibly with <m>n</m>,
+          so the limit <m>\lim_\phi R/p</m> gets identified with <m>\lim_\phi A/(p, d^n)</m>.
+          The latter is naturally isomorphic to <m>A/(p)</m> because the latter is clasically <m>d</m>-complete
+          (<xref ref="lem-perfect-derived-completion"/>).
+        </p>
+      </proof>
+    </proposition>
+    <theorem xml:id="thm-untilting-functor">
+      <statement>
+        <p>
+          The functor <m>(A,I) \mapsto A/I</m> from perfect prisms to rings is fully faithful.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          It will suffice to explain how to recover <m>A</m> and <m>I</m> functorially from <m>R = A/I</m>. Set <m>R^\flat = \lim_\phi R/p</m>;
+          because <m>R</m> is in the essential image of the functor, we can see that <m>\phi: R/p \to R/p</m> is surjective, and so <m>R^\flat \to R/p</m>
+          is surjective. Using <xref ref="lem-maps-from-Witt-rings"/>, we may lift <m>R^\flat \to R/p</m> uniquely to a map <m>W(R^\flat) \to R</m>, which is also surjective.
+          We can now reconstruct the diagram of <xref ref="fig-tilting-diagram"/> to recover <m>A = W(R^\flat)</m> and <m>I = \ker(A \to R)</m>.
+        </p>
+      </proof>
+    </theorem>
+    <definition>
+      <p>
+        A <term>refract</term> is a ring of the form <m>A/I</m> for some perfect prism <m>(A, I)</m>.
+        By <xref ref="thm-untilting-functor"/>, the category of refracts (defined as a full subcategory of the category of commutative rings) 
+        is equivalent to the category of perfect prisms.
+      </p>
+      <p>
+        For <m>R = A/I</m> a refract, we write <m>R^\flat</m> for the perfection of <m>R/p</m> and call it the <term>tilt</term> of <m>R</m>.
+        We also say that <m>R</m> is an <term>untilt</term> of <m>R^\flat</m>.
+      </p>
+    </definition>
+    <example>
+      <p>
+        For any perfect ring <m>R</m> of characteristic <m>p</m>, the pair <m>(W(R), (p))</m> is a perfect prism with untilt and tilt both equal to <m>R</m>.
+      </p>
+    </example>
+    <example>
+      <p>
+        Let <m>R^\flat</m> be the perfect ring <m>t</m>-adic completion of <m>\FF_p[t^{p^{-\infty}}]</m> and put <m>A = W(R^\flat)</m>.
+        We can construct multiple perfect prisms <m>(A, I)</m> with tilt <m>R^\flat</m>, such as the following.
+        <ul>
+          <li>
+            <p>
+              Take <m>I = (d)</m> with <m>d = \sum_{i=0}^{p-1} [t+1]^i</m>. The untilt <m>A/I</m> is isomorphic to the <m>p</m>-adic completion of <m>\ZZ_p[\mu_{p^\infty}]</m>
+              via a map with <m>[t+1]^{p^{-n}} \mapsto \zeta_{p^n}</m>. The prism <m>(A,I)</m> is isomorphic to the prism from <xref ref="exa-Ainf-prism"/>
+              and is the coperfection of the prism from <xref ref="exa-q-de-Rham-prism"/>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Take <m>I = (d)</m> with <m>d = p - [t]</m>. The untilt <m>A/I</m> is isomorphic to the <m>p</m>-adic completion of <m>\ZZ_p[p^{p^{-\infty}}]</m> via a map with
+              <m>[t]^{p^{-n}} \mapsto p^{p^{-n}}</m>. The prism <m>(A,I)</m> is the coperfection of the prism from <xref ref="exa-Breuil-Kisin-prism"/> in the special case
+              <m>K = \QQ_p, \pi = p</m>.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </example>
+    <remark>
+      <p>
+        While the terminology of <term>tilting</term> and <term>untilting</term> is now quite commonly used, 
+        our references to the <term>category of refracts</term> is highly nonstandard; in <xref ref="bib-Bhatt-Morrow-Scholze1"/> and <xref ref="bib-Bhatt-Scholze"/>, 
+        objects of this category are called <term>perfectoid rings</term>.
+        However, that usage is incompatible with most prior literature; in older terminology these would be <term>integral perfectoid rings</term>.
+        To minimize confusion, we sidestep this issue by using a nonce terminology here.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>On the structure of refracts</title>
+    <definition>
+      <p>
+        A ring <m>R</m> of characteristic <m>p</m> is <term>semiperfect</term> if the Frobenius automorphism of <m>R</m> is surjective.
+        Note that <m>R</m> is perfect if and only if it is both reduced and semiperfect.
+      </p>
+    </definition>
+    <example>
+      <p>
+        A basic example of a semiperfect ring that is not perfect is the ring <m>\FF_p[t^{p^{-\infty}}]/(t)</m>.
+      </p>
+    </example>
+    <lemma xml:id="lem-refract-properties">
+      <statement>
+        <p>
+          Let <m>R</m> be a refract.
+        </p>
+        <ol>
+          <li>
+            <p>
+              The ring <m>R/p</m> is semiperfect.
+            </p>
+          </li>
+          <li>
+            <p>
+              There exists an element <m>\varpi \in R</m> admitting a compatible system <m>\varpi^{1/p^n}</m> of <m>p</m>-power roots,
+              such that <m>\varpi = p u</m> for some unit <m>u \in R^\times</m> and the kernel of the Frobenius map on <m>R/p</m> is generated by <m>\varpi^{1/p}</m>.
+              (Note that <m>\varpi = 0</m> is possible.)
+            </p>
+          </li>
+          <li>
+            <p>
+              The ideal <m>\sqrt{pR}</m> is flat over <m>R</m>; it is an increasing union of principal ideals; and it satisfies <m>(\sqrt{pR})^2 = \sqrt{pR}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              We have <m>R[p] = R[\sqrt{pR}]</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-course"/>, Lecture IV, Lemma 2.6.
         </p>
       </proof>
     </lemma>
+    <proposition xml:id="prop-conditions-on-refract">
+      <statement>
+        <p>
+          A commutative ring <m>R</m> is a refract if and only if the following conditions hold.
+          <ol>
+            <li>
+              <p>
+                The ring <m>R</m> is classically <m>p</m>-complete and semiperfect.
+              </p>
+            </li>
+            <li>
+              <p>
+                The kernel of the map <m>\theta_R: W(R^\flat) \to R</m> is principal. If <m>R</m> is <m>p</m>-torsion-free, we may instead check that 
+                <m>R</m> is <term><m>p</m>-normal</term>: every <m>x \in R[p^{-1}]</m> with <m>x^p \in R</m> belongs to <m>R</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists some <m>\omega \in R</m> such that <m>\omega^p = pu</m> for some unit <m>u \in R</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-course"/>, Lecture IV, Proposition 2.10.
+        </p>
+      </proof>
+    </proposition>
+    <remark xml:id="rmk-Zp-not-refract">
+      <p>
+        The example <m>R = \ZZ_p</m> shows that the fourth condition of <xref ref="prop-conditions-on-refract"/> does not follows from the others.
+      </p>
+    </remark>
+    <p>
+      Crucially, <xref ref="prop-conditions-on-refract"/> enables us to produce many refracts in cases where it is not so obvious how to give a direct construction
+      of the corresponding perfect prism. In particular, we can make some prisms without specifying either a <m>\delta</m>-ring structure or a Frobenius lift!
+    </p>
+    <definition>
+      <p>
+        A <term>perfectoid field</term> is a field <m>K</m> satisfying the following conditions.
+      </p>
+      <ol>
+        <li>
+          <p>
+            The field <m>K</m> is complete for the topology induced by some nonarchimedean valuation with <em>nondiscrete</em> value group.
+          </p>
+        </li>
+        <li>
+          <p>
+            The valuation ring <m>\frako_K</m> of <m>K</m> has residue characteristic <m>p</m>, and the ring <m>\frako_K/p</m> is semiperfect.
+          </p>
+        </li>
+      </ol>
+      <p>
+        By <xref ref="prop-conditions-on-refract"/>, the valuation ring of a perfectoid field is a refract.
+      </p>
+    </definition>
+    <p>
+      Most familiar examples of refracts are either <m>p</m>-torsion-free or of characteristic <m>p</m>. We can prove a result that shows that this accounts for
+      all possibilities up to a <q>glueing</q> construction.
+    </p>
+    <lemma>
+      <statement>
+        <p>
+          Let <m>R</m> be a perfect <m>\FF_p</m>-algebra. Let <m>I</m> be a radical ideal of <m>R</m> and let <m>J = R[I]</m>.
+          Then <m>J</m> and <m>I+J</m> are both radical ideals and the square
+          <figure>
+            <image width="25%">
+              <latex-image>
+                \xymatrix{
+                R \ar[r] \ar[d] &amp; R/I \ar[d] \\
+                R/J \ar[r] &amp; R/(I+J) 
+                }
+              </latex-image>
+            </image>
+          </figure>
+          is both a pullback square and a pushout square of commutative rings.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We first check that <m>J</m> is radical. If <m>x \in R</m> with <m>x^p \in J</m>, then <m>x^p I = 0</m>; since <m>R</m> is perfect,
+          it follows that <m>xI = 0</m> and so <m>x \in J</m>.
+        </p>
+        <p>
+          We next check that <m>I+J</m> is radical. The ideal <m>I+J</m> is the kernel of <m>R \to R/I \otimes_R R/J</m>; the target is a colimit of perfect rings and hence
+          is itself perfect.
+        </p>
+        <p>
+          The square in question is already a pushout square at the level of groups, hence also at the level of rings. To check that it is a pullback square, we must check 
+          that <m>I \cap J = 0</m>. To this end, choose <m>x \in I \cap J</m>; since <m>x \in J</m> we have <m>xI = 0</m>, but since <m>x \in I</m> this implies <m>x^2 = 0</m>
+          and finally <m>x = 0</m> because <m>R</m> is perfect.
+        </p>
+      </proof>
+    </lemma>
+    <proposition xml:id="prop-structure-of-untilts">
+      <statement>
+        <p>
+          Let <m>(A, I)</m> be a perfect prism and put <m>R = A/I</m>. Put <m>\overline{R} = R/\sqrt{pR}</m>, <m>S = R/R[\sqrt{pR}]</m>, <m>\overline{S} = S/\sqrt{pS}</m>.
+          Then <m>\overline{R}, S, \overline{S}</m> are all refracts and the commutative diagram
+          <figure>
+            <image width="25%">
+              <latex-image>
+                \xymatrix{
+                R \ar[r] \ar[d] &amp; S \ar[d] \\
+                \overline{R} \ar[r] &amp; \overline{S} 
+                }
+              </latex-image>
+            </image>
+          </figure>
+          is both a pullback square and a pushout square.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-course"/>, Lecture IV, Proposition 3.2.
+        </p>
+      </proof>
+    </proposition>
+    <corollary>
+      <statement>
+        <p>
+          Any refract is a reduced ring.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="prop-structure-of-untilts"/>, we may reduce to the cases of a perfect ring of characteristic <m>p</m> and of a <m>p</m>-torsion-free untilted ring.
+          In the former case, it is evident that any perfect ring is reduced. in the latter case, let <m>R</m> be the refract in question. 
+          Apply <xref ref="lem-refract-properties"/> to choose an element <m>\varpi \in R</m> such that <m>\varpi^p = pu</m> for some unit <m>u \in R^\times</m>.
+          It will suffice to check that any <m>x \in R</m> with <m>x^p = 0</m> vanishes, or (because <m>R</m> is <m>p</m>-adically separated)
+          that any such <m>x</m> is divisible by <m>\varpi^n</m> for any positive integer <m>n</m>. We prove this by induction starting with the base case <m>n=0</m>.
+          Given that <m>x = \pi^n y</m> for some nonnegative integer <m>n</m> and some <m>y \in R</m>, we have <m>\varpi^{np} y^p = 0</m> and hence
+          <m>y^p = 0</m> because <m>R</m> is <m>p</m>-torsion-free. By <xref ref="lem-refract-properties"/> again, the kernel of the Frobenius on <m>R/p</m> is
+          generated by <m>\varpi</m>; hence <m>y \in \varpi R</m> and <m>x \in \varpi^{n+1} R</m>.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Corollary 3.3.)
+        </p>
+      </proof>
+    </corollary>
   </subsection>
   <exercises>
     <exercise xml:id="exer-distinguished-perfect">
@@ -106,9 +460,58 @@
           Complete the proof of <xref ref="lem-distinguished-perfect"/>.
         </p>
       </statement>
-      <proof>
+      <hint>
         <p>
           See <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.34.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Show that the category of perfect rings of characteristic <m>p</m> is closed under arbitrary limits and colimits in the category of rings.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Show that the category of refracts is closed under arbitrary colimits and products in the category of all derived <m>p</m>-complete rings. However, this does <em>not</em>
+          imply closure under arbitrary limits; see <xref ref="lem-refract-properties"/>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-refracts-no-equalizers">
+      <statement>
+        <p>
+          Show that the category of refracts is not closed under formation of equalizers in the category of rings.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          One approach is to use the theorem of Ax-Sen-Tate (see <xref ref="bib-Ax"/>); this implies for example that if <m>K</m> is a (possibly infinite) Galois algebraic extension
+          of <m>\QQ_p</m> with Galois group <m>G</m>, then the invariant subfield of the completion of <m>K</m> under the action of <m>G</m> is equal to <m>\QQ_p</m>.
+        </p>
+      </proof>
+    </exercise>
+    <exercise>
+      <statement>
+        Let <m>R</m> be a <m>p</m>-adically complete ring and set <m>R^\flat = \lim_\phi R/p</m>. Prove that the natural map
+        <me>
+          \lim_{x \mapsto x^p} R \to \lim_{\phi} R/p
+        </me>
+        is a multiplicative bijection. This gives the set on the left a ring structure; can you describe the addition law explicitly?
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>A \to B, A \to C</m> be morphisms of perfect rings of characteristic <m>p</m>. Show that <m>\Tor_i^A(B, C) = 0</m> for all <m>i &gt; 0</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-course"/>, Lecture IV, Exercise 2.4.
         </p>
       </proof>
     </exercise>

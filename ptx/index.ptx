@@ -48,8 +48,10 @@
     \DeclareMathOperator{\Inf}{Inf}
     \DeclareMathOperator{\inv}{inv}
     \DeclareMathOperator{\lcm}{lcm}
+    \DeclareMathOperator{\Mod}{\mathbf{Mod}}
     \DeclareMathOperator{\Norm}{Norm}
     \DeclareMathOperator{\Pic}{Pic}
+    \DeclareMathOperator{\Prm}{\mathbf{Prm}}
     \DeclareMathOperator{\Rad}{Rad}
     \DeclareMathOperator{\Real}{Re}
     \DeclareMathOperator{\Res}{Res}

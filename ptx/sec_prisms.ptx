@@ -4,17 +4,21 @@
     <paragraphs>
       <title>Reference</title>
       <p>
-        <xref ref="bib-Bhatt-course"/>, Lecture 3. The underlying reference is <xref ref="bib-Bhatt-Scholze"/>, section 2.
+        <xref ref="bib-Bhatt-course"/>, Lecture III. The underlying reference is <xref ref="bib-Bhatt-Scholze"/>, section 2.
       </p>
     </paragraphs>
     <p>
       Using the framework of <m>\delta</m>-rings, we now set up the formalism of <term>prisms</term>.
     </p>
-    <p>
-      For a ring <m>A</m>, an ideal <m>I</m> of <m>A</m>, and an <m>A</m>-module <m>M</m>,
-      we write <m>M[I]</m> for the <m>I</m>-torsion submodule of <m>M</m> and <m>M[I^\infty] = \bigcup_n M[I^n]</m>.
-      If <m>I = (f)</m> is principle, we also notate these as <m>M[f]</m> and <m>M[f^\infty]</m>.
-    </p>
+    <paragraphs>
+      <title>Notation</title>
+      <p>
+        For <m>A \in \Ring</m>, let <m>\Mod_A</m> denote the category of <m>A</m>-modules.
+        For an ideal <m>I</m> of <m>A</m>, and an object <m>M \in \Mod_A</m>,
+        write <m>M[I]</m> for the <m>I</m>-torsion submodule of <m>M</m> and <m>M[I^\infty]</m> for the union <m>\bigcup_n M[I^n]</m>;
+        if <m>I = (f)</m> is principal, we also notate these as <m>M[f]</m> and <m>M[f^\infty]</m>.
+      </p>
+    </paragraphs>
   </introduction>
   <subsection xml:id="subsec-distinguished">
     <title>Distinguished elements and examples</title>
@@ -208,7 +212,7 @@
         <p>
           This is a consequence of <xref ref="rmk-delta-ring-localization"/> (which allows us to construct <m>A'</m> such that <m>IA'</m> is principal)
           and <xref ref="lem-distinguished-ideal"/>.
-          Compare <xref ref="bib-Bhatt-course"/>, Lecture 3, Corollary 1.9 or <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.1.
+          Compare <xref ref="bib-Bhatt-course"/>, Lecture III, Corollary 1.9 or <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.1.
         </p>
       </proof>
     </lemma>
@@ -249,7 +253,8 @@
         </ul>
       </p>
       <p>
-        A map <m>(A, I) \to (B, J)</m> of prisms is <term>(faithfully) flat</term> if 
+        The category of prisms, denoted <m>\Prm</m>, is defined as the full subcategory of the category of <m>\delta</m>-pairs consisting of prisms.
+        A map <m>(A, I) \to (B, J)</m> in <m>\Prm</m> is <term>(faithfully) flat</term> if 
         <m>A/(p,I) \to B/(p,I)B</m> is (faithfully) flat and <m>\Tor_A^i(B, A/(p,I)) = 0</m> for <m>i>0</m>.
         In particular, this holds if <m>A \to B</m> is faithfully flat.
         (In the terminology of <xref ref="bib-Bhatt-Scholze"/>, this corresponds to <m>B</m> being <term><m>I</m>-completely flat</term>.)
@@ -327,7 +332,7 @@
           </me>
           Since <m>1-y\delta(d)</m> is a unit in <m>A''</m> and <m>p</m> is distinguished, we may apply <xref ref="lem-distiguished-times-unit"/> twice to 
           deduce that <m>d</m> is distinguished in <m>A''</m> and <m>d^{p-1}(x+y)</m> is a unit; this is impossible because <m>d \in \Rad(A'')</m>.
-          (Compare <xref ref="bib-Bhatt-course"/>, Lecture 3, Lemma 3.5 or <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.6.)
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture III, Lemma 3.5 or <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.6.)
         </p>
       </proof>
     </lemma>
@@ -335,7 +340,7 @@
       <title>Rigidity of prisms</title>
       <statement>
         <p>
-          Let <m>(A, I) \to (B,J)</m> be a morphism of prisms. Then the natural map <m>I \otimes_A B \to J</m> is an isomorphism of <m>B</m>-modules.
+          Let <m>(A, I) \to (B,J)</m> be a morphism in <m>\Prm</m>. Then the natural map <m>I \otimes_A B \to J</m> is an isomorphism of <m>B</m>-modules.
         </p>
       </statement>
       <proof>
@@ -343,7 +348,7 @@
           Since the map in question is between invertible <m>B</m>-modules, it is enough to check that it is surjective.
           Using <xref ref="lem-ideal-locally-distinguished"/>, we may reduce to the case where <m>I = (f)</m> and <m>J = (g)</m> are both principal ideals.
           Then <m>f</m> is a multiple of <m>g</m> in <m>B</m>, so we may apply <xref ref="lem-distiguished-times-unit"/> to conclude. 
-          (Compare <xref ref="bib-Bhatt-course"/>, Lecture 3, Lemma 3.7 or <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.5.)
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture III, Lemma 3.7 or <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.5.)
         </p>
       </proof>
     </lemma>
@@ -356,7 +361,7 @@
     </p>
     <definition>
       <p>
-        Let <m>A</m> be a commutative ring and let <m>I</m> be a <em>finitely generated</em> ideal of <m>A</m>. An <m>A</m>-module <m>M</m>
+        For <m>A \in \Ring</m> and <m>I</m> a <em>finitely generated</em> ideal of <m>A</m>, an <m>A</m>-module <m>M</m>
         is <term>classically <m>I</m>-complete</term> if the natural map <m>M \to \lim_n M/I^n M</m> is an isomorphism.
       </p>
     </definition>
@@ -485,7 +490,10 @@
       </statement>
       <proof>
         <p>
-          If <m>M</m> is classically <m>I</m>-complete, we have <m>\Hom_A(A_f, M) = \Hom_A(A_f, \lim_n M/I^n M) = 0</m>.
+          If <m>M</m> is classically <m>I</m>-complete, we have 
+          <me>
+            \Hom_A(A_f, M) = \Hom_A(A_f, \lim_n M/I^n M) = 0.
+          </me>
           To show that <m>\Ext^1_A(A_f, M) = 0</m>, consider an extension
           <men xml:id="eq-complete-from-derived-ext"> 
             0 \to M \to E \to A_f \to 0.
@@ -498,7 +506,7 @@
           which satisfy <m>f e_{n+1}' = fe_n'</m>; we thus obtain a map <m>A_f \to E</m> splitting the sequence by mapping <m>f^{-n}</m> to <m>e_n'</m>.
         </p>
         <p>
-          In the converse direction, by an elementary argument <xref ref="exer-Stacks-090S"/> we can reduce to the case where <m>I = (f)</m>.
+          In the converse direction, by an elementary argument (<xref ref="exer-Stacks-090S"/>) we can reduce to the case where <m>I = (f)</m>.
           That, we must show that if <xref ref="eq-map-to-derived-inverse-limit"/> holds, then 
           for any <m>x_0, x_1, \dots \in M</m> there exists <m>x \in M</m> such that
           <m>x \equiv x_0 + fx_1 + \cdots + f^{n-1} x_{n-1} \pmod{f^nM}</m> for each <m>n</m>.
@@ -517,7 +525,7 @@
         </p>
       </proof>
     </lemma>
-    <corollary>
+    <corollary xml:id="cor-complete-derived-classical">
       <statement>
         <p>
           Let <m>A</m> be a ring, let <m>I</m> be a finitely generated ideal of <m>A</m>, and let <m>M</m> be an <m>A</m>-module.
@@ -590,7 +598,33 @@
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-course"/>, Lecture 3, Lemma 2.4.
+          Since we have not explained in any detail how to compute the derived completion, we will give only a sketch here
+          and return to the matter after we discuss derived categories in <xref ref="sec_derived-categories"/>. 
+          The summary is that the derived completion <m>\widehat{M}</m> fits into an exact sequence of the form
+          <me>
+            0 \to R^1\lim_n M[f^n] \to \widehat{M} \to \lim_n M/f^n M \to 0
+          </me>
+          in which the modules <m>M[f^n]</m> form a projective system via multiplication by <m>f</m>. By the assumption about bounded torsion,
+          this projective system is essentially zero (that is, any sufficiently long composition is the zero map), so the <m>R^1</m> term vanishes.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture III, Lemma 2.4.)
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      A key application of <xref ref="lem-bounded-torsion-derived-complete"/> is the following.
+    </p>
+    <lemma xml:id="lem-perfect-derived-completion">
+      <statement>
+        <p>
+          Let <m>R</m> be a perfect ring of characteristic <m>p</m>. Then for any <m>f \in R</m>, <m>R[f^\infty] = R[f]</m>. 
+          Consequently (by <xref ref="lem-bounded-torsion-derived-complete"/>),
+          the derived <m>f</m>-completion of <m>R</m> coincides with the classical <m>f</m>-adic completion.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          For <m>x \in R[f^\infty]</m>, we have <m>f^{p^n} x = 0</m> for some nonnegative integer <m>n</m>. We then have
+          <m>f^{p^n} x^{p^n} = 0</m>, and then <m>fx = 0</m> because <m>R</m> is perfect.
         </p>
       </proof>
     </lemma>

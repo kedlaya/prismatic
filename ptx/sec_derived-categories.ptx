@@ -4,16 +4,142 @@
     <paragraphs>
       <title>Reference</title>
       <p>
-        To be added.
+        <xref ref="bib-Stacks"/>, tag 05QI.
       </p>
     </paragraphs>
     <p>
-      In this section, we give a minimal treatment of the theory of <term>derived categories</term> in order to be able to operate
+      In this section (still under construction!), we give a minimal treatment of the theory of <term>derived categories</term> in order to be able to operate
       fluently with these in the sequel.
+    </p>
+    <p>
+      Throughout this section, let <m>\calC</m> be a fixed abelian category, e.g., the category of modules over a commutative ring.
+      (This is not the weakest hypothesis possible on <m>\calC</m> but will suffice for our purposes.)
     </p>
   </introduction>
   <subsection>
+    <title>A bit of motivation</title>
+    <remark>
+      <p>
+       By way of motivation, we recall the way that chain complexes appear in the construction of derived functors.
+       Let <m>\calC'</m> be a second abelian category. A functor <m>F: \calC \to \calC'</m> is <term>left exact</term> if every exact sequence
+       <me>
+       0 \to M_1 \to M \to M_2
+       </me>
+       yields an exact sequence
+       <me>
+       0 \to F(M_1) \to F(M) \to F(M_2).
+       </me>
+       Under suitable conditions (namely, that <m>\calC</m> <term>has enough injectives</term>), 
+       we can <q>fill in the gap</q> on the right: if the original sequence extends to an exact sequence
+       <me>
+       0 \to M_1 \to M \to M_2 \to 0,
+       </me>
+       then we get a long exact sequence
+       <me>
+       0 \to R^0 F(M_1) \to R^0F (M) \to R^0F(M_2) \to R^1 F(M_1) \to R^1 F(M) \to R^1 F(M_2) \to R^1 F(M_1) \to \cdots
+       </me>
+       where <m>R^i F</m> are the <term>right derived functors</term>  of <m>F</m> (with <m>R^0 F = F</m>. These functors can be evaluated at <m>M</m> by forming an
+       <term>injective resolution</term> of <m>M</m>, i.e., a complex
+       <me>
+         0 \to I^0 \to I^1 \to \dots
+       </me>
+       in which each object <m>I^j \in \calC</m> is <term>injective</term> (that is, <m>\Hom(N, I^j) \to \Hom(N', I_j)</m> is surjective whenever <m>N' \to N</m> is a monomorphism)
+       and the augmented sequence
+       <me>
+         0 \to M \to I^0 \to I^1 \to \cdots
+       </me>
+       is exact; then <m>F^i</m> is the cohomology at <m>i</m> of the complex
+       <me>
+         0 \to F(I^0) \to F(I^1) \to cdots.
+       </me>
+      </p>
+      <p>
+        What we want to do here is to create a setup in which the sequence of derived functors becomes a <em>single</em> object that we can manipulate.
+        For example, when composing left exact functors, if one only keeps track of the derived functors individually, the most one can say about the derived functors
+        of the composition is that they are the limit of the <term>Leray spectral sequence</term>, but this leaves some ambiguity if you do not know what the differentials are
+        (and anyway being the limit of a spectral sequence does not determine the final objects exactly, only the successive quotients of some filtrationR. By contrast,
+        when working in a derived category this ambiguity is completely eliminated, albeit at the expense of carrying some extra baggage.
+      </p>
+    </remark>
   </subsection>
+  <subsection>
+    <title>Chain complexes and the homotopy category</title>
+    <definition>
+      <p>
+        A <term>chain complex</term> in <m>\calC</m> is a sequence
+        <me>
+         \cdots K^{n-1} \stackrel{d^{n-1}}{\to} K^n \stackrel{d^n}{\to} K^{n+1} \cdots
+        </me>
+        in <m>\calC</m> such that any two consecutive morphisms compose to zero. The <term>cohomology</term> of the complex at degree <m>n</m> is
+        <me>
+          h^n(K^\bullet) = \ker(d^{n})/\im(d^{n-1}).
+        </me>
+        (Note that here I am using <term>cohomological numbering</term> rather than <term>homological numbering</term>.)
+      </p>
+      <p>
+        A complex <m>K^\bullet</m> is:
+        <ul>
+          <li>
+            <p>
+              <term>bounded below</term> if <m>K^n = 0</m> for all <m>n \ll 0</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>bounded above</term> if <m>K^n = 0</m> for all <m>n \gg 0</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>bounded</term> if <m>K^n = 0</m> for all <m>|n| \gg 0</m> (i.e., <m>K^\bullet</m> is both bounded above and bounded below).
+            </p>
+          </li>
+        </ul>
+      </p>
+    </definition>
+    <definition>
+      <p>
+        We view chain complexes as forming a category in which a morphism <m>f^\bullet: K_1^\bullet \to K_2^\bullet</m> is given by a commutative diagram
+        <figure>
+          <image>
+            <latex-image>
+              \xymatrix{
+              \cdots &amp; K_1^{n-1} \ar^{d^{n-1}_1}[r] \ar^{f^{n-1}}[d] &amp; K_1^n \ar^{d^n_1}[r] \ar^{f^n}[d] &amp; K_1^{n+1} \ar^{d^{n+1}_1}[r] \ar^{f^{n+1}}[d] &amp; \cdots \\
+              \cdots &amp; K_2^{n-1} \ar^{d^{n-1}_2}[r] &amp; K_2^n \ar^{d^n_2}[r] &amp; K_2^{n+1} \ar^{d^{n+1}_2}[r] &amp; \cdots
+              }
+            </latex-image>
+          </image>
+        </figure>
+        such a morphism induces morphisms on cohomology groups <m>h^n(K_1^\bullet) \to h^n(K_2^\bullet)</m>. A morphism of chain complexes is a <term>quasi-isomorphism</term>
+        if the induced morphisms on cohomology groups are all isomorphisms.
+      </p>
+      <p>
+        A <term>chain homotopy</term> for such a morphism is a collection of morphisms <m>h_n: K_1^n \to K_2^{n+1}</m> such that
+        <me>
+          d^{n-1}_2 \circ h_n + h_{n+1} \circ d^n_1 = f^n \qquad (n \in \ZZ).
+        </me>
+        Note that this implies that <m>f</m> induces the zero morphisms on cohomology groups.
+      </p>
+      <p>
+        If we are give an chain homotopy for <m>f</m> and we compose <m>f</m> with another morphism of chain complexes on either side,
+        we may compose this morphism also with the chain homotopy to get a new chain homotopy for the resulting morphism. In particular,
+        morphisms admitting a chain homotopy (or in other words, which are <term>homotopic to zero</term>) form a two-sided ideal under composition.
+        We may thus define the <term>homotopy category</term> of <m>\calC</m> to be the category in which the objects are chain complexes and the morphisms
+        between two given objects are elements of the quotient of all morphisms by the group of morphisms homotopic to zero.
+      </p>
+    </definition>
+  </subsection>
+  <definition>
+    <p>localization, calculus of fractions</p>
+  </definition>
+  <remark>
+    <p>
+      <term>triangulated category</term>, <term>distinguished triangles</term>
+    </p>
+    <p>
+     To do:         <term>mapping cone</term>.
+    </p>
+  </remark>
   <subsection xml:id="subsec-derived-complete-derived">
     <title>Derived completeness revisited</title>
     <example xml:id="exa-derived-example-QZ">
