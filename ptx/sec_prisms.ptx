@@ -27,12 +27,16 @@
     </p>
     <definition>
       <p>
-        Let <m>A</m> be a <m>\delta</m>-ring. An element <m>d \in A</m> is <term>distinguished</term> if <m>(p, \delta(d))</m> is the unit ideal of <m>A</m>.
+        Let <m>A</m> be a <m>\delta</m>-ring. An element <m>d \in A</m> is <term>distinguished</term> if <m>(p, d, \delta(d))</m> is the unit ideal of <m>A</m>.
       </p>
       <p>
-        If <m>A</m> is <m>p</m>-local, then <m>d \in A</m> is distinguished if and only if <m>\delta(d)</m> is a unit in <m>A</m>.
-        In many arguments that follow, we can reduce to the <m>p</m>-local case by localizing <m>A</m> at the zero locus of <m>p</m>;
-        by <xref ref="rmk-delta-ring-localization"/>, the result is still a <m>\delta</m>-ring.
+        If <m>A</m> is <m>(p, d)</m>-local, then <m>d \in A</m> is distinguished if and only if <m>\delta(d)</m> is a unit in <m>A</m>;
+        in fact this is the definition used in <xref ref="bib-Bhatt-course"/> or <xref ref="bib-Bhatt-Scholze"/>;
+        the discrepancy will not affect the definition of a prism because the latter already includes a completeness hypothesis (see <xref ref="def-prism"/>).
+      </p>
+      <p>
+        In many arguments that follow, we can reduce to the <m>(p,d)</m>-local case by localizing <m>A</m> at <m>(p,d)</m>.
+        By <xref ref="rmk-delta-ring-localization"/>, the result is still a <m>\delta</m>-ring.
       </p>
     </definition>
     <remark>
@@ -48,7 +52,7 @@
     <example xml:id="exa-crystalline-prism">
       <title>Crystalline cohomology</title>
       <p>
-        Take <m>A = \ZZ_{(p)}</m> with <m>d=p</m>. Then <m>\delta(d) = 1-p^{p-1} \in \ZZ_{(p)}^*</m>, so <m>p</m> is distinguished.
+        Take <m>A = \ZZ</m> with <m>d=p</m>. Then <m>\delta(d) = 1-p^{p-1} \equiv 1 \pmod{p}</m>, so <m>p</m> is distinguished.
         By the same token, by <xref ref="rmk-delta-ring-image-of-Z"/>, <m>p</m> is distinguished in any <m>\delta</m>-ring.
       </p>
     </example>
@@ -106,10 +110,9 @@
         Let <m>K</m> be the <m>p</m>-adic completion of the <m>p</m>-cyclotomic extension <m>\QQ_p(\mu_{p^\infty})</m>.
         The ring <m>R</m> can then be identified with the perfection of <m>\frako_K/(p)</m>
         by fixing a choice of a coherent sequence <m>(\zeta_{p^n})</m> of <m>p</m>-power roots of unity and identifying <m>q</m>
-        with this sequence; this identifies <m>R</m> with the <term>tilt</term> of <m>\frako_K</m>.
-        This relationship was originally used by Fontaine and Wintenberger <xref ref="bib-Fontaine-Wintenberger"/> to produce a canonical isomorphism between the absolute Galois groups of <m>K</m> and <m>R[(q-1)^{-1}]</m>;
-        this result is now viewed as a special case of the <term>perfectoid correspondence</term> for perfectoid fields <xref ref="bib-Kedlaya-new-methods"/>, <xref ref="bib-Scholze-perfectoid1"/>.
-        In this context, the ring <m>A</m> arises in Fontaine's notation as the value of the functor <m>\Ainf</m> evaluated at the integral perfectoid ring <m>\frako_K</m>.
+        with this sequence; this identifies <m>R</m> with the <term>tilt</term> of <m>\frako_K</m>
+        (see <xref ref="sec_perfect"/> for further discussion).
+        In this context, the ring <m>A</m> arises in Fontaine's notation as the value of the functor <m>\Ainf</m> evaluated at the valuation ring <m>\frako_K</m>.
       </p>
     </example>
   </subsection>
@@ -119,65 +122,57 @@
       We collect some lemmas about distinguished elements. See also <xref ref="lem-distinguished-perfect"/> for a precise characterization of
       distinguished elements in <m>W(R)</m> when <m>R</m> is a perfect ring of characteristic <m>p</m>.
     </p>
-    <example xml:id="exa-universal-distinguished-elem">
-      <p>
-        Consider the <m>\delta</m>-ring <m>\ZZ\{d\}</m> on a single element <m>d</m> (<xref ref="def-delta-ring-left-adjoint"/>).
-        We can force <m>d</m> to become distinguished by localizing at the multiplicative set <m>S = \{\delta(d), \phi(\delta(d)), \phi^2(\delta(d)), \dots\}</m>.
-        By further localizing at the ideal <m>(p)</m>, we obtain a <m>\delta</m>-ring <m>A</m>; this is the universal <m>p</m>-local <m>\delta</m>-ring equipped with a distinguished element <m>d</m>.
-        Since this example is <m>p</m>-torsion-free, we can reduce certain arguments about distinguished elements to the <m>p</m>-torsion-free case.
-      </p>
-    </example>
+    <p>
+      We first show that <q>distinguished elements are irreducible.</q>
+    </p>
     <lemma xml:id="lem-distiguished-times-unit">
       <statement>
         <p>
-          Let <m>A</m> be a <m>\delta</m>-ring and choose <m>f \in \Rad(A), h \in A</m>. Then
-          <m>fh</m> is distinguished if and only if <m>f</m> is distinguished and <m>(h,p)A</m> is the unit ideal.
+          Let <m>A</m> be a <m>\delta</m>-ring and choose <m>f,h \in A</m>. Then
+          <m>fh</m> is distinguished if and only if <m>f</m> is distinguished and <m>(p,f,h)</m> is the unit ideal of <m>A</m>.
         </p>
       </statement>
       <proof>
         <p>
+          Since <m>(p,f,h)</m> is the unit ideal, we can write <m>f = afp + bf^2 + cfh</m>, and so <m>f(1-bf) = afp + cfh</m>.
+          In the localization of <m>A</m> at <m>(p,f)</m>, <m>1-bf</m> becomes a unit and so <m>f</m> belongs to <m>(p, fh)</m>;
+          that is, both <m>(p,f)</m> and <m>(p, fh)</m> generate the maximal ideal of this local ring. Consequently, for any <m>x \in A</m>,
+          <m>(p, f, x)</m> is the unit ideal if and only if <m>(p, fh, x)</m> is the unit ideal.
+        </p>
+        <p>
           By <xref ref="eq-delta-ring-product"/>,
           <me>
-            \delta(fh) = h^p \delta(f) + f^p \delta(h) + p \delta(h) \delta(f) \equiv h^p \delta(f) \pmod{pA + \Rad(A)}.
+            \delta(fh) = h^p \delta(f) + f^p \delta(h) + p \delta(h) \delta(f) \equiv h^p \delta(f) \pmod{(p,f)}.
           </me>
-          Consequently, in the quotient <m>A/(p)</m>, 
-          <m>\delta(fh)</m> is a unit if and only if <m>h^p \delta(f)</m> is a unit, which happens if and only if both
-          <m>h</m> and <m>\delta(f)</m> are units.
+          In one direction, if <m>f</m> is distinguished and <m>(p, f, h)</m> is the unit ideal of <m>A</m>, then
+          <m>h^p</m> and <m>\delta(f)</m> represent units in <m>A/(p, f)</m>, as then does <m>\delta(fh)</m>; hence <m>(p, f, \delta(fh))</m> is the unit ideal of <m>A</m>,
+          and by the previous paragraph so is <m>(p, fh, \delta(fh))</m>.
+          Conversely, if <m>fh</m> is distinguished, then <m>(p, fh, \delta(fh))</m> is the unit ideal, as then is <m>(p, f, \delta(fh))</m>;
+          then <m>h^p \delta(f)</m> is a unit in <m>A/(p, f)</m>, as then are both <m>h</m> and <m>f</m>.
         </p>
       </proof>
     </lemma>
     <p>
-      We now see that under mild hypotheses, the property of an element being distinguished depends only on the principal ideal generated by that element.
+      We now see that the property of an element being distinguished depends only on the principal ideal generated by that element.
     </p>
     <lemma xml:id="lem-distinguished-ideal">
       <statement>
         <p>
-          Let <m>A</m> be a <m>\delta</m>-ring, and choose <m>f \in A</m>.
-          <ol>
-            <li>
-              <p>
-                If <m>f</m> is distinguished, then <m>p \in (p^2, f, \phi(f))A</m>. (If <m>A</m> is <m>p</m>-local, this is equivalent to <m>p \in (f, \phi(f))</m>.)
-              </p>
-            </li>
-            <li>
-              <p>
-                Conversely, if <m>f \in \Rad(A)</m> and <m>p \in (p^2, f, \phi(f))A</m>, then <m>f</m> is distinguished.
-              </p>
-            </li>
-          </ol>
+          Let <m>A</m> be a <m>\delta</m>-ring. Then an element <m>f \in A</m> is distinguished if and only if <m>p \in (p^2, f, \phi(f))</m>.
+          (If <m>A</m> is <m>p</m>-local, this is equivalent to <m>p \in (f, \phi(f))</m>.)
         </p>
       </statement>
       <proof>
         <p>
-          We may assume at once that <m>A</m> is <m>p</m>-local.
-          If <m>f</m> is distinguished, then <m>\phi(f) - f^p = p \delta(f)</m> and <m>\delta(f)</m> is a unit, so <m>p \in (f, \phi(f))</m>.
-          Conversely, suppose that <m>f \in \Rad(A)</m> and <m>p = af + b \phi(f)</m> for some <m>a,b \in A</m>. To show that <m>\delta(f)</m> is 
-          a unit, it is equivalent to check this modulo the ideal <m>(p,f)A \subseteq \Rad(A)</m>; that is, we may check that 
-          <m>I = (p,f,\delta(f))</m> is the unit ideal.
-          Suppose the contrary; using <xref ref="rmk-delta-ring-localization"/>, we may replace <m>A</m> with its localization at the radical of <m>I</m> to reduce to the case
-          where <m>\delta(f) \in \Rad(A)</m> (and <m>A \neq 0</m>). In this case, we have
+          If <m>f</m> is distinguished, then <m>ap + bf + c \delta(f) = 1</m> for some <m>a,b,c \in A</m>. Since
+          <m>\phi(f) - f^p = p \delta(f)</m>, we can write <m>c\phi(f) - cf^p = ap^2 + bfp - cp</m>,
+          yielding <m>p \in (p^2, f, \phi(f)</m>.
+          Conversely, suppose that <m>p \in (p^2, f, \phi(f))</m> and (by way of contradiction) <m>(p, f, \delta(f))</m> is not the unit ideal;
+          using <xref ref="rmk-delta-ring-localization"/>, we may localize <m>A</m> to reduce to the case
+          where <m>p,f,\delta(f) \subseteq \Rad(A)</m> (and <m>A \neq 0</m>). In this case, <m>p \in (f, \phi(f))</m>, so there exist <m>a,b \in A</m>
+          such that <m>p = af + b \phi(f)</m>; that is,
           <me>
-            p(1 - b \delta(f)) = af + f^p.
+            p(1 - b \delta(f)) = af + b f^p = f(a + bf^{p-1}).
           </me>
           Since <m>p</m> is distinguished (<xref ref="exa-crystalline-prism"/>), so is <m>f</m> by two applications of <xref ref="lem-distiguished-times-unit"/> (one in each direction);
           this yields the desired contradiction.
@@ -281,7 +276,7 @@
     </remark>
     <example>
       <p>
-        A <m>\delta</m>-pair <m>(A, I)</m> with <m>I = (p)</m> is a prism if and only if <m>A</m> is derived <m>(p)</m>-complete. We say that such a prism is
+        A <m>\delta</m>-pair <m>(A, I)</m> with <m>I = (p)</m> is a prism if and only if <m>A</m> is derived <m>p</m>-complete. We say that such a prism is
         <term>crystalline</term>.
       </p>
     </example>
@@ -295,13 +290,6 @@
         <xref ref="exa-Ainf-prism"/> is an example of a perfect prism; we will describe these in terms of perfectoid rings in <xref ref="sec_perfect"/>.
       </p>
     </remark>
-    <example>
-      <p>
-        Let <m>A_0</m> be the <m>\delta</m>-ring called <m>A'</m> in <xref ref="exa-universal-distinguished-elem"/>.
-        Let <m>A</m> be the <m>(p, d)</m>-adic completion of <m>A_0</m> and take <m>I = (d)</m>.
-        Then <m>(A, I)</m> is a bounded prism.
-      </p>
-    </example>
     <lemma xml:id="lem-prism-ideal-generator">
       <statement>
         <p>

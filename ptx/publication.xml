@@ -20,7 +20,7 @@
     <!-- HTML-Specific Options -->
     <html>
         <baseurl href="https://kskedlaya.org/prismatic/html/"/>
-        <knowl example="no" remark="no"/>
+        <knowl example="no"/>
     </html>
 
 </publication>

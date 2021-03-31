@@ -65,7 +65,7 @@
     <remark>
       <p>
         The criterion for distinguished elements in <xref ref="lem-distinguished-perfect"/> coincides with Fontaine's notion of a
-        <term>primitive element of degree 1</term>. While this terminology was introduced in <xref ref="bib-Fontaine-Bourbaki"/>, it echoes similar constructions found elsewhere
+        <term>primitive element of degree <m>1</m></term>. While this terminology was introduced in <xref ref="bib-Fontaine-Bourbaki"/>, it echoes similar constructions found elsewhere
         (e.g., <xref ref="bib-Kedlaya-NG"/>.
       </p>
     </remark>
@@ -131,10 +131,10 @@
         </p>
       </proof>
     </theorem>
-    <prop>
+    <proposition>
       <statement>
         <p>
-          The inclusion of perfect prisms into the category of prisms admits a left adjoint. Given a prism <m>(A, I)</m>, the left adjoint is obtained by taking
+          The inclusion of the categroy of perfect prisms into <m>\Prm</m> admits a left adjoint. Given a prism <m>(A, I)</m>, the left adjoint is obtained by taking
           the classical <m>(p,I)</m>-completion of the coperfection of <m>A</m> (which we call the <term>coperfection</term> of <m>(A,I)</m>).
         </p>
       </statement>
@@ -158,10 +158,10 @@
           (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Lemma 1.3 or "<xref ref="bib-Bhatt-Scholze"/>, Lemma 3.9.)
         </p>
       </proof>
-    </prop>
+    </proposition>
   </subsection>
   <subsection>
-    <title>Tilting and untilting</title>
+    <title>Tilting, untilting, and lenses</title>
     <proposition>
       <statement>
         <p>
@@ -169,7 +169,7 @@
           We then have a commutative diagram as in <xref ref="fig-tilting-diagram"/> 
           in which the horizontal arrows are all surjective,
           the vertical arrows are all reductions modulo <m>p</m>,
-          and the diagonal arrows are all isomorphisms. Moreover, this diagram is natural in <m>A</m>.
+          and the diagonal arrows are all isomorphisms. Moreover, this diagram is natural in <m>(A, I)</m>.
         </p>
           <figure xml:id="fig-tilting-diagram">
             <image>
@@ -216,23 +216,24 @@
     </theorem>
     <definition>
       <p>
-        A <term>refract</term> is a ring of the form <m>A/I</m> for some perfect prism <m>(A, I)</m>.
-        By <xref ref="thm-untilting-functor"/>, the category of refracts (defined as a full subcategory of the category of commutative rings) 
+        A <term>lens</term> is a ring of the form <m>A/I</m> for some perfect prism <m>(A, I)</m>.
+        By <xref ref="thm-untilting-functor"/>, the category of lenses (defined as a full subcategory of the category of commutative rings) 
         is equivalent to the category of perfect prisms.
       </p>
       <p>
-        For <m>R = A/I</m> a refract, we write <m>R^\flat</m> for the perfection of <m>R/p</m> and call it the <term>tilt</term> of <m>R</m>.
+        For <m>R = A/I</m> a lens, we write <m>R^\flat</m> for the perfection of <m>R/p</m> and call it the <term>tilt</term> of <m>R</m>.
         We also say that <m>R</m> is an <term>untilt</term> of <m>R^\flat</m>.
       </p>
     </definition>
     <example>
       <p>
         For any perfect ring <m>R</m> of characteristic <m>p</m>, the pair <m>(W(R), (p))</m> is a perfect prism with untilt and tilt both equal to <m>R</m>.
+        In particular, <m>R</m> is a lens.
       </p>
     </example>
     <example>
       <p>
-        Let <m>R^\flat</m> be the perfect ring <m>t</m>-adic completion of <m>\FF_p[t^{p^{-\infty}}]</m> and put <m>A = W(R^\flat)</m>.
+        Let <m>R^\flat</m> be the <m>t</m>-adic completion of <m>\FF_p[t^{p^{-\infty}}]</m> and put <m>A = W(R^\flat)</m>.
         We can construct multiple perfect prisms <m>(A, I)</m> with tilt <m>R^\flat</m>, such as the following.
         <ul>
           <li>
@@ -255,15 +256,15 @@
     <remark>
       <p>
         While the terminology of <term>tilting</term> and <term>untilting</term> is now quite commonly used, 
-        our references to the <term>category of refracts</term> is highly nonstandard; in <xref ref="bib-Bhatt-Morrow-Scholze1"/> and <xref ref="bib-Bhatt-Scholze"/>, 
+        our references to the <term>category of lenses</term> is highly nonstandard; in <xref ref="bib-Bhatt-Morrow-Scholze1"/> and <xref ref="bib-Bhatt-Scholze"/>, 
         objects of this category are called <term>perfectoid rings</term>.
         However, that usage is incompatible with most prior literature; in older terminology these would be <term>integral perfectoid rings</term>.
-        To minimize confusion, we sidestep this issue by using a nonce terminology here.
+        To minimize confusion, we sidestep this issue by using a nonce terminology based on the metaphor of prisms.
       </p>
     </remark>
   </subsection>
   <subsection>
-    <title>On the structure of refracts</title>
+    <title>On the structure of lenses</title>
     <definition>
       <p>
         A ring <m>R</m> of characteristic <m>p</m> is <term>semiperfect</term> if the Frobenius automorphism of <m>R</m> is surjective.
@@ -278,7 +279,7 @@
     <lemma xml:id="lem-refract-properties">
       <statement>
         <p>
-          Let <m>R</m> be a refract.
+          Let <m>R</m> be a lens.
         </p>
         <ol>
           <li>
@@ -295,7 +296,8 @@
           </li>
           <li>
             <p>
-              The ideal <m>\sqrt{pR}</m> is flat over <m>R</m>; it is an increasing union of principal ideals; and it satisfies <m>(\sqrt{pR})^2 = \sqrt{pR}</m>.
+              The ideal <m>\sqrt{pR}</m> is an increasing union of principal ideals and satisfies <m>(\sqrt{pR})^2 = \sqrt{pR}</m>.
+              (It is also flat as an <m>R</m>-module; see <xref ref="lem-refract-almost-ideal-flat"/>.)
             </p>
           </li>
           <li>
@@ -307,29 +309,53 @@
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-course"/>, Lecture IV, Lemma 2.6.
+          Let <m>(A, I)</m> be the perfect prism with <m>A/I \cong R</m> and let <m>R^\flat</m> be the tilt.
+          Then <m>R^\flat</m> is perfect and <m>R/p \cong R^\flat/p</m>, so <m>R/p</m> is semiperfect. This proves (1).
+        </p>
+        <p>
+          For (2), apply <xref ref="lem-perfect-prisms-structure"/> to write <m>I = (d)</m> with <m>d \in A</m> a distinguished element.
+          By <xref ref="lem-distinguished-perfect"/>, we have <m>d = [a_0] - pu</m> for some <m>a_0 \in R^\flat</m> and some unit <m>u \in A^\times</m>.
+          We may then take <m>\varpi</m> to be the image of <m>[a_0]</m> to obtain (2).
+        </p>
+        <p>
+          To check (3), we show that <m>\sqrt{pR} = \bigcup_n (\varpi^{p^{-n}})</m>. Since the left side contains the right side,
+          it suffices to observe that the quotient <m>\overline{R} = R / \bigcup_n (\varpi^{p^{-n}})</m> is itself perfect, and hence reduced.
+        </p>
+        <p>
+          To check (4), keep notation as above; it suffices to check that <m>R[p]</m> is killed by <m>[a_0^{p^{-n}}]</m> for each <m>n</m>
+          (since these elements generate <m>\sqrt{pR}</m>). To show that <m>R[p]</m> is killed by <m>[a_0^{p^{-n}}]</m> for some particular <m>n</m>,
+          note that neither <m>p</m> nor <m>d</m> is a zerodivisor in <m>A</m> (by <xref ref="lem-distinguished-perfect"/>
+          and <xref ref="lem-perfect-prisms-structure"/>), so we may write 
+          <me>
+            R[p] = (A/d)[p] = (A/p)[d] = R^\flat[d]
+          </me> 
+          (see <xref ref="exer-torsion-exchange"/>). By <xref ref="lem-perfect-derived-completion"/>, 
+          the latter is annihilated by <m>[a_0^{p^{-n}}]</m>, as claimed.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Lemma 2.6.)
         </p>
       </proof>
     </lemma>
+    <p>
+      We can now give an intrinsic characterization of lenses, without reference to perfect prisms.
+    </p>
     <proposition xml:id="prop-conditions-on-refract">
       <statement>
         <p>
-          A commutative ring <m>R</m> is a refract if and only if the following conditions hold.
+          A commutative ring <m>R</m> is a lens if and only if the following conditions hold.
           <ol>
             <li>
               <p>
-                The ring <m>R</m> is classically <m>p</m>-complete and semiperfect.
+                The ring <m>R</m> is classically <m>p</m>-complete and and <m>R/p</m> is semiperfect.
               </p>
             </li>
             <li>
               <p>
-                The kernel of the map <m>\theta_R: W(R^\flat) \to R</m> is principal. If <m>R</m> is <m>p</m>-torsion-free, we may instead check that 
-                <m>R</m> is <term><m>p</m>-normal</term>: every <m>x \in R[p^{-1}]</m> with <m>x^p \in R</m> belongs to <m>R</m>.
+                The kernel of the map <m>\theta_R: W(R^\flat) \to R</m> is principal.
               </p>
             </li>
             <li>
               <p>
-                There exists some <m>\omega \in R</m> such that <m>\omega^p = pu</m> for some unit <m>u \in R</m>.
+                There exists some <m>\varpi \in R</m> such that <m>\varpi^p = pu</m> for some unit <m>u \in R</m>.
               </p>
             </li>
           </ol>
@@ -337,17 +363,95 @@
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-course"/>, Lecture IV, Proposition 2.10.
+          If <m>R = A/I</m> is a lens, then all of the stated conditions follow directly from 
+          <xref ref="lem-perfect-prisms-structure"/> and <m>R/p</m> is semiperfect by <xref ref="lem-refract-properties"/>.
+          Conversely, suppose that these conditions hold; we will show that
+          for <m>A = W(R^\flat), I = \ker(\theta_R)</m>,
+          the pair <m>(A,I)</m> is a perfect prism with <m>A/I \cong R</m>.
+          Since <m>\theta_R</m> induces a surjective map mod <m>p</m>,
+          it is in fact surjective, so <m>A/I \cong R</m>. The ring <m>A</m> is classically <m>p</m>-complete;
+          we may check that it is classically <m>(p,I)</m>-complete 
+          by checking that <m>A/p \cong R^\flat</m> is classically <m>I</m>-complete,
+          which is straightforward.
+        </p>
+        <p>
+          At this point, we must show that <m>I</m> admits a distinguished generator.
+          To this end, choose <m>x,v \in A</m> lifting <m>\varpi,u</m> and put <m>g = pv - x^p \in \ker(I)</m>.
+          The series expansion of <m>x</m> has zero coefficient of <m>p</m>; since <m>v</m> is a unit (because <m>A</m>
+          is <m>I</m>-local), we deduce from <xref ref="lem-distinguished-perfect"/> that <m>g</m> is distinguished.
+          Since <m>I</m> is principal, we may apply <xref ref="lem-distiguished-times-unit"/> to deduce that <m>g</m> is in fact a generator.
+        </p>
+      </proof>
+    </proposition>
+    <p>
+      In the <m>p</m>-torsion-free case we can make this description even simpler.
+    </p>
+    <proposition xml:id="prop-conditions-on-refract2">
+      <statement>
+        <p>
+          A <m>p</m>-torsion-free commutative ring <m>R</m> is a lens if and only if the following conditions hold.
+          <ol>
+            <li>
+              <p>
+                The ring <m>R</m> is classically <m>p</m>-complete and and <m>R/p</m> is semiperfect.
+              </p>
+            </li>
+            <li>
+              <p>
+                The ring <m>R</m> is <term><m>p</m>-normal</term>: every <m>x \in R[p^{-1}]</m> with <m>x^p \in R</m> belongs to <m>R</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists some <m>\varpi \in R</m> such that <m>\varpi^p = pu</m> for some unit <m>u \in R</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Suppose first that <m>R</m> is a lens. In light of <xref ref="prop-conditions-on-refract"/>, we only need to check that
+          <m>R</m> is <m>p</m>-normal. Take <m>\varpi</m> as in <xref ref="lem-refract-properties"/>.
+          Given <m>x \in R[p^{-1}]</m> with <m>x^p \in R</m>, let <m>n</m> be the smallest nonnegative integer such that
+          <m>\varpi^n x \in R</m>. If <m>n > 0</m>, then by writing
+          <me>
+            (\varpi^n x)^p = \varpi^{np} x^p \in \varpi^{np} R \subset \varpi^p R
+          </me>
+          and using that the Frobenius map <m>R/\varpi \to R/\varpi^p</m> is a bijection, we see that
+          <m>\varpi^n x \in \varpi R</m> and so <m>\varpi^{n-1} x \in R</m>, a contradiction.
+          Hence <m>n=0</m> and <m>x \in R</m>, as desired.
+        </p>
+        <p>
+          Conversely, suppose that the given conditions hold.
+          It will suffice to show that the kernel of <m>\theta_R</m> is principal, as then we can apply
+          <xref ref="prop-conditions-on-refract"/>.
+          We first show that the kernel of the (surjective) Frobenius map <m>R/p \to R/p</m> is generated by <m>\varpi</m>.
+          Given <m>x \in R</m> with <m>x^p \in pR</m>, write <m>x^p = \varpi^p y</m> for some <m>y \in R</m>. 
+          Then <m>(x/\varpi)^p = y \in R</m> and so <m>x \in \varpi R</m>.
+        </p>
+        <p>
+          Now the Frobenius on <m>R/p</m> factors as <m>R/p \to R/\varpi \to R/p</m> where the first map is the canonical
+          projection and the second map is an isomorphism. Since this composite is surjective, the image of <m>\varpi</m> in 
+          <m>R/p</m> admits a compatible system of <m>p</m>-power roots <m>\overline{\varpi}^{p^{-n}}</m>.
+          By induction on <m>n</m>, the kernel of <m>\phi^n</m> on <m>R/p</m> is generated by <m>\overline{\varpi}^{p^{-n}}</m>.
+          Hence the kernel of <m>\overline{\theta}_R: R^\flat \to R/p</m> is generated by the element <m>\overline{\varpi}</m> of <m>R^\flat</m>
+          corresponding to the coherent sequence <m>(\overline{\varpi}^{p^{-n}})_n</m>.
+          Since both <m>W(R^\flat)</m> and <m>R</m> are <m>p</m>-torsion-free and classically <m>p</m>-complete, 
+          the kernel of <m>\theta_R</m> is generated by any element of the kernel lifting <m>\overline{\varpi}</m>,
+          and in particular is principal.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Proposition 2.10.)
         </p>
       </proof>
     </proposition>
     <remark xml:id="rmk-Zp-not-refract">
       <p>
-        The example <m>R = \ZZ_p</m> shows that the fourth condition of <xref ref="prop-conditions-on-refract"/> does not follows from the others.
+        The example <m>R = \ZZ_p</m> shows that condition 3 of <xref ref="prop-conditions-on-refract"/> 
+        does not follow from the others (and likewise for <xref ref="prop-conditions-on-refract2"/>).
       </p>
     </remark>
     <p>
-      Crucially, <xref ref="prop-conditions-on-refract"/> enables us to produce many refracts in cases where it is not so obvious how to give a direct construction
+      Crucially, <xref ref="prop-conditions-on-refract"/> enables us to produce many lenses in cases where it is not so obvious how to give a direct construction
       of the corresponding perfect prism. In particular, we can make some prisms without specifying either a <m>\delta</m>-ring structure or a Frobenius lift!
     </p>
     <definition>
@@ -367,43 +471,85 @@
         </li>
       </ol>
       <p>
-        By <xref ref="prop-conditions-on-refract"/>, the valuation ring of a perfectoid field is a refract.
+        By <xref ref="lem-perfectoid-field-gives-lens"/>, the valuation ring of a perfectoid field is a lens. Its tilt is also the valuation ring of a perfectoid field
+        (of characteristic <m>p</m>), denoted <m>K^\flat</m>.
       </p>
     </definition>
+    <lemma xml:id="lem-perfectoid-field-gives-lens">
+      <statement>
+        <p>
+          For any perfectoid field <m>K</m>, the valuation ring <m>\frako_K</m> is a lens.
+        </p>
+      </statement>
+      <proof>
+        <p>
+         If <m>K</m> is of characteristic <m>p</m>, then <m>\frako_K/p=\frako_K</m> is reduced and semiperfect, hence perfect.
+         We thus assume hereafter that <m>K</m> is characteristic 0; we may then check the conditions of <xref ref="prop-conditions-on-refract2"/>.
+        </p>
+        <p>
+          It is clear that <m>\frako_K</m> is classically <m>p</m>-complete and <m>p</m>-normal (since it is integrally closed),
+          and by hypothesis <m>\frako_K/p</m> is semiperfect.
+          Since <m>K</m> is not discretely valued, we can choose an element <m>x \in \frako_K</m> of positive valuation
+          such that <m>x^p</m> divides <m>p</m>.
+          Since <m>\frako_K/p</m> is semiperfect, there exists <m>y \in \frako_K</m> such that <m>y^p \equiv p/x^p \pmod{p}</m>;
+          put <m>\varpi = xy</m>. Then <m>\varpi^p/p \equiv 1 \pmod{x^p}</m> and so <m>u = \varpi^p/p</m> is a unit in 
+          <m>\frako_K</m>.
+        </p>
+      </proof>
+    </lemma>
     <p>
-      Most familiar examples of refracts are either <m>p</m>-torsion-free or of characteristic <m>p</m>. We can prove a result that shows that this accounts for
+      The following result generalizes the <term>field of norms isomorphism</term> of Fontaine and Wintenberger <xref ref="bib-Fontaine-Wintenberger"/>.
+      We will later give an independent <q>prismatic</q> proof.
+    </p>
+    <theorem xml:id="thm-field-of-norms">
+      <title>Tilting correspondence for perfectoid fields</title>
+      <statement>
+        <p>
+          Let <m>K</m> be a perfectoid field. Then for every finite extension <m>L</m> of <m>K</m>, <m>L</m> is a perfectoid field and <m>[L:K] = [L^\flat:K^\flat]</m>.
+          Consequently, the categories of finite etale algebras over <m>K</m> and <m>K^\flat</m> are canonically isomorphic; in particular, the
+          absolute Galois groups of <m>K</m> and <m>K^\flat</m> are isomorphic.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Kedlaya-new-methods"/> or <xref ref="bib-Scholze-perfectoid1"/> (or other references as given in <xref ref="bib-Kedlaya-AWS"/>, Remark 2.1.8).
+        </p>
+      </proof>
+    </theorem>
+    <p>
+      Most familiar examples of lenses are either <m>p</m>-torsion-free or of characteristic <m>p</m>. We can prove a result that shows that this accounts for
       all possibilities up to a <q>glueing</q> construction.
     </p>
     <lemma>
       <statement>
         <p>
-          Let <m>R</m> be a perfect <m>\FF_p</m>-algebra. Let <m>I</m> be a radical ideal of <m>R</m> and let <m>J = R[I]</m>.
-          Then <m>J</m> and <m>I+J</m> are both radical ideals and the square
-          <figure>
+          Let <m>R</m> be a perfect <m>\FF_p</m>-algebra. Let <m>J</m> be a radical ideal of <m>R</m> and let <m>J' = R[J]</m>.
+          Then <m>J'</m> and <m>J+J'</m> are both radical ideals and the square in <xref ref="fig-perfect-double-square"/>
+          is both a pullback square and a pushout square of commutative rings.
+        </p>
+          <figure xml:id="fig-perfect-double-square">
             <image width="25%">
               <latex-image>
                 \xymatrix{
-                R \ar[r] \ar[d] &amp; R/I \ar[d] \\
-                R/J \ar[r] &amp; R/(I+J) 
+                R \ar[r] \ar[d] &amp; R/J' \ar[d] \\
+                R/J \ar[r] &amp; R/(J+J') 
                 }
               </latex-image>
             </image>
           </figure>
-          is both a pullback square and a pushout square of commutative rings.
-        </p>
       </statement>
       <proof>
         <p>
-          We first check that <m>J</m> is radical. If <m>x \in R</m> with <m>x^p \in J</m>, then <m>x^p I = 0</m>; since <m>R</m> is perfect,
-          it follows that <m>xI = 0</m> and so <m>x \in J</m>.
+          We first check that <m>J'</m> is radical. If <m>x \in R</m> with <m>x^p \in J'</m>, then <m>x^p J = 0</m>; since <m>R</m> is perfect,
+          it follows that <m>xJ = 0</m> and so <m>x \in J'</m>.
         </p>
         <p>
-          We next check that <m>I+J</m> is radical. The ideal <m>I+J</m> is the kernel of <m>R \to R/I \otimes_R R/J</m>; the target is a colimit of perfect rings and hence
+          We next check that <m>J+J'</m> is radical. The ideal <m>J+J'</m> is the kernel of <m>R \to R/J \otimes_R R/J'</m>; the target is a colimit of perfect rings and hence
           is itself perfect.
         </p>
         <p>
           The square in question is already a pushout square at the level of groups, hence also at the level of rings. To check that it is a pullback square, we must check 
-          that <m>I \cap J = 0</m>. To this end, choose <m>x \in I \cap J</m>; since <m>x \in J</m> we have <m>xI = 0</m>, but since <m>x \in I</m> this implies <m>x^2 = 0</m>
+          that <m>J \cap J' = 0</m>. To this end, choose <m>x \in J \cap J'</m>; since <m>x \in J'</m> we have <m>xJ = 0</m>, but since <m>x \in J</m> this implies <m>x^2 = 0</m>
           and finally <m>x = 0</m> because <m>R</m> is perfect.
         </p>
       </proof>
@@ -412,8 +558,10 @@
       <statement>
         <p>
           Let <m>(A, I)</m> be a perfect prism and put <m>R = A/I</m>. Put <m>\overline{R} = R/\sqrt{pR}</m>, <m>S = R/R[\sqrt{pR}]</m>, <m>\overline{S} = S/\sqrt{pS}</m>.
-          Then <m>\overline{R}, S, \overline{S}</m> are all refracts and the commutative diagram
-          <figure>
+          Then <m>\overline{R}, S, \overline{S}</m> are all lenses and the square in <xref ref="fig-lens-double-square"/>
+          is both a pullback square and a pushout square of commutative rings.
+        </p>
+          <figure xml:id="fig-lens-double-square">
             <image width="25%">
               <latex-image>
                 \xymatrix{
@@ -423,25 +571,101 @@
               </latex-image>
             </image>
           </figure>
-          is both a pullback square and a pushout square.
+        <p>
+          In addition, the following statements hold.
         </p>
+        <ol>
+          <li>
+            <p>
+              The ring <m>S</m> is <m>p</m>-torsion-free.
+            </p>
+          </li>
+          <li>
+            <p>
+              The ideal <m>\sqrt{pR}</m> maps isomorphically onto <m>\sqrt{pS}</m> (and hence is also <m>p</m>-torsion-free).
+            </p>
+          </li>
+          <li>
+            <p>
+              The map <m>R \to \overline{R}</m> induces an isomorphism <m>R[\sqrt{pR}] \to \ker(\overline{R} \to \overline{S})</m>,
+              and thus <m>x \mapsto x^p</m> is bijective on <m>R[\sqrt{pR}]</m>.
+            </p>
+          </li>
+        </ol>
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-course"/>, Lecture IV, Proposition 3.2.
+          We first show that the square is a pullback. 
+          By <xref ref="lem-perfect-prisms-structure"/> we can write
+          <m>I = (d)</m> with <m>d</m> distinguished. By <xref ref="lem-distinguished-perfect"/> we can write
+          <m>d = [a_0] - pu</m> with <m>a_0 \in R^\flat</m>, <m>u \in A^\times</m>.
+          Consider the perfect ideals <m>J = (a_0^{p^{-\infty}})</m> and <m>J' = R^\flat[J]</m> of the perfect ring <m>R^\flat</m>. The square
+          <xref ref="fig-perfect-double-square-Witt"/> consists of <m>p</m>-torsion-free, <m>p</m>-adically complete rings and its reduction modulo <m>p</m>
+          is the pullback square from <xref ref="fig-perfect-double-square"/>; hence by devissage it is a pullback square.
+        </p>
+          <figure xml:id="fig-perfect-double-square-Witt">
+            <image width="25%">
+              <latex-image>
+                \xymatrix{
+                W(R^\flat) \ar[r] \ar[d] &amp; W(R^\flat/J') \ar[d] \\
+                W(R^\flat/J) \ar[r] &amp; W(R^\flat/(J+J')) 
+                }
+              </latex-image>
+            </image>
+          </figure>
+          <p>
+            Since <m>d</m> is a non-zerodivisor in each of the rings in <xref ref="fig-perfect-double-square-Witt"/> by <xref ref="lem-distinguished-perfect"/>,
+            we may reduce modulo <m>d</m> to get another pullback square (<xref ref="fig-perfect-double-square-Witt-mod-d"/>).
+            Let <m>S'</m> be the top right and bottom right entry of the new square.
+          </p>
+          <figure xml:id="fig-perfect-double-square-Witt-mod-d">
+            <image width="25%">
+              <latex-image>
+                \xymatrix{
+                W(R^\flat)/d \cong R \ar[r] \ar[d] &amp; S' = W(R^\flat/J')/d \ar[d] \\
+                W(R^\flat/J)/d \ar[r] &amp; W(R^\flat/(J+J'))/d
+                }
+              </latex-image>
+            </image>
+          </figure>
+          <p>
+            We now show that <xref ref="fig-perfect-double-square-Witt-mod-d"/> coincides with <xref ref="fig-lens-double-square"/>.
+            Inside <m>W(R^\flat/J)</m> we have <m>(d) = (p)</m> since <m>a_0 \in I</m>, so by <xref ref="lem-refract-properties"/>,
+            <me>
+              W(R^\flat/J)/d = R^\flat/J = R^\flat/(a_0^{p^{-\infty}}) \cong \overline{R}.
+            </me>
+          </p>
+          <p>
+            Since both <m>d</m> and <m>p</m> are non-zerodivisors on <m>S'</m>,
+            by <xref ref="exer-torsion-exchange"/> we have <m>(S'/(d))[p] \cong (S'/(p))[d] = (R^\flat/J')[d]</m>.
+            The latter vanishes because the element <m>d = a_0</m> of <m>R^\flat/J'</m> is a non-zerodivisor (by <xref ref="lem-bounded-torsion-derived-complete"/>).
+            We deduce that <m>S'/(d)</m> is <m>p</m>-torsion-free, and so the surjection <m>R \to S'</m> from the top row factors through
+            <m>R/R[p^\infty] = S</m>. As in the previous paragraph, we may identify the bottom right entry with <m>S'/\sqrt{pS'}</m>.
+          </p>
+          <p>
+            Let <m>K</m> be the kernel of <m>R \to S'</m>. Since <xref ref="fig-perfect-double-square-Witt-mod-d"/> is a pullback square,
+            <m>K</m> embeds into <m>W(R^\flat)/J)/d = \overline{R}</m> and hence is <m>p</m>-torsion. Hence <m>K \subseteq R[p^\infty]</m>
+            and so the induced map <m>R/R[p^\infty] = S \to S'</m> is injective. Since it is also surjective (because <m>R \to S'</m> is) it is an isomorphism;
+            this proves that <xref ref="fig-lens-double-square"/> and <xref ref="fig-perfect-double-square-Witt-mod-d"/> are the same square,
+            and hence the former is a pullback square.
+          </p>
+        <p>
+          To conclude, note that the first numbered assertion is included in <xref ref="lem-refract-properties"/>; the second and third assertions follow from
+          the fact that <xref ref="fig-lens-double-square"/> is now a pullback square; and these in turn imply that the square is a pushout.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Proposition 3.2.)
         </p>
       </proof>
     </proposition>
     <corollary>
       <statement>
         <p>
-          Any refract is a reduced ring.
+          Any lens is a reduced ring.
         </p>
       </statement>
       <proof>
         <p>
           By <xref ref="prop-structure-of-untilts"/>, we may reduce to the cases of a perfect ring of characteristic <m>p</m> and of a <m>p</m>-torsion-free untilted ring.
-          In the former case, it is evident that any perfect ring is reduced. in the latter case, let <m>R</m> be the refract in question. 
+          In the former case, it is evident that any perfect ring is reduced. in the latter case, let <m>R</m> be the lens in question. 
           Apply <xref ref="lem-refract-properties"/> to choose an element <m>\varpi \in R</m> such that <m>\varpi^p = pu</m> for some unit <m>u \in R^\times</m>.
           It will suffice to check that any <m>x \in R</m> with <m>x^p = 0</m> vanishes, or (because <m>R</m> is <m>p</m>-adically separated)
           that any such <m>x</m> is divisible by <m>\varpi^n</m> for any positive integer <m>n</m>. We prove this by induction starting with the base case <m>n=0</m>.
@@ -476,7 +700,7 @@
     <exercise>
       <statement>
         <p>
-          Show that the category of refracts is closed under arbitrary colimits and products in the category of all derived <m>p</m>-complete rings. However, this does <em>not</em>
+          Show that the category of lenses is closed under arbitrary colimits and products in the category of all derived <m>p</m>-complete rings. However, this does <em>not</em>
           imply closure under arbitrary limits; see <xref ref="lem-refract-properties"/>.
         </p>
       </statement>
@@ -484,7 +708,7 @@
     <exercise xml:id="exer-refracts-no-equalizers">
       <statement>
         <p>
-          Show that the category of refracts is not closed under formation of equalizers in the category of rings.
+          Show that the category of lenses is not closed under formation of equalizers in the category of rings.
         </p>
       </statement>
       <proof>
@@ -503,6 +727,20 @@
         is a multiplicative bijection. This gives the set on the left a ring structure; can you describe the addition law explicitly?
       </statement>
     </exercise>
+    <exercise xml:id="exer-torsion-exchange">
+      <statement>
+        <p>
+          For <m>A \in \Ring</m> and <m>x,y \in A</m> two non-zerodivisors, prove that the <m>A</m>-modules <m>(A/x)[y]</m>
+          and <m>(A/y)[x]</m> are isomorphic.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          As per <xref ref="bib-Bhatt-course"/>, Lecture IV, Lemma 2.7, compute both modules from the homology of the Koszul
+          complexes <m>\Kos(A; x,y) \cong \Kos(A; y, x).</m>
+        </p>
+      </hint>
+    </exercise>
     <exercise>
       <statement>
         <p>
@@ -514,6 +752,11 @@
           See <xref ref="bib-Bhatt-course"/>, Lecture IV, Exercise 2.4.
         </p>
       </proof>
+    </exercise>
+    <exercise>
+      <p>
+        Show that for any lens <m>R</m>, the <m>p</m>-adic completion of <m>R[T^{p^{-\infty}}]</m> is also a lens.
+      </p>
     </exercise>
   </exercises>
 </section>

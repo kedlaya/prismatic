@@ -24,7 +24,7 @@
         For the remainder of the course (except as specified), fix a prime number <m>p</m>.
         Let <m>\Ring</m> denote the category of commutative unital rings.
         Let <m>\Rad(A)</m> denote the Jacobson radical of <m>A \in \Ring</m>.
-        We say that <m>A</m> is <term><m>p</m>-local</term> if <m>p \in \Rad(A)</m>.
+        For <m>I</m> an ideal of <m>A</m>, we say that <m>A</m> is <term><m>I</m>-local</term> (or <term><m>f</m>-local</term> if <m>I = (f)</m>) if <m>I \subseteq \Rad(A)</m>.
       </p>
     </definition>
   </introduction>
@@ -142,7 +142,7 @@
     </example>
     <remark xml:id="rmk-delta-ring-image-of-Z">
       <p>
-        Using <xref ref="eq-delta-ring-sum"/>, we can start from the equality <m>\delta(0) = \delta(1) = 1</m> and reconstruct the values of <m>\delta</m>
+        Using <xref ref="eq-delta-ring-sum"/>, we can start from the equality <m>\delta(0) = \delta(1) = 0</m> and reconstruct the values of <m>\delta</m>
         on arbitrary integers. Consequently, for any <m>\delta</m>-ring <m>A</m>, the action of <m>\delta</m> on integers is given by
         <xref ref="eq-delta-on-Z"/> <em>even if <m>A</m> is not <m>p</m>-torsion-free</em>. In particular, for any positive integer <m>n</m>,
         <me>
@@ -154,6 +154,7 @@
         <me>
           \delta(p^n x) = p^{np} \delta(x) + x^p \delta(p^n) + p \delta(x) \delta(p^n) \equiv p^{n-1} x^p \pmod{p^n}.
         </me>
+        See <xref ref="exer-phi-congruence"/> for a related observation.
       </p>
     </remark>
     <example xml:id="exa-delta-ring-cyclotomic">
@@ -257,7 +258,7 @@
           <ul>
             <li>
               <p>
-                addition is commutative and the element <me>0 = (0, 0)</me> is an identity element;
+                addition is commutative and the element <m>0 = (0, 0)</m> is an identity element;
               </p>
             </li>
             <li>
@@ -287,7 +288,7 @@
           <me>
             W_2(A) \to A \times A, \qquad (x_0, x_1) \mapsto (x_0, x_0^p + px_1)
           </me>
-          is an injective morphism of sets with two operations for the <em>usual</em> ring operations on <m>A \times A</m>.
+          is a monomorphism (in the category of sets equipped with two binary operations) for the <em>usual</em> ring operations on <m>A \times A</m>.
           Consequently, we may deduce the desired properties by transferring the knowledge from <m>A \times A</m>.
           (This map is related to the <term>ghost map</term> on Witt vectors; see <xref ref="subsec_ghost"/>.)
         </p>
@@ -295,16 +296,21 @@
     </lemma>
     <remark xml:id="rmk-W2-interpretation">
       <p>
-        Ignoring the second component defines a ring homomorphism <m>\epsilon: W_2(A) \to A</m>. In this notation, a <m>\delta</m>-ring structure on <m>A</m>
-        corresponds to a ring homomorphism <m>w: A \to W_2(A)</m> such that <m> \epsilon \circ w = \id_A</m>.
+        There are two natural (in <m>A</m>) ring homomorphisms <m>\epsilon_1, \epsilon_2: W_2(A) \to A</m> given by
+        <me>
+          \epsilon_1((x_0, x_1)) = x_0, \qquad \epsilon_2((x_0, x_1)) = x_0^p + px_1.
+        </me>
+        In this notation, a <m>\delta</m>-ring structure on <m>A</m>
+        corresponds to a ring homomorphism <m>w: A \to W_2(A)</m> such that <m>\epsilon_1 \circ w = \id_A</m>.
         In this way, the ring <m>W_2(A)</m> plays a role comparable to that of the <term>ring of dual numbers</term> <m>k[\epsilon]/(\epsilon^2)</m> over a field <m>k</m>.
       </p>
     </remark>
-    <remark>
+    <remark xml:id="rmk-glueing-interpretation">
       <p>
         For <m>A</m> a <m>p</m>-torsion-free ring, <m>W_2(A)</m> can also be described as the fiber product of the reduction map <m>A \to A/(p)</m>
-        with the composition <m>A \to A/(p) \stackrel{\phi}{\to} A/(p)</m> where <m>\phi</m> denotes the Frobenius on <m>A/(p)</m>. That is,
-        <m>\Spec W_2(A)</m> consists of two copies of <m>\Spec A</m> glued along <m>\Spec A/(p)</m> via Frobenius.
+        with the composition <m>A \to A/(p) \stackrel{\phi}{\to} A/(p)</m> where <m>\phi</m> denotes the Frobenius on <m>A/(p)</m>;
+        the two projection maps <m>W_2(A) \to A</m> are the ones from <xref ref="rmk-W2-interpretation"/>.
+        That is, <m>\Spec W_2(A)</m> consists of two copies of <m>\Spec A</m> glued along <m>\Spec A/(p)</m> via Frobenius.
       </p>
       <p>
         In <xref ref="bib-Bhatt-course"/>, Lecture II, Remark 3.4, Bhatt also suggests a version of this statement without the <m>p</m>-torsion-free condition:
@@ -496,7 +502,7 @@
         </p>
       </hint>
     </exercise>
-    <exercise>
+    <exercise xml:id="exer-phi-congruence">
       <statement>
         <p>
           (Emerton) Prove that for any <m>\delta</m>-ring <m>A</m> and any <m>x \in A</m>, 
@@ -507,7 +513,7 @@
       </statement>
       <hint>
         <p>
-          Reduce to the <m>p</m>-torsion-free case.
+          Reduce to the <m>p</m>-torsion-free case, then use the fact that <m>\phi</m> is a ring homomorphism.
         </p>
       </hint>
     </exercise>

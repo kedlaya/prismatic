@@ -142,12 +142,39 @@
   </remark>
   <subsection xml:id="subsec-derived-complete-derived">
     <title>Derived completeness revisited</title>
+  </subsection>
+  <subsection>
+    <title>Some loose ends</title>
     <example xml:id="exa-derived-example-QZ">
       <p>
         Take <m>A = \ZZ, I = (p), M = \QQ/\ZZ</m>. Then the ordinary completion of <m>M</m> vanishes, as does the derived completion of <m>M</m>
         <em>as a module</em>, but the derived completion of <m>M</m> <em>as a complex</em> is the group <m>\ZZ_p</m> concentrated in degree 1.
       </p>
     </example>
+    <lemma xml:id="lem-refract-almost-ideal-flat">
+      <statement>
+        <p>
+          With notation as in <xref ref="lem-refract-properties"/>, the ideal <m>\sqrt{pR}</m> is a flat <m>R</m>-module.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We next check that <m>\sqrt{pR}</m> is flat. We must check that for any <m>M \in \Mod_R</m>,
+          <m>\Tor_R^i(M, \sqrt{pR}) = 0</m> for all <m>i \gt; 0</m>, or equivalently <m>\Tor_R^i(M, \overline{R}) = 0</m>
+          for all <m>i \gt; 1</m>.
+          By tensoring <m>M</m> with the exact sequence
+          <me>
+            0 \to \Tor^1_{\ZZ_p}(M, \QQ_p) \to M \to M \otimes_{\ZZ_p} \QQ_p \to M \otimes_{\ZZ_p} \QQ_p/\ZZ_p \to 0
+          </me>
+          and using the fact that <m>\overline{R} \otimes_{\ZZ_p} \QQ_p = 0</m>, we may further reduce to the case of a
+          module <m>M</m> which is <m>p</m>-power torsion. By devissage, we may further reduce to the case where <m>M</m> is killed by <m>p</m>.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Lemma 2.6.)
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      Tensor product of lenses.
+    </p>
   </subsection>
   <exercises>
     <exercise xml:id="exer-derived-completion-delta">

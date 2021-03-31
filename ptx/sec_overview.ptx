@@ -54,7 +54,7 @@
       </me>
       we thus obtain a pairing
       <me>
-         H_i(X, \CC) \cong H^i_{\dR}(X) \to \CC
+         H_i(X, \CC) \times H^i_{\dR}(X) \to \CC
       </me>
       which by the de Rham and Dolbeaut theorems is a perfect pairing; that is, the induced map
       <me>
@@ -107,7 +107,7 @@
     <title>The trouble with torsion</title>
     <p>
       One thing that is missing from the previous discussion is the fact that singular homology can be defined over <m>\ZZ</m>, and is <em>not</em> in general a subspace of the singular homology over <m>\QQ</m>;
-      that is, the singular homology can be nontrivial. This is true even for algebraic varieties.
+      that is, the singular homology can have nontrivial torsion. This is true even for algebraic varieties.
     </p>
     <example>
       <p>
@@ -128,7 +128,7 @@
           Let <m>X</m> be a smooth projective variety over <m>\QQ</m>. Choose a prime number <m>p</m> for which <m>X</m> can be extended to a smooth proper scheme <m>\frakX</m> over <m>\ZZ_{(p)}</m>,
           and put <m>X_p = \frakX \times_{\ZZ_{(p)}} \FF_p</m>. Then
           <me>
-            \dim_{\FF_p} H^i(X^{\an}, \FF_p) \leq \dim_{\FF_p} H^i_{\dR}(X_p).
+            \dim_{\FF_p} H^i(X^{\an}, \ZZ/p\ZZ) \leq \dim_{\FF_p} H^i_{\dR}(X_p).
           </me>
         </p>
       </statement>
@@ -144,8 +144,11 @@
     </p>
     <remark>
       <p>
-        For various reasons, the inequality in <xref ref="T-torsion-cohomology-comparison"/> can be strict. One reason is that the left-hand side is not uniquely determined by <m>X_p</m>.
-        See <xref ref="bib-Bhatt-Morrow-Scholze1"/>, 2.1 for an example (a threefold which admits a nonsplit elliptic fibration over an Enriques surface, as compared with the split fibration).
+        For various reasons, the inequality in <xref ref="T-torsion-cohomology-comparison"/> can be strict. 
+        One reason is that <m>X_p</m> is not uniquely determined by <m>X</m>; this has to do with birational geometry in mixed characteristic
+        (e.g., one can perform <term>flips</term> in the special fiber).
+        Another is that the left-hand side is not uniquely determined by <m>X_p</m>;
+        see <xref ref="bib-Bhatt-Morrow-Scholze1"/>, 2.1 for an example (a threefold which admits a nonsplit elliptic fibration over an Enriques surface, as compared with the split fibration).
       </p>
     </remark>
   </subsection>
@@ -156,7 +159,7 @@
     </p>
     <p>
       The discussion we conducted in over <m>\CC</m> falls under the label of <term>Hodge theory</term>. There is a parallel discussion that happens for algebraic varieties over
-      <m>p</m>-adic fields that is covered by the label of <term><m>p</m>-adic Hodge theory</term>. In that context, there is no good analague of singular (Betti) homology or cohomology, because
+      <m>p</m>-adic fields that is covered by the label of <term><m>p</m>-adic Hodge theory</term>. In that context, there is no good analogue of singular (Betti) homology or cohomology, because
       the underlying topological spaces don't have the <q>right</q> homotopy type. (The homotopy type generally misses all of the <q>good reduction</q> information and 
       only picks up <q>bad reduction</q> data. There is an extensive literature on this point; see <xref ref="bib-Ducros-homotopy"/> for an introduction.)
     </p>
@@ -175,10 +178,11 @@
     <p>
       In this course we will consider an approach to <m>p</m>-adic cohomology via the mechanism of <term>prisms</term> (see <xref ref="def-prism"/> for the definition). 
       One benefit of this point of view is that almost everything we want to say appears already
-      in a local setting, where we can talk very concretely about rings and complexes without having to keep track of too much fancy stuff (derived categories, simplicial objects, etc.). Another point of view is that 
+      in a local setting, where we can talk very concretely about rings and complexes without having to keep track of too much fancy stuff (derived categories, simplicial objects, etc.). Another advantage is that 
       it keeps track of <q>everything at once</q>; instead of constructing different cohomology theories and asserting <term>comparison isomorphisms</term> between them, we'll construct <q>one theory to rule them all</q>,
-      in the manner of the <term>universal coefficient theorem</term> of algebraic topology (that is, we have a single functor which we can postcompose with various simple algebraic functors to recover more classical constructions).
-    </p>    
+      in the manner of the <term>universal coefficient theorem</term> of algebraic topology.
+      That is, we will have a single functor which we can postcompose with various simple algebraic functors to recover more classical constructions.
+    </p>
   </subsection>
   <subsection>
     <title>The role of prisms</title>
@@ -201,7 +205,7 @@
       <statement>
         <p>
           For <m>R</m> the <m>p</m>-adic completion of a smooth <m>\ZZ_p</m>-algebra, we can functorially define a complex <m>\Prism_{R/A}</m> consisting of
-          <m>(p, u)</m>-adically complete <m>A</m>-modules, as an object in the derived category <m>D(A)</m> of <m>A</m>-modules; together with an isomorphism
+          <m>(p, u)</m>-adically complete <m>A</m>-modules, as an object in the derived category <m>D(A)</m> of <m>A</m>-modules; together with a morphism
           <m>\phi_{R/A}: \phi^* \Prism_{R/A} \to \Prism_{R/A}</m> in <m>D(A)</m> (so in particular <m>\phi^*</m> is an operation in <m>D(A)</m>). Moreover, the pair
           <m>(\Prism_{R/A}, \phi_{R/A})</m> will have the following additional properties.
         </p>
@@ -228,9 +232,13 @@
               <me>
                 (\Prism_{R/A} \widehat{\otimes}^L_A \overline{\FF_p((u))})^{\phi_{R/A} \otimes \phi=1} \cong R\Gamma_{\et}(\Spec R_{\CC_p}, \FF_p)
               </me>
-              where <m>\CC_p</m> is a completed algebraic closure of <m>\QQ_p</m> and <m>\phi</m> denotes the absolute Frobenius on <m>\overline{\FF_p((u))}</m>. That is, at the point <m>(p)</m> of <m>\Spec A</m>, <m>\Prism_{R/A}</m>
-              computes the <m>\FF_p</m>-étale cohomology of <m>R_{\CC_p}</m>. Warning: to make this canonical, one needs to be more careful about the choices
-              of algebraic closures on both sides. (There is also a version with <m>\ZZ/(p^n)</m>-coefficients.)
+              where <m>\CC_p</m> is a completed algebraic closure of <m>\QQ_p</m> and <m>\phi</m> denotes the absolute Frobenius on <m>\overline{\FF_p((u))}</m>;
+              this becomes natural if we relate the algebraic closures of <m>\QQ_p</m> and <m>\FF_p((u))</m>
+              using the field of norms isomorphism (<xref ref="thm-field-of-norms"/>).
+              That is, at the point <m>(p)</m> of <m>\Spec A</m>, <m>\Prism_{R/A}</m>
+              computes the <m>\FF_p</m>-étale cohomology of <m>R_{\CC_p}</m>.
+              (There is also a version with <m>\ZZ/(p^n)</m>-coefficients, which amounts to working in an infinitesimal thickening of <m>p=0</m>,
+              or if you prefer over <m>\Spec A[p/u]</m>.)
              </p>
           </li>
           <li>
@@ -248,7 +256,7 @@
     </theorem>
     <remark>
       <p>
-        In case you know what this means,  
+        In case you know what this means,
         condition 1 in <xref ref="thm-prismatic-values"/> is similar to a central restriction in the definition of a <term>shtuka</term>, or more precisely a <term>shtuka with one leg</term>.
         Recent developments in the Langlands correspondence over function fields, particularly the work of V. Lafforgue <xref ref="bib-VLafforgue"/>,
         makes heavy use of <term>shtukas with multiple legs</term>; while these have a geometric interpretation (see <xref ref="bib-Fargues-Scholze"/>),
@@ -281,19 +289,22 @@
           <latex-image>
             \begin{tikzpicture}[every loop/.style={&lt;-,shorten &lt;=1pt}]
             \path (8,9) node(x) {$\Spec A = \ZZ_p\llbracket u \rrbracket$};
-            \path (-1.2,-1.2) node(x) {\scriptsize de Rham cohomology of $R_{\mathbf{F}_p}$};
-            \draw[->] (-1,-1) -- (-0.2,-0.2) ;
+            \path (2.2,-1.2) node(x) {\scriptsize de Rham cohomology of $R_{\mathbf{F}_p}$};
+            \draw[->] (1,-1) -- (0.2,-0.2) ;
             \filldraw[black] (0,0) circle (3pt);
-            \draw[thick,->] (0,0) -- (9,0) node(p=0)[pos=1.1,below]{\scriptsize $u$-axis, $p=0$} node[midway,above] {\scriptsize $\mathbf{F}_p$-\'etale cohomology of $R_{\CC_p}$};
+            \draw[thick,->] (0,0) -- (9,0) node(p=0)[pos=1.1,below]{\scriptsize $u$-axis, $p=0$} node[midway,below] {\scriptsize $\mathbf{F}_p$-\'etale cohomology of $R_{\CC_p}$};
+            \pattern[pattern=north west lines] (0,0)--(9,0)--(9,1)--(0,1)--cycle;
             \draw[thick,->] (0,0) -- (0,9) node(u=0)[pos=1.1, below]{\scriptsize $p$-axis, $u=0$} node[midway,above, sloped] {\scriptsize Crystalline cohomology of $R_{\mathbf{F}_p}$};
-            \path[thick,->](p=0) edge[thick,loop above] node[above]{\scriptsize $\phi^*$} (p=0);
-            \draw[thick,->] (u=0) edge[thick,loop right] node[below]{\scriptsize $\phi^*$} (u=0);
+            \path[thick,->] (p=0) edge[thick,loop above] node[above]{\scriptsize $\Spec \phi$} (p=0);
+            \draw[thick,->] (u=0) edge[thick,loop right] node[below]{\scriptsize $\qquad \qquad \Spec \phi$} (u=0);
             \draw[thick,->] (0,0) -- (5,8) node(u=pp)[very near end, below, sloped]{\scriptsize $u=p^p$} node[midway,above, sloped] {\scriptsize de Rham cohomology of $R$};
             \draw[thick,->,dashed] (0,0) -- (6.6,6.6) node(u=p)[very near end, below, sloped]{\scriptsize $u=p$} node[midway,above, sloped] {\scriptsize Hodge-Tate cohomology of $R$};
-            \path[thick,->] (6.85,6.85) edge [bend right] node[above] {\scriptsize $\phi^*$} (5.25, 8.25);
-            \path (7,2) node(x) {\scriptsize $\mathbf{Z}_p$-\'etale cohomology of $R_{\CC_p}$};
-  %          \draw[thick,->] (6.85,6.85) -- (5.25, 8.25) node[midway,above] {\scriptsize $\phi^*$};
-  %          \draw[thick,->] arc [start angle=45, end angle=60, radius=10] node[midway,above] {\scriptsize $\phi^*$};
+            \path[thick,->] (6.85,6.85) edge [bend right] node[above] {\scriptsize $\qquad \Spec \phi$} (5.25, 8.25);
+            \path (2.5,8) node(x) {\scriptsize de Rham region: $\im(\Spec \ZZ_p \llbracket u/p \rrbracket)$};
+            \path (7,4) node(x) {\scriptsize \'etale region: $\im(\Spec \ZZ_p \llbracket u,v \rrbracket/(uv-p))$};
+            \path (5,0.5) node(x) {\scriptsize $\mathbf{Z}_p$-\'etale cohomology of $R_{\CC_p}$};
+  %          \draw[thick,->] (6.85,6.85) -- (5.25, 8.25) node[midway,above] {\scriptsize $\Spec \phi$};
+  %          \draw[thick,->] arc [start angle=45, end angle=60, radius=10] node[midway,above] {\scriptsize $\Spec \phi$};
             \end{tikzpicture}
           </latex-image>
         </image>

@@ -47,11 +47,12 @@
     \DeclareMathOperator{\Ind}{Ind}
     \DeclareMathOperator{\Inf}{Inf}
     \DeclareMathOperator{\inv}{inv}
+    \DeclareMathOperator{\Kos}{Kos}
     \DeclareMathOperator{\lcm}{lcm}
     \DeclareMathOperator{\Mod}{\mathbf{Mod}}
     \DeclareMathOperator{\Norm}{Norm}
     \DeclareMathOperator{\Pic}{Pic}
-    \DeclareMathOperator{\Prm}{\mathbf{Prm}}
+    \DeclareMathOperator{\Prm}{\mathbf{Prism}}
     \DeclareMathOperator{\Rad}{Rad}
     \DeclareMathOperator{\Real}{Re}
     \DeclareMathOperator{\Res}{Res}
@@ -73,6 +74,7 @@
   </macros>
   <latex-image-preamble>
     \usepackage{tikz}
+    \usetikzlibrary{patterns}
     \usepackage[all]{xy}
   </latex-image-preamble>
 </docinfo>
