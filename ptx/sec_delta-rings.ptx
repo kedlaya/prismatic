@@ -90,7 +90,7 @@
       <proof>
         <p>
           It was already pointed out in <xref ref="def-delta-ring"/> that <m>\delta</m> satisfies <xref ref="eq-delta-ring-sum"/> if and only if 
-          <m>\phi</m> is additive, and conversely if <m>A</m> is <m>p</m>-torsion-free. Meanwhile, <xref ref="eq-delta-ring-value-at-1"/> implies that <m>\phi(1) = 0</m>,
+          <m>\phi</m> is additive, and conversely if <m>A</m> is <m>p</m>-torsion-free. Meanwhile, <xref ref="eq-delta-ring-value-at-1"/> implies that <m>\phi(1) = 1</m>,
           and conversely if <m>A</m> is <m>p</m>-torsion-free; while <xref ref="eq-delta-ring-product"/> implies that <m>\phi(xy) = \phi(x) \phi(y)</m>,
           and conversely if <m>A</m> is <m>p</m>-torsion-free.
         </p>
@@ -240,7 +240,7 @@
         For <m>A</m> a ring, let <m>W_2(A)</m> be the set <m>A \times A</m> equipped with binary operations <m>+, \times</m> defined as follows:
         <md>
           <mrow>(x_0, x_1) + (y_0, y_1) &amp;= (x_0+y_0, x_1+y_1 - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x_0^i y_0^{p-i})</mrow>
-          <mrow>(x_0, x_1) \times (y_0, y_1) &amp;= (x_0 x_1, x_0^p y_1 + y_0^p x_1 + p x_1 y_1).</mrow> 
+          <mrow>(x_0, x_1) \times (y_0, y_1) &amp;= (x_0 y_0, x_0^p y_1 + y_0^p x_1 + p x_1 y_1).</mrow> 
         </md>
         Note the relation of these formulas to the definition of a <m>\delta</m>-ring (<xref ref="def-delta-ring"/>).
       </p>

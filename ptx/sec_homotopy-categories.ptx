@@ -1,0 +1,424 @@
+﻿<section xml:id="sec_homotopy-categories">
+  <title>Homotopy categories</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Stacks"/>, tag 05QI.
+      </p>
+    </paragraphs>
+    <p>
+      In this section, we fill in some background material about <term>homotopy categories</term> in preparation for the introduction of <term>derived categories</term>
+      in <xref ref="sec_derived-categories"/>.
+      We will assume (as we have already done up to now) that the reader is familiar with a more classical treatment of
+      homological algebra, and use this as motivation to <q>go derived</q>.
+    </p>
+    <p>
+      Throughout this section, let <m>\calA</m> be a fixed abelian category, e.g., <m>\Mod_A</m> for some <m>A \in \Ring</m>.
+      (This is not the weakest hypothesis possible on <m>\calA</m>, but will suffice for our purposes.)
+    </p>
+  </introduction>
+  <subsection>
+    <title>A bit of motivation</title>
+    <remark xml:id="rmk-derived-motivation">
+      <p>
+       By way of motivation, we recall the way that chain complexes appear in the construction of derived functors.
+       We discuss only right derived functors, the story for left derived functors being the symmetric image of this.
+      </p>
+      <p>
+         Let <m>\calA'</m> be a second abelian category. A functor <m>F: \calA \to \calA'</m> is <term>left exact</term> if every exact sequence
+         <me>
+         0 \to M_1 \to M \to M_2
+         </me>
+         yields an exact sequence
+         <me>
+         0 \to F(M_1) \to F(M) \to F(M_2).
+         </me>
+         Under suitable conditions (namely, that <m>\calA</m> <term>has enough injectives</term>), 
+         we can <q>fill in the gap</q> on the right: if the original sequence extends to an exact sequence
+         <me>
+         0 \to M_1 \to M \to M_2 \to 0,
+         </me>
+         then we get a long exact sequence
+         <me>
+         0 \to R^0 F(M_1) \to R^0F (M) \to R^0F(M_2) \to R^1 F(M_1) \to R^1 F(M) \to R^1 F(M_2) \to R^1 F(M_1) \to \cdots
+         </me>
+         where <m>R^i F</m> are the <term>right derived functors</term>  of <m>F</m> (with <m>R^0 F = F</m>. These functors can be evaluated at <m>M</m> by forming an
+         <term>injective resolution</term> of <m>M</m>, i.e., a complex
+         <men xml:id="eq-injective-resolution">
+           0 \to I^0 \to I^1 \to \dots
+         </men>
+         in which each object <m>I^j \in \calA</m> is <term>injective</term> (that is, <m>\Hom(N, I^j) \to \Hom(N', I_j)</m> is surjective whenever <m>N' \to N</m> is a monomorphism)
+         and the augmented sequence
+         <me>
+           0 \to M \to I^0 \to I^1 \to \cdots
+         </me>
+         is exact; then <m>F^i</m> is the cohomology at <m>i</m> of the complex
+         <me>
+           0 \to F(I^0) \to F(I^1) \to \cdots.
+         </me>
+      </p>
+      <p>
+        What we want to do here is create a larger category than <m>\calA</m> in which the injective resolution <xref ref="eq-injective-resolution"/> is itself an object
+        <em>and</em> the augmentation defines an isomorphism from <m>M</m> to this new object; this will make the construction much more rigid.
+        For example, when composing left exact functors, if one only keeps track of the derived functors individually, the most one can say about the derived functors
+        of the composition is that they are the limit of the <term>Leray spectral sequence</term>, but this leaves some ambiguity if you do not know what the differentials are
+        (and anyway being the limit of a spectral sequence does not determine the final objects exactly, only the successive quotients of some filtration. By contrast,
+        when working in a derived category this ambiguity is completely eliminated.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Categories of chain complexes</title>
+    <p>
+      As a first step, we construct a category of chain complexes.
+    </p>
+    <definition>
+      <p>
+        A <term>chain complex</term> in <m>\calA</m> is a sequence
+        <me>
+         \cdots \to K^{n-1} \stackrel{d^{n-1}}{\to} K^n \stackrel{d^n}{\to} K^{n+1} \to \cdots
+        </me>
+        in <m>\calA</m> such that any two consecutive morphisms compose to zero.
+        The morphisms <m>d^n</m> are commonly called the <term>differentials</term> of the complex.
+        (Note that here I am using <term>cohomological numbering</term> rather than <term>homological numbering</term>.)
+      </p>
+      <p>
+        A complex <m>K^\bullet</m> is:
+        <ul>
+          <li>
+            <p>
+              <term>bounded below</term> if <m>K^n = 0</m> for all <m>n \ll 0</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>bounded above</term> if <m>K^n = 0</m> for all <m>n \gg 0</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>bounded</term> if both of these hold.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </definition>
+    <definition>
+      <p>
+        We view chain complexes as forming a category <m>\Comp(\calA)</m>
+        in which a morphism <m>f^\bullet: K_1^\bullet \to K_2^\bullet</m> is given by a commutative diagram
+        <figure xml:id="fig-morphism-of-complexes">
+          <image width="50%">
+            <latex-image>
+              \xymatrix{
+              \cdots \ar[r] &amp; K_1^{n-1} \ar^{d^{n-1}_1}[r] \ar^{f^{n-1}}[d] &amp; K_1^n \ar^{d^n_1}[r] \ar^{f^n}[d] &amp; K_1^{n+1} \ar^{d^{n+1}_1}[r] \ar^{f^{n+1}}[d] &amp; \cdots \\
+              \cdots \ar[r] &amp; K_2^{n-1} \ar^{d^{n-1}_2}[r] &amp; K_2^n \ar^{d^n_2}[r] &amp; K_2^{n+1} \ar^{d^{n+1}_2}[r] &amp; \cdots
+              }
+            </latex-image>
+          </image>
+        </figure>
+        such a morphism induces morphisms on cohomology groups <m>h^n(K_1^\bullet) \to h^n(K_2^\bullet)</m>. 
+        Let <m>\Comp^+(\calA), \Comp^-(\calA), \Comp^b(\calA)</m> be the full subcategories of <m>\Comp(\calA)</m>
+        consisting of bounded below complexes, bounded above complexes, or bounded complexes, respectively.
+        Any functor <m>F: \calA \to \calA'</m> of abelian categories induces functors <m>\Comp^*(\calA) \to \Comp^*(\calA')</m>
+        for each of <m>* \in \{\emptyset, +, -, b\}</m>.
+      </p>
+    </definition>
+    <definition>
+      <p>
+        For each integer <m>i \in \ZZ</m>, we have a functor <m>[i]: \calA \to \Comp^b(\calA)</m> taking <m>M \in \calA</m> to the complex <m>K^\bullet</m> with
+        <me>
+          K^n = \begin{cases} M &amp; n=-i \\ 0 &amp; n \neq i. \end{cases}
+        </me>
+        (note the minus sign). This extends to a functor <m>[i]: \Comp^*(\calA) \to \Comp^*(\calA)</m> given by
+        <me>
+          K[i]^n = K^{n+i}.
+        </me>
+      </p>
+      <p>
+        In the other direction, we have a functor <m>H^i: \Comp(\calA) \to \calA</m> (the <term><m>i</m>-th cohomology</term> given by
+        <me>
+          H^i(K^\bullet) = \ker(d^{i})/\im(d^{i-1}).
+        </me>
+        The composition <m>H^i \circ [-i]</m> is an equivalence of categories. In particular, each functor <m>[i]:\calA \to \Comp^b(\calA)</m> defines a full embedding.
+      </p>
+      <p>
+        A morphism in <m>\Comp(\calA)</m> is a <term>quasi-isomorphism</term> if its image under each <m>h^i</m> is an isomorphism.
+        In general, such a morphism need not have an inverse.
+      </p>
+    </definition>
+    <remark xml:id="rmk-derived-motivation2">
+      <p>
+        Returning to <xref ref="rmk-derived-motivation"/>, we now see that an injective resolution <m>I^\bullet</m> of an object <m>M \in \calA</m> does define an object of
+        <m>\Comp^+(\calA)</m> and the augmentation defines a morphism <m>M[0] \to I^\bullet</m> in <m>\Comp^+(\calA)</m>. What is missing?
+      </p>
+      <ul>
+        <li>
+          <p>
+            Different injective resolutions are not necessarily isomorphic in <m>\Comp^+(\calA)</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The morphism from <m>M</m> to an injective resolution is not an isomorphism in <m>\Comp^+(\calA)</m>.
+          </p>
+        </li>
+      </ul>
+      We will fix the first problem by passing to the homotopy category, and the second by passing to the derived category (inverting quasi-isomorphisms).
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Split exact sequences</title>
+    <p>
+      Continuing by way of motivation, we recall another basic construction in homological algebra.
+    </p>
+    <definition xml:id="def-split-exact-sequence">
+      <p>
+        A short exact sequence
+        <me>
+          0 \to M \stackrel{f}{\to} N \stackrel{g}{\to} P \to 0
+        </me>
+        in <m>\calA</m> is <term>split</term> if any of the following equivalent conditions hold.
+      </p>
+      <ol>
+        <li>
+          <p>
+            There exists a morphism <m>t: N \to M</m> such that <m>t \circ f = \id_M</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            There exists a morphism <m>s: P \to N</m> such that <m>g \circ s = \id_P</m>.
+          </p>
+        </li>
+      </ol>
+      <p>
+        The existence of a splitting guarantees that for any functor <m>F: \calA \to \calA'</m>, the sequence
+        <me>
+          0 \to F(M) \stackrel{F(f)}{\to} F(N) \stackrel{F(g)}{\to} F(P) \to 0
+        </me>
+        is again split exact <em>whether or not</em> <m>F</m> is an exact functor.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        In <xref ref="def-split-exact-sequence"/>, the equivalence from the two conditions comes from the fact that in either condition, reversing the order of composition
+        yields an idempotent endomorphism (i.e., a <term>projector</term>) on <m>N</m>. In particular, we can always choose the two splittings <m>s,t</m> so that
+        <m>f \circ t + s \circ g = \id_N</m>. The maps <m>s,t</m> together provide a <q>robust witness</q> to the exactness of the sequence.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Chain complexes and the homotopy category</title>
+    <p>
+      The discussion of split exact sequences can be generalized as follows.
+    </p>
+    <definition>
+      <p>
+        A <term>chain homotopy</term> for a morphism <m>f: K_1^\bullet \to K_2^\bullet</m> in <m>\Comp(\calA)</m>
+        is a collection of morphisms <m>h_n: K_1^n \to K_2^{n+1}</m> such that
+        <me>
+          d^{n-1}_2 \circ h_n + h_{n+1} \circ d^n_1 = f^n \qquad (n \in \ZZ).
+        </me>
+        This implies that <m>f</m> maps to the zero morphism via each cohomology functor <m>h^n</m>.
+        If such a homotopy exists, we say that <m>f</m> is <term>homotopic to <m>0</m></term>; similarly, if <m>f, g: K_1^\bullet \to K_2^\bullet</m>
+        are two morphisms and <m>f-g</m> is homotopic to 0, we say that <m>f</m> and <m>g</m> are <term>homotopic (to each other)</term>.
+      </p>
+      <p>
+        Note that morphisms homotopic to zero form a two-sided ideal under composition.
+        We may thus define the <term>homotopy category</term> of <m>\calA</m>, denoted <m>K(\calA)</m>,
+        to be the category with the same objects as <m>\Comp(\calA)</m> but where the group of morphisms from <m>K_1^\bullet</m> to <m>K_2^\bullet</m>
+        is the quotient of the group of morphisms in <m>\Comp(\calA)</m> by the ideal of morphisms homotopic to 0.
+        We may similarly define <m>K^+(\calA), K^-(\calA), K^b(\calA)</m> as quotients of <m>\Comp^+(\calA), \Comp^-(\calA), \Comp^b(\calA)</m>;
+        these are the <term>bounded below homotopy category</term>, the <term>bounded above homotopy category</term>, and the <term>bounded homotopy category</term>
+        of <m>\calA</m>.
+      </p>
+      <p>
+        The functors <m>H^i: \Comp(\calA) \to \calA</m> factor through <m>K(\calA)</m> and satisfy
+        <me>
+          H^i = H^0 \circ [i].
+        </me>
+        In particular, any isomorphism in <m>K(\calA)</m> induces isomorphisms of cohomology groups.
+      </p>
+    </definition>
+    <p>
+      Returning to <xref ref="rmk-derived-motivation"/>, using the universal property of injective objects, it is straightforward to check that given any two injective
+    </p>
+    <lemma>
+      <statement>
+      <p>
+        For <m>M \in \calA</m>, let <m>I^\bullet</m> and <m>J^\bullet</m> be two injective resolutions of <m>M</m>.
+      </p>
+        <ol>
+          <li>
+            <p>
+              There exists a morphism <m>I^\bullet \to J^\bullet</m> in <m>\Comp^+(\calA)</m> which commute with the augmentations <m>M[0] \to I^\bullet</m>, <m>M[0] \to J^\bullet</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Any two such morphisms are homotopic to each other.
+            </p>
+          </li>
+          <li>
+            <p>
+              In particular, the classes of <m>I^\bullet</m> and <m>J^\bullet</m> in <m>K^+(\calA)</m> are canonically isomorphic.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          Left to the reader.
+        </p>
+      </proof>
+    </lemma>
+    <remark xml:id="rmk-derived-motivation3">
+      <p>
+        Picking up from <xref ref="rmk-derived-motivation2"/>, we have resolved one of the two outstanding issues: if <m>M</m> admits an injective resolution,
+        then all of the injective resolutions define a single canonical object of <m>K^+(\calA)</m> and a morphism from <m>M</m> to this object.
+        What we still need to do is to <q>localize</q> by inverting this morphism; 
+        in order to understand how to do this, we first take a step back and discuss localization in an arbitrary category.
+        We will tie this back to homotopy categories in <xref ref="sec_derived-categories"/>.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Localization in a category</title>
+    <p>
+      Recall from <xref ref="rmk-derived-motivation3"/> that we are in the situation of having to construct one category from another by <q>formally inverting</q>
+      some morphisms. We are familiar with processes of these type from algebra, such as the group completion of a monoid (e.g., passage from positive integers to
+      arbitrary integers) or the localization of a ring at a multiplicative subset (e.g., passage from integers to rational numbers).
+      The category-theoretic situation is similar but rather fraught with arrows; we give only a brief summary and defer to
+      <xref ref="bib-Stacks"/>, tag 04VB for further details.
+    </p>
+    <definition xml:id="def-multiplicative-system">
+      <p>
+        Let <m>\calC</m> be a category (not necessarily abelian or even additive). Let <m>S</m> be a collection of morphisms in <m>\calC</m>. We say that <m>S</m> is a
+        <term>left multiplicative system</term> if the following conditions hold.
+      </p>
+      <ol>
+        <li>
+          <p>
+            The collection <m>S</m> contains all identity morphisms and is closed under composition (of composable pairs).
+          </p>
+        </li>
+        <li>
+          <p>
+            Given the solid arrows as in <xref ref="fig-localization-categories"/>, for some choice of <m>Y'</m> there exist dashed arrows with <m>s \in S</m> forming a commutative square.
+          </p>
+          <figure xml:id="fig-localization-categories">
+            <image width="25%">
+              <latex-image>
+                \xymatrix{
+                  X \ar^{g}[r] \ar^{t}[d] &amp; Y \ar@{-->}^{s}[d] \\ X' \ar@{-->}^{f}[r] &amp; Y'
+                }
+              </latex-image>
+            </image>
+          </figure>
+          <p>
+            You should think of this as saying that the <q>formal composition</q> <m>g \circ t^{-1}: Z \to Y</m> can be refactored as <m>s^{-1} \circ f</m>,
+            with the formal inverse moved from the right to the left.
+          </p>
+        </li>
+        <li>
+          <p>
+            For every pair of morphisms <m>f,g: X \to Y</m> and every <m>t \in S</m> with target <m>X</m> such that <m>f \circ t = g \circ t</m>,
+            there exists a morphism <m>s \in S</m> with source <m>Y</m> (and unspecified target) such that <m>s \circ f = s \circ g</m>.
+          </p>
+          <p>
+            If <m>\calC</m> is an additive category, it is equivalent to require that for every morphism 
+            <m>f: X \to Y</m> and every <m>t \in S</m> with target <m>X</m> such that <m>f \circ t = 0</m>,
+            there exists a morphism <m>s \in S</m> with source <m>Y</m> (and unspecified target) such that <m>s \circ f = 0</m>.
+          </p>
+        </li>
+      </ol>
+      <p>
+        Similarly, a <term>right multiplicative system</term> is a collection of morphisms of <m>\calC</m> that constitutes a left multiplicative system in the opposite category.
+        A <term>multiplicative system</term> is a collection of morphisms of <m>\calC</m> which is simultaneously a left multiplicative system and a right multiplicative system.
+      </p>
+      <p>
+        We say that a multiplicative system is <term>saturated</term> if for any three composable morphisms <m>f,g,h</m> with <m>f \circ g, g \circ h \in S</m>, we also have <m>g \in S</m>.
+        For example, the collection of all isomorphisms has this property.
+      </p>
+    </definition>
+    <definition xml:id="def-left-localization">
+      <p>
+        Let <m>\calC</m> be a category and let <m>S</m> be a multiplicative system. We define the category <m>S^{-1} \calC</m> as follows. 
+        (There are some steps to verify that this is a well-posed definition of a category; see <xref ref="bib-Stacks"/>, tag 04VD.)
+        <ol>
+          <li>
+            <p>
+              The objects of <m>S^{-1} \calC</m> are the objects of <m>\calC</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For <m>X,Y \in \calC</m> two objects, the morphisms <m>X \to Y</m> in <m>\calC</m> are given by pairs <m>(f: X \to Y', s: Y \to Y')</m>
+              where <m>Y' \in \calC</m> is a third object
+              modulo the following equivalence relation: two pairs
+              <me>(f_i: X \to Y_i, s_i: Y \to Y_i)</me> for <m>i=1,2</m> are equivalent if there is a third pair with <m>i=3</m> fitting into a diagram as in
+              <xref ref="fig-localization-category-equivalence"/>.
+              (Think of a pair <m>(f,s)</m> as corresponding to the formal composition <m>s^{-1} \circ f</m>.)
+            </p>
+            <figure xml:id="fig-localization-category-equivalence">
+              <image width="25%">
+                <latex-image>
+                  \xymatrix{
+                    &amp; Y_1 \ar^{u}[d] \\
+                   X \ar^{f_1}[ru] \ar^{f_3}[r] \ar_{f_2}[rd] &amp; Y_3 &amp; Y \ar_{s_1}[lu] \ar_{s_3}[l] \ar^{s_2}[ld] \\
+                   &amp; Y_2 \ar_{v}[u]
+                  }
+                </latex-image>
+              </image>
+             </figure>
+          </li>
+          <li>
+            <p>
+              The composition of a pair  <m>(f: X \to Y', s: Y \to Y')</m> with a pair <m>(g: Y \to Z', t: Z \to Z')</m> is defined to be the equivalence class of a pair
+              <m>(h \circ f: X \to Z'', u \circ t: Z \to Z'')</m> where <m>h</m> and <m>u \in S</m> are chosen (using the definition of a left multiplicative system)
+              to fill in the commutative square <xref ref="fig-localization-categories1"/>.
+            </p>
+            <figure xml:id="fig-localization-categories1">
+              <image width="25%">
+                <latex-image>
+                  \xymatrix{
+                    Y \ar^{g}[r] \ar^{s}[d] &amp; Z' \ar@{-->}^{u}[d] \\ Y' \ar@{-->}^{h}[r] &amp; Z''
+                  }
+                </latex-image>
+              </image>
+            </figure>
+            <p>
+              The identity morphism on <m>X</m> is the class of <m>(\id_X, \id_X)</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        One can similarly form the localization of the opposite category, then take the opposite category of the result
+        (using the definition of a right multiplicative system). This gives the same answer; see <xref ref="bib-Stacks"/>, tag 04VL.
+      </p>
+      <p>
+        The morphisms of <m>\calC</m> which become isomorphisms in <m>S^{-1} \calC</m> also form a multiplicative system; in fact, this is the
+        smallest saturated multiplicative system containing <m>S</m> (<xref ref="bib-Stacks"/>, tag 04VB), and so equals <m>S</m> if and only if <m>S</m>
+        is itself saturated.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        In <xref ref="def-left-localization"/>, we have glossed over a serious set-theoretic difficulty; since the definition of a morphism is quantified over an unspecified
+        third object <m>Y'</m> of <m>\calC</m>, it is not clear that the collection of morphisms between two fixed objects is a set, as is required in the definition of a category.
+      </p>
+      <p>
+        One way to avoid this issue is to only consider localizations of categories which are <term>small</term>, meaning that there is a set of objects
+        which meets every isomorphism class. Then one can instead quantify <m>Y'</m> over this set of representatives without losing anything.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        There is a way to interpret ring-theoretic localization as a special case of localization of categories. See <xref ref="bib-Stacks"/>, tag 0BM1.
+      </p>
+    </remark>
+  </subsection>
+</section>

@@ -335,6 +335,39 @@
         </p>
       </proof>
     </lemma>
+    <lemma xml:id="lem-refract-almost-ideal-flat">
+      <statement>
+        <p>
+          With notation as in <xref ref="lem-refract-properties"/>, the ideal <m>\sqrt{pR}</m> is a flat <m>R</m>-module.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We must check that for any <m>M \in \Mod_R</m>, <m>\Tor_i^R(M, \sqrt{pR}) = 0</m> for all <m>i \gt; 0</m>, 
+          or equivalently <m>\Tor_i^R(M, \overline{R}) = 0</m> for all <m>i \gt; 1</m>.
+          By tensoring <m>M</m> with the exact sequence
+          <me>
+            0 \to \Tor_1^{\ZZ_p}(M, \QQ_p) \to M \to M \otimes_{\ZZ_p} \QQ_p \to M \otimes_{\ZZ_p} \QQ_p/\ZZ_p \to 0
+          </me>
+          and using the fact that <m>\overline{R} \otimes_{\ZZ_p} \QQ_p = 0</m>, we may further reduce to the case of a
+          module <m>M</m> which is <m>p^\infty</m>-power torsion. By the compatibility of tensor products with colimits,
+          we may reduce to the case of a module which is killed by some power of <m>p</m>;
+          by devissage, we may further reduce to the case where <m>M</m> is killed by <m>p</m>.
+        </p>
+        <p>
+          Since <m>d</m> is a non-zerodivisor in both <m>W(R^\flat)</m> and <m>W(\overline{R})</m> (<xref ref="lem-distinguished-perfect"/>),
+          <me>
+            \Tor_i^R(M, \overline{R}) = \Tor_i^{W(R^\flat)}(M, W(\overline{R})).
+          </me>
+          Similarly, since <m>p</m> is a non-zerodivisor in both <m>W(R^\flat)</m> and <m>W(\overline{R})</m> and <m>pM = 0</m>,
+          <me>
+            \Tor_i^{W(R^\flat)}(M, W(\overline{R})) = \Tor_i^{R^\flat}(M, \overline{R}).
+          </me>
+          By <xref ref="exer-perfect-tor1"/>, <m>\overline{R} \in \Mod_{R^\flat}</m> has Tor-dimension at most 1, proving the claim.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Lemma 2.6.)
+        </p>
+      </proof>
+    </lemma>
     <p>
       We can now give an intrinsic characterization of lenses, without reference to perfect prisms.
     </p>
@@ -676,6 +709,12 @@
         </p>
       </proof>
     </corollary>
+    <remark>
+      <p>
+        The category of lenses is closed under pushouts in the category of derived <m>p</m>-complete rings.
+        However, it will be easier to discuss this once we introduce derived categories; see <xref ref="prop-tensor-lens"/>.
+      </p>
+    </remark>
   </subsection>
   <exercises>
     <exercise xml:id="exer-distinguished-perfect">
@@ -741,7 +780,24 @@
         </p>
       </hint>
     </exercise>
-    <exercise>
+    <exercise xml:id="exer-perfect-tor1">
+      <statement>
+        <p>
+          Let <m>R</m> be a perfect ring of characteristic <m>p</m>. Choose <m>f \in R</m> and define the ideal <m>I = \sqrt{(f)}</m> of <m>R</m>.
+          Prove that <m>R/I \in \Mod_R</m> has Tor-dimension at most 1.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          First check that <m>I = (f^{p^{-\infty}})</m>. Then verify that the map
+          <me>
+            \colim (R \stackrel{f^{1-1/p}}{\to} R \stackrel{f^{1/p-1/p^2}}{\to} \cdots) \to I
+          </me>
+          is an isomorphism. (See also <xref ref="bib-Bhatt-course"/>, Lecture IV, Exercise 2.4.)
+        </p>
+      </proof>
+    </exercise>
+    <exercise xml:id="exer-perfect-tor">
       <statement>
         <p>
           Let <m>A \to B, A \to C</m> be morphisms of perfect rings of characteristic <m>p</m>. Show that <m>\Tor_i^A(B, C) = 0</m> for all <m>i &gt; 0</m>.
@@ -749,7 +805,7 @@
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-course"/>, Lecture IV, Exercise 2.4.
+          Reduce to the case where <m>A \to B</m> is the quotient by an ideal of the form <m>\sqrt{(f)}</m>, then apply <xref ref="exer-perfect-tor1"/>.
         </p>
       </proof>
     </exercise>

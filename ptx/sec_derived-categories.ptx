@@ -1,180 +1,415 @@
 ﻿<section xml:id="sec_derived-categories">
-  <title>Derived categories: a crash course</title>
+  <title>Derived categories</title>
   <introduction>
     <paragraphs>
       <title>Reference</title>
       <p>
-        <xref ref="bib-Stacks"/>, tag 05QI.
+        <xref ref="bib-Stacks"/>, tag 05QI. We are skipping a <em>lot</em> of details.
       </p>
     </paragraphs>
     <p>
-      In this section (still under construction!), we give a minimal treatment of the theory of <term>derived categories</term> in order to be able to operate
-      fluently with these in the sequel.
-    </p>
-    <p>
-      Throughout this section, let <m>\calC</m> be a fixed abelian category, e.g., the category of modules over a commutative ring.
-      (This is not the weakest hypothesis possible on <m>\calC</m> but will suffice for our purposes.)
+      We pick up from <xref ref="sec_homotopy-categories"/> (retaining notation) and introduce the <term>derived category</term> associated to an abelian category.
+      This amounts to checking that we can perform the localization of the homotopy category <m>K(\calA)</m> at the family of quasi-isomorphisms
+      (i.e., verifying the hypothesis of a multiplicative system from <xref ref="def-multiplicative-system"/>). Rather than attempting to do this directly,
+      we first set up the formalism of <term>triangulated categories</term>; this will allow us to identify quasi-isomorphisms in terms of their mapping cones,
+      which will facilitate the verification of the necessary conditions.
     </p>
   </introduction>
   <subsection>
-    <title>A bit of motivation</title>
-    <remark>
-      <p>
-       By way of motivation, we recall the way that chain complexes appear in the construction of derived functors.
-       Let <m>\calC'</m> be a second abelian category. A functor <m>F: \calC \to \calC'</m> is <term>left exact</term> if every exact sequence
-       <me>
-       0 \to M_1 \to M \to M_2
-       </me>
-       yields an exact sequence
-       <me>
-       0 \to F(M_1) \to F(M) \to F(M_2).
-       </me>
-       Under suitable conditions (namely, that <m>\calC</m> <term>has enough injectives</term>), 
-       we can <q>fill in the gap</q> on the right: if the original sequence extends to an exact sequence
-       <me>
-       0 \to M_1 \to M \to M_2 \to 0,
-       </me>
-       then we get a long exact sequence
-       <me>
-       0 \to R^0 F(M_1) \to R^0F (M) \to R^0F(M_2) \to R^1 F(M_1) \to R^1 F(M) \to R^1 F(M_2) \to R^1 F(M_1) \to \cdots
-       </me>
-       where <m>R^i F</m> are the <term>right derived functors</term>  of <m>F</m> (with <m>R^0 F = F</m>. These functors can be evaluated at <m>M</m> by forming an
-       <term>injective resolution</term> of <m>M</m>, i.e., a complex
-       <me>
-         0 \to I^0 \to I^1 \to \dots
-       </me>
-       in which each object <m>I^j \in \calC</m> is <term>injective</term> (that is, <m>\Hom(N, I^j) \to \Hom(N', I_j)</m> is surjective whenever <m>N' \to N</m> is a monomorphism)
-       and the augmented sequence
-       <me>
-         0 \to M \to I^0 \to I^1 \to \cdots
-       </me>
-       is exact; then <m>F^i</m> is the cohomology at <m>i</m> of the complex
-       <me>
-         0 \to F(I^0) \to F(I^1) \to cdots.
-       </me>
-      </p>
-      <p>
-        What we want to do here is to create a setup in which the sequence of derived functors becomes a <em>single</em> object that we can manipulate.
-        For example, when composing left exact functors, if one only keeps track of the derived functors individually, the most one can say about the derived functors
-        of the composition is that they are the limit of the <term>Leray spectral sequence</term>, but this leaves some ambiguity if you do not know what the differentials are
-        (and anyway being the limit of a spectral sequence does not determine the final objects exactly, only the successive quotients of some filtrationR. By contrast,
-        when working in a derived category this ambiguity is completely eliminated, albeit at the expense of carrying some extra baggage.
-      </p>
-    </remark>
-  </subsection>
-  <subsection>
-    <title>Chain complexes and the homotopy category</title>
+    <title>Distinguished triangles</title>
+    <p>
+      Recall that a short exact sequence of complexes gives rise to a long exact sequence of cohomology groups. This serves as inspiration for the following
+      discussion of <term>triangles</term> in the homotopy category.
+    </p>
     <definition>
       <p>
-        A <term>chain complex</term> in <m>\calC</m> is a sequence
+        A <term>triangle</term> in <m>\Comp(\calA)</m> is a tuple <m>(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)</m> coming from a diagram of the form
         <me>
-         \cdots K^{n-1} \stackrel{d^{n-1}}{\to} K^n \stackrel{d^n}{\to} K^{n+1} \cdots
+          A^\bullet \stackrel{\alpha}{\to} B^\bullet \stackrel{\beta}{\to} C^\bullet \stackrel{\delta}{\to} A^\bullet[1]
         </me>
-        in <m>\calC</m> such that any two consecutive morphisms compose to zero. The <term>cohomology</term> of the complex at degree <m>n</m> is
-        <me>
-          h^n(K^\bullet) = \ker(d^{n})/\im(d^{n-1}).
-        </me>
-        (Note that here I am using <term>cohomological numbering</term> rather than <term>homological numbering</term>.)
+        which is a complex; that is, the compositions
+        <md>
+          <mrow>A^\bullet \to B^\bullet \to C^\bullet</mrow>
+          <mrow>B^\bullet \to C^\bullet \to A^\bullet[1]</mrow>
+          <mrow>C^\bullet \to A^\bullet[1] \to B^\bullet[1]</mrow>
+        </md>
+        are zero. We can then consider morphisms of triangles in either <m>\Comp(\calA)</m> or <m>K(\calA)</m>.
       </p>
       <p>
-        A complex <m>K^\bullet</m> is:
-        <ul>
-          <li>
-            <p>
-              <term>bounded below</term> if <m>K^n = 0</m> for all <m>n \ll 0</m>;
-            </p>
-          </li>
-          <li>
-            <p>
-              <term>bounded above</term> if <m>K^n = 0</m> for all <m>n \gg 0</m>;
-            </p>
-          </li>
-          <li>
-            <p>
-              <term>bounded</term> if <m>K^n = 0</m> for all <m>|n| \gg 0</m> (i.e., <m>K^\bullet</m> is both bounded above and bounded below).
-            </p>
-          </li>
-        </ul>
+        We can define an operation called <term>forward rotation</term> on the set of triangles:
+        <me>
+          (A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta) \mapsto (B^\bullet, C^\bullet, A[1]^\bullet, \beta, \delta, -\alpha[1])
+        </me>
+        (note the minus sign). The inverse operation is <term>backward rotation</term>.
       </p>
     </definition>
+    <p>
+      Here is a key family of examples.
+    </p>
     <definition>
       <p>
-        We view chain complexes as forming a category in which a morphism <m>f^\bullet: K_1^\bullet \to K_2^\bullet</m> is given by a commutative diagram
-        <figure>
-          <image>
+        For a morphism <m>f: K^\bullet \to L^\bullet</m> in <m>\Comp(\calA)</m>, the <term>cone</term> (or <term>mapping cone</term>) of <m>f</m> is the complex
+        <me>
+          C(f)^n = L^n \oplus K^{n+1}, \qquad d^n_{C(f)} = \begin{pmatrix} d^n_L &amp; f^{n+1} \\ 0 &amp; -d^{n+1}_K \end{pmatrix}.
+        </me>
+        This complex fits into a triangle
+        <me>
+          K^\bullet \stackrel{f}{\to} L^\bullet \to C(f)^\bullet \to K^\bullet[1]
+        </me>
+        where the maps in and out of <m>C(f)^\bullet</m> are the obvious ones.
+        Any triangle isomorphic to one of this form is said to be <term>distinguished</term>.
+      </p>
+    </definition>
+    <lemma xml:id="lem-homological-functor">
+      <statement>
+        <p>
+          For any distinguished triangle <m>(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)</m>, the sequence
+          <me>
+            \cdots \to H^i(A^\bullet) \stackrel{\alpha}{\to} H^i(B^\bullet) \stackrel{\beta}{\to} H^i(C^\bullet) \stackrel{\delta}{\to} H^{i+1}(A^\bullet) \to \cdots
+          </me>
+          is exact. That is, <m>H^0</m> is a <term>homological functor</term>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We may as well start with the triangle associated to a mapping cone. In this case, the morphism <m>\delta</m> coincides with the family of connecting homomorphisms
+          coming from the short exact sequence of complexes
+          <me>
+            0 \to L^\bullet \to C(f)^\bullet \to K^\bullet[1] \to 0
+          </me>
+          and so the sequence in question is just the long exact sequence in cohomology.
+          Alternatively, we can first prove <xref ref="lem-distinguished-triangle-rotation"/> and then use this to reduce to checking exactness at <m>H^i(C^\bullet)</m>.
+       </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-distinguished-triangle-rotation">
+      <statement>
+        <p>
+          The set of distinguished triangles is preserved by forward and backward rotation.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The set of distinguished triangles is preserved by the shift operators, so it will be enough to check preservation by forward rotation.
+          That is, given a triangle of the form
+          <me>
+            K^\bullet \stackrel{f}{\to} L^\bullet \stackrel{g}{\to} C(f)^\bullet \stackrel{h}{\to} K^\bullet[1]
+          </me>
+          we must produce a commutative diagram in <m>K(\calA)</m> of the form of <xref ref="fig-triangulated-category-fillin1"/>
+          in which the dashed arrow is an isomorphism in <m>K(\calA)</m>.
+        </p>
+        <figure xml:id="fig-triangulated-category-fillin1">
+          <image width="50%">
             <latex-image>
               \xymatrix{
-              \cdots &amp; K_1^{n-1} \ar^{d^{n-1}_1}[r] \ar^{f^{n-1}}[d] &amp; K_1^n \ar^{d^n_1}[r] \ar^{f^n}[d] &amp; K_1^{n+1} \ar^{d^{n+1}_1}[r] \ar^{f^{n+1}}[d] &amp; \cdots \\
-              \cdots &amp; K_2^{n-1} \ar^{d^{n-1}_2}[r] &amp; K_2^n \ar^{d^n_2}[r] &amp; K_2^{n+1} \ar^{d^{n+1}_2}[r] &amp; \cdots
+                L^\bullet \ar@{=}[d] \ar^{g}[r] &amp; C(f)^\bullet \ar@{=}[d] \ar^{h}[r] &amp; K[1]^\bullet \ar@{-->}[d] \ar^{f[1]}[r] &amp; L[1]^\bullet \ar@{=}[d] \\
+                L^\bullet \ar^{g}[r] &amp; C(f)^\bullet \ar[r] &amp; C(g)^\bullet \ar[r] &amp; L[1]^\bullet
               }
             </latex-image>
           </image>
         </figure>
-        such a morphism induces morphisms on cohomology groups <m>h^n(K_1^\bullet) \to h^n(K_2^\bullet)</m>. A morphism of chain complexes is a <term>quasi-isomorphism</term>
-        if the induced morphisms on cohomology groups are all isomorphisms.
+        <p>
+          We construct the arrow <m>K[1]^\bullet \to C(g)^\bullet = C(f)^\bullet \oplus L[1]^\bullet</m> 
+          so that the first factor is the injection <m>K^{n+1} \to L^n \oplus K^{n+1}</m> and the second factor is <m>-f^{n+1}</m>.
+          We construct the arrow <m>C(f)^\bullet \oplus L[1]^\bullet = C(g)^\bullet \to K[1]^\bullet</m> 
+          as the projection onto <m>C(f)^n \oplus L^{n+1} \to C(f)^n</m> followed by <m>h^n</m>.
+          One may check as in <xref ref="bib-Stacks"/>, tag 014I that these maps are inverses in <m>K(\calC)</m>.
+        </p>
+      </proof>
+    </lemma>
+    <corollary xml:id="cor-extend-to-distinguished-triangle">
+      <statement>
+        <p>
+          Any morphism in <m>K(\calC)</m> can be included into a distinguished triangle (in any position).
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Any morphism can be included as the first morphism of a distinguished triangle using the mapping cone. For the other positions,
+          apply <xref ref="lem-distinguished-triangle-rotation"/>.
+        </p>
+      </proof>
+    </corollary>
+    <lemma xml:id="cor-distinguished-triangle-fillin">
+      <statement>
+        <p>
+          Given any collection of solid arrows in <xref ref="fig-triangulated-category-fillin"/> forming a commutative diagram in <m>K(\calA)</m>, 
+          in which the rows form distinguished triangles,
+          there exists a dashed morphism such that the vertical arrows form a morphism of triangles in <m>K(\calA)</m>.
+        </p>
+        <figure xml:id="fig-triangulated-category-fillin">
+          <image width="50%">
+            <latex-image>
+              \xymatrix{
+                A^\bullet \ar^{f}[r] \ar^{a}[d] &amp; B^\bullet \ar^{g}[r] \ar^{b}[d] &amp; C^\bullet \ar^{h}[r] \ar@{-->}[d] &amp; A[1]^\bullet \ar^{a[1]}[d] \\
+                A^{\prime \bullet} \ar^{f'}[r] &amp; B^{\prime \bullet} \ar^{g'}[r] &amp; C^{\prime \bullet} \ar^{h'}[r] &amp; A'[1]^\bullet
+              }
+            </latex-image>
+          </image>
+        </figure>
+      </statement>
+      <proof>
+        <p>
+          We may assume at once that <m>C = C(f), C' = C(f')</m>.
+          In this case, commutativity of the square in <m>K(\calA)</m> implies the existence of a homotopy <m>h</m> for the map 
+          <m>b \circ f - f' \circ a</m>. We may then write down a morphism <m>c: C(f) \to C(f')</m> by the formula
+          <me>
+            c^n = \begin{pmatrix} b^n &amp; h^{n+1} \\ 0 &amp; a^{n+1} \end{pmatrix}: B^n \oplus A^{n+1} \to B^{\prime n} \oplus A^{\prime (n+1)}
+          </me>
+          and verify that this yields a morphism of triangles.
+          (Compare <xref ref="bib-Stacks"/>, tag 014F.)
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      The following result is akin to the universal property of kernels and cokernels.
+    </p>
+    <corollary xml:id="cor-mapping-cone-universal-property">
+      <statement>
+        <p>
+          Let <m>f: X^\bullet \to Y^\bullet</m> be a morphism in <m>K(\calC)</m>, and let <m>g: Y^\bullet \to C(f)^\bullet</m> be the induced morphism.
+          Then every morphism <m>h: Y^\bullet \to Z^\bullet</m> such that <m>h \circ f = 0</m> in <m>K(\calC)</m> can be factored
+          through <m>g</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Apply <xref ref="cor-distinguished-triangle-fillin"/> to the diagram in <xref ref="fig-triangulated-category-fillin3"/>.
+        </p>
+        <figure xml:id="fig-triangulated-category-fillin3">
+          <image width="50%">
+            <latex-image>
+              \xymatrix{
+                X^\bullet \ar^{f}[r] \ar^{0}[d] &amp; Y^\bullet \ar^{g}[r] \ar^{h}[d] &amp; C(f)^\bullet \ar[r] \ar@{-->}[d] &amp; X[1]^\bullet \ar^{a[1]}[d] \\
+                0 \ar^{f'}[r] &amp; Z^{\bullet} \ar^{1}[r] &amp; Z^{\bullet} \ar^{0}[r] &amp; 0^\bullet
+              }
+            </latex-image>
+          </image>
+        </figure>
+      </proof>
+    </corollary>
+  </subsection>
+  <subsection>
+    <title>Localization at quasi-isomorphisms</title>
+    <p>
+      We return to our unfinished business from <xref ref="rmk-derived-motivation3"/>, namely modifying the homotopy category so as to force every quasi-isomorphism
+      to acquire an inverse. Thanks to the cone construction, we can relate quasi-isomorphisms to acyclic objects, which are easier to handle.
+    </p>
+    <definition>
+      <p>
+        An object <m>K^\bullet</m> of <m>\Comp(\calA)</m> is <term>acyclic</term> if <m>H^n(K^\bullet) = 0</m> for all <m>n \in \ZZ</m>;
+        this property is preserved under isomorphisms in <m>K(\calA)</m>.
+        By <xref ref="lem-homological-functor"/>, if two of the three complexes in a distinguished triangle are acyclic, then so is the third.
+        From this (and the preservation of the acyclic property under shifts) we may deduce that 
+        the full subcategory of <m>K(\calA)</m> consisting of acyclic objects is also a triangulated category.
+      </p>
+    </definition>
+    <lemma xml:id="lem-quasi-isomorphism-from-triangle">
+      <statement>
+        <p>
+          A morphism <m>f: K^\bullet \to L^\bullet</m> in <m>K(\calA)</m> is a quasi-isomorphism if and only if there exists a distinguished triangle
+          <m>(K^\bullet, L^\bullet, M^\bullet, f, g, h)</m> in which <m>M^\bullet</m> is acyclic.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This is immediate from <xref ref="lem-homological-functor"/>, using the mapping cone for the <q>only if</q> direction.
+        </p>
+      </proof>
+    </lemma>
+    <proposition xml:id="prop-quasi-isomorphisms-multiplicative">
+      <statement>
+        <p>
+          The set of quasi-isomorphisms in <m>K(\calA)</m> is a saturated multiplicative system in the sense of <xref ref="def-multiplicative-system"/>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          It suffices to check the conditions for a left multiplicative system, as the symmetric argument will imply the conditions for a right multiplicative system.
+          The first condition in <xref ref="def-multiplicative-system"/> is evidently satisfied: every identity morphism is a quasi-isomorphism, and any composition
+          of quasi-isomorphisms is a quasi-isomorphism.
+        </p>
+        <p>
+          To check the second condition, apply <xref ref="cor-extend-to-distinguished-triangle"/> to fit <m>g</m> into a distinguished triangle <m>(X, Y, Z, g, h, i)</m>,
+          then set <m>Y' = C(i[-1])</m>; we obtain the map <m>s</m> by filling the diagram <xref ref="fig-triangulated-category-fillin2"/> using
+          <xref ref="lem-distinguished-triangle-rotation"/> (to rotate) and <xref ref="cor-distinguished-triangle-fillin"/>.
+          (We deduce from <xref ref="lem-homological-functor"/> that <m>s</m> is a quasi-isomorphism.)
+        </p>
+        <figure xml:id="fig-triangulated-category-fillin2">
+          <image width="50%">
+            <latex-image>
+              \xymatrix{
+                X \ar^{g}[r] \ar^{s}[d] &amp; Y \ar^{h}[r] \ar@{-->}^t[d] &amp; Z \ar^{i}[r] \ar@{=}[d] &amp; X[1] \ar^{s[1]}[d] \\
+                X' \ar[r] &amp; Y' \ar[r] &amp; Z \ar[r] &amp; X'[1]
+              }
+            </latex-image>
+          </image>
+        </figure>
+        <p>
+          To check the third condition, start with a morphism <m>f: X \to Y</m> and a quasi-isomorphism <m>t: Z \to X</m> such that <m>f \circ t = 0</m>,
+          Apply <xref ref="cor-extend-to-distinguished-triangle"/> to fit <m>t</m> into a distinguished triangle <m>(Z, X, Q, t, d, h)</m>.
+          By <xref ref="cor-mapping-cone-universal-property"/>, we can choose a morphism <m>i: Q \to Y</m> such that <m>i \circ d = f</m>.
+          Apply  <xref ref="cor-extend-to-distinguished-triangle"/> again to fit <m>i</m> into a distinguished triangle <m>(Q, Y, W, i, j, k)</m>;
+          then <m>j \circ f = j \circ i \circ d = 0 \circ d = 0</m>.
+          By <xref ref="lem-quasi-isomorphism-from-triangle"/>, <m>t</m> being a quasi-isomorphism implies that <m>Q</m> is acyclic,
+          which in turn implies that <m>j</m> is a quasi-isomorphism.
+          (Compare <xref ref="bib-Stacks"/>, 05RG.)
+        </p>
+        <figure xml:id="fig-triangulated-category-fillin4">
+          <image width="50%">
+            <latex-image>
+              \xymatrix{
+                Z \ar^{t}[r] &amp; X \ar@{=}[d] \ar^{d}[r] &amp; Q \ar^h[r] \ar^{i}[d] &amp; Z[1] \\
+                &amp; X \ar^{f}[r] &amp; Y \ar^j[d] \\
+                &amp; &amp; W
+              }
+            </latex-image>
+          </image>
+        </figure>
+      </proof>
+    </proposition>
+    <definition>
+      <p>
+        Suppose that <m>\calA</m> is a small abelian category. By <xref ref="prop-quasi-isomorphisms-multiplicative"/>, we may apply
+        <xref ref="def-left-localization"/> to construct the localization of <m>K(\calA)</m> at the saturated multiplicative system of quasi-isomorphisms.
+        The result is called the <term>derived category</term> of <m>\calA</m>, denoted <m>D(\calA)</m>. Similarly, we may define the
+        <term>bounded below derived category</term> <m>D^+(\calA)</m>, the
+        <term>bounded above derived category</term> <m>D^-(\calA)</m>, and the
+        <term>bounded derived category</term> <m>D(\calA)</m>.
       </p>
       <p>
-        A <term>chain homotopy</term> for such a morphism is a collection of morphisms <m>h_n: K_1^n \to K_2^{n+1}</m> such that
-        <me>
-          d^{n-1}_2 \circ h_n + h_{n+1} \circ d^n_1 = f^n \qquad (n \in \ZZ).
-        </me>
-        Note that this implies that <m>f</m> induces the zero morphisms on cohomology groups.
+        An important case is when <m>\calA</m> is the category of modules over a ring <m>A</m>. This is not a small category, but modulo
+        set-theoretic issues (see <xref ref="rmk-derived-category-ring"/>) we can still define <m>D^*(\calA)</m> for <m>* \in \{\emptyset, -, +, b\}</m>;
+        we denote this also by <m>D^*(A)</m>.
+      </p>
+    </definition>
+    <remark xml:id="rmk-derived-category-ring">
+      <p>
+        To work around the fact that the derived category construction requires a small abelian category as input, one can view the full category <m>\Mod_A</m>
+        as a 2-colimit of full subcategories consisting of modules of increasingly larger cardinalities. This works because <m>\Mod_A</m> is not just an abelian
+        category but a <term>Grothendieck abelian category</term>; see <xref ref="bib-Stacks"/>, tag 09PA.
+        For a more general abelian category <m>\calA</m>, however, the set-theoretic difficulty becomes a genuine obstruction; see <xref ref="bib-Stacks"/>, tag 07JS.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        Just as the properties of the category <m>\Mod_A</m> are abstracted by the notion of an <term>abelian category</term>,
+        the properties of homotopy categories and derived categories are abstracted by the notion of a <term>triangulated category</term>.
+        A triangulated category is an additive category equipped with a collection of <term>distinguished triangles</term>
+        and <term>shift functors</term> subject to various conditions analogous to some of the properties we have seen above
+        (especially <xref ref="lem-distinguished-triangle-rotation"/> and <xref ref="cor-distinguished-triangle-fillin"/>).
+        See <xref ref="bib-Stacks"/>, tag 05QI for further discussion.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Derived functors</title>
+    <p>
+      At last, we can fulfill the promise we made in <xref ref="rmk-derived-motivation"/>.
+    </p>
+    <definition>
+      <p>
+        Suppose that the abelian category <m>\calA</m> has enough injectives (e.g., <m>\calA = \Mod_A</m>). Then every object <m>M \in \calA</m> admits an injective resolution;
+        more generally, every object of <m>K^+(\calA)</m> admits a canonical quasi-isomorphism to a canonical object of <m>K^+(\calA)</m> which can be represented by
+        a complex of injective objects. This quasi-isomorphism becomes an isomorphism in <m>D^+(\calA)</m>, meaning that <em>every</em> object can be represented
+        by a complex of injectives!
       </p>
       <p>
-        If we are give an chain homotopy for <m>f</m> and we compose <m>f</m> with another morphism of chain complexes on either side,
-        we may compose this morphism also with the chain homotopy to get a new chain homotopy for the resulting morphism. In particular,
-        morphisms admitting a chain homotopy (or in other words, which are <term>homotopic to zero</term>) form a two-sided ideal under composition.
-        We may thus define the <term>homotopy category</term> of <m>\calC</m> to be the category in which the objects are chain complexes and the morphisms
-        between two given objects are elements of the quotient of all morphisms by the group of morphisms homotopic to zero.
+        Now let <m>F: \calA \to \calA'</m> be a left exact functor. The right derived functors <m>R^i F</m> can then be evaluated on <m>M</m>
+        by taking cohomology of the object <m>F(I^\bullet)</m>; in fact, we can think of <m>M \mapsto F(I^\bullet)</m> as defining a single <term>derived functor</term>
+        <m>RF: \calA \to D^+(\calA)</m>. Moreover, every object of <m>D^(\calA)</m> can likewise be resolved by injectives, so we can extend the derived functor
+        to <m>RF: D^+(\calA) \to D^(\calA)</m>.
       </p>
     </definition>
   </subsection>
-  <definition>
-    <p>localization, calculus of fractions</p>
-  </definition>
-  <remark>
-    <p>
-      <term>triangulated category</term>, <term>distinguished triangles</term>
-    </p>
-    <p>
-     To do:         <term>mapping cone</term>.
-    </p>
-  </remark>
   <subsection xml:id="subsec-derived-complete-derived">
     <title>Derived completeness revisited</title>
-  </subsection>
-  <subsection>
-    <title>Some loose ends</title>
+    <p>
+      Now that we have derived categories in hand, let us revisit the notion of derived completeness.
+    </p>
+    <definition>
+      <p>
+        Let <m>A</m> be a commutative ring and let <m>I</m> be a finitely generated ideal of <m>A</m>.
+        An object <m>M \in D(A)</m> is <term>derived <m>I</m>-complete</term> if for each <m>f \in I</m>, 
+        <me>
+          R\Hom_A(A_f, K) = 0.
+        </me>
+        The argument of <xref ref="lem-derived-f-limit-ideal"/> carries over to show that it suffices to check this condition at a generating set of <m>I</m>,
+        or of any other ideal with the same radical.
+      </p>
+    </definition>
+    <proposition xml:id="prop-derived-complete-abelian-derived">
+      <statement>
+        <p>
+          Let <m>A</m> be a commutative ring and let <m>I</m> be a finitely generated ideal of <m>A</m>.
+          <ol>
+            <li>
+              <p>
+                The derived <m>I</m>-complete objects of <m>D(A)</m> form a full triangulated subcategory which is closed under derived inverse limits.
+                This inclusion has a left adjoint <m>M \mapsto \widehat{M}</m> (the <term>derived <m>I</m>-completion</term>)
+                which can be computed as follows: for <m>I = (f_1,\dots,f_r)</m>,
+                <me>
+                  \widehat{M} = R\lim_n (M \otimes_{\ZZ[x_1,\dots,x_r]}^L \ZZ[x_1,\dots,x_r]/(x_1^n,\dots,x_r^n)
+                </me>
+                for the action of <m>\ZZ[x_1,\dots,x_r]</m> on <m>M</m> with <m>x_i</m> acting via <m>f_i</m>.
+              </p>
+            </li>
+            <li>
+              <title>Derived Nakayama's lemma</title>
+              <p>
+                Let <m>M</m> be a derived <m>I</m>-complete <m>A</m>-complex. Then <m>M = 0</m> if and only if <m>M \otimes_A^L A/I = 0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                An object <m>M \in D(A)</m> is derived <m>I</m>-complete if and only if <m>H^i(M)</m> is derived <m>I</m>-complete for each <m>i \in \ZZ</m>.
+                Conesquently, for <m>M \in \Mod_A</m>, if we identify <m>M</m> with its image under <m>[0]</m> and take the derived completion <m>\widehat{M}</m>
+                as an object of <m>D(A)</m>, then <m>H^0(\widehat{M})</m> is the derived completion at the level of modules
+                (i.e., the left adjoint from <xref ref="prop-derived-complete-abelian"/>).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tags 091V, 091Z, 0G1U.
+        </p>
+      </proof>
+    </proposition>
+    <p>
+      In general, an <m>A</m>-module admits derived <m>I</m>-completions <q>as a module</q> (<xref ref="prop-derived-complete-abelian"/>)
+      and <q>as a complex</q> (<xref ref="prop-derived-complete-abelian-derived"/>), with the former being <m>H^0</m> of the latter. However,
+      these can interact in unexpected ways.
+    </p>
     <example xml:id="exa-derived-example-QZ">
       <p>
         Take <m>A = \ZZ, I = (p), M = \QQ/\ZZ</m>. Then the ordinary completion of <m>M</m> vanishes, as does the derived completion of <m>M</m>
         <em>as a module</em>, but the derived completion of <m>M</m> <em>as a complex</em> is the group <m>\ZZ_p</m> concentrated in degree 1.
       </p>
     </example>
-    <lemma xml:id="lem-refract-almost-ideal-flat">
+    <p>
+      We tie up a loose end by checking that the category of lenses admits pushouts.
+    </p>
+    <proposition xml:id="prop-tensor-lens">
       <statement>
         <p>
-          With notation as in <xref ref="lem-refract-properties"/>, the ideal <m>\sqrt{pR}</m> is a flat <m>R</m>-module.
+          Let <m>A \to B</m>, <m>A \to C</m> be morphisms of lenses. Then the derived <m>p</m>-completion of <m>B \otimes_A^L C</m> has cohomology only in degree
+          <m>0</m>, which is a lens.
         </p>
       </statement>
       <proof>
         <p>
-          We next check that <m>\sqrt{pR}</m> is flat. We must check that for any <m>M \in \Mod_R</m>,
-          <m>\Tor_R^i(M, \sqrt{pR}) = 0</m> for all <m>i \gt; 0</m>, or equivalently <m>\Tor_R^i(M, \overline{R}) = 0</m>
-          for all <m>i \gt; 1</m>.
-          By tensoring <m>M</m> with the exact sequence
-          <me>
-            0 \to \Tor^1_{\ZZ_p}(M, \QQ_p) \to M \to M \otimes_{\ZZ_p} \QQ_p \to M \otimes_{\ZZ_p} \QQ_p/\ZZ_p \to 0
-          </me>
-          and using the fact that <m>\overline{R} \otimes_{\ZZ_p} \QQ_p = 0</m>, we may further reduce to the case of a
-          module <m>M</m> which is <m>p</m>-power torsion. By devissage, we may further reduce to the case where <m>M</m> is killed by <m>p</m>.
-          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Lemma 2.6.)
+          It is clear that <m>R = B^\flat \otimes_{A^\flat} C^\flat</m> is perfect. By <xref ref="exer-perfect-tor"/>, 
+          we also have <m>R \cong B^\flat \otimes_{A^\flat}^L C^\flat</m> in <m>D(A^\flat)</m>. Applying the Witt vector functor, we obtain an isomorphism
+          <m>W(R) \cong W(B^\flat) \widehat{\otimes}^L_{W(A^\flat)} W(C^\flat)</m> where <m>\widehat{\otimes}^L</m> denotes the derived <m>p</m>-completion
+          of the derived tensor product. Write <m>A \cong W(A^\flat)/d</m> with <m>d \in W(A^\flat)</m> distinguished (<xref ref="lem-perfect-prisms-structure"/>).
+          Since <m>d</m> is a non-zerodivisor in <m>W(A^\flat), W(B^\flat), W(C^\flat)</m> (<xref ref="lem-distinguished-perfect"/>),
+          we get an isomorphism <m>W(R)/(d) \cong B \widehat{\otimes}^L_A C</m>. This proves the claim.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Proposition 2.11.)
         </p>
       </proof>
-    </lemma>
-    <p>
-      Tensor product of lenses.
-    </p>
+    </proposition>
   </subsection>
   <exercises>
     <exercise xml:id="exer-derived-completion-delta">

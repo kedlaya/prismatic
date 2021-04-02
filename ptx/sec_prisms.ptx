@@ -627,6 +627,12 @@
         One can then apply the same definition for objects in <m>D(A)</m>; see <xref ref="sec_derived-categories"/>.
       </p>
     </remark>
+    <remark>
+      <p>
+        The category of derived <m>I</m>-complete <m>A</m>-modules does not have the property that filtered colimits are exact (<xref ref="bib-Stacks"/>, tag 0ARC).
+        In particular, it is not a <term>Grothendieck abelian category</term>.
+      </p>
+    </remark>
   </subsection>
   <exercises>
     <exercise xml:id="exer-Stacks-090S">

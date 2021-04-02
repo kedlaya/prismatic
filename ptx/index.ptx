@@ -17,6 +17,7 @@
     \def\RR{\mathbb{R}}
     \def\WW{\mathbb{W}}
     \def\ZZ{\mathbb{Z}}
+    \def\calA{\mathcal{A}}
     \def\calC{\mathcal{C}}
     \def\frako{\mathfrak{o}}
     \def\frakX{\mathfrak{X}}
@@ -30,6 +31,7 @@
     \DeclareMathOperator{\Cl}{Cl}
     \DeclareMathOperator{\coker}{coker}
     \DeclareMathOperator{\colim}{colim}
+    \DeclareMathOperator{\Comp}{Comp}
     \DeclareMathOperator{\Cor}{Cor}
     \DeclareMathOperator{\cyc}{cyc}
     \DeclareMathOperator{\disc}{Disc}
@@ -104,9 +106,12 @@
     <xi:include href="./sec_overview.ptx"/>
     <xi:include href="./sec_delta-rings.ptx"/>
     <xi:include href="./sec_Witt.ptx"/>
+    <xi:include href="./sec_lambda-rings.ptx"/>
     <xi:include href="./sec_prisms.ptx"/>
     <xi:include href="./sec_perfect.ptx"/>
+    <xi:include href="./sec_homotopy-categories.ptx"/>
     <xi:include href="./sec_derived-categories.ptx"/>
+    <xi:include href="./sec_sites.ptx"/>
     <backmatter>
       <xi:include href="./bibliography.ptx"/>
     </backmatter>
