@@ -19,6 +19,7 @@
     \def\ZZ{\mathbb{Z}}
     \def\calA{\mathcal{A}}
     \def\calC{\mathcal{C}}
+    \def\calO{\mathcal{O}}
     \def\frako{\mathfrak{o}}
     \def\frakX{\mathfrak{X}}
     \def\dual{\vee}
@@ -26,11 +27,13 @@
     \def\Ainf{\mathbf{A}_{\mathrm{inf}}}
 
     \DeclareMathOperator{\ab}{ab}
+    \DeclareMathOperator{\Ab}{\mathrm{Ab}}
     \DeclareMathOperator{\an}{an}
     \DeclareMathOperator{\Aut}{Aut}
     \DeclareMathOperator{\Cl}{Cl}
     \DeclareMathOperator{\coker}{coker}
     \DeclareMathOperator{\colim}{colim}
+    \DeclareMathOperator{\comp}{comp}
     \DeclareMathOperator{\Comp}{Comp}
     \DeclareMathOperator{\Cor}{Cor}
     \DeclareMathOperator{\cyc}{cyc}
@@ -53,16 +56,23 @@
     \DeclareMathOperator{\lcm}{lcm}
     \DeclareMathOperator{\Mod}{\mathbf{Mod}}
     \DeclareMathOperator{\Norm}{Norm}
+    \DeclareMathOperator{\op}{op}
+    \DeclareMathOperator{\perf}{perf}
     \DeclareMathOperator{\Pic}{Pic}
+    \DeclareMathOperator{\Poly}{\mathbf{Poly}}
     \DeclareMathOperator{\Prm}{\mathbf{Prism}}
+    \DeclareMathOperator{\Pshv}{\mathbf{Pshv}}
     \DeclareMathOperator{\Rad}{Rad}
     \DeclareMathOperator{\Real}{Re}
     \DeclareMathOperator{\Res}{Res}
     \DeclareMathOperator{\Ring}{\mathbf{Ring}}
     \DeclareMathOperator{\sep}{sep}
+    \DeclareMathOperator{\Set}{\mathbf{Set}}
     \DeclareMathOperator{\sign}{sign}
     \DeclareMathOperator{\Spec}{Spec}
+    \DeclareMathOperator{\Spf}{Spf}
     \DeclareMathOperator{\Tor}{Tor}
+    \DeclareMathOperator{\Tot}{Tot}
     \DeclareMathOperator{\Trace}{Trace}
     \DeclareMathOperator{\unr}{unr}
     \DeclareMathOperator{\Ver}{Ver}
@@ -97,10 +107,19 @@
         <date><today /></date>
       </titlepage>
       <abstract>
-        These are notes from a <url href="https://www.math.ucsd.edu/~kkedlaya/math206/">graduate topics course</url> given at University of California San Diego 
-        during the spring 2021 quarter, modeled on <xref ref="bib-Bhatt-course"/>.
-        Recordings of the lectures can be found at the same web site.
-        These notes were generated using <pretext /> to produce <url href="https://kskedlaya.org/prismatic/">HTML</url> and <url href="https://kskedlaya.org/papers/prismatic-ptx.pdf">PDF</url> versions.
+        <p>
+          These are notes from a <url href="https://www.math.ucsd.edu/~kkedlaya/math206/">graduate topics course</url> given at UC San Diego 
+          during the spring 2021 quarter; recordings of the lectures can be found at the same web site.
+          The notes were typeset using <pretext /> so as to produce matching <url href="https://kskedlaya.org/prismatic/">HTML</url> and 
+          <url href="https://kskedlaya.org/papers/prismatic-ptx.pdf">PDF</url> versions.
+        </p>
+        <p>
+          The course was closely modeled on <xref ref="bib-Bhatt-course"/>, which in turn presented material from <xref ref="bib-Bhatt-Scholze"/>.
+          No claim of originality is made except for errors.
+        </p>
+        <p>
+          Sections marked <q>unstable</q> are partially unwritten. I don't recommend reading these yet!
+        </p>
       </abstract>
     </frontmatter>
     <xi:include href="./sec_overview.ptx"/>
@@ -108,9 +127,18 @@
     <xi:include href="./sec_Witt.ptx"/>
     <xi:include href="./sec_lambda-rings.ptx"/>
     <xi:include href="./sec_prisms.ptx"/>
+    <xi:include href="./sec_derived-complete.ptx"/>
     <xi:include href="./sec_perfect.ptx"/>
+    <xi:include href="./sec_lenses.ptx"/>
     <xi:include href="./sec_homotopy-categories.ptx"/>
     <xi:include href="./sec_derived-categories.ptx"/>
+    <xi:include href="./sec_prismatic-site.ptx"/>
+    <xi:include href="./sec_hodge-tate.ptx"/>
+    <xi:include href="./sec_hodge-tate-crystalline.ptx"/>
+    <xi:include href="./sec_hodge-tate-proof.ptx"/>
+    <xi:include href="./sec_derived-prismatic.ptx"/>
+    <xi:include href="./sec_perfections-mixed.ptx"/>
+    <xi:include href="./sec_q-derham.ptx"/>
     <xi:include href="./sec_sites.ptx"/>
     <backmatter>
       <xi:include href="./bibliography.ptx"/>

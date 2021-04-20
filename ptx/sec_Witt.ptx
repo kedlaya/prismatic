@@ -4,7 +4,8 @@
     <paragraphs>
       <title>References</title>
       <p>
-        As in <xref ref="sec_delta-rings"/>.
+        As in <xref ref="sec_delta-rings"/>. The original paper of Witt is <xref ref="bib-Witt"/>.
+        See also <xref ref="bib-Serre-LocalFields"/>, chapter II, section 6.
       </p>
     </paragraphs>
     <p>
@@ -80,7 +81,7 @@
             <mrow> &amp;= (x_0^p + p*)^{p^{n-1}} + \cdots + p^{n-2} (x_{n-2}^p + p*)^p + p^{n-1} \phi(x_{n-1}) </mrow>
             <mrow> &amp;= x_0^{p^n} + \cdots + p^{n-2} x_{n-2}^{p^2} + p^{n-1} (x_{n-1}^p + p \delta(x_{n-1})) + p^n * </mrow>
           </md>
-          where each <m>*</m> denotes a quantity in <m>(y_0,\dots,y_{n-1})\ZZ[y_0,\dots,y_{n-1}]</m>. 
+          where each <m>*</m> denotes a quantity in <m>(y_1,\dots,y_{n-1})\ZZ[y_0,\dots,y_{n-1}]</m>. 
           We thus can (and must) take
           <me>
             x_n = \delta(x_{n-1}) + *.
@@ -89,7 +90,7 @@
           <me>
             \delta(x_{n-1}) = \delta(y_{n-1}) + \delta(x_{n-1}-y_{n-1}) + * = y_n + *
           </me>
-          and so <m>x_n - y_n \in (y_0,\dots,y_{n-1})\ZZ[y_0,\dots,y_{n-1}]</m>.
+          and so <m>x_n - y_n \in (y_1,\dots,y_{n-1})\ZZ[y_0,\dots,y_{n-1}]</m>.
         </p>
       </proof>
     </lemma>
@@ -108,10 +109,7 @@
         </p>
       </proof>
     </corollary>
-    <p>
-      In preparation for the later discussion of Witt vectors over a ring of characteristic <m>p</m>, we record the following property of the Witt coordinate functions.
-    </p>
-    <lemma xml:id="lem-char-p-Witt-frob">
+    <corollary xml:id="lem-char-p-Witt-frob">
       <statement>
         <p>
           In the ring <m>\ZZ\{y\}</m>, we have
@@ -119,22 +117,31 @@
             \phi(x_n) \equiv x_n^p \pmod{p}.
           </me>
           Consequently, for <m>A</m> a ring of characteristic <m>p</m>, the map <m>\phi</m> on <m>W(A)</m> coincides with the map induced by functoriality by the Frobenius on <m>A</m>.
+          (This is also true in the <m>y</m>-coordinates.)
         </p>
       </statement>
       <proof>
         <p>
-          We proceed by induction, starting with the evident base case <m>n=0</m>. To prove the claim for <m>n > 0</m>, use <xref ref="eq-ghost-internal"/> 
-          and <xref ref="eq-promote-congruence2"/> to obtain
+          The first assertion is a consequence of the fact that <m>\phi</m> is a Frobenius lift (because <m>\ZZ\{y\}</m> is a <m>\delta</m>-ring).
+          The second assertion is a direct consequence of the first, but let us spell this out for clarity as the mechanism of the argument will recur in what follows.
+          For a general ring <m>A</m>, each of the elements <m>x_0, x_1, \dots \in \ZZ\{x\}</m> defines a function <m>W(A) \to A</m> which is natural in <m>A</m>.
+          Similarly, every element of <m>\ZZ\{x\}</m> can be viewed as a <q>polynomial function</q> on <m>W(A)</m> valued in <m>A</m> which is again natural in <m>A</m>;
+          that is, we have a map of sets <m>h: \ZZ\{x\} \to \Hom_{\Set}(W(A), A)</m>. This map has the property that
+          <me>
+            h(\phi(t))(u) = \phi(h(t)(u)) \qquad (t \in \ZZ\{x\}, u \in W(A)).
+          </me>
+          In the case where <m>A</m> is of characteristic <m>p</m>, we have <m>\phi(x_n) = x_n^p + p \delta(x_n)</m>
+          and so  for any <m>u \in W(A)</m>,
           <md>
-            <mrow>x_0^{p^{n+1}} + \cdots + p^{n-1} x_{n-1}^{p^2} + p^n x_n^p + p^{n+1} x_{n+1} &amp;= \phi^{n+1}(x_0)</mrow>
-            <mrow>&amp; = \phi(\phi^n(x_0))</mrow>
-            <mrow>&amp; = \phi(x_0)^{p^n} + \cdots + p^{n-1} \phi(x_{n-1})^p + p^n \phi(x_n)</mrow>
-            <mrow>&amp;\equiv x_0^{p^{n+1}} + \cdots + p^{n-1} x_{n-1}^{p^2} + p^n \phi(x_n) \pmod{p^{n+1}}</mrow>.
+            <mrow>\phi(h(x_n)(u)) &amp;= h(\phi(x_n))(u) </mrow>
+            <mrow>&amp;= h(x_n^p + p \delta(x_n))(u)</mrow>
+            <mrow>&amp;= h(x_n^p)(u) + p h(\delta(x_n))(u)</mrow> 
+            <mrow>&amp;= h(x_n)(u)^p.</mrow>
           </md>
-          Since <m>\ZZ\{y\}</m> is <m>p</m>-torsion-free, we deduce that <m>\phi(x_n) \equiv x_n^p \pmod{p}</m>.
+          This shows that the <m>\phi</m> acts via the functorial Frobenius.
         </p>
       </proof>
-    </lemma>
+    </corollary>
     <p>
       We record some consequences of the adjunction between <m>\Ring</m> and <m>\Ring_\delta</m>.
     </p>
@@ -154,10 +161,11 @@
         consequently, if we express an element of <m>W(A)</m> in the <m>y</m>-coordinates as <m>(y_0, y_1, \dots)</m>, it 
         is <m>\delta</m>-constant if and only if <m>y_1 = y_2 = \cdots = 0</m>.
         By <xref ref="lem-unipotent-Witt"/>, in the usual coordinates, an element <m>(x_0,x_1,\dots)</m> of <m>W(A)</m>
-        is <m>\delta</m>-constant if and only if <m>x_1 = x_2 = \cdots</m>.
+        is <m>\delta</m>-constant if and only if <m>x_1 = x_2 = \cdots = 0</m>.
       </p>
       <p>
-        That is, the <m>\delta</m>-constants are the image of the multiplicative (but <em>not additive</em>) section <m>[\bullet]: A \to W(A)</m> of the projection
+        That is, the <m>\delta</m>-constants are the image of the multiplicative (but <em>not additive</em>; see <xref ref="exer-ghost-map-multiplicative"/>) 
+        section <m>[\bullet]: A \to W(A)</m> of the projection
         <m>W(A) \to A</m> given by <m>[x] = (x, 0, 0, \dots)</m>. 
         We call <m>[x]</m> the <term>constant lift</term> (or the <term>multiplicative lift</term>) of <m>x \in A</m>.
       </p>
@@ -244,6 +252,13 @@
         </me>
       </p>
     </definition>
+    <remark>
+      <p>
+        In <xref ref="bib-Witt"/>, what we call <term>ghost coordinates</term> were instead called <term>Nebenkomponenten</term>, or <term>secondary components</term>.
+        The terminology we use here is quite commonplace but its origins are unclear; the earliest reference we were able to find is Barsotti's 
+        <journal>Mathematical Reviews</journal> synopsis of <xref ref="bib-Yamamoto"/>, but it seems likely that the terminology was in circulation before that.
+      </p>
+    </remark>
   </subsection>
   <subsection>
     <title>Witt vectors and perfect <m>\delta</m>-rings</title>
@@ -275,6 +290,11 @@
         </p>
       </proof>
     </lemma>
+    <example>
+      <p>
+        We have <m>W(\FF_p) \cong \ZZ_p</m>. More generally, for any finite extension <m>\FF_q</m> of <m>\FF_p</m>, <m>W(\FF_q) = \ZZ_p[\zeta_{q-1}]</m>.
+      </p>
+    </example>
     <definition xml:id="def-multiplicative-lift">
       <p>
         For <m>A</m> a perfect ring of characteristic <m>p</m>, <xref ref="lem-witt-vectors-perfect-ring"/>
@@ -294,14 +314,14 @@
         <p>
           We first use <xref ref="eq-promote-congruence2"/> to lift <m>R \to S/(p)</m> to a multiplicative map <m>R \to S</m>.
           Using the series representations from <xref ref="def-multiplicative-lift"/>, we then obtain a set-theoretic map <m>W(R) \to S</m>
-          which we must show is an isomorphism; it is enough to check that it induces a homomorphism <m>W(R) \to S/p^n</m> for each <m>n</m>.
+          which we must show is an homomorphism; it is enough to check that it induces a homomorphism <m>W(R) \to S/p^n</m> for each <m>n</m>.
           This is not too onerous to prove by direct computation;
           see for example <xref ref="bib-Kedlaya-new-methods"/>, Lemma 1.1.7.
         </p>
         <p>
           A second, more conceptual approach is to apply the fact that if <m>A</m> is a perfect ring of characteristic <m>p</m>, then the cotangent complex
-          <m>L_{A/\FF_p}</m> vanishes: Frobenius acts on it both as an isomorphism (trivially) and as zero (by computation on polynomial algebras).
-          Compare <xref ref="bib-Bhatt-course"/>, Lecture II, Lemma 3.5.
+          <m>L_{A/\FF_p}</m> vanishes; we will revisit this comment once we have introduced the cotangent complex in <xref ref="subsec_cotangent-complex"/>.
+          See <xref ref="exer-cotangent-complex-perfect"/> (and <xref ref="bib-Bhatt-course"/>, Lecture II, Lemma 3.5).
         </p>
       </proof>
     </lemma>
@@ -355,9 +375,18 @@
         The right adjoint maps <m>A</m> to <m>\lim_\phi A</m>, which we call the <term>perfection</term> of <m>A</m>.
       </p>
     </definition>
+    <p>
+      The following examples show that the relationship between the perfection and coperfection can be a bit subtle.
+    </p>
     <example>
       <p>
         For <m>A = \FF_p[x]</m>, the coperfection equals <m>\FF_p[x^{p^{-\infty}}]</m> while the perfection equals <m>\FF_p</m>.
+      </p>
+    </example>
+    <example>
+      <p>
+        For <m>A = \FF_p[x^{p^{-\infty}}]/(x)</m>, the coperfection equals <m>\FF_p[x^{p^{-\infty}}]</m> while the perfection equals 
+        the <m>x</m>-adic completion of <m>\FF_p[x^{p^{-\infty}}]</m>. 
       </p>
     </example>
     <remark xml:id="rmk-embedding-into-Witt-vectors">
@@ -368,7 +397,7 @@
         the target <m>W(R)</m> remains fixed while the morphism <m>A \to W(R)</m> varies.
       </p>
     </remark>
-    <example>
+    <example xml:id="rmk-embedding-into-Witt-polynomial">
       <p>
         Put <m>A = \ZZ[x]</m>. As in <xref ref="exa-delta-ring-polynomial"/>, for each <m>y \in A</m> there is a unique <m>\delta</m>-ring structure
         on <m>A</m> for which <m>\delta(x) = y</m>. Each of these gives rise to an injective morphism <m>A \to W(\colim_\phi \FF_p[x])</m> of <m>\delta</m>-rings.
@@ -389,11 +418,46 @@
         </p>
       </proof>
     </lemma>
-    <remark>
+    <remark xml:id="rmk-Witt-Frobenius-kernel">
       <p>
         <xref ref="lem-char-p-Witt-frob"/> implies that when <m>A</m> is a reduced ring of characteristic <m>p</m>, the map <m>\phi</m> on <m>W(A)</m> is injective.
-        By contrast, if <m>A</m> is a reduced ring not of characteristic <m>p</m>, then the map <m>\phi</m> on <m>W(A)</m> typically is far from injective;
-        see <xref ref="bib-Davis-Kedlaya"/>, section 2 for a description of its kernel.
+        By contrast, if <m>A</m> is a nonreduced ring of characteristic <m>p</m>, then <m>\phi</m> is not injective: for any nonzero <m>x \in A</m> with <m>x^p = 0</m>,
+        we have <m>[x] \neq 0</m> but <m>\phi([x]) = [x^p] = 0</m>.
+      </p>
+      <p>
+        If <m>A</m> is a ring not of characteristic <m>p</m>, then the map <m>\phi</m> on <m>W(A)</m> is not injective either, but this is somewhat more subtle.
+        See <xref ref="exer-witt-vector-frobenius-injective"/>. (One case which is not subtle: if <m>p</m> is invertible in <m>W(A)</m>, then the ghost map is an isomorphism
+        and so we may see the kernel of <m>\phi</m> on the ghost side, remembering that <m>\phi</m> acts here as the left shift.)
+      </p>
+    </remark>
+    <remark xml:id="rmk-Witt-Frobenius-cokernel">
+      <p>
+        For <m>A</m> of characteristic <m>p</m>, the map <m>\phi</m> on <m>W(A)</m> is surjective if and only if it is surjective on <m>A</m>, i.e., if and only if <m>A</m>
+        is <term>semiperfect</term>. However, by contrast with <xref ref="rmk-Witt-Frobenius-kernel"/>, there are many rings <m>A</m> not of characteristic <m>p</m>
+        for which <m>\phi</m> is surjective on <m>W(A)</m>. There are even more rings for which <m>\phi: W_{n+1}(A) \to W_n(A)</m> is surjective for each <m>n</m>;
+        these rings are said to be <term>Witt-perfect</term> in <xref ref="bib-Davis-Kedlaya"/>, which see for additional characterizations.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Additional remarks</title>
+    <proposition xml:id="prop-etale-Witt">
+      <statement>
+        <p>
+          For any etale morphism <m>f: A \to B</m> and any positive integer <m>n</m>, the map <m>W_n(f): W_n(A) \to W_n(B)</m> is etale.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This was originally shown by van der Kallen (<xref ref="bib-van_der_Kallen"/>, (2.4)); see also <xref ref="bib-Borger-Witt1"/>, Theorem B.
+          (Both of these references also cover the truncated big Witt vector functors; see <xref ref="def-Witt-structures-global"/>.)
+          For the case of a localization, see also <xref ref="exer-witt-vector-localization"/>.
+        </p>
+      </proof>
+    </proposition>
+    <remark>
+      <p>
+        By <xref ref="prop-etale-Witt"/>, we may apply the functors <m>W_n</m> also to schemes. See <xref ref="bib-Borger-Witt2"/> for some discussion of this construction.
       </p>
     </remark>
   </subsection>
@@ -405,6 +469,11 @@
           (This provides a nontrivial example of <xref ref="lem-delta-p-torsion"/>.)
         </p>
       </statement>
+      <hint>
+        <p>
+          Use the fact that <m>\phi \circ V</m> acts as multiplication by <m>p</m>.
+        </p>
+      </hint>
     </exercise>
     <exercise>
       <statement>
@@ -417,6 +486,88 @@
           are all isomorphisms.
         </p>
       </statement>
+    </exercise>
+    <exercise xml:id="exer-ghost-map-multiplicative">
+      <statement>
+        <p>
+          Show that for any ring <m>A</m>, the map <m>[\bullet]: A \to W(A)</m> is multiplicative.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use the fact that the <m>\delta</m>-constant elements both form a multiplicative subset <em>and</em> coincide with the image of <m>[\bullet]</m>.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>R</m> be a perfect ring of characteristic <m>p</m>. Prove that <m>R</m> is noetherian if and only if <m>R</m> is a finite (possibly empty) direct product of fields.
+          Consequently, <m>W(R)</m> is noetherian if and only if the same conditions hold.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-witt-vector-localization">
+      <statement>
+        <p>
+          Let <m>A</m> be a ring and let <m>S</m> be a multiplicative subset. Let <m>[S]</m> be the image of <m>S</m> under the constant section.
+          Prove that for each positive integer <m>n</m>, there is a natural isomorphism <m>[S]^{-1} W_n(A) \to W_n(S^{-1} A)</m>.
+          By contrast, the natural map <m>[S]^{-1} W(A) \to W(S^{-1} A)</m> is not an isomorphism.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The natural map exists because elements of <m>[S]</m> become units in <m>W_n(S^{-1} A)</m>. To show that it is surjective, first use the ghost map 
+          (and naturality) to figure out how multiplication by a constant lift acts on the Witt components of a general vector.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Show that in <xref ref="rmk-embedding-into-Witt-polynomial"/>, the image of <m>\ZZ[x]</m> in <m>W(\colim_\phi \FF_p[x])</m>
+          need not be generated (as a <m>\ZZ</m>-algebra) by multiplicative lifts.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-witt-vector-frobenius-injective">
+      <statement>
+        <p>
+          Let <m>A</m> be a ring. Show that if <m>\phi: W(A) \to W(A)</m> is injective, then <m>p=0</m> in <m>A</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Show that any multiple of <m>p</m> occurs as <m>x_0</m> in some <m>x = (x_0, x_1,\dots) \in W(A)</m> with <m>\phi(x) = 0</m>.
+          For more details, see <xref ref="bib-Davis-Kedlaya"/>, Corollary 2.6.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>R</m> be a perfect ring of characteristic <m>p</m>. Show that <m>V \circ \phi</m> acts on <m>W(R)</m> by multiplication by <m>p</m>
+          (just as <m>\phi \circ V</m> does for arbitrary <m>R</m>).
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use the fact that <m>\phi</m> agrees with the functorial Frobenius to see that it commutes with multiplication by <m>p</m>. 
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that for any nonzero ring <m>A</m>, the characteristic of the ring <m>W(A)</m> is either 0 or not divisible by <m>p</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          If any maximal ideal of <m>A</m> has characteristic <m>p</m>, then <m>W(A)</m> maps to a ring of characteristic 0.
+          Otherwise, <m>W(A)</m> splits as a product of copies of <m>A</m>.
+        </p>
+      </hint>
     </exercise>
   </exercises>
 </section>

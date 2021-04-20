@@ -22,7 +22,29 @@
     <definition>
       <p>
         For the remainder of the course (except as specified), fix a prime number <m>p</m>.
-        Let <m>\Ring</m> denote the category of commutative unital rings.
+        Define the following standard categories:
+        <ul>
+          <li>
+            <p>
+              <m>\Set</m>: sets.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Ab</m>: abelian groups.
+           </p>
+          </li>
+          <li>
+            <p>
+              <m>\Ring</m>: commutative unital rings.
+           </p>
+          </li>
+          <li>
+            <p>
+              <m>\Mod_A</m>: modules over <m>A</m> (where <m>A \in \Ring</m>).
+            </p>
+         </li>
+        </ul>
         Let <m>\Rad(A)</m> denote the Jacobson radical of <m>A \in \Ring</m>.
         For <m>I</m> an ideal of <m>A</m>, we say that <m>A</m> is <term><m>I</m>-local</term> (or <term><m>f</m>-local</term> if <m>I = (f)</m>) if <m>I \subseteq \Rad(A)</m>.
       </p>
@@ -96,12 +118,26 @@
         </p>
       </proof>
     </lemma>
+    <remark xml:id="rmk-delta-ring-obstruction">
+      <p>
+        It is possible for a <m>p</m>-torsion-free ring to admit no <m>\delta</m>-ring structures, and hence no Frobenius lifts. A simple example 
+        (taken from <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.35) is <m>A = \ZZ_{(p)}[x, x^p/p]</m>: if <m>\delta: A \to A</m> were a <m>p</m>-derivation
+        with associated Frobenius lift <m>\phi</m>, we would have
+        <md>
+          <mrow>\frac{1}{p} (x^p/p)^p &amp;= \frac{1}{p} (\phi(x^p/p) - p \delta(x^p/p))</mrow>
+          <mrow>&amp;= \frac{\phi(x)^p}{p^2} - \delta(x^p/p)</mrow>
+          <mrow>&amp;= \frac{(x^p + p \delta(x))^p}{p^2} - \delta(x^p/p)</mrow>
+          <mrow>&amp;= p^{p-2} (x^p/p + \delta(x))^p - \delta(x^p/p) \in A,</mrow>
+        </md>
+        a contradiction. See <xref ref="exer-delta-divided-power"/> for a consequence of this calculation.
+      </p>
+    </remark>
     <definition>
       <p>
         By <xref ref="eq-delta-ring-value-at-1"/> and <xref ref="eq-delta-ring-product"/>, in any <m>\delta</m>-ring <m>A</m> the elements <m>x \in A</m> for which <m>\delta(x) = 0</m> form a monoid under multiplication.
         By analogy with the case of an ordinary derivation, we call these the <term><m>\delta</m>-constant elements</term> of <m>A</m>.
         These elements also satisfy <m>\phi(x) = x^p</m>, and conversely if <m>A</m> is <m>p</m>-torsion free.
-        (In <xref ref="bib-Bhatt-Scholze"/> these elements are said to be <term>of rank 1</term>; this terminology will make more sense in the 
+        (In <xref ref="bib-Bhatt-Scholze"/> these elements are said to be <term>of rank <m>1</m></term>; this terminology will make more sense in the 
         context of big Witt wectors, as in <xref ref="rmk-Almkvist-interpretation"/>.)
       </p>
     </definition>
@@ -132,7 +168,7 @@
         <men xml:id="eq-delta-on-Z">
           \delta(x) = \frac{x-x^p}{p}.
         </men>
-        The <m>\delta</m>-constant elements are <m>\{0,1\}</m>.
+        The <m>\delta</m>-constant elements are <m>\{0,1\}</m> if <m>p = 2</m> and <m>\{0,1,-1\}</m> if <m>p \gt 2</m>.
       </p>
       <p>
         By the same token, <m>\ZZ_p</m> has trivial automorphism group (even if we ignore its topology!) and so 
@@ -228,8 +264,7 @@
         </p>
       </proof>
     </lemma>
-  </subsection>
-  
+  </subsection>  
   <subsection xml:id="subsec-truncated-Witt">
     <title>Truncated Witt vectors</title>
     <p>
@@ -367,8 +402,11 @@
     </remark>
     <definition xml:id="def-delta-ring-left-adjoint">
       <p>
-        By <xref ref="lem-delta-ring-limits-colimits"/> plus Freyd's adjoint functor theorem (see <xref ref="bib-Maclane"/>, section V.8 or <xref ref="bib-Stacks"/>, tag 0AHM),
+        By <xref ref="lem-delta-ring-limits-colimits"/> plus Freyd's adjoint functor theorem
+         (see <xref ref="bib-Maclane"/>, section V.8 or <xref ref="bib-Stacks"/>, tag 0AHM) and a set-theoretic consideration
+         (see <xref ref="rmk-adjoint-functor-set-condition"/>),
         the forgetful functor <m>\Ring_\delta \to \Ring</m> admits both a left adjoint and a right adjoint.
+        (More precisely, existence of limits givesx the left adjoint, existence of colimits gives the right adjoint.)
         The right adjoint gives rise to Witt vectors; see <xref ref="sec_Witt"/>.
       </p>
       <p>
@@ -456,6 +494,25 @@
           (This is true if <m>A</m> is <m>p</m>-torsion-free, but the reduction to this case is a bit subtle.)
         </p>
     </remark>
+    <remark xml:id="rmk-adjoint-functor-set-condition">
+      <p>
+        We fill in the missing set-theoretic consideration from <xref ref="def-delta-ring-left-adjoint"/>. In order to apply the adjoint functor theorem
+        to a functor <m>F: \calC \to \calC'</m> to get the left adjoint, one must assume that for every <m>y \in \calC'</m>, there is a set of elements <m>x_i \in \calC</m>
+        such that for any <m>x \in \calC</m>, any morphism <m>f: y \to F(x)</m> factors as
+        <m>F(g) \circ f_i</m> for some <m>i</m>, some <m>f_i: y \to F(x_i)</m>, and some <m>g: x_i \to x</m>,  
+        This is needed to ensure that when we construct the image of an object under the
+        adjoint functor, we are not trying to take a limit indexed by a class which is too large to be a set.
+      </p>
+      <p>
+        Similarly, to get the right adjoint, one must assume that for every <m>y \in \calC'</m>, there is a set of elements <m>x_i \in \calC</m>
+        such that for any <m>x \in \calC</m>, any morphism <m>f: F(x) \to y</m> factors as
+        <m>f_i \circ F(g)</m> for some <m>i</m>, some <m>g: x \to x_i</m>, and some <m>f_i: F(x_i) \to F(y)</m>.
+      </p>
+      <p>
+        Typically a condition like this is established by taking all of the pairs <m>(x_i, f_i)</m> which satisfy some cardinality bound.
+        For the case of <m>\Ring_\delta \to \Ring</m>, see <xref ref="exer-adjoint-functor-cardinality"/>.
+      </p>
+    </remark>
   </subsection>
   <exercises>
     <exercise xml:id="exer-delta-ring-normalization">
@@ -466,7 +523,7 @@
       </statement>
       <hint>
         <p>
-          Check that the map <m>\delta(x) = -x^p</m> satisfies the other conditions. (Note that it corresponds to <m>\phi</m> being the zero map, which is additive
+          Check that the map <m>\delta(x) = -x^p/p</m> satisfies the other conditions when it is well-defined. (Note that it corresponds to <m>\phi</m> being the zero map, which is additive
           and multiplicative but not a homomorphism of unital rings.)
         </p>
       </hint>
@@ -579,16 +636,21 @@
     <exercise xml:id="exer-delta-divided-power">
       <statement>
         <p>
-          Let <m>A</m> be a <m>p</m>-torsion-free <m>\delta</m>-ring. Define the <term>divided power operations</term> <m>\gamma_n: A \to A[p^{-1}]</m> by
+          Let <m>A</m> be a <m>p</m>-torsion-free <m>\delta</m>-ring over <m>\ZZ_{(p)}</m>. Define the <term>divided power operations</term> <m>\gamma_n: A \to A[p^{-1}]</m> by
           <me>
             \gamma_n(x) = \frac{x^n}{n!}.
           </me>
           Show that if <m>x \in A</m> satisfies <m>\gamma_p(x) \in A</m>, then <m>\gamma_n(x) \in A</m> for all <m>n \geq 0</m>.
+          In particular, this conclusion does not depend on the <m>\delta</m>-ring structure, so it can be used to exhibit an obstruction to the existence of Frobenius
+          lifts on some rings, as in <xref ref="rmk-delta-ring-obstruction"/>.
         </p>
       </statement>
       <hint>
         <p>
-          See <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.35.
+          First adapt the calculation from <xref ref="rmk-delta-ring-obstruction"/> to show that <m>\gamma_{p^2}(x) \in A</m>.
+          Then use this as the basis for an induction on <m>n</m> (uniformly over all <m>A</m> and <m>x</m>),
+          by comparing <m>\gamma_{kp}(x)</m> to <m>\gamma_k(\gamma_p(x))</m>.
+          See also <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.35.
         </p>
       </hint>
     </exercise>
@@ -603,9 +665,17 @@
       </statement>
       <hint>
         <p>
-          See <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.36.  
+          See <xref ref="lem-divided-power-envelope-delta"/>.
         </p>
       </hint>
+    </exercise>
+    <exercise xml:id="exer-adjoint-functor-cardinality">
+      <statement>
+        <p>
+          Show that for the forgetful functor <m>\Ring_\delta \to \Ring</m>, the conditions in <xref ref="rmk-adjoint-functor-set-condition"/> are satisfied by taking
+          all objects <m>x_i</m> with <m>|x_i| \leq \max\{|x|, \aleph_0\}</m>.
+        </p>
+      </statement>
     </exercise>
   </exercises>
 </section>

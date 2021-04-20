@@ -4,17 +4,175 @@
     <paragraphs>
       <title>Reference</title>
       <p>
-        <xref ref="bib-Stacks"/>, tag 05QI. We are skipping a <em>lot</em> of details.
+        <xref ref="bib-Stacks"/>, tag 05QI or <xref ref="bib-Weibel"/>, Chapter 10; we are skipping a <em>lot</em> of details. We do not develop the point of view of triangulated categories
+        very thoroughly; for more on that point of view, see <xref ref="bib-Kiehl-Weissauer"/>, Chapter II.
       </p>
     </paragraphs>
     <p>
       We pick up from <xref ref="sec_homotopy-categories"/> (retaining notation) and introduce the <term>derived category</term> associated to an abelian category.
-      This amounts to checking that we can perform the localization of the homotopy category <m>K(\calA)</m> at the family of quasi-isomorphisms
-      (i.e., verifying the hypothesis of a multiplicative system from <xref ref="def-multiplicative-system"/>). Rather than attempting to do this directly,
-      we first set up the formalism of <term>triangulated categories</term>; this will allow us to identify quasi-isomorphisms in terms of their mapping cones,
-      which will facilitate the verification of the necessary conditions.
+      This amounts to checking that we can perform the localization of the homotopy category <m>K(\calA)</m> at the family of quasi-isomorphisms.
     </p>
   </introduction>
+  <subsection>
+    <title>Localization in a category</title>
+    <remark>
+      <p>
+        Recall from <xref ref="rmk-derived-motivation3"/> that we are in the situation of having to construct one category from another by <q>formally inverting</q>
+        some morphisms. We are familiar with processes of these type from algebra, such as the group completion of a monoid (e.g., passage from positive integers to
+        arbitrary integers) or the localization of a ring at a multiplicative subset (e.g., passage from integers to rational numbers).
+        The category-theoretic situation is similar but rather fraught with arrows, and somewhat complicated by the fact that composition of morphisms
+        is not commutative. Similar (but a bit less fraught) considerations apply to localization in a <em>noncommutative</em> ring.
+      </p>
+      <p>
+        To isolate a key difficulty, imagine trying to define a morphism in the localization category as a formal composition
+        <m>g^{-1} \circ f</m> where <m>f</m> is a morphism and <m>g^{-1}</m> is the <q>formal inverse</q> of another morphism. Then
+        the composition of two such morphisms would have the form <m>g_1^{-1} \circ f_1 \circ g_2^{-1} \circ f_2</m> and we would then need to
+        rewrite the inner composition <m>f_1 \circ g_2^{-1}</m> as a composition <m>g_3^{-1} \circ f_3</m> in the opposite order.
+        Then the total composition would become
+        <me>
+          g_1^{-1} \circ g_3^{-1} \circ f_3 \circ f_2 = (g_3 \circ g_1)^{-1} \circ (f_2 \circ f_3)
+        </me>
+        which has the right form.
+      </p>
+      <p> 
+        We give only a brief summary of the formalism needed to make this idea work. See <xref ref="bib-Stacks"/>, tag 04VB for further details.
+      </p>
+    </remark>
+    <definition xml:id="def-multiplicative-system">
+      <p>
+        Let <m>\calC</m> be a category (not necessarily abelian or even additive). Let <m>S</m> be a collection of morphisms in <m>\calC</m>. We say that <m>S</m> is a
+        <term>left multiplicative system</term> if the following conditions hold.
+      </p>
+      <ol>
+        <li>
+          <p>
+            The collection <m>S</m> contains all identity morphisms and is closed under composition (of composable pairs).
+          </p>
+        </li>
+        <li>
+          <p>
+            Given the solid arrows as in <xref ref="fig-localization-categories"/> with <m>t \in S</m>, for some choice of <m>Y'</m> there exist dashed arrows with <m>s \in S</m> forming a commutative square.
+          </p>
+          <figure xml:id="fig-localization-categories">
+            <image width="25%">
+              <latex-image>
+                \xymatrix{
+                  X \ar^{g}[r] \ar^{t}[d] &amp; Y \ar@{-->}^{s}[d] \\ X' \ar@{-->}^{f}[r] &amp; Y'
+                }
+              </latex-image>
+            </image>
+          </figure>
+          <p>
+            You should think of this as saying that the <q>formal composition</q> <m>g \circ t^{-1}: Z \to Y</m> can be refactored as <m>s^{-1} \circ f</m>,
+            with the formal inverse moved from the right to the left.
+          </p>
+        </li>
+        <li>
+          <p>
+            For every pair of morphisms <m>f,g: X \to Y</m> and every <m>t \in S</m> with target <m>X</m> such that <m>f \circ t = g \circ t</m>,
+            there exists a morphism <m>s \in S</m> with source <m>Y</m> (and unspecified target) such that <m>s \circ f = s \circ g</m>.
+            (In this case, the morphisms <m>f</m> and <m>g</m> are going to be conflated in the localization, and we want that to make sense with respect to composition on both sides.)
+          </p>
+          <p>
+            If <m>\calC</m> is an additive category, it is equivalent to require that for every morphism 
+            <m>f: X \to Y</m> and every <m>t \in S</m> with target <m>X</m> such that <m>f \circ t = 0</m>,
+            there exists a morphism <m>s \in S</m> with source <m>Y</m> (and unspecified target) such that <m>s \circ f = 0</m>.
+          </p>
+        </li>
+      </ol>
+      <p>
+        Similarly, a <term>right multiplicative system</term> is a collection of morphisms of <m>\calC</m> that constitutes a left multiplicative system in the opposite category.
+        A <term>multiplicative system</term> is a collection of morphisms of <m>\calC</m> which is simultaneously a left multiplicative system and a right multiplicative system.
+      </p>
+      <p>
+        We say that a multiplicative system is <term>saturated</term> if for any three composable morphisms <m>f,g,h</m> with <m>f \circ g, g \circ h \in S</m>, we also have <m>g \in S</m>.
+        For example, the collection of all isomorphisms has this property.
+      </p>
+    </definition>
+    <definition xml:id="def-left-localization">
+      <p>
+        Let <m>\calC</m> be a category and let <m>S</m> be a multiplicative system. We define the category <m>S^{-1} \calC</m> as follows. 
+        (There are some steps to verify that this is a well-posed definition of a category; see <xref ref="bib-Stacks"/>, tag 04VD.)
+        <ol>
+          <li>
+            <p>
+              The objects of <m>S^{-1} \calC</m> are the objects of <m>\calC</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For <m>X,Y \in \calC</m> two objects, the morphisms <m>X \to Y</m> in <m>\calC</m> are given by pairs <m>(f: X \to Y', s: Y \to Y')</m>
+              where <m>Y' \in \calC</m> is a third object
+              modulo the following equivalence relation: two pairs
+              <me>(f_i: X \to Y_i, s_i: Y \to Y_i)</me> for <m>i=1,2</m> are equivalent if there is a third pair with <m>i=3</m> fitting into a diagram as in
+              <xref ref="fig-localization-category-equivalence"/> for some morphisms <m>Y_i \to Y_3</m> in <m>\calC</m> (not necessarily in <m>S</m>).
+            </p>
+            <figure xml:id="fig-localization-category-equivalence">
+              <image width="50%">
+                <latex-image>
+                  \xymatrix{
+                    &amp; Y_1 \ar[d] \\
+                   X \ar^{f_1}[ru] \ar^{f_3}[r] \ar_{f_2}[rd] &amp; Y_3 &amp; Y \ar_{s_1}[lu] \ar_{s_3}[l] \ar^{s_2}[ld] \\
+                   &amp; Y_2 \ar[u]
+                  }
+                </latex-image>
+              </image>
+             </figure>
+             <p>
+              You should think of a pair <m>(f,s)</m> as corresponding to the formal composition <m>s^{-1} \circ f</m>.
+             </p>
+          </li>
+          <li>
+            <p>
+              The composition of a pair  <m>(f: X \to Y', s: Y \to Y')</m> with a pair <m>(g: Y \to Z', t: Z \to Z')</m> is defined to be the equivalence class of a pair
+              <m>(h \circ f: X \to Z'', u \circ t: Z \to Z'')</m> where <m>h</m> and <m>u \in S</m> are chosen (using the definition of a left multiplicative system)
+              to fill in the commutative square <xref ref="fig-localization-categories1"/>.
+            </p>
+            <figure xml:id="fig-localization-categories1">
+              <image width="25%">
+                <latex-image>
+                  \xymatrix{
+                    Y \ar^{g}[r] \ar^{s}[d] &amp; Z' \ar@{-->}^{u}[d] \\ Y' \ar@{-->}^{h}[r] &amp; Z''
+                  }
+                </latex-image>
+              </image>
+            </figure>
+            <p>
+              The identity morphism on <m>X</m> is the class of <m>(\id_X, \id_X)</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        One can similarly form the localization of the opposite category, then take the opposite category of the result
+        (using the definition of a right multiplicative system). This gives the same answer; see <xref ref="bib-Stacks"/>, tag 04VL.
+      </p>
+      <p>
+        The morphisms of <m>\calC</m> which become isomorphisms in <m>S^{-1} \calC</m> also form a multiplicative system; in fact, this is the
+        smallest saturated multiplicative system containing <m>S</m> (<xref ref="bib-Stacks"/>, tag 04VB), and so equals <m>S</m> if and only if <m>S</m>
+        is itself saturated.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        In <xref ref="def-left-localization"/>, we have glossed over a serious set-theoretic difficulty; since the definition of a morphism is quantified over an unspecified
+        third object <m>Y'</m> of <m>\calC</m>, it is not clear that the collection of morphisms between two fixed objects is a set, as is required in the definition of a category.
+      </p>
+      <p>
+        One way to avoid this issue is to only consider localizations of categories which are <term>small</term>, meaning that there is a set of objects
+        which meets every isomorphism class. Then one can instead quantify <m>Y'</m> over this set of representatives without losing anything.
+      </p>
+      <p>
+        A more robust mechanism is to use the <term>Gabriel-Zisman theorem</term> which gives a criterion for constructing localizations even when the ambient category is not small.
+        See <xref ref="bib-Weibel"/>, Theorem 10.3.7.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        There is a way to interpret ring-theoretic localization as a special case of localization of categories. See <xref ref="bib-Stacks"/>, tag 0BM1.
+      </p>
+    </remark>
+  </subsection>
   <subsection>
     <title>Distinguished triangles</title>
     <p>
@@ -167,9 +325,9 @@
     <corollary xml:id="cor-mapping-cone-universal-property">
       <statement>
         <p>
-          Let <m>f: X^\bullet \to Y^\bullet</m> be a morphism in <m>K(\calC)</m>, and let <m>g: Y^\bullet \to C(f)^\bullet</m> be the induced morphism.
+          Let <m>f: X^\bullet \to Y^\bullet</m> be a morphism in <m>K(\calC)</m>.
           Then every morphism <m>h: Y^\bullet \to Z^\bullet</m> such that <m>h \circ f = 0</m> in <m>K(\calC)</m> can be factored
-          through <m>g</m>.
+          through <m>Y^\bullet \to C(f)^\bullet</m>.
         </p>
       </statement>
       <proof>
@@ -180,8 +338,8 @@
           <image width="50%">
             <latex-image>
               \xymatrix{
-                X^\bullet \ar^{f}[r] \ar^{0}[d] &amp; Y^\bullet \ar^{g}[r] \ar^{h}[d] &amp; C(f)^\bullet \ar[r] \ar@{-->}[d] &amp; X[1]^\bullet \ar^{a[1]}[d] \\
-                0 \ar^{f'}[r] &amp; Z^{\bullet} \ar^{1}[r] &amp; Z^{\bullet} \ar^{0}[r] &amp; 0^\bullet
+                X^\bullet \ar^{f}[r] \ar^{0}[d] &amp; Y^\bullet \ar[r] \ar^{h}[d] &amp; C(f)^\bullet \ar[r] \ar@{-->}[d] &amp; X[1]^\bullet \ar^{a[1]}[d] \\
+                0 \ar[r] &amp; Z^{\bullet} \ar^{\id}[r] &amp; Z^{\bullet} \ar[r] &amp; 0^\bullet
               }
             </latex-image>
           </image>
@@ -301,128 +459,208 @@
         See <xref ref="bib-Stacks"/>, tag 05QI for further discussion.
       </p>
     </remark>
+    <proposition>
+      <statement>
+        <p>
+          Assume that <m>\calA</m> has enough injectives and let <m>F: \calA \to \calA'</m> be a left exact functor. Then the
+          right derived functor <m>RF: K^+(\calA) \to K^+(\calA')</m> (see <xref ref="def-derived-functions-homotopy-category"/>)
+          takes acyclic objects to acyclic objects, and so induces a functor <m>RF: D^+(\calA) \to D^+(\calA')</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The right derived functor preserves distinguished triangles, so using the criterion of <xref ref="lem-quasi-isomorphism-from-triangle"/>
+          it is enough to check that <m>RF</m> takes acyclic objects to acyclic object.
+          For this, see <xref ref="bib-Stacks"/>, tag 05TA.
+        </p>
+      </proof>
+    </proposition>
   </subsection>
   <subsection>
-    <title>Derived functors</title>
-    <p>
-      At last, we can fulfill the promise we made in <xref ref="rmk-derived-motivation"/>.
-    </p>
+    <title>Truncation</title>
     <definition>
       <p>
-        Suppose that the abelian category <m>\calA</m> has enough injectives (e.g., <m>\calA = \Mod_A</m>). Then every object <m>M \in \calA</m> admits an injective resolution;
-        more generally, every object of <m>K^+(\calA)</m> admits a canonical quasi-isomorphism to a canonical object of <m>K^+(\calA)</m> which can be represented by
-        a complex of injective objects. This quasi-isomorphism becomes an isomorphism in <m>D^+(\calA)</m>, meaning that <em>every</em> object can be represented
-        by a complex of injectives!
+        For <m>K^\bullet \in \calC</m> and any <m>n \in \ZZ</m>, the <term>canonical truncation</term> <m>\tau_{\geq n} K^\bullet</m> is the complex given by the second row of
+        <xref ref="fig-complex-truncation"/>, equipped with the morphism <m>K^\bullet \to \tau_{\geq n} K^\bullet</m> defined by the vertical arrows.
+      </p>
+        <figure xml:id="fig-complex-truncation">
+          <image width="75%">
+            <latex-image>
+              \xymatrix{
+                \cdots \ar[r] &amp; K^{n-1} \ar^{d^{n-1}}[r] \ar^{0}[d] &amp; K^n \ar^{d^n}[r] \ar[d] &amp; K^{n+1} \ar^{d^{n+1}}[r] \ar@{=}[d] &amp; \cdots \\
+                \cdots \ar[r] &amp; 0 \ar[r] &amp; \coker(d^{n-1}) \ar^{d^0}[r] &amp; K^{n+1} \ar^{d^{n+1}}[r] &amp; \cdots
+              }
+            </latex-image>
+          </image>
+        </figure>
+      <p>
+        Similarly, the <term>canonical truncation</term> <m>\tau_{\leq n} K^\bullet</m> is the complex given by the first row of <xref ref="fig-complex-truncation-above"/>,
+        equipped with the morphism <m>\tau_{\leq n} K^\bullet \to K^\bullet</m> defined by the vertical arrows.
+      </p>
+        <figure xml:id="fig-complex-truncation-above">
+          <image width="75%">
+            <latex-image>
+              \xymatrix{
+                \cdots \ar[r] &amp; K^{n-1} \ar^{d^{n-1}}[r] \ar@{=}[d] &amp; \ker(d^n) \ar[r] \ar[d] &amp; 0 \ar[r] \ar^0[d] &amp; \cdots  \\
+                \cdots \ar[r] &amp; K^{n-1} \ar^{d^{n-1}}[r] &amp; K^n \ar^{d^n}[r] &amp; K^{n+1} \ar^{d^{n+1}}[r] &amp; \cdots
+              }
+            </latex-image>
+          </image>
+        </figure>
+    </definition>
+    <lemma xml:id="lem-truncation-complexes">
+      <statement>
+        <p>
+          For any interval <m>I</m>, the following conditions on an object <m>K^\bullet \in D(A)</m> are equivalent.
+        </p>
+        <ol>
+          <li>
+            <p>
+              We have <m>H^i(K^\bullet) = 0</m> for all <m>i \notin I</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              There exists an isomorphism <m>K^\bullet \to L^\bullet</m> in <m>D(A)</m> such that <m>L^i = 0</m> for all <m>i \notin I</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          Suppose for simplicitly that <m>I = [0, \infty)</m>, the other cases being similar.
+          In this case, if <m>H^i(K^\bullet) = 0</m> for all <m>i \lt 0</m>, then the morphism <m>K^\bullet \to \tau_{\geq 0} K^\bullet</m> is a quasi-isomorphism.
+        </p>
+      </proof>
+    </lemma>
+    <corollary>
+      <statement>
+        <p>
+          An object <m>K^\bullet</m> of <m>D(\calA)</m> belongs to <m>D^+(\calA), D^-(\calA), D^b(\calA)</m> if and only if <m>H^i(K^\bullet) = 0</m>
+          for respectively <m>i \gg 0, i \ll 0, |i| \gg 0</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This is immediate from <xref ref="lem-truncation-complexes"/>.
+        </p>
+      </proof>
+    </corollary>
+    <remark>
+      <p>
+        It also follows from <xref ref="lem-truncation-complexes"/> that <m>D^+(\calA), D^-(\calA), D^b(\calA)</m> are all <em>full</em> subcategories of <m>D(\calA)</m>.
+        For example, for <m>D^+(\calA)</m> this holds because if we have two bounded-below complexes, any morphism between them is <em>automatically</em> zero at all
+        sufficiently small indices (because any map between two zero objects is zero). 
+      </p>
+    </remark>
+    <remark>
+      <p>
+        By <xref ref="lem-truncation-complexes"/> applied with <m>I = \{0\}</m>, the essential image of the functor <m>[0]: \calA \to D(\calA)</m> is precisely the 
+        intersection of the essential images of the functors <m>\tau_{\geq 0}, \tau_{\leq 0}: D(\calA) \to D(\calA)</m>.
       </p>
       <p>
-        Now let <m>F: \calA \to \calA'</m> be a left exact functor. The right derived functors <m>R^i F</m> can then be evaluated on <m>M</m>
-        by taking cohomology of the object <m>F(I^\bullet)</m>; in fact, we can think of <m>M \mapsto F(I^\bullet)</m> as defining a single <term>derived functor</term>
-        <m>RF: \calA \to D^+(\calA)</m>. Moreover, every object of <m>D^(\calA)</m> can likewise be resolved by injectives, so we can extend the derived functor
-        to <m>RF: D^+(\calA) \to D^(\calA)</m>.
+        In the more general framework of triangulated categories, one can define a <term>t-structure</term> (short for <term>truncation structure</term>)
+        to be a pair of functors <m>\tau_{\geq 0}, \tau_{\leq 0}</m> satisfying suitable conditions, and then define the <term>heart</term> of the t-structure
+        as the intersection of the essential images of these functors. This gives us a way to start with a triangulated category and realize it as a derived category;
+        in fact, by varying the t-structure we can sometimes realize the same triangulated category as a derived category in multiple ways!
+        (The motivating example of this is the construction of <term>perverse sheaves</term> in connection with the Weil conjectures; see <xref ref="bib-Kiehl-Weissauer"/>.)
       </p>
-    </definition>
+    </remark>
   </subsection>
-  <subsection xml:id="subsec-derived-complete-derived">
-    <title>Derived completeness revisited</title>
+  <subsection>
+    <title>Pseudocoherent and perfect complexes</title>
     <p>
-      Now that we have derived categories in hand, let us revisit the notion of derived completeness.
+      Let us now specialize to the category of modules over a ring and introduce some additional boundedness conditions.
     </p>
     <definition>
       <p>
-        Let <m>A</m> be a commutative ring and let <m>I</m> be a finitely generated ideal of <m>A</m>.
-        An object <m>M \in D(A)</m> is <term>derived <m>I</m>-complete</term> if for each <m>f \in I</m>, 
-        <me>
-          R\Hom_A(A_f, K) = 0.
-        </me>
-        The argument of <xref ref="lem-derived-f-limit-ideal"/> carries over to show that it suffices to check this condition at a generating set of <m>I</m>,
-        or of any other ideal with the same radical.
+        For <m>A \in \Ring, \calA = \Mod_A</m>, an object <m>K^\bullet</m> of <m>D(A) = D(\calA)</m> is <term>pseudocoherent</term> (resp. <term>perfect</term>)
+        if it is isomorphic to a bounded above (resp. bounded) complex of finite projective <m>A</m>-modules.
+        An object of <m>\Mod_A</m> is <term>pseudocoherent</term> (resp. <term>perfect</term>) if <m>M[0]</m> is so as an object of <m>D(A)</m>.
       </p>
     </definition>
-    <proposition xml:id="prop-derived-complete-abelian-derived">
+    <lemma>
       <statement>
         <p>
-          Let <m>A</m> be a commutative ring and let <m>I</m> be a finitely generated ideal of <m>A</m>.
-          <ol>
-            <li>
-              <p>
-                The derived <m>I</m>-complete objects of <m>D(A)</m> form a full triangulated subcategory which is closed under derived inverse limits.
-                This inclusion has a left adjoint <m>M \mapsto \widehat{M}</m> (the <term>derived <m>I</m>-completion</term>)
-                which can be computed as follows: for <m>I = (f_1,\dots,f_r)</m>,
-                <me>
-                  \widehat{M} = R\lim_n (M \otimes_{\ZZ[x_1,\dots,x_r]}^L \ZZ[x_1,\dots,x_r]/(x_1^n,\dots,x_r^n)
-                </me>
-                for the action of <m>\ZZ[x_1,\dots,x_r]</m> on <m>M</m> with <m>x_i</m> acting via <m>f_i</m>.
-              </p>
-            </li>
-            <li>
-              <title>Derived Nakayama's lemma</title>
-              <p>
-                Let <m>M</m> be a derived <m>I</m>-complete <m>A</m>-complex. Then <m>M = 0</m> if and only if <m>M \otimes_A^L A/I = 0</m>.
-              </p>
-            </li>
-            <li>
-              <p>
-                An object <m>M \in D(A)</m> is derived <m>I</m>-complete if and only if <m>H^i(M)</m> is derived <m>I</m>-complete for each <m>i \in \ZZ</m>.
-                Conesquently, for <m>M \in \Mod_A</m>, if we identify <m>M</m> with its image under <m>[0]</m> and take the derived completion <m>\widehat{M}</m>
-                as an object of <m>D(A)</m>, then <m>H^0(\widehat{M})</m> is the derived completion at the level of modules
-                (i.e., the left adjoint from <xref ref="prop-derived-complete-abelian"/>).
-              </p>
-            </li>
-          </ol>
+          For <m>A \in \Ring</m>, an object <m>K^\bullet</m> of <m>D(A)</m> is perfect if and only if it is pseudocoherent and has finite Tor dimension.
         </p>
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Stacks"/>, tags 091V, 091Z, 0G1U.
+          See <xref ref="bib-Stacks"/>, tag 0658.
         </p>
       </proof>
-    </proposition>
-    <p>
-      In general, an <m>A</m>-module admits derived <m>I</m>-completions <q>as a module</q> (<xref ref="prop-derived-complete-abelian"/>)
-      and <q>as a complex</q> (<xref ref="prop-derived-complete-abelian-derived"/>), with the former being <m>H^0</m> of the latter. However,
-      these can interact in unexpected ways.
-    </p>
-    <example xml:id="exa-derived-example-QZ">
+    </lemma>
+    <remark>
       <p>
-        Take <m>A = \ZZ, I = (p), M = \QQ/\ZZ</m>. Then the ordinary completion of <m>M</m> vanishes, as does the derived completion of <m>M</m>
-        <em>as a module</em>, but the derived completion of <m>M</m> <em>as a complex</em> is the group <m>\ZZ_p</m> concentrated in degree 1.
+        If <m>A</m> is a noetherian ring, then a module is pseudocoherent if and only if it is finitely presented,
+        but such a module need not be perfect.
       </p>
-    </example>
-    <p>
-      We tie up a loose end by checking that the category of lenses admits pushouts.
-    </p>
-    <proposition xml:id="prop-tensor-lens">
-      <statement>
-        <p>
-          Let <m>A \to B</m>, <m>A \to C</m> be morphisms of lenses. Then the derived <m>p</m>-completion of <m>B \otimes_A^L C</m> has cohomology only in degree
-          <m>0</m>, which is a lens.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          It is clear that <m>R = B^\flat \otimes_{A^\flat} C^\flat</m> is perfect. By <xref ref="exer-perfect-tor"/>, 
-          we also have <m>R \cong B^\flat \otimes_{A^\flat}^L C^\flat</m> in <m>D(A^\flat)</m>. Applying the Witt vector functor, we obtain an isomorphism
-          <m>W(R) \cong W(B^\flat) \widehat{\otimes}^L_{W(A^\flat)} W(C^\flat)</m> where <m>\widehat{\otimes}^L</m> denotes the derived <m>p</m>-completion
-          of the derived tensor product. Write <m>A \cong W(A^\flat)/d</m> with <m>d \in W(A^\flat)</m> distinguished (<xref ref="lem-perfect-prisms-structure"/>).
-          Since <m>d</m> is a non-zerodivisor in <m>W(A^\flat), W(B^\flat), W(C^\flat)</m> (<xref ref="lem-distinguished-perfect"/>),
-          we get an isomorphism <m>W(R)/(d) \cong B \widehat{\otimes}^L_A C</m>. This proves the claim.
-          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IV, Proposition 2.11.)
-        </p>
-      </proof>
-    </proposition>
+      <p>
+        That said, there do exist many noetherian rings over which every pseudocoherent module is perfect.
+        For example, the ring <m>A</m> is said to have <term>finite global dimension</term> if there exists an integer <m>n</m> such that every <m>A</m>-module
+        admits a resolution by projective <m>A</m>-modules of length <m>n</m>. If <m>A</m> is of finite projective dimension, then every pseudocoherent <m>A</m>-module
+        is perfect. (See <xref ref="bib-Stacks"/>, tag 00O2.)
+      </p>
+      <p> 
+        An important special case is the ring <m>A = k[x_1,\dots,x_n]</m> where <m>k</m> is a field. This ring has finite global dimension (bounded by <m>n</m>, the number
+        of variables) by the Hilbert syzygy theorem (<xref ref="bib-Stacks"/>, tag 00OQ).
+      </p>
+    </remark>
   </subsection>
   <exercises>
-    <exercise xml:id="exer-derived-completion-delta">
+    <exercise>
       <statement>
         <p>
-          Let <m>A</m> be a <m>\delta</m>-ring and let <m>I</m> be a finitely generated ideal of <m>A</m> containing <m>p</m>.
-          Prove that the derived <m>I</m>-completion of <m>A</m> (as a module) admits a unique <m>\delta</m>-ring structure compatible with <m>A</m>.
-          (That is, <xref ref="exer-delta-ring-completion"/> remains true when the classical completion is replaced by the derived completion.)
+          Let <m>A</m> be a commutative ring. Show that if any two terms of a distinguished triangle in <m>D(A)</m> are pseudocoherent (resp. perfect), then so is the third.
+        </p>
+      </statement>
+      <hint>
+       <p>
+         See <xref ref="bib-Stacks"/>, tag 066R.
+       </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>A</m> be a commutative ring. Prove that if <m>K^\bullet \in D^b(A)</m> has the property that <m>H^i(K^\bullet)</m> is perfect for all <m>i</m>,
+          then <m>K^\bullet</m> is perfect.
         </p>
       </statement>
       <hint>
         <p>
-          Use the characterization of <m>\delta</m>-structures on <m>A</m> in terms of <m>W_2(A)</m> (<xref ref="rmk-W2-interpretation"/>).
+          See <xref ref="bib-Stacks"/>, tag 066U.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-derived-completion-totalization">
+      <statement>
+        <p>
+          Let <m>J</m> be a finitely generated ideal of <m>A \in \Ring</m>. Let <m>A \to A'</m> be a morphism in <m>\Ring</m> with finite <m>J</m>-complete Tor amplitude
+          (see <xref ref="def-I-completely-flat"/>). 
+        </p>
+        <ol>
+          <li>
+            <p>
+              Show that there exists some <m>c \geq 0</m> such that for any <m>K \in D^{\geq 0}(A)</m>, <m>K \widehat{\otimes}^L_A A' \in D^{\geq -c}(A')</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that the derived <m>J</m>-completed base change functor <m>M^\bullet \mapsto M^\bullet \widehat{\otimes}^L_A A'</m> commutes with totalizations in <m>D^{\geq 0}</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <hint>
+        <p>
+          For (1), choose generators <m>x_1,\dots,x_r</m> of <m>J</m> and use derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/> to reduce to checking that for some <m>c</m>,
+          <me>
+            K \mapsto (K \otimes^L_A A') \otimes^A_{A'} \Kos(C'; x_1,\dots,x_r)
+          </me>
+          takes <m>D^{\geq 0}(A)</m> to <m>D^{\geq -c}(A)</m> (where now the tensor products are uncompleted).
+          For more details, see <xref ref="bib-Bhatt-Scholze"/>, Lemma 4.20.
         </p>
       </hint>
     </exercise>

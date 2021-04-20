@@ -3,20 +3,43 @@
   <biblio type="raw" xml:id="bib-Almkvist">
     G. Almkvist, <articletitle>The Grothendieck ring of the category of endomorphisms</articletitle>, <journal>Journal of Algebra</journal> <volume>28</volume> <year>1974</year>, 375<ndash/>388.
   </biblio>
+  <biblio type="raw" xml:id="bib-Arabia">
+    A. Arabia, <articletitle>Relèvements des algèbres lisses et de leurs morphismes</articletitle>, <journal>Commentarii Mathematici Helvetici</journal> <volume>76</volume> <year>2001</year>, 607<ndash/>639.
+  </biblio>
   <biblio type="raw" xml:id="bib-Ax">
     J. Ax, <articletitle>Zeros of polynomials over local fields<mdash/>the Galois action</articletitle>, <journal>Journal of Algebra</journal> <volume>15</volume> <year>1970</year>, 417<ndash/>428.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Barwick">
+    C. Barwick, <articletitle>Euler's Gamma function and the field with one element</articletitle>, course notes (MIt, 2017)
+    available from <url href="https://www.maths.ed.ac.uk/~cbarwick/papers/gamma-text.pdf"/>.
   </biblio>
   <biblio type="raw" xml:id="bib-Berger-limites">
     L. Berger, <articletitle>Limites de représentations cristallines</articletitle>, <journal>Compositio Mathematica</journal> <volume>140</volume> <year>2004</year>, 1473<ndash/>1498.
   </biblio>
+  <biblio type="raw" xml:id="bib-Berthelot-SGA6">
+    P. Berthelot, <articletitle>Generalités sur les <m>\lambda</m>-anneaux</articletitle>, in <pubtitle>Séminaire de Géométrie Algébrique (SGA 6): Théorie des Intersections
+    et Théorème de Riemann-Roch</pubtitle>, Lecture Notes in Mathematics 225, Springer-Verlag, Berlin, 1971.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Berthelot-Ogus">
+    P. Berthelot and A. Ogus, <pubtitle>Notes on Crystalline Cohomology</pubtitle>, Princeton University Press, Princeton <year>1978</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-course">
     B. Bhatt, <url href="http://www-personal.umich.edu/~bhattb/teaching/prismatic-columbia/">Eilenberg lectures at Columbia University</url>, lecture notes from fall 2018.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-deJong">
+    B. Bhatt and A.J. de Jong, <articletitle>Crystalline cohomology and de Rham cohomology</articletitle>, <url>https://www.math.columbia.edu/~dejong/papers/crystalline-comparison.pdf</url>.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Morrow-Scholze1">
     B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Integral <m>p</m>-adic Hodge theory</articletitle>, <journal>Publications Mathématiques de l'IHÉS</journal> <volume>128</volume> <year>2018</year>, 219<ndash/>397.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Scholze">
     B. Bhatt and P. Scholze, <articletitle> Prisms and prismatic cohomology</articletitle>, <url href="https://arxiv.org/abs/1905.08229">arXiv:1905.08229v2</url> <year>2019</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Borger-Witt1">
+    J. Borger, <articletitle>The basic geometry of Witt vectors, I: The affine case</articletitle>, <journal>Algebra and Number Theory</journal> <volume>5</volume> <year>2011</year>, 231<ndash/>285.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Borger-Witt2">
+    J. Borger, <articletitle>The basic geometry of Witt vectors, II: Spaces</articletitle>, <journal>Mathematische Annalen</journal> <volume>351</volume> <year>2011</year>, 871<ndash/>933.
   </biblio>
   <biblio type="raw" xml:id="bib-Borger-course">
     J. Borger, <url href="https://maths-people.anu.edu.au/~borger/classes/copenhagen-2016/index.html">Witt vectors, lambda-rings, and arithmetic jet spaces</url>, 
@@ -51,6 +74,9 @@
     V. Drinfeld, <articletitle>Coverings of <m>p</m>-adic symmetric regions</articletitle> (in Russian), 
     <journal>Functional Analysis and Its Applications</journal>
     <volume>10</volume> <year>1976</year>, 29<ndash/>40.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Elkik">
+    R. Elkik, <articletitle>Solutions d'équations à coefficients dans un anneau hensélien</articletitle>, <pubtitle>Annales Scientifiques de l'École Normale Superieure</pubtitle> <volume>6</volume> <year>1973</year>, 553<ndash/>603.
   </biblio>
   <biblio type="raw" xml:id="bib-Fargues-Fontaine">
     L. Fargues and J.-M. Fontaine, <articletitle>Courbes et fibrés vectoriels en théorie de Hodge <m>p</m>-adique</articletitle>, <journal>Astérisque</journal> <volume>406</volume> <year>2018</year>.
@@ -93,6 +119,12 @@
   <biblio type="raw" xml:id="bib-Hazewinkel">
     M. Hazewinkel, <pubtitle>Formal Groups and Applications</pubtitle>, Pure and Applied Mathematics 78, Academic Press, New York <year>1978</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Illusie-cotangent1">
+    L. Illusie, <pubtitle>Complexe Cotangent et Déformations I</pubtitle>, Lecture Notes in Mathematics 239, Springer-Verlag, Berlin <year>1971</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Illusie-cotangent2">
+    L. Illusie, <pubtitle>Complexe Cotangent et Déformations II</pubtitle>, Lecture Notes in Mathematics 283, Springer-Verlag, Berlin <year>1972</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Jacobson-2">
     N. Jacobson, <pubtitle>Basic Algebra, II</pubtitle>, W. H. Freeman, San Francisco, <year>1980</year>.
   </biblio>
@@ -111,6 +143,13 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Kedlaya-AWS">
     K.S. Kedlaya, <articletitle>Sheaves, stacks, and shtukas</articletitle>, in <pubtitle>Perfectoid Spaces: Lectures from the 2017 Arizona Winter School</pubtitle>,
     Mathematical Surveys and Monographs 242, American Mathematical Society, Providence <year>2019</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Kerodon">
+    The Kerodon Authors, <pubtitle>Kerodon</pubtitle>, <url href="https://kerodon.net"/>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Kiehl-Weissauer">
+    R. Kiehl and R. Weissauer, <pubtitle>Weil Conjectures, Perverse Sheaves, and <m>\ell</m>-adic Fourier Transform</pubtitle>, Ergebnisse der Mathematik 42, 
+    Springer-Verlag, Berlin <year>2001</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Kisin">
     M. Kisin, <articletitle>Crystalline representations and <m>F</m>-crystals</articletitle>, in <pubtitle>Algebraic geometry and number theory</pubtitle>, Progress in Mathematics 253, Birkhäuser Boston, Boston, MA <year>2006</year>, 459<ndash/>496.
@@ -133,6 +172,9 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Nicaise">
     J. Nicaise, <articletitle>Berkovich Skeleta and Birational Geometry</articletitle>, in <pubtitle>Nonarchimedean and Tropical Geometry</pubtitle>, Simons Symposia, Springer International <year>2016</year>, 173<ndash/>194.
   </biblio>
+  <biblio type="raw" xml:id="bib-Quillen-homotopical">
+    D.G. Quillen, <pubtitle>Homotopical Algebra</pubtitle>, Lecture Notes in Mathematics 43, Springer-Verlag, Berlin, 1967.
+  </biblio>
   <biblio type="raw" xml:id="bib-Rajan">
     C.S. Rajan, <articletitle>An example of non-homeomorphic conjugate varieties</articletitle>, <journal>Mathematics Research Letters</journal> <volume>18</volume> <year>2011</year>, 937<ndash/>942.
   </biblio>
@@ -142,11 +184,17 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Scholze-perfectoid1">
     P. Scholze, <articletitle>Perfectoid spaces</articletitle>, <journal>Publications mathématiques de l’IHÉS</journal> <volume>116</volume> <year>2012</year>, 245<ndash/>313.
   </biblio>
+  <biblio type="raw" xml:id="bib-Scholze-diamonds">
+    P. Scholze, <articletitle>Étale cohomology of diamonds</articletitle>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Serre-GAGA">
     J.-P. Serre, <articletitle>Géométrie algébrique et géométrie analytique</articletitle>, <journal>Annales de l’institut Fourier</journal> <volume>6</volume> <year>1956</year>, 1<ndash/>42.
   </biblio>
   <biblio type="raw" xml:id="bib-Serre-conjugate">
     J.-P. Serre, <articletitle>Exemples de variétés projectives conjuguées non homéomorphes</articletitle>, <journal>C. R. Acad. Sci. Paris</journal> <volume>258</volume> <year>1964</year>, 4194<ndash/>4196.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Serre-LocalFields">
+    J.-P. Serre, <pubtitle>Local Fields</pubtitle>, Graduate Texts in Mathematics 67, Springer-Verlag, New York-Berlin, <year>1979</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Stacks">
     The Stacks Project Authors, <pubtitle>Stacks Project</pubtitle>, <url href="https://stacks.math.columbia.edu"/>.
@@ -157,11 +205,22 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Tall-Wraith">
     D.O. Tall and G.C. Wraith, <articletitle>Representable functors and operations on rings</articletitle>, <journal>Proceedings of the London Mathematical Society</journal> <volume>20</volume> <year>1970</year> 619<ndash/>643.
   </biblio>
+  <biblio type="raw" xml:id="bib-van_der_Kallen">
+    W. van der Kallen, <articletitle>Descent for the <m>K</m>-theory of polynomial rings</articletitle>, <journal>Mathematische Zeitschrift</journal> <volume>191</volume> <year>1986</year>, 405<ndash/>415.
+  </biblio>
   <biblio type="raw" xml:id="bib-Wach">
     N. Wach, <articletitle>Représentations <m>p</m>-adiques potentiellement cristallines</articletitle>, <journal>Bull. Soc. Math. France</journal> <volume>124</volume> <year>1996</year>, 375<ndash/>400.
   </biblio>
+  <biblio type="raw" xml:id="bib-Weibel">
+    C. Weibel, <pubtitle>An Introduction to Homological Algebra</pubtitle>, Cambridge Studies in Advanced Mathematics 38, Cambridge University Press <year>1994</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Wilkerson">
     C. Wilkerson, <articletitle>Lambda-rings, binomial domains, and vector bundles over <m>\mathbf{C}P(\infty)</m></articletitle>, <journal>Communications in Algebra</journal> <volume>10</volume> <year>1982</year>, 311<ndash/>328.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Witt">
+    E. Witt, <articletitle>Zyklische Körper und Algebren der Charakteristik <m>p</m> vom Grad <m>p^n</m>. 
+    Struktur diskret bewerteter perfekter Körper mit vollkommenem Restklassenkörper der Charakteristik <m>p</m></articletitle>,
+    <journal>Journal für die reine und angewandte Mathematik</journal> <volume>176</volume> <year>1937</year>, 126<ndash/>140.
   </biblio>
   <biblio type="raw" xml:id="bib-Yau">
     D. Yau, <pubtitle>Lambda-rings</pubtitle>, World Scientific, Hackensack <year>2010</year>.
@@ -169,5 +228,8 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Yekutieli">
     A. Yekutieli, <articletitle>On flatness and completion for infinitely generated modules over Noetherian rings</articletitle>, <journal>Communications in Algebra</journal>
     <volume>39</volume> <year>2011</year>, 4221<ndash/>4245.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Yamamoto">
+    K. Yamamoto, <articletitle>The Artin-Hasse-Šafarevič function</articletitle>, <journal>Japanese Journal of Mathematics</journal> <volume>29</volume> <year>1959</year>, 165<ndash/>172.
   </biblio>
 </references>

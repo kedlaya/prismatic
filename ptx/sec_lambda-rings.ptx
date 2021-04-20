@@ -4,8 +4,10 @@
     <paragraphs>
       <title>References</title>
       <p>
-        In addition to the references given in <xref ref="sec_delta-rings"/>, see <xref ref="bib-Borger-course"/> for the perspective of <m>\lambda</m>-rings,
-        and <xref ref="bib-Yau"/> for a comprehensive treatment.
+        In addition to the references given in <xref ref="sec_delta-rings"/>, see <xref ref="bib-Borger-course"/> and <xref ref="bib-Barwick"/>
+        for the perspective of <m>\lambda</m>-rings
+        and <xref ref="bib-Yau"/> for a comprehensive treatment. (An interesting historical reference, oriented towards characteristic classes of vector bundles,
+        is <xref ref="bib-Berthelot-SGA6"/>.)
       </p>
     </paragraphs>
     <p>
@@ -25,7 +27,8 @@
     <definition xml:id="def-biring">
       <p>
         We started our description of the <m>p</m>-typical Witt vector functor with the fact that the underlying functor to sets is represented by the ring
-        <m>A = \ZZ\{y\}</m>. If we had needed to describe the whole functor this way, we would have needed structures on <m>A</m> giving rise to the
+        <m>A = \ZZ\{y\}</m>, but crucially we <em>already</em> had produced a functor valued in rings (and even in <m>\delta</m>-rings).
+        If we had needed to construct from scratch a functor valued in rings, we would have needed structures on <m>A</m> giving rise to the
         addition and multiplication maps. These structures are:
         <ul>
           <li>
@@ -40,35 +43,49 @@
           </li>
         </ul>
         A ring <m>A</m> equipped with these structures represents a functor from rings to sets equipped with two binary operations <m>+, \times</m>.
-        A <term>biring</term> is a ring equipped with coaddition and comutiplication operators which are further subject to the axioms that correspond
+        A <term>biring</term> is a ring equipped with coaddition and comultiplication operators which are further subject to the axioms that correspond
         to the ring axioms on <m>+, \times</m>. Namely, the coaddition map is cocommutative, coassociative, and admits a counit and an antipode
         (giving rise to additive inverses); the comultiplication map is cocommutative, coassociative, codistributive over coaddition, and admits a counit.
       </p>
       <p>
-        A shorter way to say this is that a biring is a commutative ring object in the category of affine schemes.
+        A shorter way to say this is that a biring is a commutative ring object in the category of affine schemes. (Remember that the functor <m>\Spec</m> from <m>\Ring</m>
+        to schemes is contravariant!)
       </p>
     </definition>
     <proposition xml:id="prop-big-Witt">
       <statement>
         <p>
-          There is a unique functor <m>\WW</m> from <m>\Ring</m> to <m>\Ring</m> such that the underlying functor to sets is 
-          <me>
-            \WW(A) = A \times A \times \cdots
-          </me>
-          and there is a natural transformation <m>w</m> from <m>W</m> to the ordinary product <m>A \mapsto A^{\NN}</m> given by the <term>ghost map</term>:
-          <me>
-            (x_n)_{n=1}^\infty \mapsto (w_n)_{n=1}^\infty, \qquad w_n = \sum_{d|n} d x_d^{n/d}.
-          </me>
-          (Again, the individual factors of this map are called <term>ghost components</term>.)
+          There is a unique functor <m>\WW</m> from <m>\Ring</m> to <m>\Ring</m> characterized by the following conditions.
+        </p>
+        <ul>
+          <li>
+            <p>
+              The underlying functor to sets is 
+              <me>
+                \WW(A) = A \times A \times \cdots.
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              There is a natural transformation <m>w</m> from <m>\WW</m> to the ordinary product <m>A \mapsto A^{\NN}</m> given by the <term>ghost map</term>:
+              <me>
+                (x_n)_{n=1}^\infty \mapsto (w_n)_{n=1}^\infty, \qquad w_n = \sum_{d|n} d x_d^{n/d}.
+              </me>
+              (Again, the individual factors of this map are called <term>ghost components</term>.)
+            </p>
+          </li>
+        </ul> 
+        <p>
           The ring <m>\WW(A)</m> is called the <term>ring of big Witt vectors</term> over <m>A</m>.
         </p>
       </statement>
       <proof>
         <p>
-          It suffices to produce a biring structure on <m>\ZZ[x_1, x_2, \dots]</m> representing the desired functor.
+          It suffices to produce a unique biring structure on <m>\ZZ[x_1, x_2, \dots]</m> representing the desired functor.
           To begin with, since the ghost map is an isomorphism whenever <m>A</m> is a <m>\QQ</m>-algebra, we obtain a biring structure on
-          <m>\QQ[w_0,w_1,\dots] = \QQ[x_0, x_1,\dots]</m>.
-          It suffices to check that for each prime <m>p</m>, this biring structure descends to <m>\ZZ_{(p)}[x_1, x_2, \dots]</m>;
+          <m>\QQ[w_0,w_1,\dots] = \QQ[x_0, x_1,\dots]</m>; this already implies uniqueness.
+          For existence, it suffices to check that for each prime <m>p</m>, this biring structure descends to <m>\ZZ_{(p)}[x_1, x_2, \dots]</m>;
           this will imply that the coaddition and comultiplication maps act on <m>\bigcap_p \ZZ_{(p)}[x_1,x_2,\dots] = \ZZ[x_1,x_2,\dots]</m>.
         </p>
         <p>
@@ -115,9 +132,9 @@
         </li>
         <li>
           <p>
-            The map <m>[\cdot]: A \to \WW(A)</m> given by <m>[x] = (x, 0, 0, \dots)</m> is multiplicative; 
+            The map <m>[\bullet]: A \to \WW(A)</m> given by <m>[x] = (x, 0, 0, \dots)</m> is multiplicative; 
             it corresponds via the ghost map to <m>x \mapsto (x, x^2, x^{3}, \dots)</m>. 
-            We again refer to <m>[x]</m> as the <term>constant lift</term> of <m>x \in A</m>.
+            We again refer to <m>[x]</m> as the <term>constant lift</term> of <m>x \in A</m> (see <xref ref="exer-big-Witt-constant-lifts"/>).
           </p>
         </li>
         <li>
@@ -141,24 +158,26 @@
     <title><m>\lambda</m>-rings</title>
     <remark xml:id="rmk-Almkvist-interpretation">
       <p>
-        Another interpretation of <m>\WW(A)</m> can be given starting with the bijection of <m>\WW(A)</m> with <m>1 + T A \llbracket T \rrbracket</m> given by
+        Another interpretation of <m>\WW(A)</m> (also due to Witt)
+        can be given starting with the bijection of <m>\WW(A)</m> with <m>1 + T A \llbracket T \rrbracket</m> given by
         <men xml:id="eq-Witt-series-mult">
           (x_1, x_2, \dots) \mapsto \prod_{n=1}^\infty (1 - x_n T^n)^{-1}.
         </men>
         When <m>A</m> is a <m>\QQ</m>-algebra, the addition operation on <m>\WW(A)</m> imposed by the ghost map corresponds to the multiplication
         of formal power series in <m>1 + T A \llbracket T \rrbracket</m>. This gives us the underlying additive group on <m>\WW(A)</m>.
-      </p>
-      <p>
         One then shows that there is a <m>T</m>-adically continuous map <m>\otimes</m> which is natural in <m>A</m>, distributes over addition, and satisfies
         <men xml:id="eq-Witt-series-Frobenius-product">
           (1-aT)^{-1} \otimes (1-bT)^{-1} = (1-abT)^{-1}.
         </men>
-        A more conceptual way to express this last condition is that given two finite projective <m>A</m>-modules <m>M_1, M_2</m> equipped with <m>A</m>-linear endomorphisms <m>S_1, S_2</m>,
+      </p>
+      <p>
+        A more conceptual way to express <xref ref="eq-Witt-series-Frobenius-product"/> is that given two finite projective <m>A</m>-modules <m>M_1, M_2</m> equipped with <m>A</m>-linear endomorphisms <m>S_1, S_2</m>,
         <me>
           \det(1 - T S_1, M_1)^{-1} \otimes \det(1 - T S_2, M_2)^{-1} = \det(1 - T (S_1 \otimes S_2), M_1 \otimes M_2)^{-1}.
         </me>
-        This construction of <m>\WW(A)</m> is due to Almkvist <xref ref="bib-Almkvist"/>; see <xref ref="bib-Grayson1"/> for an alternate exposition,
-        and <xref ref="bib-Grayson"/> for more on this construction in the context of <m>K</m>-theory of endomorphisms.
+        This point of view appears in work of Almkvist <xref ref="bib-Almkvist"/>
+        and Grayson <xref ref="bib-Grayson1"/>, <xref ref="bib-Grayson"/> in the context of <m>K</m>-theory of endomorphisms.
+        See also <xref ref="exer-big-Witt-Almkvist"/>.
       </p>
     </remark>
     <definition xml:id="def-lambda-ring">
@@ -201,7 +220,7 @@
     </definition>
     <remark xml:id="rmk-Adams-operation">
       <p>
-        In any <m>\lambda</m>-ring, we can define additional maps <m>\psi^n</m> for <m>n =0,1,\dots</m> 
+        In any <m>\lambda</m>-ring, we can define additional ring homomorphisms <m>\psi^n</m> for <m>n =0,1,\dots</m> 
         called <term>Adams operations</term>. In the case of <m>\WW(A)</m>, these are characterized by
         <m>T</m>-adic continuity and the property
         <me>
@@ -249,7 +268,7 @@
             the Grothendieck ring of the category of finite projective modules over a commutative ring;
           </li>
           <li>
-            the <m>K</m>-theory of a topological space.
+            the <m>K</m>-theory of a topological space (or a connective spectrum).
           </li>
         </ul>
       </p>
@@ -262,13 +281,14 @@
         The systematic study of plethories, which builds upon ideas from the subject of <term>universal algebra</term> (see especially <xref ref="bib-Tall-Wraith"/>),
         provides a natural context in which to talk about variant constructions. For example, for a prime <m>p</m> and a finite extension <m>E</m>
         of <m>\QQ_p</m>, one can define a functor of <term>ramified Witt vectors</term> valued in <m>\frako_E</m>-algebras.
-        (See any of <xref ref="bib-Drinfeld-Witt"/>, section 1; <xref ref="bib-Hazewinkel"/>, (18.6.13); or <xref ref="bib-Cais-Davis"/>;
-         see also <xref ref="bib-Buium1"/> for the corresponding version of <m>p</m>-derivations.)
+        (See any of <xref ref="bib-Drinfeld-Witt"/>, section 1; <xref ref="bib-Hazewinkel"/>, (18.6.13); or <xref ref="bib-Cais-Davis"/>.
+         See also <xref ref="bib-Buium1"/> for the corresponding version of <m>p</m>-derivations.)
       </p>
     </remark>
     <remark xml:id="rmk-lambda-left-adjoint">
       <p>
-        The category of <m>\lambda</m>-rings admits all limits and colimits (either by direct calculation, or using the interpretation from <xref ref="bib-Borger-Wieland"/>).
+        The category <m>\Ring_\lambda</m> admits all limits and colimits, and these are compatible with the forgetful functor to <m>\Ring</m>
+         (either by direct calculation, or using the interpretation from <xref ref="bib-Borger-Wieland"/>).
         Consequently, the forgetful functor from <m>\lambda</m>-rings to rings admits a left adjoint; as in <xref ref="def-delta-ring-left-adjoint"/>,
         the value of the left adjoint on the free polynomial ring <m>\ZZ[S]</m> is the <term>free <m>\lambda</m>-ring</term> on <m>S</m>. (The free <m>\lambda</m>-ring
         on a single element is the <m>\lambda</m>-ring of symmetric polynomials over <m>\ZZ</m>.)
@@ -335,9 +355,9 @@
               <p>
                 Prove that for any positive integer <m>n</m>,
                 <me>
-                  Z((X \times_{\FF_q} \FF_{q^n})/\FF_{q^n}) = \phi_n(Z(X,T))
+                  Z((X \times_{\FF_q} \FF_{q^n})/\FF_{q^n}) = \psi^n(Z(X,T))
                 </me>
-                where <m>\phi_n</m> is the operation on <m>\WW(\ZZ)</m> described in <xref ref="def-Witt-structures-global"/>.
+                where <m>\psi^n</m> is the <m>n</m>-th Adams operation (<xref ref="rmk-Adams-operation"/>).
               </p>
             </li>
           </ol>
@@ -351,12 +371,22 @@
         </p>
       </hint>
     </exercise>
-    <exercise>
-      <p>
-        Prove the following analogue of <xref ref="def-constant-lift"/>: for any ring <m>A</m>, the elements of <m>W(A)</m> in the kernel of the <m>p</m>-derivation
-        <m>\delta_p</m> for all primes <m>p</m> are precisely the constant lifts. (Combined with <xref ref="rmk-Almkvist-interpretation"/>, this explains
-        the terminology <term>elements of rank 1</term> in <xref ref="bib-Bhatt-Scholze"/> for what we call <m>\delta</m>-constant elements.)
-      </p>
+    <exercise xml:id="exer-big-Witt-constant-lifts">
+      <statement>
+        <p>
+          Prove the following analogue of <xref ref="def-constant-lift"/>: for any ring <m>A</m>, the elements of <m>\WW(A)</m> in the kernel of the <m>p</m>-derivation
+          for all primes <m>p</m> are precisely the constant lifts. (Combined with <xref ref="rmk-Almkvist-interpretation"/>, this explains
+          the terminology <term>elements of rank 1</term> in <xref ref="bib-Bhatt-Scholze"/> for what we call <term><m>\delta</m>-constant elements</term> of a
+          <m>\delta</m>-ring.)
+        </p>
+      </statement>
+      <hint>
+        <p>
+          First show that the elements in the kernels of all of the <m>p</m>-derivations form a set stable under the Frobenius maps to reduce
+          to checking the vanishing of the Witt components for all nontrivial prime powers.
+          Then use the projection maps <m>\WW(A) \to W(A)</m> to reduce to the <m>p</m>-typical case.
+        </p>
+      </hint>
     </exercise>
     <exercise xml:id="exer-splitting-principle">
       <statement>
@@ -367,6 +397,26 @@
           This is sometimes called the <term>splitting principle</term>, as it allows various algebraic properties of the big Witt vectors (or more generally of <m>\lambda</m>-rings)
           to be verified using arithmetic on constant elements. (This occurs frequently in the theory of <term>characteristic classes</term> of vector bundles,
           as in <xref ref="bib-Milnor-Stasheff"/>.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-big-Witt-Almkvist">
+      <statement>
+        <p>
+          Let <m>A</m> be a ring. Show that under the identification <m>\WW(A) \cong 1 + T A \llbracket T \rrbracket</m>, the power series which 
+          represent rational functions of <m>T</m> form a subring of <m>\WW(A)</m>. (Compare <xref ref="rmk-Almkvist-interpretation"/>.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-big-Witt-product">
+      <statement>
+        <p>
+          Let <m>p_1,\dots,p_n</m> be distinct primes and let <m>S</m> be the set of positive integers of the form <m>p_1^{e_1} \cdots p_n^{e_n}</m> for some
+          nonnegative integers <m>e_1,\dots,e_n</m>. Let <m>W_{p_i}</m> denote the <m>p_i</m>-typical witt vector functor. Show that there exists a natural isomorphism
+          <me>
+            W_{p_1} \circ \cdots \circ W_{p_n}\cong \WW_S
+          </me>
+          of functors from <m>\Ring</m> to <m>\Ring</m>.
         </p>
       </statement>
     </exercise>

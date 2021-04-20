@@ -1,5 +1,5 @@
 ﻿<section xml:id="sec_prisms">
-  <title>Prisms</title>
+  <title>Distinguished elements and prisms</title>
   <introduction>
     <paragraphs>
       <title>Reference</title>
@@ -8,7 +8,9 @@
       </p>
     </paragraphs>
     <p>
-      Using the framework of <m>\delta</m>-rings, we now set up the formalism of <term>prisms</term>.
+      Using the framework of <m>\delta</m>-rings, we now set up the formalism of <term>prisms</term>, modulo a key technical detail:
+      the difference between <term>classical completion</term> and <term>derived completion</term> with respect to an ideal.
+      We postpone discussion of the latter until <xref ref="sec_derived-complete"/>.
     </p>
     <paragraphs>
       <title>Notation</title>
@@ -28,11 +30,13 @@
     <definition>
       <p>
         Let <m>A</m> be a <m>\delta</m>-ring. An element <m>d \in A</m> is <term>distinguished</term> if <m>(p, d, \delta(d))</m> is the unit ideal of <m>A</m>.
+        That is, the intersection of the zero loci of <m>p, d, \delta(d)</m> on <m>\Spec A</m> is empty.
       </p>
       <p>
         If <m>A</m> is <m>(p, d)</m>-local, then <m>d \in A</m> is distinguished if and only if <m>\delta(d)</m> is a unit in <m>A</m>;
-        in fact this is the definition used in <xref ref="bib-Bhatt-course"/> or <xref ref="bib-Bhatt-Scholze"/>;
-        the discrepancy will not affect the definition of a prism because the latter already includes a completeness hypothesis (see <xref ref="def-prism"/>).
+        in fact this is the definition used in <xref ref="bib-Bhatt-course"/> and <xref ref="bib-Bhatt-Scholze"/>.
+        The discrepancy will not affect the definition of a prism because the latter already includes a completeness hypothesis (see <xref ref="def-prism"/>).
+        One confusing aspect of our definition is that units in <m>A</m> are always distinguished.
       </p>
       <p>
         In many arguments that follow, we can reduce to the <m>(p,d)</m>-local case by localizing <m>A</m> at <m>(p,d)</m>.
@@ -52,7 +56,7 @@
     <example xml:id="exa-crystalline-prism">
       <title>Crystalline cohomology</title>
       <p>
-        Take <m>A = \ZZ</m> with <m>d=p</m>. Then <m>\delta(d) = 1-p^{p-1} \equiv 1 \pmod{p}</m>, so <m>p</m> is distinguished.
+        Take <m>A = \ZZ_p</m> with <m>d=p</m>. Then <m>\delta(d) = 1-p^{p-1} \equiv 1 \pmod{p}</m>, so <m>p</m> is distinguished.
         By the same token, by <xref ref="rmk-delta-ring-image-of-Z"/>, <m>p</m> is distinguished in any <m>\delta</m>-ring.
       </p>
     </example>
@@ -123,35 +127,42 @@
       distinguished elements in <m>W(R)</m> when <m>R</m> is a perfect ring of characteristic <m>p</m>.
     </p>
     <p>
-      We first show that <q>distinguished elements are irreducible.</q>
+      We first show that <q>distinguished elements are locally irreducible.</q>
     </p>
     <lemma xml:id="lem-distiguished-times-unit">
       <statement>
         <p>
           Let <m>A</m> be a <m>\delta</m>-ring and choose <m>f,h \in A</m>. Then
-          <m>fh</m> is distinguished if and only if <m>f</m> is distinguished and <m>(p,f,h)</m> is the unit ideal of <m>A</m>.
+          <m>fh</m> is distinguished if and only if <m>f</m> and <m>h</m> are both distinguished and <m>(p,f,h)</m> is the unit ideal of <m>A</m>.
         </p>
       </statement>
       <proof>
         <p>
-          Since <m>(p,f,h)</m> is the unit ideal, we can write <m>f = afp + bf^2 + cfh</m>, and so <m>f(1-bf) = afp + cfh</m>.
-          In the localization of <m>A</m> at <m>(p,f)</m>, <m>1-bf</m> becomes a unit and so <m>f</m> belongs to <m>(p, fh)</m>;
-          that is, both <m>(p,f)</m> and <m>(p, fh)</m> generate the maximal ideal of this local ring. Consequently, for any <m>x \in A</m>,
-          <m>(p, f, x)</m> is the unit ideal if and only if <m>(p, fh, x)</m> is the unit ideal.
+          Suppose first that <m>fh</m> is distinguished.
+          By <xref ref="eq-delta-ring-product"/>,
+          <men xml:id="eq-distinguished-times-unit-congruence">
+            \delta(fh) = h^p \delta(f) + f^p \delta(h) + p \delta(h) \delta(f) \equiv h^p \delta(f) \pmod{(p,f)}.
+          </men>
+          If <m>fh</m> is distinguished, then <m>\delta(fh)</m> is a unit modulo <m>(p,fh)</m> and hence also modulo <m>(p,f)</m>;
+          we deduce that both <m>\delta(f)</m> and <m>h</m> are invertible modulo <m>(p,f)</m>. This means that <m>f</m> is distinguished and 
+          <m>(p,f,h)</m> is the unit ideal; by symmetry, <m>h</m> is also distinguished.
         </p>
         <p>
-          By <xref ref="eq-delta-ring-product"/>,
-          <me>
-            \delta(fh) = h^p \delta(f) + f^p \delta(h) + p \delta(h) \delta(f) \equiv h^p \delta(f) \pmod{(p,f)}.
-          </me>
-          In one direction, if <m>f</m> is distinguished and <m>(p, f, h)</m> is the unit ideal of <m>A</m>, then
-          <m>h^p</m> and <m>\delta(f)</m> represent units in <m>A/(p, f)</m>, as then does <m>\delta(fh)</m>; hence <m>(p, f, \delta(fh))</m> is the unit ideal of <m>A</m>,
-          and by the previous paragraph so is <m>(p, fh, \delta(fh))</m>.
-          Conversely, if <m>fh</m> is distinguished, then <m>(p, fh, \delta(fh))</m> is the unit ideal, as then is <m>(p, f, \delta(fh))</m>;
-          then <m>h^p \delta(f)</m> is a unit in <m>A/(p, f)</m>, as then are both <m>h</m> and <m>f</m>.
+          Conversely, suppose that <m>f</m> and <m>h</m> are both distinguished and that <m>(p,f,h)</m> is the unit ideal.
+          To check that <m>(p, fh, \delta(fh))</m> is the unit ideal, we may work in the localizations at <m>(p,f)</m> and <m>(p,h)</m>; without loss of generality,
+          we may then assume that <m>p,f \in \Rad(A)</m>. In this case, <m>\delta(f)</m> and <m>h</m> are both units, and so
+          <xref ref="eq-distinguished-times-unit-congruence"/> implies that <m>\delta(fh)</m> is a unit modulo <m>(p,f) = (p, fh)</m>;
+          hence <m>fh</m> is distinguished.
         </p>
       </proof>
     </lemma>
+    <remark>
+      <p>
+        While <xref ref="lem-distiguished-times-unit"/> is written in a symmetric manner, in practice 
+        we will use it in the case where <m>p, f \in \Rad(A)</m>.
+        We again reiterate that according to our conventions, any unit is a distinguished element.
+      </p>
+    </remark>
     <p>
       We now see that the property of an element being distinguished depends only on the principal ideal generated by that element.
     </p>
@@ -165,8 +176,8 @@
       <proof>
         <p>
           If <m>f</m> is distinguished, then <m>ap + bf + c \delta(f) = 1</m> for some <m>a,b,c \in A</m>. Since
-          <m>\phi(f) - f^p = p \delta(f)</m>, we can write <m>c\phi(f) - cf^p = ap^2 + bfp - cp</m>,
-          yielding <m>p \in (p^2, f, \phi(f)</m>.
+          <m>\phi(f) - f^p = p \delta(f)</m>, we can write <m>ap^2 + bfp + c\phi(f) - cf^p = p</m>,
+          yielding <m>p \in (p^2, f, \phi(f))</m>.
           Conversely, suppose that <m>p \in (p^2, f, \phi(f))</m> and (by way of contradiction) <m>(p, f, \delta(f))</m> is not the unit ideal;
           using <xref ref="rmk-delta-ring-localization"/>, we may localize <m>A</m> to reduce to the case
           where <m>p,f,\delta(f) \subseteq \Rad(A)</m> (and <m>A \neq 0</m>). In this case, <m>p \in (f, \phi(f))</m>, so there exist <m>a,b \in A</m>
@@ -179,6 +190,18 @@
         </p>
       </proof>
     </lemma>
+    <corollary>
+      <statement>
+        <p>
+          For <m>A</m> a <m>\delta</m>-ring, the property of <m>d \in A</m> being distinguished depends only on the image of <m>d</m> in <m>A/p^2</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This is immediate from <xref ref="lem-distinguished-ideal"/>.
+        </p>
+      </proof>
+    </corollary>
     <p>
       It will be convenient later to globalize the notion of an ideal generated by a distinguished element. Fortunately, the resulting condition still has a convenient characterization.
     </p>
@@ -205,9 +228,13 @@
       </statement>
       <proof>
         <p>
-          This is a consequence of <xref ref="rmk-delta-ring-localization"/> (which allows us to construct <m>A'</m> such that <m>IA'</m> is principal)
+          The equivalence of (1) and (2) is a consequence of <xref ref="rmk-delta-ring-localization"/> (which allows us to construct <m>A'</m> such that <m>IA'</m> is principal)
           and <xref ref="lem-distinguished-ideal"/>.
           Compare <xref ref="bib-Bhatt-course"/>, Lecture III, Corollary 1.9 or <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.1.
+        </p>
+        <p>
+          To check that (1) and (2) imply <m>p \in I^p + \phi(I)A</m>, we may reduce to the case where <m>I = (f)</m> for some distinguished element <m>f</m> of <m>A</m>.
+          In this case, the equation <m>\phi(f) = f^p + p\delta(f)</m> shows that <m>p \in (f^p, \phi(f))</m> because <m>\delta(f)</m> is a unit.
         </p>
       </proof>
     </lemma>
@@ -221,23 +248,23 @@
     <definition xml:id="def-prism">
       <p>
         A <term><m>\delta</m>-pair</term> consists of a pair <m>(A, I)</m> in which <m>A</m> is a <m>\delta</m>-ring and <m>I</m> is an ideal.
-        These form a category in which a morphism <m>(A,I) \to (B,J)</m> is a morphism <m>f: A \to B</m> of <m>\delta</m>-rings such that <m>f(I) \subseteq J</m>.
       </p>
       <p>
         A <term>prism</term> is a <m>\delta</m>-pair <m>(A, I)</m> satisfying the following conditions.
         <ul>
           <li>
             <p>
-              The ideal <m>I</m> is locally principal, i.e., it defines a Cartier divisor on <m>\Spec A</m>. In most of our examples, <m>I</m> will be principal;
+              The ideal <m>I</m> defines a Cartier divisor on <m>\Spec A</m> (i.e., <m>I</m> is an invertible <m>A</m>-module,
+              or equivalently <m>I</m> is locally principal generated by a non-zerodivisor). In most of our examples, <m>I</m> will be principal;
               see <xref ref="exer-prism-Pic-torsion"/> for a restriction that applies otherwise.
             </p>
           </li>
           <li>
             <p>
-              The ring <m>A</m> is derived <m>(p, I)</m>-complete. We will define this condition in <xref ref="def-derived-completion"/>;
-              for the moment, note that it holds whenever <m>A</m> is classically <m>(p, I)</m>-complete,
-              and that it implies that <m>(p,I) \subseteq \Rad(A)</m> (see <xref ref="prop-derived-complete-abelian"/>)
-              and hence also <m>\phi(I) \subseteq \Rad(A)</m>.
+              The ring <m>A</m> is derived <m>(p, I)</m>-complete (as a module over itself). 
+              We will define this condition a bit later (see <xref ref="def-derived-completion"/>);
+              for the moment, note that it implies <m>(p,I) \subseteq \Rad(A)</m> (see <xref ref="cor-derived-complete-local"/>)
+              and hence also <m>\phi(I) \subseteq \Rad(A)</m>. See also <xref ref="rmk-prism-derived-complete"/>.
             </p>
           </li>
           <li>
@@ -248,41 +275,42 @@
         </ul>
       </p>
       <p>
-        The category of prisms, denoted <m>\Prm</m>, is defined as the full subcategory of the category of <m>\delta</m>-pairs consisting of prisms.
-        A map <m>(A, I) \to (B, J)</m> in <m>\Prm</m> is <term>(faithfully) flat</term> if 
-        <m>A/(p,I) \to B/(p,I)B</m> is (faithfully) flat and <m>\Tor_A^i(B, A/(p,I)) = 0</m> for <m>i>0</m>.
-        In particular, this holds if <m>A \to B</m> is faithfully flat.
-        (In the terminology of <xref ref="bib-Bhatt-Scholze"/>, this corresponds to <m>B</m> being <term><m>I</m>-completely flat</term>.)
-      </p> 
+        A prism <m>(A, I)</m> is <term>orientable</term> if the ideal <m>I</m> is principal. A prism <m>(A,I)</m> is <term>oriented</term> if it is orientable
+        <em>and</em> we have fixed the choice of a generator <m>d</m>, which by <xref ref="lem-distinguished-ideal"/> is a distinguished element
+        (and a non-zerodivisor).
+      </p>
+      <p>
+        A prism <m>(A,I)</m> is <term>bounded</term> if <m>A/I</m> has bounded <m>p^\infty</m>-torsion;
+        that is, there is a positive integer <m>n</m> such that <m>(A/I)[p^n] = (A/I)[p^\infty]</m>.
+      </p>
     </definition>
     <remark xml:id="rmk-prism-derived-complete">
       <p>
-        Before giving the definition of the derived completeness condition in <xref ref="def-prism"/>,
-        we insert a few clarifying remarks.
+        <xref ref="def-prism"/> includes a condition on derived completeness that we have not yet defined.
+        We insert a few remarks in order to maintain the narrative flow.
       </p>
       <p>
-        If <m>A</m> is classically <m>(p,I)</m>-complete, then <m>A</m> is derived <m>(p,I)</m>-complete. The converse holds if <m>A</m> is <m>(p,I)</m>-adically separated.
+        If <m>A</m> is classically <m>(p,I)</m>-complete, then <m>A</m> is derived <m>(p,I)</m>-complete. The converse holds if <m>A</m> is <m>(p,I)</m>-adically separated;
+        this will be true in particular if <m>(A,I)</m> is a bounded prism (see <xref ref="lem-bounded-torsion-derived-complete"/>).
       </p>
       <p>
-        We will mostly consider prisms that are <term>bounded</term>, meaning that <m>A/I</m> has bounded <m>p^\infty</m>-torsion.
-        (That is, there is a positive integer <m>n</m> such that <m>(A/I)[p^n] = (A/I)[p^\infty]</m>.)
-        This will also imply that <m>A</m> is classically <m>(p,I)</m>-complete; see <xref ref="lem-bounded-torsion-derived-complete"/>.
-      </p>
-      <p>
+        For these reasons, on first reading it is safe to pretend that <xref ref="def-prism"/> requires <m>A</m> to be classically <m>(p,I)</m>-complete
+        rather than derived <m>(p,I)</m>-complete.
         However, when proving theorems it will be problematic to take completions due to the bad behavior of this functor in some situations
         (<xref ref="rmk-completions-behaving-badly"/>). The notion of derived completeness will help mitigate this, as will the odd definition of 
-        flatness for morphisms of prisms.
+        flatness for morphisms of prisms (<xref ref="def-completely-flat"/>).
       </p>
     </remark>
     <example>
       <p>
-        A <m>\delta</m>-pair <m>(A, I)</m> with <m>I = (p)</m> is a prism if and only if <m>A</m> is derived <m>p</m>-complete. We say that such a prism is
+        A <m>\delta</m>-pair <m>(A, I)</m> with <m>I = (p)</m> is a prism if and only if <m>A</m> is <m>p</m>-torsion-free and classically <m>p</m>-complete. We say that such a prism is
         <term>crystalline</term>.
       </p>
     </example>
     <remark xml:id="exa-prism-examples">
       <p>
-        By <xref ref="lem-distinguished-ideal"/>, all of the examples of distinguished elements enumerated in <xref ref="subsec-distinguished"/> give rise to prisms
+        By <xref ref="lem-distinguished-ideal"/> (and the fact that the rings in question are all integral), 
+        all of the examples of distinguished elements enumerated in <xref ref="subsec-distinguished"/> give rise to prisms
         (taking <m>I = (d)</m>). These examples are all bounded.
       </p>
       <p>
@@ -290,6 +318,18 @@
         <xref ref="exa-Ainf-prism"/> is an example of a perfect prism; we will describe these in terms of perfectoid rings in <xref ref="sec_perfect"/>.
       </p>
     </remark>
+    <example xml:id="rmk-universal-oriented-prism">
+      <title>The universal oriented prism</title>
+      <p>
+        Let <m>A_0 = \ZZ_{(p)}\{d\}</m> be the free <m>\delta</m>-ring in a single variable <m>d</m> over <m>\ZZ_{(p)}</m>.
+        Let <m>S</m> be the multiplicative subset of <m>A_0</m> generated by <m>\phi^n(\delta(d))</m> for all <m>n \geq 0</m>.
+        By <xref ref="lem-delta-ring-localization"/>, the localization <m>A_1 = S^{-1} A_0</m> is also a <m>\delta</m>-ring.
+        Let <m>A</m> be the derived <m>(p,d)</m>-completion of <m>A_1</m>; since <m>A_1</m> is <m>p</m>-torsion-free, <m>A</m> is classically <m>p</m>-complete.
+        By construction, <m>d</m> is a distinguished element of <m>A</m> and <m>(A, dA)</m> is a bounded prism.
+        Moreover, <m>p,d</m> is a regular sequence in <m>A</m> and <m>\phi: \overline{A} \to \overline{A}</m> is <m>p</m>-completely flat
+        (see <xref ref="def-I-completely-flat"/>).
+      </p>
+    </example>
     <lemma xml:id="lem-prism-ideal-generator">
       <statement>
         <p>
@@ -324,350 +364,52 @@
         </p>
       </proof>
     </lemma>
-    <lemma>
+    <remark>
+      <p>
+        Let <m>(A, I)</m> be a prism. Since <m>I</m> is an invertible <m>A</m>-module, <m>I \otimes_A A/I = I/I^2</m> is an invertible <m>A/I</m>-module,
+        as is <m>I^n/I^{n+1}</m> for any nonnegative integer <m>n</m>. These will appear in the discussion of Hodge-Tate cohomology.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>The category of prisms</title>
+    <definition>
+      <p>
+        The category of <m>\delta</m>-pairs is defined so that a morphism <m>(A,I) \to (B,J)</m> is a morphism <m>f: A \to B</m> of <m>\delta</m>-rings such that <m>f(I) \subseteq J</m>.
+        The category of prisms, denoted <m>\Prm</m>, is defined as the full subcategory of the category of <m>\delta</m>-pairs consisting of prisms.
+      </p>
+    </definition>
+    <lemma xml:id="lem-prism-rigidity">
       <title>Rigidity of prisms</title>
       <statement>
         <p>
           Let <m>(A, I) \to (B,J)</m> be a morphism in <m>\Prm</m>. Then the natural map <m>I \otimes_A B \to J</m> is an isomorphism of <m>B</m>-modules.
+          In particular, <m>J = IB</m>.
         </p>
       </statement>
       <proof>
         <p>
           Since the map in question is between invertible <m>B</m>-modules, it is enough to check that it is surjective.
-          Using <xref ref="lem-ideal-locally-distinguished"/>, we may reduce to the case where <m>I = (f)</m> and <m>J = (g)</m> are both principal ideals.
+          Using <xref ref="lem-ideal-locally-distinguished"/>, we may reduce to the case where <m>I = (f)</m> and <m>J = (g)</m> are both principal ideals
+          generated by distinguished elements.
           Then <m>f</m> is a multiple of <m>g</m> in <m>B</m>, so we may apply <xref ref="lem-distiguished-times-unit"/> to conclude. 
           (Compare <xref ref="bib-Bhatt-course"/>, Lecture III, Lemma 3.7 or <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.5.)
         </p>
       </proof>
     </lemma>
-  </subsection>
-  <subsection>
-    <title>Derived completeness</title>
-    <p>
-      While the notion of derived completeness is more natural to treat within the broader context of derived categories
-      (see <xref ref="subsec-derived-complete-derived"/>), we need to insert a few remarks here in the interim.
-    </p>
-    <definition>
+    <definition xml:id="def-completely-flat">
       <p>
-        For <m>A \in \Ring</m> and <m>I</m> a <em>finitely generated</em> ideal of <m>A</m>, an <m>A</m>-module <m>M</m>
-        is <term>classically <m>I</m>-complete</term> if the natural map <m>M \to \lim_n M/I^n M</m> is an isomorphism.
+        A map <m>(A, I) \to (B, J)</m> in <m>\Prm</m> is <term>(faithfully) flat</term> if 
+        <m>B</m> is <m>I</m>-completely (faithfully) flat in the sense of <xref ref="def-I-completely-flat"/>.
+        This holds in particular if <m>A \to B</m> is (faithfully) flat.
       </p>
     </definition>
-    <remark xml:id="rmk-completions-behaving-badly">
-      <title>Completions behaving badly</title>
-      <p>
-        Much of our intuition about completeness of modules is derived from the case of finitely generated modules over a noetherian ring.
-        A few pitfalls to keep in mind include the following.
-      </p>
-      <ul>
-        <li>
-          Classically <m>I</m>-complete modules do not form an abelian subcategory of the category of all <m>A</m>-modules.
-          For example, it is possible for the quotient of <m>A</m> by a principal ideal to be noncomplete; see <xref ref="bib-Stacks"/>, tag 05JD.
-          This is remedied by using derived <m>I</m>-complete modules instead; see <xref ref="prop-derived-complete-abelian"/>.
-        </li>
-        <li>
-          The completion functor <m>M \mapsto \lim_n M/I^n M</m> preserves surjections, but it is not even right exact
-          even on finitely presented modules. See <xref ref="bib-Stacks"/>, tag 05JF and also <xref ref="exa-bad-completion"/>.
-        </li>
-        <li>
-          The completion of a flat module (or even a flat <m>A</m>-algebra) need not be flat. See <xref ref="bib-Stacks"/>, tag 0AL8.
-        </li>
-      </ul>
-      <p>
-        If we drop the restriction that <m>I</m> be finitely generated, then things get even stranger.
-        For example, completion is no longer an idempotent operation; see <xref ref="bib-Stacks"/>, tag 05JA.
-      </p>
-    </remark>
-    <p>
-      One can see some additional issues with classical completion from the following basic example (adapted from <xref ref="bib-Yekutieli"/>, Example 3.20).
-    </p>
-    <example xml:id="exa-bad-completion">
-      <p>
-        Take <m>A = \ZZ_p, I = pA</m>.
-        Let <m>M_0</m> be the set of sequences <m>(x_n)_{n=0}^\infty</m>  over <m>\ZZ_p</m> with <m>\lim_{n \to \infty} x_n = 0</m>.
-        Let <m>M_1 \subset M_0</m> be the set of sequences <m>(x_n)_{n=0}^\infty</m> with <m>x_n \equiv 0 \pmod{p^n}</m>.
-        Let <m>M_2 \subset M_1</m> be the set of sequences <m>(x_n)_{n=0}^\infty</m> with <m>\lim_{n \to \infty} x_n/p^n = 0</m>.
-      </p>
-      <p>
-        The modules <m>M_0, M_1, M_2, M_0/M_1, M_1/M_2</m> are all classically <m>I</m>-complete. However, <m>M_0/M_2</m> is not <m>I</m>-adically separated:
-        we have <m>\bigcap_n p^n (M_0/M_2) = M_1/M_2</m>. Consequently, applying the completion functor to the exact sequence
-        <me>
-          0 \to M_2 \to M_0 \to M_0/M_2 \to 0
-        </me>
-        yields the sequence
-        <me>
-          0 \to M_2 \to M_0 \to M_0/M_1 \to 0
-        </me>
-        which is not exact in the middle.
-      </p>
-    </example>
-    <definition xml:id="def-derived-completion">
-      <p>
-        Let <m>A</m> be a commutative ring and let <m>I</m> be a finitely generated ideal of <m>A</m>.
-        An <m>A</m>-module <m>M</m> is <term>derived <m>I</m>-complete</term> if for each <m>f \in I</m>, 
-        <men xml:id="eq-map-to-derived-inverse-limit">
-          \Hom_A (A_f, M) = \Ext^1_A(A_f, M) = 0.
-        </men>
-        By <xref ref="lem-derived-f-limit-ideal"/>, it will suffice to check this condition for <m>f</m> running over a generating set of <m>I</m>
-        (or of any ideal with the same radical as <m>I</m>).
-      </p>
-    </definition>
-    <remark>
-      <p>
-        When working with <xref ref="eq-map-to-derived-inverse-limit"/>, note that <m>A_f</m> admits the following free resolution as an <m>A</m>-module:
-        <me>
-          0 \to A[T] \stackrel{\times (1-Tf)}{\to} A[T] \stackrel{T \mapsto f^{-1}}{\to} A_f \to 0
-        </me>
-        Consequently, for any <m>A</m>-module <m>M</m>, <m>\Ext^n_A(A_f, M) = 0</m> for <m>n \geq 2</m>.
-        This means that <xref ref="eq-map-to-derived-inverse-limit"/> can be reformulated as
-        <men xml:id="eq-map-to-derived-inverse-limit2">
-          \Ext^n_A(A_f, M) = 0 \qquad (n \geq 0).
-        </men>
-       </p>
-    </remark>
-    <lemma xml:id="lem-derived-f-limit-ideal">
-      <statement>
-        <p>
-          Let <m>A</m> be a ring and let <m>M</m> be an <m>A</m>-module.
-          Then the set of <m>f \in A</m> for which <xref ref="eq-map-to-derived-inverse-limit"/> holds is a radical ideal of <m>A</m>. 
-        </p>
-      </statement>
-      <proof>
-        <p>
-          Let <m>I</m> be the set in question. For <m>f \in I, g \in A</m>,
-          the functor <m>M \mapsto \Hom_A(A_{fg}, M)</m> factors as
-          <me>
-            M \mapsto M_f \mapsto \Hom_{A_f}(A_{fg}, M_f).
-          </me>
-          From the Leray spectral sequence (or more elementary considerations), we see that
-          if <m>\Ext^n_A(A_f, M) = 0</m> for all <m>n \geq 0</m>, then <m>\Ext^n_A(A_{gf}, M) = 0</m> for all <m>n \geq 0</m>; hence <m>fg \in I</m>.
-        </p>
-        <p>
-          For <m>f,g \in I</m>, the sequence
-          <me>
-            0 \to A_{f+g} \to A_{f(f+g)} \oplus A_{g(f+g)} \to A_{fg(f+g)} \to 0
-          </me>
-          is exact because <m>f,g</m> generate the unit ideal in <m>A_{f+g}</m>. 
-          (As an aside, see <xref ref="bib-Kedlaya-AWS"/>, Lemma 1.6.12 for another application of this observation.)
-          Since <m>f(f+g), g(f+g), fg(f+g) \in I</m> by the previous paragraph,
-          using the snake lemma we obtain <m>f+g \in I</m>. Consequently, <m>I</m> is an ideal of <m>A</m>.
-        </p>
-        <p>
-          For any <m>f \in I</m> and any positive integer <m>n</m>, <m>A_f = A_{f^n}</m>. Hence <m>I</m> is a radical ideal of <m>A</m>.
-          (Compare <xref ref="bib-Stacks"/>, tag 091Q.)
-        </p>
-      </proof>
-    </lemma>
-    <lemma xml:id="lem-complete-from-derived">
-      <statement>
-        <p>
-          Let <m>A</m> be a ring, let <m>I</m> be a finitely generated ideal of <m>A</m>, and let <m>M</m> be an <m>A</m>-module.
-        </p>
-        <ol>
-          <li>
-            <p>
-              If <m>M</m> is classically <m>I</m>-complete, then <xref ref="eq-map-to-derived-inverse-limit"/> holds for all <m>f \in I</m>.
-            </p>
-          </li>
-          <li>
-            <p>
-              Conversely, if <xref ref="eq-map-to-derived-inverse-limit"/> holds for all <m>f \in I</m>, then <m>M \to \lim_n M/I^n M</m> is surjective.
-            </p>
-          </li>
-        </ol>
-      </statement>
-      <proof>
-        <p>
-          If <m>M</m> is classically <m>I</m>-complete, we have 
-          <me>
-            \Hom_A(A_f, M) = \Hom_A(A_f, \lim_n M/I^n M) = 0.
-          </me>
-          To show that <m>\Ext^1_A(A_f, M) = 0</m>, consider an extension
-          <men xml:id="eq-complete-from-derived-ext"> 
-            0 \to M \to E \to A_f \to 0.
-          </men>
-          For each <m>n \geq 0</m>, pick <m>e_n \in E</m> mapping to <m>f^{-n} \in A_f</m> and set <m>\delta_n = fe_{n+1} - e_n \in M</m>.
-          Since <m>M</m> is complete, we may define the elements
-          <me>
-            e_n' = e_n + \delta_n + f \delta_{n+1} + f^2 \delta_{n+2} \cdots
-          </me>
-          which satisfy <m>f e_{n+1}' = fe_n'</m>; we thus obtain a map <m>A_f \to E</m> splitting the sequence by mapping <m>f^{-n}</m> to <m>e_n'</m>.
-        </p>
-        <p>
-          In the converse direction, by an elementary argument (<xref ref="exer-Stacks-090S"/>) we can reduce to the case where <m>I = (f)</m>.
-          That, we must show that if <xref ref="eq-map-to-derived-inverse-limit"/> holds, then 
-          for any <m>x_0, x_1, \dots \in M</m> there exists <m>x \in M</m> such that
-          <m>x \equiv x_0 + fx_1 + \cdots + f^{n-1} x_{n-1} \pmod{f^nM}</m> for each <m>n</m>.
-          To this end, form an extension as in <xref ref="eq-complete-from-derived-ext"/> by taking
-          <me>
-            E = M \oplus \bigoplus_n Ae_n/(x_n - fe_{n+1} + e_n)
-          </me>
-          with <m>e_n</m> mapping to <m>f^{-n}</m> in <m>A_f</m>; note that by the snake lemma, <m>M/f^n M = E/f^n E</m> for all <m>n</m>.
-          Since the extension splits by hypothesis, there is an element <m>x + e_0 \in E</m>
-          which generates a copy of <m>A_f</m> in <m>E</m>. We then have
-          <me>
-            x + e_0 = x - x_0 + fe_1 = x - x_0 + x_1 + f^2 e_2 = \cdots;
-          </me>
-          this yields the desired result.
-          (Compare <xref ref="bib-Stacks"/>, tag 091R.)
-        </p>
-      </proof>
-    </lemma>
-    <corollary xml:id="cor-complete-derived-classical">
-      <statement>
-        <p>
-          Let <m>A</m> be a ring, let <m>I</m> be a finitely generated ideal of <m>A</m>, and let <m>M</m> be an <m>A</m>-module.
-          Then <m>M</m> is classically <m>I</m>-complete if and only if <m>M</m> is <m>I</m>-adically separated and derived <m>I</m>-complete.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          This is immediate from <xref ref="lem-complete-from-derived"/>.
-        </p>
-      </proof>
-    </corollary>
-    <proposition xml:id="prop-derived-complete-abelian">
-      <statement>
-        <p>
-          Let <m>A</m> be a commutative ring and let <m>I</m> be a finitely generated ideal of <m>A</m>.
-          <ol>
-            <li>
-              <title>Derived Nakayama's lemma</title>
-              <p>
-                Let <m>M</m> be a derived <m>I</m>-complete <m>A</m>-module. Then <m>M = 0</m> if and only if <m>M/IM = 0</m>.
-                In particular, if <m>A</m> is derived <m>I</m>-complete, then <m>I \subseteq \Rad(A)</m> (take <m>M = A/(u)</m> for <m>u \in 1 + I</m>).
-              </p>
-            </li>
-            <li>
-              <p>
-                The inclusion functor from derived <m>I</m>-complete <m>A</m>-modules to <m>A</m>-modules admits a left adjoint <m>M \mapsto \widehat{M}</m>, called
-                <term>derived <m>I</m>-completion</term>.
-              </p>
-            </li>
-            <li>
-              <p>
-                The full subcategory of the category of <m>A</m>-modules consisting of derived <m>I</m>-complete <m>A</m>-modules 
-                is an abelian category. More precisely, it is closed under formation of kernels, cokernels, and images in the ambient category.
-              </p>
-            </li>
-          </ol>
-        </p>
-      </statement>
-      <proof>
-        <p>
-          See <xref ref="bib-Stacks"/>, tags 0G1U, 091V, 091U.
-        </p>
-      </proof>
-    </proposition>
-    <corollary>
-      <statement>
-        <p>
-          Let <m>A</m> be a commutative ring and let <m>I</m> be a finitely generated ideal of <m>A</m> such that <m>A</m> is derived <m>I</m>-complete as a module over itself.
-          Then every finitely presented <m>A</m>-module is derived <m>I</m>-complete.
-        </p>
-      </statement>
-    </corollary>
-    <remark>
-      <p>
-        With notation as in <xref ref="exa-bad-completion"/>, <xref ref="prop-derived-complete-abelian"/> implies that the <m>A</m>-module
-        <m>M_0/M_2</m>, which is not <m>I</m>-adically separated, is nonetheless derived <m>I</m>-complete.
-      </p>
-    </remark>
-    <p>
-      The following lemma will allow us to avoid having to worry about the difference between classical and derived completions in many cases of interest.
-    </p>
-    <lemma xml:id="lem-bounded-torsion-derived-complete">
-      <statement>
-        <p>
-          Let <m>A</m> be a commutative ring, let <m>I = (f)</m> be a principal ideal of <m>A</m>, and let <m>M</m> be an <m>A</m>-module.
-          If <m>M</m> has bounded <m>f^\infty</m>-torsion (that is, there exists a positive integer <m>n</m> such that <m>M[f^n] = M[f^\infty]</m>),
-          then the derived <m>I</m>-completion of <m>M</m> is classically <m>I</m>-complete.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          Since we have not explained in any detail how to compute the derived completion, we will give only a sketch here
-          and return to the matter after we discuss derived categories in <xref ref="sec_derived-categories"/>. 
-          The summary is that the derived completion <m>\widehat{M}</m> fits into an exact sequence of the form
-          <me>
-            0 \to R^1\lim_n M[f^n] \to \widehat{M} \to \lim_n M/f^n M \to 0
-          </me>
-          in which the modules <m>M[f^n]</m> form a projective system via multiplication by <m>f</m>. By the assumption about bounded torsion,
-          this projective system is essentially zero (that is, any sufficiently long composition is the zero map), so the <m>R^1</m> term vanishes.
-          (Compare <xref ref="bib-Bhatt-course"/>, Lecture III, Lemma 2.4.)
-        </p>
-      </proof>
-    </lemma>
-    <p>
-      A key application of <xref ref="lem-bounded-torsion-derived-complete"/> is the following.
-    </p>
-    <lemma xml:id="lem-perfect-derived-completion">
-      <statement>
-        <p>
-          Let <m>R</m> be a perfect ring of characteristic <m>p</m>. Then for any <m>f \in R</m>, <m>R[f^\infty] = R[f]</m>. 
-          Consequently (by <xref ref="lem-bounded-torsion-derived-complete"/>),
-          the derived <m>f</m>-completion of <m>R</m> coincides with the classical <m>f</m>-adic completion.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          For <m>x \in R[f^\infty]</m>, we have <m>f^{p^n} x = 0</m> for some nonnegative integer <m>n</m>. We then have
-          <m>f^{p^n} x^{p^n} = 0</m>, and then <m>fx = 0</m> because <m>R</m> is perfect.
-        </p>
-      </proof>
-    </lemma>
-    <remark>
-      <p>
-        As the terminology suggests, <xref ref="def-derived-completion"/> is secretly a statement about the bounded derived category <m>D(A)</m> of <m>A</m>-modules.
-        Namely, <xref ref="eq-map-to-derived-inverse-limit"/> can be reformulated as the assertion that
-        <me>
-          T(M, f) = R\lim(\cdots M \stackrel{\times f}{\to} M)
-        </me>
-        vanishes in <m>D(A)</m> (see <xref ref="bib-Stacks"/>, tag 091P).
-        One can then apply the same definition for objects in <m>D(A)</m>; see <xref ref="sec_derived-categories"/>.
-      </p>
-    </remark>
-    <remark>
-      <p>
-        The category of derived <m>I</m>-complete <m>A</m>-modules does not have the property that filtered colimits are exact (<xref ref="bib-Stacks"/>, tag 0ARC).
-        In particular, it is not a <term>Grothendieck abelian category</term>.
-      </p>
-    </remark>
   </subsection>
   <exercises>
-    <exercise xml:id="exer-Stacks-090S">
-      <statement>
-        <p>
-          Let <m>A</m> be a ring, let <m>I</m> be a finitely generated ideal, and let <m>M</m> be an <m>A</m>-module. Suppose that for each <m>f \in I</m>,
-          the map <m>M \to \lim_n M/f^n M</m> is surjective. Prove that the map <m>M \to \lim_n M/I^n M</m> is surjective.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          See <xref ref="bib-Stacks"/>, tag 090S.
-        </p>
-      </proof>
-    </exercise>
     <exercise xml:id="exer-distinguished-Frob">
       <statement>
         <p>
           Let <m>A</m> be a <m>\delta</m>-ring. Prove that an element <m>d \in A</m> is distinguished if and only if <m>\phi(d)</m> is distinguished.
-        </p>
-      </statement>
-    </exercise>
-    <exercise xml:id="exer-prism-Pic-torsion">
-      <statement>
-        <p>
-          Let <m>(A, I)</m> be a prism. Prove that the class of <m>I</m> in <m>\Pic(A)</m> is torsion.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Let <m>A</m> be a commutative ring and let <m>I</m> be a finitely generated ideal of <m>A</m>.
-          Let <m>M \to N</m> be a morphism of derived <m>I</m>-complete <m>A</m>-modules such that <m>M/IM \to N/IN</m> is surjective.
-          Prove that <m>M \to N</m> is surjective.
         </p>
       </statement>
     </exercise>
