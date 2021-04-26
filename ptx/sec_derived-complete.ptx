@@ -1,0 +1,787 @@
+﻿<section xml:id="sec_derived-complete">
+  <title>Derived completeness</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Stacks"/>, tag 091N, 0BKF. See also <xref ref="bib-Stacks"/>, tag 0BKH for the case of a noetherian ring, where some simplifications occur.
+      </p>
+    </paragraphs>
+    <p>
+      We fill in a missing detail from <xref ref="sec_prisms"/>, namely the distinction between classical and derived completeness of a module with respect to an ideal.
+      As you might imagine, the latter is best treated within the framework of <term>derived categories</term>; we will do as much as we can in classical
+      language, and end with a few statements which one may want to postpone until after reading <xref ref="sec_derived-categories"/>.
+    </p>
+  </introduction>
+  <subsection>
+    <title>The trouble with classical completion</title>
+    <definition>
+      <p>
+        For <m>A \in \Ring</m> and <m>I</m> a <em>finitely generated</em> ideal of <m>A</m>, an <m>A</m>-module <m>M</m>
+        is <term>classically <m>I</m>-complete</term> if the natural map <m>M \to \lim_n M/I^n M</m> is an isomorphism.
+        In particular, this means that <m>M</m> is <m>I</m>-adically separated: <m>\bigcap_n I^n M = 0</m>.
+      </p>
+    </definition>
+    <remark xml:id="rmk-completions-behaving-badly">
+      <title>Completions behaving badly</title>
+      <p>
+        Much of our intuition about completion of modules with respect to an ideal is derived from the case of finitely generated modules over a noetherian ring.
+        A few pitfalls to keep in mind include the following.
+      </p>
+      <ul>
+        <li>
+          Classically <m>I</m>-complete modules do not form an abelian subcategory of the category of all <m>A</m>-modules.
+          For example, it is possible for the quotient of <m>A</m> by a principal ideal to be noncomplete; see <xref ref="bib-Stacks"/>, tag 05JD.
+          This is remedied by using derived <m>I</m>-complete modules instead; see <xref ref="prop-derived-complete-abelian"/>.
+        </li>
+        <li>
+          The completion functor <m>M \mapsto \lim_n M/I^n M</m> preserves surjections, but it is not even right exact
+          even on finitely presented modules. (This is arguably not surprising because completion is the composition of a right exact functor with a left exact functor.)
+          See <xref ref="bib-Stacks"/>, tag 05JF and also <xref ref="exa-bad-completion"/>.
+        </li>
+        <li>
+          The completion of a flat module (or even a flat <m>A</m>-algebra) need not be flat. See <xref ref="bib-Stacks"/>, tag 0AL8.
+        </li>
+      </ul>
+      <p>
+        If we drop the restriction that <m>I</m> be finitely generated, then things get even stranger.
+        For example, completion is no longer an idempotent operation; see <xref ref="bib-Stacks"/>, tag 05JA.
+      </p>
+    </remark>
+    <p>
+      One can see some additional issues with classical completion from the following basic example (adapted from <xref ref="bib-Yekutieli"/>, Example 3.20;
+      see also <xref ref="bib-Stacks"/>, tag 0G3F).
+    </p>
+    <example xml:id="exa-bad-completion">
+      <p>
+        Take <m>A = \ZZ_p, I = pA</m>.
+        Let <m>M_0</m> be the set of sequences <m>(x_n)_{n=0}^\infty</m>  over <m>\ZZ_p</m> with <m>\lim_{n \to \infty} x_n = 0</m>.
+        Let <m>M_1 \subset M_0</m> be the set of sequences <m>(x_n)_{n=0}^\infty</m> with <m>x_n \equiv 0 \pmod{p^n}</m>.
+        Let <m>M_2 \subset M_1</m> be the set of sequences <m>(x_n)_{n=0}^\infty</m> with <m>\lim_{n \to \infty} x_n/p^n = 0</m>.
+      </p>
+      <p>
+        The modules <m>M_0, M_1, M_2, M_0/M_1, M_1/M_2</m> are all classically <m>I</m>-complete (note that <m>M_0</m> is isomorphic to <m>M_2</m>
+        via the map <m>(x_n) \mapsto (x_n p^n)</m>).
+        However, <m>M_0/M_2</m> is not <m>I</m>-adically separated:
+        we have <m>\bigcap_n p^n (M_0/M_2) = M_1/M_2</m>. 
+        (In other words, the closure of <m>M_2</m> in <m>M_0</m> is equal to <m>M_1</m>.)
+        Consequently, applying the completion functor to the exact sequence
+        <me>
+          0 \to M_2 \to M_0 \to M_0/M_2 \to 0
+        </me>
+        yields the sequence
+        <me>
+          0 \to M_2 \to M_0 \to M_0/M_1 \to 0
+        </me>
+        which is not exact in the middle.
+      </p>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Derived completeness</title>
+    <definition xml:id="def-derived-completion">
+      <p>
+        For <m>A \in \Ring</m> and <m>I</m> a finitely generated ideal of <m>A</m>,
+        an <m>A</m>-module <m>M</m> is <term>derived <m>I</m>-complete</term> if for each <m>f \in I</m>, 
+        <men xml:id="eq-map-to-derived-inverse-limit">
+          \Hom_A (A_f, M) = 0 \mbox{ and } \Ext^1_A(A_f, M) = 0.
+        </men>
+        By <xref ref="lem-derived-f-limit-ideal"/>, it will suffice to check this condition for <m>f</m> running over a generating set of <m>I</m>
+        (or of any ideal with the same radical as <m>I</m>).
+      </p>
+    </definition>
+    <remark>
+      <p>
+        When working with <xref ref="eq-map-to-derived-inverse-limit"/>, note that <m>A_f</m> admits the following free resolution as an <m>A</m>-module:
+        <me>
+          0 \to A[T] \stackrel{\times (1-Tf)}{\to} A[T] \stackrel{T \mapsto f^{-1}}{\to} A_f \to 0
+        </me>
+        Consequently, for any <m>A</m>-module <m>M</m>, <m>\Ext^n_A(A_f, M) = 0</m> for <m>n \geq 2</m>.
+        Since <m>\Hom_A = \Ext^0_A</m>, this means that <xref ref="eq-map-to-derived-inverse-limit"/> can be reformulated as
+        <men xml:id="eq-map-to-derived-inverse-limit2">
+          \Ext^n_A(A_f, M) = 0 \qquad (n \geq 0).
+        </men>
+        For example, this makes it clear that if any two terms in a short exact sequence are derived <m>I</m>-complete, then so is the third.
+       </p>
+    </remark>
+    <lemma xml:id="lem-derived-f-limit-ideal">
+      <statement>
+        <p>
+          For <m>A \in \Ring</m> and <m>M \in \Mod_A</m>, 
+          the set of <m>f \in A</m> for which <xref ref="eq-map-to-derived-inverse-limit"/> holds is a radical ideal of <m>A</m>. 
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>I</m> be the set in question. For <m>f \in I, g \in A</m>,
+          the functor <m>\Hom_A(A_{fg}, \bullet)</m> factors as
+          <me>
+            M \mapsto \Hom_A(A_f, M) \mapsto \Hom_A(A_g, \Hom_A(A_f, M)).
+          </me>
+          From the spectral sequence for a composition of functors (or more elementary considerations), we see that
+          if <m>\Ext^n_A(A_f, M) = 0</m> for all <m>n \geq 0</m>, then <m>\Ext^n_A(A_{gf}, M) = 0</m> for all <m>n \geq 0</m>; hence <m>fg \in I</m>.
+        </p>
+        <p>
+          For <m>f,g \in I</m>, the sequence
+          <me>
+            0 \to A_{f+g} \to A_{f(f+g)} \oplus A_{g(f+g)} \to A_{fg(f+g)} \to 0
+          </me>
+          is exact because <m>f,g</m> generate the unit ideal in <m>A_{f+g}</m>. 
+          (As an aside, see <xref ref="bib-Kedlaya-AWS"/>, Lemma 1.6.12 for another application of this observation.)
+          Since <m>f(f+g), g(f+g), fg(f+g) \in I</m> by the previous paragraph,
+          using the snake lemma we obtain <m>f+g \in I</m>. Consequently, <m>I</m> is an ideal of <m>A</m>.
+        </p>
+        <p>
+          For any <m>f \in I</m> and any positive integer <m>n</m>, <m>A_f = A_{f^n}</m>. Hence <m>I</m> is a radical ideal of <m>A</m>.
+          (Compare <xref ref="bib-Stacks"/>, tag 091Q.)
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-complete-from-derived">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m> and choose <m>M \in \Mod_A</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              If <m>M</m> is classically <m>I</m>-complete, then <xref ref="eq-map-to-derived-inverse-limit"/> holds for all <m>f \in I</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Conversely, if <xref ref="eq-map-to-derived-inverse-limit"/> holds for all <m>f \in I</m>, then <m>M \to \lim_n M/I^n M</m> is surjective.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          If <m>M</m> is classically <m>I</m>-complete, we have 
+          <me>
+            \Hom_A(A_f, M) = \Hom_A(A_f, \lim_n M/I^n M) = 0.
+          </me>
+          To show that <m>\Ext^1_A(A_f, M) = 0</m>, consider an extension
+          <men xml:id="eq-complete-from-derived-ext"> 
+            0 \to M \to E \to A_f \to 0.
+          </men>
+          For each <m>n \geq 0</m>, pick <m>e_n \in E</m> mapping to <m>f^{-n} \in A_f</m> and set <m>\delta_n = fe_{n+1} - e_n \in M</m>.
+          Since <m>M</m> is complete, we may define the elements
+          <me>
+            e_n' = e_n + \delta_n + f \delta_{n+1} + f^2 \delta_{n+2} + \cdots
+          </me>
+          which satisfy <m>f e_{n+1}' = fe_n'</m>; we thus obtain a map <m>A_f \to E</m> splitting the sequence by mapping <m>f^{-n}</m> to <m>e_n'</m>.
+        </p>
+        <p>
+          In the converse direction, by an elementary argument (<xref ref="exer-Stacks-090S"/>) we can reduce to the case where <m>I = (f)</m>.
+          That, we must show that if <xref ref="eq-map-to-derived-inverse-limit"/> holds, then 
+          for any <m>x_0, x_1, \ldots \in M</m> there exists <m>x \in M</m> such that
+          <m>x \equiv x_0 + fx_1 + \cdots + f^{n-1} x_{n-1} \pmod{f^nM}</m> for each <m>n</m>.
+          To this end, form an extension as in <xref ref="eq-complete-from-derived-ext"/> by taking
+          <me>
+            E = M \oplus \bigoplus_n Ae_n/(x_n - fe_{n+1} + e_n)
+          </me>
+          with <m>e_n</m> mapping to <m>f^{-n}</m> in <m>A_f</m>; note that by the snake lemma, <m>M/f^n M = E/f^n E</m> for all <m>n</m>.
+          Since the extension splits by hypothesis, there is an element <m>x + e_0 \in E</m>
+          which generates a copy of <m>A_f</m> in <m>E</m>. We then have
+          <me>
+            x + e_0 = x - x_0 + fe_1 = x - x_0 + x_1 + f^2 e_2 = \cdots;
+          </me>
+          this yields the desired result.
+          (Compare <xref ref="bib-Stacks"/>, tag 091R.)
+        </p>
+      </proof>
+    </lemma>
+    <corollary xml:id="cor-complete-derived-classical">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m> and choose <m>M \in \Mod_A</m>.
+          Then <m>M</m> is classically <m>I</m>-complete if and only if <m>M</m> is <m>I</m>-adically separated and derived <m>I</m>-complete.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This is immediate from <xref ref="lem-complete-from-derived"/>.
+        </p>
+      </proof>
+    </corollary>
+    <p>
+      The following can be viewed as an algebraic version of the <term>open mapping theorem</term> from functional analysis.
+    </p>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m> and let <m>M</m> be a derived <m>I</m>-complete <m>A</m>-module.
+          If <m>M</m> is <m>I</m>-power torsion, then <m>I^n M = 0</m> for some integer <m>n</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tag 0CQY.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+  <subsection>
+    <title>The category of derived-complete modules</title>
+    <p>
+      We next introduce the category of derived <m>I</m>-complete modules and its basic properties. This leads naturally to the operation of
+      <term>derived completion</term>.
+    </p>
+    <proposition xml:id="prop-derived-complete-abelian">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+          <ol>
+            <li>
+              <title>Derived Nakayama's lemma</title>
+              <p>
+                Let <m>M</m> be a derived <m>I</m>-complete <m>A</m>-module. Then <m>M = 0</m> if and only if <m>M/IM = 0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The inclusion functor from derived <m>I</m>-complete <m>A</m>-modules to <m>A</m>-modules admits a left adjoint <m>M \mapsto \widehat{M}</m>, called
+                <term>derived <m>I</m>-completion</term>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The full subcategory of the category of <m>A</m>-modules consisting of derived <m>I</m>-complete <m>A</m>-modules 
+                is an abelian category. More precisely, it is closed under formation of kernels, cokernels, and images in the ambient category.
+                (It is moreover a <term>weak Serre subcategory</term> of <m>\Mod_A</m> in the sense of <xref ref="bib-Stacks"/>, tag 02M0.)
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tags 0G1U, 091V, 091U.
+        </p>
+      </proof>
+    </proposition>
+    <corollary xml:id="cor-derived-complete-local">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+          Suppose that <m>A</m> is derived <m>I</m>-complete (as a module over itself).
+        </p>
+        <ol>
+          <li>
+            <p>
+              We have <m>I \subseteq \Rad(A)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Every finitely presented <m>A</m>-module is derived <m>I</m>-complete.
+            </p>
+          </li>
+          <li>
+            <p>
+              The pair <m>(A, I)</m> is henselian.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          To prove (1), choose any <m>u \in 1+I</m>, then apply derived Nakayama (<xref ref="prop-derived-complete-abelian"/> to <m>M = A/(u)</m> to deduce that <m>u \in A^\times</m>.
+        </p>
+        <p>
+          To prove (2), apply part (3) of <xref ref="prop-derived-complete-abelian"/>.
+        </p>
+        <p>
+          For (3), see <xref ref="bib-Stacks"/>, tag 0G3H.
+        </p>
+      </proof>
+    </corollary>
+    <remark xml:id="rmk-derived-not-classically-complete">
+      <p>
+        With notation as in <xref ref="exa-bad-completion"/>, <xref ref="prop-derived-complete-abelian"/> implies that the <m>A</m>-module
+        <m>M_0/M_2</m>, which is not <m>I</m>-adically separated, is nonetheless derived <m>I</m>-complete.
+      </p>
+    </remark>
+    <remark xml:id="rmk-derived-filtered-colimits">
+      <p>
+        The category of derived <m>I</m>-complete <m>A</m>-modules does not have the property that filtered colimits are exact 
+        (<xref ref="bib-Stacks"/>, tag 0ARC).
+        In particular, it is not a <term>Grothendieck abelian category</term>.
+      </p>
+      <p>
+        On the other hand, a <em>countably filtered</em> colimit of derived <m>I</m>-complete <m>A</m>-modules is again derived <m>I</m>-complete.
+        The point is that any potential witness to the failure of completeness can be expressed using only countably many module elements.
+      </p>
+    </remark>
+    <remark xml:id="rmk-derived-completion-single-generator">
+      <p>
+        For <m>I = (f_1,\dots, f_n)</m>, the derived <m>I</m>-completion functor from <xref ref="prop-derived-complete-abelian"/> can be described as the composition
+        of the derived <m>f_i</m>-completions for <m>i=1,\dots,n</m> (in any order). These individual functors can be described concretely using
+        <xref ref="lem-derived-completion-principal"/>. For an alternate description in the language of derived categories, see 
+        <xref ref="prop-derived-complete-abelian-derived"/>.
+      </p>
+    </remark>
+    <definition xml:id="def-derived-completion-of-algebras">
+      <p>
+        Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+        We may then promote the derived <m>I</m>-completion functor from <m>A</m>-modules to <m>A</m>-algebras as follows.
+      </p>
+      <p>
+        For any <m>A</m>-algebra <m>B</m>, the multiplication map on <m>B</m> defines a morphism <m>B \otimes_A B \to B</m> of <m>A</m>-modules.
+        Let <m>\widehat{B}</m> denote the derived <m>I</m>-completion of <m>B</m>. Now consider the composition
+        <me>
+          \widehat{B} \otimes_A \widehat{B} \to \widehat{B \otimes_A B} \to \widehat{B}
+        </me>
+        where the first map is induced by the individual maps <m>B \to B \otimes_A B</m> and the second map is induced by the multiplication morphism.
+        This gives us a multiplication map on <m>\widehat{B}</m> which gives it the structure of an <m>A</m>-algebra.
+        In particular, the derived <m>I</m>-completion <m>\widehat{A}</m> of <m>A</m> is itself an <m>A</m>-algebra, and the ring
+        <m>\widehat{B}</m> is also an <m>\widehat{A}</m>-algebra.
+      </p>
+    </definition>
+  </subsection>
+  <subsection>
+    <title>Derived <m>f</m>-completion</title>
+    <p>
+      The following lemma gives an explicit recipe for derived completion with respect to a principal ideal.
+    </p>
+    <lemma xml:id="lem-derived-completion-principal">
+      <statement>
+        <p>
+          Choose <m>A \in \Ring</m> and <m>f \in A</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              The derived <m>f</m>-completion functor (<xref ref="prop-derived-complete-abelian"/>) is given by 
+              <me>
+                M \mapsto \widehat{M} = \Ext_A^1(A_f/A, M).
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              For any <m>A</m>-module <m>M</m>, we have a natural (in <m>M</m>) exact sequence
+              <men xml:id="eq-derived-completion-sequence">
+                0 \to R^1\lim_n M[f^n] \to \widehat{M} \to \lim_n M/f^n M \to 0,
+              </men>
+              in which the modules <m>M[f^n]</m> form a projective system via multiplication by <m>f</m>;
+              compare <xref ref="bib-Stacks"/>, tag 0BKG.
+              (Note that if <m>M = \widehat{M}</m>, then the last map is the surjection from <xref ref="lem-complete-from-derived"/>.)
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          From the exact sequence
+          <me>
+            0 \to A \to A_f \to A_f/A \to 0
+          </me>
+          we obtain a morphism <m>M \to \Ext^1_A(A_f/A, M)</m> which is an isomorphism whenever <m>M</m> is derived <m>I</m>-complete; we claim that the target
+          of this map is in fact <m>\widehat{M}</m>. Namely, if <m>M \to N</m> is another morphism with <m>N</m> derived <m>I</m>-complete, then
+          by functoriality of <m>\Ext^1_A</m> in the second argument we obtain a unique morphism <m>\Ext^1_A(A_f/A, M) \to \Ext^1_A(A_f/A, N) \cong N</m>
+          through which <m>M \to N</m> factors. This yields (1); by writing <m>A_f/A = \colim_n f^{-n}A/A</m>, we may then deduce (2).
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      As an application of <xref ref="lem-derived-completion-principal"/>, we obtain a criterion that lets us forget about the difference between classical and derived completions in many cases of interest.
+    </p>
+    <lemma xml:id="lem-bounded-torsion-derived-complete">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m> and choose <m>M \in \Mod_A</m>.
+          If <m>M</m> has bounded <m>f^\infty</m>-torsion (that is, there exists a positive integer <m>n</m> such that <m>M[f^n] = M[f^\infty]</m>),
+          then the derived <m>I</m>-completion of <m>M</m> is classically <m>I</m>-complete.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The derived completion <m>\widehat{M}</m> fits into an exact sequence given in <xref ref="eq-derived-completion-sequence"/>.
+          By the assumption about bounded torsion,
+          the projective system formed by the <m>M[f^n]</m>, in which the transition maps are multiplicaton by <m>f</m>, 
+          is essentially zero (that is, any sufficiently long composition is the zero map).
+          Hence the <m>R^1</m> term vanishes and we obtain the desired conclusion.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture III, Lemma 2.4.)
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      A key application of <xref ref="lem-bounded-torsion-derived-complete"/> is the following.
+    </p>
+    <lemma xml:id="lem-perfect-derived-completion">
+      <statement>
+        <p>
+          Let <m>R</m> be a perfect ring of characteristic <m>p</m>. Then for any <m>f \in R</m>, <m>R[f^\infty] = R[f]</m>. 
+          Consequently (by <xref ref="lem-bounded-torsion-derived-complete"/>),
+          the derived <m>f</m>-completion of <m>R</m> coincides with the classical <m>f</m>-adic completion.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          For <m>x \in R[f^\infty]</m>, we have <m>f^{p^n} x = 0</m> for some nonnegative integer <m>n</m>. We then have
+          <m>f^{p^n} x^{p^n} = 0</m>, and then <m>fx = 0</m> because <m>R</m> is perfect.
+        </p>
+      </proof>
+    </lemma>
+    <remark xml:id="rmk-ring-derived-complete">
+      <p>
+        One way to make a ring which is derived <m>f</m>-complete but not classically <m>f</m>-complete is to start with a ring <m>A</m>,
+        an element <m>f \in A</m>, and a module <m>M</m> which is derived <m>f</m>-complete but not classically <m>f</m>-complete
+        (e.g., see <xref ref="rmk-derived-not-classically-complete"/>), and then form the square-zero extension <m>A \oplus M</m>.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Flatness and smoothness</title>
+    <definition xml:id="def-I-completely-flat">
+      <p>
+        Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+        We say that <m>M \in \Mod_A</m> is <term><m>I</m>-completely flat</term> (resp. <term><m>I</m>-completely faithfully flat</term>) if 
+        <m>M/IM</m> is a flat (resp. faithfully flat) <m>A/I</m>-module and <m>\Tor_i^A(A/I, M) = 0</m> for <m>i \gt 0</m>.
+        Equivalently, for any <m>N \in \Mod_{A/I}</m>, <m>\Tor_i^A(N,M) = 0</m> for <m>i \gt 0</m>.
+      </p>
+      <p>
+        More generally, we say that <m>M</m> has <term>finite <m>I</m>-complete Tor amplitude</term>
+        if there exists some <m>c \gt 0</m> such that <m>\Tor_i^A(A/I, M) = 0</m> for <m>i \geq -c</m>.
+        Equivalently, for any <m>N \in \Mod_{A/I}</m>, <m>\Tor_i^A(N,M) = 0</m> for <m>i \geq c</m>.
+      </p>
+    </definition>
+    <definition>
+      <p>
+        Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+        A derived <m>I</m>-complete <m>A</m>-algebra <m>R</m> is <term><m>I</m>-completely étale</term>
+        (resp. <term><m>I</m>-completely smooth</term>, <term><m>I</m>-completely ind-smooth</term>)
+        if <m>R \otimes_A^L A/I</m> is concentrated in degree 0 where it is an étale (resp. smooth, ind-smooth) <m>A/I</m>-algebra.
+        That is, <m>R \otimes_A^L A/I</m> is an étale (resp. smooth, ind-smooth) <m>A/I</m>-algebra and <m>\Tor_i^A(R, A/I) = 0</m> for <m>i \gt 0</m>.
+      </p>
+    </definition>
+    <proposition xml:id="prop-Elkik-lifting">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+          Let <m>R</m> be a derived <m>I</m>-complete <m>A</m>-algebra. Then <m>R</m> is <m>I</m>-completely étale (resp. <m>I</m>-completely smooth)
+          if and only if it is the derived <m>I</m>-completion of some étale (resp. smooth) <m>A</m>-algebra.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This follows from an algebraization theorem originally due to Elkik <xref ref="bib-Elkik"/>. For a more modern treatment, see 
+          <xref ref="bib-Arabia"/>.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+  <subsection xml:id="subsec-derived-complete-derived">
+    <title>Derived completeness in the derived category</title>
+    <p>
+      If you don't yet know what derived categories are, skip this discussion for now and return after you have read <xref ref="sec_derived-categories"/>.
+    </p>
+    <definition>
+      <p>
+        Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+        An object <m>K</m> in the derived category <m>D(A)</m> of <m>A</m>-modules is <term>derived <m>I</m>-complete</term> if for each <m>f \in I</m>, 
+        <me>
+          R\Hom_A(A_f, K) = 0.
+        </me>
+        The argument of <xref ref="lem-derived-f-limit-ideal"/> carries over to show that it suffices to check this condition at a generating set of <m>I</m>,
+        or of any other ideal with the same radical.
+      </p>
+      <p>
+        One immediate consequence of this definition is that if any two terms of a distinguished triangle are derived <m>I</m>-complete, then so is the third.
+      </p>
+    </definition>
+    <proposition xml:id="prop-derived-complete-abelian-derived">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+          <ol>
+            <li>
+              <title>Derived Nakayama's lemma</title>
+              <p>
+                Let <m>K \in D(A)</m> be a derived <m>I</m>-complete object. Then <m>K = 0</m> if and only if <m>K \otimes_A^L A/I = 0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The derived <m>I</m>-complete objects of <m>D(A)</m> form a full triangulated subcategory which is closed under derived inverse limits.
+                This inclusion has a left adjoint <m>K \mapsto \widehat{K}</m> (the <term>derived <m>I</m>-completion</term>)
+                which can be computed as follows: for <m>I = (f_1,\dots,f_r)</m>,
+                <me>
+                  \widehat{K} = R\lim_n (K \otimes_{\ZZ[x_1,\dots,x_r]}^L \ZZ[x_1,\dots,x_r]/(x_1^n,\dots,x_r^n))
+                </me>
+                for the action of <m>\ZZ[x_1,\dots,x_r]</m> on <m>K</m> with <m>x_i</m> acting via <m>f_i</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                An object <m>K \in D(A)</m> is derived <m>I</m>-complete if and only if <m>H^i(K)</m> is derived <m>I</m>-complete for each <m>i \in \ZZ</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tags 091V, 091Z, 0G1U.
+        </p>
+      </proof>
+    </proposition>
+    <remark>
+      <p>
+        In general, an <m>A</m>-module admits derived <m>I</m>-completions <q>as a module</q>, as an object in <m>\Mod_A</m> as per <xref ref="prop-derived-complete-abelian"/>;
+        and also <q>as a complex</q>, i.e., by identifying the module with a singleton complex in <m>D(A)</m> concentrated in degree 0 and then applying
+        <xref ref="prop-derived-complete-abelian-derived"/>. The former is <m>H^0</m> of the latter, but the other cohomology groups of the latter 
+        carries some extra information that is invisible at the module-theoretic level; see <xref ref="exa-derived-example-QZ"/> for a typical example.
+      </p>
+      <p>
+        However, if an <m>A</m>-module <m>M</m> is derived <m>I</m>-complete <q>as a module</q>, it is also derived <m>I</m>-complete <q>as a complex</q>:
+        <xref ref="prop-derived-complete-abelian-derived"/> says that the latter condition applied to <m>M[0]</m> can be tested at the level of cohomology groups.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        In the case where <m>I = (f)</m> is a principal ideal, we may adapt the proof of <xref ref="lem-derived-completion-principal"/>
+        to show that the derived <m>f</m>-completion of an <m>A</m>-module <m>M</m> as a complex is concentrated in degrees
+        -1 and 0, with the cohomology in degree -1 being <m>\lim_n M[f^n]</m>. Consequently, <xref ref="lem-bounded-torsion-derived-complete"/>
+        can be upgraded to assert that the derived <m>f</m>-completion as a complex is also isomorphic to the classical <m>f</m>-completion.
+      </p>
+    </remark>
+    <example xml:id="exa-derived-example-QZ">
+      <p>
+        Take <m>A = \ZZ, I = (p), M = \QQ/\ZZ</m>. Then the ordinary completion of <m>M</m> vanishes, as does the derived completion of <m>M</m>
+        <em>as a module</em>, but the derived completion of <m>M</m> <em>as a complex</em> is the group <m>\ZZ_p</m> concentrated in degree -1.
+      </p>
+    </example>
+    <definition>
+      <p>
+        Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+        We say that a complex <m>K</m> of <m>A</m>-modules is <term><m>I</m>-completely flat</term> if for any <m>I</m>-torsion <m>A</m>-module <m>N</m>,
+        the derived tensor product <m>K \otimes_A^L N</m> is concentrated in degree 0. 
+        Equivalently, <m>K \otimes_A^L A/I</m> is concentrated in degree 0
+        where it is a flat <m>A/I</m>-module.
+        If in addition <m>K \otimes_A^L A/I</m> is faithfully flat as an <m>A/I</m>-module, we say that 
+        <m>K</m> is <term><m>I</m>-completely faithfully flat</term>. Note that these definitions agree with the corresponding notions for modules
+        (<xref ref="def-I-completely-flat"/>).
+      </p>
+      <p>
+        Similarly, we say that <m>K</m> has <term>finite <m>I</m>-complete Tor amplitude</term> if there exists some <m>c \geq 0</m> such that for any <m>I</m>-torsion <m>A</m>-module <m>N</m>,
+        <m>K \otimes_A^L N</m> is concentrated in degrees <m>\geq -c</m>.
+      </p>
+    </definition>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-Stacks-090S">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m> and choose <m>M \in \Mod_A</m>.
+          Suppose that for each <m>f \in I</m>,
+          the map <m>M \to \lim_n M/f^n M</m> is surjective. Prove that the map <m>M \to \lim_n M/I^n M</m> is surjective.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tag 090S.
+        </p>
+      </proof>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+          Let <m>M \to N</m> be a morphism of derived <m>I</m>-complete <m>A</m>-modules such that <m>M/IM \to N/IN</m> is surjective.
+          Prove that <m>M \to N</m> is surjective.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-no-surjection-from-classical">
+      <statement>
+        <p>
+          Let <m>A</m> be a ring which is derived <m>f</m>-complete, but not classically <m>f</m>-complete, for some <m>f \in A</m>
+          (e.g., see <xref ref="rmk-ring-derived-complete"/>). Let <m>I</m> be the kernel of the surjective (by <xref ref="lem-complete-from-derived"/>)
+          map from <m>A</m> to its classical <m>f</m>-completion <m>\lim_n A/f^n</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              Show that <m>I^2 = 0</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that any classically <m>f</m>-complete <m>A</m>-module is also a module over <m>\lim_n A/f^n</m> (that is, it is annihilated by <m>I</m>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Deduce that <m>A</m>, as a module over itself, cannot be written as the quotient of a classically <m>f</m>-complete <m>A</m>-module. 
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <hint>
+        <p>
+          See <xref ref="bib-Stacks"/>, tag 0G3G.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              Show that the kernel of any morphism between classically <m>I</m>-complete <m>A</m>-modules is classically <m>I</m>-complete.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>M</m> be an <m>A</m>-module which can be written as the cokernel of a morphism between classically <m>I</m>-complete <m>A</m>-modules.
+              Show that for any classically <m>I</m>-complete <m>A</m>-module <m>N</m> and any surjective morphism <m>f: N \to M</m> of <m>A</m>-modules,
+              <m>\ker(f)</m> is classically <m>I</m>-complete.
+            </p>
+          </li>
+          <li>
+            <p>
+              Deduce that the abelian closure of the category of classically <m>I</m>-complete <m>A</m>-modules consists of the cokernels of morphisms
+              between classically <m>I</m>-complete <m>A</m>-modules. By <xref ref="exer-no-surjection-from-classical"/>, this can be strictly smaller
+              than the category of derived <m>I</m>-complete <m>A</m>-modules. (See however <xref ref="exer-derived-complete-principal-cokernel"/>.)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-derived-complete-principal-cokernel">
+      <statement>
+        <p>
+          Let <m>A</m> be a ring and let <m>f \in A</m> be a non-zerodivisor. Show that an <m>A</m>-module <m>M</m> is derived <m>f</m>-complete
+          if and only if there exists a short exact sequence
+          <me>
+            0 \to K \to L \to M \to 0
+          </me>
+          in which <m>K,L</m> are <m>f</m>-torsion-free, <m>f</m>-adically complete <m>A</m>-modules.
+        </p>
+      </statement>
+      <hint>
+        <p> 
+          <xref ref="bib-Stacks"/>, tag 09AT.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>A</m> be a ring and let <m>I</m> be a finitely generated ideal of <m>A</m>.
+          Show that for any flat <m>A</m>-module <m>M</m>, the derived <m>I</m>-completion of <m>M</m> as a complex is <m>I</m>-completely flat.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use the adjunction property of derived <m>I</m>-completion.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-derived-completion-delta">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m> containing <m>p</m>.
+          Prove that the derived <m>I</m>-completion of <m>A</m> (as a module, viewed as an <m>A</m>-algebra
+          using <xref ref="def-derived-completion-of-algebras"/>) admits a unique <m>\delta</m>-ring structure compatible with <m>A</m>.
+          (That is, <xref ref="exer-delta-ring-completion"/> remains true when the classical completion is replaced by the derived completion.)
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use the characterization of <m>\delta</m>-structures on <m>A</m> in terms of <m>W_2(A)</m> (<xref ref="rmk-W2-interpretation"/>).
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-etale-completion">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring_\delta</m> containing <m>p</m>.
+          Let <m>A \to B</m> be a morphism in <m>\Ring</m> such that <m>B</m> is derived <m>I</m>-complete and <m>A \to B</m> is <m>I</m>-completely etale.
+          Then <m>A \to B</m> promotes uniquely to a morphism in <m>\Ring_\delta</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Using <xref ref="rmk-W2-interpretation"/>, it suffices to lift <m>A \to B</m> to a morphism <m>W_2(A) \to W_2(B)</m>.
+          Achieve this by combining <xref ref="prop-Elkik-lifting"/> with <xref ref="prop-etale-Witt"/>.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.18.)
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-vb-fully-faithful">
+      <statement>
+        <p>
+          Suppose that <m>A \in \Ring</m> is derived <m>I</m>-complete for some finitely generated ideal <m>I</m>.
+          Prove that a map <m>M_1 \to M_2</m> between finite projective <m>A</m>-modules is surjective (resp. bijective) if and only if the induced map <m>M_1/IM_1 \to M_2/IM_2</m> is surjective (resp. bijective).
+          In particular, a finite projective <m>A</m>-module <m>M</m> is free if and only if <m>M/IM</m> is a free <m>A/I</m>-module.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          For surjectivity, apply derived Nakayama (<xref ref="prop-derived-complete-abelian"/>) to the cokernel. For bijectivity, first verify that <m>M_1</m> and <m>M_2</m> have the same rank everywhere
+          (using the fact that <m>I \subseteq \Rad(A)</m>), then recall that a surjective map between projective modules of the same finite rank is a bijection.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-vb-essentially-surjective">
+      <statement>
+        <p>
+          Suppose that <m>A \in \Ring</m> is derived <m>I</m>-complete for some finitely generated ideal <m>I</m>.
+          Prove that the base extension functor from finite projective <m>A</m>-modules to finite projective <m>A/I</m>-modules is essentially surjective.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Start with a finite projective <m>A/I</m>-module <m>\overline{M}</m>. Choose a finite free <m>A/I</m>-module <m>\overline{F}</m>
+          and a projector <m>\overline{U}: \overline{F} \to \overline{F}</m> whose image is isomorphic to <m>\overline{M}</m>. View <m>\overline{F}</m> as the reduction
+          of a finite free <m>A</m>-module <m>F</m> and choose an endomorphism <m>U_0: F \to F</m> lifting <m>\overline{U}</m>. Show by induction that
+          for each positive integer <m>n</m>, <m>U_0</m> is congruent modulo <m>I</m> to an endomorphism <m>U_n</m> such that <m>U_n^2 \equiv U_n \pmod{I^{n+1}}</m>.
+          Take the limit to lift to the classical <m>I</m>-completion of <m>A</m>, then use the fact that the kernel of the map from <m>A</m> to the classical
+          completion has square zero (<xref ref="exer-no-surjection-from-classical"/>) to lift to <m>A</m>. Conclude that we have produced a projector on <m>F</m> whose image has base extension isomorphic to <m>\overline{M}</m>.
+         </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-pic-reduction">
+      <statement>
+        <p>
+          Suppose that <m>A \in \Ring</m> is derived <m>I</m>-complete for some finitely generated ideal <m>I</m>.
+          Prove that the natural map <m>\Pic(A) \to \Pic(A/I)</m> is an isomorphism.
+        </p>
+      </statement>
+      <hint>
+        <p>
+         Apply <xref ref="exer-vb-fully-faithful"/> and <xref ref="exer-vb-essentially-surjective"/>.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>(A, I)</m> be a bounded prism. Show that for any flat <m>A</m>-module <m>M</m>, the derived <m>(p, I)</m>-completion of <m>M</m>
+          as a complex is concentrated in degree 0 and is both classically <m>(p,I)</m>-complete and <m>(p,I)</m>-completely flat.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-prism-Pic-torsion">
+      <statement>
+        <p>
+          Let <m>(A, I)</m> be a prism. Prove that the class of <m>I</m> in <m>\Pic(A)</m> is <m>p</m>-torsion.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          First use <xref ref="exer-pic-reduction"/> to argue that <m>\Pic(A) \to \Pic(A/p)</m> is an isomorphism.
+          Then show that <m>\phi</m> induces the <m>p</m>-power map on <m>\Pic(A/p)</m>, and apply <xref ref="lem-prism-ideal-generator"/> to conclude.
+          See also <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.6.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
+</section>

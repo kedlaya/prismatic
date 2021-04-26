@@ -1,0 +1,15 @@
+﻿<section xml:id="sec_prismatization">
+  <title>Prismatization (unstable)</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Drinfeld-prismatization"/>.
+      </p>
+    </paragraphs>
+    <p>
+      In this section (still under construction!), we give a brief overview of an alternate approach to the construction of the prismatic topos via <term>prismatization</term>.
+      This was introduced by Bhatt and Lurie in an as-yet-unreleased preprint; we follow the treatment of Drinfeld cited above.
+    </p>
+  </introduction>
+</section>

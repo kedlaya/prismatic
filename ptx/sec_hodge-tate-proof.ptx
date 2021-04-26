@@ -1,0 +1,332 @@
+﻿<section xml:id="sec_hodge-tate-proof">
+  <title>Proof of the Hodge-Tate comparison</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-course"/>, lecture VI; <xref ref="bib-Bhatt-Scholze"/>, sections 5, 6.
+      </p>
+    </paragraphs>
+    <p>
+      In this section, we prove the Hodge-Tate comparison theorem (<xref ref="thm-hodge-tate-comparison"/>).
+      Our strategy will be to build up from the special case treated in <xref ref="sec_hodge-tate-crystalline"/>, in which we used the crystalline prism
+      <m>(\ZZ_p, (p))</m> as the base and the ring <m>R = \FF_p[x_1,\dots,x_n]</m>.
+    </p>
+    <p>
+      We also assert the crystalline and de Rham comparison theorems. These are technically a bit more involved, so we do not include all of the details here.
+    </p>
+    <p>
+      Throughout, we fix a bounded prism <m>(A,I)</m> and denote its slice <m>A/I</m> by <m>\overline{A}</m>.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Étale localization and base change</title>
+    <remark>
+      <p>
+        Recall that a morphism <m>R \to S</m> of rings is smooth if and only if locally on <m>\Spec(S)</m>, it can be written in the form
+        <m>R \to R[x_1,\dots,x_n] \to S</m> where the second map is étale (see <xref ref="bib-Stacks"/>, tag 054L).
+        Similarly, if <m>R \to S</m> is a <m>p</m>-completely smooth map, then locally on <m>\Spec(S/p)</m> it can be written in the form
+        <m>R \to R \langle x_1,\dots,x_n\rangle \to S</m> where the second map is <m>p</m>-completely étale (use <xref ref="prop-Elkik-lifting"/> to reduce to
+        the previous statement).
+      </p>
+      <p>
+        If <m>\overline{A} \to R</m> is <m>p</m>-completely smooth, then <m>\widehat{\Omega}^1_{R/\overline{A}}</m> is a finite projective <m>R</m>-module
+        (again by <xref ref="prop-Elkik-lifting"/> to reduce to the corresponding statement about differentials for a smooth morphism).
+        Consequently, if <m>R \to S</m> is <m>p</m>-completely étale, then <m>\widehat{\Omega}^i_{R/\overline{A}} \widehat{\otimes}_R S \cong \widehat{\Omega}^i_{S/\overline{A}}</m>
+        for all <m>i</m>.
+        </p>
+      <p>
+        This suggests the strategy of proving the Hodge-Tate comparison for a general <m>p</m>-completely smooth <m>\overline{A}</m>-algebra <m>R</m>
+        by proving the corresponding compatibility with étale maps, and then using this to reduce to the case
+        <m>R = \overline{A} \langle X_1,\dots,X_n \rangle</m>. The first step in this program is executed by <xref ref="lem-hodge-tate-etale-base-change"/>.
+      </p>
+    </remark>
+    <lemma xml:id="lem-hodge-tate-etale-base-change">
+      <title>Etale localization for Hodge-Tate cohomology</title>
+      <statement>
+        <p>
+          Let <m>R \to S</m> be a <m>p</m>-completely étale map of <m>p</m>-completely smooth <m>\overline{A}</m>-algebras.
+          Then the natural map <m>\overline{\Prism}_{R/A} \widehat{\otimes}^L_R S \to \overline{\Prism}_{S/A}</m> is an isomorphism.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The restriction functor <m>(S/A)_\Prism \to (R/A)_\Prism</m> admits a right adjoint <m>F</m> taking <m>(B \to B/IB \leftarrow R)</m> to
+          <m>(B_S \to B_S/IB_S \leftarrow S)</m> where <m>B_S/IB_S = B/IB \widehat{\otimes}^L_R S</m> and <m>B \to B_S</m> is the unique lift of
+          the étale morphism <m>B/IB \to B/IB \widehat{\otimes}^L_R S</m> given by the the henselian property of derived completions (see
+          <xref ref="cor-derived-complete-local"/>), promoted from <m>\Ring </m> to <m>\Ring_\delta</m> using <xref ref="exer-etale-completion"/>.
+          Applying <m>F</m> to a weakly final object of <m>(R/A)_\Prism</m> (<xref ref="prop-prismatic-site-weakly-final-object"/>),
+          we obtain a weakly final object of <m>(S/A)_\Prism</m>; since <m>F</m> also preserves finite products, 
+          we can take a complex computing <m>\overline{\Prism}_{R/A}</m>
+          and apply <m>F</m> term by term to obtain a complex computing <m>\overline{\Prism}_{S/A}</m>.
+          It thus remains to compare this with <m>\overline{\Prism}_{R/A} \widehat{\otimes}^L_R S</m>;
+          we have a natural isomorphism at the level of simplicial rings, and (since <m>R \to S</m> is <m>I</m>-completely flat
+          and thus has finite <m>I</m>-complete Tor amplitude) we may now deduce the claim from <xref ref="exer-derived-completion-totalization"/>.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Lemma 4.19.)
+        </p>
+      </proof>
+    </lemma>
+      <p>
+        Another tool we will use is a base-change assertion. This will allow us to simplify the base ring <m>\overline{A}</m> in some cases.
+      </p>
+    <lemma xml:id="lem-prismatic-base-change">
+      <title>Base change for prismatic and Hodge-Tate cohomology</title>
+      <statement>
+        <p>
+          Let <m>R</m> be a <m>p</m>-completely smooth <m>\overline{A}</m>-algebra. Let <m>(A, I) \to (A', I')</m> be a map of bounded prisms such that
+          <m>A \to A'</m> has finite <m>(p, I)</m>-complete Tor amplitude (e.g., a faithfully flat morphism). For <m>R' = R \widehat{\otimes}_A A'</m>, 
+          we have natural isomorphisms
+          <me>
+            \Prism_{R/A} \widehat{\otimes}^L_A A' \cong \Prism_{R'/A'}, \qquad
+            \overline{\Prism}_{R/A} \widehat{\otimes}^L_A A' \cong \overline{\Prism}_{R'/A'}.
+          </me>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>(P, IP)</m> be a weakly final object of <m>(R/A)_{\Prism}</m>, then apply <xref ref="rem-prismatic-cohomology-via-cosimplicial"/> to construct a Čech-Alexander complex computing <m>\Prism_{R/A}</m>.
+          Then <m>\Prism_{R'/A'}</m> is computed by the complex obtained by applying <m>\bullet \widehat{\otimes}_A A'</m> termwise.
+          Under the hypothesis on the Tor amplitude, we may apply <xref ref="exer-derived-completion-totalization"/> to conclude.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Lemma 4.18.)
+        </p>
+      </proof>
+    </lemma>
+   <p>
+      As an immediate application of étale localization and base change, we upgrade our previous statement about the Hodge-Tate comparison for crystalline prisms
+      (<xref ref="thm-Hodge-Tate-crystalline-affine-space"/>).
+    </p>
+    <lemma xml:id="cor-Hodge-Tate-crystalline-smooth">
+      <statement>
+        <p>
+          Suppose that <m>(A,I)</m> is a crystalline prism and <m>R</m> is a smooth <m>\overline{A}</m>-algebra.
+          Then the Hodge-Tate comparison map <xref ref="eq-Hodge-Tate-comparison-map"/> is an isomorphism.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="thm-Hodge-Tate-crystalline-affine-space"/> and <xref ref="lem-prismatic-base-change"/>, the claim holds when
+          <m>R = \overline{A}[x_1,\dots,x_n]</m>. We may then deduce the general case using <xref ref="lem-hodge-tate-etale-base-change"/>.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Corollary 5.4.)
+        </p>
+      </proof>
+    </lemma>
+  </subsection>
+  <subsection>
+    <title>Comparing a universal prism to a crystalline prism</title>
+    <remark>
+      <p>
+        We reproduce <xref ref="bib-Bhatt-course"/>, Lecture VI, Remark 2.2, in order to justify why we can't directly transpose the proof of the Hodge-Tate comparison from crystalline prisms to more general prisms.
+        Suppose that <m>I = (d)</m>. Consider the object <m>P = A[x] \in \Ring_\delta</m> with <m>\delta(x) = 0</m>. Then the derived <m>(p,d)</m>-completion of <m>P\{\phi(x)/d\}</m>
+        does <em>not</em> equal the derived <m>(p,d)</m>-completion of the divided power envelope of <m>(P, (x))</m>. A typical example of this is the case
+        <m>(A, (d)) = (\ZZ_p\llbracket q-1 \rrbracket, ([p]_q))</m>; in this case,  the derived <m>(p,d)</m>-completion of <m>P\{\phi(x)/d\}</m> will end up coinciding with the derived <m>(p,d)</m>-completion of the
+        <term><m>q</m>-divided power envelope</term> of <m>(P, (x))</m>.
+      </p>
+    </remark>
+    <lemma xml:id="lem-universal-oriented-prism-completion">
+      <statement>
+        <p>
+          Let <m>(A, (d))</m> be the universal oriented prism (<xref ref="rmk-universal-oriented-prism"/>) and put <m>B = A \{ \phi(d)/p\}^\wedge</m> (the completion being the derived <m>p</m>-completion).
+        </p>
+        <ul>
+          <li>
+            <p>
+              The ring <m>B</m> is classically <m>(p,d)</m>-complete.
+            </p>
+            <p>
+              The ring <m>B</m> equals the classical <m>p</m>-completion of the divided power envelope of <m>(A, (d))</m> (and is <m>p</m>-torsion-free).
+            </p>
+          </li>
+        </ul>
+      </statement>
+      <proof>
+        <p>
+          Since <m>A</m> is <m>p</m>-torsion-free, <m>B</m> is not just derived <m>p</m>-complete but also classically <m>p</m>-complete.
+          Since <m>d^p = p(\phi(d)/p - \delta(p))</m> is divisible by <m>p</m>, <m>B</m> is also classically <m>(p,d)</m>-complete.
+          By <xref ref="cor-regular-sequence-divided-power-envelope"/>, <m>B</m> equals the classical <m>p</m>-completion of the divided power envelope of <m>(A, (d))</m>.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Construction 6.1.)
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-universal-oriented-prism-completion2">
+      <statement>
+        <p>
+          With notation as in <xref ref="lem-universal-oriented-prism-completion"/>, let <m>\alpha: A \to B</m> be the composition of <m>\phi: A \to A</m> with the natural map <m>A \to B</m>.
+        </p>
+        <ul>
+          <li>
+            <p>
+              The map <m>A/p \to B/p</m> induced by <m>\alpha</m> factors as a composition
+              <me>
+                A/p \to A/(p,d) \stackrel{\phi}{\to} A/(p,d^p) \to B/p
+              </me>
+              in which the first map has finite <m>(p,d)</m>-complete Tor amplitude and the second and third maps are faithfully flat.
+            </p>
+          </li>
+          <li>
+            <p>
+              The functor <m>\widehat{\alpha^*}: D_{\comp}(A) \to D_{\comp}(B)</m> is conservative (i.e., reflects isomorphisms). Here <m>D_{\comp}(*)</m> denotes the subcategory of derived <m>(p,d)</m>-complete objects of <m>D(*)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For any <m>p</m>-completely smooth <m>\overline{A}</m>-algebra <m>R</m>, writing <m>R_B = R \widehat{\otimes}_A B</m>, the map
+              <m>\widehat{\alpha^*} \Prism_{R/A} \to \Prism_{R_B/B}</m> is an isomorphism.
+            </p>
+          </li>
+        </ul>
+      </statement>
+      <proof>
+        <p>
+          In (1), the first map has finite <m>(p,d)</m>-complete Tor amplitude because <m>d</m> is not a zero-divisor in <m>A/p</m>; the second and third maps are faithfully flat by construction.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Construction 6.1.)
+        </p>
+      </proof>
+    </lemma>
+    <proposition xml:id="prop-hodge-tate-universal-oriented">
+      <statement>
+        <p>
+          Let <m>(A, (d))</m> be the universal oriented prism (<xref ref="rmk-universal-oriented-prism"/>) and put <m>R = \overline{A}\langle x_1,\dots,x_n \rangle</m>.
+          Then the Hodge-Tate comparison map <xref ref="eq-Hodge-Tate-comparison-map"/> is an isomorphism.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>(A,(d)) \to (B, (d))</m> be the morphism from <xref ref="lem-universal-oriented-prism-completion"/>. By <xref ref="lem-universal-oriented-prism-completion2"/>, we may apply
+          <xref ref="lem-prismatic-base-change"/> to reduce the claim from the prism <m>(A, (d))</m> to <m>(B, (d))</m>. The latter is a crystalline prism, so 
+          <xref ref="cor-Hodge-Tate-crystalline-smooth"/> applies.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+  <subsection>
+    <title>Hodge-Tate comparisons</title>
+    <p>
+      We finally treat the Hodge-Tate comparison theorem (<xref ref="thm-hodge-tate-comparison"/>) in general.
+      Before treating the general case, we give an easier argument that covers many cases of interest.
+    </p>
+    <proposition xml:id="prop-hodge-tate-affine-space-easy">
+      <statement>
+        <p>
+          Suppose that <m>(A,I) = (A,(d))</m> is an oriented (bounded) prism and the map from the universal oriented prism has finite <m>(p,d)</m>-complete Tor-amplitude.
+          (For example, this last condition holds if <m>d</m> is a non-zerodivisor in <m>A/p</m>.)
+          Let <m>R</m> be any <m>p</m>-completely smooth <m>\overline{A}</m>-algebra.
+          Then the Hodge-Tate comparison map <xref ref="eq-Hodge-Tate-comparison-map"/> is an isomorphism.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="lem-hodge-tate-etale-base-change"/>, we may reduce to the case <m>R = \overline{A} \langle x_1,\dots,x_n \rangle</m>.
+          In this case, since we assumed the map <m>(A_0, (d)) \to (A, (d))</m> from the universal oriented prism has finite <m>(p,d)</m>-complete Tor amplitude,
+          we can use <xref ref="lem-prismatic-base-change"/> to transfer the desired result from
+          <m>(A_0,(d))</m> (to which <xref ref="prop-hodge-tate-universal-oriented"/> applies) to <m>(A, (d))</m>.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 6.2.)
+        </p>
+      </proof>
+    </proposition>
+    <proposition xml:id="prop-hodge-tate-affine-space">
+      <statement>
+        <p>
+          In the full generality of <xref ref="thm-hodge-tate-comparison"/>,
+          the Hodge-Tate comparison map <xref ref="eq-Hodge-Tate-comparison-map"/> is an isomorphism.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Again by <xref ref="lem-hodge-tate-etale-base-change"/>, we may reduce to the case <m>R = \overline{A} \langle x_1,\dots,x_n \rangle</m>.
+          Using <xref ref="lem-ideal-locally-distinguished"/>, we can further reduce to the case where <m>(A,I) = (A, (d))</m> is an oriented prism.
+          Let <m>(A_0, (d)) \to (A, (d))</m> be the morphism from the universal oriented prism.
+          Form a diagram as in <xref ref="prop-hodge-tate-universal-oriented"/> in which <m>\alpha</m> is the map from <xref ref="lem-universal-oriented-prism-completion"/>
+          and the square is a pushout of <m>(p,d)</m>-complete simplicial commutative rings. (The key technical complication here is that <m>E</m> is not necessarily an ordinary ring.)
+        </p>
+        <figure xml:id="fig-hodge-tate-pushout">
+          <image>
+            <latex-image>
+              \xymatrix{
+                &amp; A_0 \ar[r]\ar^{\alpha}[d] &amp; A \ar^{\beta}[d]\\
+                \ZZ_p \ar[r] &amp; D_0 \ar[r] &amp; E = A \widehat{\otimes}^L_{A_0} D_0.
+              }
+            </latex-image>
+          </image>
+        </figure>
+        <p>
+          The arrow <m>\ZZ_p \to D_0</m> promotes to a map <m>(\ZZ_p, (p)) \to (D_0, (p))</m> of prisms, so we also have a map <m>\gamma: (\ZZ_p,(p)) \to (E, (p))</m> of oriented prisms.
+          Using the explicit description of prismatic cohomology given in <xref ref="cor-crystalline-weakly-final"/>, we may produce a natural isomorphism
+          <m>\widehat{\beta^*} \overline{\Prism}_{R/A} \cong \widehat{\gamma^*} \overline{\Prism}_{\FF_p[x_1,\dots,x_n]/\ZZ_p}</m>.
+          By <xref ref="thm-Hodge-Tate-crystalline-affine-space"/>, we know that the Hodge-Tate comparison map is an isomorphism for the prism <m>(\ZZ_p,(p))</m> and the ring <m>\FF_p[x_1,\dots,x_n]</m>;
+          combining this with the previous isomorphism, we deduce that the original Hodge-Tate comparison map becomes an isomorphism after applying <m>\widehat{\beta^*}</m>. Since this last functor is conservative
+          (because <m>\widehat{\alpha^*}</m> is conservative by <xref ref="lem-universal-oriented-prism-completion2"/>), it is itself an isomorphism.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 6.2.)
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+  <subsection>
+    <title>The crystalline and de Rham comparisons</title>
+    <p>
+      On a related note, we describe the comparison between prismatic, crystalline, and de Rham cohomology under some mild restrictions
+      (in addition to our running condition that <m>(A,I)</m> is bounded). One complication is that we do not have an analogue of
+      <xref ref="lem-hodge-tate-etale-base-change"/> for prismatic cohomology: for <m>R \to S</m> an <m>I</m>-completely etale morphism of
+      <m>\overline{A}</m>-algebras, there is no obvious base change functor to relate <m>\Prism_{R/A}</m> to <m>\Prism_{S/A}</m>.
+    </p>
+    <theorem xml:id="thm-crystalline-comparison">
+      <statement>
+        <p>
+          Assume that <m>(A,(p)))</m> is a crystalline prism and let <m>J</m> be an ideal of <m>A</m> containing <m>p</m> on which <m>A</m> admits divided powers
+          valued in <m>I</m> (that is, <m>J</m> is a <term>pd-ideal</term> of <m>A</m>).
+          Let <m>\psi: A/J \to A/p</m> be the morphism induced by the Frobenius on <m>A/p</m>.
+          Let <m>R</m> be a smooth <m>A/J</m>-algebra and put <m>R^{(1)} = R \otimes_{A/I, \psi} A/p</m>. Then there is a canonical isomorphism
+          of <m>\Prism_{R^{(1)}/A}</m> with the crystalline cohomology of <m>\Spf(R)</m> relative to the pd-thickening <m>\Spec(A/J) \subset \Spf(A)</m>;
+          more precisely, this is an isomorphism of <m>E_\infty-A</m>-algebras compatible with Frobenius.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The key point is to construct the map, as thereafter one can compute in local coordinates as in the proof of 
+          <xref ref="lem-prismatic-double-complex"/>. See <xref ref="bib-Bhatt-Scholze"/>, Theorem 5.2.
+        </p>
+      </proof>
+    </theorem>
+    <remark xml:id="rmk-de-rham-comparison-setup">
+      <p>
+        Before continuing, we make an observation that will explain a somewhat odd condition in <xref ref="thm-deRham-comparison"/>.
+        Recall that by construction, the <m>p</m>-typical Witt vector functor <m>W</m> is a right adjoint to the forgetful functor <m>\Ring_\delta \to \Ring</m>
+        (<xref ref="def-delta-ring-right-adjoint"/>).
+        We may thus apply adjunction to the canonical map <m>A \to \overline{A}</m> to obtain a morphism <m>A \to W(\overline{A})</m> in <m>\Ring_\delta</m>.
+      </p>
+      <p>
+        Now let <m>\psi: A \to W(\overline{A})</m> be the composition of the resulting map with the Frobenius <m>\phi</m> on <m>W(\overline{A})</m>. This map carries <m>I</m> into <m>(p)</m>:
+        the original map <m>A \to W(\overline{A})</m> carries <m>I</m> into the image of the Verschiebung <m>V</m> on <m>W(\overline{A})</m>, and the composition <m>\phi \circ V</m>
+        is multiplication by <m>p</m> (<xref ref="def-Witt-Verchiebung"/>). Hence the map <m>\psi</m> induces a morphism
+        <m>(A, I) \to (W(\overline{A}), (p))</m> of prisms provided that <m>W(\overline{A})</m> is <m>p</m>-torsion-free (so that the target is actually a prism).
+      </p>
+    </remark>
+    <theorem xml:id="thm-deRham-comparison">
+      <statement>
+        <p>
+          Assume that the prism <m>(A,I)</m> is bounded and that <m>W(\overline{A})</m> is <m>p</m>-torsion-free. 
+          Let <m>R</m> be a <m>p</m>-completely smooth <m>\overline{A}</m>-algebra.
+          Then there is a natural isomorphism <m>\Prism_{R/A} \widehat{\otimes}^L_{A,\phi} \overline{A} \cong \Omega^\bullet_{R/\overline{A}}</m>
+          of commutative ring objects in <m>D(\overline{A})</m> (where the completion is the derived <m>p</m>-adic completion).
+        </p>
+      </statement>
+      <proof>
+        <p>
+          In light of <xref ref="rmk-de-rham-comparison-setup"/>, it is enough to construct a functorial isomorphism of 
+          <m>\Prism_{R/A} \widehat{\otimes}^L_{A,\psi} W(\overline{A}) \cong \Prism_{R'/W(\overline{A})}</m>,
+          where <m>R' = R \widehat{\otimes}_{\overline{A},\psi} W(\overline{A})/p</m> (and the stated isomorphism is given by <xref ref="lem-prismatic-base-change"/>), 
+          with the crystalline cohomology of <m>R/p</m> with coefficients in <m>W(\overline{A})</m>.
+          This amounts to an application of <xref ref="thm-crystalline-comparison"/>.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Theorem 6.4.)
+        </p>
+      </proof>
+    </theorem>
+    <remark>
+      <p>
+        In <xref ref="thm-deRham-comparison"/>, the condition that <m>W(\overline{A})</m> is <m>p</m>-torsion-free holds in two natural cases of interest:
+        when <m>A/I</m> is <m>p</m>-torsion-free, or when <m>I = (p)</m> and <m>\overline{A}</m> is reduced.
+        The result remains true without this condition, but this is 
+        more difficult and falls outside the scope of these notes; see <xref ref="bib-Bhatt-Scholze"/>, Corollary 15.4.
+      </p>
+    </remark>
+  </subsection>
+</section>

@@ -1,0 +1,278 @@
+﻿<section xml:id="sec_double-complexes">
+  <title>Double complexes</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Stacks"/>, tag 0FNB. Other references may use different sign conventions.
+      </p>
+    </paragraphs>
+    <p>
+      We gather a few key facts about double complexes that will come up in our cohomology computations.
+      Throughout, let <m>\calA</m> be a fixed abelian category.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Double complexes and totalization</title>
+    <definition>
+      <p>
+        A <term>double complex</term> in <m>\calA</m> consists of a collection of objects <m>K^{p,q}</m> together with morphisms <m>d_1^{p,q}: K^{p,q} \to K^{p+1,q}</m> 
+        and <m>d_2^{p,q}: K^{p,q} \to K^{p,q+1}</m> such that the resulting diagram commutes and each row and column is itself a complex.
+      </p>
+    </definition>
+    <figure xml:id="fig-double-complex">
+      <image width="75%">
+        <latex-image>
+          \xymatrix{
+            &amp; \vdots &amp; \vdots &amp; \\
+            \cdots \ar[r] &amp; K^{p,q+1} \ar[u] \ar^{d_1^{p,q+1}}[r] &amp; K^{p+1,q+1} \ar[r] \ar[u] &amp; \cdots \\
+            \cdots \ar[r] &amp; K^{p,q} \ar^{d_2^{p,q}}[u] \ar^{d_1^{p,q}}[r] &amp; K^{p+1,q} \ar^{d_2^{p+1,q}}[u] \ar[r] &amp; \cdots \\
+            &amp; \vdots \ar[u] &amp; \vdots \ar[u] &amp;  
+          }
+        </latex-image>
+      </image>
+    </figure>
+    <remark>
+      <p>
+        A double complex can itself be viewed as a complex in the category <m>\Comp(\calA)</m>. There are of course two different ways to do this, which for the moment
+        are symmetric; we will have to break symmetry to discuss totalization. While this symmetry break will have some curious side effects
+        (e.g., the graded commutativity of cohomology, as per <xref ref="rmk-graded-commutative-cohomology"/>), most of the statements we make asymmetrically will have
+        straightforward counterparts with the orientation reversed.
+      </p>
+    </remark>
+    <definition xml:id="def-totalization">
+      <title>Totalization</title>
+      <p>
+        Given a double complex <m>K^{\bullet,\bullet}</m>, the <term>associated total complex</term> (or for short the <term>totalization</term>) is the complex
+        <m>\Tot(K^{\bullet,\bullet})</m> with 
+        <me>
+          \Tot^n(K^{\bullet,\bullet}) = \bigoplus_{n=p+q} K^{p,q}
+        </me>
+        with differential
+        <men xml:id="eq-differential-totalization">
+          d^n = \sum_{n=p+q} (d_1^{p,q} + (-1)^p d_2^{p,q}).
+        </men>
+      </p>
+      <p>
+        More precisely, this should be called the <term>direct sum totalization</term> as distinct from the <term>direct product totalization</term>,
+        in which we take the product rather than the sum. The two coincide if the original complex is bounded above in both directions, or bounded below in both directions.
+        However, we will later (in <xref ref="sec_derived-prismatic"/>) have reason to consider the mixed situation, 
+        in which the complex is bounded above in one direction and bounded below in the other direction, and in this case we must pay attention to this distinction.
+      </p>
+    </definition>
+  </subsection>
+  <subsection>
+    <title>Interchanging the rows and columns</title>
+    <remark xml:id="rmk-interchange-order-double-complex">
+      <p>
+        Let <m>K^{\bullet,\bullet}</m> be a double complex in <m>\calA</m>. Let <m>L^{\bullet,\bullet}</m> be the <term>transposed complex</term> with
+        <m>L^{p,q} = K^{p,q}</m> (and similarly for differentials). Then there are natural isomorphisms
+        <me>
+          \Tot(K^{\bullet,\bullet})^n \cong \Tot(L^{\bullet,\bullet})^n
+        </me>
+        for each <m>n</m>, but we have to choose these carefully to make this an isomorphism of complexes: the identification of <m>K^{p,q} \subset \Tot(K^{\bullet,\bullet})^n</m>
+        with <m>L^{q,p} \subset \Tot(L^{\bullet,\bullet})^n</m> is given by multiplication by <m>(-1)^{pq}</m>.
+      </p>
+    </remark>
+    <example xml:id="exa-tensor-product-double-complex">
+      <p>
+        Suppose that <m>\calA</m> is a symmetric monoidal category (e.g., <m>\Mod_A</m> using the tensor product) and let <m>K^\bullet</m> and <m>L^\bullet</m> be 
+        two bounded-below complexes.
+        Then <m>K^\bullet \otimes L^\bullet</m> and <m>L^\bullet \otimes K^\bullet</m> are transposed complexes of each other,
+        so we may use <xref ref="rmk-interchange-order-double-complex"/> to identify their totalizations;
+        in the case <m>\calA = \Mod_A</m>, both of these are quasi-isomorphic to <m>K^\bullet \otimes^L_A L^\bullet</m>.
+      </p>
+    </example>
+    <remark xml:id="rmk-graded-commutative-cohomology">
+       <p>
+        We can use this to explain the signs in <xref ref="lem-derived-ring-cohomology"/> as follows. 
+        For <m>A \in \Ring</m>, let <m>K^\bullet</m> be a commutative <m>A</m>-algebra object in <m>D(A)</m>.
+        The multiplication map can be interpreted as a map <m>\Tot(L_1^\bullet \otimes L_2^\bullet) \to L_3^\bullet</m> for some complexes
+        <m>L_1, L_2, L_3</m> which are quasi-isomorphic to <m>K^\bullet</m>. (Note that we cannot necessarily take the same representative and get a genuine map
+        of complexes; that is, we did not assume that <m>K^\bullet</m> is a commutative ring object at the level of complexes.) 
+        Given classes <m>a \in H^n(L_1^\bullet)</m>, <m>b \in H^m(L_2^\bullet)</m>,
+        we compute their product in <m>H^{m+n}(L_3^\bullet)</m> by choosing representatives of <m>a</m> and <m>b</m> in their respective complexes,
+        taking the product, putting that into the totalization, and then applying the map to <m>L_3^{m+n}</m>. From this, it is clear that switching the order of the
+        terms should introduce a sign of <m>(-1)^{mn}</m> in conformance with <xref ref="rmk-interchange-order-double-complex"/>.
+      </p>
+   </remark>
+  </subsection>
+  <subsection>
+    <title>The spectral sequence(s) of a double complex</title>
+    <p>
+      Rather than giving an axiomatic treatment of spectral sequences, we give a narrow treatment centered around a bounded-below double complex, this being the case
+      of most pressing interest for prismatic cohomology. Our goal is to present the key ideas without drowning the reader in the notation needed to make everything
+      completely precise.
+    </p>
+    <proposition xml:id="prop-spectral-sequence-double-complex">
+      <statement>
+        <p>
+          Let <m>K^{\bullet,\bullet}</m> be a double complex concentrated in nonnegative degrees (in both directions). Then there exist objects
+          <m>E^{p,q}_i</m> for <m>i,p,q \geq 0</m> with the following properties (where <m>E^{p,q}_i = 0</m> if <m>p,q</m> are not both nonnegative).
+        </p>
+        <ol>
+          <li>
+            <p>
+              We have <m>E^{p,q}_0 = K^{p,q}</m> for all <m>p,q.</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              For each <m>i</m>, there exist maps <m>d_{(i)}^{p,q}: E_i^{p,q} \to E_i^{p+i,q+1-i}</m> such that the maps in and out of <m>E_i^{p,q}</m> compose to zero
+              and the cohomology of the resulting complex there is <m>E_{i+1}^{p,q}</m>. In particular, for any given <m>p,q</m>, the terms <m>E_i^{p,q}</m> for 
+              <m>i \gg 0</m> stabilize to an object we call <m>E_\infty^{p,q}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For <m>i=0</m>, <m>d_{(i)}^{p,q}</m> equals the differential <m>(-1)^p d_2^{p,q}</m> of <m>K^{\bullet,\bullet}</m>. 
+            </p>
+          </li>
+          <li>
+            <p>
+              For <m>i=1</m>, <m>d_{(i)}^{p,q}</m> is the map induced by <m>d_1^{p,q}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For <m>n \geq 0</m>, there is a filtration on <m>H^n(\Tot(K^{\bullet,\bullet}))</m> whose successive quotients 
+              are the objects <m>K^{p,q}</m> for <m>p+q=n</m>.
+            </p>
+          </li>
+        </ol>
+        <p>
+          Moreover, the construction is natural in <m>K^{\bullet,\bullet}</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We define a filtration on <m>\Tot(K^{\bullet,\bullet})^n</m> by taking
+          <me>
+            \Fil^p \Tot(K^{\bullet,\bullet})^n = \bigoplus_{i+j=n,i \geq p} K^{i,j}.
+          </me>
+          We then construct the spectral sequence associated to this filtration as per <xref ref="bib-Stacks"/>, tag 012K.
+        </p>
+      </proof>
+    </proposition>
+    <definition>
+      <p>
+        In <xref ref="prop-spectral-sequence-double-complex"/>, the <m>E^{\bullet,\bullet}_i</m> is commonly called the <m>i</m>-th <term>page</term> (or <term>sheet</term>
+        or <term>stage</term>) of the spectral sequence. See <xref ref="fig-E0-page"/>, <xref ref="fig-E1-page"/>, <xref ref="fig-E2-page"/>, and <xref ref="fig-E3-page"/>
+        for illustrations of the first four pages.
+      </p>
+    </definition>
+    <figure xml:id="fig-E0-page">
+      <image width="75%">
+        <latex-image>
+          \xymatrix{
+            E_0^{0,3} &amp; E_0^{1,3} &amp; E_0^{2,3} &amp; E_0^{3,3} \\
+            E_0^{0,2} \ar[u]^-{d_{(0)}^{0,2}} &amp; E_0^{1,2} \ar[u]^-{d_{(0)}^{1,2}} &amp; E_0^{2,2} \ar[u]^-{d_{(0)}^{2,2}} &amp; E_0^{3,2} \ar[u]^-{d_{(0)}^{3,2}} \\
+            E_0^{0,1} \ar[u]^-{d_{(0)}^{0,1}} &amp; E_0^{1,1} \ar[u]^-{d_{(0)}^{1,1}} &amp; E_0^{2,1} \ar[u]^-{d_{(0)}^{2,1}} &amp; E_0^{3,1} \ar[u]^-{d_{(0)}^{3,1}} \\
+            E_0^{0,0} \ar[u]^-{d_{(0)}^{0,0}} &amp; E_0^{1,0} \ar[u]^-{d_{(0)}^{1,0}} &amp; E_0^{2,0} \ar[u]^-{d_{(0)}^{2,0}} &amp; E_0^{3,0} \ar[u]^-{d_{(0)}^{3,0}}
+          }
+        </latex-image>
+      </image>
+    </figure>
+    <figure xml:id="fig-E1-page">
+      <image width="75%">
+        <latex-image>
+          \xymatrix{
+            E_1^{0,3} \ar[r]^-{d_{(1)}^{0,3}} &amp; E_1^{1,3} \ar[r]^-{d_{(1)}^{1,3}} &amp; E_1^{2,3} \ar[r]^-{d_{(1)}^{2,3}} &amp; E_1^{3,3} \\
+            E_1^{0,2} \ar[r]^-{d_{(1)}^{0,2}} &amp; E_1^{1,2} \ar[r]^-{d_{(1)}^{1,2}} &amp; E_1^{2,2} \ar[r]^-{d_{(1)}^{2,2}} &amp; E_1^{3,2} \\
+            E_1^{0,1} \ar[r]^-{d_{(1)}^{0,1}} &amp; E_1^{1,1} \ar[r]^-{d_{(1)}^{1,1}} &amp; E_1^{2,1} \ar[r]^-{d_{(1)}^{2,1}} &amp; E_1^{3,1} \\
+            E_1^{0,0} \ar[r]^-{d_{(1)}^{0,0}} &amp; E_1^{1,0} \ar[r]^-{d_{(1)}^{1,0}} &amp; E_1^{2,0} \ar[r]^-{d_{(1)}^{2,0}} &amp; E_1^{3,0}
+          }
+        </latex-image>
+      </image>
+    </figure>
+    <figure xml:id="fig-E2-page">
+      <image width="75%">
+        <latex-image>
+          \xymatrix{
+            E_2^{0,3} \ar[rrd]^-{d_{(2)}^{0,3}} &amp; E_2^{1,3} \ar[rrd]^-{d_{(2)}^{1,3}} &amp; E_2^{2,3} &amp; E_2^{3,3} \\
+            E_2^{0,2} \ar[rrd]^-{d_{(2)}^{0,2}} &amp; E_2^{1,2} \ar[rrd]^-{d_{(2)}^{1,2}} &amp; E_2^{2,2} &amp; E_2^{3,2} \\
+            E_2^{0,1} \ar[rrd]^-{d_{(2)}^{0,1}} &amp; E_2^{1,1} \ar[rrd]^-{d_{(2)}^{1,1}} &amp; E_2^{2,1} &amp; E_2^{3,1} \\
+            E_2^{0,0} &amp; E_2^{1,0} &amp; E_2^{2,0} &amp; E_2^{3,0}
+          }
+        </latex-image>
+      </image>
+    </figure>
+    <figure xml:id="fig-E3-page">
+      <image width="75%">
+        <latex-image>
+          \xymatrix{
+            E_3^{0,3} \ar[rrrdd]^-{d_{(3)}^{0,3}} &amp; E_3^{1,3} &amp; E_3^{2,3} &amp; E_3^{3,3} \\
+            E_3^{0,2} \ar[rrrdd]^-{d_{(3)}^{0,2}} &amp; E_3^{1,2} &amp; E_3^{2,2} &amp; E_3^{3,2} \\
+            E_3^{0,1} &amp; E_3^{1,1} &amp; E_3^{2,1} &amp; E_3^{3,1} \\
+            E_3^{0,0} &amp; E_3^{1,0} &amp; E_3^{2,0} &amp; E_3^{3,0}
+          }
+        </latex-image>
+      </image>
+    </figure>
+    <corollary xml:id="map-of-double-complex-total-qis">
+      <statement>
+        <p>
+          Let <m>K^{\bullet,\bullet} \to L^{\bullet,\bullet}</m> be a morphism of double complexes. If the induced maps <m>E_\infty^{p,q}(K) \to E_\infty^{p,q}(L)</m>
+          is an isomorphism, then the map <m>\Tot(K^{\bullet,\bullet}) \to \Tot(L^{\bullet,\bullet})</m> is a quasi-isomorphism.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="prop-spectral-sequence-double-complex"/> (and in particular the naturality), the map
+          <m>H^n(\Tot(K^{\bullet,\bullet})) \to H^n(\Tot(L^{\bullet,\bullet}))</m> has the property that it induces isomorphisms on the successive quotients of some filtration.
+          By the five lemma, this implies that it is itself an isomorphism.
+        </p>
+      </proof>
+    </corollary>
+    <corollary xml:id="map-of-double-complex-first-column-qis">
+      <statement>
+        <p>
+          Let <m>K^{\bullet,\bullet}</m> be a double complex in which the single complexes <m>K^{\bullet,q}</m> are acyclic for all <m>q \gt 0</m>. Then the morphism
+          <m>K^{\bullet,0} \to \Tot(K^{\bullet,\bullet})</m> is a quasi-isomorphism.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Apply <xref ref="map-of-double-complex-total-qis"/> after filling <m>K^{\bullet,0}</m> out to a double complex by adding zeroes.
+        </p>
+      </proof>
+    </corollary>
+  </subsection>
+  <subsection>
+    <title>Totalization in the derived category</title>
+    <corollary>
+      <statement>
+        <p>
+          Let <m>K^0 \to K^1 \to \cdots</m> be a sequence of morphisms in <m>D(A)</m> for some <m>A \in \Ring</m>, with every two consecutive arrows composing to zero
+          (that is, it is a <q>complex consisting of objects of <m>D(A)</m></q>).
+        </p>
+        <ol>
+          <li>
+            <p>
+              There exists a way to choose representatives in <m>K(A)</m> so that the terms <m>K^\bullet</m> fit into a double complex.
+            </p>
+          </li>
+          <li>
+            <p>
+              Given a second such sequence <m>L^\bullet</m> and a morphism <m>K^\bullet \to L^\bullet</m> (i.e., a family of maps forming commuting diagrams in <m>D(A)</m>),
+              we can (simultaneously) choose representatives for everything in <m>K(A)</m> so that there exists a morphism of double complexes inducing the given morphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              The induced map of totalizations is independent of all choices, and is an isomorphism if the original map is an isomorphism.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          The key point is to show that given a double complex <m>K^{\bullet,\bullet}</m> in which the second argument is bounded in the range <m>0,\dots,n</m>
+          and a map from <m>K^{\bullet,n} \to L^\bullet</m> in <m>D(A)</m>, we can change <m>L^\bullet</m> to another representative in <m>D(A)</m>
+          <em>without changing <m>K^{\bullet,\bullet}</m></em> so that we can add a new column to the complex. We leave the details of this to the reader.
+          (Once everything else is done, the very last point follows from <xref ref="map-of-double-complex-total-qis"/>.)
+        </p>
+      </proof>
+    </corollary>
+  </subsection>
+</section>

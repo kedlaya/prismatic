@@ -1,0 +1,316 @@
+﻿<section xml:id="sec_hodge-tate">
+  <title>The Hodge-Tate comparison map</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-course"/>, lecture V.
+      </p>
+    </paragraphs>
+    <p>
+      In this section, we formulate our first application of prismatic cohomology, the <term>Hodge-Tate comparison theorem</term>.
+      The proof will be sketched in <xref ref="sec_hodge-tate-proof"/>.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Graded commutativity for graded rings</title>
+    <definition>
+      <p>
+        Let <m>E^\bullet</m> be a (not necessarily commutative) graded ring. We say that <m>E^\bullet</m> is <term>graded commutative</term> if
+        <me>
+          ab = (-1)^{mn}ba \qquad (a \in E^n, b \in E^m).
+        </me>
+      </p>
+    </definition>
+    <lemma xml:id="lem-derived-ring-cohomology">
+      <statement>
+        <p>
+          For <m>A \in \Ring</m>, let <m>K^\bullet</m> be a commutative <m>A</m>-algebra object in <m>D(A)</m>. Then
+          <m>\bigoplus_{n \geq 0} H^n(K^\bullet)</m> carries a natural graded ring structure, with respect to which it is graded commutative.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The multiplication map on <m>K^\bullet</m> is given by a morphism <m>K^\bullet \otimes_A^L K^\bullet \to K^\bullet</m> in <m>D(A)</m>.
+          We may directly read off the multiplication in <m>\bigoplus_{n \geq 0} H^n(K^\bullet)</m> and its properties
+          (associativity, distributivity over addition) to obtain the graded ring structure.
+          It remains to check graded commutativity; this follows from the <term>Koszul sign rule</term> appearing in the
+          Alexander-Whitney construction (see <xref ref="bib-Kerodon"/>, tag 00P4). We will see this concretely in <xref ref="rmk-graded-commutative-cohomology"/>.
+        </p>
+      </proof>
+    </lemma>
+  </subsection>
+  <subsection>
+    <title>The de Rham complex</title>
+    <definition>
+      <p>
+        For <m>A \in \Ring</m>, a <term>differential graded algebra</term> over <m>A</m> (also known as a <term><m>A</m>-dga</term>)
+        is a complex <m>(E^\bullet, d)</m> of <m>A</m>-modules in which <m>E^\bullet</m> is also equipped with the structure of a (not necessarily commutative)
+        graded <m>A</m>-algebra
+        subject to the <term>signed Leibniz rule</term>
+        <me>
+          d^{n+m}(ab) = d^n(a)b + (-1)^n a d^m(b) \qquad (a \in E^n, b \in E^m).
+        </me>
+      </p>
+      <p>
+        We say that an <m>A</m>-dga <m>(E^\bullet, d)</m> is <term>commutative</term> if <m>E^\bullet</m> is graded commutative.
+        We say that it is <term>strictly commutative</term> if it is commutative and moreover <m>a^2 = 0</m> for any <m>a</m> of odd degree. (This last
+        condition is redundant if <m>E</m> is <m>2</m>-torsion-free.)
+      </p>
+    </definition>
+    <p>
+      The prototypical example of this definition is the following construction.
+    </p>
+    <definition>
+      <p>
+        Let <m>A \to B</m> be a morphism in <m>\Ring</m>. The <term>de Rham complex</term>
+        <me>
+          (\Omega^{\bullet}_{B/A}, d_{\dR}) = \left( B \to \Omega^1_{B/A} \to \Omega^2_{B/A} \to \cdots \right),
+        </me>
+        in which <m>\Omega^i_{B/A} = \wedge^i_B \Omega^1_{B/A}</m>, is a strictly commutative <m>A</m>-dga with multiplication given by the wedge product.
+      </p>
+    </definition>
+    <p>
+      The universal property of the module of Kähler differentials can be reinterpreted as follws.
+    </p>
+    <lemma xml:id="lem-derham-universal-property">
+      <title>Universal property of the de Rham complex</title>
+      <statement>
+        <p>
+          Let <m>(E^\bullet, d)</m> be a graded commutative <m>A</m>-dga supported in degrees <m>\ge 0</m>.
+          Let <m>\eta: B \to E^0</m> be a map of <m>A</m>-algebras such that for each <m>x \in B</m>, the element <m>y = d(\eta(x)) \in E^1</m>
+          satisfies <m>y^2 = 0</m> (note that this is automatic if <m>E^\bullet</m> is <em>strictly</em> commutative).
+          Then <m>\eta</m> extends uniquely to a map <m>\Omega^\bullet_{B/A} \to E^\bullet</m> of <m>A</m>-dgas.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-course"/>, Lecture V, Lemma 3.3.
+        </p>
+      </proof>
+    </lemma>
+    <definition>
+      <title>The completed de Rham complex</title>
+      <p>
+        For <m>I</m> a finitely generated ideal in <m>A \in \Ring</m> and <m>R</m> a derived <m>I</m>-complete <m>A</m>-algebra,
+        we may define the module of completed Kähler differentials <m>\widehat{\Omega}^1_{R/A}</m> as the derived <m>I</m>-completion
+        of the usual module <m>\Omega^1_{R/A}</m>. If <m>A</m> is derived <m>I</m>-complete and <m>R</m> is the derived <m>I</m>-completion of 
+        a finitely generated <m>A</m>-algebra, then <m>\widehat{\Omega}^1_{R/A}</m> is a finitely generated <m>A</m>-module.
+      </p>
+      <p>
+        Now suppose that <m>A</m> is derived <m>I</m>-complete.
+        Then the <term>completed de Rham complex</term> <m>\widehat{\Omega}^i_{R/A}</m> is a strictly commutative <m>A</m>-dga,
+        and in <xref ref="lem-derham-universal-property"/>, if <m>E^\bullet</m> is derived <m>I</m>-complete,
+        then <m>\eta</m> extends uniquely to a map <m>\widehat{\Omega}^\bullet_{B/A} \to E^\bullet</m> of <m>A</m>-dgas.
+      </p>
+    </definition>
+  </subsection>
+  <subsection>
+    <title>Construction of the Hodge-Tate comparison map</title>
+    <definition xml:id="def-Breuil-Kisin-twist">
+      <p>
+        Let <m>(A, I)</m> be a prism and let <m>R</m> be an <m>\overline{A}</m>-algebra (writing <m>\overline{A} = A/I</m>).
+        For <m>M \in \Mod_{\overline{A}}</m> and <m>n</m> an integer, define the <term>Breuil-Kisin twist</term> <m>M\{n\} = M \otimes_{\overline{A}} (I/I^2)^{\otimes n}</m>;
+        note that this makes sense even if <m>n \lt 0</m> because <m>I/I^2</m> is an invertible <m>\overline{A}</m>-module (from the definition of a prism).
+      </p>
+      <p>
+        For <m>n \geq 0</m>, consider the exact sequence
+        <me>
+          0 \to I^{n+1} \calO_\Prism/I^{n+2} \to I^n \calO_{\Prism}/I^{n+2} \to I^n \calO_{\Prism}/I^{n+1} \to 0
+        </me>
+        of <m>\calO_{\Prism}</m>-modules on <m>(R/A)_{\Prism}</m>, then take a connecting homomorphism to obtain the 
+        <term>Bockstein differential</term>
+        <me>
+          \beta_I: H^n(\overline{\Prism}_{R/A})\{n\} \to H^{n+1}(\overline{\Prism}_{R/A})\{n+1\}.
+        </me>
+        It will follow from <xref ref="lem-bockstein-differential"/> that these indeed form the differentials in a complex
+        <m>(H^\bullet(\overline{\Prism}_{R/A})\{\bullet\}, \beta_I)</m>.
+      </p>
+      <p>
+        As per <xref ref="rem-structure-on-prismatic"/>, the object <m>\overline{\Prism}_{R/A} \in D(\overline{A})</m> carries the structure of a commutative
+        ring object over <m>\overline{A}</m>. From <xref ref="lem-derived-ring-cohomology"/>, we deduce that the graded group <m>\bigoplus_{n \geq 0} H^n(\overline{\Prism}_{R/A})\{n\}</m>
+        carries the structure of a commutative <m>\overline{A}</m>-dga. It is also strictly commutative, but this requires some extra verification;
+        see <xref ref="lem-ht-strictly-commutative"/>.
+      </p>
+      <p>
+        Suppose now that <m>R</m> is derived <m>p</m>-complete. Then the universal property of the completed de Rham complex
+        gives us a morphism of <m>\overline{A}</m>-dgas
+        <men xml:id="eq-Hodge-Tate-comparison-map">
+          \eta_R^\bullet: (\widehat{\Omega}^\bullet_{R/\overline{A}}, d_{\dR}) \to (H^\bullet(\overline{\Prism}_{R/A})\{\bullet\}, \beta_I).
+        </men>
+      </p>
+   </definition>
+    <p>
+      To see that the Bockstein differentials are indeed the differentials of a complex, we make the following general observation.
+    </p>
+    <lemma xml:id="lem-bockstein-differential">
+      <statement>
+        <p>
+          Let <m>I</m> be an invertible ideal of a ring <m>A</m> (e.g., the principal ideal generated by a non-zerodivisor). 
+          Given <m>M^\bullet \in D(A)</m>, let
+          <me>
+            \beta^n: H^n(M^\bullet \otimes^L_A I^n/I^{n+1}) \to H^{n+1}(M^\bullet \otimes^L_A I^{n+1}/I^{n+2})
+          </me>
+          be the connecting homomorphism in the exact sequence obtained by applying <m>M^\bullet \otimes^L_A *</m> to the sequence
+          <me>
+            0 \to I^{n+1}/I^{n+2} \to I^n/I^{n+2} \to I^n/I^{n+1} \to 0.
+          </me>
+          Then the composition <m>\beta^{n+1} \circ \beta^n</m> vanishes for all <m>n</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Consider the commutative diagram in <xref ref="fig-bockstein-composition"/> in which the rows are exact.
+        </p>
+        <figure xml:id="fig-bockstein-composition">
+          <image width="75%">
+            <latex-image>
+              \xymatrix{
+                0 \ar[r] &amp; I^{n+1}/I^{n+3} \ar[r] \ar[d] &amp; I^n/I^{n+3} \ar[r] \ar[d] &amp; I^n/I^{n+1} \ar[r] \ar[d] &amp; 0 \\
+                0 \ar[r] &amp; I^{n+1}/I^{n+2} \ar[r] &amp; I^n/I^{n+2} \ar[r] &amp; I^n/I^{n+1} \ar[r] &amp; 0
+              }
+            </latex-image>
+          </image>
+        </figure>
+        <p>
+          By applying <m>M^\bullet \otimes^L_A \star</m> to the terms and comparing the two rows, we see that the map <m>\beta^n</m> factors as 
+          <me>
+            H^n(M^\bullet \otimes^L_A I^n/I^{n+1}) \to H^{n+1}(M^\bullet \otimes^L_A I^{n+1}/I^{n+3}) \to H^{n+1}(M^\bullet \otimes^L_A I^{n+1}/I^{n+2})
+          </me>
+          where the first map is the connecting homomorphism obtained from the upper row of <xref ref="fig-bockstein-composition"/>.
+          By applying <m>M^\bullet \otimes^L_A *</m> to the exact sequence
+          <me>
+            0 \to I^{n+2}/I^{n+3} \to I^{n+1}/I^{n+3} \to I^{n+1}/I^{n+2} \to 0
+          </me>
+          we deduce that the composition
+          <me>
+            H^{n+1}(M^\bullet \otimes^L_A I^{n+1}/I^{n+3}) \to H^{n+1}(M^\bullet \otimes^L_A I^{n+1}/I^{n+2}) \stackrel{\beta^{n+1}}{\to} H^{n+2}(M^\bullet \otimes^L_A I^{n+2}/I^{n+3})
+          </me>
+          vanishes. Combining these two observations proves the claim.
+          (Compare <xref ref="bib-Stacks"/>, tag 0F7N.)
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      To check strict commutativity, we make an explicit computation. Remember that there is nothing to check here unless <m>p=2</m>.
+      For a more conceptual approach, see <xref ref="prop-hodge-tate-affine-space"/>.
+    </p>
+    <lemma xml:id="lem-ht-strictly-commutative">
+      <statement>
+        <p>
+          For any <m>t \in R</m>, the class <m>\beta_I(\eta(t)) \in H^1(\overline{\Prism}_{R/A})</m> squares to zero in <m>H^2(\overline{\Prism}_{R/A})</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We may assume <m>p=2</m> as otherwise this follows from ordinary commutativity;
+          this will allow us to use the universal formula (for <m>a,b</m> in any <m>\delta</m>-ring)
+          <men xml:id="eq-delta-sum-p-2">
+            \delta(a-b) = \delta(a) - \delta(b) + b(a-b).
+          </men>
+          Using <xref ref="lem-ideal-locally-distinguished"/>, we may also reduce to the case where <m>I = (f)</m> with <m>f \in A</m> distinguished
+          (this is mostly just to simplify notation).
+        </p>
+        <p>
+          We use the fact that <m>(R/A)_{\Prism}</m> contains a weakly final object <m>(F, IF)</m> which moreover is <m>f</m>-torsion-free
+          (<xref ref="prop-prismatic-site-weakly-final-object"/>)
+          to compute Hodge-Tate cohomology using the cosimplicial ring <m>(F^\bullet, d^\bullet)</m>as per <xref ref="rem-prismatic-cohomology-via-cosimplicial"/>.
+          Lift <m>\eta(t) \in F/IF</m> to <m>T \in F^0</m>. Let <m>U,V \in F^1</m> and <m>X,Y,Z \in F^2</m> be the images of <m>T</m> under the
+          various maps <m>F^0 \to F^1</m> and <m>F^0 \to F^2</m> in the cosimplicial ring <m>F^\bullet</m>, so that 
+          <me>
+            d^0(T) = U-V, \qquad d^1(U) = X - Y + Z.
+          </me>
+          Since <m>U-V \in F^1</m> vanishes modulo <m>f</m> (the reductions of
+          <m>U</m> and <m>V</m> modulo <m>f</m> are the two images of <m>t</m>) and <m>F^\bullet</m> is <m>f</m>-torsion-free,
+          the unique element <m>\alpha \in F^1</m> with <m>U-V = f\alpha</m> is also a cocycle. Tracing through the construction of the Bockstein differential,
+          we see that <m>\beta_I(t)</m> equals the image of <m>\alpha</m> in <m>H^1(F^\bullet/fF^\bullet)</m>, so we need to check that the latter squares to zero.
+        </p>
+        <p>
+          Multiplying by <m>f</m> again, we may instead check that <m>U-V</m> squares to zero in <m>H^2(f^2 F^\bullet/f^3 F^\bullet)</m>.
+          The square is represented by <m>(X-Y)(Y-Z) \in f^2 F^2</m>; we will check that this is the boundary of <m>f^2 \delta(\alpha) \in f^2 F^1</m>.
+          To begin, note that <m>\phi(\alpha)</m> is a cocycle because <m>\phi</m> commutes with the differential in <m>F^\bullet</m>.
+          Hence on one hand,
+          <me>
+            \delta(U-V) = \delta(f\alpha) = f^2 \delta(\alpha) + \phi(\alpha) \delta(f)
+          </me>
+          and so
+          <me>
+            d^1(\delta(U-V)) = d^1(f^2 \delta(\alpha)).
+          </me>
+          On the other hand, by <xref ref="eq-delta-sum-p-2"/>,
+          <me>
+            \delta(U-V) = \delta(U) - \delta(V) + V(U-V) = d^1(\delta(T)) + V(U-V)
+          </me>
+          and so
+          <me>
+            d^1(\delta(U-V)) = d^1(V(U-V)) = Y(X-Y) + Z(Y-Z) - Z(X-Z) = (X-Y)(Y-Z).
+          </me>
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture V, Lemma 5.4.)
+        </p>
+      </proof>
+    </lemma>
+  </subsection>
+  <subsection>
+    <title>The Hodge-Tate comparison theorem</title>
+    <theorem xml:id="thm-hodge-tate-comparison"> 
+      <title>Hodge-Tate comparison theorem</title>
+      <statement>
+        <p>
+          Let <m>(A,I)</m> be a bounded prism. Let <m>R</m> be a <m>p</m>-completely smooth <m>\overline{A}</m>-algebra. Then the Hodge-Tate comparison map
+          <xref ref="eq-Hodge-Tate-comparison-map"/> is an isomorphism. 
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See the discussion in <xref ref="sec_hodge-tate-proof"/>, particularly <xref ref="prop-hodge-tate-affine-space-easy"/> and <xref ref="prop-hodge-tate-affine-space"/>.
+        </p>
+      </proof>
+    </theorem>
+    <corollary>
+      <statement>
+        <p>
+          With notation as in <xref ref="thm-hodge-tate-comparison"/>, the object <m>\overline{\Delta}_{R/A} \in D(R)</m> is perfect.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="prop-Elkik-lifting"/>, we may view <m>R</m> as the <m>p</m>-completion of a smooth <m>\overline{A}</m>-algebra;
+          consequently, <m>\widehat{\Omega}^1_{R/A}</m> is a finite projective <m>R</m>-module, so the completed de Rham complex
+          consists of finite projective <m>R</m>-modulse. We may thus deduce the claim from <xref ref="thm-hodge-tate-comparison"/>.
+        </p>
+      </proof>
+    </corollary>
+    <example>
+      <title>The Hodge-Tate isomorphism in <m>q</m>-de Rham cohomology</title>
+      <p>
+        Take <m>(A, I) = (\ZZ_p\llbracket q-1 \rrbracket, ([p]_q))</m>. We identify <m>\overline{A} = A/I</m> with <m>\ZZ_p[\zeta_p]</m> via
+        <m>q \mapsto \zeta_p</m>.
+      </p>
+      <p>
+        Take <m>R = \overline{A}\langle X^{\pm} \rangle</m>, i.e., the <m>p</m>-adic completion of the Laurent polynomial ring <m>\overline{A}[X^{\pm}]</m>, so that
+        <me>
+          R = \widehat{\bigoplus_{i \in \ZZ}} \overline{A} X^i.
+        </me>
+        We will show that
+        <md>
+          <mrow>\Delta_{R/A} &amp;\cong \left( A \langle X^{\pm}\rangle \stackrel{\nabla_q}{\to} A\langle X^{\pm}\rangle \frac{dX}{X} \right)</mrow>
+          <mrow>&amp; \cong \widehat{\bigoplus_{i \in \ZZ}} \left( A X^i \stackrel{[i]_q}{\to} AX^i \frac{dX}{X} \right)</mrow>
+        </md>
+        where <m>[i]_q = (q^i-1)/(q-1)</m> is the <m>q</m>-analogue of <m>i</m>, where the hat denotes the <m>(p, [p]_q)</m>-completion.
+        We now distinguish between the case where <m>i \not\equiv 0 \pmod{p}</m>, in which case <m>[i]_q</m> maps to a unit in <m>\overline{A}</m>,
+        and the case where <m>i \equiv 0 \pmod{p}</m>, in which case <m>[i]_q</m> maps to zero in <m>\overline{A}</m>. Thus reduction modulo <m>I</m>
+        yields a quasi-isomorphism
+        <me>
+          \overline{\Delta}_{R/A} \cong \widehat{\bigoplus_{k \in \ZZ}} \left( \overline{A} X^{kp} \stackrel{0}{\to} \overline{A} X^{kp} \right).
+        </me>
+      </p>
+    </example>
+  </subsection>
+  <exercises>
+    <exercise>
+      <p>
+        Give an example of a <m>\ZZ</m>-dga which is commutative but not strictly commutative.
+      </p>
+    </exercise>
+  </exercises>
+</section>

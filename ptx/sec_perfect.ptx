@@ -196,7 +196,7 @@
     <title>Tilting and slicing</title>
     <definition>
       <p>
-        For any prism <m>(A,I)</m> (perfect or not), define the <term>slice</term> of <m>(A,I)</m> as the ring <m>\overline{A} = A/I</m>.
+        For any prism <m>(A,I)</m> (perfect or not), define the <term>slice</term> (or <term>face</term>) of <m>(A,I)</m> as the ring <m>\overline{A} = A/I</m>.
         Define the <term>tilt</term> of <m>(A,I)</m> (or of <m>\overline{A}</m>), denoted <m>\overline{A}^\flat</m>, as the perfection of 
         <m>\overline{A}/p</m>.
       </p>

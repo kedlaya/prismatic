@@ -478,10 +478,10 @@
   </subsection>
   <subsection>
     <title>Truncation</title>
-    <definition>
+    <definition xml:id="def-canonical-truncation">
       <p>
-        For <m>K^\bullet \in \calC</m> and any <m>n \in \ZZ</m>, the <term>canonical truncation</term> <m>\tau_{\geq n} K^\bullet</m> is the complex given by the second row of
-        <xref ref="fig-complex-truncation"/>, equipped with the morphism <m>K^\bullet \to \tau_{\geq n} K^\bullet</m> defined by the vertical arrows.
+        For <m>K^\bullet \in \calC</m> and any <m>n \in \ZZ</m>, the <term>canonical truncation</term> <m>\tau^{\geq n} K^\bullet</m> is the complex given by the second row of
+        <xref ref="fig-complex-truncation"/>, equipped with the morphism <m>K^\bullet \to \tau^{\geq n} K^\bullet</m> defined by the vertical arrows.
       </p>
         <figure xml:id="fig-complex-truncation">
           <image width="75%">
@@ -494,8 +494,8 @@
           </image>
         </figure>
       <p>
-        Similarly, the <term>canonical truncation</term> <m>\tau_{\leq n} K^\bullet</m> is the complex given by the first row of <xref ref="fig-complex-truncation-above"/>,
-        equipped with the morphism <m>\tau_{\leq n} K^\bullet \to K^\bullet</m> defined by the vertical arrows.
+        Similarly, the <term>canonical truncation</term> <m>\tau^{\leq n} K^\bullet</m> is the complex given by the first row of <xref ref="fig-complex-truncation-above"/>,
+        equipped with the morphism <m>\tau^{\leq n} K^\bullet \to K^\bullet</m> defined by the vertical arrows.
       </p>
         <figure xml:id="fig-complex-truncation-above">
           <image width="75%">
@@ -529,7 +529,7 @@
       <proof>
         <p>
           Suppose for simplicitly that <m>I = [0, \infty)</m>, the other cases being similar.
-          In this case, if <m>H^i(K^\bullet) = 0</m> for all <m>i \lt 0</m>, then the morphism <m>K^\bullet \to \tau_{\geq 0} K^\bullet</m> is a quasi-isomorphism.
+          In this case, if <m>H^i(K^\bullet) = 0</m> for all <m>i \lt 0</m>, then the morphism <m>K^\bullet \to \tau^{\geq 0} K^\bullet</m> is a quasi-isomorphism.
         </p>
       </proof>
     </lemma>
@@ -556,11 +556,11 @@
     <remark>
       <p>
         By <xref ref="lem-truncation-complexes"/> applied with <m>I = \{0\}</m>, the essential image of the functor <m>[0]: \calA \to D(\calA)</m> is precisely the 
-        intersection of the essential images of the functors <m>\tau_{\geq 0}, \tau_{\leq 0}: D(\calA) \to D(\calA)</m>.
+        intersection of the essential images of the functors <m>\tau^{\geq 0}, \tau^{\leq 0}: D(\calA) \to D(\calA)</m>.
       </p>
       <p>
         In the more general framework of triangulated categories, one can define a <term>t-structure</term> (short for <term>truncation structure</term>)
-        to be a pair of functors <m>\tau_{\geq 0}, \tau_{\leq 0}</m> satisfying suitable conditions, and then define the <term>heart</term> of the t-structure
+        to be a pair of functors <m>\tau^{\geq 0}, \tau^{\leq 0}</m> satisfying suitable conditions, and then define the <term>heart</term> of the t-structure
         as the intersection of the essential images of these functors. This gives us a way to start with a triangulated category and realize it as a derived category;
         in fact, by varying the t-structure we can sometimes realize the same triangulated category as a derived category in multiple ways!
         (The motivating example of this is the construction of <term>perverse sheaves</term> in connection with the Weil conjectures; see <xref ref="bib-Kiehl-Weissauer"/>.)

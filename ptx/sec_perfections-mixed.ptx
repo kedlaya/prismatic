@@ -1,0 +1,133 @@
+﻿<section xml:id="sec_perfections-mixed">
+  <title>Coperfections in mixed characteristic (unstable)</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-course"/>, lecture VIII.
+      </p>
+    </paragraphs>
+    <p>
+      Given a perfect prism <m>(A, I)</m>,
+      we apply prismatic cohomology to construct a <q>canonical coperfection</q> of a <m>p</m>-complete <m>A/I</m>-algebra.
+      In general this will not be a true ring but rather something derived; only in certain (important) special cases will we end up with a genuine ring.
+      Nonetheless, this construction is quite useful in mixed-characteristic commutative algebra.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Coperfections in characteristic <m>p</m> revisited</title>
+    <p>
+      To motivate the mixed-characteristic construction, we start by reconstructing the coperfection of an <m>\FF_p</m>-algebra in a somewhat
+      exotic-looking fashion.
+    </p>
+    <definition>
+      <p>
+        Recall that for <m>R</m> an <m>\FF_p</m>-algebra, we have defined the <term>coperfection</term> of <m>R</m> as the image <m>R_{\perf}</m> of <m>R</m>
+        under the left adjoint of the forgetful functor from perfect <m>\FF_p</m>-algebras to arbitrary <m>\FF_p</m>-algebras.
+        Concretely,
+        <me>
+          R_{\perf} = \colim(R \stackrel{\phi}{\to} R \stackrel{\phi}{\to} R \to \cdots).
+        </me>
+        Now suppose that <m>R</m> is an algebra over a perfect field <m>k</m> of characteristic <m>p</m>. Let <m>R^{(1)} \to R</m> be the relative 
+        Frobenius map; then the induced map <m>(R^{(1)})_{\perf} \to R_{\perf}</m> is an isomorphism. See also <xref ref="exer-universal-homeomomorphism"/>.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        A fundamental theorem of Kunz (se <xref ref="bib-Stacks"/>, tag 0EC0) asserts that a noetherian <m>\FF_p</m>-algebra is regular if and only if
+        its Frobenius map is flat. (As a reminder, if <m>R</m> is a finite type <m>k</m>-algebra for some perfect field <m>k</m> of characteristic <m>p</m>,
+        then <m>R</m> is regular if and only if it is a smooth <m>k</m>-algebra; see <xref ref="bib-Stacks"/>, tag 00TQ.)
+        Since flatness is preserved by colimits, we see that if <m>R</m> is a noetherian regular <m>\FF_p</m>-algebra, then <m>R \to R_{\perf}</m> is flat.
+      </p>
+    </remark>
+    <p>
+      The following can be seen as another instance of the same phenomenon that gives rise to the vanishing of the cotangent complex for a morphism
+      of perfect rings in characteristic <m>p</m> (as in the proof of <xref ref="lem-maps-from-Witt-rings"/>).
+    </p>
+    <remark>
+      <p>
+        For any ring map <m>k \to R</m>, 
+      </p>
+    </remark>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>R</m> be a <m>k</m>-algebra for some perfect field <m>k</m> of characteristic <m>p</m>.
+          Then the projection <m>\dR_{R/k} \to R</m> induces an isomorphism of
+          <me>
+            \dR_{R/k,\perf} = \colim(\dR_{R/k} \stackrel{\phi_R} \dR_{R/k} \stackrel{\phi_R} \cdots)
+          </me>
+          with <m>R_{\perf}</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Suppose first that <m>R</m> is a polynomial ring over <m>k</m> (in any number of variables). In this case, it will suffice to check that for each <m>i \gt 0</m>,
+          <me>
+            \colim(\Omega^i_{R/k} \stackrel{\phi_R}{\to} \Omega^i_{R/k} \stackrel{\phi_R}{\to} \cdots)
+          </me>
+          vanishes. This follows from the fact that Frobenius kills differential forms: in degree 1 we have
+          <me>
+            \phi_R(x\,dy) = x^p d(y^p) = px^p y^{p-1} dy = 0
+          </me>
+          and similarly in higher degrees.
+        </p>
+        <p>
+          To treat the general case, use the fact that every <m>k</m>-algebra is a quotient of a polynomial algebra and a (co)simplicial argument.
+        </p>
+      </proof>
+    </proposition>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>R</m> be a <m>k</m>-algebra for some perfect field <m>k</m> of characteristic <m>p</m>, and let <m>(A,I)</m> be the prism <m>(W(k), p)</m>.
+          Then the colimit
+          <me>
+            \overline{\Prism}^{\op}_{R/A,\perf} = \colim(\overline{\Prism}_{R/A}^{\op} \stackrel{\phi_R}{\to} \overline{\Prism}_{R/A}^{\op} \stackrel{\phi_R}{\to} \cdots)^{\wedge}
+          </me>
+          is concentrated in degree <m>0</m>, where it coincides with <m>R_{\perf}</m> (as a <m>k</m>-algebra).
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-course"/>, Lecture XIII, Proposition 1.6.
+        </p>
+      </proof>
+    </proposition>
+    <corollary>
+      <statement>
+        <p>
+          Let <m>R</m> be a <m>k</m>-algebra for some perfect field <m>k</m> of characteristic <m>p</m>, and let <m>(A,I)</m> be the prism <m>(W(k), p)</m>.
+          Then the <m>p</m>-completed colimit
+          <me>
+            \Prism^{\op}_{R/A,\perf} = \colim(\Prism_{R/A}^{\op} \stackrel{\phi_R}{\to} \Prism_{R/A}^{\op} \stackrel{\phi_R}{\to} \cdots)^{\wedge} \in D(\ZZ_p)
+          </me>
+          is concentrated in degree <m>0</m>, where it coincides with <m>W(R_{\perf})</m> (as a <m>W(k)</m>-algebra).
+        </p>
+      </statement>
+    </corollary>
+    <theorem>
+      <title>Andre flatness lemma</title>
+      <statement>
+        Let <m>R</m> be a lens. Then there exists a <m>p</m>-completely faithfully flat morphism <m>R \to S</m> of lenses such that <m>S</m> is
+        <term>absolutely integrally closed</term>, meaning that every monic polynomial over <m>S</m> has a root. In particular, every element of <m>S</m>
+        admits a compatible system of <m>p</m>-power roots.
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-Scholze"/>, Theorem 7.12.
+        </p>
+      </proof>
+    </theorem>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-universal-homeomomorphism">
+      <statement>
+        <p>
+          Let <m>R \to S</m> be a morphism of <m>\FF_p</m>-algebras such that the corresponding map <m>\Spec S \to \Spec R</m> is a universal homeomorphism.
+          Show that the induced map <m>\colim_\phi R \to \colim_\phi S</m> of coperfections is an isomorphism.
+        </p>
+      </statement>
+    </exercise>
+  </exercises>
+</section>

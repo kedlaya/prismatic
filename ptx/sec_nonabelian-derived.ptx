@@ -1,0 +1,394 @@
+﻿<section xml:id="sec_nonabelian-derived">
+  <title>Nonabelian derived functors</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-course"/>, lecture VII. The underlying reference is <xref ref="bib-Quillen-homotopical"/>;
+        the definitive modern treatment is <xref ref="bib-Lurie-higher-topos"/>, section 5.5.8.
+      </p>
+    </paragraphs>
+    <p>
+      In this section, we describe a natural analogue of <term>derived functors</term> for categories which are not necessarily additive.
+      Putting this theory in its proper level of generality involves addressing a <em>lot</em> of technicalities which we elide here.
+    </p>
+    <p>
+      For <m>A \in \Ring</m>, let <m>\Ring_A</m> be the arrow category (i.e., commutative <m>A</m>-algebras).
+    </p>
+  </introduction>
+  <subsection>
+    <title>Simplicial resolutions</title>
+    <p>
+      To introduce this section, we start with a motivating remark.
+    </p>
+    <remark>
+      <p>
+        Suppose one is trying to write down a functor <m>F</m> from <m>\Mod_A</m> to some abelian category 
+        which is right exact and commutes with filtered colimits.
+        Then it is enough to specify the values of <m>F</m> on arbitrary <em>finite free</em> <m>A</m>-modules: every module is a cokernel of a morphism
+        between two free modules, each of which is itself a filtered colimit of finite free modules.
+        Furthermore, using projective resolutions by free modules, we can compute the left derived functors of <m>F</m> from this.
+      </p>
+      <p>
+        The construction of nonabelian derived functors allows us to do something similar starting from the category <m>\Ring_A</m>.
+        The free objects in this case (i.e., the essential image of the forgetful functor to sets) are polynomial rings.
+        In order to replace modules to rings, we need to reconceptualize some familiar constructions without reference to the additive structure of the category
+        <m>\Mod_A</m>; for example, in <m>\Mod_A</m> we can form the equalizer of two maps <m>f_1, f_2: M \to N</m> as the kernel of the difference <m>f_1 - f_2</m>,
+        but now we need to forgo this shortcut.
+      </p>
+      <p>
+        The resulting process amounts to the transition from <term>homological algebra</term> to 
+        <term>homotopical algebra</term> in the sense of Quillen <xref ref="bib-Quillen-homotopical"/>.
+        Nowadays this is usually done in the framework of <m>\infty</m>-categories, as in <xref ref="bib-Lurie-higher-topos"/>;
+        we will keep ourselves in a very limited part of the picture so as to keep the prerequities for the discussion under control.
+      </p>
+    </remark>
+    <p>
+      To build on the previous remark, we recall the definition of <term>simplicial objects</term> from <xref ref="def-simplicial-object"/>, then give a simplicial analogue
+      of a <term>resolution</term> in homological algebra.
+    </p>
+    <definition>
+      <p>
+        Let <m>\Delta</m> be the category of finite ordered sets (<xref ref="def-category-finite-ordered-sets"/>).
+        Recall (from <xref ref="def-simplicial-object"/>) that for <m>\calC</m> an arbitrary category, a
+        <term>simplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U: \Delta^{\op} \to \calC</m>,
+        while a <term>cosimplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U: \Delta \to \calC</m>.
+      </p>
+      <p>
+        A <term>simplicial resolution</term> of an object <m>X \in \calC</m> is a simplicial object <m>U: \Delta^{\op} \to \calC</m>
+        with colimit <m>X</m>. A <term>cosimplicial resolution</term> of <m>X</m> is a cosimplicial object <m>U: \Delta \to \calC</m>
+        with limit <m>X</m>.
+      </p>
+    </definition>
+    <p>
+      Let us see how the previous construction, specialized to the case of modules over a ring, gives resolutions in the homological sense.
+    </p>
+    <p>
+      We describe a trivial example which is not quite so trivial after all.
+    </p>
+    <definition>
+      <p>
+        For any object <m>X \in \calC</m>, the simplicial object <m>U</m> with <m>U([n]) = X</m> for all <m>n</m>, is a resolution of <m>X</m>.
+        We call this the <term>trivial resolution</term> of <m>X</m>.
+      </p>
+    </definition>
+    <example xml:id="exa-trivial-resolution-modules">
+      <p>
+        Take <m>\calC = \Mod_A</m> with <m>A \in \Ring</m>. Then the trivial resolution of <m>M</m> has associated complex
+        <me>
+          \cdots M \stackrel{0}{\to} M \stackrel{1}{\to} M \stackrel{0}{\to} M
+        </me>
+        which is homotopy equivalent to <m>M[0]</m>.
+        Compare this to the proof of <xref ref="lem-prismatic-double-complex"/>.
+      </p>
+    </example>
+    <example xml:id="exa-simplicial-homological-resolution">
+      <p>
+        Take <m>\calC = \Mod_A</m> for some <m>A \in \Ring</m>.
+        Let <m>U</m> be a cosimplicial resolution of <m>M \in \calC</m>. Then the associated complex <m>U([\bullet])</m> (<xref ref="def-simplicial-object"/>)
+        is a resolution of <m>M</m>; that is, <m>M[0] \to U([\bullet])</m> is a quasi-isomorphism.
+      </p>
+    </example>
+    <p>
+      When working with resolutions, we would like to be able to compare these, in the same way that we can show that any two injective/projective resolutions
+      of an object of <m>\Mod_A</m> are homotopy equivalent. Here is the key definition.
+    </p>
+    <definition xml:id="def-homotopy-equivalence">
+      <p>
+        Suppose that the category <m>\calC</m> has finite coproducts. Let <m>U,V</m> be simplicial objects of <m>\calC</m> and let <m>a,b: U \to V</m> be two morphisms.
+        A <term>homotopy</term> from <m>a</m> to <m>b</m> is a morphism <m>h: U \times \Delta([1]) \to V</m> such that <m>a = h \circ e_0</m> and <m>b = h \circ e_1</m>.
+        We say that <m>a</m> and <m>b</m> are <term>homotopic</term> if they belong to the same equivalence class under the equivalence relation generated by homotopies.
+        We say that a single morphism <m>a: U \to V</m> is a <term>homotopy equivalence</term> if there exists a second morphism <m>b: V \to U</m>
+        such that <m>b \circ a</m> is homotopic to <m>\id_U</m> and <m>a \circ b</m> is homotopic to <m>\id_V</m>.
+      </p>
+    </definition>
+    <example>
+      <p>
+        Take <m>\calC = \Mod_A</m> with <m>A \in \Ring</m>. Then a homotopy between morphisms <m>a,b: U \to V</m> of simplicial objects gives rise to a homotopy
+        of the corresponding complexes in <m>\Comp(A)</m>. In particular, if two simplicial objects <m>U,V</m> are homotopy equivalent, then the corresponding objects in <m>K(A)</m> are isomorphic.
+      </p>
+    </example>
+    <remark>
+      <p>
+        Just as in homological algebra, one would like to work in the derived category to enforce that any object is <q>interchangeable</q> with a sufficiently nice resolution,
+        in the simplicial realm one wants to to replace objects with simplicial objects that are more flexible (in the sense of being <term>fibrant</term> or <term>cofibrant</term>).
+        The general story is out of scope for these notes (in part due to the need to develop robust combinatorial formalism, as in the language of <m>\infty</m>-categories,
+        to keep track of homotopy coherence);
+        here we limit ourselves to a few critical examples, such as <xref ref="exa-derived-tensor-product"/>.
+      </p>
+    </remark>
+    <example xml:id="exa-derived-tensor-product">
+      <p>
+        Let <m>A \to B</m> be a morphism in <m>\Ring</m>. Choose a simplicial resolution <m>U</m> of <m>B</m> by free <m>A</m>-algebras
+        (e.g., the standard resolution; see <xref ref="exa-standard-resolution-rings"/>.
+        Then for any morphism <m>A \to C</m> of rings, we may define the <term>simplicial tensor product</term> <m>B \otimes_A C</m> to be the simplicial ring
+        <term>U \otimes_A C</term>; any two choices of <m>U</m> will give rise to homotopy equivalent objects. 
+        Similarly, we may define the simplicial tensor product of two simplicial <m>A</m>-algebras.
+      </p>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Standard resolution</title>
+    <p>
+      The following construction gives a <em>functorial</em> construction of simplicial resolutions; see <xref ref="bib-Stacks"/>, tag 08N8.
+    </p>
+    <definition xml:id="def-standard-resolution">
+      <p>
+        Let <m>V: \calC_1 \to \calC_2</m> be a functor with a left adjoint <m>U: \calC_2 \to \calC_1</m>.
+        By definition, 
+        this means we have natural transformations
+        <me>
+          \eta: \id_{C_2} \to V \circ U, \qquad \epsilon: U \circ V \to \id_{C_1}
+        </me>
+        (the <term>unit</term> and <term>counit</term>).
+      </p>
+      <p>
+        For <m>n \geq 0</m>, let <m>X_n</m> be the <m>(n+1)</m>-fold composition of <m>U \circ V</m>,
+        with <m>X_{-1} = \id_{C_1}</m>; note that we have a natural identification <m>X_{n+m+1} = X_n \circ X_m</m>.
+        Define the natural transformations
+        <me>
+          U(\delta_j^n) = \id_{X_{j-1}} \star \epsilon \star \id_{X_{n-j-1}}, \qquad U(\sigma_j^n) = \id_{X_{j-1} \circ V} \star \eta \star \id_{U \circ X_{n-j-1}}.
+        </me>
+        (writing <m>\star</m> for composition of natural transformations to distinguish it from <m>\circ</m> for composition of functors).
+      </p>
+      <p>
+        By <xref ref="lem-standard-resolution"/>, for any <m>Y \in \calC_1</m>, the objects <m>X_n(Y)</m> form a simplicial resolution of <m>Y</m>.
+        We call this the <term>standard resolution</term> of <m>Y</m> with respect to the functor <m>V</m>.
+      </p>
+    </definition>
+    <lemma xml:id="lem-standard-resolution">
+      <statement>
+        <p>
+          In <xref ref="def-standard-resolution"/>, <m>X</m> is a simplicial resolution of the constant functor <m>\id_{\calC_1}</m> via <m>\epsilon</m>.
+          Consequently, for any <m>Y \in \calC</m>, the objects <m>X_n(Y)</m> form a simplicial resolution of <m>Y</m> in <m>\calC_1</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tag 08NC.
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      For example, this construction can be used to construct functorial projective resolutions of modules over a ring.
+    </p>
+    <example xml:id="exa-standard-resolution-modules">
+      <p>
+        In <xref ref="def-standard-resolution"/>, take <m>V</m> to be the forgetful functor <m>\Mod_A \to \Set</m> for some <m>A \in \Ring</m>;
+        we may then take <m>U</m> to be the functor taking <m>S \in \Set</m> to the free <m>A</m>-module <m>A^S</m>. For <m>M \in \Mod_A</m>, 
+        we obtain a simplicial resolution <m>P_n</m> with <m>P_{-1} = M</m> and <m>P_{n+1} = A^{P_n}</m> for <m>n \geq -1</m>.
+        This in particular gives rise to a projective resolution of <m>M</m> using the dual construction of the one in <xref ref="def-simplicial-object"/>.
+      </p>
+    </example>
+    <p>
+      Here is the natural analogue for algebras over a ring.
+    </p>
+    <example xml:id="exa-standard-resolution-rings">
+      <p>
+        In <xref ref="def-standard-resolution"/>, take <m>V</m> to be the forgetful functor <m>\Ring_A \to \Set</m> for some <m>A \in \Ring</m>;
+        we may then take <m>U</m> to be the functor taking <m>S \in \Set</m> to the free polynomial ring <m>A[S]</m>. For <m>B \in \Ring_A</m>, 
+        we obtain a simplicial resolution <m>P_n</m> with <m>P_{-1} = B</m> and <m>P_{n+1} = A[P_n]</m> for <m>n \geq -1</m>.
+      </p>
+    </example>
+    <lemma xml:id="lem-resolution-homotopy-equivalence">
+      <statement>
+        <p>
+          In <xref ref="lem-standard-resolution"/>, the maps
+          <me>
+            \id_V \star \epsilon: V \circ X \to V, \qquad \epsilon \star \id_U: X \circ U \to U
+          </me>
+          are homotopy equivalences.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tag 08ND.
+        </p>
+      </proof>
+    </lemma>
+    <corollary>
+      <statement>
+        <p>
+          The standard resolution of any object in a category is homotopy equivalent to the trivial resolution.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tag 08NE.
+        </p>
+      </proof>
+    </corollary>
+    <remark>
+      <p>
+        It should be stressed that while the standard resolution is a <q>natural</q> (and functorial) way to construct simplicial resolutions, the resulting resolutions are
+        not <em>preferred</em> in any mathematical sense. In particular, if one starts performing operations one quickly ends up with simplicial resolutions that are not
+        the standard ones but are homotopy equivalent, and the distinction will carry no value (if anything it is more of a hindrance).
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Nonabelian derived functors</title>
+    <p>
+      We now ready to define an analogue of derived functors for algebras over a given ring. For this, the following definition will be useful.
+    </p>
+    <definition xml:id="def-left-Kan-extension">
+      <p>
+        Given covariant functors <m>F: \calC_1 \to \calC_2, G: \calC_1 \to \calC_3</m>, the <term>left Kan extension</term> of <m>G</m> along <m>F</m> consists of a covariant functor
+        <m>L: \calC_2 \to \calC_3</m> and a natural transformation <m>\alpha: G \to L \circ F</m> which are universal for this property: that is,
+        if <m>M: \calC_2 \to \calC_3</m> is another functor and <m>\beta: G \to M \circ F</m>, then there is a unique natural transformation <m>\sigma: L \to M</m>
+        making the second diagram in <xref ref="fig-left-Kan-extension"/> commute. As usual with a definition via a universal property, the use of the definite
+        article is justified by the observation that any two objects satisfying the definition are uniquely isomorphic.
+      </p>
+      <figure xml:id="fig-left-Kan-extension">
+        <image width="50%">
+          <latex-image>
+            \xymatrix{
+              \calC_1 \ar^{F}[r] \ar^{G}[rd] &amp; \calC_2 \ar@{-->}^{L}[d] \\
+              &amp; \calC_3
+            }
+          </latex-image>
+          <latex-image>
+            \xymatrix{
+              G \ar^{\alpha}[r] \ar^{\beta}[rd] &amp; L \circ F \ar@{-->}^{\sigma \circ F}[d]\\
+              &amp; M \circ F
+            }
+          </latex-image>
+        </image>
+      </figure>
+    </definition>
+    <p>
+      Here is the motivating example.
+    </p>
+    <example xml:id="exa-derived-functor-as-left-Kan">
+      <p>
+        Let <m>G: \Mod_A \to \calA</m> be a right exact covariant functor to an abelian category.
+        Let <m>\calC</m> be the subcategory of <m>K^-(A)</m> consisting of complexes of projective modules.
+        Using the fact that simplicial resolutions by projective modules give rise to projective resolutions (<xref ref="exa-standard-resolution-modules"/>),
+        we may check that the usual left derived functor of <m>G</m> is the left Kan extension of <m>G: \calC \to K^-(\calA)</m>
+        along the inclusion <m>\calC \to K^-(A)</m>. The point is that the formation of projective resolutions corresponds to 
+        replacing general objects of <m>K^-(A)</m> by <term>cofibrant objects</term>.
+      </p>
+    </example>
+    <p>
+      With <xref ref="exa-derived-functor-as-left-Kan"/> in mind, it is now clear how to proceed with modules replaced by rings.
+    </p>
+    <definition>
+      <p>
+        Let <m>\Poly_A</m> be the full subcategory of <m>\Ring_A</m> consisting of polynomial rings over <m>A</m> in finitely many variables
+        (i.e., the essential image of the restriction to finite sets of the left adjoint of the forgetful functor from <m>\Ring_A</m> to sets).
+        Note that objects in <m>\Poly_A</m> do <em>not</em> come with a specified choice of polynomial generators, and so morphisms in <m>\Poly_A</m> are not required
+        to respect these generators.
+      </p>
+    </definition>
+    <proposition xml:id="prop-left-derived-quillen">
+      <statement>
+        <p>
+          For <m>A \in \Ring</m> and <m>F: \Poly_A \to \Comp(\Ab)</m> a covariant functor, the functor <m>F</m> admits a left Kan extension <m>LF: \Ring_A \to \Comp(\Ab)</m>
+          along the inclusion <m>\Poly_A \to \Ring_A</m>, which moreover has the following properties.
+          (We call <m>LF</m> the <term>left derived functor</term> of <m>F</m>.)
+        </p>
+        <ol>
+          <li>
+            <m>LF</m> commutes with filtered colimits. In particular, if <m>A[S]</m> is a polynomial algebra on a possibly infinite set <m>S</m>,
+            we can compute <m>LF(A[S])</m> as the colimit of <m>F(A[T])</m> over all finite subsets <m>T</m> of <m>S</m>.
+          </li>
+          <li>
+            Given a simplicial resolution <m>P_\bullet \to B</m> of an object <m>B \in \Ring_A</m>, <m>LF(B)</m> is the colimit of <m>LF(P_\bullet)</m>.
+            (For example, this means we can evaluate <m>LF</m> using the standard resolution, as per <xref ref="exa-standard-resolution-rings"/>.)
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          See the references given in <xref ref="bib-Bhatt-course"/>, lecture VII, section 1.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+  <subsection xml:id="subsec_cotangent-complex">
+    <title>The cotangent complex</title>
+    <p>
+      We illustrate the formalism with Illusie's construction of the <q>derived cotangent bundle</q> 
+      <xref ref="bib-Illusie-cotangent1"/>, <xref ref="bib-Illusie-cotangent2"/>.
+    </p>
+    <definition>
+      <p>
+        For <m>A \in \Ring</m>, the <term>cotangent complex</term> is the functor <m>L_{\bullet/A}: \Ring_A \to D(A)</m> taking
+        obtained by taking the left derived functor of the functor <m>\Poly_A \to \Comp(A)</m> given by <m>B \mapsto \Omega^1_{B/A}[0]</m>.
+        It is straightforward to check that in fact <m>L_{B/A} \in D(B)</m> and that <m>L_{B/A}</m> is concentrated in degrees <m>\leq 0</m>.
+      </p>
+      <p>
+        Note that it also makes sense to talk about <m>L_{B/A}</m> when <m>B</m> is itself a simplicial object in <m>\Ring_A</m>. This will be useful when
+        stating the base change property in <xref ref="prop-cotangent-complex"/>.
+      </p>
+    </definition>
+   <proposition xml:id="prop-cotangent-complex">
+     <statement>
+       <p>
+         For <m>A \to B</m> a morphism in <m>\Ring</m>, the cotangent complex <m>L_{B/A} \in D(B)</m> has the following properties.
+         (These also hold when <m>B</m> is a simplicial object in <m>\Ring_A</m>.)
+       </p>
+      <ol>
+        <li>
+          <p>
+            We have a natural (in <m>B</m>) isomorphism <m>H^0(L_{B/A}) \cong \Omega^1_{B/A}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            If <m>A \to B</m> is smooth, then <m>L_{B/A} \cong \Omega^1_{B/A}[0]</m>. In particular, if <m>A \to B</m> is etale then
+            <m>L_{B/A} \cong 0</m>, but not conversely; see for example <xref ref="exer-cotangent-complex-perfect"/>.
+          </p>
+        </li>
+        <li>
+          <p>
+            For any morphisms <m>A \to B \to C</m>, we have a distinguished triangle in <m>D(C)</m>
+            <men xml:id="eq-cotangent-complex-sequence">
+              L_{B/A} \otimes^L_B C \to L_{C/A} \to L_{C/B}.
+            </men>
+            This extends the usual low-degree exact sequence for differentials.
+          </p>
+        </li>
+        <li>
+          <p>
+            For any surjective morphism <m>A \to B</m> with kernel <m>I</m>, we have <m>H^{-1}(L_{B/A}) \cong I/I^2</m>. Moreover, if <m>I</m> is generated by a regular sequence,
+            then <m>H^i(L_{B/A}) = 0</m> for <m>i \neq -1</m>. (This generalizes the assertion that a closed immersion of schemes is unramified.)
+          </p>
+        </li>
+        <li>
+          <p>
+            For any morphisms <m>A \to B, A \to C</m>, we have a natural base change isomorphism
+            <me>
+              L_{C/A} \otimes_A^L B \cong L_{C \otimes_A^L B/B}
+            </me>
+            where <m>C \otimes_A^L B</m> is to be interpreted as a simplicial ring as per <xref ref="exa-derived-tensor-product"/>. 
+            We can replace <m>C \otimes_A^L B</m> with <m>C \otimes_A B</m> if one of <m>A \to B</m>
+            or <m>A \to C</m> is flat, or more generally if <m>A \to B</m> and <m>A \to C</m> are <term>Tor independent</term> (meaning that <m>\Tor_i^A(B,C) = 0</m> 
+            for all <m>i \gt 0</m>).
+          </p>
+        </li>
+      </ol>
+     </statement>
+     <proof>
+       <p>
+         See <xref ref="bib-Stacks"/>, tag 08P5.
+       </p>
+     </proof>
+   </proposition>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-cotangent-complex-perfect">
+      <statement>
+        <p>
+          Let <m>A \to B</m> be a morphism of perfect <m>\FF_p</m>-algebras. Show that <m>L_{A/B} \cong 0</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          On one hand, <m>\phi_B</m> evidently induces an isomorphism on <m>L_{A/B}</m>.
+          On the other hand, the induced map is zero when <m>B</m> is a polynomial ring over <m>A</m>.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
+</section>

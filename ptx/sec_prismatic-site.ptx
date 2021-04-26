@@ -1,0 +1,457 @@
+﻿<section xml:id="sec_prismatic-site">
+  <title>The prismatic site</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-course"/>, lecture V.
+      </p>
+    </paragraphs>
+    <p>
+      In this section, we introduce the <term>prismatic site</term> of an affine scheme in the sense of <xref ref="bib-Bhatt-course"/>.
+      This should perhaps be called the <term>naive prismatic site</term> because it does not give correct answers when one drops the affine hypothesis; see <xref ref="rmk-naive-prismatic-site"/>.
+    </p>
+    <p>
+      Note that while we make some basic definitions in a rather expansive degree of generality, we will be unable to compute anything except
+      under some smoothness hypotheses. We impose those starting in <xref ref="sec_hodge-tate"/>.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Indiscrete Grothendieck topologies</title>
+    <definition>
+      <p>
+        For a topological space <m>X</m>, let <m>|X|</m> be the (small) category consisting of the open subsets of <m>X</m>, where the set of morphisms
+        from <m>U</m> to <m>V</m> is a singleton set if <m>U \subseteq V</m> and 0 otherwise.
+      </p>
+      <p>
+        A presheaf on <m>X</m> valued in some category <m>\calC</m> is nothing but a contravariant functor <m>|X| \to \calC</m>.
+        A presheaf <m>F</m> is a sheaf if and only <m>F</m> preserves the colimit of the diagram
+        <m>
+          \prod_{i,j \in I} V_i \cap V_j \rightrightarrows \prod_i V_i \to U
+        </m>
+        for any covering of an open subset <m>U</m> by open subsets <m>\{V_i\}_{i \in I}</m>.
+        (Since the functor is contravariant, that means we get a limit in <m>\calC</m>.)
+      </p>
+    </definition>
+    <remark>
+      <p>
+        Building upon this idea, one can define the notion of a <term>Grothendieck topology</term> on any category; the key point is to specify which families
+        of morphisms to a given target are <term>coverings</term> of that target, and then the sheaf property on a presheaf is formulated in terms of diagrams as above.
+        (A <term>site</term> means a category equipped with a Grothendieck topology.)
+      </p>
+      <p>
+        To deal with the naive prismatic site, we only need the case of an <term>indiscrete</term> (or <term>chaotic</term>) Grothendieck topology, in which <em>no</em> families of morphisms
+        are coverings except isomorphisms, and there is consequently no distinction between presheaves and sheaves. 
+        What makes this interesting is that we do not assume that our category has a final object!
+      </p>
+    </remark>
+    <definition>
+      <p>
+        Let <m>\calC</m> be a small category; we can then form the category <m>\Pshv(\calC)</m> of presheaves of abelian groups on <m>\calC</m>.
+        The functor <m>\Pshv(\calC) \to \Ab</m> given by
+        <me>
+          F \mapsto H^0(\calC, F) = \lim_{X \in \calC} F(X)
+        </me>
+        is left exact; we can then form its derived functor <m>R\Gamma(C, \bullet)</m>.
+      </p>
+    </definition>
+    <example xml:id="exa-indiscrete-topology-on-poset">
+      <p>
+        Let <m>\calC</m> be the category <m>\{0 \to 1 \to 2 \to \cdots\}</m>; that is, the objects are nonnegative integers, and the morphisms from <m>i</m> to <m>j</m>
+        form a singleton set if <m>i \leq j</m> and the empty set otherwise. In this case, we have
+        <me>
+          H^0(\calC, F) = \lim_n F(n), \qquad H^1(\calC, F) = R^1 \lim_n F(n)
+        </me>
+        and <m>H^i(\calC, F) = 0</m> for all <m>i \geq 2</m> (see <xref ref="exer-indiscrete-topology-on-poset"/>).
+      </p>
+    </example>
+    <p>
+      While the indiscrete Grothendieck topology on a small category becomes trivial if the category admits a final object (i.e., an object to which every other object maps
+      uniquely), we will be interested in a slightly less rigid situation where the topology becomes both interesting and computable.
+    </p>
+    <definition>
+      <p>
+        Recall that a <term>final object</term> in a category <m>\calC</m> is an object <m>X \in \calC</m> such that <m>\Hom_{\calC}(Y, X)</m> is a singleton set for every
+        <m>Y \in \calC</m>. By contrast, a <term>weakly final object</term> in <m>\calC</m> is an object <m>X \in \calC</m> such that <m>\Hom_{\calC}(Y, X) \neq \emptyset</m>
+        for every <m>Y \in \calC</m>. (That is, the natural map from the representable functor <m>h_X</m> to the forgetful functor <m>\calC \to \Set</m> is a bijection
+        if <m>X</m> is final, but only surjective if <m>X</m> is weakly final.)
+      </p>
+    </definition>
+    <example>
+      <p>
+        Let <m>\calC</m> be the category of algebraic field extensions of a fixed field <m>F</m>, viewed as a full subcategory of <m>\Ring_F</m>. Then every algebraic closure of 
+        <m>F</m> is a weakly final object of <m>\calC</m>, but not a final object unless <m>F</m> is itself separably closed.
+      </p>
+    </example>
+    <lemma xml:id="lem-cech-cohomology-indiscrete">
+      <title>Čech-Alexander resolution</title>
+      <statement>
+        <p>
+          Let <m>\calC</m> be a small category admitting finite nonempty products and containing a weakly final object <m>X</m>.
+          Then for any <m>F \in \Pshv(\calC)</m>,
+          <m>R\Gamma(\calC, F)</m> is computed by applying <m>F</m> to the <term>Čech nerve</term> of <m>X</m> (see <xref ref="exa-cech-nerve"/>); that is, it is given by the <term>Čech-Alexander complex</term>
+          <men xml:id="eq-cohomology-of-cech-nerve">
+            0 \to F(X) \to F(X \times X) \to F(X \times X \times X) \to \cdots
+          </men>
+          in which the differentials are given by alternating sums as per <xref ref="def-simplicial-object"/>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Using the fact that the map from <m>h_X</m> to the forgetful functor is a surjection (and that <m>h_{X^n}</m> is a sheaf for all <m>n</m>
+          because we are using the indiscrete topology), this reduces to the general Čech spectral sequence for a (not necessarily indiscrete)
+          Grothendieck topology. See <xref ref="bib-Stacks"/>, tag 07JM.
+        </p>
+      </proof>
+    </lemma>
+  </subsection>
+  <subsection>
+    <title>A word on (co)simplicial objects</title>
+    <p>
+      In preparation to use this language more extensively later, we introduce a bit of terminology that relates naturally to the previous discussion. 
+      Our conventions on simplicial sets and objects are taken to match <xref ref="bib-Stacks"/>, tag 0162.
+    </p>
+    <definition xml:id="def-category-finite-ordered-sets">
+      <p>
+        Let <m>\Delta</m> be the <term>category of finite ordered sets</term>. That is, the objects of <m>\Delta</m> are the sets
+        <m>[n] = \{0,\dots,n\}</m> for <m>n = 0,1,\dots</m> and a morphism <m>f: [n] \to [m]</m> is a nondecreasing map of sets (i.e.,
+        <m>i \leq j</m> implies <m>f(i) \leq f(j)</m>).
+      </p>
+      <p>
+        For <m>n \geq 1</m> and <m>0 \leq j \leq n</m>, let <m>\delta_j^n: [n-1] \to [n]</m> be the injective morphism in <m>\Delta</m>
+        with <m>(\delta_j^n)^{-1}(\{j\}) = \emptyset</m>.
+        For <m>n \geq 0</m> and <m>0 \leq j \leq n</m>,
+        let <m>\sigma_j^n: [n+1] \to [n]</m> be the surjective morphism in <m>\Delta</m> 
+        with <m>(\sigma_j^n)^{-1}(\{j\}) = \{j,j+1\}</m>.
+        Every morphism in <m>\Delta</m> can be factored into morphisms of these forms; see <xref ref="exer-factor-order-preserving"/>.
+      </p>
+    </definition>
+    <definition xml:id="def-simplicial-object">
+      <p>
+        A <term>simplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U: \Delta^{\op} \to \calC</m>.
+        A <term>cosimplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U: \Delta \to \calC</m>
+        (i.e., a simplicial object of <m>\calC^{\op}</m>). See <xref ref="fig-simplicial-object"/> and <xref ref="fig-cosimplicial-object"/> for graphical representations of simplicial and cosimplicial objects, respectively.
+      </p>
+      <p>
+        We will frequently consider <term>(co)simplicial abelian groups</term>, <term>(co)simplicial (commutative) rings</term>,
+        and <term>(co)simplicial modules</term> over a (co)simplicial ring.
+        Any cosimplicial abelian group <m>U</m> gives rise to a complex in which the differential are alternating sums of the maps <m>\delta_j^n</m>:
+        <me>
+          d^n = \sum_{j=0}^{n+1} (-1)^j U(\delta_j^{n+1}).
+        </me>
+      </p>
+    </definition>
+      <figure xml:id="fig-simplicial-object">
+        <caption>A simplicial object.</caption>
+        <image width="75%">
+          <latex-image>
+            \xymatrix{
+              U([0]) \ar[r]^-{\sigma_0^0} &amp;
+              U([1]) \ar@&lt;3ex&gt;[l]_-{\delta_0^1} \ar@&lt;-3ex&gt;[l]_-{\delta_1^1} \ar@&lt;-3ex&gt;[r]^-{\sigma_0^1} \ar@&lt;3ex&gt;[r]^-{\sigma_1^1} &amp;
+              U([2]) \ar@&lt;6ex&gt;[l]_-{\delta_0^2} \ar[l]_-{\delta_1^2} \ar@&lt;-6ex&gt;[l]_-{\delta_2^2} \cdots
+            }
+          </latex-image>
+        </image>
+      </figure>
+      <figure xml:id="fig-cosimplicial-object">
+        <caption>A cosimplicial object.</caption>
+        <image width="75%">
+          <latex-image>
+            \xymatrix{
+              U([0]) \ar@&lt;3ex&gt;[r]^-{\delta_0^1} \ar@&lt;-3ex&gt;[r]^-{\delta_1^1} &amp;
+              U([1]) \ar[l]_-{\sigma_0^0} \ar@&lt;6ex&gt;[r]^-{\delta_0^2} \ar[r]^-{\delta_1^2} \ar@&lt;-6ex&gt;[r]^-{\delta_2^2} &amp; 
+              U([2]) \ar@&lt;-3ex&gt;[l]_-{\sigma_0^1} \ar@&lt;3ex&gt;[l]_-{\sigma_1^1} \cdots
+            }
+          </latex-image>
+        </image>
+      </figure>
+    <example xml:id="exa-cech-nerve">
+      <p>
+        Suppose that the category <m>\calC</m> admits finite nonempty products. Then for any <m>X \in \calC</m>, we can make a simplicial object <m>U</m>
+        in <m>\calC</m>  by taking <m>U([n])</m> to be the product of copies of <m>X</m> indexed by the elements of <m>[n]</m>.
+        This gives the <term>Čech nerve</term> of <m>X</m>, as in <xref ref="lem-cech-cohomology-indiscrete"/>;
+        for <m>F: \calC \to \Ab</m> a contravariant functor, the complex associated to the cosimplicial abelian group <m>F(U)</m>
+        is the Čech-Alexander complex (<xref ref="lem-cech-cohomology-indiscrete"/>).
+      </p>
+    </example>
+  </subsection>
+  <subsection>
+    <title>The prismatic site and <q>oppo-site</q></title>
+    <definition xml:id="def-prismatic-oppo-site">
+      <p>
+        Let <m>(A, I)</m> be a prism with slice <m>\overline{A} = A/I</m>,
+        and let <m>R</m> be an <m>\overline{A}</m>-algebra. The <term>prismatic oppo-site</term> of <m>R</m> relative to <m>A</m>,
+        denoted <m>(R/A)^{\op}_{\Prism}</m>, will be the category in which an object consists of a morphism <m>(A,I) \to (B, IB)</m>
+        together with a morphism of <m>\overline{A}</m>-algebras <m>R \to B/IB</m>. 
+        (Recall that by <xref ref="lem-prism-rigidity"/>, for any morphism <m>(A,I) \to (B, J)</m> of prisms we must have <m>J = IB</m>.)
+        We will typically notate such an object as <m>(R \to B/IB \leftarrow B)</m> 
+        and depict such an object as a diagram as in <xref ref="fig-prismatic-site-object"/>; a morphism of objects will consist of a morphism between the corresponding diagrams.
+        Taking the opposite category yields the <term>prismatic site</term> <m>(R/A)_{\Prism}</m>.
+      </p>
+      <figure xml:id="fig-prismatic-site-object">
+        <image width="25%">
+          <latex-image>
+            \xymatrix{
+              B/IB &amp; B \ar[l]\\
+              R \ar[u] \\
+              \overline{A} = A/I \ar[u] &amp; A \ar[l] \ar[uu]
+            }
+          </latex-image>
+        </image>
+      </figure>
+    </definition>
+    <remark>
+      <p>
+        Note that the category <m>(R/A)^{\op}_{\Prism}</m> depends on the whole prism <m>(A,I)</m> and not just on the underlying ring <m>A</m>. However,
+        to keep the notation under control we leave <m>I</m> out, to be inferred from context (as in <xref ref="bib-Bhatt-course"/>).
+      </p>
+    </remark>
+    <example>
+      <p>
+        For <m>R = \overline{A}</m>, <m>(R/A)^{\op}_{\Prism}</m> is simply the category of prisms over <m>(A,I)</m>, and thus has the initial object
+        <m>(R \cong A/I \leftarrow A)</m>. That is, the prismatic site in this case has a final object, and so cohomology on it is trivial.
+      </p>
+    </example>
+    <example xml:id="exa-polynomial-test-object">
+      <p>
+        Take <m>R = \overline{A} \langle X \rangle</m> to be the classical <m>p</m>-completion of <m>\overline{A}[X]</m>.
+        In this case, the prismatic site does not have a final object; however, there are some useful test objects.
+        For instance, let <m>B</m> be the <m>(p,I)</m>-completion of <m>A[X]</m>, viewing the latter as a <m>\delta</m>-ring with <m>\delta(X) = 0</m>;
+        the isomorphism <m>B/IB \cong R</m> gives us an object of <m>(R/A)_{\Prism}</m>.
+        (Compare <xref ref="bib-Bhatt-course"/>, Lecture V, Example 2.7.)
+      </p>
+    </example>
+    <p>
+      One may generalize <xref ref="exa-polynomial-test-object"/> as follows.
+    </p>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>(A,I)</m> be a bounded prism and let <m>R</m> be a <m>p</m>-completely smooth <m>A/I</m>-algebra. Then there exists a prism
+          <m>(B,J)</m> over <m>(A,I)</m> with <m>B/IB \cong R</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Using <xref ref="rmk-W2-interpretation"/>, we may reduce the claim to <xref ref="prop-Elkik-lifting"/>.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+  <subsection>
+    <title>The case of a perfect prism</title>
+    <definition>
+      <p>
+        Let <m>(A,I)</m> be a perfect prism. Define the <term>perfect prismatic site</term> to be the subcategory of <m>(R/A)_{\Prism}</m>
+        consisting of objects of the form <m>(R \to B/IB \leftarrow B)</m> in which <m>(B, IB)</m> is a perfect prism.
+        Recall by <xref ref="thm-untilting-functor"/> that these objects are in one-to-one correspondence with lenses over <m>R</m>.
+      </p>
+    </definition>
+    <example>
+      <p>
+        Let <m>(A, I)</m> be a perfect prism. Take <m>R = \overline{A} \langle X \rangle</m> as in <xref ref="exa-polynomial-test-object"/>.
+        Take <m>S = \overline{A} \langle X^{p^{-\infty}} \rangle</m>; we then have <m>S = B/IB</m> where <m>B</m> is the <m>(p, I)</m>-completion of
+        <m>A[X^{p^{-\infty}}]</m> for the <m>\delta</m>-structure under which <m>X^{p^{-n}}</m> is <m>\delta</m>-constant for all <m>n</m>.
+        Note that <m>R \to S</m> is <m>p</m>-completely faithfully flat.
+      </p>
+    </example>
+    <remark>
+      <p>
+        If we further reduce the perfect prismatic site by considering only perfect prisms <m>(B, I)</m> in which <m>B/I</m> is <m>p</m>-normal,
+        we end up with the <term>diamond</term> of <m>R</m> in the sense of <xref ref="bib-Scholze-diamonds"/>.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Prismatic and Hodge-Tate cohomology</title>
+    <definition>
+      <p>
+        With notation as in <xref ref="def-prismatic-oppo-site"/>,
+        define the functors <m>\calO_\Prism</m> and <m>\overline{\calO}_\Prism</m> from <m>(R/A)^{\op}_{\Prism}</m> taking
+        <m>(R \to B/IB \leftarrow B)</m> to <m>B</m> and <m>B/IB</m> respectively. We will think of these as the <term>structure (pre)sheaf</term>
+        and the <term>reduced structure (pre)sheaf</term>.
+      </p>
+      <p>
+        The <term>prismatic complex</term> of <m>R</m> relative to <m>A</m> (or more precisely, relative to <m>(A/I)</m>)
+        is the object <m>\Prism_{R/A} = R\Gamma((R/A)_{\Prism}, \calO_\Prism) \in D(A)</m>.
+        This is a derived <m>(p, I)</m>-complete commutative algebra object in <m>D(A)</m>; the Frobenius action on <m>\calO_{\Prism}</m>
+        induces a <m>\phi</m>-semilinear map <m>\Prism_{R/A} \to \Prism_{R/A}</m>.
+      </p>
+      <p>
+        The <term>Hodge-Tate complex</term> of <m>R</m> relative to <m>A</m> is the object <m>\overline{\Prism}_{R/A} = R\Gamma((R/A)_\Delta, \overline{\calO}_\Delta) \in D(\overline{A})</m>.
+        By construction, we have <m>\overline{\Prism}_{R/A} = \Prism_{R/A} \otimes_A^L \overline{A}</m> (with no completion in the tensor product).
+      </p>
+    </definition>
+    <remark xml:id="rem-structure-on-prismatic">
+      <p>
+        To reiterate a point made in <xref ref="sec_overview"/>, the objects <m>\Prism_{R/A}</m> and <m>\overline{\Prism}_{R/A}</m> are by their nature intrinsic
+        only in <m>D(A)</m> and <m>D(\overline{A})</m>, respectively; they do not come with distinguished representations as complexes.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>More on the prismatic site</title>
+    <p>
+      We now verify the properties of the prismatic site needed in order to compute cohomology on it via the Čech resolution
+      (<xref ref="lem-cech-cohomology-indiscrete"/>).
+    </p>
+    <lemma xml:id="lem-adjoint-delta-rings-to-prisms">
+      <statement>
+        <p>
+          Let <m>(A,I)</m> be a prism. Then the forgetful functor from prisms over <m>(A,I)</m> to <m>\delta</m>-pairs over <m>(A,I)</m>
+          admits a left adjoint (the <term>prismatic envelope</term>).
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We may check this locally on <m>A</m>, so by <xref ref="lem-ideal-locally-distinguished"/> we may assume that <m>I</m> is principal
+          generated by a distinguished element <m>d</m>.
+          Let <m>(A, I) \to (B, J)</m> be a morphism of prisms. 
+          Let <m>B'</m> be the free <m>\delta</m>-ring over <m>A</m> in the generators
+          <m>x/d</m> for <m>x \in J</m>. Let <m>B_1</m> be the derived <m>(p,d)</m>-completion of <m>B</m> (viewed as a <m>\delta</m>-ring using
+          <xref ref="exer-derived-completion-delta"/>). If <m>B_1</m> is <m>d</m>-torsion-free, then <m>(B_1, dB_1)</m> has the desired universal property.
+          Otherwise, we transfinitely iterate the operations of taking the maximal <m>d</m>-torsion-free quotient and taking the derived
+          <m>(p,d)</m>-completion; this terminates because a countably filtered colimit of derived <m>(p,d)</m>-complete rings is again
+          derived <m>(p,d)</m>-complete (<xref ref="rmk-derived-filtered-colimits"/>), so we can stop taking the completions once we get to an uncountable ordinal.
+        </p>
+      </proof>
+    </lemma>
+    <remark>
+      <p>
+        The proof of <xref ref="lem-adjoint-delta-rings-to-prisms"/> gives very little insight into the structure of the resulting objects.
+        See <xref ref="lem-crystalline-weakly-final"/> for an example where we can make this construction explicit.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        For some purposes, it is more natural to modify the definition of a prism to replace the ideal <m>I</m> with a <q>virtual Cartier divisor</q>, to provide
+        some missing stability under base change. In this context <xref ref="lem-adjoint-delta-rings-to-prisms"/> becomes much more straightforward, as the issue
+        with taking torsion-free quotients becomes irrelevant.
+      </p>
+    </remark>
+    <lemma>
+      <statement>
+        <p>
+        Let <m>(A, I)</m> be a prism with slice <m>\overline{A} = A/I</m>, and let <m>R</m> be an <m>\overline{A}</m>-algebra.
+        Then the category <m>(R/A)_{\Prism}</m> admits finite nonempty products.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          It is equivalent to show that <m>(R/A)^{\op}_{\Prism}</m> admits finite nonempty coproducts.
+          Let <m>(R \to B/IB \leftarrow B)</m> and <m>(R \to C/IC \leftarrow C)</m> be two objects of <m>(R/A)^{\op}_{\Prism}</m>.
+          Form the <m>\delta</m>-ring <m>D_0 = B \otimes_A C</m> using <xref ref="lem-delta-ring-limits-colimits"/>.
+          Let <m>J</m> be the kernel of the natural map
+          <me>
+            D_0 \to B/IB \otimes_{A/IA} C/IC \to B/IB \otimes_R C/IC;
+          </me>
+          that is, <m>J</m> is generated by elements of the form <m>x \otimes 1 - 1 \otimes y</m> where <m>x \in B, y \in C</m> have the property
+          that there is some <m>z \in R</m> mapping to <m>x \in B/IB</m> and to <m>y \in C/IC</m>. 
+          Apply <xref ref="lem-adjoint-delta-rings-to-prisms"/> to the pair <m>(D_0, J)</m> to obtain a prism <m>(D, ID)</m>; the object
+          <m>(R \to D/ID \leftarrow D) \in (R/A)^{op}_{\Prism}</m> is the desired coproduct.
+        </p>
+      </proof>
+    </lemma>
+    <proposition xml:id="prop-prismatic-site-weakly-final-object">
+      <statement>
+        <p>
+          Let <m>(A, I)</m> be a prism with slice <m>\overline{A} = A/I</m>, and let <m>R</m> be an <m>\overline{A}</m>-algebra.
+          Then the category <m>(R/A)_{\Prism}</m> admits a weakly final object.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>F_0</m> be the free <m>\delta</m>-ring over <m>A</m> on the set <m>R</m>, 
+          so that there is a surjection of <m>A</m>-algebras <m>F_0 \to R</m>; let <m>J</m> be the kernel of this map.
+          Applying <xref ref="lem-adjoint-delta-rings-to-prisms"/> to the <m>\delta</m>-pair <m>(F_0, J)</m> gives a prism <m>(F, IF)</m> over <m>(A, I)</m>.
+        </p>
+        <figure>
+          <image width="50%">
+            <latex-image>
+              \xymatrix{
+              F/IF &amp; F \ar[l] \\
+              F_0/J \cong R \ar[u] &amp; F_0 \ar[u] \ar[l] \\
+              A/I \ar[u] &amp; A \ar[l] \ar[u]
+              }
+            </latex-image>
+          </image>
+        </figure>
+        <p>
+          We will check that <m>(F, IF)</m> is a weakly initial object in <m>(R/A)^{\op}_{\Prism}</m>. By the adjunction property from
+          <xref ref="lem-adjoint-delta-rings-to-prisms"/>, it suffices to check that for any object <m>(R \to B/IB \leftarrow B)</m> of <m>(R/A)_{\Prism}</m>,
+          there exists a morphism <m>F_0 \to B</m> of <m>\delta</m>-rings compatible with the map <m>R \to B/IB</m>; this holds because <m>F_0</m>
+          is a free <m>\delta</m>-ring over <m>A</m>.
+        </p>
+      </proof>
+    </proposition>
+    <remark xml:id="rem-prismatic-cohomology-via-cosimplicial">
+      <p>
+        To summarize, with notation as in <xref ref="def-prismatic-oppo-site"/>, we can compute the cohomology of either <m>\calO_{\Prism}</m>
+        or <m>\overline{\calO}_{\Prism}</m> on <m>(R/A)_{\Prism}</m> by choosing a weakly final object <m>(F, IF)</m>
+        and forming the cosimplicial <m>A</m>-algebra <m>F^\bullet</m> from <xref ref="lem-cech-cohomology-indiscrete"/>; that is,
+        <m>F^n</m> is the <m>(n+1)</m>-fold completed tensor product of <m>F</m> over <m>A</m>.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Additional remarks</title>
+    <remark>
+      <p>
+        One awkward feature is that a morphism <m>Y \to X</m> does not give rise to a pullback functor <m>(X/A)_{\Prism} \to (Y/A)_{\Prism}</m>, because there is no natural way to perform base change for prisms along
+        a morphism at the level of slices. At the level of rings, this is saying that given an object <m>(R \to B/IB \leftarrow B)</m> of <m>(R/A)_{\Prism}</m> and a morphism <m>R \to S</m> of rings, 
+        there is no natural way to promote the map <m>B/IB \to B/IB \widehat{\otimes}_R S</m> to a morphism <m>B \to *</m>.
+        This is in fact a rather common issue with Grothendieck topologies; it also arises for the infinitesimal and crystalline sites.
+      </p>
+      <p>
+        The standard fix for this is to replace the <term>prismatic site</term> with its associated category of sheaves of sets, the <term>prismatic topos</term>. In this language,
+        one can show (<xref ref="bib-Bhatt-Scholze"/>, Remark 4.3) that the functor <m>h_X: (B, IB) \mapsto \Hom_{\overline{A}}(\Spf(B/IB), X) </m> is a sheaf on the 
+        site <m>(\overline{A}/A)_{\Prism}</m>
+        and the <term>slice topos</term> over this functor is naturally equivalent to the topos of <m>(R/A)_{\Prism}</m>.
+        (This also applies if we replace the indiscrete Grothendienck topology with the one in <xref ref="rmk-naive-prismatic-site"/>.)
+      </p>
+    </remark>
+    <remark xml:id="rmk-naive-prismatic-site">
+      <p>
+        As pointed out above, what we are calling the <term>prismatic site</term> here (following <xref ref="bib-Bhatt-course"/>) should really be called the <term>naive prismatic site</term>.
+        The site defined in <xref ref="bib-Bhatt-Scholze"/>, Definition 4.1 has a different Grothendieck topology: a morphism <m>(B, IB) \to (C, IC)</m> of prisms corresponds to a covering
+        if and only if it is <m>I</m>-completely faithfully flat. This changes the resulting topos, but not the prismatic or Hodge-Tate cohomology; it also gives better results when replacing the ring <m>R</m>
+        with a (usually smooth) <m>p</m>-adic formal scheme <m>X</m>, now with an object being given by a diagram as in <xref ref="fig-prismatic-site-object-full"/> (where <m>\Spf</m> is always taken with respect
+        to the <m>p</m>-adic topology) to obtain the site <m>(X/A)_{\Prism}</m>.
+      </p>
+      <figure xml:id="fig-prismatic-site-object-full">
+        <image width="50%">
+          <latex-image>
+            \xymatrix{
+              \Spf(B/IB) \ar[d] \ar[r] &amp; \Spf(B) \ar[dd] \\
+              X \ar[d] \\
+              \Spf(\overline{A}) \ar[r] &amp; \Spf(A)
+            }
+          </latex-image>
+        </image>
+      </figure>
+      <p>
+        An alternate foundational treatment based on the <term>prismatization functor</term> on <m>p</m>-adic formal schemes and the <term>absolute prismatic site</term>
+        (in which one does not fix a base prism, only the formal scheme <m>X</m>; for <m>X = \Spf \ZZ_p</m> this is just the category <m>\Prism</m> itself) 
+        can be found in work of Bhatt<ndash/>Lurie (in preparation), Bhatt<ndash/>Scholze (in preparation),
+        and Drinfeld <xref ref="bib-Drinfeld-prismatization"/>.
+      </p>
+    </remark>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-indiscrete-topology-on-poset">
+      <statement>
+        <p>
+          Verify the claim of <xref ref="exa-indiscrete-topology-on-poset"/>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-factor-order-preserving">
+      <statement>
+        <p>
+          Show that any morphism in <m>\Delta</m> can be factored as a composition of morphisms each of the form <m>\delta_j^n</m> or <m>\sigma_j^n</m>
+          for some <m>n, j</m>.
+        </p>
+      </statement>
+    </exercise>
+  </exercises>
+</section>

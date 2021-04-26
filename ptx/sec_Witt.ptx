@@ -569,5 +569,28 @@
         </p>
       </hint>
     </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that <xref ref="fig-Witt-Z"/> is a pullback square.
+        </p>
+        <figure xml:id="fig-Witt-Z">
+          <image width="50%">
+            <latex-image>
+              \xymatrix{
+                W(\ZZ) \ar[r] \ar^{w}[d] &amp; W(\ZZ_p) \ar^{w}[d] \\
+                \ZZ \times \ZZ \times \cdots \ar[r] &amp; \ZZ_p \times \ZZ_p \times \cdots
+              }
+            </latex-image>
+          </image>
+        </figure>
+      </statement>
+      <hint>
+        <p>
+          The corresponding statement with <m>\ZZ_p</m> replaced by <m>\widehat{\ZZ}</m> holds because the latter is faithfully flat over <m>\ZZ</m>.
+          Now rewrite <m>\widehat{\ZZ}</m> as the product of <m>\ZZ_p</m> with a <m>\ZZ[p^{-1}]</m>-algebra and recall that for the latter, the ghost map is an isomorphism.
+        </p>
+      </hint>
+    </exercise>
   </exercises>
 </section>

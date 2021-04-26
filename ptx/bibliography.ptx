@@ -75,6 +75,9 @@
     <journal>Functional Analysis and Its Applications</journal>
     <volume>10</volume> <year>1976</year>, 29<ndash/>40.
   </biblio>
+  <biblio type="raw" xml:id="bib-Drinfeld-prismatization">
+    V. Drinfeld, <articletitle>Prismatization</articletitle>, <url href="https://arxiv.org/pdf/2005.04746.pdf">arXiv:2005.04746v2</url> <year>2021</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Elkik">
     R. Elkik, <articletitle>Solutions d'équations à coefficients dans un anneau hensélien</articletitle>, <pubtitle>Annales Scientifiques de l'École Normale Superieure</pubtitle> <volume>6</volume> <year>1973</year>, 553<ndash/>603.
   </biblio>
@@ -134,6 +137,10 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Joyal2">
     A. Joyal, <articletitle><m>\delta</m>-anneau et <m>\lambda</m>-anneaux, II</articletitle>, <journal>C.R. Math. Rep. Acad. Sci. Canada</journal> <volume>7</volume> <year>1985</year>, 227<ndash/>232.
   </biblio>
+  <biblio type="raw" xml:id="bib-Katz-Turrittin">
+    N.M. Katz, <articletitle>Nilpotent connections and the monodromy theorem: applications of a result of Turrittin</articletitle>,
+    <pubtitle>Publications Mathématiques de l’I.H.É.S</pubtitle> <volume>39</volume> <year>1970</year>, 175<ndash/>232.
+  </biblio>
   <biblio type="raw" xml:id="bib-Kedlaya-NG">
     K.S. Kedlaya, <articletitle>Nonarchimedean geometry of Witt vectors</articletitle>, <journal>Nagoya Mathematical Journal</journal> <volume>209</volume> <year>2013</year>, 111<ndash/>165.
   </biblio>
@@ -162,6 +169,12 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   </biblio>
   <biblio type="raw" xml:id="bib-VLafforgue">
     V. Lafforgue, <articletitle>Chtoucas pour les groups réductifs et paramétrisaton de Langlands globale</articletitle>, <pubtitle>Journal of the American Mathematical Society</pubtitle> <volume>31</volume> <year>2018</year>, 719<ndash/>891.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Lang">
+    W.E. Lang, <articletitle>Two theorems on de Rham cohomology</articletitle>, <journal>Compositio Mathematica</journal> <volume>40</volume> <year>1980</year> 417<ndash/>423.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Lurie-higher-topos">
+    J. Lurie, <pubtitle>Higher Topos Theory</pubtitle>, Annals of Mathematics Studies 170, Princeton University Press, Princeton <year>2009</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Maclane">
     S. Mac Lane, <pubtitle>Categories for the Working Mathematician</pubtitle>, second edition, Graduate Texts in Mathematics 5, Springer, New York <year>1978</year>.

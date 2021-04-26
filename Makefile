@@ -1,4 +1,4 @@
-.PHONY : all
+.PHONY : all pdf images html install
 all: pdf images html install
 
 pdf:
