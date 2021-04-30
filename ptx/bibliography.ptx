@@ -10,8 +10,7 @@
     J. Ax, <articletitle>Zeros of polynomials over local fields<mdash/>the Galois action</articletitle>, <journal>Journal of Algebra</journal> <volume>15</volume> <year>1970</year>, 417<ndash/>428.
   </biblio>
   <biblio type="raw" xml:id="bib-Barwick">
-    C. Barwick, <articletitle>Euler's Gamma function and the field with one element</articletitle>, course notes (MIt, 2017)
-    available from <url href="https://www.maths.ed.ac.uk/~cbarwick/papers/gamma-text.pdf"/>.
+    C. Barwick, <articletitle>Euler's Gamma function and the field with one element</articletitle>, <url href="https://www.maths.ed.ac.uk/~cbarwick/papers/gamma-text.pdf">lecture notes (MIT, 2017)</url>.
   </biblio>
   <biblio type="raw" xml:id="bib-Berger-limites">
     L. Berger, <articletitle>Limites de représentations cristallines</articletitle>, <journal>Compositio Mathematica</journal> <volume>140</volume> <year>2004</year>, 1473<ndash/>1498.
@@ -24,13 +23,16 @@
     P. Berthelot and A. Ogus, <pubtitle>Notes on Crystalline Cohomology</pubtitle>, Princeton University Press, Princeton <year>1978</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-course">
-    B. Bhatt, <url href="http://www-personal.umich.edu/~bhattb/teaching/prismatic-columbia/">Eilenberg lectures at Columbia University</url>, lecture notes from fall 2018.
+    B. Bhatt, <articletitle>Geometric aspects of prismatic cohomology</articletitle>, <url href="http://www-personal.umich.edu/~bhattb/teaching/prismatic-columbia/">Eilenberg lectures at Columbia University (fall 2018)</url>.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-deJong">
-    B. Bhatt and A.J. de Jong, <articletitle>Crystalline cohomology and de Rham cohomology</articletitle>, <url>https://www.math.columbia.edu/~dejong/papers/crystalline-comparison.pdf</url>.
+    B. Bhatt and A.J. de Jong, <articletitle>Crystalline cohomology and de Rham cohomology</articletitle>, <url href="https://www.math.columbia.edu/~dejong/papers/crystalline-comparison.pdf"/>.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Morrow-Scholze1">
     B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Integral <m>p</m>-adic Hodge theory</articletitle>, <journal>Publications Mathématiques de l'IHÉS</journal> <volume>128</volume> <year>2018</year>, 219<ndash/>397.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-Morrow-Scholze2">
+    B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Topological Hochschild homology and Integral <m>p</m>-adic Hodge theory</articletitle>, <url href="https://arxiv.org/abs/1802.03261">arXiv:1802.03261v2</url> <year>2019</year>
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Scholze">
     B. Bhatt and P. Scholze, <articletitle> Prisms and prismatic cohomology</articletitle>, <url href="https://arxiv.org/abs/1905.08229">arXiv:1905.08229v2</url> <year>2019</year>.
@@ -42,8 +44,8 @@
     J. Borger, <articletitle>The basic geometry of Witt vectors, II: Spaces</articletitle>, <journal>Mathematische Annalen</journal> <volume>351</volume> <year>2011</year>, 871<ndash/>933.
   </biblio>
   <biblio type="raw" xml:id="bib-Borger-course">
-    J. Borger, <url href="https://maths-people.anu.edu.au/~borger/classes/copenhagen-2016/index.html">Witt vectors, lambda-rings, and arithmetic jet spaces</url>, 
-    lecture notes from spring 2016.
+    J. Borger, <articletitle>Witt vectors, lambda-rings, and arithmetic jet spaces</articletitle>,
+    <url href="https://maths-people.anu.edu.au/~borger/classes/copenhagen-2016/index.html">lecture notes (Copenhagen, spring 2016)</url>.
   </biblio>
   <biblio type="raw" xml:id="bib-Borger-Wieland">
     J. Borger and B. Wieland, <articletitle>Plethystic algebra</articletitle>, <journal>Advances in Mathematics</journal> <volume>194</volume> <year>2005</year>, 246<ndash/>283.

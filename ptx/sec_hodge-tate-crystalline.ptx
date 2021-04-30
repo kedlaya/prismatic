@@ -36,43 +36,112 @@
         </p>
       </proof>
     </lemma>
-    <lemma xml:id="lem-cartier-isomorphism-affine-space">
-      <title>Cartier isomorphism for affine space</title>
+    <definition>
+      <p>
+        For <m>R \to S</m> a morphism in <m>\Ring_{\FF_p}</m>, the map <m>\phi_S: S \to S</m> factors through an <m>R</m>-linear map <m>\phi_{S/R}: S^{(1)} \to S</m>
+        where <m>S^{(1)} = S \otimes_{R,\phi_R} R</m>.
+        We call <m>\phi_{S/R}</m> the <term>relative Frobenius</term> for the map <m>R \to S</m>.
+      </p>
+      <p>
+        In geometric language, <m>\phi_{S/R}</m> is the linearization of <m>\phi^*_S</m> over <m>\Spec R</m>, obtained by factoring <m>\phi_S^*</m>
+        through a fiber product. See <xref ref="fig-relative-Frobenius"/>.
+      </p>
+    </definition>
+    <figure xml:id="fig-relative-Frobenius">
+      <image width="75%">
+        <latex-image>
+          \xymatrix{
+            \Spec S \ar@{-->}[rd]^{\phi^*_{S/R}} \ar@/^/[rrd]^{\phi^*_S} \ar@/_/[rdd] \\
+            &amp; \Spec S^{(1)} \ar[r] \ar[d] &amp; \Spec S \ar[d] \\
+            &amp; \Spec R \ar^{\phi_R^*}[r] &amp; \Spec R
+          }
+        </latex-image>
+      </image>
+    </figure>
+    <corollary xml:id="cor-relative-frobenius-de-rham">
       <statement>
         <p>
-          Choose <m>R \in \Ring_{\FF_p}</m>, put <m>S = R[x_1,\dots,x_n]</m>, and let <m>\phi_{S/R}: S^{(1)} \to S</m> be the relative Frobenius. Then the map
-          <me>
-            (\Omega^\bullet_{S^{(1)}/R}, 0) \stackrel{\phi_{S}}{\to} (\Omega^\bullet_{S/R}, d_{\dR})
-          </me>
-          is a quasi-isomorphism.
+          For any morphism <m>R \to S</m> in <m>\Ring_{\FF_p}</m>, the map <m>\phi_{S/R}: \Omega^i_{S^{(1)}/R} \to \Omega^i_{S/R}</m> is zero for all <m>i \gt 0</m>.
         </p>
       </statement>
       <proof>
         <p>
-          We may identify <m>S^{(1)}</m> with another copy of <m>S</m> with the map <m>\phi_{S/R}</m> being the substitution <m>x_i \mapsto x_i^p</m>.
-          The map <m>\phi_{S/R}</m> induces a morphism of complexes thanks to <xref ref="lem-frobenius-on-de-rham"/>. To check that this map is a quasi-isomorphism,
-          we form a decomposition
-          <me>
-            \Omega^i_{S/R} = \bigoplus_{e_1,\dots,e_n \in \{0,\dots,p-1\}} x_1^{e_1} \cdots x_n^{e_n} \phi_{S/R}(\Omega^i_{S^{(1)}/R})
-          </me>
-          and note that this is a decomposition at the level of complexes (that is, the differentials respect this decomposition).
-          The summand <m>e_1 = \cdots = e_n = 0</m> is the image of the map in question; it will suffice to check that every other summand has zero cohomology.
-          Without loss of generality, we check this for a summand in which <m>e_1 \neq 0</m>.
+          It suffices to check the claim for <m>i = 1</m>. Moreover, we may assume <m>S = R[x_1,\dots,x_n]</m>, as we may then take colimits to deduce the case where <m>S</m>
+          is a polynomial ring in any number of variables, and then take quotients to deduce the case where <m>S</m> is arbitrary.
         </p>
         <p>
-          In this case, 
-          partial differential with respect to <m>x_1</m> restricts on <m>x_1^{e_1} \cdots x_n^{e_n} S^{(1)}</m> to multiplication by <m>e_1</m>,
-          and so the summand in question is isomorphic to the totalization of the double complex
+          When <m>S = R[x_1,\dots,x_n]</m>, we may identify <m>S^{(1)}</m> with a second copy of <m>R[x_1,\dots,x_n]</m> with the map
+          <m>S^{(1)} \to S</m> being given by the <m>R</m>-linear substitution <m>x_i \mapsto x_i^p</m>. In particular,
+          <m>\phi_{S/R}(dx_i) = d(x_i^p) = 0</m> as per <xref ref="lem-frobenius-on-de-rham"/>.
+        </p>
+      </proof>
+    </corollary>
+    <remark>
+      <p>
+        As indicated in <xref ref="fig-relative-Frobenius"/>, the construction of relative Frobenius extends to an arbitrary morphism of schemes <m>f: Y \to X</m>
+        in characteristic <m>p</m>. The example of a polynomial ring, and its description in the proof of <xref ref="cor-relative-frobenius-de-rham"/>,
+        may be misleading: in general <m>Y</m> and <m>Y^{(1)}</m> will not be isomorphic over <m>X</m>.
+        For example, if <m>X</m> is the spectrum of an algebraically closed field <m>k</m>
+        and <m>Y</m> is an elliptic curve over <m>k</m>, then the <m>j</m>-invariants <m>j(Y)</m> and <m>j(Y^{(1)})</m> will differ in general (the latter being the image of the
+        former under <m>\phi_k</m>).
+      </p>
+    </remark>
+    <lemma xml:id="lem-cartier-isomorphism-affine-space">
+      <title>Cartier isomorphism for affine space</title>
+      <statement>
+        <p>
+          Choose <m>R \in \Ring_{\FF_p}</m>, put <m>S = R[x_1,\dots,x_r]</m>, and let <m>\phi_{S/R}: S^{(1)} \to S</m> be the relative Frobenius. Then there is 
+          a quasi-isomorphism
           <me>
-            \Omega^\bullet_{S^{(1)}/R[x_1]} \stackrel{\times e_i}{\to} \Omega^\bullet_{S^{(1)}/R[x_1]},
+            (\Omega^\bullet_{S^{(1)}/R}, 0) \to (\Omega^\bullet_{S/R}, d_{\dR})
           </me>
-          and the arrow in the middle is an isomorphism. From this, the claim is evident.
+          of <m>S^{(1)}</m>-dga's acting as <m>\phi_{S/R}</m> in degree <m>0</m> and taking <m>dx_j</m> to <m>x_j^{p-1} dx_j</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The map <m>\phi_{S/R}</m> induces a morphism of complexes thanks to <xref ref="cor-relative-frobenius-de-rham"/>. 
+          To check that this map is a quasi-isomorphism, we form a decomposition
+          <men xml:id="eq-cartier-splitting">
+            \Omega^i_{S/R} = \bigoplus_{e_1,\dots,e_r \in \{0,\dots,p-1\}} \bigoplus_{1 \leq j_1 \lt \cdots \lt j_i \leq r} x_1^{e_1} \cdots x_r^{e_r} 
+            S^{(1)} dx_{j_1} \wedge \cdots \wedge dx_{j_i}.
+          </men>
+          We obtain a morphism <m>(\Omega^\bullet_{S/R}, d_{\dR}) \to (\Omega^\bullet_{S^{(1)}/R}, 0)</m> of complexes (not respecting the multiplicative structure)
+          taking <m>x_1^{e_1} \cdots x_r^{e_r} dx_{j_1} \wedge \cdots \wedge dx_{j_i}</m> to <m>dx_{j_1} \wedge \cdots \wedge dx_{j_i}</m> for
+          <me>
+            e_j = \begin{cases} p-1 &amp; j \in \{j_1,\dots,j_i\} \\ 0 &amp; j \notin \{j_1,\dots,j_i\} \end{cases}.
+          </me>
+          We must show that the composition of these maps is homotopic to the identity on <m>\Omega^\bullet_{S/R}</m>.
+          By proceeding by induction, we may reduce to the case <m>r=1</m>. In this case, for <m>e_1 = 1,\dots,p-1</m>, <m>d_{\dR}</m> maps
+          <m>x_1^{e_1} S^{(1)}</m> to <m>x_1^{e_1-1} S^{(1)}\,dx_1</m> taking <m>x_1^{e_1} f</m> to <m>e_1 x_1^{e_1-1} f\,dx</m>,
+          and this map is evidently invertible.
         </p>
       </proof>
     </lemma>
     <remark>
       <p>
-        One can easily promote <xref ref="lem-cartier-isomorphism-affine-space"/> to a similar statement for any smooth morphism <m>R \to S</m> in <m>\Ring_{\FF_p}</m>.
+        While the Cartier map described in <xref ref="lem-cartier-isomorphism-affine-space"/> is defined in terms of coordinates on the polynomial ring <m>S</m>,
+        the construction is <em>canonical up to homotopy</em> in that the resulting map in <m>D(S^{(1)})</m> is well-defined
+        independently of the way that <m>S</m> is expresesd as a polynomial ring. 
+        For example, making the change of variables <m>x_1 \mapsto x_1 + x_2</m> does not change the map because
+        <me>
+          (x_1+x_2)^{p-1}\,d(x_1 + x_2) - x_1^{p-1}\,dx_1 - x_2^{p-2} \,dx_2 = \sum_{i=1}^{p-2} \binom{p-1}{i} x_1^i x_2^{p_1-i} (dx_1 + dx_2)
+        </me>
+        contributes only to summands in <xref ref="eq-cartier-splitting"/> that get killed off by the homotopy.
+      </p>
+      <p>
+        Yet another construction can be given (for <m>R = \FF_p</m>, then deducing the general case by base change) by lifting from <m>\FF_p[x_1,\dots,x_r]</m>
+        to <m>\ZZ_p[x_1,\dots,x_r]</m>. Given an element <m>f \in \ZZ_p[x_1^p,\dots,x_r^p]</m> lifting <m>\overline{f} \in \FF_p[x_1^p,\dots,x_r^p] \cong S^{(1)}</m>,
+        the element <m>p^{-1} df</m> reduces to an element of <m>\Omega^1_{S/R}</m> independent of the choice of <m>f</m>, and this is the image of <m>d\overline{f}</m>
+        under the Cartier map.
+      </p>
+      <p>
+        This last construction is quite similar to how the Cartier isomorphism will appear in the proof of the Hodge-Tate comparison for crystalline prisms
+        (<xref ref="thm-Hodge-Tate-crystalline-affine-space"/>). In fact that result will itself establish the canonicality of the Cartier isomorphism, so we don't need to worry
+        much about it right now.
+      </p>
+      <p>
+        In any case, once canonicality is established by some means, we can easily promote <xref ref="lem-cartier-isomorphism-affine-space"/> to a similar statement for any smooth morphism <m>R \to S</m> in <m>\Ring_{\FF_p}</m>.
         We omit the details here, as we will see the same argument again soon (<xref ref="lem-hodge-tate-etale-base-change"/>).
       </p>
     </remark>
@@ -105,16 +174,25 @@
         </men>
       </p>
     </example>
+    <remark xml:id="rmk-strong-divided-powers">
+      <p>
+        Our definition of <q>admits divided powers</q> is not quite the usual one: normally one also requires that <m>\gamma_n</m> maps <m>J</m> into <m>J</m>
+        for each <m>n \geq 1</m>. For example, this occurs in <xref ref="exa-Zp-divided-powers"/> because <xref ref="eq-zp-divided-powers"/> includes <m>p^{n-1}</m>
+        rather than <m>p^n</m>. However, the last statement in <xref ref="def-divided-power-envelope2"/> ensures that this discrepancy doesn't affect anything later.
+      </p>
+    </remark>
     <definition xml:id="def-divided-power-envelope2">
       <p>
         The <term>divided power envelope</term> of <m>(R, J)</m>
-        is the subring <m>D = D_J(R)</m> of <m>R \otimes_{\ZZ} \QQ</m> generated by <m>R</m> and <m>\gamma_n(x)</m> for all <m>x \in J</m>.
-        Using the identity
-        <men xml:id="eq-divided-power-composition">
-          \gamma_m(\gamma_n(x)) = \frac{(mn)!}{m!(n!)^m} \gamma_{mn}(x)
-        </men>
+        is the subring <m>D</m> of <m>R \otimes_{\ZZ} \QQ</m> generated by <m>R</m> and <m>\gamma_n(x)</m> for all <m>x \in J</m>.
+        Using the identities
+        <mdn>
+          <mrow xml:id="eq-divided-power-product">\gamma_m(x) \gamma_n(x) = \binom{m+n}{n} \gamma_{m+n}(x)</mrow>
+          <mrow xml:id="eq-divided-power-composition">\gamma_m(\gamma_n(x)) = \frac{(mn)!}{m!(n!)^m} \gamma_{mn}(x)</mrow>
+        </mdn>
         and the fact that <m>(mn)!/(m!(n!)^m) \in \ZZ</m>  (it counts unordered partitions of <m>\{1,\dots,mn\}</m> into <m>n</m>-element subsets),
-        we see that <m>D</m> admits divided powers on the ideal generated by <m>\gamma_n(J)</m> for all <m>n \geq 0</m>.
+        we see that <m>D</m> admits divided powers on the ideal generated by <m>\gamma_n(J)</m> for all <m>n \geq 1</m>
+        (even in the stronger sense of <xref ref="rmk-strong-divided-powers"/>).
       </p>
     </definition>
     <remark>
@@ -130,13 +208,13 @@
       <statement>
         <title>Poincaré lemma</title>
         <p>
-          Suppose that <m>A \in \Ring</m> is <m>p</m>-torsion-free and set <m>P = A[x]</m>.
-          Let <m>D</m> be either the divided power envelope of <m>(P, xP)</m> or its classical <m>p</m>-completion. 
+          Suppose that <m>A \in \Ring</m> is <m>\ZZ</m>-flat.
+          Set <m>P = A[x]</m> and let <m>D</m> be the divided power envelope of <m>(P, (x))</m>.
           Then the morphism
           <me>
             d: D \to D \otimes_P \Omega^1_{P/A} = D\,dx
           </me>
-          is surjective with kernel <m>A</m>.
+          is surjective with kernel <m>A</m>; the same remains true if we replace <m>D</m> with its <m>p</m>-adic completion.
         </p>
       </statement>
       <proof>
@@ -145,12 +223,50 @@
         </p>
       </proof>
     </proposition>
-    <remark>
+    <remark xml:id="rem-crystalline-cohomology">
       <p>
-        <xref ref="prop-poincare-lemma"/> amounts to the computation of the <term>crystalline cohomology</term> of the affine line.
-        We will see later that the proof of the Hodge-Tate comparison isomorphism naturally passes through crystalline cohomology.
+        <xref ref="prop-poincare-lemma"/> amounts to the computation of the <term>crystalline cohomology</term> of a point.
+        We will see in <xref ref="prismatic-cohomology-crystalline"/> that the proof of the Hodge-Tate comparison isomorphism 
+        for a crystalline prism naturally passes through crystalline cohomology.
+      </p>
+      <p>
+        One potentially confusing point is that unlike de Rham cohomology in characteristic 0, 
+        the crystalline cohomology of a higher-dimensional affine space is not the same as that of a point!
+        In fact, the crystalline cohomology of <m>\Spec \FF_p[x_1,\dots,x_r]</m>
+        is computed by the complex <m>\widehat{\Omega}^{\bullet}_{P/\ZZ_p}</m> where <m>P = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m> 
+        (this ring already admits divided powers on <m>(p)</m> by <xref ref="exa-Zp-divided-powers"/>);
+        taking the derived base change from <m>\ZZ_p</m> to <m>\FF_p</m> yields <m>\Omega_{R/\FF_p}</m>,
+        whose cohomology we already know is quite large (<xref ref="lem-cartier-isomorphism-affine-space"/>).
+        What <xref ref="prop-poincare-lemma"/> tells us is that the answer does not change if we include some extra <q>divided power variables</q>;
+        see <xref ref="prop-crystalline-cohomology-affine-space"/> for a concrete statement.
+      </p>
+      <p>
+        In any case, none of this has much meaning without an actual definition of crystalline cohomology itself.
+        For that, see <xref ref="bib-Berthelot-Ogus"/>.
       </p>
     </remark>
+    <proposition xml:id="prop-crystalline-cohomology-affine-space">
+      <title>Crystalline and de Rham cohomology of affine space</title>
+        <statement>
+          <p>
+            Put <m>R = \FF_p[x_1,\dots,x_r]</m>, <m>P_0 = \ZZ_p[x_1,\dots,x_r]</m>, <m>P = \ZZ_p[x_1,\dots,x_r,y_1,\dots,y_s]</m>,
+            and let <m>D</m> be the <m>p</m>-adic completion of the divided power envelope of <m>(P, (p,y_1,\dots,y_s))</m>.
+            Then there is a natural quasi-isomorphism
+            <me>
+              \widehat{\Omega}^{\bullet}_{P/\ZZ_p} \cong D \widehat{\otimes}_P \widehat{\Omega}^{\bullet}_{P/\ZZ_p}
+            </me>
+            and hence a quasi-isomorphism
+            <me>
+              \Omega_{R/\FF_p} \cong (D \widehat{\otimes}_P \widehat{\Omega}^{\bullet}_{P/\ZZ_p}) \otimes^L_{\ZZ_p} \FF_p.
+            </me>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            By repeated application of <xref ref="prop-poincare-lemma"/> we may reduce to the case <m>s=0</m>, in which case this is evident.
+          </p>
+        </proof>
+    </proposition>
   </subsection>
   <subsection>
     <title>Divided powers in <m>\delta</m>-rings</title>
@@ -160,8 +276,8 @@
     <remark xml:id="rmk-divided-power-envelope-criterion">
       <p>
         If <m>R</m> is a <m>\ZZ_{(p)}</m>-algebra which admits a <m>\delta</m>-ring structure, 
-        then <m>R</m> admits divided powers on some ideal <m>J</m> if and only if <m>\gamma_p(x) \in R</m> for all <m>x \in J</m>. See
-        <xref ref="exer-delta-divided-power"/>.
+        then <m>R</m> admits divided powers on some ideal <m>J</m> if and only if <m>\gamma_p(x) \in R</m> for all <m>x \in J</m>.
+        See <xref ref="exer-delta-divided-power"/>.
       </p>
     </remark>
     <lemma xml:id="lem-divided-power-envelope-delta1">
@@ -261,7 +377,7 @@
       </p>
     </remark>
   </subsection>
-  <subsection>
+  <subsection xml:id="prismatic-cohomology-crystalline">
     <title>Prismatic cohomology for a crystalline prism</title>
     <p>
       We next use divided powers to explicitly compute the cohomology of affine space over a crystalline prism.
@@ -275,7 +391,7 @@
           <me>
             \Omega^i_P \to \Omega^i_{P \otimes P} \to \Omega^i_{P \otimes P \otimes P} \to \cdots
           </me>
-          vanishes in the homotopy category <m>K(\ZZ_p)</m>. (More precisely, this is a homotopy at the level of <m>P^\bullet</m>-cosimplicial modules; 
+          vanishes in the homotopy category <m>K(\ZZ_p)</m>. (More precisely, this is witnessed by a homotopy at the level of <m>P^\bullet</m>-cosimplicial modules; 
           see <xref ref="def-homotopy-equivalence"/> for the meaning of this statement.)
         </p>
       </statement>
@@ -284,58 +400,78 @@
           We may reduce to the case of a polynomial ring in finitely many variables by taking colimits.
           We may further reduce the case <m>i = 1</m> using exterior powers.
           We may further reduce to the case <m>P = \ZZ_p[x]</m> using base change and induction on the number of variables.
-          At this point, we are left with an elementary combinatorial assertion; see <xref ref="bib-Bhatt-deJong"/>, Example 2.16.
+          At this point, we can write down the homotopy <m>h</m> explicitly: if we write the <m>(n+1)</m>-fold tensor product of <m>P</m> as <m>P^n = \ZZ[x_{n0}, \dots, x_{nn}]</m>,
+          then the homotopy carries <m>\Omega^1_{P^n}</m> to <m>\Omega_{P^{n-1}}</m> taking <m>dx_{ni}</m> to <m>dx_{(n-1)i}</m> for <m>i=0,\dots,n-1</m> and to 0 for <m>i=n</m>.
+          We leave it to the reader to check that <m>h</m> is a homotopy for the identity map (<xref ref="exer-differentials-derived"/>).
+          (Compare <xref ref="bib-Bhatt-deJong"/>, Example 2.16.)
         </p>
       </proof>
     </lemma>
     <lemma xml:id="lem-crystalline-weakly-final">
       <statement>
         <p>
-          Let <m>(A,I)</m> be the prism <m>(\ZZ_p, (p))</m> and put <m>R = \FF_p[x_1,\dots,x_n]</m>.
-          Let <m>P</m> be the classical <m>p</m>-completion of <m>\ZZ_p\{x_1,\dots,x_n\}</m>. Then
-          <m>(P, IP)</m> is a weakly final object of <m>(R/A)_{\Prism}</m>.
+          Let <m>(A,I)</m> be the prism <m>(\ZZ_p, (p))</m> and put <m>R = \FF_p[x_1,\dots,x_r]</m>.
+          Let <m>P</m> be the classical <m>p</m>-completion of <m>\ZZ_p\{x_1,\dots,x_r\}</m>. 
+          Let <m>J</m> be the kernel of the map <m>P \to R</m> taking <m>x_i</m> to <m>x_i</m> and <m>\delta^m(x_i)</m> to <m>0</m> for all <m>m \gt 0</m>.
+          Write <m>P\{J/p\}^\wedge_{(p)}</m> for the classical <m>p</m>-completion of <m>P\{f/p: f \in J\}</m>.
+          Then <m>(P\{J/p\}^\wedge_{(p)}, (p))</m> is a weakly final object of <m>(R/A)_{\Prism}</m>.
         </p>
       </statement>
       <proof>
         <p>
           We check that we get a weakly initial object of <m>(R/A)^{\op}_{\Prism}</m>. Let <m>(B, pB) \in (R/A)^{\op}_{\Prism}</m> be any object.
-          The elements <m>x_1,\dots,x_n \in R</m> map to some elements of <m>B/pB</m>; choosing lifts of those then defines a map
-          <m>\ZZ_{(p)}\{x_1,\dots,x_r\} \to B</m>, which then extends to the <m>p</m>-adic completion <m>P^0</m>.
-          The description of <m>P^n</m> then follow at once.
+          The elements <m>x_1,\dots,x_r \in R</m> map to some elements of <m>B/pB</m>; choosing lifts of those then defines a map
+          <m>\ZZ_{(p)}\{x_1,\dots,x_r\} \to B</m>, which then extends to the <m>p</m>-adic completion <m>P</m>.
+          Applying <xref ref="lem-adjoint-delta-rings-to-prisms"/> to the morphism <m>P \to B</m> of <m>\delta</m>-rings
+          yields a morphism <m>(P\{J/p\}^\wedge_{(p)}, (p)) \to (B, (p))</m> of prisms.
           (Compare <xref ref="bib-Bhatt-course"/>, Lecture VI, Corollary 2.3.)
         </p>
       </proof>
     </lemma>
+    <remark xml:id="rmk-cech-alexander-formal-schemes">
+      <p>
+        Note that <m>P^\bullet</m> is itself a Čech-Alexander complex, namely the one associated to the covering <m>\Spf P \to \Spf A</m> in the category of <m>p</m>-adic
+        formal schemes. In particular, <m>A \to P^\bullet</m> is an isomorphism in <m>K(A)</m> by the Čech-Alexander construction
+        in the category of <m>p</m>-formal schemes (and even a homotopy equivalence of cosimplicial <m>A</m>-algebras, as per <xref ref="def-homotopy-equivalence"/>).
+      </p>
+    </remark>
     <corollary xml:id="cor-crystalline-weakly-final">
       <statement>
         <p>
           With notation as in <xref ref="lem-crystalline-weakly-final"/>, for <m>n \geq 0</m>, identify
           <me>
-            P^n = \ZZ_p\{x_{ij}: i=1,\dots,r; j=0,\dots,n\}
+            P^n = \ZZ_p\{x_{ij}: i=1,\dots,r; j=0,\dots,n\}^\wedge_{(p)}
           </me>
-          with the <m>(n+1)</m>-fold tensor product of <m>P</m> over <m>\ZZ_p</m>. Let <m>J^n</m> be the kernel of the morphism <m>P^n \to A</m>
-          in <m>\Ring_\delta</m> taking <m>x_{ij}</m> to <m>x_i</m>, and write <m>P^n\{J^n/p\}^\wedge_{(p)}</m>
-          for the classical <m>p</m>-completion of <m>P^n\{f/p: f \in J^n\}</m>.
+          with the <m>(n+1)</m>-fold completed tensor product of <m>P</m> over <m>\ZZ_p</m>. Let <m>J^n</m> be the kernel of the morphism <m>P^n \to R</m>
+          in <m>\Ring_\delta</m> taking <m>x_{ij}</m> to <m>x_i</m> and <m>\delta^m(x_{ij})</m> to <m>0</m> for all <m>m \gt 0</m>, 
+          and write <m>P^n\{J^n/p\}^\wedge_{(p)}</m> for the classical <m>p</m>-completion of <m>P^n\{f/p: f \in J^n\}</m>.
           Then <m>\Prism_{R/A}</m> is quasi-isomorphic to the Čech-Alexander complex
           <me>
-            0 \to P = P^0 = P^0\{J^0/p\}^\wedge_{(p)} \to P^1\{J^1/p\}^\wedge_{(p)} \to P^2\{J^2/p\}^\wedge_{(p)} \to \cdots.
+            0 \to P^0\{J^0/p\}^\wedge_{(p)} \to P^1\{J^1/p\}^\wedge_{(p)} \to P^2\{J^2/p\}^\wedge_{(p)} \to \cdots.
           </me>
         </p>
       </statement>
       <proof>
         <p>
-          Note that <m>(P^n\{J^n/p\}^\wedge_{(p)}, (p))</m> is the <m>(n+1)</m>-fold product of <m>(P^0, (p))</m> in <m>\Prism_{R/A}</m>; 
-          the inclusion of <m>f/p</m> for <m>f \in J^n</m>
-          is required to ensure that we obtain a morphism of prisms. Hence we are in the setting
+          By <xref ref="lem-crystalline-weakly-final"/>, <m>P^0\{J^0/p\}^\wedge_{(p)}</m> is a weakly final object of <m>(R/A)_{\Prism}</m>.
+          Now note that <m>(P^n\{J^n/p\}^\wedge_{(p)}, (p))</m> is the <m>(n+1)</m>-fold product of <m>(P^0\{J^0/p\}^\wedge_{(p)}, (p))</m> in <m>\Prism_{R/A}</m>.
+          Hence we are in the setting
           described in <xref ref="rem-prismatic-cohomology-via-cosimplicial"/>.
         </p>
       </proof>
     </corollary>
+    <remark>
+      <p>
+        Note that while <m>J^0</m> is generated by <m>\delta^m(x_{i})</m> for all <m>m \gt 0</m>,
+        <m>J^n</m> is not generated by <m>\delta^m(x_{ij})</m> for all <m>m \gt 0</m>; we must also add the generators <m>x_{ij} - x_{ij'}</m> for <m>j \neq j'</m>.
+      </p>
+    </remark>
     <remark xml:id="rmk-identify-prismatic-product-with-divided-powers">
       <p>
         With notation as in <xref ref="lem-crystalline-weakly-final"/> and <xref ref="cor-crystalline-weakly-final"/>,
-        the map <m>\phi</m> on <m>A = \ZZ_p</m> is an isomorphism and <m>A \to P^\bullet</m> is an isomorphism in <m>K(\ZZ_p)</m> by the Čech-Alexander construction.
-        Hence <m>\phi_{P*}: P^\bullet \to P^\bullet</m> is also an isomorphism, yielding isomorphisms in <m>K(\ZZ_p)</m> of the form
+        the map <m>\phi</m> on <m>A = \ZZ_p</m> is an isomorphism.
+        By <xref ref="rmk-cech-alexander-formal-schemes"/>, <m>\phi_{P*}: P^\bullet \to P^\bullet</m> is a quasi-isomorphism (and a homotopy equivalence), 
+        yielding isomorphisms in <m>K(\ZZ_p)</m> of the form
         <me>
           P^\bullet\{J^\bullet/p\}^\wedge_{(p)} \to \phi_{P^\bullet}^*(P^\bullet\{J^\bullet/p\})^\wedge_{(p)} = P^\bullet\{\phi(J^\bullet)/p\}^\wedge_{(p)}.
         </me>
@@ -344,15 +480,15 @@
         of <m>(P^\bullet, J^\bullet)</m>. (More precisely, these are homotopy equivalences of cosimplicial <m>\ZZ_p</m>-algebras; see again <xref ref="def-homotopy-equivalence"/>.)
       </p>
       <p>
-        To summarize, the two rows of <xref ref="fig-replace-cech-alexander"/> are quasi-isomorphic to each other and to <m>\Prism_{R/A}</m>.
+        To summarize, the rows of <xref ref="fig-replace-cech-alexander"/> are quasi-isomorphic to each other and to <m>\Prism_{R/A}</m>.
       </p>
     </remark>
     <figure xml:id="fig-replace-cech-alexander">
-      <image width="75%">
+      <image width="100%">
         <latex-image>
           \xymatrix{
-            0 \ar[r] &amp; P^0\{J^0/p\}^\wedge_{(p)} \ar[r] \ar[d] &amp; P^1\{J^1/p\}^\wedge_{(p)} \ar[r] \ar[d] &amp; P^2\{J^2/p\}^\wedge_{(p)} \ar[r] \ar[d] &amp; \cdots \\
-            0 \ar[r] &amp; P^0\{\phi(J^0)/p\}^\wedge_{(p)} \ar[r] \ar[d] &amp; P^1\{\phi(J^1)/p\}^\wedge_{(p)} \ar[r] \ar[d] &amp; P^2\{\phi(J^2)/p\}^\wedge_{(p)} \ar[r] \ar[d] &amp; \cdots \\
+            0 \ar[r] &amp; P^0\{J^0/p\}^\wedge_{(p)} \ar[r] \ar^\phi[d] &amp; P^1\{J^1/p\}^\wedge_{(p)} \ar[r] \ar^\phi[d] &amp; P^2\{J^2/p\}^\wedge_{(p)} \ar[r] \ar^\phi[d] &amp; \cdots \\
+            0 \ar[r] &amp; P^0\{\phi(J^0)/p\}^\wedge_{(p)} \ar[r] \ar@{=}[d] &amp; P^1\{\phi(J^1)/p\}^\wedge_{(p)} \ar[r] \ar@{=}[d] &amp; P^2\{\phi(J^2)/p\}^\wedge_{(p)} \ar[r] \ar@{=}[d] &amp; \cdots \\
             0 \ar[r] &amp; D_{J^0}(P^0) \ar[r] &amp; D_{J^1}(P^1) \ar[r] &amp; D_{J^2}(P^2) \ar[r] &amp; \cdots
           }
         </latex-image>
@@ -361,7 +497,7 @@
     <lemma xml:id="lem-prismatic-double-complex">
       <statement>
         <p>
-          Let <m>(A,I)</m> be the prism <m>(\ZZ_p, (p))</m> and put <m>R = \FF_p[x_1,\dots,x_n]</m>.
+          Let <m>(A,I)</m> be the prism <m>(\ZZ_p, (p))</m> and put <m>R = \FF_p[x_1,\dots,x_r]</m>.
           Let <m>(P, IP)</m> be the weakly final object of <m>(R/A)_{\Prism}</m> given by <xref ref="lem-crystalline-weakly-final"/>.
           Then the totalization of the double complex displayed in <xref ref="fig-double-complex-crystalline"/>
           is quasi-isomorphic to both its first row and its first column via the inclusion maps.
@@ -381,15 +517,17 @@
       </figure>
       <proof>
         <p>
-          By the Poincaré lemma (<xref ref="prop-poincare-lemma"/>), 
-          each of the maps <m>P^0 \to P^n</m> induces a quasi-isomorphism <m>\widehat{\Omega}^\bullet_{P^0/\ZZ_p} \to \widehat{\Omega}^\bullet_{P^n/\ZZ_p}</m>.
           We can compute the cohomology of the total complex using the <q>first</q> spectral sequence, in which we first compute the cohomology of the columns.
-          In this case, <m>H^m(D_{J^n}(P^n) \wedge{\otimes}_{P^n} \widehat{\Omega}^\bullet_{P^n/\ZZ_p})</m> is independent of <m>n</m> and 
-          the horizontal differentials between these are
+          In xthis case, <m>H^m(D_{J^n}(P^n) \wedge{\otimes}_{P^n} \widehat{\Omega}^\bullet_{P^n/\ZZ_p})</m> is independent of <m>n</m>: 
+          by <xref ref="prop-crystalline-cohomology-affine-space"/>
+          each column computes the crystalline cohomology of <m>\Spec \FF_p[x_1,\dots,x_r]</m>, and for this identification each map <m>P^{n-1} \to P^n</m> represents
+          the identity map on cohomology.
+          Hence the horizontal differentials between the columns (which are alternating sums of the induced maps) are represented by
           <me>
             H^m \stackrel{0}{\to} H^m \stackrel{1}{\to} H^m \stackrel{0}{\to} H^m \stackrel{1}{\to} \cdots.
           </me>
-          Hence at the next page, we end up with the groups <m>H^m(D_{J^0}(P^0) \wedge{\otimes}_{P^0} \widehat{\Omega}^\bullet_{P^0/\ZZ_p})</m> in column 0 
+          At the next page of the spectral sequence, 
+          we end up with the groups <m>H^m(D_{J^0}(P^0) \wedge{\otimes}_{P^0} \widehat{\Omega}^\bullet_{P^0/\ZZ_p})</m> in column 0 
           and zeroes elsewhere. By <xref ref="map-of-double-complex-first-column-qis"/>, the map from the first column to the totalization is a quasi-isomorphism.
           (Compare <xref ref="exa-trivial-resolution-modules"/> for a similar phenomenon.)
         </p>
@@ -400,53 +538,88 @@
         </p>
       </proof>
     </lemma>
+    <corollary xml:id="cor-prismatic-to-crystalline">
+      <statement>
+        <p>
+          Let <m>(A,I)</m> be the prism <m>(\ZZ_p, (p))</m> and put <m>R = \FF_p[x_1,\dots,x_r]</m>.
+          Then <m>\phi^* \Prism_{R/A}</m> is quasi-isomorphic to the crystalline cohomology of the affine space <m>\Spec \FF_p[x_1,\dots,x_r]</m>
+          in the sense of <xref ref="rem-crystalline-cohomology"/>, i.e., to <m>\widehat{\Omega}^\bullet_{P/\ZZ_p}</m> for <m>P = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="rmk-identify-prismatic-product-with-divided-powers"/>, we obtain a quasi-isomorphism of <m>\phi^* \Prism_{R/A}</m>
+          with the first row of <xref ref="fig-double-complex-crystalline"/>.
+          By <xref ref="lem-prismatic-double-complex"/>, this is in turn quasi-isomorphic to the left column of <xref ref="fig-double-complex-crystalline"/>.
+          By <xref ref="prop-crystalline-cohomology-affine-space"/>, the latter is quasi-isomorphic to <m>\widehat{\Omega}^\bullet_{P/\ZZ_p}</m> for <m>P = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m>
+          (note that this amounts to the same use of the Poincaré lemma as was needed to compare columns in <xref ref="lem-prismatic-double-complex"/>).
+        </p>
+      </proof>
+    </corollary>
+    <remark>
+      <p>
+        In <xref ref="cor-prismatic-to-crystalline"/>, we write <m>\phi^*\Prism_{R/A}</m> instead of <m>\Prism_{R/A}</m> to keep track of the fact that
+        prismatic cohomology computes not crystalline cohomology <em>per se</em>, but rather a canonical Frobenius descent of it.
+      </p>
+    </remark>
     <proposition xml:id="thm-Hodge-Tate-crystalline-affine-space">
       <statement>
         <p>
-          Let <m>(A,I)</m> be the prism <m>(\ZZ_p, (p))</m> and put <m>R = \FF_p[x_1,\dots,x_n]</m>.
+          Let <m>(A,I)</m> be the prism <m>(\ZZ_p, (p))</m> and put <m>R = \FF_p[x_1,\dots,x_r]</m>.
           Then the Hodge-Tate comparison map <xref ref="eq-Hodge-Tate-comparison-map"/> is an isomorphism.
         </p>
       </statement>
       <proof>
         <p>
-           By <xref ref="lem-crystalline-weakly-final"/>, we may compute the object <m>\Prism_{R/A} \in D(A)</m> using the Čech-Alexander complex associated to the weakly final object <m>(P, IP)</m>
-           as described in <xref ref="cor-crystalline-weakly-final"/>, and then obtain <m>\overline{\Prism}_{R/A} \in D(\overline{A})</m> by applying <m>\otimes^L_A A/p</m>. 
-           By <xref ref="rmk-identify-prismatic-product-with-divided-powers"/>, the object <m>\Prism_{R/A}</m> is represented by the top row of the double complex <xref ref="fig-double-complex-crystalline"/>, which by 
-           <xref ref="lem-prismatic-double-complex"/> is isomorphic in <m>D(A)</m> to the first column of the double complex.
-           By applying <m>\otimes^L_{\ZZ_p} \FF_p</m> and applying <xref ref="lem-cartier-isomorphism-affine-space"/>, we obtain an isomorphism 
-           <men xml:id="eq-prismatic-cartier">
-             (\Omega^\bullet_{R^{(1)}/\overline{A}}, 0) \cong (H^\bullet(\overline{\Prism}_{R/A}), \beta_I)
-           </men>
-           of complexes.
+          By <xref ref="lem-crystalline-weakly-final"/>, we may compute the object <m>\Prism_{R/A} \in D(A)</m> using the Čech-Alexander complex associated to the weakly final object <m>(P, IP)</m>
+          as described in <xref ref="cor-crystalline-weakly-final"/>, and then obtain <m>\overline{\Prism}_{R/A} \in D(\overline{A})</m> by applying <m>\otimes^L_A A/p</m>. 
+          By <xref ref="rmk-identify-prismatic-product-with-divided-powers"/>, the object <m>\Prism_{R/A}</m> (or more correctly <m>\phi^*\Prism_{R/A}</m>)
+          is represented by the top row of the double complex <xref ref="fig-double-complex-crystalline"/>, which by 
+          <xref ref="lem-prismatic-double-complex"/> is isomorphic in <m>D(A)</m> to the first column of the double complex.
+          By <xref ref="cor-prismatic-to-crystalline"/>, that column computes the crystalline cohomology of affine space.
+          By applying <m>\otimes^L_{\ZZ_p} \FF_p</m>, we obtain an isomorphism
+          <men xml:id="eq-prismatic-to-derham-map">
+            \phi^* \overline{\Prism}_{R/A} \cong (\Omega^\bullet_{R/\FF_p}, d_{\dR})
+          </men>
+          of <m>\FF_p</m>-dga's which in degree <m>0</m> is the identity map on <m>R</m>.
         </p>
         <p>
-          From <xref ref="eq-prismatic-cartier"/>, we see that <m>\eta_R^0</m> is an isomorphism; more precisely, it is 
-          the map obtained from <xref ref="eq-prismatic-cartier"/> by identifying <m>R</m> with <m>R^{(1)}</m> via <m>\phi_R</m>
-          (note that this corresponds to the use of Frobenius in <xref ref="rmk-identify-prismatic-product-with-divided-powers"/>.
-          By computing modulo <m>p^2</m>, we may then see that the Bockstein differential 
-          <m>\beta: H^0(\overline{\Prism}_{R/A}) \to H^1(\overline{\Prism}_{R/A})\{1\}</m>
-          corresponds to the de Rham differential <m>d_{\dR}: R \to \Omega^1_{R/\overline{A}}</m>;
-          hence <m>\eta_R^1</m> coincides with the <m>i=1</m> term of <xref ref="eq-prismatic-cartier"/>, and hence is an isomorphism.
+          To check that <m>\eta_R</m> is an isomorphism, it will suffice to deduce from <xref ref="eq-prismatic-to-derham-map"/> that <m>\phi^*(\eta_R)</m>
+          corresponds to the Cartier isomorphism; it suffices to do this in degree 1.
+          As in <xref ref="def-Breuil-Kisin-twist"/>, consider the exact sequence
+          <me>
+            0 \to p T / p^2 T\to T / p^2 T \to T / p T \to 0, \qquad T = P^0\{J^0/p\}^\wedge_{(p)}.
+          </me>
+          Viewing the element <m>x_i \in P^0\{J^0/p\}^\wedge_{(p)}</m> as representing a class in <m>H^0(\overline{\Prism}_{R/A})</m>, 
+          we find that its image under the Bockstein differential is represented by <m>(x_{i0} - x_{i1})/p</m>.
+          This is then the image of <m>dx_i \in \Omega_{R/\FF_p}</m> under <m>\eta_R</m>, and it remains to transfer the answer via <xref ref="eq-prismatic-to-derham-map"/>.
         </p>
         <p>
-          We now note that <xref ref="lem-cartier-isomorphism-affine-space"/> induces an isomorphism of dga's.
-          From this and the fact that <m>\Omega^i_{R/\overline{A}} \cong \wedge^i_{\overline{A}} \Omega^1_{R/\overline{A}}</m>,
-          we deduce that <m>\eta_R^i</m> is an isomorphism for all <m>i</m>.
+          Applying <m>\phi</m> to <m>(x_{i0} - x_{i1})/p</m> yields <m>(x_{i0}^p - x_{i1}^p)/p \in D_{J^1}(P^1)</m>.
+          Going down the vertical arrow <m>D_{J^1}(P^1) \to D_{J^1}(P^1) \widehat{\otimes}_{P^1} \widehat{\Omega}^1_{P^1/\ZZ_p}</m> 
+          in <xref ref="fig-double-complex-crystalline"/> yields 
+          <me>
+            d((x_{i0}^p - x_{i1}^p)/p) = x_{i0}^{p-1} dx_{i0} - x_{i1}^{p-1} dx_{i1}.
+          </me>
+          This is the image of <m>x_i^{p-1}\,dx_i</m> along the horizontal arrow 
+          <m> D_{J^0}(P^0) \widehat{\otimes}_{P^0} \widehat{\Omega}^1_{P^0/\ZZ_p} \to D_{J^1}(P^1) \widehat{\otimes}_{P^1} \widehat{\Omega}^1_{P^1/\ZZ_p}</m>
+          in <xref ref="fig-double-complex-crystalline"/>. When we reduce mod <m>p</m>, we get exactly the image of <m>dx_i</m> under the Cartier map, proving the claim.
         </p>
       </proof>
     </proposition>
-    <remark>
-      <p>
-        The use of the Cartier isomorphism in the proof of <xref ref="thm-Hodge-Tate-crystalline-affine-space"/> will eventually lead us to the fact that
-        prismatic cohomology computes not crystalline cohomology <em>per se</em>, but rather a canonical Frobenius descent of it.
-      </p>
-    </remark>
   </subsection>
   <exercises xml:id="exer-poincare-lemma">
     <exercise>
       <statement>
         <p>
           Prove <xref ref="prop-poincare-lemma"/>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-differentials-derived">
+      <statement>
+        <p>
+          Complete the proof of <xref ref="lem-differentials-derived"/> by confirming that <m>h</m> is indeed a homotopy for the identity map.
         </p>
       </statement>
     </exercise>

@@ -36,8 +36,9 @@
     \DeclareMathOperator{\comp}{comp}
     \DeclareMathOperator{\Comp}{\mathbf{Comp}}
     \DeclareMathOperator{\Cor}{Cor}
+    \DeclareMathOperator{\crys}{crys}
     \DeclareMathOperator{\cyc}{cyc}
-    \DeclareMathOperator{\disc}{Disc}
+    \DeclareMathOperator{\dcrys}{dcrys}
     \DeclareMathOperator{\dR}{dR}
     \DeclareMathOperator{\et}{et}
     \DeclareMathOperator{\Ext}{Ext}

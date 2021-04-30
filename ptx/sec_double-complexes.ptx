@@ -136,7 +136,7 @@
           <li>
             <p>
               For <m>n \geq 0</m>, there is a filtration on <m>H^n(\Tot(K^{\bullet,\bullet}))</m> whose successive quotients 
-              are the objects <m>K^{p,q}</m> for <m>p+q=n</m>.
+              are the objects <m>E_\infty^{p,q}</m> for <m>p+q=n</m>.
             </p>
           </li>
         </ol>
@@ -228,7 +228,7 @@
       <statement>
         <p>
           Let <m>K^{\bullet,\bullet}</m> be a double complex in which the single complexes <m>K^{\bullet,q}</m> are acyclic for all <m>q \gt 0</m>. Then the morphism
-          <m>K^{\bullet,0} \to \Tot(K^{\bullet,\bullet})</m> is a quasi-isomorphism.
+          <m>\Tot(K^{\bullet,\bullet}) \to K^{\bullet,0}</m> is a quasi-isomorphism.
         </p>
       </statement>
       <proof>

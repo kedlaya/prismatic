@@ -42,7 +42,7 @@
       </p>
     </remark>
     <lemma xml:id="lem-hodge-tate-etale-base-change">
-      <title>Etale localization for Hodge-Tate cohomology</title>
+      <title>Étale localization for Hodge-Tate cohomology</title>
       <statement>
         <p>
           Let <m>R \to S</m> be a <m>p</m>-completely étale map of <m>p</m>-completely smooth <m>\overline{A}</m>-algebras.
@@ -66,9 +66,9 @@
         </p>
       </proof>
     </lemma>
-      <p>
-        Another tool we will use is a base-change assertion. This will allow us to simplify the base ring <m>\overline{A}</m> in some cases.
-      </p>
+    <p>
+      Another tool we will use is a base-change assertion. This will allow us to simplify the base ring <m>\overline{A}</m> in some cases.
+    </p>
     <lemma xml:id="lem-prismatic-base-change">
       <title>Base change for prismatic and Hodge-Tate cohomology</title>
       <statement>
@@ -132,6 +132,8 @@
             <p>
               The ring <m>B</m> is classically <m>(p,d)</m>-complete.
             </p>
+          </li>
+          <li>
             <p>
               The ring <m>B</m> equals the classical <m>p</m>-completion of the divided power envelope of <m>(A, (d))</m> (and is <m>p</m>-torsion-free).
             </p>
@@ -147,6 +149,22 @@
         </p>
       </proof>
     </lemma>
+    <remark xml:id="rmk-base-change-to-crystalline-target">
+      <p>
+        In the notation of <xref ref="lem-universal-oriented-prism-completion"/>, <m>B</m> is again a <m>\delta</m>-ring and both <m>\phi(d)</m> and <m>p</m>
+        are distinguished elements. Since <m>\phi(d)</m> is divisible by <m>p</m>, we may apply <xref ref="lem-distiguished-times-unit"/> to deduce that
+        <m>\phi(d)</m> and <m>p</m> generate the same ideal in <m>B</m>. In other words, the composition of maps of <m>\delta</m>-rings
+        <me>
+          A \to B \stackrel{\phi_B}{\to} B
+        </me>
+        promotes to a composition of maps of prisms
+        <me>
+          (A, (d)) \to (B, (d)) \stackrel{\phi_B}{\to} (B, (\phi(d))) = (B, (p))
+        </me>
+        in which the target is crystalline! This will ultimately allow us to transfer information from the crystalline case of the Hodge-Tate comparison to the
+        universal case, and then from there to the general case.
+      </p>
+    </remark>
     <lemma xml:id="lem-universal-oriented-prism-completion2">
       <statement>
         <p>
@@ -192,8 +210,8 @@
       <proof>
         <p>
           Let <m>(A,(d)) \to (B, (d))</m> be the morphism from <xref ref="lem-universal-oriented-prism-completion"/>. By <xref ref="lem-universal-oriented-prism-completion2"/>, we may apply
-          <xref ref="lem-prismatic-base-change"/> to reduce the claim from the prism <m>(A, (d))</m> to <m>(B, (d))</m>. The latter is a crystalline prism, so 
-          <xref ref="cor-Hodge-Tate-crystalline-smooth"/> applies.
+          <xref ref="lem-prismatic-base-change"/> to reduce the claim from the prism <m>(A, (d))</m> to <m>(B, (d))</m>. The latter is a crystalline prism
+          by <xref ref="rmk-base-change-to-crystalline-target"/>, so <xref ref="cor-Hodge-Tate-crystalline-smooth"/> applies.
         </p>
       </proof>
     </proposition>

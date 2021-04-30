@@ -106,6 +106,7 @@
       <p>
         Take <m>\calC = \Mod_A</m> with <m>A \in \Ring</m>. Then a homotopy between morphisms <m>a,b: U \to V</m> of simplicial objects gives rise to a homotopy
         of the corresponding complexes in <m>\Comp(A)</m>. In particular, if two simplicial objects <m>U,V</m> are homotopy equivalent, then the corresponding objects in <m>K(A)</m> are isomorphic.
+        For a converse to this assertion, see <xref ref="bib-Stacks"/>, tag 01A1.
       </p>
     </example>
     <remark>
@@ -304,6 +305,14 @@
         </p>
       </proof>
     </proposition>
+  <remark>
+    <p>
+      An important basic example will be given by the exterior power <m>\wedge^i: \Mod_A \to \Mod_A</m>, which will give us the 
+      derived exterior power <m>L\wedge^i: \Mod_A \to D(A)</m>. This in turn extends to a functor <m>L\wedge^i: D^{\leq 0}(A) \to D(A)</m>.
+      (As indicated in <xref ref="bib-Bhatt-course"/>, Lecture VII, Remark 1.4, this is a point at which we are forced to be a bit sloppy by not working
+      in the language of <m>\infty</m>-categories, but never mind.)
+    </p>
+  </remark>
   </subsection>
   <subsection xml:id="subsec_cotangent-complex">
     <title>The cotangent complex</title>
@@ -368,13 +377,31 @@
           </p>
         </li>
       </ol>
-     </statement>
-     <proof>
-       <p>
-         See <xref ref="bib-Stacks"/>, tag 08P5.
-       </p>
-     </proof>
-   </proposition>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tag 08P5.
+        </p>
+      </proof>
+    </proposition>
+    <p>
+      The following is an analogue of the flatness of completion for noetherian rings, but without a noetherian hypothesis.
+    </p>
+    <lemma xml:id="lem-cotangent-complex-of-completion">
+      <statement>
+        <p>
+         Let <m>A \in \Ring</m> be classically <m>p</m>-complete with bounded <m>p</m>-power torsion. Let <m>B \in \Ring_A</m> be flat (so that <m>B</m> also has bounded <m>p</m>-power torsion).
+         Let <m>\widehat{B}</m> be the classical <m>p</m>-completion of <m>B</m>. Then the derived <m>p</m>-completion of the cotangent complex of <m>B \to \widehat{B}</m> is zero
+         in <m>D(\widehat{B})</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The complex in question vanishes after applying <m>\otimes_{\ZZ}^L \ZZ/p</m> by the base change formula (<xref ref="prop-cotangent-complex"/>), and then
+          derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>) yields the claim.
+        </p>
+      </proof>
+    </lemma>
   </subsection>
   <exercises>
     <exercise xml:id="exer-cotangent-complex-perfect">

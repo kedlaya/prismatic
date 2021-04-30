@@ -127,7 +127,7 @@
         <m>(H^\bullet(\overline{\Prism}_{R/A})\{\bullet\}, \beta_I)</m>.
       </p>
       <p>
-        As per <xref ref="rem-structure-on-prismatic"/>, the object <m>\overline{\Prism}_{R/A} \in D(\overline{A})</m> carries the structure of a commutative
+        As per <xref ref="def-prismatic-oppo-site"/>, the object <m>\overline{\Prism}_{R/A} \in D(\overline{A})</m> carries the structure of a commutative
         ring object over <m>\overline{A}</m>. From <xref ref="lem-derived-ring-cohomology"/>, we deduce that the graded group <m>\bigoplus_{n \geq 0} H^n(\overline{\Prism}_{R/A})\{n\}</m>
         carries the structure of a commutative <m>\overline{A}</m>-dga. It is also strictly commutative, but this requires some extra verification;
         see <xref ref="lem-ht-strictly-commutative"/>.

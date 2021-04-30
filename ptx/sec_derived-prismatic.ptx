@@ -1,5 +1,5 @@
 ﻿<section xml:id="sec_derived-prismatic">
-  <title>Derived prismatic cohomology (unstable)</title>
+  <title>Derived prismatic cohomology</title>
   <introduction>
     <paragraphs>
       <title>Reference</title>
@@ -83,9 +83,23 @@
     <corollary xml:id="cor-compare-deRham-smooth">
       <statement>
         <p>
-          For <m>k \in \Ring_{\FF_p}</m> and <m>R \in \Ring_k</m> smooth, there is a canonical isomorphism <m>\dR_{R/k} \cong \Omega^\bullet_{R/k}</m>.
+          For <m>k \in \Ring_{\FF_p}</m> and <m>R \in \Ring_k</m> smooth, there is a canonical isomorphism <m>\dR_{R/k} \cong \Omega^\bullet_{R/k}</m>
+          which respects the conjugate filtrations on both sides.
         </p>
       </statement>
+      <proof>
+        <p>
+          The map in question comes from the construction using the universal property of left Kan extensions.
+          By <xref ref="prop-derived-Cartier-isomorphism"/>, it respects the conjugate filtration on both sides.
+        </p>
+        <p>
+          Since both sides of the proposed isomorphism behave well with respect to etale localization, it suffices to check the case where <m>R</m> is a polynomial ring.
+          In this case the map on graded pieces can be written as <m>\wedge^i L_{R^{(1)}/k}[-i] \to \Omega^i_{R^{(1)}/k}[-i]</m> using <xref ref="prop-derived-Cartier-isomorphism"/>
+          and the usual Cartier isomorphism
+          (<xref ref="lem-cartier-isomorphism-affine-space"/>). This map is an isomorphism for <m>i=1</m> by <xref ref="prop-cotangent-complex"/>, and hence is an isomorphism
+          for general <m>i</m> as well.
+        </p>
+      </proof>
     </corollary>
     <remark xml:id="rmk-derham-comparison-char-0">
       <p>
@@ -128,7 +142,7 @@
         from <m>S</m>; see <xref ref="exer-perfection-of-regular-semiperfect"/>.
       </p>
     </example>
-    <lemma>
+    <lemma xml:id="lem-regular-semiperfect-de-Rham">
       <statement>
         <p>
           Let <m>k \in \Ring_{\FF_p}</m> be perfect and let <m>S \in \Ring_k</m> be regular semiperfect.
@@ -156,15 +170,81 @@
         <xref ref="def-divided-power-envelope"/> as we are not in the <m>\ZZ_p</m>-flat case).
       </p>
     </example>
-    <remark>
       <p>
+        As an illustration of the technique we have in mind, let us apply this logic to ordinary de Rham cohomology in the smooth case.
+      </p>
+    <lemma xml:id="lem-derived-de-Rham-computation">
+      <statement>
+        <p>
+          Let <m>k \in \Ring_{\FF_p}</m> be perfect and let <m>R \in \Ring_k</m> be smooth over <m>k</m>.
+          Let <m>S</m> be the coperfection of <m>R</m>. 
+          Let <m>S^\bullet</m> be the Čech nerve of <m>R \to S</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              The map <m>R \to S</m> is flat.
+            </p>
+          </li>
+          <li>
+            <p>
+              For each <m>n \geq 0</m>, the ring <m>S^n</m> is regular semiperfect.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          Since <m>R</m> is a smooth <m>k</m>-algebra and <m>k</m> is perfect, the Frobenius map <m>\phi_R: R \to R</m>
+          is flat (this is the easy direction of Kunz's criterion; see <xref ref="bib-Stacks"/>, tag 0EC0 for the converse). It follows that <m>R \to S</m> is flat.
+        </p>
+        <p>
+          To see that <m>S^n</m> is regular semiperfect, we may work étale locally to reduce to the case where <m>R = k[x_1,\dots,x_r]</m>.
+          In this case, we may write
+          <me>
+            S^n = k[x_{ij}^{p^{-\infty}}: i=1,\dots,r; j=0,\dots,n]/(x_{ij} - x_{ij'}: i=1,\dots,r; 1 \leq j \lt j' \leq n)
+          </me>
+          to see that it is regular semiperfect.
+        </p>
+      </proof>
+    </lemma>
+    <remark xml:id="rmk-de-Rham-via-derived">
+      <p>
+        With notation as in <xref ref="lem-derived-de-Rham-computation"/>, <xref ref="cor-compare-deRham-smooth"/> implies that we can identify <m>\Omega^\bullet_{R/k}</m>
+        with <m>\dR_{R/k}</m> in <m>D(k)</m>.
+        For each <m>n</m>, <m>\dR_{S^n/k}</m> is concentrated in degree 0 by <xref ref="lem-regular-semiperfect-de-Rham"/>.
+        It can be shown further that the functor <m>\dR_{\bullet/k}</m> satisfies descent with respect to the fpqc cover <m>R \to S</m>
+        (see for instance  <xref ref="bib-Bhatt-Morrow-Scholze2"/>, section 3); consequently, <m>\dR_{R/k}</m> can be computed by the complex <m>\dR_{S^\bullet/k}</m>.
       </p>
     </remark>
+  </subsection>
+  <subsection>
+    <title>Derived crystalline cohomology</title>
     <definition>
       <title>Derived crystalline cohomology</title>
       <p>
+        Let <m>k \in \Ring_{\FF_p}</m> be perfect and let <m>A \in \Ring</m> be a classically <m>p</m>-complete ring with <m>A/p \cong k</m>.
+        We wish to derive a <term>crystalline cohomology</term> functor <m>R\Gamma_{\crys}: \Poly_k \to D(A)</m> taking <m>R = k[x_1,\dots,x_r]</m>
+        to <m>\widehat{\Omega}^{\bullet}_{P/A}</m> for <m>P = A[x_1,\dots,x_r]</m>; however, we need to make sure that this construction does not depend on the choice
+        of coordinates on <m>R</m>. Fortunately, we can deduce this from our proof of the Hodge-Tate comparison, which gives us a canonical isomorphism
+        of <m>\widehat{\Omega}^{\bullet}_{P/A}</m> with <m>\phi^* \Prism_{R/k}</m> (<xref ref="cor-prismatic-to-crystalline"/>).
+      </p>
+      <p>
+        We define the <term>derived crystalline cohomology</term> functor <m>R\Gamma_{\dcrys}: \Ring_k \to D(A)</m> by taking the left derived functor of the
+        ordinary crystalline cohomology <m>R\Gamma_{\crys}</m>. From the comparison of crystalline cohomology with de Rham cohomology 
+        (<xref ref="prop-crystalline-cohomology-affine-space"/>), we obtain a natural isomorphism 
+        <me>
+          R\Gamma_{\dcrys}(\bullet/A) \otimes_A^L k \cong \dR_{\bullet/k}.
+        </me>
       </p>
     </definition>
+    <remark>
+      <p>
+        Using <xref ref="lem-derived-de-Rham-computation"/>, we can carry out the analogue of <xref ref="rmk-de-Rham-via-derived"/> to construct an explicit
+        <em>functorial</em> complex computing the (derived) crystalline cohomology of a smooth algebra over a perfect ring.
+        We omit the details here.
+      </p>
+    </remark>
   </subsection>
   <subsection>
     <title>Derived prismatic cohomology</title>
@@ -174,19 +254,29 @@
         The <term>derived prismatic cohomology</term> functor <m>L\Prism_{\bullet/A}: \Ring_{\overline{A}} \to D_{\comp}(A)</m>
         is the left derived functor of the functor <m>\Poly_{\overline{A}} \to D_{\comp}(A)</m> given by <m>R_0 \mapsto \Prism_{\widehat{R_0}/A}</m>
         (where <m>\widehat{R_0}</m> is the derived <m>p</m>-completion).
+        Note that <m>L\Prism_{R/A}</m> is a commutative algebra object in <m>D_{\comp}(A)</m>.
       </p>
       <p>
         Similarly, the <term>derived Hodge-Tate cohomology</term> functor <m>L\overline{\Prism}_{\bullet/A}: \Ring_{\overline{A}} \to D_{\comp}(\overline{A})</m>
         is the left derived functor of the functor <m>\Poly_{\overline{A}} \to D_{\comp}(A)</m> given by <m>R_0 \mapsto \overline{\Prism}_{\widehat{R_0}/A}</m>.
+        Note that <m>L\overline{\Prism}_{R/A}</m> is a commutative algebra object in <m>D_{\comp}(R)</m>.
+        There is a natural isomorphism <m>L\Prism_{R/A} \otimes_A^L \overline{A} \cong L \overline{\Prism}_{R/A}</m> in <m>D_{\comp}(\overline{A})</m>.
       </p>
     </definition>
+    <remark xml:id="rmk-delta-structure-on-prismatic-cohomology">
+      <p>
+        The object <m>L\Prism_{R/A}</m> admits a <m>\phi_A</m>-semilinear endomorphism <m>\phi_R</m>.
+        One can further show that <m>L\Prism_{R/A}</m> carries the structure of a <term>derived <m>\delta</m>-ring</term> once one makes a precise definition of this concept
+        (which we will not do here).
+      </p>
+    </remark>
     <remark>
       <p>
         While ordinary prismatic and Hodge-Tate cohomology are concentrated in nonnegative degrees, the same is not true of derived prismatic and Hodge-Tate cohomology.
         In general, they will not even be bounded below!
       </p>
     </remark>
-    <proposition>
+    <proposition xml:id="prop-derived-Hodge-Tate-comparison">
       <title>Derived Hodge-Tate comparison</title>
       <statement>
         <p>
@@ -198,24 +288,64 @@
           where <m>\{-i\}</m> denotes a Breuil-Kisin twist (<xref ref="def-Breuil-Kisin-twist"/>).
         </p>
       </statement>
+      <proof>
+        <p>
+          This follows from the same argument as in <xref ref="prop-derived-Cartier-isomorphism"/> upon checking that when <m>R</m> is the <m>p</m>-adic 
+          completion of a polynomial ring over <m>A</m>, we have <m>L\overline{\Prism}_{R/A} \cong \overline{\Prism}_{R/A}</m>;
+          this amounts to an application of <xref ref="lem-cotangent-complex-of-completion"/>.
+        </p>
+      </proof>
     </proposition>
     <corollary>
       <title>Comparison with the smooth case</title>
       <statement>
         <p>
-          ...
+          Let <m>(A,I)</m> be a bounded prism. For any <m>p</m>-completely smooth <m>A/I</m>-algebra, the natural map <m>L\Prism_{R/A} \cong \Prism_{R/A}</m>
+          is an isomorphism.
         </p>
       </statement>
+      <proof>
+        <p>
+          This follows from <xref ref="prop-derived-Hodge-Tate-comparison"/> as in the proof of <xref ref="cor-compare-deRham-smooth"/>.
+        </p>
+      </proof>
     </corollary>
+    <p>
+      The statement that derived de Rham cohomology can be computed easily using regular semiperfect rings (<xref ref="rmk-de-Rham-via-derived"/>) can be adapted as follows.
+    </p>
     <definition>
       <p>
-        A <term>semilens</term> is a derived <m>p</m>-complete ring which can be written as the quotient of some lens. 
-        If <m>R</m> is a semilens, then <m>R/p</m> is semiperfect and <m>\theta: W(R^\flat) \to R</m> is surjective.
+        Let <m>(A,I)</m> be a perfect prism.
+        A <term>semilens</term> over <m>\overline{A}</m> is a derived <m>p</m>-complete ring which can be written as the quotient of some lens over <m>\overline{A}</m>.
+        If <m>S</m> is a semilens, then <m>S/p</m> is semiperfect and <m>\theta: W(S^\flat) \to S</m> is surjective.
+        It will follow from <xref ref="rmk-regular-semilens-cohomology"/> that <m>\Prism_{S/A} \in D^{\leq 0}(A)</m>,
+        but in general it will not be concentrated in degree 0.
       </p>
       <p>
-        A <term>regular semilens</term> is...
+        For <m>(A,I)</m> a perfect prism, a <term>regular semilens</term> over <m>(A, I)</m> is a ring <m>S</m> of the form 
+        <m>R/J</m> where <m>R</m> is a lens over <m>\overline{A}</m> and <m>J</m> is an ideal of <m>R</m> generated by a regular sequence.
       </p>
     </definition>
+    <remark xml:id="rmk-regular-semilens-cohomology">
+      <p>
+        Let <m>(A,I)</m> be a perfect prism and let <m>S</m> be a regular semilens over <m>(A,I)</m>.
+        For simplicity, assume also that <m>\overline{A}</m> is <m>p</m>-torsion-free and <m>S</m> is <m>p</m>-completely flat over <m>\overline{A}</m>.
+        From <xref ref="prop-derived-Hodge-Tate-comparison"/>, we see that <m>\overline{\Prism}_{S/A}</m> admits an increasing exhaustive filtration
+        with graded pieces <m>\wedge^i L_{S/A}\{-i\}[-i]</m>. By our assumptions on <m>S</m>, each of these graded pieces is a finite projective <m>S</m>-module
+        (compare the proof of <xref ref="lem-regular-semiperfect-de-Rham"/>). It follows that <m>\overline{\Prism}_{S/A}</m> is concentrated in degree 0,
+        where it is a <m>p</m>-completely flat <m>S</m>-algebra; consequently, <m>\Prism_{S/A}</m> is concentrated in degree 0, where it is
+        a <m>(p,I)</m>-completely flat <m>A</m>-algebra.
+      </p>
+      <p>
+        It can also be shown (as in <xref ref="rmk-delta-structure-on-prismatic-cohomology"/>) that the Frobenius on prismatic cohomology provides <m>\Prism_{S/A}</m>
+        with a <m>\delta</m>-ring structure, so <m>(\Prism_{S/A}, I)</m> is in fact a prism over <m>(A,I)</m>!
+        This can even be made explicit: if we write <m>S = R/J</m> with <m>R</m> a lens and <m>J</m> generated by a regular sequence, then
+        <me>
+          \Prism_{S/A} \cong W(R^\flat)\{J/d \}^\wedge_{(p)}
+        </me>
+        (compare <xref ref="lem-crystalline-weakly-final"/>).
+      </p>
+    </remark>
   </subsection>
   <exercises>
     <exercise xml:id="exer-perfection-of-regular-semiperfect">
