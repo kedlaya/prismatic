@@ -280,7 +280,7 @@
         </p>
       </proof>
     </corollary>
-    <example>
+    <example xml:id="exa-hodge-tate-q-derham">
       <title>The Hodge-Tate isomorphism in <m>q</m>-de Rham cohomology</title>
       <p>
         Take <m>(A, I) = (\ZZ_p\llbracket q-1 \rrbracket, ([p]_q))</m>. We identify <m>\overline{A} = A/I</m> with <m>\ZZ_p[\zeta_p]</m> via

@@ -58,6 +58,7 @@
     \DeclareMathOperator{\inv}{inv}
     \DeclareMathOperator{\Kos}{Kos}
     \DeclareMathOperator{\lcm}{lcm}
+    \DeclareMathOperator{\lens}{lens}
     \DeclareMathOperator{\Mod}{\mathbf{Mod}}
     \DeclareMathOperator{\Norm}{Norm}
     \DeclareMathOperator{\op}{op}
@@ -75,6 +76,7 @@
     \DeclareMathOperator{\sign}{sign}
     \DeclareMathOperator{\Spec}{Spec}
     \DeclareMathOperator{\Spf}{Spf}
+    \DeclareMathOperator{\Sym}{Sym}
     \DeclareMathOperator{\Tor}{Tor}
     \DeclareMathOperator{\Tot}{Tot}
     \DeclareMathOperator{\Trace}{Trace}
@@ -144,6 +146,7 @@
     <xi:include href="./sec_nonabelian-derived.ptx"/>
     <xi:include href="./sec_derived-prismatic.ptx"/>
     <xi:include href="./sec_perfections-mixed.ptx"/>
+    <xi:include href="./sec_andre-flatness.ptx"/>
     <xi:include href="./sec_etale-comparison.ptx"/>
     <xi:include href="./sec_q-derham.ptx"/>
     <xi:include href="./sec_prismatization.ptx"/>

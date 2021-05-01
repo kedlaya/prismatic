@@ -36,7 +36,7 @@
         </p>
       </proof>
     </lemma>
-    <definition>
+    <definition xml:id="def-relative-Frobenius">
       <p>
         For <m>R \to S</m> a morphism in <m>\Ring_{\FF_p}</m>, the map <m>\phi_S: S \to S</m> factors through an <m>R</m>-linear map <m>\phi_{S/R}: S^{(1)} \to S</m>
         where <m>S^{(1)} = S \otimes_{R,\phi_R} R</m>.
@@ -253,7 +253,7 @@
             and let <m>D</m> be the <m>p</m>-adic completion of the divided power envelope of <m>(P, (p,y_1,\dots,y_s))</m>.
             Then there is a natural quasi-isomorphism
             <me>
-              \widehat{\Omega}^{\bullet}_{P/\ZZ_p} \cong D \widehat{\otimes}_P \widehat{\Omega}^{\bullet}_{P/\ZZ_p}
+              \widehat{\Omega}^{\bullet}_{P_0/\ZZ_p} \cong D \widehat{\otimes}_P \widehat{\Omega}^{\bullet}_{P/\ZZ_p}
             </me>
             and hence a quasi-isomorphism
             <me>

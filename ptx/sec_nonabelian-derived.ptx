@@ -123,7 +123,7 @@
         Let <m>A \to B</m> be a morphism in <m>\Ring</m>. Choose a simplicial resolution <m>U</m> of <m>B</m> by free <m>A</m>-algebras
         (e.g., the standard resolution; see <xref ref="exa-standard-resolution-rings"/>.
         Then for any morphism <m>A \to C</m> of rings, we may define the <term>simplicial tensor product</term> <m>B \otimes_A C</m> to be the simplicial ring
-        <term>U \otimes_A C</term>; any two choices of <m>U</m> will give rise to homotopy equivalent objects. 
+        <m>U \otimes_A C</m>; any two choices of <m>U</m> will give rise to homotopy equivalent objects. 
         Similarly, we may define the simplicial tensor product of two simplicial <m>A</m>-algebras.
       </p>
     </example>
@@ -391,7 +391,8 @@
       <statement>
         <p>
          Let <m>A \in \Ring</m> be classically <m>p</m>-complete with bounded <m>p</m>-power torsion. Let <m>B \in \Ring_A</m> be flat (so that <m>B</m> also has bounded <m>p</m>-power torsion).
-         Let <m>\widehat{B}</m> be the classical <m>p</m>-completion of <m>B</m>. Then the derived <m>p</m>-completion of the cotangent complex of <m>B \to \widehat{B}</m> is zero
+         Let <m>\widehat{B}</m> be the classical <m>p</m>-completion of <m>B</m>. 
+         Then the derived <m>p</m>-completion of the cotangent complex of <m>B \to \widehat{B}</m> is zero
          in <m>D(\widehat{B})</m>.
         </p>
       </statement>
@@ -414,6 +415,19 @@
         <p>
           On one hand, <m>\phi_B</m> evidently induces an isomorphism on <m>L_{A/B}</m>.
           On the other hand, the induced map is zero when <m>B</m> is a polynomial ring over <m>A</m>.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-cotangent-complex-lens">
+      <statement>
+        <p>
+          Let <m>A \to B</m> be a morphism of lenses. Using <xref ref="exer-cotangent-complex-perfect"/>, show that the derived <m>p</m>-completion of <m>L_{B/A}</m> vanishes.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          As in <xref ref="lem-cotangent-complex-of-completion"/>, use derived Nakayama to reduce to <xref ref="prop-derived-complete-abelian-derived"/>.
+          See also <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.14.
         </p>
       </hint>
     </exercise>

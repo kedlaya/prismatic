@@ -1,5 +1,5 @@
 ﻿<section xml:id="sec_perfections-mixed">
-  <title>Coperfections in mixed characteristic (unstable)</title>
+  <title>Coperfections in mixed characteristic</title>
   <introduction>
     <paragraphs>
       <title>Reference</title>
@@ -11,7 +11,10 @@
       Given a perfect prism <m>(A, I)</m>,
       we apply prismatic cohomology to construct a <q>canonical coperfection</q> of a <m>p</m>-complete <m>A/I</m>-algebra.
       In general this will not be a true ring but rather something derived; only in certain (important) special cases will we end up with a genuine ring.
-      Nonetheless, this construction is quite useful in mixed-characteristic commutative algebra.
+      Nonetheless, this construction is quite useful in mixed-characteristic commutative algebra, as we will see in <xref ref="sec_andre-flatness"/>.
+    </p>
+    <p>
+      From now on, we will write <m>\Prism_{R/A}</m> and <m>\overline{\Prism}_{R/A}</m> to mean <em>derived</em> prismatic and Hodge-Tate cohomology.
     </p>
   </introduction>
   <subsection>
@@ -29,40 +32,39 @@
           R_{\perf} = \colim(R \stackrel{\phi}{\to} R \stackrel{\phi}{\to} R \to \cdots).
         </me>
         Now suppose that <m>R</m> is an algebra over a perfect field <m>k</m> of characteristic <m>p</m>. Let <m>R^{(1)} \to R</m> be the relative 
-        Frobenius map; then the induced map <m>(R^{(1)})_{\perf} \to R_{\perf}</m> is an isomorphism. See also <xref ref="exer-universal-homeomomorphism"/>.
+        Frobenius map (<xref ref="def-relative-Frobenius"/>); then the induced map <m>(R^{(1)})_{\perf} \to R_{\perf}</m> is an isomorphism. 
+        See also <xref ref="exer-universal-homeomomorphism"/>.
       </p>
     </definition>
-    <remark>
+    <remark xml:id="rmk-kunz">
       <p>
-        A fundamental theorem of Kunz (se <xref ref="bib-Stacks"/>, tag 0EC0) asserts that a noetherian <m>\FF_p</m>-algebra is regular if and only if
+        A fundamental theorem of Kunz (see <xref ref="bib-Stacks"/>, tag 0EC0) asserts that a noetherian <m>\FF_p</m>-algebra is regular if and only if
         its Frobenius map is flat. (As a reminder, if <m>R</m> is a finite type <m>k</m>-algebra for some perfect field <m>k</m> of characteristic <m>p</m>,
         then <m>R</m> is regular if and only if it is a smooth <m>k</m>-algebra; see <xref ref="bib-Stacks"/>, tag 00TQ.)
-        Since flatness is preserved by colimits, we see that if <m>R</m> is a noetherian regular <m>\FF_p</m>-algebra, then <m>R \to R_{\perf}</m> is flat.
+        Since flatness is preserved by colimits, we see that if <m>R</m> is a noetherian regular <m>\FF_p</m>-algebra, then <m>R \to R_{\perf}</m> is flat;
+        the converse is also true (see <xref ref="exer-frob-flat"/>).
       </p>
     </remark>
     <p>
       The following can be seen as another instance of the same phenomenon that gives rise to the vanishing of the cotangent complex for a morphism
       of perfect rings in characteristic <m>p</m> (as in the proof of <xref ref="lem-maps-from-Witt-rings"/>).
     </p>
-    <remark>
-      <p>
-        For any ring map <m>k \to R</m>, 
-      </p>
-    </remark>
-    <proposition>
+    <proposition xml:id="prop-coperfection-via-derived-dR">
       <statement>
         <p>
-          Let <m>R</m> be a <m>k</m>-algebra for some perfect field <m>k</m> of characteristic <m>p</m>.
+          Let <m>k</m> be a perfect field of characteristic <m>p</m> and choose <m>R \in \Ring_k</m>.
           Then the projection <m>\dR_{R/k} \to R</m> induces an isomorphism of
           <me>
-            \dR_{R/k,\perf} = \colim(\dR_{R/k} \stackrel{\phi_R} \dR_{R/k} \stackrel{\phi_R} \cdots)
+            \dR_{R/k,\perf} = \colim(\dR_{R/k} \stackrel{\phi_R}{\to} \dR_{R/k} \stackrel{\phi_R}{\to} \cdots)
           </me>
           with <m>R_{\perf}</m>.
         </p>
       </statement>
       <proof>
         <p>
-          Suppose first that <m>R</m> is a polynomial ring over <m>k</m> (in any number of variables). In this case, it will suffice to check that for each <m>i \gt 0</m>,
+          Since everything is defined using the formalism of nonabelian derived functors (<xref ref="def-derived-de-Rham"/>), 
+          it suffices to treat the case where <m>R</m> is a polynomial ring over <m>k</m>
+          in finitely many variables. In this case, it will suffice to check that for each <m>i \gt 0</m>,
           <me>
             \colim(\Omega^i_{R/k} \stackrel{\phi_R}{\to} \Omega^i_{R/k} \stackrel{\phi_R}{\to} \cdots)
           </me>
@@ -72,29 +74,43 @@
           </me>
           and similarly in higher degrees.
         </p>
-        <p>
-          To treat the general case, use the fact that every <m>k</m>-algebra is a quotient of a polynomial algebra and a (co)simplicial argument.
-        </p>
       </proof>
     </proposition>
-    <proposition>
+    <p>
+      To get closer to the mixed-characteristic case, let us reformulate in terms of derived prismatic cohomology.
+    </p>
+    <proposition xml:id="prop-coperfection-via-derived-prismatic">
       <statement>
         <p>
           Let <m>R</m> be a <m>k</m>-algebra for some perfect field <m>k</m> of characteristic <m>p</m>, and let <m>(A,I)</m> be the prism <m>(W(k), p)</m>.
           Then the colimit
           <me>
-            \overline{\Prism}^{\op}_{R/A,\perf} = \colim(\overline{\Prism}_{R/A}^{\op} \stackrel{\phi_R}{\to} \overline{\Prism}_{R/A}^{\op} \stackrel{\phi_R}{\to} \cdots)^{\wedge}
+            \overline{\Prism}^{\op}_{R/A,\perf} = \colim(L\overline{\Prism}_{R/A}^{\op} \stackrel{\phi}{\to} \overline{\Prism}_{R/A}^{\op} \stackrel{\phi}{\to} \cdots)^{\wedge}
           </me>
           is concentrated in degree <m>0</m>, where it coincides with <m>R_{\perf}</m> (as a <m>k</m>-algebra).
         </p>
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-course"/>, Lecture XIII, Proposition 1.6.
+          Again, we formally reduce to the case where <m>R</m> is a polynomial ring in finitely many variables.
+          To deduce this from <xref ref="prop-coperfection-via-derived-dR"/>, we need to check that the map
+          <me>
+            \gr_i^{\HT}(\phi_R): \gr_i^{\HT}(\overline{\Prism}_{R/A}) \to \gr_i^{\HT}(\overline{\Prism}_{R/A})
+          </me>
+          induced by the Frobenius on <m>\overline{\Prism}_{R/A}</m> conicides with the map <m>\Omega^i_{R/k} \to \Omega^i_{R/k}</m> induced by the Frobenius on <m>R</m>
+          via the identification <m>\gr_i^{\HT}(\overline{\Prism}_{R/A} \cong \Omega^i_{R/k}</m> of <xref ref="prop-derived-Hodge-Tate-comparison"/>
+          (note that now we have reverted from derived to ordinary prismatic cohomology).
+          By functoriality, it suffices to treat the case <m>R = k[x]</m>; this amounts to a direct calculation in the style of
+          <xref ref="lem-ht-strictly-commutative"/>, which we leave to the reader.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture XIII, Proposition 1.6.)
         </p>
       </proof>
     </proposition>
-    <corollary>
+    <p>
+      We make one more change to prepare for the passage to mixed characteristic: we replace the Frobenius action on Hodge-Tate cohomology, which has no analogue
+      in mixed characteristic, with the prismatic Frobenius.
+    </p>
+    <corollary xml:id="cor-coperfection-via-derived-prismatic">
       <statement>
         <p>
           Let <m>R</m> be a <m>k</m>-algebra for some perfect field <m>k</m> of characteristic <m>p</m>, and let <m>(A,I)</m> be the prism <m>(W(k), p)</m>.
@@ -105,27 +121,178 @@
           is concentrated in degree <m>0</m>, where it coincides with <m>W(R_{\perf})</m> (as a <m>W(k)</m>-algebra).
         </p>
       </statement>
+      <proof>
+        <p>
+          This is a direct consequence of <xref ref="prop-coperfection-via-derived-prismatic"/>.
+        </p>
+      </proof>
     </corollary>
-    <theorem>
-      <title>Andre flatness lemma</title>
+  </subsection>
+  <subsection>
+    <title>The mixed characteristic case</title>
+    <definition>
+      <p>
+        Let <m>(A,I)</m> be a perfect prism with slice <m>\overline{A}</m>. For <m>R \in \Ring_{\overline{A}}</m> derived <m>p</m>-complete, define the
+        <term>prismatic coperfection</term>
+        <me>
+          \Prism_{R/A,\perf} = \colim(\Prism_{R/A} \stackrel{\phi_R}{\to} \Prism_{R/A} \stackrel{\phi_R}{\to} \cdots)^{\wedge}_{(p,I)} \in D_{\comp}(A)
+        </me>
+        (the derived completion being <m>(p,I)</m>-adic) using the <m>A</m>-linear structure on the initial term.
+        This corresponds to the <term>perfection</term> in <xref ref="bib-Bhatt-course"/>, <xref ref="bib-Bhatt-Scholze"/>.
+      </p>
+      <p>
+        Define the <term>lens coperfection</term> as
+        <me>
+          R_{\lens} = \Prism_{R/A,\perf} \otimes_A^L \overline{A} \in D_{\comp}(R)
+        </me>
+        (the derived completion being <m>p</m>-adic) using the <m>R</m>-linear structure coming from <m>R \to \overline{\Prism}_{R/A} \to \Prism_{R/A} \otimes_A^L \overline{A}</m>
+        (the latter map coming from the identification of <m>\Prism_{R/A}</m> with the first term of the colimit defining <m>\Prism_{R/A,\perf}</m>).
+        This corresponds to the <term>perfectoidization</term> in <xref ref="bib-Bhatt-course"/>, <xref ref="bib-Bhatt-Scholze"/>.
+      </p>
+      <p>
+        By construction, <m>\Prism_{R/A,\perf}</m> and <m>R_{\lens}</m> are cocmmutative algebra objects in <m>D_{\comp}(A)</m> and <m>D_{\comp}(R)</m>, respectively.
+        The Frobenius on <m>\Prism_{R/A}</m> induces an automorphism of <m>\Prism_{R/A,\perf}</m> denoted <m>\phi_R</m>.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        The notation <m>R_{\lens}</m> suggests that the lens coperfection of <m>R</m> depends only on <m>R</m> and not on its description as an <m>\overline{A}</m>-algebra.
+        This will be confirmed by <xref ref="lem-base-independence-of-lens-coperfection"/>.
+      </p>
+    </remark>
+    <lemma xml:id="lem-base-independence-of-lens-coperfection">
+      <title>Base independence of lens coperfection</title>
       <statement>
-        Let <m>R</m> be a lens. Then there exists a <m>p</m>-completely faithfully flat morphism <m>R \to S</m> of lenses such that <m>S</m> is
-        <term>absolutely integrally closed</term>, meaning that every monic polynomial over <m>S</m> has a root. In particular, every element of <m>S</m>
-        admits a compatible system of <m>p</m>-power roots.
+        <p>
+          Let <m>(A,I) \to (B,J)</m> be a morphism of perfect prisms and let <m>S \in \Ring_{\overline{B}}</m> be derived <m>p</m>-complete.
+        </p>
+        <ol>
+          <li>
+            <p>
+              The natural map <m>\overline{\Prism}_{S/A} \cong \overline{\Prism}_{S/B}</m> is an isomorphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>S = \overline{B}</m>, then the natural map <m>S \to \overline{\Prism}_{S/B}</m> is also an isomorphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              The natural maps
+              <me>
+                \Prism_{S/A} \to \Prism_{S/B}, \qquad \Prism_{S/A,\perf} \to \Prism_{S/B,\perf}
+              </me>
+              are isomorphisms.
+            </p>
+          </li>
+        </ol>
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-Scholze"/>, Theorem 7.12.
+          By derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>), the first statement implies the third.
+          To check the first and second statements, 
+          we may reduce to comparing graded pieces of the Hodge-Tate filtration. Using <xref ref="prop-derived-Hodge-Tate-comparison"/> to translate the statement
+          in terms of cotangent complexes plus <xref ref="eq-cotangent-complex-sequence"/>, we reduce to checking that the derived <m>p</m>-completion of 
+          <m>L_{\overline{B}/\overline{A}}</m> vanishes. This holds because both rings are lenses; see <xref ref="exer-cotangent-complex-lens"/>.
         </p>
       </proof>
-    </theorem>
+    </lemma>
+    <p>
+      Let us consider some examples.
+    </p>
+    <example>
+      <title>Coperfection for a crystalline prism</title>
+      <p>
+        Suppose that <m>(A,I)</m> is crystalline, that is, <m>I = (p)</m> and <m>A = W(\overline{A})</m>. 
+        By <xref ref="cor-coperfection-via-derived-prismatic"/>, we have
+        <me>
+          R_{\lens} \cong R_{\perf}, \qquad \Prism_{R/A,\perf} \cong W(R_{\perf})
+        </me>
+        with everything concentrated in degree 0.
+      </p>
+    </example>
+    <example xml:id="exa-coperfection-lens">
+      <title>Coperfection for a lens</title>
+      <p>
+        Let <m>(A,I)</m> be a perfect prism and suppose that <m>R \in \Ring_{\overline{A}}</m> is itself a lens.
+        By <xref ref="lem-lens-coperfection-lens"/>, <m>\Prism_{R/A} \cong W(R^\flat)</m> concentrated in degree 0.
+        Since Frobenius is already an automorphism on <m>W(R^\flat)</m>, it follows that <m>\Prism_{R/A,\perf} \cong W(R^\flat)</m> and <m>R_{\lens} \cong R</m>,
+        both concentrated in degree 0.
+      </p>
+    </example>
+    <lemma xml:id="lem-lens-coperfection-lens">
+      <statement>
+        <p>
+          Let <m>(A,I)</m> be a perfect prism and suppose that <m>R \in \Ring_{\overline{A}}</m> is itself a lens.
+          Then <m>\Prism_{R/A} \cong W(R^\flat)</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Write <m>R = \overline{B}</m> for some perfect prism <m>(B,J)</m>; by <xref ref="thm-untilting-functor"/>, the map <m>\overline{A} \to \overline{B}</m>
+          promotes uniquely to a morphism of prisms <m>(A,I) \to (B,J)</m>. Now <m>(R \to B/J \leftarrow B)</m> is an object of <m>(R/A)_{\Prism}</m>, so we have
+          a natural map <m>\Prism_{R/A} \to B = W(R^\flat)</m>. To check that this is an isomorphism, by derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>)
+          it suffices to do this after applying <m>\bullet \otimes_A^L \overline{A}</m>; that is, we must check that <m>\overline{\Prism}_{R/A} \cong R</m>.
+          This follows from <xref ref="lem-base-independence-of-lens-coperfection"/>.
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      We are now ready to consider a simple example where the lens coperfection is not concentrated in degree 0, although the verification of this will come later
+      (see <xref ref="sec_q-deRham"/>). This should not necessarily be viewed as a bad thing, as the higher cohomology will carry some important geometric information.
+    </p>
+    <example xml:id="exa-coperfection-q-torus">
+      <title>The <m>q</m>-torus</title>
+      <p>
+        Let <m>(A,I)</m> be the coperfection of <m>(\ZZ_p\llbracket q-1 \rrbracket, ([p]_q))</m>, so that <m>A</m> is the classical <m>(p, [p]_q)</m>-completion of
+        <m>\ZZ_p[q^{p^{-\infty}}]</m>. Take <m>R = \overline{A}[x^{\pm}]^\wedge_{(p)}</m>.
+      </p>
+      <p>
+        We will see later (see <xref ref="sec_q-deRham"/>) that in this example <m>H^1(\Prism_{R/A,\perf})</m> and <m>H^1(R_{\lens})</m> are both nonzero.
+        This will follow by our later computation of <m>\Prism_{R/A}</m> using a <m>q</m>-de Rham complex (compare <xref ref="exa-hodge-tate-q-derham"/>).
+        We will eventually see that <m>\Prism_{R/A}</m> is given by the <m>(p, [p]_q)</m>-completion of 
+        <me>
+          A[x^{\pm p^{p^{-\infty}}}] \stackrel{\gamma-\id}{\to} J A[x^{\pm p^{p^{-\infty}}}]
+        </me>
+        where
+        <me>
+          J = \left(\bigcup_n (q^{p^{-n}}-1) \right)^\wedge_{(p,[p]_q)} = \ker(A \to \ZZ_p, q^{p^{-n}} \mapsto 1)
+        </me>
+        and <m>\gamma</m> is characterized by 
+        <me>
+          \gamma(x^i) = q^i x \qquad (i \in \ZZ[p^{-1}]).
+        </me>
+        In particular, <m>(q-1) \cdot 1</m> in degree 1 is not a coboundary even modulo <m>[p]_q</m>.
+      </p>
+    </example>
   </subsection>
   <exercises>
+    <exercise xml:id="exer-frob-flat">
+      <statement>
+        <p>
+          Show that for <m>R \in \Ring_{\FF_p}</m>, the Frobenius map <m>\phi_R: R \to R</m> is flat if and only  if the canonical map from <m>R</m>
+          to its coperfection <m>R_{\perf}</m> is flat.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Let <m>R_1</m> be a copy of <m>R</m> viewed as an <m>R</m>-algebra via <m>\phi</m>.
+          The map <m>R_1 \to R_{\perf}</m> induces a surjection on spectra; hence if <m>I</m> is a finitely generated ideal of <m>R</m>
+          and 
+          <me>
+            0 \to K \to I \otimes_R R_1 \to IR_{1} \to R_{1}/IR_1 \to 0
+          </me>
+          is exact with <m>K \neq 0</m>, then <m>I \otimes R_{\perf} \to I R_{\perf}</m> is not injective either. This checks a standard criterion for flatness
+          (<xref ref="bib-Stacks"/>, tag 00M5).
+        </p>
+      </hint>
+    </exercise>
     <exercise xml:id="exer-universal-homeomomorphism">
       <statement>
         <p>
           Let <m>R \to S</m> be a morphism of <m>\FF_p</m>-algebras such that the corresponding map <m>\Spec S \to \Spec R</m> is a universal homeomorphism.
-          Show that the induced map <m>\colim_\phi R \to \colim_\phi S</m> of coperfections is an isomorphism.
+          Show that the induced map <m>R_{\perf} \to S_{\perf}</m> of coperfections is an isomorphism.
         </p>
       </statement>
     </exercise>

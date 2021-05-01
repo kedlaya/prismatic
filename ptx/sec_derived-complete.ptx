@@ -472,6 +472,18 @@
         </p>
       </proof>
     </proposition>
+    <remark>
+      <p>
+        An <m>I</m>-completely smooth morphism is sometimes called a <q>formally smooth</q> morphism, but this is not entirely accurate: the latter
+        simply means that the infinitesimal lifting criterion is satisfied (<xref ref="bib-Stacks"/>, tag 00TI). An <m>I</m>-completely smooth morphism is formally smooth,
+        but formal smoothness is a meaningful condition without any reference to derived completeness.
+      </p>
+      <p>
+        By contrast, a <term>smooth</term> morphism of rings is one which is formally smooth and of finite presentation (see <xref ref="bib-Stacks"/>, tag 02H6).
+        In general an <m>I</m>-completely smooth morphism is not of finite type and hence not smooth; for instance, <m>\ZZ_p \to \ZZ_p[x]^\wedge_{(p)}</m> is <m>p</m>-completely
+        smooth but not of finite type.
+      </p>
+    </remark>
   </subsection>
   <subsection xml:id="subsec-derived-complete-derived">
     <title>Derived completeness in the derived category</title>
@@ -505,7 +517,7 @@
             </li>
             <li>
               <p>
-                The derived <m>I</m>-complete objects of <m>D(A)</m> form a full triangulated subcategory which is closed under derived inverse limits.
+                The derived <m>I</m>-complete objects of <m>D(A)</m> form a full triangulated subcategory <m>D_{\comp}(A)</m>which is closed under derived inverse limits.
                 This inclusion has a left adjoint <m>K \mapsto \widehat{K}</m> (the <term>derived <m>I</m>-completion</term>)
                 which can be computed as follows: for <m>I = (f_1,\dots,f_r)</m>,
                 <me>

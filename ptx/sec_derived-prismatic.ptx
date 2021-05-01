@@ -18,7 +18,7 @@
       We first prepare for the Hodge-Tate comparison by introducing derived de Rham cohomology, picking up the thread from our previous discussion of the cotangent complex
       (<xref ref="subsec_cotangent-complex"/>).
     </p>
-    <definition>
+    <definition xml:id="def-derived-de-Rham">
       <p>
         For <m>k \in \Ring_{\FF_p}</m>, the <term>derived de Rham cohomology</term> functor <m>\dR_{\bullet/k}: \Ring_k \to D(k)</m> is the left derived functor of
         the functor <m>\Poly_k \to D(k)</m> given by <m>R \mapsto \Omega^\bullet_{R/k}</m>.
@@ -196,7 +196,7 @@
       <proof>
         <p>
           Since <m>R</m> is a smooth <m>k</m>-algebra and <m>k</m> is perfect, the Frobenius map <m>\phi_R: R \to R</m>
-          is flat (this is the easy direction of Kunz's criterion; see <xref ref="bib-Stacks"/>, tag 0EC0 for the converse). It follows that <m>R \to S</m> is flat.
+          is flat (see <xref ref="rmk-kunz"/>). It follows that <m>R \to S</m> is flat.
         </p>
         <p>
           To see that <m>S^n</m> is regular semiperfect, we may work étale locally to reduce to the case where <m>R = k[x_1,\dots,x_r]</m>.
@@ -313,10 +313,11 @@
     <p>
       The statement that derived de Rham cohomology can be computed easily using regular semiperfect rings (<xref ref="rmk-de-Rham-via-derived"/>) can be adapted as follows.
     </p>
-    <definition>
+    <definition xml:id="def-semilens">
       <p>
         Let <m>(A,I)</m> be a perfect prism.
         A <term>semilens</term> over <m>\overline{A}</m> is a derived <m>p</m>-complete ring which can be written as the quotient of some lens over <m>\overline{A}</m>.
+        (This corresponds to a <term>semiperfectoid ring</term> in <xref ref="bib-Bhatt-course"/> and <xref ref="bib-Bhatt-Scholze"/>.)
         If <m>S</m> is a semilens, then <m>S/p</m> is semiperfect and <m>\theta: W(S^\flat) \to S</m> is surjective.
         It will follow from <xref ref="rmk-regular-semilens-cohomology"/> that <m>\Prism_{S/A} \in D^{\leq 0}(A)</m>,
         but in general it will not be concentrated in degree 0.

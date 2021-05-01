@@ -1,0 +1,247 @@
+﻿<section xml:id="sec_andre-flatness">
+  <title>André flatness</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-course"/>, lecture VIII; <xref ref="bib-Bhatt-Scholze"/>, section 7.
+      </p>
+    </paragraphs>
+    <p>
+      We continue our treatment of coperfections in mixed characteristic, and give some important applications in commutative algebra.
+      These go through the <term>André flatness lemma</term>, whose earliest proofs <xref ref="bib-Andre"/>, <xref ref="bib-Bhatt-DSC"/> 
+      depended heavily on the theory of perfectoid spaces; we incur no such dependence here.
+      (More precisely, we make the argument entirely in the world of rings and schemes, with no recourse to nonarchimedean analytic geometry.)
+    </p>
+  </introduction>
+  <subsection>
+    <title>More properties of coperfection</title>
+    <lemma>
+      <title>Base change compatibility</title>
+      <statement>
+        <p>
+          Let <m>(A,I)</m> be a perfect prism. The functor <m>R \mapsto R_{\lens}</m> on derived <m>p</m>-complete <m>\overline{A}</m>-algebras commutes
+          with faithfully flat base change on the prism <m>(A,I)</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We treat here only the case where <m>R</m> has bounded <m>p</m>-power torsion. See <xref ref="bib-Bhatt-Scholze"/> for a broader result that includes
+          the general case of this assertion.
+        </p>
+        <p>
+          Let <m>(A,I) \to (B,IB)</m> be a faithfully flat map of perfect prisms. Put <m>S = R \widehat{\otimes}^L_{\overline{A}} \overline{B}</m>; then <m>S</m>
+          is <m>p</m>-completely flat over <m>R</m> and thus concentrated in degree 0 (because <m>R</m> has bounded <m>p</m>-power torsion). We need to show that
+          <m>R_{\lens} \widehat{\otimes}^L_{\overline{A}} \overline{B} \cong S_{\lens}</m>; by compatibility with filtered colimits, this reduces to showing that
+          <m>\overline{\Prism}_{R/A} \otimes^L_{\overline{A}} \overline{B} \cong \overline{\Prism}_{S/B}</m>. This follows by comparing the Hodge-Tate filtrations on
+          both sides using <xref ref="prop-derived-Hodge-Tate-comparison"/>, then using the analogous compatibility for the cotangent complex and its exterior powers
+          (<xref ref="prop-cotangent-complex"/>).
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      The following can be viewed as a refinement of <xref ref="exer-cotangent-complex-perfect"/>.
+    </p>
+    <lemma xml:id="lem-frobenius-kills-negative-cohomology">
+      <statement>
+        <p>
+          Let <m>R^\bullet</m> be a simplicial object of <m>\Ring_{\FF_p}</m>. Then the action of Frobenius on <m>H^{-i}(R^\bullet)</m> is zero for all <m>i \gt 0</m>.
+          In particular, if <m>\phi_R</m> is a homotopy equivalence, then <m>H^{-i}(R^\bullet) = 0</m> for all <m>i \gt 0</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          For a given <m>i \gt 0</m>, set <m>S_i = \Sym_{\FF_p} \FF_p[i]</m>. By construction, <m>H^{-i}(S_i)</m> is nonzero; moreover,
+          any class of <m>H^i(R^\bullet)</m> is in the image of <m>H^{-i}(S_i)</m> along some map <m>S_i \to R^\bullet</m>.
+          Hence it suffices to check that Frobenius kills <m>H^{-i}(S_i)</m>.
+        </p>
+        <p>
+          For <m>i=1</m>, we may write 
+          <me>
+            S_1 = \FF_p \otimes^L_{\FF_p[x]} \FF_p,
+          </me>
+          from which we read off that <m>H^{-1}(S_1) \cong (x)/(x^2)</m>, which is evidently killed by Frobenius.
+        </p>
+        <p>
+          For <m>i \gt 1</m>, we may write 
+          <me>
+            S_{i+1} = \FF_p \otimes_{S_i}^L \FF_p
+          </me>
+          to obtain an identification
+          <me>
+            H^{-i-1}(S_{i+1}) \cong H^{-i-1}(\FF_p \otimes_{S_i}^L \FF_p) \cong H^{-i}(S_i)
+          </me>
+          that is compatible with Frobenius. By induction on <m>i</m>, we deduce the desired result.
+          (Compare <xref ref="bib-Bhatt-Scholze-grassmannian"/>, Proposition 11.6.)
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-coconnectivity-of-coperfection">
+      <title>Coconnectivity of coperfection</title>
+      <statement>
+        <p>
+          For any perfect prism <m>(A,I)</m> and any derived <m>p</m>-complete <m>R \in \Ring_{\overline{A}}</m>, <m>\Prism_{R/A,\perf} \in D^{\geq 0}_{\comp}(A)</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          From its construction, <m>\Prism_{R/A,\perf}/p</m> carries a natural Frobenius endomorphism; by <xref ref="lem-frobenius-kills-negative-cohomology"/>, its
+          negative cohomology groups must vanish. By applying derived Nakayama (<xref ref="exer-derived-complete-principal-cokernel"/>) to the canonical truncation
+          <m>\tau^{\leq -1}(\Prism_{R/A,\perf})</m>, we deduce the claim.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture VIII, Remark 2.5(1) or <xref ref="bib-Bhatt-Scholze"/>, Lemma 8.4.)
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-coperfection-in-degree-0">
+      <statement>
+        <p>
+          For <m>(A,I)</m> a perfect prism and <m>R \in \Ring_{\overline{A}}</m> derived <m>p</m>-complete, suppose that <m>\Prism_{R/A,\perf} \in D^{\leq 0}_{\comp}(A)</m>.
+          (For example, this holds whenever <m>R</m> is a semilens, by <xref ref="def-semilens"/>; see <xref ref="cor-lens-semilens-left-adjoint"/>.)
+        </p>
+        <ol>
+          <li>
+            <p>
+              The object <m>\Prism_{R/A,\perf} \in D_{\comp}(A)</m> is concentrated in degree <m>0</m>, where it is a perfect <m>(p,I)</m>-complete <m>\delta</m>-ring.
+            </p>
+          </li>
+          <li>
+            <p>
+              The pair <m>(\Prism_{R/A,\perf}, I\Prism_{R/A,\perf})</m> is a perfect prism over <m>(A,I)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The object <m>R_{\lens}</m> is concentrated in degree <m>0</m>, where it is a lens. Moreover, the map <m>R \to R_{\lens}</m> is the universal map of
+              <m>R</m> into a lens.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          Point (1) is a direct corollary of <xref ref="lem-coconnectivity-of-coperfection"/>.
+          Point (2) is a direct corollary of (1).
+          Point (3) follows from (2) and <xref ref="exa-coperfection-lens"/>.
+        </p>
+      </proof>
+    </lemma>
+      <corollary xml:id="cor-lens-semilens-left-adjoint">
+      <statement>
+        <p>
+          The embedding functor from lenses to semilenses (both viewed as full subcategories of <m>\Ring</m>) admits a left adjoint given by lens coperfection.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="def-semilens"/>, the condition of <xref ref="lem-coperfection-in-degree-0"/> is satisfied; our conclusion is just a reformulation of point (3) of the latter. 
+        </p> 
+      </proof>
+    </corollary>
+    <remark>
+      <p>
+        As indicated in <xref ref="bib-Bhatt-course"/>, Lecture VIII, Remark 2.5, <xref ref="lem-coconnectivity-of-coperfection"/> and <xref ref="lem-coperfection-in-degree-0"/>
+        are concrete consequences of the statement that the action of <m>\phi_R</m> gives <m>\Prism_{R/A,\perf}</m> the structure of a <q>derived perfect <m>\delta</m>-ring</q>.
+        We will not try to unpack this statement further here.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        Another application of these techniques is to show that the functor <m>R \to R_{\lens}</m> admits very strong descent results, including for the
+        <term>v-topology</term>, in which any quasicompact surjective morphism is a covering, and even for the <term>arc topology</term> <xref ref="bib-Bhatt-Mathew"/>;
+        see <xref ref="bib-Bhatt-Scholze"/>, section 8.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>André flatness</title>
+    <p>
+      We next use prismatic coperfections to construct faithfully flat morphisms of prisms; this recovers an important assertion of mixed-characteristic commutative algebra.
+    </p>
+    <lemma xml:id="lem-lift-after-adding-root">
+      <statement>
+        <p>
+          Let <m>(A,I)</m> be a perfect prism. Let <m>P \in \overline{A}[x]</m> be a monic polynomial. Then there exists a faithfully flat morphism <m>(A,I) \to (B,IB)</m>
+          of perfect prisms such that <m>\overline{B}</m> contains a root of <m>P</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Define the ring
+          <me>
+            R = \overline{A}[x^{p^{-\infty}}]^{\wedge}_{(p)}/(P);
+          </me>
+          by construction, <m>R</m> is a regular semilens and <m>\overline{A} \to R</m> is <m>p</m>-completely faithfully flat.
+          By <xref ref="rmk-regular-semilens-cohomology"/>, <m>\Prism_{R/A}</m> is concentrated in degree <m>0</m>, where it is a <m>(p,I)</m>-completely flat <m>A</m>-algebra.
+          By the Hodge-Tate comparison (<xref ref="prop-derived-Hodge-Tate-comparison"/>), 
+          <m>R \to \overline{\Prism}_{R/A}</m> is <m>p</m>-completely faithfully flat.
+        </p>
+        <p>
+          By <xref ref="cor-lens-semilens-left-adjoint"/>, <m>\Prism_{R/A,\perf}</m> is concentrated in degree <m>0</m>, where it is a perfect <m>(p,I)</m>-complete 
+          <m>\delta</m>-ring which we call <m>B</m>. By the previous paragraph, <m>R \to \overline{\Prism}_{R/A,\perf}</m> is <m>p</m>-completely faithfully flat,
+          so <m>(A,I) \to (B,IB)</m> is faithfully flat. By construction, <m>\overline{B}</m> is an <m>R</m>-algebra, so it contains a root of <m>P</m>.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 7.11.)
+        </p>
+      </proof>
+    </lemma>
+    <theorem xml:id="thm-andre-flatness-strong">
+      <title>André flatness lemma</title>
+      <statement>
+        <p>
+          Let <m>R</m> be a lens. Then there exists a <m>p</m>-completely faithfully flat morphism <m>R \to S</m> of lenses such that <m>S</m> is
+          <term>absolutely integrally closed</term>, meaning that every monic polynomial over <m>S</m> has a root. In particular, every element of <m>S</m>
+          admits a compatible system of <m>p</m>-power roots.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This follows directly from <xref ref="lem-lift-after-adding-root"/> via transfinite induction.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Theorem 7.12.)
+        </p>
+      </proof>
+    </theorem>
+    <remark>
+      <p>
+        <xref ref="thm-andre-flatness-strong"/> is a key ingredient in the proof of Hochster's <term>direct summand conjecture</term>
+        in <xref ref="bib-Andre"/> (and its derived analogue in <xref ref="bib-Bhatt-DSC"/>): if <m>R</m> is a regular noetherian ring and <m>R \to S</m> is a finite injective
+        morphism of rings, then the inclusion <m>R \to S</m> splits in <m>\Mod_R</m>. This has various consequences in commutative algebra which we do not discuss here;
+        see instead <xref ref="bib-Hochster"/>.
+      </p>
+    </remark>
+    <corollary xml:id="cor-strongly-zariski-closed">
+      <statement>
+        <p>
+          The inclusion functor from lenses to <m>p</m>-complete quotients of lenses (both viewed as full subcategories of <m>\Ring</m>) admits a left adjoint. Moreover, if 
+          <m>R</m> is a <m>p</m>-complete quotient of a lens, then the map from <m>R</m> to its image under the adjoint functor is surjective.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>(A,I)</m> be a perfect prism and let <m>R = \overline{A}/J</m> be a derived <m>p</m>-complete quotent.
+          Since <m>\overline{A} \to R</m> is surjective, <m>\Omega^1_{R/\overline{A}} = 0</m> and so <m>L_{R/\overline{A}} \in D^{\leq 0}_{\comp}(R)</m>.
+          This in turn implies that <m>\wedge^i L_{R/\overline{A}}[-i] \in D^{\leq 0}_{\comp}(R)</m> for all <m>i</m>, and similarly after derived <m>p</m>-completion.
+          By the Hodge-Tate filtration (<xref ref="prop-derived-Hodge-Tate-comparison"/>), we deduce that <m>\overline{\Prism}_{R/A} \in D^{\leq 0}_{\comp}(R)</m>
+          and hence <m>\Prism_{R/A} \in D^{\leq 0}_{\comp}(A)</m>. Now apply <xref ref="lem-coperfection-in-degree-0"/> to deduce that <m>R_{\lens}</m> is concentrated in degree 0,
+          where it is a lens.
+        </p>
+        <p>
+          By <xref ref="cor-lens-semilens-left-adjoint"/>, <m>R\to R_{\lens}</m> is the universal map from <m>R</m> to a lens,
+          which we wish to show is surjective. Since we may check this after a faithfully flat base extension,
+          using <xref ref="thm-andre-flatness-strong"/> we may reduce to the case where the multiplicative map <m>\sharp: \overline{A}^\flat \to \overline{A}</m> is surjective.
+          Let <m>J</m> be the kernel of <m>\overline{A} \to R</m>.
+          We can then choose elements <m>x_i \in \overline{A}^\flat</m> for <m>i</m> running over some index set <m>I</m> such that the elements <m>x_i^\sharp \in \overline{A}</m>
+          form a set of generators of <m>J</m>, and check  directly that the quotient <m>R'</m> of <m>\overline{A}</m> by the <m>p</m>-completion of the ideal generated by
+          <m>x_i^{p^{-j}}</m> for all <m>i \in I, j \geq 0</m> is a lens. The natural map <m>R \to R'</m> satisfies the same universal property as <m>R \to R_{\lens}</m>,
+          so <m>R_{\lens} \cong R'</m> is indeed a quotient of <m>R</m>.
+          (Compare <xref ref="bib-Bhatt-course"/>, Corollary 3.2.)
+        </p>
+      </proof>
+    </corollary>
+    <remark>
+      <p>
+        In the theory of perfectoid spaces, the surjectivity assertion in <xref ref="cor-strongly-zariski-closed"/> corresponds to the fact there is no difference between
+        <term>Zariski closed subsets</term> and <term>strongly Zariski closed subsets</term> of a perfectoid space.
+        These concepts had previously been distinguished in <xref ref="bib-Scholze-perfectoid1"/>, Remark II.2.4.
+      </p>
+    </remark>
+  </subsection>
+</section>

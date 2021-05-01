@@ -3,6 +3,9 @@
   <biblio type="raw" xml:id="bib-Almkvist">
     G. Almkvist, <articletitle>The Grothendieck ring of the category of endomorphisms</articletitle>, <journal>Journal of Algebra</journal> <volume>28</volume> <year>1974</year>, 375<ndash/>388.
   </biblio>
+  <biblio type="raw" xml:id="bib-Andre">
+    Y. André, <articletitle>La conjecture du facteur direct</articletitle>, <journal>Publications Mathématiques de l’IHÉS</journal> <volume>127</volume> <year>2018</year>, 71<ndash/>93.
+  </biblio>
   <biblio type="raw" xml:id="bib-Arabia">
     A. Arabia, <articletitle>Relèvements des algèbres lisses et de leurs morphismes</articletitle>, <journal>Commentarii Mathematici Helvetici</journal> <volume>76</volume> <year>2001</year>, 607<ndash/>639.
   </biblio>
@@ -22,17 +25,26 @@
   <biblio type="raw" xml:id="bib-Berthelot-Ogus">
     P. Berthelot and A. Ogus, <pubtitle>Notes on Crystalline Cohomology</pubtitle>, Princeton University Press, Princeton <year>1978</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-DSC">
+    B. Bhatt, <articletitle>On the direct summand conjecture and its derived variant</articletitle>, <journal>Inventiones Mathematicae</journal>  <volume>212</volume> <year>2018</year>, 297<ndash/>317.
+  </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-course">
     B. Bhatt, <articletitle>Geometric aspects of prismatic cohomology</articletitle>, <url href="http://www-personal.umich.edu/~bhattb/teaching/prismatic-columbia/">Eilenberg lectures at Columbia University (fall 2018)</url>.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-deJong">
     B. Bhatt and A.J. de Jong, <articletitle>Crystalline cohomology and de Rham cohomology</articletitle>, <url href="https://www.math.columbia.edu/~dejong/papers/crystalline-comparison.pdf"/>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-Mathew">
+    B. Bhatt and A. Mathew, <articletitle>The arc-topology</articletitle>, <url href="https://arxiv.org/abs/1807.04725">arXiv:1807.04725v4</url> <year>2020</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Morrow-Scholze1">
     B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Integral <m>p</m>-adic Hodge theory</articletitle>, <journal>Publications Mathématiques de l'IHÉS</journal> <volume>128</volume> <year>2018</year>, 219<ndash/>397.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Morrow-Scholze2">
     B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Topological Hochschild homology and Integral <m>p</m>-adic Hodge theory</articletitle>, <url href="https://arxiv.org/abs/1802.03261">arXiv:1802.03261v2</url> <year>2019</year>
+  </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-Scholze-grassmannian">
+    B. Bhatt and P. Scholze, <articletitle>Projectivity of the Witt vector affine Grassmannian</articletitle>, <journal>Inventiones Mathematicae</journal> <volume>209</volume> <year>2017</year>, 329<ndash/>423.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Scholze">
     B. Bhatt and P. Scholze, <articletitle> Prisms and prismatic cohomology</articletitle>, <url href="https://arxiv.org/abs/1905.08229">arXiv:1905.08229v2</url> <year>2019</year>.
@@ -124,6 +136,9 @@
   <biblio type="raw" xml:id="bib-Hazewinkel">
     M. Hazewinkel, <pubtitle>Formal Groups and Applications</pubtitle>, Pure and Applied Mathematics 78, Academic Press, New York <year>1978</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Hochster">
+    M. Hochster, <articletitle>Homological conjectures, old and new</articletitle>, <journal>Illinois Journal of Mathematics</journal> <volume>51</volume> <year>2007</year>, 151<ndash/>169.
+  </biblio>
   <biblio type="raw" xml:id="bib-Illusie-cotangent1">
     L. Illusie, <pubtitle>Complexe Cotangent et Déformations I</pubtitle>, Lecture Notes in Mathematics 239, Springer-Verlag, Berlin <year>1971</year>.
   </biblio>
@@ -197,7 +212,10 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
     C. Rezk, <articletitle>Etale extensions of <m>\lambda</m>-rings</articletitle>, <href url="https://faculty.math.illinois.edu/~rezk/etale-lambda.pdf"/> <year>2019</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Scholze-perfectoid1">
-    P. Scholze, <articletitle>Perfectoid spaces</articletitle>, <journal>Publications mathématiques de l’IHÉS</journal> <volume>116</volume> <year>2012</year>, 245<ndash/>313.
+    P. Scholze, <articletitle>Perfectoid spaces</articletitle>, <journal>Publications Mathématiques de l’IHÉS</journal> <volume>116</volume> <year>2012</year>, 245<ndash/>313.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Scholze-torsion">
+    P. Scholze, <articletitle>On torsion in the cohomology of locally symmetric spaces</articletitle>, <journal>Annals of Mathematics</journal> <volume>182</volume> <year>2015</year>, 945<ndash/>1066.
   </biblio>
   <biblio type="raw" xml:id="bib-Scholze-diamonds">
     P. Scholze, <articletitle>Étale cohomology of diamonds</articletitle>.
