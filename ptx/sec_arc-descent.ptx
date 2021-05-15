@@ -1,0 +1,602 @@
+﻿<section xml:id="sec_arc-descent">
+  <title>Descent for the arc-topology</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-Mathew"/>; <xref ref="bib-Bhatt-Scholze"/>, section 8.2.
+      </p>
+    </paragraphs>
+    <p>
+      We establish some descent properties for the arc-topology (<xref ref="sec_arc-topology"/>) which will be used to establish the étale comparison theorem (<xref ref="sec_etale-comparison"/>).
+    </p>
+  </introduction>
+  <subsection>
+    <title>Descent for perfect schemes</title>
+    <definition>
+      <p>
+        The functor from perfect <m>\FF_p</m>-schemes (i.e., those on which Frobenius is an isomorphism) to arbitrary <m>\FF_p</m>-schemes admits a right adjoint,
+        called <term>perfection</term>; for affine schemes, this corresponds to coperfection of rings. Let <m>X_{\perf}</m> denote the perfection of <m>X</m>.
+      </p>
+      <p>
+        Let <m>\Vect(X)</m> denote the category of vector bundles on the scheme <m>X</m>.
+      </p>
+    </definition>
+    <lemma xml:id="lem-perfect-pullback">
+      <statement>
+        <p>
+          Consider a pullback diagram of perfect <m>\FF_p</m>-schemes as in <xref ref="fig-perfect-pullback"/>.
+          For any complex <m>K^\bullet</m> of quasicoherent sheaves on <m>X</m>, the base-change morphism
+          <me>
+            Lg^* Rf_* K \to R f'_* L g^{\prime *} K
+          </me> 
+          is a quasi-isomorphism.
+        </p>
+        <figure xml:id="fig-perfect-pullback">
+          <image width="50%">
+            <latex-image>
+              \xymatrix{
+                X' \ar^{g'}[r] \ar^{f'}[d] &amp; X \ar^{f}[d] \\
+                Y' \ar^{g}[r] &amp; Y
+              }
+            </latex-image>
+          </image>
+        </figure>
+      </statement>
+      <proof>
+        <p>
+          We reduce at once to the case where all of the schemes in question are affine. 
+          In this case, the claim reduces at once to <xref ref="exer-perfect-tor"/>.
+          (Compare <xref ref="bib-Bhatt-Scholze-grassmannian"/>, Lemma 3.18.)
+        </p>
+      </proof>
+    </lemma>
+    <corollary xml:id="cor-perfect-pullback">
+      <statement>
+        <p>
+          Let <m>V</m> be a perfect valuation ring over <m>\FF_p</m>. Let <m>\frakp</m> be a prime ideal of <m>V</m>. Then for every perfect <m>V</m>-scheme <m>X</m>
+          and every complex <m>K</m> of quasicoherent sheaves on <m>X</m>, the triangle
+          <md>
+            <mrow>R\Gamma(X, K) \to R\Gamma(X \times_{V} V_{\frakp}, K) \oplus R\Gamma(X \times_{V} V/\frakp, K) \to </mrow>
+            <mrow>R\Gamma(X \times_{V} \kappa(V), K) \to </mrow>
+          </md>
+          is distinguished in <m>D(\ZZ)</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="lem-perfect-pullback"/>, this reduces to the exactness of the sequence
+          <me>
+            0 \to V \to V_\frakp \oplus V/\frakp \to \kappa(\frakp) \to 0,
+          </me>
+          which we leave as an exercise (<xref ref="exer-perfect-arc-descent"/>).
+          (Compare <xref ref="bib-Bhatt-Scholze-grassmannian"/>, Lemma 6.3.)
+        </p>
+      </proof>
+    </corollary>
+    <lemma xml:id="lem-h-coverings-perfect">
+      <statement>
+        <p>
+          Let <m>X</m> be a noetherian <m>\FF_p</m>-scheme. Let <m>Z</m> be a closed subscheme of <m>X</m>.
+          Let <m>f: Y \to X</m> be a blowup whose center is contained in <m>Z</m>, and put <m>E = f^{-1}(Z)</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              For <m>\calF \in \Vect(X_{\perf})</m>, the triangle
+              <me>
+                R\Gamma(X_{\perf}, \calF) \to R\Gamma(Y_{\perf}, \calF) \oplus R\Gamma(Z_{\perf}, \calF) \to R\Gamma(E_{\perf}, \calF) \to
+              </me>
+              is distinguished in <m>D(\ZZ)</m> (and similarly with the Zariski topology replaced by the fppf topology).
+            </p>
+          </li>
+          <li>
+            <p>
+              The pullback functor
+              <me>
+                \Vect(X_{\perf}) \to \Vect(Y_{\perf}) \times_{\Vect(E_{\perf})} \Vect(Z_{\perf})
+              </me>
+              is an equivalence of categories.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          For both assertions, we may assume that <m>X = \Spec A</m> is affine; write <m>Z = \Spec A/I</m>.
+          Write <m>nE</m> for the subscheme of <m>Y</m> cut out by <m>I^n</m>.
+        </p>
+        <p>
+          For (1), we may assume <m>\calF = \calO</m>. By our hypotheses, we have <m>\calO(X) \cong \calO(Y)</m> and <m>\calO(Z) \cong \calO(E)</m>
+          by Stein factorization, and similarly after taking perfections. Since <m>X</m> and <m>Z</m> are both affine, it remains to check that
+          <m>H^i(Y_{\perf}, \calO) \to H^i(E_{\perf}, \calO)</m> is an isomorphism for each <m>i \gt 0</m>.
+        </p>
+        <p>
+          At this point, we follow <xref ref="bib-Bhatt-Schwede-Takagi"/>, Lemma 3.9 (which is written using the Nisnevich topology, but the Zariski topology works equally well).
+          By <xref ref="bib-Stacks"/>, tag 02OB, point (1), there exists a constant <m>c</m> such that for <m>n \geq c</m>,
+          <me>
+            \ker(H^i(Y, \calO) \to H^i(E_n, \calO)) \subseteq I^{n-c} H^i (Y,\calO).
+          </me>
+          For <m>n \gg 0</m>, <m>I^{n-c}</m> annihilates <m>H^i(Y, \calO)</m> (because <m>i \gt 0</m>) and so 
+          <men xml:id="eq-h-coverings-perfect1">
+            H^i(Y, \calO) \hookrightarrow H^i(E_n, \calO) \qquad (n \gg 0).
+          </men>
+          On the other hand, by <xref ref="bib-Stacks"/>, tag 020B, point (3), for <m>m \gg n \gg 0</m> we have
+          <men xml:id="eq-h-coverings-perfect2">
+            \im(H^i(E_m, \calO) \to H^i(E_n, \calO)) = \im(H^i(Y, \calO) \to H^i(E_n, \calO)).
+          </men>
+        </p>
+        <p>
+          Fix a value <m>n \gg 0</m> that is large enough for both <xref ref="eq-h-coverings-perfect1"/> and <xref ref="eq-h-coverings-perfect2"/> to hold.
+          Then for <m>e \gg 0</m>, the image of <m>\phi^e: H^i(E_n, \calO) \to H^i(E_n, \calO)</m> is contained in the image of <m>H^i(Y, \calO) \to H^i(E_n, \calO)</m>:
+          to see this, refactor the former map as 
+          <me>
+            H^i(E_n, \calO) \stackrel{\phi^e}{\to} H^i(E_{p^e n}, \calO) \to H^i(E_n, \calO)
+          </me>
+          and then apply <xref ref="eq-h-coverings-perfect2"/>. By this plus <xref ref="eq-h-coverings-perfect1"/>, we see that
+          <me>
+            \colim_\phi H^i(Y, \calO) = \colim_\phi H^i(E_n, \calO)
+          </me>
+          and hence
+          <md>
+            <mrow>H^i(Y_{\perf}, \calO) &amp;= \colim_\phi H^i(E_n, \calO)</mrow>
+            <mrow>&amp;= \colim_\phi H^i(E, \calO) = H^i(E_{\perf}, \calO)</mrow>
+          </md>
+          as claimed.
+        </p>
+        <p>
+          For (2), we follow <xref ref="bib-Bhatt-Scholze-grassmannian"/>, Lemma 4.6.
+          By the Beauville-Laszlo theorem (see <xref ref="rmk-beauville-laszlo"/>), we may assume that <m>A</m> is (classically) <m>I</m>-complete.
+          We may also assume that we start with an object in <m>\Vect(Y) \times_{\Vect(E)} \Vect(Z)</m>.
+          By Serre vanishing, we may choose some <m>n</m> such that
+          <men xml:id="eq-h-coverings-perfect3">
+            H^i(Y, I^k/I^{k+1}) = 0 \qquad (k \geq n).
+          </men>
+          Since <m>X</m> is affine and complete along <m>Z</m>, <m>\Vect(X) \to \Vect(Z)</m> is an equivalence of categories (<xref ref="exer-vb-essentially-surjective"/>).
+          We thus have objects <m>\calE \in \Vect(X)</m>, <m>\calF \in \Vect(Y)</m> and an isomorphism <m>\psi: f^* \calE|_E \cong \calF|_E</m>.
+          By pulling back by a suitable power of <m>\phi</m>, we may construct another isomorphism <m>\psi_n: f^* \calE|_{nE} \cong \calF|_{nE}</m>.
+        </p>
+        <p>
+          We now observe that for <m>m \geq n</m>, an isomorphism <m>\psi_m: f^* \calE|_{mE} \cong \calF|_{mE}</m>
+          can be promoted to an isomorphism <m>\psi_{m+1}: f^* \calE|_{(m+1)E} \cong \calF|_{(m+1)E}</m>:
+          namely, the obstruction to lifting belongs to 
+          <me>
+            H^1(Y, I^m/I^{m+1} \otimes \sheafHom(f^* \calE, \calF))
+          </me>
+          which vanishes by <xref ref="eq-h-coverings-perfect3"/>. Since
+          <me>
+            \Vect(Y) \to \lim_m \Vect(mE)
+          </me>
+          is an equivalence by the formal existence theorem (<xref ref="bib-Stacks"/>, tag 0885),
+          we deduce the desired result.
+        </p>
+      </proof>
+    </lemma>
+    <theorem xml:id="lem-v-descent-perfect">
+      <statement>
+        <ol>
+          <li>
+            <p>
+              The structure presheaf <m>\calO</m> on the category of perfect <m>\FF_p</m>-schemes is an arc-sheaf.
+              Moreover, for any affine perfect <m>\FF_p</m>-scheme <m>X</m>, the <m>i</m>-th cohomology group of <m>\calO</m> for the arc-topology on <m>X</m>
+              vanishes for all <m>i \gt 0</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The functor <m>\Vect</m> is an arc-stack on the category of perfect <m>\FF_p</m>-schemes. 
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          To begin with, both assertions hold for the flat (fpqc) topology in place of the arc-topology thanks to classical faithfully flat descent
+          (<xref ref="bib-Stacks"/>, tag 0238).
+        </p>
+        <p>
+          We next upgrade both assertions from the flat topology to the v-topology.
+          Every v-covering is a cofiltered limit of h-coverings, so we may reduce to considering perfections of h-coverings of finite type <m>\FF_p</m>-schemes.
+          Since the h-topology is generated by faithfully flat coverings and proper surjective morphisms, and we already know descent for the former.
+          we may reduce to considering the perfection of a proper surjective morphism. Moreover, by Raynaud-Gruson flattening <xref ref="bib-Raynaud-Gruson"/>,
+          we may further reduce to considering the case of a blowup, to which we may apply <xref ref="lem-h-coverings-perfect"/>.
+        </p>
+        <p>
+          Finally, we upgrade both assertions from the v-topology to the arc-topology.
+          By passing to affines and then pulling back along a cover as in <xref ref="exa-v-cover"/>,
+          we may reduce to considering a covering as in <xref ref="exa-excision-for-valuation"/> (compare <xref ref="bib-Bhatt-Mathew"/>, Theorem 4.1).
+          For this, apply <xref ref="cor-perfect-pullback"/> and <xref ref="lem-glueing"/>.
+        </p>
+      </proof>
+    </theorem>
+    <corollary xml:id="thm-arc-descent-perfect">
+      <statement>
+        <p>
+          Let <m>\Spec(B) \to \Spec(A)</m> be an arc-covering of perfect affine schemes over <m>\FF_p</m>. Then the augmented Čech-Alexander complex
+          <me>
+            0 \to A \to B \to B \otimes_A B \to \cdots
+          </me>
+          is acyclic.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This follows at once from <xref ref="lem-v-descent-perfect"/>.
+          (Compare <xref ref="bib-Bhatt-Mathew"/>, Proposition 8.9.)
+        </p>
+      </proof>
+    </corollary>
+  </subsection>
+  <subsection>
+    <title>Additional descent arguments</title>
+    <p>
+      We record here an argument that was used in the proof of <xref ref="lem-v-descent-perfect"/> to promote a statement about acyclicity of the structure sheaf
+      to a statement about descent for vector bundles.
+    </p>
+    <lemma xml:id="lem-glueing">
+      <statement>
+        <p>
+          Consider a commuting diagram of rings as in <xref ref="fig-glueing-square"/>, in which <m>R \to R_1</m> and <m>R_2 \to R_{12}</m> are localizations
+          at the same multiplicative subset of <m>R</m> and the sequence
+          <me>
+            0 \to R \to R_1 \oplus R_2 \to R_{12} \to 0
+          </me>
+          is exact. Then the square <xref ref="fig-glueing-square2"/> is cartesian.
+        </p>
+      </statement>
+      <figure xml:id="fig-glueing-square">
+        <image width="50%">
+          <latex-image>
+            \xymatrix{
+              R \ar[r] \ar[d] &amp; R_1 \ar[d] \\
+              R_2 \ar[r] &amp; R_{12}
+            }
+          </latex-image>
+        </image>
+      </figure>
+      <figure xml:id="fig-glueing-square2">
+        <image width="50%">
+          <latex-image>
+            \xymatrix{
+              \Vect(R) \ar[r] \ar[d] &amp; \Vect(R_1) \ar[d] \\
+              \Vect(R_2) \ar[r] &amp; \Vect(R_{12})
+            }
+          </latex-image>
+        </image>
+      </figure>
+      <proof>
+        <p>
+          Let <m>M_1, M_2, M_{12}</m> be objects of <m>\Vect(R_1), \Vect(R_2), \Vect(R_{12})</m> equipped with isomorphisms <m>M_i \otimes_{R_i} R_{12} \cong M_{12}</m>
+          and put <m>M = \ker(M_1 \oplus M_2 \to M_{12})</m>; we will show that <m>M \in \Vect(R)</m> and that the induced maps <m>M \otimes_R R_i \to M_i</m>
+          are isomorphisms.
+        </p>
+        <p>
+          We first check that the maps <m>M \otimes_R R_i \to M_i</m> are all surjective.
+          <ul>
+            <li>
+              <p>
+                Given <m>x \in M_1</m>, we can write the image of <m>x</m> in <m>M_{12}</m> as <m>y/f</m> for some <m>y \in M_2</m> 
+                and some <m>f \in R</m> which becomes a unit in <m>R_1</m>.
+                Then <m>(fx, y)</m> is an element of <m>M</m> mapping to <m>fx \in M_1</m>, so <m>M \otimes_R R_1 \to M_1</m> is surjective.
+              </p>
+            </li>
+            <li>
+              <p>
+                Since <m>R_1 \oplus R_2 \to R_{12}</m> is surjective,
+                <m>M \otimes_R (R_1 \oplus R_2) \to M_{12}</m> is surjective.
+              </p>
+            </li>
+            <li>
+              <p>
+                Given <m>x \in M_2</m>, we may map <m>x</m> to <m>M_{12}</m> and then lift it to <m>(x_1, x_2) \in M_1 \oplus M_2</m> in the image of <m>M \otimes_R (R_1 \oplus R_2)</m>.
+                By construction, <m>(x_1, x_2-x) \in M</m>, so the image of <m>M \otimes_{R_1} \to R_1</m> contains both <m>x_2</m> and <m>x_2-x</m>.
+                Hence <m>M \otimes_R R_2 \to M_2</m> is also surjective.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          We next check that <m>M</m> is a finite <m>R</m>-module.
+          From the previous discussion, we see that there exist a finite free <m>R</m>-module <m>F</m> and a morphism <m>F \to M</m> of <m>R</m>-modules such that,
+          for <m>F_i = F \otimes_R R_*</m>, the induced map <m>F_i \to M_i</m> is surjective. Put <m>N = \ker(F \to M)</m> and <m>N_i = \ker(F_i \to M_i)</m>.
+          We have a diagram as in <xref ref="fig-glueing-square3"/> in which all of the squares commute and all of the rows and columns are exact,
+          except possibly for the dashed arrows. However, because the modules <m>M_i</m> are projective,
+          the maps <m>N_i \otimes_{R_i} R_{12} \to N_{12}</m> are isomorphisms, so all of the preceding logic applies to them also;
+          this allows us to add the dashed horizontal arrow to the diagram, and hence also the dashed vertical arrow.
+        </p>
+        <figure xml:id="fig-glueing-square3">
+          <image width="75%">
+            <latex-image>
+              \xymatrix{
+                &amp; 0 \ar[d] &amp; 0 \ar[d] &amp; 0 \ar[d]  \\
+                0 \ar[r] &amp; N \ar[r] \ar[d] &amp; N_1 \oplus N_2 \ar[r] \ar[d] &amp; N_{12} \ar[d] \ar@{-->}[r] &amp; 0 \\
+                0 \ar[r] &amp; F \ar[r] \ar[d] &amp; F_1 \oplus F_2 \ar[r] \ar[d] &amp; F_{12} \ar[d] \ar[r] &amp; 0 \\
+                0 \ar[r] &amp; M \ar[r] \ar@{-->}[d] &amp; M_1 \oplus M_2 \ar[r] \ar[d] &amp; M_{12} \ar[r] \ar[d] &amp; 0 \\
+                &amp; 0 &amp; 0 &amp; 0
+              }
+            </latex-image>
+          </image>
+        </figure>
+        <p>
+          We next check that for each <m>i</m>, <m>M \otimes_i R_i \to M_i</m> is an isomorphism.
+          Consider the commutative diagram as in <xref ref="fig-glueing-square4"/> with exact rows.
+          By the previous logic, we know that both of the outside vertical maps are surjective. By the five lemma, 
+          the right vertical arrow is an isomorphism.
+        </p>
+        <figure xml:id="fig-glueing-square4">
+          <image width="75%">
+            <latex-image>
+              \xymatrix{
+                &amp; N \otimes_R R_i \ar[r] \ar[d] &amp; F_i \ar[r] \ar@{=}[d] &amp; M \otimes_R R_i \ar[r] \ar[d] &amp; 0 \\
+                0 \ar[r] &amp; N_i \ar[r] &amp; F_i \ar[r] &amp; M_i \ar[r] &amp; 0
+              }
+            </latex-image>
+          </image>
+        </figure>
+        <p>
+          We finally check that <m>M</m> is a projective <m>R</m>-module. By repeating the logic used to construct <xref ref="fig-glueing-square3"/>, we obtain another commutative diagram
+          as in <xref ref="fig-glueing-square5"/> with exact rows and columns. 
+          The element of <m>\Hom_{R_1}(M_1,M_1) \oplus \Hom_{2}(M_2,M_2)</m> corresponding to the identity maps
+          has zero horizontal image, so by the snake lemma it lifts to some <m>\Hom_{R_1}(M_1,F_1) \oplus \Hom_{R_2}(M_2,F_2)</m>
+          which maps to zero in <m>\Hom_{R_{12}}(M_{12},F_{12})</m>. This gives us maps <m>M_1 \to F_1, M_2 \to F_2</m> which agree on <m>M</m> and map it into <m>F</m>;
+          the resulting map <m>M \to F</m> splits the surjection <m>F \to M</m>, showing that <m>M</m> is projective.
+          (Compare <xref ref="bib-Kedlaya-Liu"/>, Lemma 1.3.8, Lemma 1.3.9.)
+        </p>
+        <figure xml:id="fig-glueing-square5">
+          <image width="100%">
+            <latex-image>
+              \xymatrix{
+                &amp; 0 \ar[d] &amp; 0 \ar[d] &amp; 0 \ar[d] \\
+                0 \ar[r] &amp; \star \ar[r] \ar[d] &amp; \Hom_{R_1}(M_1,N_1) \oplus \Hom_{R_1}(M_2,N_2) \ar[r] \ar[d] &amp; \Hom_{R_{12}}(M_{12},N_{12}) \ar[d] \ar[r] &amp; 0 \\
+                0 \ar[r] &amp; \star \ar[r] \ar[d] &amp; \Hom_{R_1}(M_1,F_1) \oplus \Hom_{R_1}(M_2,F_2) \ar[r] \ar[d] &amp; \Hom_{R_{12}}(M_{12},F_{12})  \ar[d] \ar[r] &amp; 0 \\
+                0 \ar[r] &amp; \star \ar[r] \ar[d] &amp; \Hom_{R_1}(M_1,M_1) \oplus \Hom_{R_1}(M_2,M_2) \ar[r] \ar[d] &amp; \Hom_{R_{12}}(M_{12},M_{12})  \ar[d] \ar[r] &amp; 0 \\
+                &amp; 0 &amp; 0 &amp; 0
+              }
+            </latex-image>
+          </image>
+        </figure>
+      </proof>
+    </lemma>
+    <remark xml:id="rmk-beauville-laszlo">
+      <p>
+        A well-known instance of <xref ref="lem-glueing"/> is the Beauville-Laszlo theorem: this is the case
+        where
+        <me>
+          R_1 = R_t, \quad R_2 = \lim_n R/t^n, \quad R_{12} = R_{2,t}
+        </me>
+        for some non-zerodivisor <m>t \in R</m>. Compare <xref ref="bib-Stacks"/>, tag 05E5.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        In <xref ref="lem-glueing"/>, the hypothesis that <m>R \to R_1</m> and <m>R_2 \to R_{12}</m> are localizations at the same multiplicative subset is only needed
+        to ensure that <m>M \otimes_R R_1 \to M_1</m> is surjective. In some cases one can run the same argument with a different condition.
+        See for example <xref ref="bib-Kedlaya-Liu"/>, Theorem 2.7.7 for an application to vector bundles on adic spaces.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Arc-descent for étale cohomology</title>
+    <p>
+      We record another form of descent for the arc-topology, this time in the realm of étale cohomology.
+    </p>
+    <theorem xml:id="thm-arc-descent-etale">
+      <title>Arc-descent for étale cohomology</title>
+      <statement>
+        <p>
+          For <m>R \in \Ring</m>, let <m>\calF</m> be a torsion sheaf on <m>(\Spec R)_{\et}</m>. Then the functor
+          <me>
+            (f: X \to \Spec R) \mapsto R\Gamma(X_{\et}, f^* \calF)
+          </me>
+          from <m>R</m>-schemes to <m>D(\ZZ)^{\geq 0}</m> satisfies descent for the arc-topology. That is, for <m>f: Y \to X</m> an arc-covering, there is a natural quasi-isomorphism
+          from <m>R\Gamma(X_{\et}, f^* \calF)</m> to the totalization of the Čech-Alexander complex <m>R\Gamma(Y_{\bullet,\et}, f^* \calF)</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We first verify descent for a v-covering <m>f: Y \to X</m>, in which we may assume both schemes are qcqs. 
+          We can then write <m>Y</m> as a filtered limit of some finitely presented <m>X</m>-schemes, each of which is itself a v-covering, with affine transition maps;
+          we may thus reduce to dealing with a finitely presented <m>v</m>-covering.
+          By arguing as in <xref ref="bib-Rydh"/>, Theorem 3.12, we may refine this covering by a composition of a quasicompact open covering with a proper surjective morphism.
+          As descent for the former is immediate, we may further assume that <m>f</m> is proper surjective.
+          In this case, we are in the usual setting of cohomological descent for étale cohomology.
+          For this, we may assume that <m>X</m> is the spectrum of a strictly henselian local ring with closed point <m>x</m>.
+          By the proper base change theorem, <m>\calF(Y) \cong \calF(Y_x)</m>, so we may check the claim after pulling back along <m>x \to X</m>.
+          But the resulting map <m>Y_x \to x</m> has a section, so it satisfies descent for purely formal reasons.
+          See <xref ref="bib-Bhatt-Mathew"/>, Proposition 5.2 for more details.
+        </p>
+        <p>
+          To obtain descent for the arc-topology, as in the proof of <xref ref="lem-v-descent-perfect"/>
+          we may use v-descent to reduce to a covering as in <xref ref="exa-excision-for-valuation"/> in which <m>V</m> is AIC.
+          In this case, <m>V/\frakp</m> is also AIC, so both <m>V</m> and <m>V/\frakp</m> are strictly henselian with the same residue field.
+          It follows that the functor in question takes the same values on <m>V</m> and <m>V/\frakp</m>, and takes the same values on <m>V_\frakp</m> and <m>\kappa(\frakp)</m>.
+          (Compare <xref ref="bib-Bhatt-Mathew"/>, Theorem 5.4.)
+        </p>
+      </proof>
+    </theorem>
+  </subsection>
+  <subsection xml:id="sec-lenses-valuations">
+    <title>Lenses as valuation rings</title>
+    <p>
+      We turn next to lenses, extending our discussion from <xref ref="sec_lenses"/> with considerations of valuation rings.
+      This can be thought of as a continuation of our discussion of perfectoid fields (<xref ref="sec-perfectoid-field"/>).
+    </p>
+    <lemma xml:id="lem-aic-p-complete-lens">
+      <statement>
+        <p>
+          Let <m>V</m> be a <m>p</m>-complete AIC valuation ring. Then <m>V</m> is a lens.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          If <m>V</m> is a <m>p</m>-complete AIC valuation ring, then <m>\Frac V</m> is a perfectoid field (<xref ref="def-perfectoid-field"/>).
+          We may thus deduce the claim from <xref ref="lem-perfectoid-field-gives-lens"/>.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-valuation-ring-lens">
+      <statement>
+        <p>
+          Let <m>V</m> be a lens. Then <m>V</m> is a valuation ring if and only if <m>V^\flat</m> is.
+          In this case, the value groups of <m>V</m> and <m>V^\flat</m> are isomorphic; in particular, <m>V</m> is eudoxian if and only if <m>V\flat</m> is.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>\sharp: V^\flat \to V</m> be the multiplicative map obtained by composing the constant lift <m>[\bullet]: V^\flat \to W(V^\flat)</m> with the quotient map <m>W(V^\flat) \to V</m>.
+          It is customary to write the image of <m>x</m> under <m>sharp</m> as <m>x^\sharp</m> rather than <m>\sharp(x)</m>.
+        </p>
+        <p>
+          Suppose that <m>V</m> is a valuation ring. If <m>\Frac V</m> has characteristic <m>p</m>, then <m>V = V^\flat</m> and there is nothing more to check;
+          we may thus assume that <m>\Frac V</m> has characteristic 0. Since <m>V</m> is an integral domain, the <m>p</m>-power map on <m>V</m> is injective;
+          hence for <m>x \in V^\flat</m>, <m>x^\sharp = 0</m> if and only if <m>x = 0</m>.
+          This in turn implies that <m>V^\flat</m> is an integral domain (if <m>xy = 0</m> then <m>x^\sharp y^\sharp = 0</m>)
+          and that the principal ideals of <m>V^\flat</m> are totally ordered with respect to inclusion (if <m>x^\sharp</m> is divisible by <m>y^\sharp</m>, then the ratio admits a coherent sequence of <m>p</m>-power roots
+          and so is itself in the image of <m>\sharp</m>). Hence <m>V^\flat</m> is a valuation ring.
+        </p>
+        <p>
+          Conversely, suppose that <m>V^\flat</m> is a valuation ring. Again, we may assume that <m>p \neq 0</m> in <m>V</m>; since <m>V^\flat</m> is an integral domain, we may apply
+          <xref ref="exer-torsion-exchange"/> to deduce that <m>V</m> is <m>p</m>-torsion-free. Since <m>V^\flat</m> is a local ring, so are <m>W(V^\flat)</m> and its quotient <m>V</m>.
+          Choose <m>\varpi \in V</m> as per <xref ref="lem-refract-properties"/>. 
+        </p>
+        <p>
+          We need to show that given any two nonzero elements <m>x,y \in V</m>, one is a multiple of the other.
+          By dividing by powers of <m>\varpi</m> as needed, we may reduce to the case where <m>x</m> and <m>y</m> have nonzero images in <m>V/\varpi</m> and hence in <m>V/p = V^\flat/d</m>.
+          Since <m>V^\flat</m> is a valuation ring, after possibly swapping terms we can write <m>x = yz + pu</m> for some <m>z,u \in V</m>.
+          Similarly, we can write <m>\varpi \equiv yw + pv</m> for some <m>w,v \in V</m>.
+          Since <m>V</m> is classically <m>\varpi</m>-complete, <m>1 - (p/\varpi)v</m> is a unit in <m>V</m>; hence <m>\varpi</m> is divisible by <m>y</m>, as then is <m>p</m>.
+          Consequently, <m>x = yz + pu</m> is also divisible by <m>y</m>, as desired.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-valuation-ring-tilt-value-group">
+      <statement>
+        <p>
+          Let <m>V</m> be a lens which is a valuation ring.
+          Then <m>V</m> and <m>V^\flat</m> have residue fields isomorphic to each other (and to that of <m>W(V^\flat)</m>)
+          and <m>\sharp: V^\flat \to V</m> induces an isomorphism between the value groups of <m>V</m> and <m>V^\flat</m>.
+          In particular, <m>V</m> is eudoxian if and only if <m>V'</m> is.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          From the proof of <xref ref="lem-valuation-ring-lens"/>, we see that <m>\sharp</m> induces an injective map from the value group of <m>V^\flat</m> to that of <m>V</m>.
+          To prove surjectivity, we must check that every element <m>x</m> of <m>V</m> has an associate in the image of <m>V^\flat</m>.
+          As in the proof of <xref ref="lem-valuation-ring-lens"/>, we may prove this by first dividing by a suitable power of <m>\varpi</m> to ensure that <m>x \not\equiv 0 \pmod{\varpi}</m>,
+          then showing that in this case <m>x</m> is an associate of <m>[\overline{x}]</m> where <m>\overline{x} \in V/p</m> is the image of <m>x</m>. 
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-aic-tilt">
+      <statement>
+        <p>
+          Let <m>V</m> be a lens. If <m>V</m> is an AIC valuation ring, then so is <m>V^\flat</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="lem-valuation-ring-lens"/>, <m>V</m> is a valuation ring if and only if <m>V^\flat</m> is; it thus remains to show that if <m>V^\flat</m> is not AIC,
+          then neither is <m>V</m>. We may assume that <m>V</m> has characteristic 0, as otherwise there is nothing to check.
+        </p>
+        <p>
+          Let <m>R</m> be the integral closure of <m>V^\flat</m> in a nontrivial finite Galois extension of its fraction field with Galois group <m>G</m>.
+          By <xref ref="thm-untilting-functor"/>, <m>V' = V \otimes_{W(V^\flat)} W(R)</m> is a lens with <m>V^{\prime \flat} \cong R</m> and, by <xref ref="lem-valuation-ring-lens"/>, again a valuation ring.
+        </p>
+        <p>
+          By construction, <m>G</m> acts on <m>V^{\prime \flat}</m> with fixed subring <m>V</m>. By functoriality, <m>G</m> also acts on <m>V'</m>; since <m>V'</m> is of characteristic <m>0</m>,          we can
+          we can see by averaging over the group action that the fixed subring <m>V'^{G}</m> is equal to <m>V</m>.
+        </p>
+        <p>
+          By the Artin and Dedekind lemmas in Galois theory, we see that <m>\Frac V'</m> is a finite Galois extension of <m>\Frac V</m> of degree <m>\#G \gt 1</m>. This proves
+          that <m>V</m> is not AIC.
+        </p>
+      </proof>
+    </lemma>
+    <remark>
+      <p>
+        The tilting correspondence for perfectoid fields (<xref ref="thm-field-of-norms"/>) implies the converse of <xref ref="lem-aic-tilt"/>:
+        if <m>V</m> is a lens and <m>V^\flat</m> is an AIC valuation ring, then so is <m>V</m>. We will recover this later as a corollary of the étale comparison theorem
+        (<xref ref="prop-aic-tilt"/>).
+      </p>
+    </remark>
+  </subsection>
+  <subsection xml:id="sec-arc-descent-for-lenses">
+    <title>Arc-descent for lenses</title>
+    <p>
+      Using the previous discussion of lenses and valuation rings, we establish a variation of arc-descent for lenses. This requires a slightly modified
+      notion of coverings.
+    </p>
+    <definition>
+      <p>
+        Let <m>f: A \to B</m> be a morphism of derived <m>p</m>-complete rings. We say that <m>f</m> is an <term>arc<m>_p</m>-covering</term> if 
+        the completion property from <xref ref="fig-arc-covering"/> (with <m>X = \Spec A</m>, <m>Y = \Spec B</m>) holds whenever the valuation ring <m>V</m>
+        is <m>p</m>-complete (and eudoxian). Note that we can then take <m>W</m> to also be <m>p</m>-complete (and eudoxian).
+      </p>
+    </definition>
+    <remark xml:id="rmk-arc-descent-criterion">
+      <p>
+        A sufficient (but not necessary) condition for a morphism <m>f: A \to B</m> to be an arc<m>_p</m>-covering is the following: for every 
+        <m>p</m>-complete AIC eudoxian valuation ring <m>V</m>, the map
+        <me>\Hom_{\Ring}(A, V) \to \Hom_{\Ring}(B, V)</me> is a bijection.
+      </p>
+    </remark>
+    <lemma xml:id="lem-arc-p-covering-lift">
+      <statement>
+        <p>
+          Let <m>R \to S</m> be an arc<m>_p</m>-covering of lenses. Write <m>R</m> as the slice of a perfect prism <m>(A,I)</m> with <m>I = (d)</m> (<xref ref="lem-perfect-prisms-structure"/>).
+          Then 
+          <me>
+            R^\flat \to R^\flat[d^{-1}] \oplus S^\flat
+          </me>
+          is an arc-covering.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>R^\flat \to V</m> be a map to a eudoxian valuation ring, which we may assume is perfect. If <m>d</m> maps to a unit in <m>V</m>, then the map extends to
+          <m>R^\flat[d^{-1}]</m>. Otherwise, we may replace <m>V</m> with its <m>d</m>-adic completion; by <xref ref="thm-untilting-functor"/>, the map <m>R^\flat \to V</m> corresponds to a map
+          <m>R \to V^\sharp = A \otimes_R W(V)</m> whose target is a lens and (by <xref ref="lem-valuation-ring-lens"/>) a <m>p</m>-complete eudoxian valuation ring. Since <m>R \to S</m> is an arc-covering, we get an extension to a map
+          <m>S \to V'</m> for some eudoxian valuation ring <m>V'</m> containing <m>V^\sharp</m>, which we may take to be <m>p</m>-complete and AIC and hence a lens (<xref ref="lem-aic-p-complete-lens"/>). Then
+          <m>S^\flat \to V^{\prime \flat}</m> gives the desired extension.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 8.9.)
+        </p>
+      </proof>
+    </lemma>
+    <theorem xml:id="thm-arc-descent-lens">
+      <statement>
+        <p>
+          Let <m>R \to S</m> be an arc<m>_p</m>-covering of lenses. Then the augmented Čech-Alexander complex
+          <me>
+            0 \to R \to S \to S \widehat{\otimes}_R S \to \cdots
+          </me>
+          is acyclic.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Write <m>R</m> as the slice of a perfect prism <m>(A,I)</m>. By applying <xref ref="thm-arc-descent-perfect"/> to the arc-covering from 
+          <xref ref="lem-arc-p-covering-lift"/>, then taking derived <m>d</m>-completions (which kills all terms involving <m>R^\flat[d^{-1}]</m>), we deduce the stated result.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 8.9.)
+        </p>
+      </proof>
+    </theorem>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-perfect-arc-descent">
+      <statement>
+        <p>
+          Let <m>V</m> be a perfect valuation ring over <m>\FF_p</m>. Let <m>\frakp</m> be a prime ideal of <m>V</m>. Prove directly that the sequence
+          <me>
+            0 \to V \to V_{\frakp} \oplus V/\frakp \to \kappa(\frakp) \to 0
+          </me>
+          is exact.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          See <xref ref="bib-Bhatt-Scholze-grassmannian"/>, Lemma 6.3.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
+</section>

@@ -48,8 +48,7 @@
         (giving rise to additive inverses); the comultiplication map is cocommutative, coassociative, codistributive over coaddition, and admits a counit.
       </p>
       <p>
-        A shorter way to say this is that a biring is a commutative ring object in the category of affine schemes. (Remember that the functor <m>\Spec</m> from <m>\Ring</m>
-        to schemes is contravariant!)
+        A shorter way to say this is that a biring is a commutative ring object in the category of affine schemes. (Remember that the functor <m>\Spec: \Ring \to \Sch</m> is contravariant!)
       </p>
     </definition>
     <proposition xml:id="prop-big-Witt">

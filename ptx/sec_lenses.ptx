@@ -290,9 +290,9 @@
       of the corresponding perfect prism. In particular, we can make some prisms without specifying either a <m>\delta</m>-ring structure or a Frobenius lift!
     </p>
   </subsection>
-  <subsection>
+  <subsection xml:id="sec-perfectoid-field">
     <title>Perfectoid fields</title>
-    <definition>
+    <definition xml:id="def-perfectoid-field">
       <p>
         A <term>perfectoid field</term> is a field <m>K</m> satisfying the following conditions.
       </p>
@@ -337,7 +337,7 @@
     </lemma>
     <p>
       The following result generalizes the <term>field of norms isomorphism</term> of Fontaine and Wintenberger <xref ref="bib-Fontaine-Wintenberger"/>.
-      We will later give an independent <q>prismatic</q> proof.
+      We will later give an independent <q>prismatic</q> proof; see <xref ref="rmk-perfectoid-correspondence-derivation"/>.
     </p>
     <theorem xml:id="thm-field-of-norms">
       <title>Tilting correspondence for perfectoid fields</title>
@@ -354,6 +354,9 @@
         </p>
       </proof>
     </theorem>
+    <p>
+      For a continuation of this discussion, see <xref ref="sec-lenses-valuations"/>.
+    </p>
   </subsection>
   <subsection>
     <title>Glueing of lenses</title>

@@ -1,0 +1,302 @@
+﻿<section xml:id="sec_arc-topology">
+  <title>The arc-topology and friends</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-Mathew"/>.
+      </p>
+    </paragraphs>
+    <p>
+      We describe an exotic Grothendieck topology on the category of schemes, the <term>arc-topology</term>, and its close relatives, the <term>h-topology</term>
+      and <term>v-topology</term>. This will be useful in the study of the étale comparison map (<xref ref="sec_etale-comparison"/>).
+    </p>
+  </introduction>
+  <subsection>
+    <title>Grothendieck topologies</title>
+    <p>
+      In <xref ref="sec_prismatic-site"/>, we introduced <term>indiscrete Grothendieck topologies</term> as a shortcut to getting to the construction of prismatic cohomology.
+      Since we will be discussing various Grothendieck topologies on the category of schemes, we must say a bit more now.
+    </p>
+    <definition>
+      <p>
+        A <term>Grothendieck topology</term> on a category <m>\calC</m> consists of a collection of (set-indexed) families of morphisms <m>\{U_i \to U\}_{i \in I}</m> 
+        with a single target <m>U</m>, the <term>coverings</term>, subject to the following restrictions.
+      </p>
+        <ul>
+          <li>
+            <p>
+              Any isomorphism, viewed as a singleton family, is a covering.
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>\{U_i \to U\}_{i \in I}</m> is a covering and, for each <m>i</m>, <m>\{V_{ij} \to U_i\}_{j \in J_i}</m> is a covering, then the composition
+              <m>\{V_{ij} \to U\}_{i \in I, j \in J_i}</m> is a covering. (In short, a covering of the terms in a covering gives a covering.)
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>\{U_i \to U\}_{i \in I}</m> is a covering and <m>V \to U</m> is any morphism of <m>\calC</m>, then the fiber products <m>U_i \times_U V</m> exist
+              for all <m>i \in I</m> and <m>\{U_i \times_U V \to V\}_{i \in I}</m> is a covering. (In short, the restriction of a covering is a covering.)
+            </p>
+          </li>
+        </ul>
+        <p>
+          A category equipped with a Grothendieck topology is called a <term>site</term>.
+        </p>
+        <p>
+          A <term>presheaf</term> on a site valued in <m>\Set</m> is a contravariant functor <m>F: \calC \to \Set</m>. A <term>sheaf</term>
+          is a presheaf such that for every covering <m>\{U_i \to U\}_{i \in I}</m>, <m>F(U)</m> is the limit of the diagram
+          <me>
+            \prod_{i \in I} F(U_i) \rightrightarrows \prod_{(i_0, i_1) \in I \times I} F(U_{i_0} \times_U U_{i_1}).
+          </me>
+          The category of sheaves of sets on the site is called the <term>topos</term> associated to the site; it is in many ways a more canonical object,
+          in that there are usually many different ways to construct families of coverings (or even underlying categories) that give rise to equivalent topoi.
+          In particular, one can <q>sheafify</q> the definition of a morphism of sites to obtain morphisms of topoi, some of which do not arise from morphisms
+          of the underlying sites.  We will not dwell on this too much here, but see <xref ref="bib-Stacks"/>, tag 00X9.
+        </p>
+    </definition>
+  </subsection>
+  <subsection>
+    <title>Valuation rings</title>
+    <definition>
+      <p>
+        A <term>valuation ring</term> is a local integral domain <m>V</m> which, as a subring of its fraction field <m>K</m>, is maximal with respect to local inclusions
+        of local rings. In this case, the group <m>\Gamma = K^\times/V^\times</m> (the <term>value group</term> of <m>A</m>) 
+        is totally ordered with the nonnegative elements being <m>(V \setminus \{0\})/V^\times</m>.
+        See <xref ref="bib-Stacks"/>, tag 00I8 for more on valuation rings.
+      </p>
+      <p>
+        We say that <m>V</m> is <term>eudoxian</term> if its value group satisfies the equivalent conditions of <xref ref="lem-eudoxian"/>.
+      </p>
+      <p>
+        We say that a valuation ring <m>V</m> is <term>absolutely integrally closed</term> (or <term>AIC</term>) if its fraction field is algebraically closed.
+        Any (eudoxian) valuation ring can be embedded in an AIC (eudoxian) valuation ring.
+      </p>
+      <p>
+        We define an <term>arc</term> to be a scheme of the form <m>\Spec(V)</m> where <m>V</m> is a eudoxian valuation ring. For example, a scheme which is the spectrum
+        of a discrete valuation ring (sometimes called a <term>trait</term> or a <term>dash</term>) is an arc.
+        (This terminology is hinted at in <xref ref="bib-Bhatt-Mathew"/> but not actually introduced there.)
+      </p>
+    </definition>
+    <lemma xml:id="lem-eudoxian">
+      <statement>
+        <p>
+          For <m>\Gamma</m> a totally ordered abelian group, the following statements are equivalent.
+        </p>
+        <ol>
+          <li>
+            <p>
+              For any two elements <m>\alpha, \beta \in \Gamma</m> with <m>\alpha, \beta \gt 0</m>, there exists a positive integer <m>n</m> such that 
+              <m>n\alpha \gt \beta</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The group <m>\Gamma</m> admits an order-preserving isomorphism with a subgroup of the additive group <m>\RR</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          It is obvious that (2) implies (1). Conversely, if (1) holds and <m>\Gamma</m> is nontrivial (as otherwise there is nothing to check), 
+          we can fix a single <m>\alpha \in \Gamma</m> and define a function <m>f: \Gamma \to \RR</m> by the formula
+          <me>
+            f(\beta) = \sup\left\{\frac{r}{s}: r,s \in \ZZ, s \gt 0, s \beta \gt r \alpha\right\}
+          </me>
+          (condition (1) guaranteeing that the set in question is bounded above). We leave it to the reader to verify that this indeed gives
+          an injective order-preserving homomorphism (<xref ref="exer-eudoxian"/>).
+        </p>
+      </proof>
+    </lemma>
+    <remark>
+      <p>
+        A typical example of a totally ordered abelian group not satisfying the conditions of <xref ref="lem-eudoxian"/> is the group <m>\RR \times \RR</m> with
+        the lexicographic ordering.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        A eudoxian valuation ring is <term>microbial</term> in the sense of Huber <xref ref="bib-Huber"/>, but not conversely; the latter requires that there be a <q>leading term</q>
+        while still having intermediate specializations. An example of a totally ordered abelian group that is not microbial is the infinite direct sum <m>\oplus_{m \in \ZZ} \RR</m>
+        with the lexicographic ordering.
+      </p>
+    </remark>
+    <corollary xml:id="cor-arc-two-points">
+      <statement>
+        <p>
+          For <m>V</m> a valuation ring, <m>\Spec(V)</m> is an arc if and only if it contains at most two points
+          (the <term>generic point</term> and the <term>special point</term>, which coincide if and only if <m>V</m> is a field). 
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Exercise (see <xref ref="exer-arc-two-points"/>).
+        </p>
+      </proof>
+    </corollary>
+    <remark>
+      <p>
+        Condition (1) in <xref ref="lem-eudoxian"/> is commonly called the <term>archimedean property</term> of a totally ordered group. We prefer the adjective
+        <term>eudoxian</term> both for historical accuracy and to avoid creating confusion with the use of the term <term>nonarchimedean</term> in reference to an associated
+        absolute value of a eudoxian valuation.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>The arc-topology</title>
+    <definition>
+      <p>
+        As per <xref ref="bib-Bhatt-Mathew"/> (and an as yet unavailable sequel to <xref ref="bib-Rydh"/>), we say that a 
+        morphism <m>f: Y \to X</m> of schemes is an <term>arc-covering</term> if for any morphism <m>\Spec(V) \to X</m> from an arc into <m>X</m>,
+        there exists a commuting diagram as in <xref ref="fig-arc-covering"/> in which <m>\Spec(W) \to \Spec(V)</m> is a faithfully flat morphism of arcs.
+        (We <em>do not</em> require the map <m>V \to W</m> to be integral.)
+      </p>
+      <figure xml:id="fig-arc-covering">
+        <image width="50%">
+          <latex-image>
+            \xymatrix{
+              \Spec(W) \ar@{-->}[r] \ar@{-->}[d] &amp; Y \ar[d] \\
+              \Spec(V) \ar[r] &amp; X
+            }
+          </latex-image>
+        </image>
+      </figure>
+    </definition>
+    <lemma xml:id="lem-h-coverings-to-arc">
+      <statement>
+        <p>
+          Let <m>f: Y \to X</m> be a morphism of schemes.
+        </p>
+        <ol>
+          <li>
+            <p>
+              If <m>f</m> is faithfully flat, then it is an arc-covering.
+          </p>
+          </li>
+          <li>
+            <p>
+              If <m>f</m> is proper and surjective, then it is an arc-covering.
+            </p>
+          </li>
+        </ol>
+        <p>
+          Moreover, in both cases <m>f</m> is also a v-covering (see <xref ref="rmk-arc-v-h"/>).
+        </p>
+      </statement>
+      <proof>
+        <p>
+          For (1), we first lift the closed point of <m>\Spec(V)</m>, and then lift generizations.
+          For (2), we first lift the generic point of <m>\Spec(V)</m>, and then apply the valuative criterion for properness.
+          In both cases, the condition that <m>V</m> is eudoxian plays no role.
+          (Compare <xref ref="bib-Rydh"/>, Remark 2.5 or <xref ref="bib-Bhatt-Scholze-grassmannian"/>, Example 2.3.)
+        </p>
+      </proof>
+    </lemma>
+    <example>
+      <p>
+        Let <m>X = \Spec R</m> where <m>R \in \Ring</m> is noetherian. Then the map <m>R \to \prod_{\frakm} R^\wedge_{\frakm}</m>, where <m>\frakm</m> runs over the product of all maximal ideals
+        of <m>R</m>, is a faithfully flat morphism and hence an arc-covering.
+      </p>
+    </example>
+    <example>
+      <p>
+        Let <m>X = \Spec(k[x,y])</m> be the affine plane over a field <m>k</m>, let <m>\tilde{f}: \tilde{Y} \to X</m> be the blowup at the origin,
+        let <m>Y</m> be the complement in <m>\tilde{Y}</m> of a single closed point in the exceptional locus, and let <m>f: Y \to X</m> be the induced morphism.
+        Then <m>f: Y \to X</m> is surjective but not an arc-covering: we can choose an arc whose special point maps to the origin in <m>X</m> and whose
+        generic point maps to the direction corresponding to the missing point in the exceptional locus, and such an arc will not lift to <m>Y</m>.
+        (Again, compare <xref ref="bib-Rydh"/>, Remark 2.5 or <xref ref="bib-Bhatt-Scholze-grassmannian"/>, Example 2.3.)
+      </p>
+    </example>
+    <definition>
+      <p>
+        The <term>arc-topology</term> on the category of schemes is the Grothendieck topology in which a family <m>\{f_i: Y_i \to X\}_{i \in I}</m> of morphisms is considered to be a covering
+        if for any open affine <m>V \subseteq X</m>, there exists a map <m>t: K \to I</m> of sets with <m>K</m> finite and some affine opens <m>U_k \subseteq f_{t(k)}^{-1}(V)</m>
+        for each <m>k \in K</m> such that the induced map <m>\sqcup_k U_k \to V</m> is an arc-covering.
+      </p>
+    </definition>
+    <remark xml:id="rmk-arc-v-h">
+      <p>
+        <xref ref="lem-h-coverings-to-arc"/> shows that the arc-topology includes many more coverings than the flat topology. This leads to some potentially confusing
+        behavior: for instance, the structure presheaf <m>X \mapsto \Gamma(X, \calO)</m> is not a sheaf for the arc-topology, because its sheafification does not include nilpotents
+        (the inclusion of the reduced closed subscheme is an arc-covering). This can (and generally should) be circumvented by working with derived categories.
+      </p>
+      <p>
+        In any case, there is plenty of precedent for considering topologies of this nature. For example, Voevodsky <xref ref="bib-Voevodsky"/> considered the <term>h-topology</term>,
+        generated by étale coverings and proper surjective morphisms. A more recent variant is the <term>universally subtrusive topology</term> of Rydh <xref ref="bib-Rydh"/>,
+        which is defined similarly to the arc-topology except that the lifting property is required for all valuation rings, not just eudoxian ones;
+        following <xref ref="bib-Bhatt-Scholze-grassmannian"/>, this is now commonly called the <term>v-topology</term>.
+        For noetherian schemes, the h-topology, the v-topology, and the arc-topology all coincide, but not otherwise; see <xref ref="exa-arc-covering-not-v-covering"/>
+        for a minimal counterexample.
+      </p>
+    </remark>
+    <p>
+      We describe two fundamental examples of coverings.
+    </p>
+    <example xml:id="exa-v-cover">
+      <p>
+        Let <m>A</m> be a ring. Let <m>(A \to V_i)_{i \in I}</m> be a set of isomorphism class representatives of <m>A</m>-algebras which are AIC valuation rings
+        of cardinality at most <m>\max\{\aleph_0, \#A\}</m> and put <m>B = \prod_{i \in I} V_i</m>. 
+        The map <m>A \to B</m> is a v-covering: any morphism <m>f: A \to V</m> to a valuation ring factors through the intersection <m>\Frac(f(A)) \cap V</m>
+        within <m>\Frac(V)</m>, and hence through some <m>V_i</m>. (Compare <xref ref="bib-Bhatt-Mathew"/>, Proposition 3.30.)
+      </p>
+    </example>
+    <remark>
+      <p>
+        In <xref ref="exa-v-cover"/>, the connected components of the ring <m>V</m> are indexed by the set <m>I</m>. However, if <m>I</m> is infinite, then the spectrum of <m>V</m> is much larger
+        than the set of kernels of projections <m>V \to V_i</m>: it also includes maximal ideals corresponding to <term>ultraproducts</term> of the <m>V_i</m>.
+      </p>
+    </remark>
+    <example xml:id="exa-excision-for-valuation">
+      <p>
+        Let <v>V</v> be a valuation ring and let <m>\frakp</m> be a prime ideal of <m>V</m>. Then <m>V \to V_{\frakp} \times V/\frakp</m> is an arc-covering,
+        but not a v-covering unless <m>\frakp</m> is zero or the maximal ideal. (See <xref ref="bib-Bhatt-Mathew"/>, Corollary 2.9.)
+      </p>
+    </example>
+    <remark xml:id="exa-arc-covering-not-v-covering">
+      <p>
+        One can modify <xref ref="exa-excision-for-valuation"/> to obtain a finitely presented morphism, as follows.
+        Let <m>V</m> be a valuation ring which is not eudoxian. Let <m>\frakp</m> be a prime ideal which is neither zero nor the maximal ideal
+        (see <xref ref="cor-arc-two-points"/>). Then for any <m>f \in V \setminus \frakp</m>, 
+        <m>V \to V_f \times V/f</m> is an arc-covering but not a v-covering. (Compare <xref ref="bib-Bhatt-Mathew"/>, Example 1.3.)
+      </p>
+    </remark>
+    <remark>
+      <p>
+        It is possible to characterize arc-coverings of qcqs schemes in purely topological terms: they are precisely the 
+        <term>universal spectral submersions</term> (<xref ref="bib-Bhatt-Mathew"/>, Proposition 2.19). See <xref ref="exer-v-cover-universally-submersive"/> for a related observation.
+      </p>
+    </remark>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-eudoxian">
+      <statement>
+        <p>
+          Complete the proof of <xref ref="lem-eudoxian"/> by proving that the map <m>f</m> is indeed an injective order-preserving homomorphism.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-arc-two-points">
+      <statement>
+        <p>
+          Prove <xref ref="cor-arc-two-points"/>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-v-cover-universally-submersive">
+      <statement>
+        <p>
+          Let <m>f: Y \to X</m> be a v-covering of qcqs schemes. Show that <m>f</m> is <term>universally submersive</term>: for every morphism <m>X' \to X</m> of qcqs
+          schemes, the map <m>Y \times_X X' \to X'</m> induces a quotient map on underlying topological spaces.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Bhatt-Mathew"/>, Proposition 2.13.
+        </p>
+      </proof>
+    </exercise>
+  </exercises>
+</section>

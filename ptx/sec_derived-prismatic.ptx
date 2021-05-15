@@ -13,240 +13,6 @@
     </p>
   </introduction>
   <subsection>
-    <title>Derived de Rham cohomology</title>
-    <p>
-      We first prepare for the Hodge-Tate comparison by introducing derived de Rham cohomology, picking up the thread from our previous discussion of the cotangent complex
-      (<xref ref="subsec_cotangent-complex"/>).
-    </p>
-    <definition xml:id="def-derived-de-Rham">
-      <p>
-        For <m>k \in \Ring_{\FF_p}</m>, the <term>derived de Rham cohomology</term> functor <m>\dR_{\bullet/k}: \Ring_k \to D(k)</m> is the left derived functor of
-        the functor <m>\Poly_k \to D(k)</m> given by <m>R \mapsto \Omega^\bullet_{R/k}</m>.
-      </p>
-      <p>
-        Let us unwind this for a given ring <m>R \in k</m>. Let <m>P_\bullet \to R</m> be the standard simplicial resolution of <m>R</m> (<xref ref="exa-standard-resolution-rings"/>)
-        Then <m>\dR_{R/k}</m> is the totalization of the double complex <m>\Omega^\bullet_{P_\bullet/k}</m>. Note that this double complex is bounded below in one direction 
-        (coming from the de Rham complex)
-        and bounded above in the other (coming from the simplicial resolution),
-        so we must handle this totalization with some care (see <xref ref="rmk-derham-comparison-char-0"/>).
-      </p>
-    </definition>
-    <p>
-      To state the derived analogue of the Cartier isomorphism, we need to explain what we mean by a <q>filtration</q> in a derived category. (This is also the correct
-      context in which to construct the spectral sequence associated to a filtered complex, as arose in the proof of <xref ref="prop-spectral-sequence-double-complex"/>.)
-    </p>
-    <definition xml:id="def-filtered-derived-category">
-      <p>
-        For <m>k \in \Ring</m>, by an <term>increasing exhaustive filtration</term> of an object <m>K \in D(k)</m>, we will mean a sequence
-        <m>\Fil_0 \to \Fil_1 \to \cdots</m> in <m>D(k)</m> with colimit <m>K</m>. The <term>associated graded quotients</term> are the mapping cones
-        <m>\gr_i(\Fil_\bullet) = C(\Fil_{i-1} \to \Fil_i)</m>.
-      </p>
-    </definition>
-    <remark>
-      <p>
-        You might initially find it confusing that <xref ref="def-filtered-derived-category"/> does not specify that the maps <m>\Fil_i \to \Fil_{i+1}</m>
-        are injections. The point is that this is not a meaningful concept in <m>D(k)</m>!
-      </p>
-    </remark>
-    <p>
-      Take note of the level of generality in the following proposition; there is no restriction on <m>R</m> at all!
-    </p>
-    <proposition xml:id="prop-derived-Cartier-isomorphism">
-      <title>Derived Cartier isomorphism</title>
-      <statement>
-        <p>
-          For <m>k \in \Ring_{\FF_p}</m> and <m>R \in \Ring_k</m>, there is a functorial (in <m>R</m>) increasing exhaustive filtration on <m>\dR_{R/k}</m> in <m>D(R^{(1)})</m>,
-          called the <term>conjugate filtration</term>, equipped with canonical identifications 
-          <me>
-            \gr^i \dR_{R/K} \cong \wedge^i L_{R^{(1)}/k}[-i].
-          </me>
-        </p>
-      </statement>
-      <proof>
-        <p>
-          For <m>R</m> a polynomial ring, we take the filtration on <m>\Omega^{\bullet}_{R/k}</m>
-          where <m>\Fil_i</m> is the canonical truncation <m>\tau^{\leq i} \Omega^\bullet_{R/k}</m> (<xref ref="def-canonical-truncation"/>).
-          The desired identifications in this case are just a reformulation of the Cartier isomorphism (<xref ref="lem-cartier-isomorphism-affine-space"/>).
-          To deduce the general case, just take left derived functors.
-        </p>
-      </proof>
-    </proposition>
-    <remark>
-      <p>
-        The conjugate filtration derives its name from the fact that it goes in the opposite direction from the usual Hodge filtration;
-        its relationship with the Cartier isomorphism seems to have been observed first by Katz <xref ref="bib-Katz-Turrittin"/>.
-        The Hodge filtration and the conjugate filtration give rise to the usual <term>Hodge-de Rham spectral sequence</term>
-        and the <term>conjugate spectral sequence</term>, respectively; the latter is unnamed in <xref ref="bib-Katz-Turrittin"/>, the modern terminology
-        appearing first in <xref ref="bib-Lang"/>.
-      </p>
-    </remark>
-    <corollary xml:id="cor-compare-deRham-smooth">
-      <statement>
-        <p>
-          For <m>k \in \Ring_{\FF_p}</m> and <m>R \in \Ring_k</m> smooth, there is a canonical isomorphism <m>\dR_{R/k} \cong \Omega^\bullet_{R/k}</m>
-          which respects the conjugate filtrations on both sides.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          The map in question comes from the construction using the universal property of left Kan extensions.
-          By <xref ref="prop-derived-Cartier-isomorphism"/>, it respects the conjugate filtration on both sides.
-        </p>
-        <p>
-          Since both sides of the proposed isomorphism behave well with respect to etale localization, it suffices to check the case where <m>R</m> is a polynomial ring.
-          In this case the map on graded pieces can be written as <m>\wedge^i L_{R^{(1)}/k}[-i] \to \Omega^i_{R^{(1)}/k}[-i]</m> using <xref ref="prop-derived-Cartier-isomorphism"/>
-          and the usual Cartier isomorphism
-          (<xref ref="lem-cartier-isomorphism-affine-space"/>). This map is an isomorphism for <m>i=1</m> by <xref ref="prop-cotangent-complex"/>, and hence is an isomorphism
-          for general <m>i</m> as well.
-        </p>
-      </proof>
-    </corollary>
-    <remark xml:id="rmk-derham-comparison-char-0">
-      <p>
-        Note that <xref ref="cor-compare-deRham-smooth"/> fails when <m>k</m> is not a ring of characteristic <m>p</m>.
-        For example, if <m>k</m> is a <m>\QQ</m>-algebra, then <m>k \cong \Omega^*_{A/k}</m> by the Poincare lemma for any <m>A \in \Poly_k</m>, 
-        so <m>k \cong \dR_{A/k}</m> for all <m>A \in \Ring_k</m>.
-      </p>
-      <p>
-        What is going on here is that the definition of derived de Rham cohomology we are using is a shortcut taking advantage of the Cartier isomorphism. 
-        The correct construction
-        for general <m>k</m> requires an extra completion step that correctly accounts for the Hodge filtration, 
-        plus some care for the difference between the <term>direct sum totalization</term> and the 
-        <term>direct product totalization</term> of a double complex which is bounded above in one direction and bounded below in the other direction
-        (see <xref ref="def-totalization"/>).
-        See <xref ref="bib-Bhatt-course"/>, Lecture VII, Remark 3.8 for additional discussion and onward references.
-      </p>
-    </remark>
-  </subsection>
-  <subsection>
-    <title>Regular semiperfect rings</title>
-    <p>
-      We next describe a large class of rings for which derived de Rham cohomology can be described explicitly. These can then be used in the terms of a simplicial resolution
-      to compute derived de Rham cohomology more generally.
-    </p>
-    <definition xml:id="def-regular-semiperfect">
-      <p>
-        Let <m>k \in \Ring_{\FF_p}</m> be perfect. A <term>regular semiperfect</term> <m>k</m>-algebra is an object <m>S \in \Ring_k</m> of the form <m>R/I</m>
-        where <m>R \in \Ring_{\FF_p}</m> is perfect and <m>I</m> is an ideal of <m>R</m> generated by a regular sequence. Note that any such ring is semiperfect,
-        that is, the Frobenius map is surjective; this can be used to partially recover <m>R</m> from <m>S</m>, as per <xref ref="exer-perfection-of-regular-semiperfect"/>.
-      </p>
-    </definition>
-    <example xml:id="exa-regular-semiperfect1">
-      <p>
-        A typical example of a regular semiperfect <m>k</m>-algebra is
-        <me>
-          S = k[x_1^{p^{-\infty}}, \dots, x_n^{p^{-\infty}}]/(x_1,\dots,x_n).
-        </me>
-        Note that there are many ways to write <m>S</m> as <m>R/I</m>; for instance, we may take <m>R = k[x_1^{p^{-\infty}}, \dots, x_n^{p^{-\infty}}]</m>
-        and <m>I = (x_1,\dots,x_n)</m>, but we can also replace <m>R</m> with its classical <m>I</m>-completion (or anything between). One can recover the completion
-        from <m>S</m>; see <xref ref="exer-perfection-of-regular-semiperfect"/>.
-      </p>
-    </example>
-    <lemma xml:id="lem-regular-semiperfect-de-Rham">
-      <statement>
-        <p>
-          Let <m>k \in \Ring_{\FF_p}</m> be perfect and let <m>S \in \Ring_k</m> be regular semiperfect.
-          Then <m>\dR_{S/k}</m> is concentrated in degree <m>0</m> (and thus can be viewed as an object in <m>\Ring_k</m>).
-        </p>
-      </statement>
-      <proof>
-        <p>
-          Set notation as in <xref ref="def-regular-semiperfect"/>.
-          By <xref ref="exer-cotangent-complex-perfect"/>, <m>L_{R/k}</m> vanishes in <m>D(R)</m>. From the distinguished triangle <xref ref="eq-cotangent-complex-sequence"/>
-          associated to the morphisms <m>k \to R \to S</m>, we deduce that <m>L_{S/k} \to L_{S/R}</m> is an isomorphism in <m>D(S)</m>. Since <m>I</m> is generated by a
-          regular sequence, <xref ref="prop-cotangent-complex"/> asserts that <m>L_{S/R} \cong I/I^2[1]</m> where <m>I/I^2</m> is a finite projective <m>S</m>-module.
-          Consequently, the derived exterior power <m>\wedge^i_S L_{S/R}</m> is also concentrated in degree 0.
-          By <xref ref="prop-derived-Cartier-isomorphism"/>, we may now deduce the claim.
-        </p>
-      </proof>
-    </lemma>
-    <example xml:id="exa-regular-semiperfect2">
-      <p>
-        In <xref ref="exa-regular-semiperfect1"/>, one may compute that
-        <me>
-          \dR_{S/k} \cong \bigoplus_{i_1,\dots,i_n \in \ZZ[p^{-1}]_{\geq 0}} k \cdot \frac{x_1^{i_1} \cdots x_n^{i_n}}{\lfloor i_1 \rfloor! \cdots \lfloor i_n \rfloor!}.
-        </me>
-        In general, we get the divided power envelope of <m>I</m> in <m>R</m> (in the sense of <xref ref="bib-Berthelot-Ogus"/>; we cannot apply 
-        <xref ref="def-divided-power-envelope"/> as we are not in the <m>\ZZ_p</m>-flat case).
-      </p>
-    </example>
-      <p>
-        As an illustration of the technique we have in mind, let us apply this logic to ordinary de Rham cohomology in the smooth case.
-      </p>
-    <lemma xml:id="lem-derived-de-Rham-computation">
-      <statement>
-        <p>
-          Let <m>k \in \Ring_{\FF_p}</m> be perfect and let <m>R \in \Ring_k</m> be smooth over <m>k</m>.
-          Let <m>S</m> be the coperfection of <m>R</m>. 
-          Let <m>S^\bullet</m> be the Čech nerve of <m>R \to S</m>.
-        </p>
-        <ol>
-          <li>
-            <p>
-              The map <m>R \to S</m> is flat.
-            </p>
-          </li>
-          <li>
-            <p>
-              For each <m>n \geq 0</m>, the ring <m>S^n</m> is regular semiperfect.
-            </p>
-          </li>
-        </ol>
-      </statement>
-      <proof>
-        <p>
-          Since <m>R</m> is a smooth <m>k</m>-algebra and <m>k</m> is perfect, the Frobenius map <m>\phi_R: R \to R</m>
-          is flat (see <xref ref="rmk-kunz"/>). It follows that <m>R \to S</m> is flat.
-        </p>
-        <p>
-          To see that <m>S^n</m> is regular semiperfect, we may work étale locally to reduce to the case where <m>R = k[x_1,\dots,x_r]</m>.
-          In this case, we may write
-          <me>
-            S^n = k[x_{ij}^{p^{-\infty}}: i=1,\dots,r; j=0,\dots,n]/(x_{ij} - x_{ij'}: i=1,\dots,r; 1 \leq j \lt j' \leq n)
-          </me>
-          to see that it is regular semiperfect.
-        </p>
-      </proof>
-    </lemma>
-    <remark xml:id="rmk-de-Rham-via-derived">
-      <p>
-        With notation as in <xref ref="lem-derived-de-Rham-computation"/>, <xref ref="cor-compare-deRham-smooth"/> implies that we can identify <m>\Omega^\bullet_{R/k}</m>
-        with <m>\dR_{R/k}</m> in <m>D(k)</m>.
-        For each <m>n</m>, <m>\dR_{S^n/k}</m> is concentrated in degree 0 by <xref ref="lem-regular-semiperfect-de-Rham"/>.
-        It can be shown further that the functor <m>\dR_{\bullet/k}</m> satisfies descent with respect to the fpqc cover <m>R \to S</m>
-        (see for instance  <xref ref="bib-Bhatt-Morrow-Scholze2"/>, section 3); consequently, <m>\dR_{R/k}</m> can be computed by the complex <m>\dR_{S^\bullet/k}</m>.
-      </p>
-    </remark>
-  </subsection>
-  <subsection>
-    <title>Derived crystalline cohomology</title>
-    <definition>
-      <title>Derived crystalline cohomology</title>
-      <p>
-        Let <m>k \in \Ring_{\FF_p}</m> be perfect and let <m>A \in \Ring</m> be a classically <m>p</m>-complete ring with <m>A/p \cong k</m>.
-        We wish to derive a <term>crystalline cohomology</term> functor <m>R\Gamma_{\crys}: \Poly_k \to D(A)</m> taking <m>R = k[x_1,\dots,x_r]</m>
-        to <m>\widehat{\Omega}^{\bullet}_{P/A}</m> for <m>P = A[x_1,\dots,x_r]</m>; however, we need to make sure that this construction does not depend on the choice
-        of coordinates on <m>R</m>. Fortunately, we can deduce this from our proof of the Hodge-Tate comparison, which gives us a canonical isomorphism
-        of <m>\widehat{\Omega}^{\bullet}_{P/A}</m> with <m>\phi^* \Prism_{R/k}</m> (<xref ref="cor-prismatic-to-crystalline"/>).
-      </p>
-      <p>
-        We define the <term>derived crystalline cohomology</term> functor <m>R\Gamma_{\dcrys}: \Ring_k \to D(A)</m> by taking the left derived functor of the
-        ordinary crystalline cohomology <m>R\Gamma_{\crys}</m>. From the comparison of crystalline cohomology with de Rham cohomology 
-        (<xref ref="prop-crystalline-cohomology-affine-space"/>), we obtain a natural isomorphism 
-        <me>
-          R\Gamma_{\dcrys}(\bullet/A) \otimes_A^L k \cong \dR_{\bullet/k}.
-        </me>
-      </p>
-    </definition>
-    <remark>
-      <p>
-        Using <xref ref="lem-derived-de-Rham-computation"/>, we can carry out the analogue of <xref ref="rmk-de-Rham-via-derived"/> to construct an explicit
-        <em>functorial</em> complex computing the (derived) crystalline cohomology of a smooth algebra over a perfect ring.
-        We omit the details here.
-      </p>
-    </remark>
-  </subsection>
-  <subsection>
     <title>Derived prismatic cohomology</title>
     <definition>
       <p>
@@ -283,7 +49,7 @@
           Let <m>(A,I)</m> be a bounded prism. For any <m>R \in \Ring_{\overline{A}}</m>, the complex <m>L\overline{\Prism}_{R/A}</m> admits a functorial (in <m>R</m>)
           multiplicative exhaustive increasing filtration <m>\Fil_\bullet^{\HT}</m> in <m>D_{\comp}(R)</m> for which we have canonical identifications
           <me>
-            \gr_i^{\HT}(L\overline{\Prism}_{R/A}) \cong \wedge^i_{\overline{A}} L_{R/\overline{A}}\{-i\}[-i]^\wedge_{(p)}
+            \gr_i^{\HT}(L\overline{\Prism}_{R/A}) \cong \left(\bigwedge^i_{\overline{A}} L_{R/\overline{A}}\{-i\}\right)[-i]^\wedge_{(p)}
           </me>
           where <m>\{-i\}</m> denotes a Breuil-Kisin twist (<xref ref="def-Breuil-Kisin-twist"/>).
         </p>
@@ -300,7 +66,7 @@
       <title>Comparison with the smooth case</title>
       <statement>
         <p>
-          Let <m>(A,I)</m> be a bounded prism. For any <m>p</m>-completely smooth <m>A/I</m>-algebra, the natural map <m>L\Prism_{R/A} \cong \Prism_{R/A}</m>
+          Let <m>(A,I)</m> be a bounded prism. For any <m>p</m>-completely smooth <m>A/I</m>-algebra, the natural map <m>L\Prism_{R/A} \to \Prism_{R/A}</m>
           is an isomorphism.
         </p>
       </statement>
@@ -310,6 +76,9 @@
         </p>
       </proof>
     </corollary>
+  </subsection>
+  <subsection>
+    <title>Regular semilenses</title>
     <p>
       The statement that derived de Rham cohomology can be computed easily using regular semiperfect rings (<xref ref="rmk-de-Rham-via-derived"/>) can be adapted as follows.
     </p>
@@ -319,7 +88,7 @@
         A <term>semilens</term> over <m>\overline{A}</m> is a derived <m>p</m>-complete ring which can be written as the quotient of some lens over <m>\overline{A}</m>.
         (This corresponds to a <term>semiperfectoid ring</term> in <xref ref="bib-Bhatt-course"/> and <xref ref="bib-Bhatt-Scholze"/>.)
         If <m>S</m> is a semilens, then <m>S/p</m> is semiperfect and <m>\theta: W(S^\flat) \to S</m> is surjective.
-        It will follow from <xref ref="rmk-regular-semilens-cohomology"/> that <m>\Prism_{S/A} \in D^{\leq 0}(A)</m>,
+        It will follow from <xref ref="rmk-regular-semilens-cohomology"/> that <m>L\Prism_{S/A} \in D^{\leq 0}(A)</m>,
         but in general it will not be concentrated in degree 0.
       </p>
       <p>
@@ -331,30 +100,21 @@
       <p>
         Let <m>(A,I)</m> be a perfect prism and let <m>S</m> be a regular semilens over <m>(A,I)</m>.
         For simplicity, assume also that <m>\overline{A}</m> is <m>p</m>-torsion-free and <m>S</m> is <m>p</m>-completely flat over <m>\overline{A}</m>.
-        From <xref ref="prop-derived-Hodge-Tate-comparison"/>, we see that <m>\overline{\Prism}_{S/A}</m> admits an increasing exhaustive filtration
-        with graded pieces <m>\wedge^i L_{S/A}\{-i\}[-i]</m>. By our assumptions on <m>S</m>, each of these graded pieces is a finite projective <m>S</m>-module
-        (compare the proof of <xref ref="lem-regular-semiperfect-de-Rham"/>). It follows that <m>\overline{\Prism}_{S/A}</m> is concentrated in degree 0,
-        where it is a <m>p</m>-completely flat <m>S</m>-algebra; consequently, <m>\Prism_{S/A}</m> is concentrated in degree 0, where it is
+        From <xref ref="prop-derived-Hodge-Tate-comparison"/>, we see that <m>L\overline{\Prism}_{S/A}</m> admits an increasing exhaustive filtration
+        with graded pieces <m>\left(\bigwedge^i L_{S/\overline{A}}\{-i\}\right)[-i]</m>. By our assumptions on <m>S</m>, each of these graded pieces is a finite projective <m>S</m>-module
+        (compare the proof of <xref ref="lem-regular-semiperfect-de-Rham"/>). It follows that <m>L\overline{\Prism}_{S/A}</m> is concentrated in degree 0,
+        where it is a <m>p</m>-completely flat <m>S</m>-algebra; consequently, <m>L\Prism_{S/A}</m> is concentrated in degree 0, where it is
         a <m>(p,I)</m>-completely flat <m>A</m>-algebra.
       </p>
       <p>
-        It can also be shown (as in <xref ref="rmk-delta-structure-on-prismatic-cohomology"/>) that the Frobenius on prismatic cohomology provides <m>\Prism_{S/A}</m>
-        with a <m>\delta</m>-ring structure, so <m>(\Prism_{S/A}, I)</m> is in fact a prism over <m>(A,I)</m>!
+        It can also be shown (as in <xref ref="rmk-delta-structure-on-prismatic-cohomology"/>) that the Frobenius on prismatic cohomology provides <m>L\Prism_{S/A}</m>
+        with a <m>\delta</m>-ring structure, so <m>(L\Prism_{S/A}, I)</m> is in fact a prism over <m>(A,I)</m>!
         This can even be made explicit: if we write <m>S = R/J</m> with <m>R</m> a lens and <m>J</m> generated by a regular sequence, then
         <me>
-          \Prism_{S/A} \cong W(R^\flat)\{J/d \}^\wedge_{(p)}
+          L\Prism_{S/A} \cong W(R^\flat)\{J/d \}^\wedge_{(p)}
         </me>
         (compare <xref ref="lem-crystalline-weakly-final"/>).
       </p>
     </remark>
   </subsection>
-  <exercises>
-    <exercise xml:id="exer-perfection-of-regular-semiperfect">
-      <statement>
-        <p>
-          With notation as in <xref ref="def-regular-semiperfect"/>, show that the perfection of <m>S</m> is canonically isomorphic to the classical <m>I</m>-completion of <m>R</m>.
-        </p>
-      </statement>
-    </exercise>
-  </exercises>
 </section>

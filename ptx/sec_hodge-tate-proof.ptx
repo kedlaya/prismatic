@@ -106,7 +106,7 @@
         <p>
           By <xref ref="thm-Hodge-Tate-crystalline-affine-space"/> and <xref ref="lem-prismatic-base-change"/>, the claim holds when
           <m>R = \overline{A}[x_1,\dots,x_r]</m>. We may then deduce the general case using <xref ref="lem-hodge-tate-etale-base-change"/>.
-          (Compare <xref ref="bib-Bhatt-Scholze"/>, Corollary 5.4.)
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Corollary 5.5.)
         </p>
       </proof>
     </lemma>

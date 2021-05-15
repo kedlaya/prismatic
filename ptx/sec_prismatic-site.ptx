@@ -15,6 +15,13 @@
       Note that while we make some basic definitions in a rather expansive degree of generality, we will be unable to compute anything except
       under some smoothness hypotheses. We impose those starting in <xref ref="sec_hodge-tate"/>.
     </p>
+    <remark>
+      <title>Warning</title>
+      <p>
+        Our definition of the prismatic cohomology <m>\Prism_{R/A}</m> is preliminary; it will be overridden later by the construction of
+        <term>derived prismatic cohomology</term> in <xref ref="sec_derived-prismatic"/>.
+      </p>
+    </remark>
   </introduction>
   <subsection>
     <title>Indiscrete Grothendieck topologies</title>

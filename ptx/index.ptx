@@ -5,12 +5,15 @@
     <package>amsfonts</package>
     <package>stmaryrd</package>
     <package>relsize</package>
+    <package>calligra</package>
+    <package>mathrsfs</package>
   </latex-preamble>
   <macros>
     \frenchspacing
     \def\AA{\mathbb{A}}
     \def\CC{\mathbb{C}}
     \def\FF{\mathbb{F}}
+    \def\GG{\mathbb{G}}
     \def\NN{\mathbb{N}}
     \def\PP{\mathbb{P}}
     \def\QQ{\mathbb{Q}}
@@ -19,8 +22,12 @@
     \def\ZZ{\mathbb{Z}}
     \def\calA{\mathcal{A}}
     \def\calC{\mathcal{C}}
+    \def\calE{\mathcal{E}}
+    \def\calF{\mathcal{F}}
     \def\calO{\mathcal{O}}
+    \def\frakm{\mathfrak{m}}
     \def\frako{\mathfrak{o}}
+    \def\frakp{\mathfrak{p}}
     \def\frakX{\mathfrak{X}}
     \def\dual{\vee}
     \def\Prism{\mathbf{\Delta}}
@@ -35,6 +42,7 @@
     \DeclareMathOperator{\colim}{colim}
     \DeclareMathOperator{\comp}{comp}
     \DeclareMathOperator{\Comp}{\mathbf{Comp}}
+    \DeclareMathOperator{\Cone}{Cone}
     \DeclareMathOperator{\Cor}{Cor}
     \DeclareMathOperator{\crys}{crys}
     \DeclareMathOperator{\cyc}{cyc}
@@ -45,6 +53,8 @@
     \DeclareMathOperator{\fin}{fin}
     \DeclareMathOperator{\Fil}{Fil}
     \DeclareMathOperator{\Fix}{Fix}
+    \DeclareMathOperator{\fppf}{fppf}
+    \DeclareMathOperator{\Frac}{Frac}
     \DeclareMathOperator{\Frob}{Frob}
     \DeclareMathOperator{\Gal}{Gal}
     \DeclareMathOperator{\GL}{GL}
@@ -69,10 +79,13 @@
     \DeclareMathOperator{\Pshv}{\mathbf{Pshv}}
     \DeclareMathOperator{\Rad}{Rad}
     \DeclareMathOperator{\Real}{Re}
+    \DeclareMathOperator{\red}{red}
     \DeclareMathOperator{\Res}{Res}
     \DeclareMathOperator{\Ring}{\mathbf{Ring}}
     \DeclareMathOperator{\sep}{sep}
+    \DeclareMathOperator{\Sch}{\mathbf{Sch}}
     \DeclareMathOperator{\Set}{\mathbf{Set}}
+    \DeclareMathOperator{\sheafHom}{\mathscr{H}\!\mathit{om}}
     \DeclareMathOperator{\sign}{sign}
     \DeclareMathOperator{\Spec}{Spec}
     \DeclareMathOperator{\Spf}{Spf}
@@ -81,6 +94,7 @@
     \DeclareMathOperator{\Tot}{Tot}
     \DeclareMathOperator{\Trace}{Trace}
     \DeclareMathOperator{\unr}{unr}
+    \DeclareMathOperator{\Vect}{\mathbf{Vect}}
     \DeclareMathOperator{\Ver}{Ver}
 
     % Declarations from stmaryrd that for some reason aren't getting loaded by default.
@@ -144,11 +158,15 @@
     <xi:include href="./sec_hodge-tate-crystalline.ptx"/>
     <xi:include href="./sec_hodge-tate-proof.ptx"/>
     <xi:include href="./sec_nonabelian-derived.ptx"/>
+    <xi:include href="./sec_derived-deRham.ptx"/>
     <xi:include href="./sec_derived-prismatic.ptx"/>
     <xi:include href="./sec_perfections-mixed.ptx"/>
-    <xi:include href="./sec_andre-flatness.ptx"/>
+    <xi:include href="./sec_arc-topology.ptx"/>
+    <xi:include href="./sec_arc-descent.ptx"/>
     <xi:include href="./sec_etale-comparison.ptx"/>
+    <xi:include href="./sec_almost-purity.ptx"/>
     <xi:include href="./sec_q-derham.ptx"/>
+    <xi:include href="./sec_q-crystalline.ptx"/>
     <xi:include href="./sec_prismatization.ptx"/>
     <backmatter>
       <xi:include href="./bibliography.ptx"/>

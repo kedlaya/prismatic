@@ -51,9 +51,9 @@
       <image width="75%">
         <latex-image>
           \xymatrix{
-            \Spec S \ar@{-->}[rd]^{\phi^*_{S/R}} \ar@/^/[rrd]^{\phi^*_S} \ar@/_/[rdd] \\
+            \Spec S \ar@{-->}[rd]^{\Spec \phi_{S/R}} \ar@/^/[rrd]^{\Spec \phi_S} \ar@/_/[rdd] \\
             &amp; \Spec S^{(1)} \ar[r] \ar[d] &amp; \Spec S \ar[d] \\
-            &amp; \Spec R \ar^{\phi_R^*}[r] &amp; \Spec R
+            &amp; \Spec R \ar^{\Spec(\phi_R)}[r] &amp; \Spec R
           }
         </latex-image>
       </image>
@@ -354,7 +354,7 @@
         see <xref ref="bib-Bhatt-Scholze"/>, Warning 2.40.
       </p>
     </remark>
-    <remark>
+    <remark xml:id="rmk-divided-power-envelope-lambda">
       <p>
         <xref ref="lem-divided-power-envelope-delta1"/> asserts that the divided power envelope of <m>(R, J)</m> as a ring is also the divided power envelope as a
         <m>\delta</m>-ring. The corresponding statement for <m>\lambda</m>-rings is false:
@@ -518,7 +518,7 @@
       <proof>
         <p>
           We can compute the cohomology of the total complex using the <q>first</q> spectral sequence, in which we first compute the cohomology of the columns.
-          In xthis case, <m>H^m(D_{J^n}(P^n) \wedge{\otimes}_{P^n} \widehat{\Omega}^\bullet_{P^n/\ZZ_p})</m> is independent of <m>n</m>: 
+          In this case, <m>H^m(D_{J^n}(P^n) \widehat{\otimes}_{P^n} \widehat{\Omega}^\bullet_{P^n/\ZZ_p})</m> is independent of <m>n</m>: 
           by <xref ref="prop-crystalline-cohomology-affine-space"/>
           each column computes the crystalline cohomology of <m>\Spec \FF_p[x_1,\dots,x_r]</m>, and for this identification each map <m>P^{n-1} \to P^n</m> represents
           the identity map on cohomology.
@@ -527,7 +527,7 @@
             H^m \stackrel{0}{\to} H^m \stackrel{1}{\to} H^m \stackrel{0}{\to} H^m \stackrel{1}{\to} \cdots.
           </me>
           At the next page of the spectral sequence, 
-          we end up with the groups <m>H^m(D_{J^0}(P^0) \wedge{\otimes}_{P^0} \widehat{\Omega}^\bullet_{P^0/\ZZ_p})</m> in column 0 
+          we end up with the groups <m>H^m(D_{J^0}(P^0) \widehat{\otimes}_{P^0} \widehat{\Omega}^\bullet_{P^0/\ZZ_p})</m> in column 0 
           and zeroes elsewhere. By <xref ref="map-of-double-complex-first-column-qis"/>, the map from the first column to the totalization is a quasi-isomorphism.
           (Compare <xref ref="exa-trivial-resolution-modules"/> for a similar phenomenon.)
         </p>

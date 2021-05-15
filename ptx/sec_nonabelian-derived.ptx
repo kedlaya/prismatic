@@ -6,6 +6,10 @@
       <p>
         <xref ref="bib-Bhatt-course"/>, lecture VII. The underlying reference is <xref ref="bib-Quillen-homotopical"/>;
         the definitive modern treatment is <xref ref="bib-Lurie-higher-topos"/>, section 5.5.8.
+        However, we generally follow conventions from <xref ref="bib-Stacks"/>, tag 0162.
+      </p>
+      <p>
+        For a concise introduction to simplicial commutative rings, see <xref ref="bib-Mathew-SCR"/>.
       </p>
     </paragraphs>
     <p>
@@ -17,7 +21,7 @@
     </p>
   </introduction>
   <subsection>
-    <title>Simplicial resolutions</title>
+    <title>More on simplicial objects</title>
     <p>
       To introduce this section, we start with a motivating remark.
     </p>
@@ -31,7 +35,7 @@
       </p>
       <p>
         The construction of nonabelian derived functors allows us to do something similar starting from the category <m>\Ring_A</m>.
-        The free objects in this case (i.e., the essential image of the forgetful functor to sets) are polynomial rings.
+        The free objects in this case (i.e., the essential image of the left adjoint of the forgetful functor to <m>\Set</m>) are polynomial rings.
         In order to replace modules to rings, we need to reconceptualize some familiar constructions without reference to the additive structure of the category
         <m>\Mod_A</m>; for example, in <m>\Mod_A</m> we can form the equalizer of two maps <m>f_1, f_2: M \to N</m> as the kernel of the difference <m>f_1 - f_2</m>,
         but now we need to forgo this shortcut.
@@ -44,8 +48,7 @@
       </p>
     </remark>
     <p>
-      To build on the previous remark, we recall the definition of <term>simplicial objects</term> from <xref ref="def-simplicial-object"/>, then give a simplicial analogue
-      of a <term>resolution</term> in homological algebra.
+      To begin, we recall the definition of <term>simplicial objects</term> from <xref ref="def-simplicial-object"/>, filling some extra details.
     </p>
     <definition>
       <p>
@@ -53,7 +56,58 @@
         Recall (from <xref ref="def-simplicial-object"/>) that for <m>\calC</m> an arbitrary category, a
         <term>simplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U: \Delta^{\op} \to \calC</m>,
         while a <term>cosimplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U: \Delta \to \calC</m>.
+        For a simplicial object <m>U</m>, we will usually write <m>U_n</m> as a shorthand for the image object <m>U([n])</m>.
       </p>
+    </definition>
+    <p>
+      The shift operators on derived categories have the following simpicial analogue.
+    </p>
+    <definition>
+      <p>
+        For <m>n \geq 0</m>, let <m>\Delta[n]</m> denote the simplicial set
+        <me>
+          \Delta^{\op} \to \Set, \qquad [k] \mapsto \Hom_{\Delta}([k], [n]).
+        </me>
+        For any simplicial set <m>U</m>, the morphisms of simplicial sets from <m>\Delta[n]</m> to <m>U</m> are naturally in bijection with <m>U_n</m>.
+      </p>
+    </definition>
+    <definition xml:id="def-product-of-simplicial-sets">
+      <p>
+        Let <m>V</m> be a simplicial set such that each <m>V_n</m> is finite and nonempty.
+        Then for any category <m>\calC</m> admitting finite coproducts and any simplicial object <m>U</m> of <m>\calC</m>, we define the product
+        <m>U \times V</m> to be the simplicial object of <m>\calC</m> with
+        <me>
+          (U \times V)_n = \coprod_{v \in V_n} U_n
+        </me>
+        such that the map
+        <me>
+          \coprod_{v \in V_n} U_n \to \coprod_{v' \in V_m} U_m
+        </me>
+        corresponding to <m>\phi: [m] \to [n]</m> carries the component indexed by <m>v</m> to the component indexed by <m>v' = V(\phi)(v)</m> via <m>U(\phi)</m>.
+        (Compare <xref ref="bib-Stacks"/>, tag 017C.)
+      </p>
+    </definition>
+    <example xml:id="exa-homotopy-setup">
+      <p>
+        In <xref ref="def-homotopy-equivalence"/>, we will consider the special case of <xref ref="def-product-of-simplicial-sets"/> in which <m>V = \Delta[1]</m>.
+        In this case, the two maps <m>e_0, e_1: \Delta[0] \to \Delta[1]</m> corresponding to the two morphisms <m>[0] \to [1]</m>
+        induce morphisms 
+        <me>
+          e_0, e_1: U \to U \times \Delta[1].
+        </me>
+      </p>
+    </example>
+    <remark>
+      <p>
+        By way of motivation, you should imagine that <m>\Delta[n]</m> represents an <m>n</m>-dimensional simplex and the product <m>U \times \Delta[n]</m>
+        represents taking the product of some geometric object corresponding to <m>U</m> with this simplex. This motivates the definition of homotopies
+        between maps of simplicial objects, as in <xref ref="def-homotopy-equivalence"/>.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Simplicial resolutions</title>
+    <definition>
       <p>
         A <term>simplicial resolution</term> of an object <m>X \in \calC</m> is a simplicial object <m>U: \Delta^{\op} \to \calC</m>
         with colimit <m>X</m>. A <term>cosimplicial resolution</term> of <m>X</m> is a cosimplicial object <m>U: \Delta \to \calC</m>
@@ -63,6 +117,16 @@
     <p>
       Let us see how the previous construction, specialized to the case of modules over a ring, gives resolutions in the homological sense.
     </p>
+    <p>
+      We now give a simplicial analogue of a <term>resolution</term> in homological algebra.
+    </p>
+    <example xml:id="exa-simplicial-homological-resolution">
+      <p>
+        Take <m>\calC = \Mod_A</m> for some <m>A \in \Ring</m>.
+        Let <m>U</m> be a cosimplicial resolution of <m>M \in \calC</m>. Then the associated complex <m>U([\bullet])</m> (<xref ref="def-simplicial-object"/>)
+        is a resolution of <m>M</m>; that is, <m>M[0] \to U([\bullet])</m> is a quasi-isomorphism.
+      </p>
+    </example>
     <p>
       We describe a trivial example which is not quite so trivial after all.
     </p>
@@ -82,13 +146,6 @@
         Compare this to the proof of <xref ref="lem-prismatic-double-complex"/>.
       </p>
     </example>
-    <example xml:id="exa-simplicial-homological-resolution">
-      <p>
-        Take <m>\calC = \Mod_A</m> for some <m>A \in \Ring</m>.
-        Let <m>U</m> be a cosimplicial resolution of <m>M \in \calC</m>. Then the associated complex <m>U([\bullet])</m> (<xref ref="def-simplicial-object"/>)
-        is a resolution of <m>M</m>; that is, <m>M[0] \to U([\bullet])</m> is a quasi-isomorphism.
-      </p>
-    </example>
     <p>
       When working with resolutions, we would like to be able to compare these, in the same way that we can show that any two injective/projective resolutions
       of an object of <m>\Mod_A</m> are homotopy equivalent. Here is the key definition.
@@ -96,7 +153,13 @@
     <definition xml:id="def-homotopy-equivalence">
       <p>
         Suppose that the category <m>\calC</m> has finite coproducts. Let <m>U,V</m> be simplicial objects of <m>\calC</m> and let <m>a,b: U \to V</m> be two morphisms.
-        A <term>homotopy</term> from <m>a</m> to <m>b</m> is a morphism <m>h: U \times \Delta([1]) \to V</m> such that <m>a = h \circ e_0</m> and <m>b = h \circ e_1</m>.
+        A <term>homotopy</term> from <m>a</m> to <m>b</m> is a morphism 
+        <me>h: U \times \Delta[1] \to V</me>
+        (interpreting the source as per <xref ref="def-product-of-simplicial-sets"/>)
+        such that <m>a = h \circ e_0</m> and <m>b = h \circ e_1</m>. The property that such a homotopy exists, for a given pair <m>a,b</m> is reflexive but not necessarily
+        symmetric or transitive.
+      </p>
+      <p>
         We say that <m>a</m> and <m>b</m> are <term>homotopic</term> if they belong to the same equivalence class under the equivalence relation generated by homotopies.
         We say that a single morphism <m>a: U \to V</m> is a <term>homotopy equivalence</term> if there exists a second morphism <m>b: V \to U</m>
         such that <m>b \circ a</m> is homotopic to <m>\id_U</m> and <m>a \circ b</m> is homotopic to <m>\id_V</m>.
@@ -104,9 +167,15 @@
     </definition>
     <example>
       <p>
+        In <xref ref="def-homotopy-equivalence"/>, the maps <m>e_0, e_1: U \times \Delta[1] \to U</m> are themselves homotopy equivalences.
+        See <xref ref="exer-relative-shift-homotopy-inverse"/>.
+      </p>
+    </example>
+    <example>
+      <p>
         Take <m>\calC = \Mod_A</m> with <m>A \in \Ring</m>. Then a homotopy between morphisms <m>a,b: U \to V</m> of simplicial objects gives rise to a homotopy
-        of the corresponding complexes in <m>\Comp(A)</m>. In particular, if two simplicial objects <m>U,V</m> are homotopy equivalent, then the corresponding objects in <m>K(A)</m> are isomorphic.
-        For a converse to this assertion, see <xref ref="bib-Stacks"/>, tag 01A1.
+        of the corresponding complexes in <m>\Comp(A)</m>. In particular, if two simplicial objects <m>U,V</m> are homotopy equivalent, then the corresponding objects in <m>K(A)</m> are isomorphic
+        (and similarly for cosimplicial objects). For a converse to this assertion, see <xref ref="bib-Stacks"/>, tag 01A1.
       </p>
     </example>
     <remark>
@@ -121,8 +190,8 @@
     <example xml:id="exa-derived-tensor-product">
       <p>
         Let <m>A \to B</m> be a morphism in <m>\Ring</m>. Choose a simplicial resolution <m>U</m> of <m>B</m> by free <m>A</m>-algebras
-        (e.g., the standard resolution; see <xref ref="exa-standard-resolution-rings"/>.
-        Then for any morphism <m>A \to C</m> of rings, we may define the <term>simplicial tensor product</term> <m>B \otimes_A C</m> to be the simplicial ring
+        (e.g., the standard resolution; see <xref ref="exa-standard-resolution-rings"/>).
+        Then for any morphism <m>A \to C</m> of rings, we may define the <term>simplicial tensor product</term> <m>B \otimes^L_A C</m> to be the simplicial ring
         <m>U \otimes_A C</m>; any two choices of <m>U</m> will give rise to homotopy equivalent objects. 
         Similarly, we may define the simplicial tensor product of two simplicial <m>A</m>-algebras.
       </p>
@@ -236,16 +305,17 @@
       <p>
         Given covariant functors <m>F: \calC_1 \to \calC_2, G: \calC_1 \to \calC_3</m>, the <term>left Kan extension</term> of <m>G</m> along <m>F</m> consists of a covariant functor
         <m>L: \calC_2 \to \calC_3</m> and a natural transformation <m>\alpha: G \to L \circ F</m> which are universal for this property: that is,
-        if <m>M: \calC_2 \to \calC_3</m> is another functor and <m>\beta: G \to M \circ F</m>, then there is a unique natural transformation <m>\sigma: L \to M</m>
-        making the second diagram in <xref ref="fig-left-Kan-extension"/> commute. As usual with a definition via a universal property, the use of the definite
-        article is justified by the observation that any two objects satisfying the definition are uniquely isomorphic.
+        if <m>M: \calC_2 \to \calC_3</m> is another functor and <m>\beta: G \to M \circ F</m> is a natural transformation, 
+        then there is a unique natural transformation <m>\sigma: L \to M</m>
+        making the second diagram in <xref ref="fig-left-Kan-extension"/> commute.
       </p>
       <figure xml:id="fig-left-Kan-extension">
         <image width="50%">
           <latex-image>
             \xymatrix{
-              \calC_1 \ar^{F}[r] \ar^{G}[rd] &amp; \calC_2 \ar@{-->}^{L}[d] \\
-              &amp; \calC_3
+              \calC_1 \ar^{F}[rr] \ar^{G}[dd] &amp; &amp; \calC_2 \ar@{-->}^{L}[dd] \\
+              &amp; \stackrel{\alpha}{\Longrightarrow} &amp; \\
+               \calC_3 \ar@{=}[rr] &amp; &amp; \calC_3
             }
           </latex-image>
           <latex-image>
@@ -257,6 +327,20 @@
         </image>
       </figure>
     </definition>
+    <remark>
+      <p>
+        Note that in <xref ref="def-left-Kan-extension"/>, 
+        both the commutativity of the second diagram in <xref ref="fig-left-Kan-extension"/>
+        and the uniqueness of <m>\sigma</m> are well-posed because a natural transformation is specified by a collection of morphisms between prescribed sources and targets,
+        so the comparison of these is set-theoretic and not category-theoretic.
+      </p>
+      <p>
+        As usual with a definition via a universal property, the use of the definite
+        article is justified by the observation that any two objects satisfying the definition are uniquely isomorphic.
+        However, <m>\alpha</m> is not itself guaranteed to be an isomorphism of functors; that is, <m>G</m> is not necessarily isomorphic to
+        the restriction of <m>L</m> along <m>F</m>.
+      </p>
+    </remark>
     <p>
       Here is the motivating example.
     </p>
@@ -284,18 +368,28 @@
     <proposition xml:id="prop-left-derived-quillen">
       <statement>
         <p>
-          For <m>A \in \Ring</m> and <m>F: \Poly_A \to \Comp(\Ab)</m> a covariant functor, the functor <m>F</m> admits a left Kan extension <m>LF: \Ring_A \to \Comp(\Ab)</m>
+          For <m>A \in \Ring</m> and <m>F: \Poly_A \to D(\Ab)</m> a covariant functor, the functor <m>F</m> admits a left Kan extension <m>LF: \Ring_A \to D(\Ab)</m>
           along the inclusion <m>\Poly_A \to \Ring_A</m>, which moreover has the following properties.
           (We call <m>LF</m> the <term>left derived functor</term> of <m>F</m>.)
         </p>
         <ol>
           <li>
-            <m>LF</m> commutes with filtered colimits. In particular, if <m>A[S]</m> is a polynomial algebra on a possibly infinite set <m>S</m>,
-            we can compute <m>LF(A[S])</m> as the colimit of <m>F(A[T])</m> over all finite subsets <m>T</m> of <m>S</m>.
+           <p>
+             The natural transformation <m>\alpha</m> is an equivalence: that is, <m>LF</m> restricts to <m>F</m> on <m>\Poly_A</m>.
+           </p>
           </li>
           <li>
-            Given a simplicial resolution <m>P_\bullet \to B</m> of an object <m>B \in \Ring_A</m>, <m>LF(B)</m> is the colimit of <m>LF(P_\bullet)</m>.
+            <p>
+             <m>LF</m> commutes with filtered colimits. In particular, if <m>A[S]</m> is a polynomial algebra on a possibly infinite set <m>S</m>,
+            we can compute <m>LF(A[S])</m> as the colimit of <m>F(A[T])</m> over all finite subsets <m>T</m> of <m>S</m>.
+           </p>
+          </li>
+          <li>
+            <p>
+            Given a simplicial resolution <m>P_\bullet \to B</m> of an object <m>B \in \Ring_A</m>, <m>LF(B)</m> 
+            is the colimit of <m>LF(P^\bullet)</m> (see <xref ref="rmk-left-derived-without-lift"/>).
             (For example, this means we can evaluate <m>LF</m> using the standard resolution, as per <xref ref="exa-standard-resolution-rings"/>.)
+           </p>
           </li>
         </ol>
       </statement>
@@ -305,131 +399,67 @@
         </p>
       </proof>
     </proposition>
-  <remark>
-    <p>
-      An important basic example will be given by the exterior power <m>\wedge^i: \Mod_A \to \Mod_A</m>, which will give us the 
-      derived exterior power <m>L\wedge^i: \Mod_A \to D(A)</m>. This in turn extends to a functor <m>L\wedge^i: D^{\leq 0}(A) \to D(A)</m>.
-      (As indicated in <xref ref="bib-Bhatt-course"/>, Lecture VII, Remark 1.4, this is a point at which we are forced to be a bit sloppy by not working
-      in the language of <m>\infty</m>-categories, but never mind.)
-    </p>
-  </remark>
+    <remark xml:id="rmk-left-derived-without-lift">
+      <p>
+        In practice, we will be considering cases in which <m>F</m> can be lifted to a functor <m>\tilde{F}: \Poly_A \to \Comp(\Ab)</m>,
+        in which case the colimit in part (2) of <xref ref="prop-left-derived-quillen"/> can be interpreted as the totalization of a double complex made
+        out of the terms <m>L\tilde{F}(P^\bullet)</m>.
+        Otherwise, one should replace the derived category <m>D(\Ab)</m> with its <m>\infty</m>-categorical analogue and take the colimit
+        there (where it can be reinterpreted as the <term>geometric realization</term>).
+      </p>
+      <p>
+        To give a concrete example of the effect of the colimit, note that if <m>B</m> is the coequalizer of two maps <m>f_0, f_1: P_1 \to P_0</m>,
+        then <m>LF(B) = \Cone(f_0 - f_1)</m>.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        An important basic example will be given by the exterior power <m>\wedge^i: \Mod_A \to \Mod_A</m>, which will give us the 
+        derived exterior power <m>L\wedge^i: \Mod_A \to D(A)</m>. This in turn extends to a functor <m>L\wedge^i: D^{\leq 0}(A) \to D(A)</m>.
+        (As indicated in <xref ref="bib-Bhatt-course"/>, Lecture VII, Remark 1.4, this is a point at which we are forced to be a bit sloppy by not working
+        in the language of <m>\infty</m>-categories, but never mind.)
+      </p>
+    </remark>
   </subsection>
-  <subsection xml:id="subsec_cotangent-complex">
-    <title>The cotangent complex</title>
-    <p>
-      We illustrate the formalism with Illusie's construction of the <q>derived cotangent bundle</q> 
-      <xref ref="bib-Illusie-cotangent1"/>, <xref ref="bib-Illusie-cotangent2"/>.
-    </p>
-    <definition>
+  <subsection xml:id="subsec-derived-infinity-category">
+    <title>Under the hood: <m>\infty</m>-categories</title>
+    <remark xml:id="rmk-derived-infinity-category">
       <p>
-        For <m>A \in \Ring</m>, the <term>cotangent complex</term> is the functor <m>L_{\bullet/A}: \Ring_A \to D(A)</m> taking
-        obtained by taking the left derived functor of the functor <m>\Poly_A \to \Comp(A)</m> given by <m>B \mapsto \Omega^1_{B/A}[0]</m>.
-        It is straightforward to check that in fact <m>L_{B/A} \in D(B)</m> and that <m>L_{B/A}</m> is concentrated in degrees <m>\leq 0</m>.
+        It was mentioned in passing earlier that the derived category of <m>A</m>-modules, for some <m>A \in \Ring</m>, is more robust to work with in the language of (stable) <m>\infty</m>-categories.
+        This allows us to be more careful about making identifications <q>up to homotopy</q>; rather than simply declaring two morphisms of complexes to be equal if there is a homotopy between them,
+        in the homotopical approach one <em>records</em> the data of the homotopy witness and keeps track of it as one performs further operations.
       </p>
       <p>
-        Note that it also makes sense to talk about <m>L_{B/A}</m> when <m>B</m> is itself a simplicial object in <m>\Ring_A</m>. This will be useful when
-        stating the base change property in <xref ref="prop-cotangent-complex"/>.
+        One reason this is advantageous is that the formation of mapping cones is not functorial in the derived category as we have described it, but it becomes functorial in the stable <m>\infty</m>-category
+        (because of the retention of the homotopy data). A minimal example is given by the map from <m>A \to 0</m> to <m>0 \to A</m>. 
       </p>
-    </definition>
-   <proposition xml:id="prop-cotangent-complex">
-     <statement>
-       <p>
-         For <m>A \to B</m> a morphism in <m>\Ring</m>, the cotangent complex <m>L_{B/A} \in D(B)</m> has the following properties.
-         (These also hold when <m>B</m> is a simplicial object in <m>\Ring_A</m>.)
-       </p>
-      <ol>
-        <li>
-          <p>
-            We have a natural (in <m>B</m>) isomorphism <m>H^0(L_{B/A}) \cong \Omega^1_{B/A}</m>.
-          </p>
-        </li>
-        <li>
-          <p>
-            If <m>A \to B</m> is smooth, then <m>L_{B/A} \cong \Omega^1_{B/A}[0]</m>. In particular, if <m>A \to B</m> is etale then
-            <m>L_{B/A} \cong 0</m>, but not conversely; see for example <xref ref="exer-cotangent-complex-perfect"/>.
-          </p>
-        </li>
-        <li>
-          <p>
-            For any morphisms <m>A \to B \to C</m>, we have a distinguished triangle in <m>D(C)</m>
-            <men xml:id="eq-cotangent-complex-sequence">
-              L_{B/A} \otimes^L_B C \to L_{C/A} \to L_{C/B}.
-            </men>
-            This extends the usual low-degree exact sequence for differentials.
-          </p>
-        </li>
-        <li>
-          <p>
-            For any surjective morphism <m>A \to B</m> with kernel <m>I</m>, we have <m>H^{-1}(L_{B/A}) \cong I/I^2</m>. Moreover, if <m>I</m> is generated by a regular sequence,
-            then <m>H^i(L_{B/A}) = 0</m> for <m>i \neq -1</m>. (This generalizes the assertion that a closed immersion of schemes is unramified.)
-          </p>
-        </li>
-        <li>
-          <p>
-            For any morphisms <m>A \to B, A \to C</m>, we have a natural base change isomorphism
-            <me>
-              L_{C/A} \otimes_A^L B \cong L_{C \otimes_A^L B/B}
-            </me>
-            where <m>C \otimes_A^L B</m> is to be interpreted as a simplicial ring as per <xref ref="exa-derived-tensor-product"/>. 
-            We can replace <m>C \otimes_A^L B</m> with <m>C \otimes_A B</m> if one of <m>A \to B</m>
-            or <m>A \to C</m> is flat, or more generally if <m>A \to B</m> and <m>A \to C</m> are <term>Tor independent</term> (meaning that <m>\Tor_i^A(B,C) = 0</m> 
-            for all <m>i \gt 0</m>).
-          </p>
-        </li>
-      </ol>
-      </statement>
-      <proof>
-        <p>
-          See <xref ref="bib-Stacks"/>, tag 08P5.
-        </p>
-      </proof>
-    </proposition>
-    <p>
-      The following is an analogue of the flatness of completion for noetherian rings, but without a noetherian hypothesis.
-    </p>
-    <lemma xml:id="lem-cotangent-complex-of-completion">
-      <statement>
-        <p>
-         Let <m>A \in \Ring</m> be classically <m>p</m>-complete with bounded <m>p</m>-power torsion. Let <m>B \in \Ring_A</m> be flat (so that <m>B</m> also has bounded <m>p</m>-power torsion).
-         Let <m>\widehat{B}</m> be the classical <m>p</m>-completion of <m>B</m>. 
-         Then the derived <m>p</m>-completion of the cotangent complex of <m>B \to \widehat{B}</m> is zero
-         in <m>D(\widehat{B})</m>.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          The complex in question vanishes after applying <m>\otimes_{\ZZ}^L \ZZ/p</m> by the base change formula (<xref ref="prop-cotangent-complex"/>), and then
-          derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>) yields the claim.
-        </p>
-      </proof>
-    </lemma>
+      <p>
+        Another reason is that one cannot perform any reasonable descent on the functor <m>A \mapsto D(A)</m> without the homotopical data: for instance, for a Zariski covering of three or more opens, it is not
+        generally possible to lift descent data from objects in derived categories to chain complexes. Again, recording the homotopy data makes it possible to perform this lifting.
+      </p>
+    </remark>
   </subsection>
   <exercises>
-    <exercise xml:id="exer-cotangent-complex-perfect">
+    <exercise xml:id="exer-shift-homotopy-inverse">
       <statement>
         <p>
-          Let <m>A \to B</m> be a morphism of perfect <m>\FF_p</m>-algebras. Show that <m>L_{A/B} \cong 0</m>.
+          Prove that for any <m>n \geq 0</m>, the unique morphism <m>\Delta[n] \to \Delta[0]</m> is a homotopy equivalence,
+          with a homotopy inverse given by the map <m>\Delta[0] \to \Delta[n]</m> induced by the map <m>[0] \to [n]</m> taking <m>0</m> to <m>n</m>.
         </p>
       </statement>
       <hint>
         <p>
-          On one hand, <m>\phi_B</m> evidently induces an isomorphism on <m>L_{A/B}</m>.
-          On the other hand, the induced map is zero when <m>B</m> is a polynomial ring over <m>A</m>.
+          See <xref ref="bib-Stacks"/>, tag 08Q3.
         </p>
       </hint>
     </exercise>
-    <exercise xml:id="exer-cotangent-complex-lens">
+    <exercise xml:id="exer-relative-shift-homotopy-inverse">
       <statement>
         <p>
-          Let <m>A \to B</m> be a morphism of lenses. Using <xref ref="exer-cotangent-complex-perfect"/>, show that the derived <m>p</m>-completion of <m>L_{B/A}</m> vanishes.
+          Let <m>\calC</m> be a category admitting finite nonempty coproducts. 
+          Prove that for any simplicial object <m>U</m> in <m>\calC</m>, the maps <m>e_0, e_1: U \times \Delta[1] \to U</m> are homotopy equivalences.
         </p>
       </statement>
-      <hint>
-        <p>
-          As in <xref ref="lem-cotangent-complex-of-completion"/>, use derived Nakayama to reduce to <xref ref="prop-derived-complete-abelian-derived"/>.
-          See also <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.14.
-        </p>
-      </hint>
     </exercise>
   </exercises>
 </section>

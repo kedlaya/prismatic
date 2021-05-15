@@ -3,8 +3,19 @@
   <biblio type="raw" xml:id="bib-Almkvist">
     G. Almkvist, <articletitle>The Grothendieck ring of the category of endomorphisms</articletitle>, <journal>Journal of Algebra</journal> <volume>28</volume> <year>1974</year>, 375<ndash/>388.
   </biblio>
+  <biblio type="raw" xml:id="bib-Andre1">
+    Y. André, <articletitle>Le lemme d'Abhyankar perfectoïde</articletitle>, <journal>Publications Mathématiques de l’IHÉS</journal> <volume>127</volume> <year>2018</year>, 1<ndash/>70.
+  </biblio>
   <biblio type="raw" xml:id="bib-Andre">
     Y. André, <articletitle>La conjecture du facteur direct</articletitle>, <journal>Publications Mathématiques de l’IHÉS</journal> <volume>127</volume> <year>2018</year>, 71<ndash/>93.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Aomoto">
+    K. Aomoto, <articletitle><m>q</m>-analogue of de Rham cohomology associated with Jackson integrals</articletitle>, <journal>Proceedings of the Japan Academy Series A</journal>
+    <volume>66</volume> <year>1990</year>, 161<ndash/>164.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Aomoto2">
+    K. Aomoto, <articletitle><m>q</m>-analogue of de Rham cohomology associated with Jackson integrals, II</articletitle>, <journal>Proceedings of the Japan Academy Series A</journal>
+    <volume>66</volume> <year>1990</year>, 240<ndash/>244.
   </biblio>
   <biblio type="raw" xml:id="bib-Arabia">
     A. Arabia, <articletitle>Relèvements des algèbres lisses et de leurs morphismes</articletitle>, <journal>Commentarii Mathematici Helvetici</journal> <volume>76</volume> <year>2001</year>, 607<ndash/>639.
@@ -41,13 +52,17 @@
     B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Integral <m>p</m>-adic Hodge theory</articletitle>, <journal>Publications Mathématiques de l'IHÉS</journal> <volume>128</volume> <year>2018</year>, 219<ndash/>397.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Morrow-Scholze2">
-    B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Topological Hochschild homology and Integral <m>p</m>-adic Hodge theory</articletitle>, <url href="https://arxiv.org/abs/1802.03261">arXiv:1802.03261v2</url> <year>2019</year>
+    B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Topological Hochschild homology and integral <m>p</m>-adic Hodge theory</articletitle>, <url href="https://arxiv.org/abs/1802.03261">arXiv:1802.03261v2</url> <year>2019</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Scholze-grassmannian">
     B. Bhatt and P. Scholze, <articletitle>Projectivity of the Witt vector affine Grassmannian</articletitle>, <journal>Inventiones Mathematicae</journal> <volume>209</volume> <year>2017</year>, 329<ndash/>423.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Scholze">
-    B. Bhatt and P. Scholze, <articletitle> Prisms and prismatic cohomology</articletitle>, <url href="https://arxiv.org/abs/1905.08229">arXiv:1905.08229v2</url> <year>2019</year>.
+    B. Bhatt and P. Scholze, <articletitle>Prisms and prismatic cohomology</articletitle>, <url href="https://arxiv.org/abs/1905.08229">arXiv:1905.08229v2</url> <year>2019</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-Schwede-Takagi">
+    B. Bhatt, K. Schwede, and S. Takagi, <articletitle>The weak ordinarity conjecture and <m>F</m>-singularities</articletitle>,
+    <journal>Advanced Studies in Pure Mathematics</journal> <volume>74</volume> <year>2017</year>, 11<ndash/>39.
   </biblio>
   <biblio type="raw" xml:id="bib-Borger-Witt1">
     J. Borger, <articletitle>The basic geometry of Witt vectors, I: The affine case</articletitle>, <journal>Algebra and Number Theory</journal> <volume>5</volume> <year>2011</year>, 231<ndash/>285.
@@ -104,6 +119,9 @@
   <biblio type="raw" xml:id="bib-Fargues-Scholze">
     L. Fargues and P. Scholze, <articletitle>Geometrization of the local Langlands correspondence</articletitle>, <url href="https://arxiv.org/abs/2102.13459">arXiv:2102.13459v1</url> <year>2021</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Fine">
+    N.J. Fine, <articletitle>Basic Hypergeometric Series and Applications</articletitle>, Mathematical Series and Monographs 27, American Mathematical Society, Providence <year>1988</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Fontaine1">
     J.-M. Fontaine, <articletitle>Représentations <m>p</m>-adiques des corps locaux, I</articletitle>, in <pubtitle>The Grothendieck Festschrift, volume II</pubtitle>, Progress in Mathematics 87, Birkhäuser, Boston <year>1990</year>, 249<ndash/>309.
   </biblio>
@@ -113,6 +131,9 @@
   <biblio type="raw" xml:id="bib-Fontaine-Bourbaki">
     J.-M. Fontaine, <articletitle>Perfecto&#xef;des, presque pureté et monodromie-poids (d’après Peter Scholze)</articletitle>, 
     Séminaire Bourbaki, volume 2011/2012, <journal>Astérisque</journal> <volume>352</volume> <year>2013</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Gabber-Ramero">
+    O. Gabber and L. Ramero, <pubtitle>Almost Ring Theory</pubtitle>, Lecture Notes in Mathematics 1800, Springer-Verlag, Berlin <year>2003</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Ghrist">
     R. Ghrist, <articletitle>Three examples of applied and computational homology</articletitle>, <journal>Nieuw Archief voor Wiskunde</journal> <volume>9</volume>
@@ -136,8 +157,18 @@
   <biblio type="raw" xml:id="bib-Hazewinkel">
     M. Hazewinkel, <pubtitle>Formal Groups and Applications</pubtitle>, Pure and Applied Mathematics 78, Academic Press, New York <year>1978</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Heitmann-Ma">
+    R. Heitmann and L. Ma, <articletitle>Extended plus closure in complete local rings</articletitle>, <url href="https://arxiv.org/abs/1708.05761">arXiv:1708.05761v3</url> <year>2018</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Heine">
+    E. Heine, <articletitle>Über die Reihe <m>1 + \frac{(q^\alpha-1)(q^\beta-1)}{(q-1)(q^\gamma-1)} x + \frac{(q^\alpha-1)(q^{\alpha+1}-1)(q^\beta-1)(q^{\beta+1}-1)}{(q-1)(q^2-1)(q^\gamma-1)(q^{\gamma+1}-1)} x^2 + \cdots</m></articletitle>,
+    <journal>Journal für de reine und angewandte Mathematik</journal> <volume>32</volume> <year>1846</year>, 210<ndash/>212.
+  </biblio>
   <biblio type="raw" xml:id="bib-Hochster">
     M. Hochster, <articletitle>Homological conjectures, old and new</articletitle>, <journal>Illinois Journal of Mathematics</journal> <volume>51</volume> <year>2007</year>, 151<ndash/>169.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Huber">
+    R. Huber, <pubtitle>Étale Cohomology of Rigid Analytic Varieties and Adic Spaces</pubtitle>, Springer, Wiesbaden <year>1996</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Illusie-cotangent1">
     L. Illusie, <pubtitle>Complexe Cotangent et Déformations I</pubtitle>, Lecture Notes in Mathematics 239, Springer-Verlag, Berlin <year>1971</year>.
@@ -145,10 +176,16 @@
   <biblio type="raw" xml:id="bib-Illusie-cotangent2">
     L. Illusie, <pubtitle>Complexe Cotangent et Déformations II</pubtitle>, Lecture Notes in Mathematics 283, Springer-Verlag, Berlin <year>1972</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Jackson">
+    F.H. Jackson, <articletitle>On <m>q</m>-functions and a certain difference operator</articletitle>, <journal>Transactions of the Royal Society of Edinburgh</journal> <volume>46</volume> <year>1908</year>, 253<ndash/>281.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Jackson2">
+    F.H. Jackson, <articletitle><m>q</m>-difference equations</articletitle>, <journal>American Journal of Mathematics</journal> <volume>32</volume> <year>1910</year>, 305<ndash/>314.
+  </biblio>
   <biblio type="raw" xml:id="bib-Jacobson-2">
     N. Jacobson, <pubtitle>Basic Algebra, II</pubtitle>, W. H. Freeman, San Francisco, <year>1980</year>.
   </biblio>
-N  <biblio type="raw" xml:id="bib-Joyal1">
+  <biblio type="raw" xml:id="bib-Joyal1">
     A. Joyal, <articletitle><m>\delta</m>-anneau et vecteurs de Witt</articletitle>, <journal>C.R. Math. Rep. Acad. Sci. Canada</journal> <volume>7</volume> <year>1985</year>, 177<ndash/>182.
   </biblio>
   <biblio type="raw" xml:id="bib-Joyal2">
@@ -167,6 +204,9 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Kedlaya-AWS">
     K.S. Kedlaya, <articletitle>Sheaves, stacks, and shtukas</articletitle>, in <pubtitle>Perfectoid Spaces: Lectures from the 2017 Arizona Winter School</pubtitle>,
     Mathematical Surveys and Monographs 242, American Mathematical Society, Providence <year>2019</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Kedlaya-Liu">
+    K.S. Kedlaya and R. Liu, <articletitle>Relative <m>p</m>-adic Hodge theory: Foundations</articletitle>, <journal>Astérisque</journal> <volume>371</volume> <year>2015</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Kerodon">
     The Kerodon Authors, <pubtitle>Kerodon</pubtitle>, <url href="https://kerodon.net"/>.
@@ -196,11 +236,17 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Maclane">
     S. Mac Lane, <pubtitle>Categories for the Working Mathematician</pubtitle>, second edition, Graduate Texts in Mathematics 5, Springer, New York <year>1978</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Mathew-SCR">
+    A. Mathew, <articletitle>Simplicial commutative rings, I</articletitle>, <url href="http://math.uchicago.edu/~amathew/SCR.pdf"/>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Milne-Suh">
     J.S. Milne and J. Suh, <articletitle>Nonhomeomorphic conjugates of connected Shimura varieties</articletitle>, <journal>American Journal of Mathematics</journal> <volume>132</volume> <year>2010</year>, 731<ndash/>750.
   </biblio>
   <biblio type="raw" xml:id="bib-Nicaise">
     J. Nicaise, <articletitle>Berkovich Skeleta and Birational Geometry</articletitle>, in <pubtitle>Nonarchimedean and Tropical Geometry</pubtitle>, Simons Symposia, Springer International <year>2016</year>, 173<ndash/>194.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Pridham">
+    J.P. Pridham, <articletitle>On <m>q</m>-de Rham cohomology via <m>\Lambda</m>-rings</articletitle>, <journal>Mathematische Annalen</journal> <volume>375</volume> <year>2019</year>, 425<ndash/>452.
   </biblio>
   <biblio type="raw" xml:id="bib-Quillen-homotopical">
     D.G. Quillen, <pubtitle>Homotopical Algebra</pubtitle>, Lecture Notes in Mathematics 43, Springer-Verlag, Berlin, 1967.
@@ -208,8 +254,15 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Rajan">
     C.S. Rajan, <articletitle>An example of non-homeomorphic conjugate varieties</articletitle>, <journal>Mathematics Research Letters</journal> <volume>18</volume> <year>2011</year>, 937<ndash/>942.
   </biblio>
+  <biblio type="raw" xml:id="bib-Raynaud-Gruson">
+    M. Raynaud and L. Gruson, <articletitle>Critères de platitude et de projectivité. Techniques de <q>platification</q> d'un module</articletitle>, 
+    <journal>Inventiones Mathematicae</journal> <volume>13</volume> <year>1971</year>, 1<ndash/>89.
+  </biblio>
   <biblio type="raw" xml:id="bib-Rezk">
     C. Rezk, <articletitle>Etale extensions of <m>\lambda</m>-rings</articletitle>, <href url="https://faculty.math.illinois.edu/~rezk/etale-lambda.pdf"/> <year>2019</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Rydh">
+    D. Rydh, <articletitle>Submersions and effective descent of étale morphisms</articletitle>, <journal>Bulletin de la Société Mathématique de France</journal> <volume>138</volume> <year>2010</year>, 181<ndash/>230.
   </biblio>
   <biblio type="raw" xml:id="bib-Scholze-perfectoid1">
     P. Scholze, <articletitle>Perfectoid spaces</articletitle>, <journal>Publications Mathématiques de l’IHÉS</journal> <volume>116</volume> <year>2012</year>, 245<ndash/>313.
@@ -217,8 +270,11 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Scholze-torsion">
     P. Scholze, <articletitle>On torsion in the cohomology of locally symmetric spaces</articletitle>, <journal>Annals of Mathematics</journal> <volume>182</volume> <year>2015</year>, 945<ndash/>1066.
   </biblio>
+  <biblio type="raw" xml:id="bib-Scholze-q">
+    P. Scholze, <articletitle>Canonical <m>q</m>-deformations in arithmetic geometry</articletitle>, <journal>Annales de la Faculté des sciences de Toulouse</journal> <volume>26</volume> <year>2017</year>, 1163<ndash/>1192.
+  </biblio>
   <biblio type="raw" xml:id="bib-Scholze-diamonds">
-    P. Scholze, <articletitle>Étale cohomology of diamonds</articletitle>.
+    P. Scholze, <articletitle>Étale cohomology of diamonds</articletitle>, <url href="https://arxiv.org/abs/1709.07343">arXiv:arXiv:1709.07343v2</url> <year>2021</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Serre-GAGA">
     J.-P. Serre, <articletitle>Géométrie algébrique et géométrie analytique</articletitle>, <journal>Annales de l’institut Fourier</journal> <volume>6</volume> <year>1956</year>, 1<ndash/>42.
@@ -238,8 +294,14 @@ N  <biblio type="raw" xml:id="bib-Joyal1">
   <biblio type="raw" xml:id="bib-Tall-Wraith">
     D.O. Tall and G.C. Wraith, <articletitle>Representable functors and operations on rings</articletitle>, <journal>Proceedings of the London Mathematical Society</journal> <volume>20</volume> <year>1970</year> 619<ndash/>643.
   </biblio>
+  <biblio type="raw" xml:id="bib-Thomae">
+    J. Thomae, <articletitle>Über die höheren hypergeometrische Reihen</articletitle>, <journal>Mathematische Annalen</journal> <volume>2</volume> <year>1870</year>, 427<ndash/>444.
+  </biblio>
   <biblio type="raw" xml:id="bib-van_der_Kallen">
     W. van der Kallen, <articletitle>Descent for the <m>K</m>-theory of polynomial rings</articletitle>, <journal>Mathematische Zeitschrift</journal> <volume>191</volume> <year>1986</year>, 405<ndash/>415.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Voevodsky">
+    V. Voevodsky, <articletitle>Homology of schemes</articletitle>, <journal>Selecta Mathematica</journal> <volume>2</volume> <year>1996</year>, 111<ndash/>153.
   </biblio>
   <biblio type="raw" xml:id="bib-Wach">
     N. Wach, <articletitle>Représentations <m>p</m>-adiques potentiellement cristallines</articletitle>, <journal>Bull. Soc. Math. France</journal> <volume>124</volume> <year>1996</year>, 375<ndash/>400.

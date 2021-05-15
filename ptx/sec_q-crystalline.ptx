@@ -1,0 +1,218 @@
+﻿<section xml:id="sec_q-crystalline">
+  <title><m>q</m>-crystaline cohomology (unstable)</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-course"/>, lecture X; <xref ref="bib-Bhatt-Scholze"/>, section 16.
+        However, we diverge significantly in form from these references; see below.
+      </p>
+    </paragraphs>
+    <p>
+      In this lecture, we introduce a <m>q</m>-analogue of crystalline cohomology, derive a comparison with prismatic cohomology,
+      and use this to establish a statement about the functoriality of <m>q</m>-de Rham cohomology. We follow closely our analysis of the Hodge-Tate comparison
+      for crystalline prisms (<xref ref="sec_hodge-tate-crystalline"/>); in particular, we <em>do not</em> actually give a formal definition of a site computing
+      <m>q</m>-crystalline cohomology (for this see <xref ref="bib-Bhatt-Scholze"/>, Definition 16.12).
+    </p>
+    <p>
+      Throughout this lecture, view <m>A = \ZZ_p\llbracket q-1 \rrbracket</m> as a <m>\delta</m>-ring in which <m>q</m> is constant,
+      and identify <m>A/([p]_q)</m> with <m>\ZZ_p[\zeta_p]</m> via the map taking <m>q</m> to <m>\zeta_p</m>.
+      We will use frequently the fact that the ideals <m>(p,q-1)</m> and <m>(p, [p]_q)</m> of <m>A</m>, although distinct, do define the same topology on <m>A</m>.
+      (Remember that <m>(A, ([p]_q))</m> is a prism but <m>(A, (q-1))</m> is not.
+    </p>
+  </introduction>
+  <subsection>
+    <title><m>q</m>-divided powers</title>
+    <p>
+      In order to discuss <m>q</m>-crystalline cohomology, we first need a <m>q</m>-analogue of divided power envelopes.
+      It is not at all clear how to do this in general, but fortunately for our purposes it is sufficient to do this for <m>\delta</m>-rings.
+      In that case, we can use the fact that divided powers can be accounted for cheaply using Frobenius (<xref ref="rmk-divided-power-envelope-criterion"/>) 
+      to come up with a suitable analogue. (To do something similar for <m>\Lambda</m>-rings would require solving the problem posed in <xref ref="rmk-divided-power-envelope-lambda"/>.)
+    </p>
+    <definition>
+      <p>
+        Recall that in the ordinary divided power setting, a <m>\delta</m>-ring flat over <m>\ZZ_{(p)}</m> admits divided powers on an ideal if and only if 
+        <m>\gamma_p(x) = x^p/p!</m> sends the ideal into the ring (<xref ref="rmk-divided-power-envelope-criterion"/>). With this in mind, 
+        for <m>D</m> a <m>[p]_q</m>-torsion-free <m>\delta</m>-ring over <m>A</m>, for any <m>x \in D</m> with <m>\phi(x) \in [p]_qD</m>, write
+        <me>
+          \gamma(x) = \frac{\phi(x)}{[p]_q} - \delta(x) \in D.
+        </me>
+      </p>
+    </definition>
+    <definition>
+      <p>
+        A <term><m>q</m>-pd pair</term> is a pair <m>(D,I)</m> in which <m>D</m> is a <m>\delta</m>-ring over <m>A = \ZZ_p \llbracket q-1 \rrbracket</m> and
+        <m>I</m> is an ideal of <m>D</m> containing <m>q-1</m>, satisfying the following conditions.
+      </p>
+      <ol>
+        <li>
+          <p>
+            The rings <m>D</m> and <m>D/I</m> are derived <m>(p, [p]_q)</m>-complete.
+          </p>
+        </li>
+        <li>
+          <p>
+            The ring <m>D</m> is <m>([p]_q)</m>-torsion-free.
+          </p>
+        </li>
+        <li>
+          <p>
+            The ideal <m>I</m> contains <m>q-1</m> and <m>\phi(I) \subseteq [p]_q D</m>.
+          </p>
+        </li>
+      </ol>
+      <p>
+        These form a category in which a morphism <m>(D,I) \to (D',I')</m> is a morphism <m>D \to D'</m> of <m>\delta</m>-rings carrying <m>I</m> into <m>I'</m>.
+      </p>
+    </definition>
+    <example>
+      <p>
+        Let <m>B</m> be a perfect <m>\delta</m>-ring over <m>A</m> which is derived <m>(p, [p])_q)</m>-complete. 
+        Since <m>[p]_q</m> is distinguished in <m>B</m>, it is a non-zerodivisor (<xref ref="lem-perfect-prisms-structure"/>).
+        For a <m>(p, [p]_q)</m>-complete ideal <m>I</m> of <m>B</m>, <m>(B,I)</m> is a prism if and only if <m>I \subseteq \phi^{-1}([p]_q) B</m>.
+      </p>
+    </example>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>P</m> be a <m>\delta</m>-ring over <m>A</m> equipped with a surjection <m>P \to R = \ZZ_p [ x_1,\dots,x_r]^\wedge_{(p)}</m> with kernel <m>J = (q-1,y_1,\dots,y_s)</m>
+          where <m>y_1,\dots,y_s</m> is a regular sequence on <m>P/(p,q-1)</m>. Define the <m>\delta</m>-ring
+          <me>
+            D = P\{\phi(x_1)/[p]_q, \dots, \phi(x_r)/[p]_q \}^\wedge_{(p,[p]_q)}.
+          </me>
+          Let <m>I</m> be the kernel of <m>D \to D/(q-1) \to R</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              The ring <m>D</m> is <m>(p,[p]_q)</m>-completely flat over <m>A</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The map <m>P \to D</m> induces an isomorphism <m>P/J \cong D/I </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The ring <m>D/(q-1)</m> identifies with the <m>p</m>-completed divided power envelope of the map <m>P/(q-1) \to R</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The map <m>(P, J) \to (D,I)</m> of <m>\delta</m>-pairs is universal for the target being a <m>q</m>-pd pair.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          Compare <xref ref="bib-Bhatt-course"/>, Proposition 1.6.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+  <subsection>
+    <title>Comparison with prismatic cohomology</title>
+    <lemma xml:id="lem-q-differentials-derived">
+      <statement>
+        <p>
+          For <m>P = R[x_1,\dots,x_r]</m>, let <m>P^i</m> be the <m>(i+1)</m>-fold tensor product of <m>P</m> over <m>R</m>, viewed as a polynomial ring whose generators are the
+          various images of <m>x_1,\dots,x_r</m>. For every <m>i \gt 0</m>, the complex
+          <me>
+            q-\Omega^i{P^0/R,\square} \to q-\Omega^i{P^1/R,\square} \to \Omega^i_{P^2/R,\square} \to \cdots
+          </me>
+          vanishes in the homotopy category <m>K(R)</m>, and similarly after <m>p</m>-adic completion. 
+          (More precisely, this is witnessed by a homotopy at the level of <m>P^\bullet</m>-cosimplicial modules.)
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The proof of <xref ref="lem-differentials-derived"/> carries over.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-prismatic-q-double-complex">
+      <statement>
+        <p>
+          Put <m>R = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m>.
+          ...
+          Let <m>(P, IP)</m> be the weakly final object of <m>(R/A)_{\Prism}</m> given by <xref ref="lem-crystalline-weakly-final"/>.
+          Then the totalization of the double complex displayed in <xref ref="fig-double-complex-crystalline"/>
+          is quasi-isomorphic to both its first row and its first column via the inclusion maps.
+        </p>
+      </statement>
+      <figure xml:id="fig-q-double-complex-crystalline">
+        <image width="100%">
+          <latex-image>
+            \xymatrix{
+              D_{J^0,q}(P^0) \ar[r] \ar[d] &amp; D_{J^1,q}(P^1) \ar[r] \ar[d] &amp; D_{J^2,q}(P^2) \ar[r] \ar[d] &amp; \cdots \\
+              D_{J^0,q}(P^0) \widehat{\otimes}_{P^0} \widehat{\Omega}^1_{P^0/\ZZ_p} \ar[r] \ar[d] &amp; D_{J^1,q}(P^1) \widehat{\otimes}_{P^1} \widehat{\Omega}^1_{P^1/\ZZ_p} \ar[r] \ar[d] &amp; D_{J^2,q}(P^2) \widehat{\otimes}_{P^2} \widehat{\Omega}^1_{P^2/\ZZ_p} \ar[r] \ar[d] &amp; \cdots \\
+              D_{J^0,q}(P^0) \widehat{\otimes}_{P^0} \widehat{\Omega}^2_{P^0/\ZZ_p} \ar[r] \ar[d] &amp; D_{J^1,q}(P^1) \widehat{\otimes}_{P^1} \widehat{\Omega}^2_{P^1/\ZZ_p} \ar[r] \ar[d] &amp; D_{J^2,q}(P^2) \widehat{\otimes}_{P^2} \widehat{\Omega}^2_{P^2/\ZZ_p} \ar[r] \ar[d] &amp; \cdots \\
+              \vdots &amp; \vdots &amp; \vdots &amp; 
+            }
+          </latex-image>
+        </image>
+      </figure>
+      <proof>
+        <p>
+          We make the same argument as in <xref ref="lem-prismatic-double-complex"/>:
+          each row is homotopic to zero by <xref ref="lem-q-differentials-derived"/>, and all of the simplicial maps induce quasi-isomorphisms of columns by ...,
+          so <xref ref="map-of-double-complex-first-column-qis"/> yields the desired quasi-isomorphism.
+          (Compare <xref ref="bib-Bhatt-course"/>, Theorem 2.9.)
+        </p>
+      </proof>
+    </lemma>
+    <theorem xml:id="thm-q-prismatic-to-crystalline">
+      <statement>
+        <p>
+          Put <m>R = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m> and <m>R^{(1)} = R \otimes_{\ZZ_p} \ZZ_p[\epsilon_p]</m>. We then have a canonical isomorphism
+          <me>
+            \Prism_{R^{(1)}/A} \cong q-\Omega^\bullet_{R/\ZZ_p}
+          </me>
+          of commutative algebra objects in <m>D_{\comp}(A)</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We first construct a map <m>\Prism_{R^{(1)}/A} \cong q-\Omega_{R/\ZZ_p}</m>.
+        </p>
+        <p>
+          It remains to check that the map is an isomorphism. Since both sides are derived <m>(p, [p]_q)</m>-complete complexes, by derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>)
+          it suffices to check that we get an isomorphism after derived base change along the map <m>A \to \ZZ_p</m> taking <m>q</m> to 1. 
+          This brings us back to <xref ref="cor-prismatic-to-crystalline"/>.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture XI, Theorem 2.5 or <xref ref="bib-Bhatt-Scholze"/>, Theorem 16.22.)
+        </p>
+      </proof>
+    </theorem>
+    <corollary>
+      <statement>
+        <p>
+          Put <m>R = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m>. Then there is a natural identification
+          <me>
+            H^\bullet(q-\Omega_{R/\ZZ_p} \otimes^L_A A/([p]_q)) \cong \Omega^\bullet_{R/\ZZ_p} \otimes_{\ZZ_p} \ZZ_p[\zeta_p]
+          </me>
+          of graded algebras over <m>A/([p]_q) \cong \ZZ_p[\zeta_p]</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This can be read off from the proof of <xref ref="thm-q-prismatic-to-crystalline"/>, or by combining that result with <xref ref="thm-Hodge-Tate-crystalline-affine-space"/>.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture XI, Corollary 2.6.)
+        </p>
+      </proof>
+    </corollary>
+  </subsection>
+  <subsection>
+    <title>Etale localization</title>
+  </subsection>
+  <subsection>
+    <title>Frobenius is an isogeny</title>
+  </subsection>
+  <exercises>
+    <exercise>
+      <statement>
+      </statement>
+    </exercise>
+  </exercises>
+</section>

@@ -4,13 +4,220 @@
     <paragraphs>
       <title>Reference</title>
       <p>
-        <xref ref="bib-Bhatt-course"/>, lecture IX.
+        <xref ref="bib-Bhatt-course"/>, lecture IX; <xref ref="bib-Bhatt-Scholze"/>, section 16. See also <xref ref="bib-Aomoto"/> and <xref ref="bib-Scholze-q"/>.
       </p>
     </paragraphs>
     <p>
     </p>
   </introduction>
   <subsection>
+    <title>A brief history of <m>q</m></title>
+    <definition>
+      <p>
+        For parameters <m>\alpha_1,\dots,\alpha_m, \beta_1,\dots,\beta_n</m>, the <term>hypergeometric series</term>
+        <me>
+          {}_mF_n(\alpha_1,\dots,\alpha_m; \beta_1,\dots,\beta_n; z) = \sum_{k=0}^\infty \frac{(\alpha_1)_k \cdots (\alpha_m)_k}{(\beta_1)_k \cdots (\beta_n)_k} \frac{z^k}{k!}
+        </me>
+        where <m>(x)_k</m> denotes the <term>Pochhammer symbol</term>
+        <me>
+          (x)_k = x(x+1)\cdots(x+k-1).
+        </me>
+        These were first considered in the case <m>m=2,n=1</m> by Wallis in 1655, and later by Euler and more systematically by Gauss.
+        The case <m>m=3,n=3</m> was considered by Clausen in 1828; the general case was introduced by Thomae <xref ref="bib-Thomae"/> in 1870.
+      </p>
+    </definition>
+    <definition>
+      <p>
+        The <term>basic hypergeometric series</term> (or <term><m>q</m>-hypergeometric series)</term>
+        <me>
+          {}_m\phi_n(\alpha_1,\dots,\alpha_m; \beta_1,\dots,\beta_n; z) = \sum_{k=0}^\infty \frac{(\alpha_1; q)_k \cdots (\alpha_m; q)_k}{(\beta_1; q)_k \cdots (\beta_n; q)_k (q; q)_k} 
+          \left( (-1)^k q^{k(k-1)/2} \right)^{1+n-m} z^k
+        </me>
+        where <m>(x; q)_k</m> denotes the <term><m>q</m>-Pochhammer symbol</term>
+        <me>
+          <m>(x; q)_k = \prod_{i=0}^{k-1} (1 - x q^k)</m>.
+        </me>
+        Note that the term <m>(q; q)_k</m> corresponds (up to signs and factors of <m>q</m>) to the factor <m>k!</m> in the ordinary hypergeometric series.
+        For the Gaussian case (i.e., <m>m=2, n=1</m>) this was first introduced by Heine <xref ref="bib-Heine"/> in 1846.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        The process of <m>q</m>-deformation has a long rich history, of which we give a scandalously brief summary here.
+      </p>
+      <ol>
+        <li>
+          <p>
+            Products of <m>q</m>-Pochhammer symbols appear naturally in the study of generating functions connected to partitions, which first appear in the work of Euler, were systematically
+            studied by Jacobi, occur prominently in the notebooks of Ramanujan, and have a continuing history far beyond the scope of this remark. See <xref ref="bib-Fine"/> for a comprehensive
+            development (circa 1988).
+          </p>
+        </li>
+        <li>
+          <p>
+            A <term>quantum group</term> is a certain noncommutative algebra which can be viewed as a <m>q</m>-deformation of the universal enveloping algebra of a Lie algebra (or an affine Lie algebra).
+            These were introduced by Drinfeld and Jimbo in the 1980s with a view towards quantum statistical mechanics.
+          </p>
+        </li>
+        <li>
+          <p>
+            One way to make sense of (some) statements about the putative <term>field with one element</term> is to consider statements about the finite field of <m>q</m> elements and
+            then specialize at <m>q=1</m>. As an elementary example, taking the formula
+            <me>
+              \# \GL_n(\FF_q) = (q^n-1)(q^n-q)\cdots(q^n-q^{n-1}) = (-1)^n q^{n(n-1)/2} (1; q)_n
+            </me>
+            and setting <m>q=1</m> gives <m>n!</m>, the order of the group <m>S_n</m>, which by chance happens to be the Weyl group of <m>\GL_n</m>.
+            One is thus led to treat Weyl groups as <q>algebraic groups over the field with one element</q>.
+          </p>
+        </li>
+      </ol>
+    </remark>
+    <remark>
+      <p>
+        Note that Heine uses the letter <m>q</m> as we do nowadays for the deformation parameter. However, this was presumably following the model of Jacobi, who used the letter <m>q</m> in the notation for
+        the <term>Jacobi theta function</term>. This comes from the usage where <m>q</m> represents the value <m>e^{2 \pi i\tau}</m> where <m>\tau</m> is a value in the upper half-plane, as in the theory of
+        elliptic functions.
+      </p>
+      <p>
+        The point of all this is that <m>q</m> does not stand for <q>quantum</q>, as it was entrenched in the notation a full 50 years before the first inklings of quantum mechanics.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Jackson's <m>q</m>-calculus</title>
+    <p>
+      We focus here on a specific instance of <m>q</m>-deformation introduced by Jackson <xref ref="bib-Jackson"/>, <xref ref="bib-Jackson2"/> in 1908.
+    </p>
+    <definition>
+      <p>
+        Given a function <m>f(x)</m> and a parameter <m>q</m>, the <term><m>q</m>-derivative</term> of <m>f(x)</m> is defined as
+        <me>
+          D_q f(x) = \frac{f(qx)-f(x)}{qx - x}.
+        </me>
+        It is obviously additive and satisfies a modified product rule
+        <men xml:id="eq-q-product-rule">
+          D_q(f(x)g(x)) = f(x) D_q(g(x)) + g(qx) D_q(f(x)).
+        </men>
+      </p>
+    </definition>
+    <definition>
+      <p>
+        Given a function <m>f(x)</m> and a parameter <m>q</m>, the <term><m>q</m>-integral</term> (or <term>Jackson integral</term>) of <m>f(x)</m> is defined as
+        <me>
+          \int f(x) d_qx = (1-q) x \sum_{k=0}^\infty q^k f(q^k x)
+        </me>
+        provided that we are working in some context where the infinite sum makes sense. For example, if this is taking place in a <m>q</m>-adically complete ring and <m>f</m>
+        is itself <m>q</m>-adically continuous, then one may check that performing this operation and then taking the <m>q</m>-derivative recovers <m>f(x)</m>.
+      </p>
+    </definition>
+    <remark>
+      <p>
+        Without the <m>q</m>-deformation, hypergeometric series have long been viewed as solutions of the <term>hypergeometric differential equation</term>
+        <me>
+          P(\underline{\alpha}; \underline{\beta})(y) = 0, \qquad P(\underline{\alpha}; \underline{\beta}) = z \prod_i (D + \alpha_i) - \prod_j (D + \beta_j - 1)
+        </me>
+        starting with the work of Gauss in the case <m>m=2,n=1</m>. In modern language, hypergeometric differential equations (particularly with <m>n = m-1</m>) provide important examples of
+        <term>Picard-Fuchs equations</term> which describe the variation of algebraic periods on some family of algebraic varieties; in particular, there is a natural construction via which
+        hypergeometric equations emerge from de Rham cohomology.
+      </p>
+      <p>
+        The <m>q</m>-analogue of de Rham cohomology was first considered by Aomoto <xref ref="bib-Aomoto"/>, <xref ref="bib-Aomoto2"/> in 1990 in order to provide a similar geometric description of
+        the Jackson integrals that appear when one tries to transport the previous construction to the setting of <m>q</m>-hypergeometric series.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>The <m>q</m>-de Rham complex of Aomoto</title>
+    <p>
+      We initially follow <xref ref="bib-Pridham"/>.
+    </p>
+    <definition>
+      <p>
+        We regard <m>\ZZ[q]</m> and <m>\ZZ \llbracket q-1 \rrbracket</m> as <m>\Lambda</m>-rings (<xref ref="def-lambda-ring"/>) with <m>q</m> constant; that is, <m>\lambda^i(q) = 0</m> for all <m>i \gt 0</m>
+        (and so <m>\psi^i(q) = q^i</m> for all <m>i \gt 0</m>). Define
+        <md>
+          <mrow>[n]_q &amp;= \frac{q^n-1}{q-1} \in \ZZ[q]</mrow>
+          <mrow>[n]_q! &amp; [1]_q \cdots [n]_q.</mrow>
+        </md>
+      </p>
+    </definition>
+    <definition>
+      <p>
+        For <m>R \in \Ring</m>, define the <term>framed <m>q</m>-de Rham complex</term> associated to <m>R[x]</m> as 
+        <me>
+          q-\Omega^\bullet_{R[x]/R,\square} = \left( R[x]\llbracket q-1 \rrbracket \stackrel{\nabla_q}{\to} R[x]\llbracket q-1 \rrbracket \,dx \right)
+        </me>
+        where <m>\nabla_q</m> denotes the <m>q</m>-differential
+        <me>
+          \nabla_q(f(x)) = D_q(f(x))\,dx = \frac{f(qx)-f(x)}{qx-x}\,dx.
+        </me>
+        We refer to this as a <q>framed</q> construction because it depends implicitly on the choice of the polynomial generator <m>x</m>; see <xref ref="rmk-q-change-of-coordinates"/>.
+      </p>
+      <p>
+        We similarly define
+        <me>
+          q-\Omega^\bullet_{R[x_1,\dots,x_n],\square} = q-\Omega^\bullet_{R[x_1]/R} \otimes_{R\llbracket q-1 \rrbracket} \cdots \otimes_{R \llbracket q-1 \rrbracket} q-\Omega^\bullet_{R[x_d]/R}.
+        </me>
+        There is an evident isomorphism
+        <me>
+          q-\Omega^\bullet_{R[x_1,\dots,x_n],\square}/(q-1) \cong \Omega^\bullet_{R[x_1,\dots,x_n]/R}.
+        </me>
+      </p>
+    </definition>
+    <remark>
+      <p>
+        For <m>R \in \Ring_{\QQ}</m>, we can identify <m>q-\Omega^\bullet_{R[x]/R,\square}</m> with the usual de Rham complex by a Taylor series construction.
+        (Compare <xref ref="bib-Scholze-q"/>, Lemma 4.1.)
+      </p>
+    </remark>
+    <definition>
+      <p>
+        To promote <m>q-\Omega^\bullet_{R[x_1,\dots,x_n]/R,\square}</m> to a <m>\ZZ \llbracket q-1 \rrbracket</m>-dga, we must account for the asymmetry in the product rule 
+        <xref ref="eq-q-product-rule"/>. To this end, we equip <m>q-\Omega^1_{R[x_1,\dots,x_n]/R,\square}</m> with the <m>q-\Omega^0_{R[x_1,\dots,x_n]/R,\square}</m>-bimodule structure
+        using the standard action on the left and the action on the right via <m>f(x) \mapsto f(qx)</m>.
+      </p>
+      <p>
+        With this, we may view <m>q-\Omega^\bullet_{R[x_1,\dots,x_n]/R,\square}</m> as a <m>\ZZ \llbracket q-1 \rrbracket</m>-dga; however, the asymmetry we just introduced means
+        that this dga is not commutative.
+      </p>
+    </definition>
+    <remark xml:id="rmk-q-change-of-coordinates">
+      <p>
+        As an instance of the fact that the construction of <m>q \Omega^\bullet_{R[x]/R,\square}</m> really does depend on the choice of coordinates, let us consider the automorphism
+        <m>x \mapsto x+1</m> on <m>R[x]</m> and try to extend it as in <xref ref="fig-q-change-of-coordinates"/>.
+      </p>
+      <figure xml:id="fig-q-change-of-coordinates">
+        <image width="75%">
+          <latex-image>
+            \xymatrix{
+              R\llbracket q-1 \rrbracket[x] \ar^{\nabla_q}[r] \ar^{x \mapsto x+1}[d] &amp; R\llbracket q-1 \rrbracket[x]\,dx \ar@{-->}[d] \\
+              R\llbracket q-1 \rrbracket[x] \ar^{\nabla_q}[r] &amp; R\llbracket q-1 \rrbracket[x]\,dx \\
+            }
+          </latex-image>
+        </image>
+      </figure>
+    </remark>
+  </subsection>
+  <subsection>
     <title>Cyclotomic prisms</title>
- </subsection>
- </section>
+  </subsection>
+  <exercises>
+    <exercise>
+      <statement>
+        <p>
+          View <m>\ZZ[x,y,q]</m> as a <m>\Lambda</m>-ring in such a way that <m>x,y,q</m> are all constant. Show that in the <m>\Lambda</m>-localization
+          <m>\ZZ_q[x,y,q]\{(q-1)^{-1}\}</m>, we have
+          <md>
+            <mrow>\lambda^k \left( \frac{y-x}{q-1} \right) &amp;= \frac{(y-x)(y-qx)\cdots(y-q^{k-1}x)}{(q-1)^k [k]_q!}</mrow>
+            <mrow>&amp;= \sum_{j=0}^k \frac{q^{j(j-1)/2} (-x)^j y^{k-j}}{[j]_q! [k-j]_q!}.</mrow>
+          </md>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Observe that it is enough to check the claim for <m>y = q^n x</m>. For omre details, see <xref ref="bib-Pridham"/>, Lemma 1.3.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
+</section>

@@ -12,6 +12,10 @@
       We pick up from <xref ref="sec_homotopy-categories"/> (retaining notation) and introduce the <term>derived category</term> associated to an abelian category.
       This amounts to checking that we can perform the localization of the homotopy category <m>K(\calA)</m> at the family of quasi-isomorphisms.
     </p>
+    <p>
+      Here we take a <q>classical</q> point of view on derived categories; however, it is better in the long run to express the construction in the language of
+      <term><m>\infty</m>-categories</term>. See <xref ref="subsec-derived-infinity-category"/> for a further remark in this vein.
+    </p>
   </introduction>
   <subsection>
     <title>Localization in a category</title>
@@ -34,7 +38,7 @@
         </me>
         which has the right form.
       </p>
-      <p> 
+      <p>
         We give only a brief summary of the formalism needed to make this idea work. See <xref ref="bib-Stacks"/>, tag 04VB for further details.
       </p>
     </remark>
@@ -208,13 +212,13 @@
       <p>
         For a morphism <m>f: K^\bullet \to L^\bullet</m> in <m>\Comp(\calA)</m>, the <term>cone</term> (or <term>mapping cone</term>) of <m>f</m> is the complex
         <me>
-          C(f)^n = L^n \oplus K^{n+1}, \qquad d^n_{C(f)} = \begin{pmatrix} d^n_L &amp; f^{n+1} \\ 0 &amp; -d^{n+1}_K \end{pmatrix}.
+          \Cone(f)^n = L^n \oplus K^{n+1}, \qquad d^n_{\Cone(f)} = \begin{pmatrix} d^n_L &amp; f^{n+1} \\ 0 &amp; -d^{n+1}_K \end{pmatrix}.
         </me>
         This complex fits into a triangle
         <me>
-          K^\bullet \stackrel{f}{\to} L^\bullet \to C(f)^\bullet \to K^\bullet[1]
+          K^\bullet \stackrel{f}{\to} L^\bullet \to \Cone(f)^\bullet \to K^\bullet[1]
         </me>
-        where the maps in and out of <m>C(f)^\bullet</m> are the obvious ones.
+        where the maps in and out of <m>\Cone(f)^\bullet</m> are the obvious ones.
         Any triangle isomorphic to one of this form is said to be <term>distinguished</term>.
       </p>
     </definition>
@@ -233,7 +237,7 @@
           We may as well start with the triangle associated to a mapping cone. In this case, the morphism <m>\delta</m> coincides with the family of connecting homomorphisms
           coming from the short exact sequence of complexes
           <me>
-            0 \to L^\bullet \to C(f)^\bullet \to K^\bullet[1] \to 0
+            0 \to L^\bullet \to \Cone(f)^\bullet \to K^\bullet[1] \to 0
           </me>
           and so the sequence in question is just the long exact sequence in cohomology.
           Alternatively, we can first prove <xref ref="lem-distinguished-triangle-rotation"/> and then use this to reduce to checking exactness at <m>H^i(C^\bullet)</m>.
@@ -251,7 +255,7 @@
           The set of distinguished triangles is preserved by the shift operators, so it will be enough to check preservation by forward rotation.
           That is, given a triangle of the form
           <me>
-            K^\bullet \stackrel{f}{\to} L^\bullet \stackrel{g}{\to} C(f)^\bullet \stackrel{h}{\to} K^\bullet[1]
+            K^\bullet \stackrel{f}{\to} L^\bullet \stackrel{g}{\to} \Cone(f)^\bullet \stackrel{h}{\to} K^\bullet[1]
           </me>
           we must produce a commutative diagram in <m>K(\calA)</m> of the form of <xref ref="fig-triangulated-category-fillin1"/>
           in which the dashed arrow is an isomorphism in <m>K(\calA)</m>.
@@ -260,17 +264,17 @@
           <image width="50%">
             <latex-image>
               \xymatrix{
-                L^\bullet \ar@{=}[d] \ar^{g}[r] &amp; C(f)^\bullet \ar@{=}[d] \ar^{h}[r] &amp; K[1]^\bullet \ar@{-->}[d] \ar^{f[1]}[r] &amp; L[1]^\bullet \ar@{=}[d] \\
-                L^\bullet \ar^{g}[r] &amp; C(f)^\bullet \ar[r] &amp; C(g)^\bullet \ar[r] &amp; L[1]^\bullet
+                L^\bullet \ar@{=}[d] \ar^{g}[r] &amp; \Cone(f)^\bullet \ar@{=}[d] \ar^{h}[r] &amp; K[1]^\bullet \ar@{-->}[d] \ar^{f[1]}[r] &amp; L[1]^\bullet \ar@{=}[d] \\
+                L^\bullet \ar^{g}[r] &amp; \Cone(f)^\bullet \ar[r] &amp; \Cone(g)^\bullet \ar[r] &amp; L[1]^\bullet
               }
             </latex-image>
           </image>
         </figure>
         <p>
-          We construct the arrow <m>K[1]^\bullet \to C(g)^\bullet = C(f)^\bullet \oplus L[1]^\bullet</m> 
+          We construct the arrow <m>K[1]^\bullet \to \Cone(g)^\bullet = \Cone(f)^\bullet \oplus L[1]^\bullet</m> 
           so that the first factor is the injection <m>K^{n+1} \to L^n \oplus K^{n+1}</m> and the second factor is <m>-f^{n+1}</m>.
-          We construct the arrow <m>C(f)^\bullet \oplus L[1]^\bullet = C(g)^\bullet \to K[1]^\bullet</m> 
-          as the projection onto <m>C(f)^n \oplus L^{n+1} \to C(f)^n</m> followed by <m>h^n</m>.
+          We construct the arrow <m>\Cone(f)^\bullet \oplus L[1]^\bullet = \Cone(g)^\bullet \to K[1]^\bullet</m> 
+          as the projection onto <m>\Cone(f)^n \oplus L^{n+1} \to \Cone(f)^n</m> followed by <m>h^n</m>.
           One may check as in <xref ref="bib-Stacks"/>, tag 014I that these maps are inverses in <m>K(\calC)</m>.
         </p>
       </proof>
@@ -308,9 +312,9 @@
       </statement>
       <proof>
         <p>
-          We may assume at once that <m>C = C(f), C' = C(f')</m>.
+          We may assume at once that <m>C = \Cone(f), C' = \Cone(f')</m>.
           In this case, commutativity of the square in <m>K(\calA)</m> implies the existence of a homotopy <m>h</m> for the map 
-          <m>b \circ f - f' \circ a</m>. We may then write down a morphism <m>c: C(f) \to C(f')</m> by the formula
+          <m>b \circ f - f' \circ a</m>. We may then write down a morphism <m>c: \Cone(f) \to \Cone(f')</m> by the formula
           <me>
             c^n = \begin{pmatrix} b^n &amp; h^{n+1} \\ 0 &amp; a^{n+1} \end{pmatrix}: B^n \oplus A^{n+1} \to B^{\prime n} \oplus A^{\prime (n+1)}
           </me>
@@ -327,7 +331,7 @@
         <p>
           Let <m>f: X^\bullet \to Y^\bullet</m> be a morphism in <m>K(\calC)</m>.
           Then every morphism <m>h: Y^\bullet \to Z^\bullet</m> such that <m>h \circ f = 0</m> in <m>K(\calC)</m> can be factored
-          through <m>Y^\bullet \to C(f)^\bullet</m>.
+          through <m>Y^\bullet \to \Cone(f)^\bullet</m>.
         </p>
       </statement>
       <proof>
@@ -338,7 +342,7 @@
           <image width="50%">
             <latex-image>
               \xymatrix{
-                X^\bullet \ar^{f}[r] \ar^{0}[d] &amp; Y^\bullet \ar[r] \ar^{h}[d] &amp; C(f)^\bullet \ar[r] \ar@{-->}[d] &amp; X[1]^\bullet \ar^{a[1]}[d] \\
+                X^\bullet \ar^{f}[r] \ar^{0}[d] &amp; Y^\bullet \ar[r] \ar^{h}[d] &amp; \Cone(f)^\bullet \ar[r] \ar@{-->}[d] &amp; X[1]^\bullet \ar^{a[1]}[d] \\
                 0 \ar[r] &amp; Z^{\bullet} \ar^{\id}[r] &amp; Z^{\bullet} \ar[r] &amp; 0^\bullet
               }
             </latex-image>
@@ -389,7 +393,7 @@
         </p>
         <p>
           To check the second condition, apply <xref ref="cor-extend-to-distinguished-triangle"/> to fit <m>g</m> into a distinguished triangle <m>(X, Y, Z, g, h, i)</m>,
-          then set <m>Y' = C(i[-1])</m>; we obtain the map <m>s</m> by filling the diagram <xref ref="fig-triangulated-category-fillin2"/> using
+          then set <m>Y' = \Cone(i[-1])</m>; we obtain the map <m>s</m> by filling the diagram <xref ref="fig-triangulated-category-fillin2"/> using
           <xref ref="lem-distinguished-triangle-rotation"/> (to rotate) and <xref ref="cor-distinguished-triangle-fillin"/>.
           (We deduce from <xref ref="lem-homological-functor"/> that <m>s</m> is a quasi-isomorphism.)
         </p>
@@ -433,7 +437,7 @@
         The result is called the <term>derived category</term> of <m>\calA</m>, denoted <m>D(\calA)</m>. Similarly, we may define the
         <term>bounded below derived category</term> <m>D^+(\calA)</m>, the
         <term>bounded above derived category</term> <m>D^-(\calA)</m>, and the
-        <term>bounded derived category</term> <m>D(\calA)</m>.
+        <term>bounded derived category</term> <m>D^b(\calA)</m>.
       </p>
       <p>
         An important case is when <m>\calA</m> is the category of modules over a ring <m>A</m>. This is not a small category, but modulo
