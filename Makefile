@@ -16,5 +16,4 @@ install:
 	scp prismatic-ptx.pdf ~/www/papers/; \
 	scp prismatic-ptx.pdf web:www/papers/; \
 	rsync -auv -e "ssh" html/ web:www/prismatic/
-#	scp -r html/* web:www/prismatic/
 

@@ -1,0 +1,293 @@
+﻿<section xml:id="sec_etale-applications">
+  <title>Applications of étale comparison</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Bhatt-course"/>, lecture IX; <xref ref="bib-Bhatt-Scholze"/>, section 9.
+      </p>
+      <p>
+        In this section, we describe some applications of the étale comparison theorem for prismatic cohomology (<xref ref="thm-etale-comparison"/>).
+      </p>
+    </paragraphs>
+  </introduction>
+  <subsection>
+    <title>Tilting of valuation rings</title>
+    <p>
+      We prove the converse of <xref ref="lem-aic-tilt"/> and recover the tilting correspondence for perfectoid fields
+      (<xref ref="thm-field-of-norms"/>). This theme will be continued in the treatment of almost purity (<xref ref="sec_almost-purity"/>).
+    </p>
+    <theorem xml:id="prop-aic-tilt">
+      <statement>
+        <p>
+          Let <m>V</m> be a lens. Then <m>V</m> is an AIC valuation ring if and only if <m>V^\flat</m> is.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="lem-valuation-ring-lens"/>, <m>V</m> is a valuation ring if and only if <m>V^\flat</m> is; it thus remains to show that if <m>V^\flat</m> is AIC,
+          then so is <m>V</m>. So suppose by way of contradiction that <m>V</m> is not AIC.
+          By <xref ref="lem-valuation-ring-tilt-value-group"/>, <m>V</m> and <m>V^\flat</m> have the same (algebraically closed) residue field and the same (divisible) value group.
+          Consequently, any nontrivial finite Galois extension of <m>\Frac V</m> is totally wildly ramified and so has Galois group which is a <m>p</m>-group.
+          This in turn implies that <m>\Frac V</m> admits a nontrivial <m>\ZZ/p\ZZ</m>-extension, and so <m>H^1_{\et}(\Spec V[p^{-1}], \underline{\FF_p}) \neq 0</m>.
+          However, this contradicts <xref ref="thm-etale-comparison"/>: the right-hand side of <xref ref="eq-etale-comparison"/> vanishes by 
+          <xref ref="prop-artin-schreier-witt"/>.
+        </p>
+      </proof>
+    </theorem>
+    <remark xml:id="rmk-perfectoid-correspondence-derivation">
+      <p>
+        <xref ref="prop-aic-tilt"/> can be used to recover the tilting correspondence for perfectoid fields (<xref ref="thm-field-of-norms"/>) as follows.
+        Let <m>K</m> be a perfectoid field and let <m>L</m> be a completed algebraic closure of <m>K</m>.
+        <xref ref="prop-aic-tilt"/> implies that <m>L^\flat</m> is an algebraically closed extension of <m>K^\flat</m>, so it contains a completed algebraic closure <m>M</m> of <m>K^\flat</m>.
+        Each finite subextension of <m>M</m> over <m>K^\flat</m> untilts to a finite extension of <m>K</m> within <m>L</m> which is perfectoid.
+        The completed union of these extensions is an untilt of <m>M</m>, so by <xref ref="lem-aic-tilt"/> this untilt is algebraically closed.
+        In particular it contains the integral closure of <m>K</m> in <m>L</m>, and so by completeness it equals <m>L</m>; in other words, <m>M = L^\flat</m>.
+      </p>
+      <p>
+        Now let <m>P \in K[x]</m> be an irreducible polynomial with roots <m>\alpha_1,\dots,\alpha_n \in L</m>. By the previous paragraph, we can find a finite Galois perfectoid extension <m>K'</m> of <m>K</m> within <m>L</m>
+        and an element <m>\beta \in L</m> such that <m>|\beta-\alpha_1| &lt; |\alpha_i - \alpha_1|</m> for <m>i=2,\dots,n</m>. By Krasner's lemma, we have <m>\beta \in K'</m>; it follows that every finite extension
+        of <m>K</m> within <m>L</m> is contained in a finite Galois perfectoid extension of <m>K</m> within <m>L</m>. Using the Galois correspondence, we deduce that every finite extension of <m>K</m> is the untilt of some
+        finite extension of <m>K^\flat</m> within <m>L^\flat</m>, and so is perfectoid.
+      </p>
+      <p>
+        This argument is essentially the proof of <xref ref="thm-field-of-norms"/> given in <xref ref="bib-Kedlaya-new-methods"/>, Theorem 1.5.6 except that therein, 
+        <xref ref="prop-aic-tilt"/> is proved by an explicit computation (<xref ref="bib-Kedlaya-new-methods"/>, Lemma 1.5.4). The novelty here is that arc-descent allows us to deduce this from the much more basic
+        statement that <m>V</m> can be extended to an AIC valuation ring, which is then automatically a lens (<xref ref="lem-aic-p-complete-lens"/>).
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Torsion in étale and de Rham cohomology</title>
+    <lemma xml:id="lem-perfect-complex-semicontinuity">
+      <title>Semicontinuity for perfect complexes</title>
+      <statement>
+        <p>
+          Let <m>V</m> be a valuation ring with fraction field <m>F</m> and residue field <m>k</m>. Let <m>K^\bullet</m> be a perfect complex in <m>D(V)</m>. Then for each <m>i</m>,
+          <me>
+            \dim_F H^i(K^\bullet \otimes_V^L F) \leq \dim_k H^i(K^\bullet \otimes_V^L k).
+          </me>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Stacks"/>, tag 0BDI.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-phi-invariants">
+      <statement>
+        <p>
+          Let <m>k</m> be an algebraically closed field of characteristic <m>p</m>. Let <m>(M, \phi) \in D(k[F])</m> be a pair in which <m>M</m> is perfect as a complex of <m>k</m>-modules.
+          Then for each integer <m>i</m>, the natural map
+          <me>
+            H^i(M^{\phi=1}) \otimes_{\FF_p} k \to H^i(M)
+          </me>
+          is injective. Moreover, for each <m>i</m>, the map is bijective if and only if <m>\phi: H^i(M) \to H^i(M)</m> is bijective.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Exercise (<xref ref="lem-phi-invariants"/>).
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      The following statement recovers <xref ref="T-torsion-cohomology-comparison"/>.
+    </p>
+    <theorem xml:id="thm-torsion-cohom-comparison">
+      <statement>
+        <p>
+          Let <m>\CC</m> be a complete algebraically closed extension of the field <m>\QQ_p</m>.
+          Let <m>\frako_\CC</m> be the valuation ring of <m>\CC</m> and let <m>k</m> be the residue field of <m>\frako_\CC</m>.
+          Let <m>X</m> be a smooth proper formal scheme over <m>\frako_\CC</m> with generic fiber <m>X_\eta</m> and special fiber <m>X_k</m>. Then for all <m>i \geq 0</m>,
+          <men xml:id="eq-torsion-cohom-comparison1">
+            \dim_{\FF_p} H^i_{\et}(X_\eta, \underline{\FF_p}) \leq \dim_k H^i_{\dR}(X_k/k).
+          </men>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="lem-aic-p-complete-lens"/>, <m>\frako_\CC</m> is a lens; let <m>(A,I)</m> be its underlying perfect prism, choose a generator <m>d</m> of <m>I</m> (<xref ref="lem-perfect-prisms-structure"/>),
+          and put <m>V = A/p = \frako_\CC^\flat</m>.
+          Let <m>(W, (p))</m> be the perfect crystalline prism corresponding to <m>k</m>.
+          By <xref ref="thm-untilting-functor"/>, the morphism <m>\frako_\CC \to k</m> lifts to a unique morphism <m>(A,I) \to (W,(p))</m>.
+        </p>
+        <p>
+          We conflate the underlying spaces of the formal scheme <m>X</m> and the ordinary scheme <m>X_k</m>; on this space, we may define prismatic cohomology complexes of sheaves <m>\Prism_{X/A}</m>
+          and <m>\Prism_{X_k/W}</m>. By the Hodge-Tate comparison (<xref ref="thm-hodge-tate-comparison"/>) and its compatibility with base change (<xref ref="lem-prismatic-base-change"/>), we have
+          <men xml:id="eq-torsion-cohom-comparison3">
+            \Prism_{X/A} \widehat{\otimes}^L_A W \cong \Prism_{X_k/W}
+          </men>
+          (with the completion being <m>p</m>-adic).
+        </p>
+        <p>
+          Define 
+          <me>
+            R\Gamma_A(X) = R\Gamma(X, \Prism_{X/A}) \in D(A).
+          </me>
+          Since <m>R\Gamma(X, \bullet)</m> preserves limits, <m>R \Gamma_A(X)</m> is a derived <m>(p,I)</m>-complete object of <m>D(A)</m>. By the Hodge-Tate comparison and the usual finiteness property of coherent
+          cohomology on a proper scheme (<xref ref="bib-Stacks"/>, tag 02O5), <m>R\Gamma_A(X) \otimes_A^L \frako_\CC</m> is a perfect complex of <m>\frako_\CC</m>-modules. By derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>)
+          applied to suitable truncations, we deduce that <m>R \Gamma_A(X)</m> is a perfect complex of <m>A</m>-modules.
+        </p>
+        <p>
+          In particular, <m>R \Gamma_A(X) \otimes_A^L V</m> is a perfect complex of <m>V</m>-modules.
+          By <xref ref="lem-perfect-complex-semicontinuity"/>, we obtain
+          <men xml:id="eq-torsion-cohom-comparison2">
+            \dim_{\CC^\flat} H^i(R\Gamma_A(X) \otimes_A^L \CC^\flat) \leq \dim_k H^i(R\Gamma_A(X) \otimes_A^L k).
+          </men>
+          We will deduce <xref ref="eq-torsion-cohom-comparison1"/> by comparing its terms with <xref ref="eq-torsion-cohom-comparison2"/>.
+        </p>
+        <p>
+          We first check that the right-hand sides of <xref ref="eq-torsion-cohom-comparison1"/> and <xref ref="eq-torsion-cohom-comparison2"/> coincide. 
+          From <xref ref="eq-torsion-cohom-comparison3"/> we obtain
+          <me>
+            R\Gamma_A(X) \widehat{\otimes}_A^L W \cong R \Gamma_W(X_k).
+          </me>
+          Reduce  modulo <m>p</m> (which gets rid of the completion) and applying the crystalline comparison theorem (<xref ref="cor-prismatic-to-crystalline"/>) yields
+          <me>
+            R\Gamma_A(X) \otimes_A^L k \cong R\Gamma_W(X_k) \otimes_W^L k \cong \phi_* R\Gamma_{\dR}(X_k/k).
+          </me>
+          Since <m>k</m> is perfect, the Frobenius twist <m>\phi_*</m> has no effect on <m>k</m>-dimensions; we thus deduce the desired equality.
+        </p>
+        <p>
+          We next check that the left-hand sides of <xref ref="eq-torsion-cohom-comparison1"/> and <xref ref="eq-torsion-cohom-comparison2"/> satisfy
+          <me>
+            \dim_{\FF_p} H^i_{\et}(X_\eta, \FF_p) \leq \dim_{\CC^\flat} H^i(R\Gamma_A(X) \otimes_A^L \CC^\flat)
+          </me>
+          (in fact equality will hold as perf <xref ref="bib-Bhatt-course"/>, Lecture IX, Remark 5.3, but this will suffice for now).
+          Apply the étale comparison theorem (<xref ref="thm-etale-comparison"/>) to the terms of an open affine cover of <m>X</m> to obtain an identification
+          <me>
+            R\Gamma_{\et}(X_\eta, \FF_p) \cong (R\Gamma_A(X) \otimes_A^L \CC^\flat)^{\phi=1},
+          </me>
+          then apply <xref ref="lem-phi-invariants"/> to obtain for each <m>i</m> an injective linear map
+          <me>
+            H^i_{\et}(X_\eta, \FF_p) \otimes_{\FF_p} \CC^\flat \to H^i( R\Gamma_A(X) \otimes_A^L \CC^\flat).
+          </me>
+          This yields the desired inequality.
+          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IX, Theorem 5.1.)
+        </p>
+      </proof>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Tate twists</title>
+    <definition>
+      <p>
+        For any scheme <m>X</m> and any positive integer <m>n</m>, 
+        let <m>\mu_n</m> be the sheaf on <m>X_{\et}</m> which is the kernel of the multiplication-by-<m>n</m> map on <m>\GG_{m,X}</m>.
+        Define the pro-sheaf
+        <me>
+          \ZZ_p(1) = \lim_m \mu_{p^m};
+        </me>
+        for <m>n \in \ZZ</m>, set <m>\ZZ_p(n) = \ZZ_p(1)^{\otimes n}</m> (taking the tensor product over the constant pro-sheaf <m>\ZZ_p</m>).
+      </p>
+      <p>
+        For <m>n \geq 0</m>, define the presheaf <m>\ZZ_p(n)_{\lens}</m> on the category of lenses, valued in <m>D(\ZZ_p)</m>, by the following formula:
+        for <m>(A,I)</m> a perfect prism with slice <m>R</m>, let <m>d</m> be a generator of <m>I</m> and set
+        <me>
+          \ZZ_p(n)_{\lens}(R) = \left( \phi^{-1}(d)^n A \stackrel{\phi/d^n - 1}{\to} A \right)
+        </me>
+        with the first term placed in degree <m>0</m>. (Note that the resulting object does not depend on the choice of <m>d</m>.)
+        By <xref ref="thm-arc-descent-lens"/>, this construction defines an arc<m>_p</m>-sheaf.
+      </p>
+    </definition>
+    <lemma xml:id="lem-compare-tate-twists">
+      <statement>
+        <p>
+          Let <m>R</m> be a lens. Then for <m>n \gt 0</m>, there are natural isomorphisms
+          <me>
+            \ZZ_p(n) \cong \ZZ_p(n)_{\lens} \cong \ZZ_p(1)_{\lens}^{\otimes n}
+          </me>
+          of arc<m>_p</m>-sheaves on the opposite category of lenses over <m>R</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By arc<m>_p</m>-descent and <xref ref="exa-v-cover"/>,
+          we may reduce to the case where <m>R</m> is a product of <m>p</m>-complete AIC valuation rings, and then to the case of a single such ring.
+          In this case, the map <m>\phi^{-1}(d) A \stackrel{\phi/d - 1} A</m> is surjective modulo <m>p</m> (by the AIC property)
+          and hence surjective by derived Nakayama (<xref ref="prop-derived-complete-abelian"/>).
+        </p>
+        <p>
+          Suppose that <m>R</m> is of characteristic <m>p</m>. In this case, we may take <m>d = p</m>, and then <m>\ZZ_p(n)_{\lens} \cong \left( A \stackrel{\phi-p^n}{\to} A \right)</m>.
+          The map <m>\phi-p^n</m> on <m>A</m> is visibly injective, so both sides of the desired isomorphism are zero.
+        </p>
+        <p>
+          Suppose next that <m>R</m> is of characteristic <m>0</m>. Choose a morphism <m>\ZZ_p[\mu_{p^\infty}] \to R</m>, let <m>\epsilon \in R^\flat</m>
+          be the element <m>(1,\zeta_p,\zeta_{p^2},\dots)</m>, and put <m>q = \epsilon^\sharp</m>. We can then take the generator of <m>d</m> to be 
+          <m>[p]_q = (q^p-1)/(q-1)</m>; we may then identify <m>\ZZ_p(n)_{\lens}</m> with <m>(q-1)^n \ZZ_p \subset \phi^{-1}(d^n) A</m>.
+          This gives the desired natural isomorphism <m>\ZZ_p(n)_{\lens} \cong \ZZ_p(1)_{\lens}^{\otimes n}</m>.
+        </p>
+        <p>
+          To specify a natural isomorphism <m>\ZZ_p(n) \cong \ZZ_p(n)_{\lens}</m>, it now suffices to do so for <m>n=1</m>.
+          In this case, we must check that the action of <m>\Gal(\QQ_p(\mu_{p^\infty}))</m> on <m>(q-1)\ZZ_p</m>
+          matches the action on <m>\lim_n \mu_{p^n}</m>; this follows from the fact that 
+          <me>
+            q^m - 1 \equiv m(q-1) \pmod{d(q-1)} \qquad (m \in \ZZ).
+          </me>
+        </p>
+      </proof>
+    </lemma>
+    <remark>
+      <p>
+        One can promote <xref ref="lem-compare-tate-twists"/> to the assertion that the two definitions of Tate twists correspond to a single construction
+        on the <term>quasisyntomic site</term>, as per <xref ref="bib-Bhatt-Morrow-Scholze2"/>, section 7.4.
+        We will not spell this out further here; instead, see <xref ref="bib-Bhatt-Scholze"/>, section 14.
+      </p>
+    </remark>
+    <theorem xml:id="thm-etale-comparison-tate-twist">
+      <statement>
+        <p>
+          Let <m>R</m> be a lens.
+        </p>
+        <ol>
+          <li>
+            <p>
+              We have a canonical identification
+              <me>
+                \ZZ_p(0)_{\lens}(R) \cong R\Gamma_{\et}(\Spec R, \ZZ_p(0)).
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              For <m>n \gt 0</m>, we have a canonical identification
+              <me>
+                \ZZ_p(n)_{\lens}(R) \cong R\Gamma_{\et}(\Spec R[1/p], \ZZ_p(n)).
+              </me>
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Point (1) follows from <xref ref="rmk-etale-comparison-integral"/>.
+        Point (2) follows from <xref ref="thm-etale-comparison"/> and <xref ref="lem-compare-tate-twists"/>.
+      </p>
+    </proof>
+  </subsection>
+  <exercises>
+    <exercise xml:id="exer-phi-invariants">
+      <statement>
+        <p>
+          Prove <xref ref="lem-phi-invariants"/>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>R</m> be a lens. Using <xref ref="thm-etale-comparison-tate-twist"/>, show that <m>\Pic(R)</m> and <m>\Pic(R[p^{-1}])</m> are both uniquely <m>p</m>-divisible.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use <xref ref="thm-etale-comparison-tate-twist"/> to compare <m>H^i_{\et}(\Spec R, \mu_p)</m> with <m>H^i_{\et}(\Spec R[p^{-1}], \mu_p)</m> for <m>i=1,2</m>.
+          For more details, see <xref ref="bib-Bhatt-Scholze"/>, Corollary 9.5.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
+</section>

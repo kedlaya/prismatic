@@ -60,7 +60,7 @@
     </remark>
   </subsection>
   <subsection>
-    <title>Frobenius fixed points and completions</title>
+    <title>Frobenius fixed points and coperfections</title>
     <p>
       The Artin-Schreier exact sequence leads us to the following considerations.
     </p>
@@ -71,7 +71,7 @@
       <p>
         Let <m>D(B[F])</m> be the <term>derived category of Frobenius <m>B</m>-modules</term>; objects in this category are pairs <m>(M, \phi)</m> where <m>M \in D(B)</m>
         and <m>\phi: M \to \phi_* M</m> is a morphism. Let <m>D_{\comp}(B[F])</m> be the full subcategory of <m>D(B[F])</m> spanned by pairs <m>(M, \phi)</m>
-        with <m>D \in D_{\comp}(B)</m>.
+        with <m>M \in D_{\comp}(B)</m>.
       </p>
       <p>
         Given <m>(M, \phi) \in D_{\comp}(B[F])</m>, define
@@ -86,7 +86,7 @@
         <p>
           With notation as in <xref ref="def-frobenius-fixed-points"/>,
           for any <m>(N, \phi) \in D_{\comp}(B[F])</m>, the map <m>N^{\phi=1} \to (N/t)^{\phi=1}</m> is an isomorphism.
-          (Here the <m>\phi</m>-structure on <m>N/t</m> is the one induced from <m>N</m> using the fact that <m>\phi(t) = t^p \in tB</m>.
+          (Here the <m>\phi</m>-structure on <m>N/t</m> is the one induced from <m>N</m> using the fact that <m>\phi(t) = t^p \in tB</m>.)
         </p>
       </statement>
       <proof>
@@ -128,7 +128,7 @@
           For convenience, we take colimits in the ambient category <m>D(B)</m> (in contrast to the original statement).
         </p>
         <p>
-          For (1), we first verify tha tthe two assertions are equivalent.
+          For (1), we first verify that the two assertions are equivalent.
           Consider a diagram <m>\{(M_i, \phi_i)\}</m> in <m>D_{\comp}(B[F])</m>. Let <m>F</m> be the cone of the map from <m>\colim_i M_i</m> to its derived <m>t</m>-completion;
           note that <m>F</m> is uniquely <m>t</m>-divisible, so <m>F</m> is also the cone of the map obtained after inverting <m>t</m> on both sides.
           Now both statements of the lemma are equivalent to the vanishing of <m>F^{\phi=1}</m>, and hence to each other.
@@ -153,21 +153,248 @@
           Let <m>(A,I)</m> be a perfect prism and choose a generator <m>d</m> of <m>I</m> (<xref ref="lem-perfect-prisms-structure"/>).
           Let <m>R</m> be a derived <m>p</m>-complete <m>\overline{A}</m>-algebra. Then the natural maps
           <md>
-            <mrow>(\Prism_{R/A}/p)^{\phi=1} \to (\Prism_{R/A,\perf}/p)^{\phi=1}</mrow>
-            <mrow>(\Prism_{R/A}[d^{-1}]/p)^{\phi=1} \to (\Prism_{R/A,\perf}[d^{-1}]/p)^{\phi=1}</mrow>
+            <mrow>(\Prism_{R/A}/p^n)^{\phi=1} \to (\Prism_{R/A,\perf}/p^n)^{\phi=1}</mrow>
+            <mrow>(\Prism_{R/A}[d^{-1}]/p^n)^{\phi=1} \to (\Prism_{R/A,\perf}[d^{-1}]/p^n)^{\phi=1}</mrow>
           </md>
           are isomorphisms.
         </p>
       </statement>
       <proof>
         <p>
-          Apply <xref ref="prop-fixed-points"/> with <m>B = A/p, t = d</m> where <m>d</m> is a generator of <m>I</m> (<xref ref="lem-perfect-prisms-structure"/>).
+          This formally reduces to the case <m>n=1</m>.
+          In this case, apply <xref ref="prop-fixed-points"/> with <m>B = A/p, t = d</m> where <m>d</m> is a generator of <m>I</m> (<xref ref="lem-perfect-prisms-structure"/>).
         </p>
       </proof>
     </corollary>
   </subsection>
   <subsection>
+    <title>The arc<m>_p</m>-topology</title>
+    <p>
+      We need a variant of the arc-topology that accounts for <m>p</m>-completion.
+    </p>
+    <definition>
+      <p>
+        Let <m>f\colon R \to S</m> be a morphism of derived <m>p</m>-complete rings. We say that <m>f</m> is an <term>arc<m>_p</m>-covering</term> if 
+        the completion property from <xref ref="fig-arc-covering"/> (with <m>X = \Spec R</m>, <m>Y = \Spec S</m>) holds whenever the valuation ring <m>V</m>
+        is <m>p</m>-complete (and eudoxian). Note that we can then take <m>W</m> to also be <m>p</m>-complete (and eudoxian).
+      </p>
+    </definition>
+    <remark xml:id="rmk-arc-descent-criterion">
+      <p>
+        A sufficient (but not necessary) condition for a morphism <m>f: R \to S</m> to be an arc<m>_p</m>-covering is the following: for every 
+        <m>p</m>-complete AIC eudoxian valuation ring <m>V</m>, the map
+        <me>\Hom_{\Ring}(R, V) \to \Hom_{\Ring}(S, V)</me> is a bijection.
+      </p>
+    </remark>
+    <lemma xml:id="lem-arcp-covering-to-arc-covering">
+      <statement>
+        <p>
+          Let <m>R \to S</m> be an arc<m>_p</m>-covering of derived <m>p</m>-complete rings. Then
+          <me>
+            R \to S \oplus R/p \oplus R[1/p]
+          </me>
+          is an arc-covering.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>R \to V</m> be a morphism in <m>\Ring</m> with <m>V</m> a eudoxian valuation ring. The image of <m>p</m> in <m>V</m> is then one of the following.
+        </p>
+        <ol>
+          <li>
+            <p>
+              A nonzero element of the maximal ideal. In this case, we can replace <m>V</m> with its <m>p</m>-completion, in which case 
+              the map factors through <m>S</m> because <m>R \to S</m> is an arc<m>_p</m>-covering.
+            </p>
+          </li>
+          <li>
+            <p>
+              The zero element. In this case, the map factors through <m>R/p</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              A unit. In this case, the map factors through <m>R[1/p]</m>.
+            </p>
+          </li>
+        </ol>
+      </proof>
+    </lemma>
+    <theorem xml:id="thm-arcp-descent-etale">
+      <title>Arc<m>_p</m>-descent for étale cohomology</title>
+      <statement>
+        <p>
+          For <m>R \in \Ring</m>, let <m>\calF</m> be a torsion sheaf on <m>(\Spec R)_{\et}</m>. Then the functor
+          <me>
+            (f: \Spec S \to \Spec R) \mapsto R\Gamma(\Spec S^\wedge_{(p)}[p^{-1}], f^* \calF)
+          </me>
+          from <m>\Ring_R^{\op}</m> to <m>D(\ZZ)^{\geq 0}</m> satisfies descent for the arc<m>_p</m>-topology.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          It suffices to check descent for an arc<m>_p</m>-covering <m>R \to S</m> (so in particular both rings are derived <m>p</m>-complete).
+          By <xref ref="lem-arcp-covering-to-arc-covering"/>, <m>R \to S \oplus R/p \oplus R[1/p]</m> is an arc-covering.
+          Since derived <m>p</m>-completion followed by inverting <m>p</m> kills both <m>(R/p)</m>-modules and <m>R[1/p]</m>-modules, 
+          we may deduce the claim from arc-descent for étale cohomology (<xref ref="thm-arcp-descent-etale"/>).
+          (Compare <xref ref="bib-Bhatt-Mathew"/>, Corollary 6.17.)
+        </p>
+      </proof>
+    </theorem>
+  </subsection>
+  <subsection xml:id="sec-lenses-valuations">
+    <title>Tilting valuation rings</title>
+    <p>
+      In order to further relate the arc-topology with the arc<m>_p</m>-topology, we study the effect of tilting on valuation rings.
+      This can be thought of as a continuation of our discussion of perfectoid fields (<xref ref="sec-perfectoid-field"/>).
+    </p>
+    <lemma xml:id="lem-aic-p-complete-lens">
+      <statement>
+        <p>
+          Let <m>V</m> be a <m>p</m>-complete AIC valuation ring. Then <m>V</m> is a lens.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          If <m>V</m> is a <m>p</m>-complete AIC valuation ring, then <m>\Frac V</m> is a perfectoid field (<xref ref="def-perfectoid-field"/>).
+          We may thus deduce the claim from <xref ref="lem-perfectoid-field-gives-lens"/>.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-valuation-ring-lens">
+      <statement>
+        <p>
+          Let <m>V</m> be a lens. Then <m>V</m> is a valuation ring if and only if <m>V^\flat</m> is.
+          In this case, the value groups of <m>V</m> and <m>V^\flat</m> are isomorphic; in particular, <m>V</m> is eudoxian if and only if <m>V^\flat</m> is.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>\sharp: V^\flat \to V</m> be the multiplicative map obtained by composing the constant lift <m>[\bullet]: V^\flat \to W(V^\flat)</m> with the quotient map <m>W(V^\flat) \to V</m>.
+          It is customary to write the image of <m>x</m> under <m>\sharp</m> as <m>x^\sharp</m> rather than <m>\sharp(x)</m>.
+        </p>
+        <p>
+          Suppose that <m>V</m> is a valuation ring. If <m>\Frac V</m> has characteristic <m>p</m>, then <m>V = V^\flat</m> and there is nothing more to check;
+          we may thus assume that <m>\Frac V</m> has characteristic 0. Since <m>V</m> is an integral domain, the <m>p</m>-power map on <m>V</m> is injective;
+          hence for <m>x \in V^\flat</m>, <m>x^\sharp = 0</m> if and only if <m>x = 0</m>.
+          This in turn implies that <m>V^\flat</m> is an integral domain (if <m>xy = 0</m> then <m>x^\sharp y^\sharp = 0</m>)
+          and that the principal ideals of <m>V^\flat</m> are totally ordered with respect to inclusion (if <m>x^\sharp</m> is divisible by <m>y^\sharp</m>, then the ratio admits a coherent sequence of <m>p</m>-power roots
+          and so is itself in the image of <m>\sharp</m>). Hence <m>V^\flat</m> is a valuation ring.
+        </p>
+        <p>
+          Conversely, suppose that <m>V^\flat</m> is a valuation ring. Again, we may assume that <m>p \neq 0</m> in <m>V</m>; since <m>V^\flat</m> is an integral domain, we may apply
+          <xref ref="exer-torsion-exchange"/> to deduce that <m>V</m> is <m>p</m>-torsion-free. Since <m>V^\flat</m> is a local ring, so are <m>W(V^\flat)</m> and its quotient <m>V</m>.
+          Choose <m>\varpi \in V</m> as per <xref ref="lem-refract-properties"/>. 
+        </p>
+        <p>
+          We need to show that given any two nonzero elements <m>x,y \in V</m>, one is a multiple of the other.
+          By dividing by powers of <m>\varpi</m> as needed, we may reduce to the case where <m>x</m> and <m>y</m> have nonzero images in <m>V/\varpi</m> and hence in <m>V/p = V^\flat/d</m>.
+          Since <m>V^\flat</m> is a valuation ring, after possibly swapping terms we can write <m>x = yz + pu</m> for some <m>z,u \in V</m>.
+          Similarly, we can write <m>\varpi \equiv yw + pv</m> for some <m>w,v \in V</m>.
+          Since <m>V</m> is classically <m>\varpi</m>-complete, <m>1 - (p/\varpi)v</m> is a unit in <m>V</m>; hence <m>\varpi</m> is divisible by <m>y</m>, as then is <m>p</m>.
+          Consequently, <m>x = yz + pu</m> is also divisible by <m>y</m>, as desired.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-valuation-ring-tilt-value-group">
+      <statement>
+        <p>
+          Let <m>V</m> be a lens which is a valuation ring.
+          Then <m>V</m> and <m>V^\flat</m> have residue fields isomorphic to each other (and to that of <m>W(V^\flat)</m>)
+          and <m>\sharp: V^\flat \to V</m> induces an isomorphism between the value groups of <m>V</m> and <m>V^\flat</m>.
+          In particular, <m>V</m> is eudoxian if and only if <m>V'</m> is.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          From the proof of <xref ref="lem-valuation-ring-lens"/>, we see that <m>\sharp</m> induces an injective map from the value group of <m>V^\flat</m> to that of <m>V</m>.
+          To prove surjectivity, we must check that every element <m>x</m> of <m>V</m> has an associate in the image of <m>V^\flat</m>.
+          As in the proof of <xref ref="lem-valuation-ring-lens"/>, we may prove this by first dividing by a suitable power of <m>\varpi</m> to ensure that <m>x \not\equiv 0 \pmod{\varpi}</m>,
+          then showing that in this case <m>x</m> is an associate of <m>[\overline{x}]</m> where <m>\overline{x} \in V/p</m> is the image of <m>x</m>. 
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-aic-tilt">
+      <statement>
+        <p>
+          Let <m>V</m> be a lens. If <m>V</m> is an AIC valuation ring, then so is <m>V^\flat</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="lem-valuation-ring-lens"/>, <m>V</m> is a valuation ring if and only if <m>V^\flat</m> is; it thus remains to show that if <m>V^\flat</m> is not AIC,
+          then neither is <m>V</m>. We may assume that <m>V</m> has characteristic 0, as otherwise there is nothing to check.
+        </p>
+        <p>
+          Let <m>R</m> be the integral closure of <m>V^\flat</m> in a nontrivial finite Galois extension of its fraction field with Galois group <m>G</m>.
+          By <xref ref="thm-untilting-functor"/>, <m>V' = V \otimes_{W(V^\flat)} W(R)</m> is a lens with <m>V^{\prime \flat} \cong R</m> and, by <xref ref="lem-valuation-ring-lens"/>, again a valuation ring.
+        </p>
+        <p>
+          By construction, <m>G</m> acts on <m>V^{\prime \flat}</m> with fixed subring <m>V</m>. By functoriality, <m>G</m> also acts on <m>V'</m>; since <m>V'</m> is of characteristic <m>0</m>,          we can
+          we can see by averaging over the group action that the fixed subring <m>V'^{G}</m> is equal to <m>V</m>.
+        </p>
+        <p>
+          By the Artin and Dedekind lemmas in Galois theory, we see that <m>\Frac V'</m> is a finite Galois extension of <m>\Frac V</m> of degree <m>\#G \gt 1</m>. This proves
+          that <m>V</m> is not AIC.
+        </p>
+      </proof>
+    </lemma>
+    <remark>
+      <p>
+        The tilting correspondence for perfectoid fields (<xref ref="thm-field-of-norms"/>) implies the converse of <xref ref="lem-aic-tilt"/>:
+        if <m>V</m> is a lens and <m>V^\flat</m> is an AIC valuation ring, then so is <m>V</m>. We will recover this later as a corollary of the étale comparison theorem
+        (<xref ref="prop-aic-tilt"/>).
+      </p>
+    </remark>
+  </subsection>
+  <subsection xml:id="sec-arc-descent-for-lenses">
+    <title>Arc<m>_p</m>-descent for lenses</title>
+    <lemma xml:id="lem-arc-p-covering-lift">
+      <statement>
+        <p>
+          Let <m>R \to S</m> be an arc<m>_p</m>-covering of lenses. Write <m>R</m> as the slice of a perfect prism <m>(A,I)</m> with <m>I = (d)</m> (<xref ref="lem-perfect-prisms-structure"/>).
+          Then 
+          <me>
+            R^\flat \to R^\flat[d^{-1}] \oplus S^\flat
+          </me>
+          is an arc-covering.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>R^\flat \to V</m> be a map to a eudoxian valuation ring, which we may assume is perfect. If <m>d</m> maps to a unit in <m>V</m>, then the map extends to
+          <m>R^\flat[d^{-1}]</m>. Otherwise, we may replace <m>V</m> with its <m>d</m>-adic completion; by <xref ref="thm-untilting-functor"/>, the map <m>R^\flat \to V</m> corresponds to a map
+          <m>R \to V^\sharp = A \otimes_R W(V)</m> whose target is a lens and (by <xref ref="lem-valuation-ring-lens"/>) a <m>p</m>-complete eudoxian valuation ring. Since <m>R \to S</m> is an arc-covering, we get an extension to a map
+          <m>S \to V'</m> for some eudoxian valuation ring <m>V'</m> containing <m>V^\sharp</m>, which we may take to be <m>p</m>-complete and AIC and hence a lens (<xref ref="lem-aic-p-complete-lens"/>). Then
+          <m>S^\flat \to V^{\prime \flat}</m> gives the desired extension.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 8.9.)
+        </p>
+      </proof>
+    </lemma>
+    <theorem xml:id="thm-arc-descent-lens">
+      <statement>
+        <p>
+          Let <m>R \to S</m> be an arc<m>_p</m>-covering of lenses. Then the augmented Čech-Alexander complex
+          <me>
+            0 \to R \to S \to S \widehat{\otimes}_R S \to \cdots
+          </me>
+          is acyclic.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Write <m>R</m> as the slice of a perfect prism <m>(A,I)</m>. By applying <xref ref="thm-arc-descent-perfect"/> to the arc-covering from 
+          <xref ref="lem-arc-p-covering-lift"/>, then taking derived <m>d</m>-completions (which kills all terms involving <m>R^\flat[d^{-1}]</m>), we deduce the stated result.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 8.9.)
+        </p>
+      </proof>
+    </theorem>
+  </subsection>
+  <subsection>
     <title>The comparison theorem</title>
+    <p>
+      We finally obtain the étale comparison theorem.
+    </p>
     <theorem xml:id="thm-etale-comparison">
       <title>Étale comparison theorem</title>
       <statement>
@@ -182,27 +409,30 @@
       </statement>
       <proof>
         <p>
-          We will show that both sides of <xref ref="eq-etale-comparison"/> admits descent for the arc-topology.
-          For the left-hand side, this will be <xref ref="thm-arc-descent-etale"/>.
-          For the right-hand side, we first observe that
-          <me>
-            (\Prism_{R/A}[d^{-1}]/p^n)^{\phi=1} \to (\Prism_{R/A,\perf}[d^{-1}]/p^n)^{\phi=1}
-          </me>
-          is a quasi-isomorphism: it suffices to check this for <m>n=1</m>, in which case this follows from <xref ref="cor-fixed-points"/>.
-          The descent assertion then follows from <xref ref="thm-arc-descent-lens"/> (compare <xref ref="bib-Bhatt-Scholze"/>, Corollary 8.10).
+          We first observe that both sides of <xref ref="eq-etale-comparison"/> admits descent for the arc<m>p</m>-topology:
+          for the left-hand side this is <xref ref="thm-arcp-descent-etale"/>,
+          and for the right-hand side it follows from <xref ref="cor-fixed-points"/> and <xref ref="thm-arc-descent-lens"/>.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Corollary 8.10.)
         </p>
         <p>
-          Using arc-descent and the Artin-Schreier-Witt exact sequence (<xref ref="prop-artin-schreier-witt"/>), we obtain a map (from left to right in <xref ref="eq-etale-comparison"/>) of the desired form.
-          To check that it is an isomorphism, we may apply arc-descent again: using a v-covering as in <xref ref="exa-v-cover"/>, we may reduce to a case where
+          Using arc<m>_p</m>-descent and the Artin-Schreier-Witt exact sequence (<xref ref="prop-artin-schreier-witt"/>), 
+          we obtain a map (from left to right in <xref ref="eq-etale-comparison"/>) of the desired form.
+          To check that it is an isomorphism, we may apply arc<m>p</m>-descent again: using a v-covering as in <xref ref="exa-v-cover"/>, we may reduce to a case where
           <m>R = \prod_i R_i</m> is a product of <m>p</m>-complete AIC valuation rings (and in particular a lens, by <xref ref="lem-aic-p-complete-lens"/>).
-          In this case, the left-hand side of <xref ref="eq-etale-comparison"/> equals <m>(ZZ/p^n)^I</m> concentrated in degree 0.
-          As for the right-hand side, we have that <m>\Prism_{R/A,perf} \cong W(R^\flat)</m> concentrated in degree <m>0</m> (<xref ref="exa-coperfection-lens"/>),
-          so it will suffice to check that for each <m>i \in I</m>, <m>\phi-1</m> is surjective on <m>W(R_i^\flat[d^{-1}])/p^n</m> with kernel <m>\ZZ/p^n</m>.
-          This will follow from <xref ref="prop-artin-schreier-witt"/> once we verify that <m>R_i^\flat</m> is algebraically closed (<xref ref="prop-aic-tilt"/>).
+          Note that by <xref ref="prop-aic-tilt"/>, each ring <m>R_i^\flat</m> is an AIC valuation ring.
+        </p>
+        <p>
+          In this case, the left-hand side of <xref ref="eq-etale-comparison"/> equals <m>(\ZZ/p^n)^I</m> concentrated in degree <m>0</m>.
+          As for the right-hand side, we have <m>\Prism_{R/A,\perf} \cong W(R^\flat)</m> concentrated in degree <m>0</m> (<xref ref="exa-coperfection-lens"/>).
+          By <xref ref="prop-artin-schreier-witt"/>, for each <m>i \in I</m>, <m>\phi-1</m> is surjective on <m>W(R_i^\flat[d^{-1}])/p^n</m> with kernel <m>\ZZ/p^n</m>. We thus have a canonical exact sequence
+          <me>
+            0 \to (\ZZ/p^n)^I \to W(R^\flat)/p^n \stackrel{\phi-1} W(R^\flat)/p^n \to 0
+          </me>
+          which is exactly what we needed.
         </p>
       </proof>
     </theorem>
-    <remark>
+    <remark xml:id="rmk-etale-comparison-integral">
       <p>
         As per <xref ref="bib-Bhatt-Scholze"/>, Remark 9.3, we point out that a similar method can be used to obtain a (somewhat less interesting) variant of <xref ref="thm-etale-comparison"/> 
         without inverting <m>p</m> or <m>d</m>: there is a canonical identification of étale sheaves
@@ -212,184 +442,4 @@
       </p>
     </remark>
   </subsection>
-  <subsection>
-    <title>Tilting of valuation rings</title>
-    <p>
-      As an application of <xref ref="thm-etale-comparison"/>, we prove the converse of <xref ref="lem-aic-tilt"/> and recover the tilting correspondence for perfectoid fields
-      (<xref ref="thm-field-of-norms"/>).
-    </p>
-    <theorem xml:id="prop-aic-tilt">
-      <statement>
-        <p>
-          Let <m>V</m> be a lens. Then <m>V</m> is an AIC valuation ring if and only if <m>V^\flat</m> is.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          By <xref ref="lem-valuation-ring-lens"/>, <m>V</m> is a valuation ring if and only if <m>V^\flat</m> is; it thus remains to show that if <m>V^\flat</m> is AIC,
-          then so is <m>V</m>. So suppose by way of contradiction that <m>V</m> is not AIC.
-          By <xref ref="lem-valuation-ring-tilt-value-group"/>, <m>V</m> and <m>V^\flat</m> have the same (algebraically closed) residue field and the same (divisible) value group.
-          Consequently, any nontrivial finite Galois extension of <m>\Frac V</m> is totally wildly ramified and so has Galois group which is a <m>p</m>-group.
-          This in turn implies that <m>\Frac V</m> admits a nontrivial <m>\ZZ/p\ZZ</m>-extension, and so <m>H^1(\Spec V[p^{-1}], \underline{\FF_p}) \neq 0</m>.
-          However, this contradicts <xref ref="thm-etale-comparison"/>: the right-hand side of <xref ref="eq-etale-comparison"/> vanishes by 
-          <xref ref="prop-artin-schreier-witt"/>.
-        </p>
-      </proof>
-    </theorem>
-    <remark xml:id="rmk-perfectoid-correspondence-derivation">
-      <p>
-        <xref ref="prop-aic-tilt"/> can be used to recover the tilting correspondence for perfectoid fields (<xref ref="thm-field-of-norms"/>) as follows.
-        Let <m>K</m> be a perfectoid field and let <m>L</m> be a completed algebraic closure of <m>K</m>.
-        <xref ref="prop-aic-tilt"/> implies that <m>L^\flat</m> is an algebraically closed extension of <m>K^\flat</m>, so it contains a completed algebraic closure <m>M</m> of <m>K^\flat</m>.
-        Each finite subextension of <m>M</m> over <m>K^\flat</m> untilts to a finite extension of <m>K</m> within <m>L</m> which is perfectoid.
-        The completed union of these extensions is an untilt of <m>M</m>, so by <xref ref="lem-aic-tilt"/> this untilt is algebraically closed.
-        In particular it contains the integral closure of <m>K</m> in <m>L</m>, and so by completeness it equals <m>L</m>; in other words, <m>M = L^\flat</m>.
-      </p>
-      <p>
-        Now let <m>P \in K[x]</m> be an irreducible polynomial with roots <m>\alpha_1,\dots,\alpha_n \in L</m>. By the previous paragraph, we can find a finite Galois perfectoid extension <m>K'</m> of <m>K</m> within <m>L</m>
-        and an element <m>\beta \in L</m> such that <m>|\beta-\alpha_1| &lt; |\alpha_i - \alpha_1|</m> for <m>i=2,\dots,n</m>. By Krasner's lemma, we have <m>\beta \in K'</m>; it follows that every finite extension
-        of <m>K</m> within <m>L</m> is contained in a finite Galois perfectoid extension of <m>K</m> within <m>L</m>. Using the Galois correspondence, we deduce that every finite extension of <m>K</m> is the untilt of some
-        finite extension of <m>K^\flat</m> within <m>L^\flat</m>, and so is perfectoid.
-      </p>
-      <p>
-        This argument is essentially the proof of <xref ref="thm-field-of-norms"/> given in <xref ref="bib-Kedlaya-new-methods"/>, Theorem 1.5.6 except that therein, 
-        <xref ref="prop-aic-tilt"/> is proved by an explicit computation (<xref ref="bib-Kedlaya-new-methods"/>, Lemma 1.5.4). The novelty here is that arc-descent allows us to deduce this from the much more basic
-        statement that <m>V</m> can be extended to an AIC valuation ring, which is then automatically a lens (<xref ref="lem-aic-p-complete-lens"/>).
-      </p>
-    </remark>
-  </subsection>
-  <subsection>
-    <title>Geometric applications</title>
-    <lemma xml:id="lem-perfect-complex-semicontinuity">
-      <title>Semicontinuity for perfect complexes</title>
-      <statement>
-        <p>
-          Let <m>V</m> be a valuation ring with fraction field <m>F</m> and residue field <m>k</m>. Let <m>K^\bullet</m> be a perfect complex in <m>D(V)</m>. Then for each <m>i</m>,
-          <me>
-            \dim_F H^i(K^\bullet \otimes_V^L F) \leq \dim_k H^i(K^\bullet \otimes_V^L k).
-          </me>
-        </p>
-      </statement>
-      <proof>
-        <p>
-          See <xref ref="bib-Stacks"/>, tag 0BDI.
-        </p>
-      </proof>
-    </lemma>
-    <lemma xml:id="lem-phi-invariants">
-      <statement>
-        <p>
-          Let <m>k</m> be an algebraically closed field of characteristic <m>p</m>. Let <m>(M, \phi) \in D(k[F])</m> be a pair in which <m>M</m> is perfect as a complex of <m>k</m>-modules.
-          Then for each integer <m>i</m>, the natural map
-          <me>
-            H^i(M^{\phi=1}) \otimes_{\FF_p} k \to H^i(M)
-          </me>
-          is injective. Moreover, for each <m>i</m>, the map is bijective if and only if <m>\phi: H^i(M) \to H^i(M)</m> is bijective.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          Exercise (<xref ref="lem-phi-invariants"/>).
-        </p>
-      </proof>
-    </lemma>
-    <p>
-      The following statement recovers <xref ref="T-torsion-cohomology-comparison"/>.
-    </p>
-    <theorem xml:id="thm-torsion-cohom-comparison">
-      <statement>
-        <p>
-          Let <m>\CC</m> be a complete algebraically closed extension of the field <m>\QQ_p</m>.
-          Let <m>\frako_\CC</m> be the valuation ring of <m>\CC</m> and let <m>k</m> be the residue field of <m>\frako_\CC</m>.
-          Let <m>X</m> be a smooth proper formal scheme over <m>\frako_\CC</m> with generic fiber <m>X_\eta</m> and special fiber <m>X_k</m>. Then for all <m>i \geq 0</m>,
-          <men xml:id="eq-torsion-cohom-comparison1">
-            \dim_{\FF_p} H^i_{\et}(X_\eta, \FF_p) \leq \dim_k H^i_{\dR}(X_k/k).
-          </men>
-        </p>
-      </statement>
-      <proof>
-        <p>
-          By <xref ref="lem-aic-p-complete-lens"/>, <m>\frako_\CC</m> is a lens; let <m>(A,I)</m> be its underlying perfect prism, choose a generator <m>d</m> of <m>I</m> (<xref ref="lem-perfect-prisms-structure"/>),
-          and put <m>V = A/p = \frako_\CC^\flat</m>.
-          Let <m>(W, (p))</m> be the perfect crystalline prism corresponding to <m>k</m>.
-          By <xref ref="thm-untilting-functor"/>, the morphism <m>\frako_\CC \to k</m> lifts to a unique morphism <m>(A,I) \to (W,(p))</m>.
-        </p>
-        <p>
-          We conflate the underlying spaces of the formal scheme <m>X</m> and the ordinary scheme <m>X_k</m>; on this space, we may define prismatic cohomology complexes of sheaves <m>\Prism_{X/A}</m>
-          and <m>\Prism_{X_k/W}</m>. By the Hodge-Tate comparison (<xref ref="thm-hodge-tate-comparison"/>) and its compatibility with base change (<xref ref="lem-prismatic-base-change"/>), we have
-          <men xml:id="eq-torsion-cohom-comparison3">
-            \Prism_{X/A} \widehat{\otimes}^L_A W \cong \Prism_{X_k/W}
-          </men>
-          (with the completion being <m>p</m>-adic).
-        </p>
-        <p>
-          Define 
-          <me>
-            R\Gamma_A(X) = R\Gamma(X, \Prism_{X/A}) \in D(A).
-          </me>
-          Since <m>R\Gamma(X, \bullet)</m> preserves limits, <m>R \Gamma_A(X)</m> is a derived <m>(p,I)</m>-complete object of <m>D(A)</m>. By the Hodge-Tate comparison and the usual finiteness property of coherent
-          cohomology on a proper scheme (<xref ref="bib-Stacks"/>, tag 02O5), <m>R\Gamma_A(X) \otimes_A^L \frako_\CC</m> is a perfect complex of <m>\frako_\CC</m>-modules. By derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>)
-          applied to suitable truncations, we deduce that <m>R \Gamma_A(X)</m> is a perfect complex of <m>A</m>-modules.
-        </p>
-        <p>
-          In particular, <m>R \Gamma_A(X) \otimes_A^L V</m> is a perfect complex of <m>V</m>-modules.
-          By <xref ref="lem-perfect-complex-semicontinuity"/>, we obtain
-          <men xml:id="eq-torsion-cohom-comparison2">
-            \dim_{\CC^\flat} H^i(R\Gamma_A(X) \otimes_A^L \CC^\flat) \leq \dim_k H^i(R\Gamma_A(X) \otimes_A^L k).
-          </men>
-          We will deduce <xref ref="eq-torsion-cohom-comparison1"/> by comparing its terms with <xref ref="eq-torsion-cohom-comparison2"/>.
-        </p>
-        <p>
-          We first check that the right-hand sides of <xref ref="eq-torsion-cohom-comparison1"/> and <xref ref="eq-torsion-cohom-comparison2"/> coincide. 
-          From <xref ref="eq-torsion-cohom-comparison3"/> we obtain
-          <me>
-            R\Gamma_A(X) \widehat{\otimes}_A^L W \cong R \Gamma_W(X_k).
-          </me>
-          Reduce  modulo <m>p</m> (which gets rid of the completion) and applying the crystalline comparison theorem (<xref ref="cor-prismatic-to-crystalline"/>) yields
-          <me>
-            R\Gamma_A(X) \otimes_A^L k \cong R\Gamma_W(X_k) \otimes_W^L k \cong \phi_* R\Gamma_{\dR}(X_k/k).
-          </me>
-          Since <m>k</m> is perfect, the Frobenius twist <m>\phi_*</m> has no effect on <m>k</m>-dimensions; we thus deduce the desired equality.
-        </p>
-        <p>
-          We next check that the left-hand sides of <xref ref="eq-torsion-cohom-comparison1"/> and <xref ref="eq-torsion-cohom-comparison2"/> satisfy
-          <me>
-            \dim_{\FF_p} H^i_{\et}(X_\eta, \FF_p) \leq \dim_{\CC^\flat} H^i(R\Gamma_A(X) \otimes_A^L \CC^\flat)
-          </me>
-          (in fact equality will hold as perf <xref ref="bib-Bhatt-course"/>, Lecture IX, Remark 5.3, but this will suffice for now).
-          Apply the étale comparison theorem (<xref ref="thm-etale-comparison"/>) to the terms of an open affine cover of <m>X</m> to obtain an identification
-          <me>
-            R\Gamma_{\et}(X_\eta, \FF_p) \cong (R\Gamma_A(X) \otimes_A^L \CC^\flat)^{\phi=1},
-          </me>
-          then apply <xref ref="lem-phi-invariants"/> to obtain for each <m>i</m> an injective linear map
-          <me>
-            H^i_{\et}(X_\eta, \FF_p) \otimes_{\FF_p} \CC^\flat \to H^i( R\Gamma_A(X) \otimes_A^L \CC^\flat).
-          </me>
-          This yields the desired inequality.
-          (Compare <xref ref="bib-Bhatt-course"/>, Lecture IX, Theorem 5.1.)
-        </p>
-      </proof>
-    </theorem>
-  </subsection>
-  <exercises>
-    <exercise>
-      <statement>
-        <p>
-          Let <m>R</m> be a lens. Using the étale comparison theorem (<xref ref="thm-etale-comparison"/>), show that <m>\Pic(R)</m> and <m>\Pic(R[p^{-1}])</m> are both uniquely <m>p</m>-divisible.
-        </p>
-      </statement>
-      <hint>
-        <p>
-          See <xref ref="bib-Bhatt-Scholze"/>, Corollary 9.5.
-        </p>
-      </hint>
-    </exercise>
-    <exercise xml:id="exer-phi-invariants">
-      <statement>
-        <p>
-          Prove <xref ref="lem-phi-invariants"/>.
-        </p>
-      </statement>
-    </exercise>
-  </exercises>
 </section>

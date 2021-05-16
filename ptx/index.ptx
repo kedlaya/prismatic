@@ -2,11 +2,6 @@
 <pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
 <docinfo>
   <latex-preamble>
-    <package>amsfonts</package>
-    <package>stmaryrd</package>
-    <package>relsize</package>
-    <package>calligra</package>
-    <package>mathrsfs</package>
   </latex-preamble>
   <macros>
     \frenchspacing
@@ -30,12 +25,12 @@
     \def\frakp{\mathfrak{p}}
     \def\frakX{\mathfrak{X}}
     \def\dual{\vee}
-    \def\Prism{\mathbf{\Delta}}
     \def\Ainf{\mathbf{A}_{\mathrm{inf}}}
 
     \DeclareMathOperator{\ab}{ab}
     \DeclareMathOperator{\Ab}{\mathbf{Ab}}
     \DeclareMathOperator{\an}{an}
+    \DeclareMathOperator{\Ann}{Ann}
     \DeclareMathOperator{\Aut}{Aut}
     \DeclareMathOperator{\Cl}{Cl}
     \DeclareMathOperator{\coker}{coker}
@@ -85,7 +80,7 @@
     \DeclareMathOperator{\sep}{sep}
     \DeclareMathOperator{\Sch}{\mathbf{Sch}}
     \DeclareMathOperator{\Set}{\mathbf{Set}}
-    \DeclareMathOperator{\sheafHom}{\mathscr{H}\!\mathit{om}}
+    \DeclareMathOperator{\sheafHom}{\mathcal{H}\!\mathit{om}}
     \DeclareMathOperator{\sign}{sign}
     \DeclareMathOperator{\Spec}{Spec}
     \DeclareMathOperator{\Spf}{Spf}
@@ -97,7 +92,10 @@
     \DeclareMathOperator{\Vect}{\mathbf{Vect}}
     \DeclareMathOperator{\Ver}{Ver}
 
-    % Declarations from stmaryrd that for some reason aren't getting loaded by default.
+    % Replace this once MathJax catches up.
+    \def\Prism{\mathbf{\Delta}}
+
+    % Replace these once MathJax catches up.
     %\DeclareMathDelimiter\llbracket{\mathopen}{stmry}{"4A}{stmry}{"71}
     %\DeclareMathDelimiter\rrbracket{\mathclose}{stmry}{"4B}{stmry}{"79}
     \def\llbracket{[\![}
@@ -164,6 +162,7 @@
     <xi:include href="./sec_arc-topology.ptx"/>
     <xi:include href="./sec_arc-descent.ptx"/>
     <xi:include href="./sec_etale-comparison.ptx"/>
+    <xi:include href="./sec_etale-applications.ptx"/>
     <xi:include href="./sec_almost-purity.ptx"/>
     <xi:include href="./sec_q-derham.ptx"/>
     <xi:include href="./sec_q-crystalline.ptx"/>

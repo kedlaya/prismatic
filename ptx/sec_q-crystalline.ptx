@@ -72,7 +72,18 @@
         For a <m>(p, [p]_q)</m>-complete ideal <m>I</m> of <m>B</m>, <m>(B,I)</m> is a prism if and only if <m>I \subseteq \phi^{-1}([p]_q) B</m>.
       </p>
     </example>
-    <proposition>
+    <definition>
+      <p>
+        For <m>R</m> an <m>\ZZ_p</m>-algebra, define <m>R^{(1)} = R \otimes_{\ZZ_p} \ZZ_p[\zeta_p]</m>. By design, this notation is meant to suggest the Frobenius twist
+        appearing in the Cartier isomorphism.
+      </p>
+      <p>
+        Let <m>(D,I)</m> be a q-pd pair with <m>D/I \cong R</m>.
+        By assumption, <m>\phi(I) \subseteq [p]_q D</m> and so we get an induced map <m>R \cong D/I \to D/([p]_q)</m> which is linear over the Frobenius on <m>A</m>.
+        Linearizing yields an <m>A</m>-algebra map <m>A \otimes_{\phi,A} R \to D/([p]_q)</m>, which then factors through <m>(A \otimes_{\phi,A} R)/([p]_q) \cong R^{(1)}</m>. 
+      </p>
+    </definition>
+    <proposition xml:id="prop-q-divided-power-envelopes">
       <statement>
         <p>
           Let <m>P</m> be a <m>\delta</m>-ring over <m>A</m> equipped with a surjection <m>P \to R = \ZZ_p [ x_1,\dots,x_r]^\wedge_{(p)}</m> with kernel <m>J = (q-1,y_1,\dots,y_s)</m>
@@ -114,6 +125,15 @@
   </subsection>
   <subsection>
     <title>Comparison with prismatic cohomology</title>
+    <definition>
+      <p>
+        Put <m>R = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m>.
+        Put <m>P = R\llbracket q-1 \rrbracket\{x_1,\dots,x_r\}^\wedge_{(p,[p]_q)}</m>, and form the map <m>P \to R</m>
+        taking <m>q</m> to 1 and taking <m>\delta^m(x_i)</m> to <m>0</m> for <m>m \geq 0</m>.
+        Let <m>P^\bullet</m> be the <m>(p, [p]_q)</m>-completed Cech nerve of <m>A \to P</m>;
+        let <m>J^n</m> be the kernel of <m>P^n \to P \to R</m> where the first map is multiplication.
+      </p>
+    </definition>
     <lemma xml:id="lem-q-differentials-derived">
       <statement>
         <p>
@@ -129,6 +149,18 @@
       <proof>
         <p>
           The proof of <xref ref="lem-differentials-derived"/> carries over.
+        </p>
+      </proof>
+    </lemma>
+    <lemma xml:id="lem-q-poincare-lemma">
+      <title><m>q</m>-Poincaré lemma</title>
+      <statement>
+      </statement>
+      <proof>
+        <p>
+          By derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>), we may check this modulo <m>q-1</m>.
+          By <xref ref="prop-q-divided-power-envelopes"/>, the claim in this case becomes the usual Poincare lemma
+          (<xref ref="prop-poincare-lemma"/>).
         </p>
       </proof>
     </lemma>
@@ -157,7 +189,7 @@
       <proof>
         <p>
           We make the same argument as in <xref ref="lem-prismatic-double-complex"/>:
-          each row is homotopic to zero by <xref ref="lem-q-differentials-derived"/>, and all of the simplicial maps induce quasi-isomorphisms of columns by ...,
+          each row is homotopic to zero by <xref ref="lem-q-differentials-derived"/>, and all of the simplicial maps induce quasi-isomorphisms of columns by <xref ref="lem-q-poincare-lemma"/>,
           so <xref ref="map-of-double-complex-first-column-qis"/> yields the desired quasi-isomorphism.
           (Compare <xref ref="bib-Bhatt-course"/>, Theorem 2.9.)
         </p>

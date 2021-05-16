@@ -465,10 +465,8 @@
     </theorem>
     <remark>
       <p>
-        <xref ref="thm-andre-flatness-strong"/> is a key ingredient in the proof of Hochster's <term>direct summand conjecture</term>
-        in <xref ref="bib-Andre"/> (and its derived analogue in <xref ref="bib-Bhatt-DSC"/>): if <m>R</m> is a regular noetherian ring and <m>R \to S</m> is a finite injective
-        morphism of rings, then the inclusion <m>R \to S</m> splits in <m>\Mod_R</m>. This has various consequences in commutative algebra which we do not discuss here;
-        see instead <xref ref="bib-Hochster"/>.
+        <xref ref="thm-andre-flatness-strong"/> is a key ingredient in the proof of Hochster's <term>direct summand conjecture</term>;
+        see <xref ref="thm-direct-summand"/>.
       </p>
     </remark>
     <corollary xml:id="cor-strongly-zariski-closed">

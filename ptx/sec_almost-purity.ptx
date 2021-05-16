@@ -10,7 +10,7 @@
     <p>
       We deduce a strong form of the <term>almost purity theorem</term>.
       The statement combines the perfectoid almost purity theorems of Scholze <xref ref="bib-Scholze-perfectoid1"/> and Kedlaya-Liu <xref ref="bib-Kedlaya-Liu"/>
-      (which extend the original almost purity theorem of Faltings) with Andre's perfectoid Abhyankar lemma <xref ref="bib-Andre1"/>.
+      (which extend the original almost purity theorem of Faltings) with André's perfectoid Abhyankar lemma <xref ref="bib-Andre1"/>.
     </p>
   </introduction>
   <subsection>
@@ -68,13 +68,25 @@
     <definition>
       <p>
         By a <term>context</term> (more precisely a <term>context for almost commutative algebra</term>), we will mean a pair consisting of a base ring <m>V</m> and an ideal <m>\frakm</m>
-        such that <m>\frakm^2 = \frakm</m>. For instance, we may take <m>\frakm = (1)</m>; this gives the so-called <term>classical limit</term>, where we expect to recover concepts in
+        such that <m>\frakm^2 = \frakm</m>.
+      </p>
+    </definition>
+    <example>
+      <p>
+        The pair <m>(\ZZ, (1))</m> is a context for almost commutative algebra. We call this the <term>classical limit</term>, where we expect to recover concepts in
         ordinary commutative algebra.
       </p>
+    </example>
+    <example>
       <p>
-        Fix a context <m>(V, \frakm)</m>. A <m>V</m>-module <m>M</m> is <term>almost zero</term> if <m>\frakm M = 0</m>.
+        For <m>V</m> a valuation ring with maximal ideal <m>\frakm</m>, the pair <m>(V, \frakm)</m> is a context for almost commutative algebra. Since <m>\frakm</m> is a colimit of principal ideals,
+        the <m>V</m>-module <m>\frakm \otimes_V \frakm</m> is flat; while adding this restriction to the definition of a context is needed for a deeper treatment
+        (for instance, in <xref ref="bib-Gabber-Ramero"/> it is required starting from the end of Chapter 2), we will not need it here.
       </p>
+    </example>
+    <definition>
       <p>
+        Fix a context <m>(V, \frakm)</m> for almost commutative algebra. A <m>V</m>-module <m>M</m> is <term>almost zero</term> if <m>\frakm M = 0</m>.
         It is straightforward to check that the subcategory of almost zero <m>V</m>-modules is a thick tensor ideal in <m>\Mod_V</m>. It thus makes sense to say that a morphism in <m>\Mod_V</m>
         is an <term>almost isomorphism</term> (i.e., its kernel and cokernel are almost zero).
       </p>
@@ -437,8 +449,8 @@
   <subsection>
     <title>Almost purity (second version)</title>
     <p>
-      It turns out that <xref ref="thm-almost-purity1"/> can be formally upgraded by first deducing a statement about lens coperfections of integral extensions of lenses.
-      We turn to this next.
+      It turns out that <xref ref="thm-almost-purity1"/> can be formally upgraded by first deducing a statement about lens coperfections of integral extensions of lenses,
+      which amounts to a major upgrade of <xref ref="cor-lens-semilens-left-adjoint"/>. We turn to this next.
     </p>
     <lemma xml:id="lem-stratification-factorization">
       <statement>
@@ -485,7 +497,7 @@
     <theorem xml:id="thm-lens-perfection-integral-extension">
       <statement>
         <p>
-          Let <m>(A,I)</m> be a perfect prism with associated lens <m>R</m>. Let <m>R \to S</m> be the <m>p</m>-completion of an integral map.
+          Let <m>(A,I)</m> be a perfect prism with associated lens <m>R</m>. Let <m>R \to S</m> be the derived <m>p</m>-completion of an integral map.
           Then <m>\Prism_{S/A,\perf}</m> is concentrated in degree <m>0</m>, where it is a derived <m>p</m>-complete perfect <m>\delta</m>-ring over <m>A</m>.
           Consequently, <m>S_{\lens}</m> is concentrated in degree <m>0</m>, where it is a lens.
         </p>
@@ -533,7 +545,7 @@
           </li>
           <li>
             <p>
-              For every <m>n \gt 0</m>, the morphism <m>R/p^n \to S_{\lens}/p^n</m> is almost finite projective and almost unramified with respect to the context <m>(R/p^n, J_{\lens,n}</m>
+              For every <m>n \gt 0</m>, the morphism <m>R/p^n \to S_{\lens}/p^n</m> is almost finite projective and almost unramified with respect to the context <m>(R/p^n, J_{\lens,n})</m>
             </p>
           </li>
           <li>
@@ -554,6 +566,97 @@
       <p>
         See <xref ref="bib-Bhatt-Scholze"/>, Remark 10.13 for an indication of how to apply <xref ref="thm-almost-purity2"/> to recover some results in commutative algebra,
         such as the results of <xref ref="bib-Heitmann-Ma"/>.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>An application to cohomological dimension</title>
+    <lemma xml:id="lem-cohom-dim">
+      <statement>
+        <p>
+          Let <m>R</m> be a <m>p</m>-torsion-free lens. Let <m>R \to S</m> be the derived <m>p</m>-completion of a finitely presented morphism. Let <m>J</m> be a finitely generated ideal of <m>J</m>.
+          Then <m>\Cone(S_{\lens} \to (S/J)_{\lens})</m> is concentrated in degrees <m>\leq 0</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="thm-lens-perfection-integral-extension"/>, <m>S_{\lens}</m> and <m>(S/J)_{\lens}</m> are both lenses concentrated in degree <m>0</m>.
+          By <xref ref="cor-strongly-zariski-closed"/>, the map <m>S_{\lens} \to (S_{\lens}/J S_{\lens})_{\lens} = (S/J)_{\lens}</m> is surjective.
+          This proves the claim.
+        </p>
+      </proof>
+    </lemma>
+    <theorem xml:id="thm-cohom-dim">
+      <statement>
+        <p>
+          Let <m>R</m> be a <m>p</m>-torsion-free lens and put <m>X = \Spec R[p^{-1}]</m>.
+          Then for every etale <m>\FF_p</m>-sheaf <m>\calF</m> on <m>X</m>, we have <m>H^i(X, \calF) = 0</m> for all <m>i \gt 0</m>.
+          That is, the <m>\FF_p</m>-etale cohomological dimension of <m>X</m> is at most <m>1</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This reduces to <xref ref="lem-cohom-dim"/> as in <xref ref="bib-Bhatt-Scholze"/>, Theorem 11.1.
+        </p>
+      </proof>
+    </theorem>
+    <remark>
+      <p>
+        Echoing a remark from <xref ref="bib-Bhatt-Scholze"/>, we point out that <xref ref="thm-cohom-dim"/> fails completely if we replace the scheme <m>X</m>
+        with the Huber adic spectrum of the ring <m>R[p^{-1}]</m>; for example, the homotopy type of this space can contribute to cohomology in higher degrees.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>The direct summand conjecture</title>
+    <p>
+      The following application of almost purity to Hochster's <term>direct summand conjecture</term> is given in <xref ref="bib-Andre"/>, <xref ref="bib-Bhatt-DSC"/>.
+      This has various consequences in commutative algebra which we do not discuss here; see instead <xref ref="bib-Hochster"/>.
+    </p>
+    <theorem xml:id="thm-direct-summand">
+      <statement>
+        <p>
+          Put <m>R = \ZZ_p\llbracket x_1,\dots,x_r\llbracket</m> and let <m>R \to S</m> be an injective, module-finite ring homomorphism.
+          Then this map splits in <m>\Mod_R</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          It suffices to check that <m>R/p^n \to S/p^n</m> splits in <m>\Mod_{R/p^n}</m> for every <m>n</m>,
+          as then an application of the Artin-Rees lemma shows that <m>R \to S</m> splits (see <xref ref="bib-Bhatt-DSC"/>, Lemma 5.3).
+          That is, we must show that the boundary class <m>\alpha \in \Ext^1_R(S/R, R)</m> vanishes modulo <m>p^n</m> for all <m>n \geq 2</m>.
+        </p>
+        <p>
+          Define the lens
+          <me>
+            R_1 = \ZZ_p[p^{p^{-\infty}}]\llbracket x_1^{p^{-\infty}},\dots,x_r^{p^{-\infty}}\rrbracket^\wedge_{(p)}.
+          </me>
+          The apparent map <m>R \to R_1</m> is faithfully flat because <m>R_1</m> is the <m>p</m>-completion of a free <m>R</m>-module.
+          By <xref ref="thm-andre-flatness-strong"/>, there exists a <m>p</m>-completely faithfully flat
+          morphism <m>R_1 \to R_2</m> of lenses such that <m>R_2</m> is AIC.
+          Put <m>S_i = S \otimes_R R_i</m> and let <m>\alpha_i \in \Ext^1_{R_i}(S_i/R_i, R_i)</m> be the image of <m>\alpha</m>; by faithfully flat descent, it is enough to check that
+          <m>\alpha_2</m> vanishes modulo <m>p^n</m> for all <m>n \geq 3</m>.
+        </p>
+        <p>
+          Choose a nonzero element <m>f \in R</m> such that <m>R[f^{-1}] \to S[f^{-1}]</m> is finite étale, and define the ideal <m>J = (p, f)R_2</m>.
+          By <xref ref="thm-almost-purity2"/>, <m>R_2/p^n \to S_{2,\lens}/p^n</m> is almost finite étale for the context <m>(R_2/p^n, J_{\lens}/p^n)</m>.
+          Consequently, <m>\alpha_2/p^n</m> is <m>(J_{\lens}/p^n)</m>-almost zero;
+          in particular, it is killed by <m>(p f)^{p^{-m}} \in R_2</m> for all <m>m \ge 0</m>.
+          (Note that we are using that <m>S_2</m> maps to <m>S_{2,\lens}</m> but not any closer relationship between these two objects.)
+        </p>
+        <p>
+          Now suppose that <m>\alpha/p^n \neq 0</m> for some <m>n \geq 2</m>. By Krull's intersection theorem (<xref ref="bib-Stacks"/>, tag 00IP), 
+          <m>pf \notin (\Ann_{R/p^n}(\alpha/p^n))^{p^m}</m> for <m>m \gg 0</m>.
+          Since <m>R \to R_2</m> is <m>p</m>-completely faithfully flat, we also have <m>pf \notin (\Ann_{R_2 /p^n}(\alpha/p^n))^{p^m}</m>;
+          but this contradicts the previous paragraph. This conclusion yields the desired result.
+          (Compare <xref ref="bib-Bhatt-DSC"/>, Theorem 5.4.)
+        </p>
+      </proof>
+    </theorem>
+    <remark>
+      <p>
+        A similar argument (see <xref ref="bib-Bhatt-DSC"/>, Theorem 6.1) yields the <term>derived direct summand conjecture</term>: 
+        if <m>X \to \Spec R</m> is a proper surjective morphism, then <m>R \to R\Gamma(X, \calO)</m> splits in <m>D(A_0)</m>.
       </p>
     </remark>
   </subsection>
@@ -578,7 +681,7 @@
       </statement>
       <hint>
         <p>
-          We can ignore condition (3), as we may further stratify to enforce it. To handle (1) and (2), by noetherian approximation we may reduce to the case where <m>R</m>
+          We can ignore condition (3), as we may enforce it at the end by refining the stratification. To handle (1) and (2), by noetherian approximation we may reduce to the case where <m>R</m>
           is a finitely generated <m>\ZZ_{(p)}</m>-algebra; in that case, see <xref ref="bib-Bhatt-Scholze"/>, Lemma 10.12.
         </p>
       </hint>

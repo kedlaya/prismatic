@@ -26,7 +26,7 @@
       <statement>
         <p>
           Consider a pullback diagram of perfect <m>\FF_p</m>-schemes as in <xref ref="fig-perfect-pullback"/>.
-          For any complex <m>K^\bullet</m> of quasicoherent sheaves on <m>X</m>, the base-change morphism
+          For any complex <m>K^\bullet</m> of quasicoherent sheaves on <m>Y</m>, the base-change morphism
           <me>
             Lg^* Rf_* K \to R f'_* L g^{\prime *} K
           </me> 
@@ -36,8 +36,8 @@
           <image width="50%">
             <latex-image>
               \xymatrix{
-                X' \ar^{g'}[r] \ar^{f'}[d] &amp; X \ar^{f}[d] \\
-                Y' \ar^{g}[r] &amp; Y
+                Y' \ar^{g'}[r] \ar^{f'}[d] &amp;YX \ar^{f}[d] \\
+                X' \ar^{g}[r] &amp; X
               }
             </latex-image>
           </image>
@@ -411,172 +411,6 @@
           In this case, <m>V/\frakp</m> is also AIC, so both <m>V</m> and <m>V/\frakp</m> are strictly henselian with the same residue field.
           It follows that the functor in question takes the same values on <m>V</m> and <m>V/\frakp</m>, and takes the same values on <m>V_\frakp</m> and <m>\kappa(\frakp)</m>.
           (Compare <xref ref="bib-Bhatt-Mathew"/>, Theorem 5.4.)
-        </p>
-      </proof>
-    </theorem>
-  </subsection>
-  <subsection xml:id="sec-lenses-valuations">
-    <title>Lenses as valuation rings</title>
-    <p>
-      We turn next to lenses, extending our discussion from <xref ref="sec_lenses"/> with considerations of valuation rings.
-      This can be thought of as a continuation of our discussion of perfectoid fields (<xref ref="sec-perfectoid-field"/>).
-    </p>
-    <lemma xml:id="lem-aic-p-complete-lens">
-      <statement>
-        <p>
-          Let <m>V</m> be a <m>p</m>-complete AIC valuation ring. Then <m>V</m> is a lens.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          If <m>V</m> is a <m>p</m>-complete AIC valuation ring, then <m>\Frac V</m> is a perfectoid field (<xref ref="def-perfectoid-field"/>).
-          We may thus deduce the claim from <xref ref="lem-perfectoid-field-gives-lens"/>.
-        </p>
-      </proof>
-    </lemma>
-    <lemma xml:id="lem-valuation-ring-lens">
-      <statement>
-        <p>
-          Let <m>V</m> be a lens. Then <m>V</m> is a valuation ring if and only if <m>V^\flat</m> is.
-          In this case, the value groups of <m>V</m> and <m>V^\flat</m> are isomorphic; in particular, <m>V</m> is eudoxian if and only if <m>V\flat</m> is.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          Let <m>\sharp: V^\flat \to V</m> be the multiplicative map obtained by composing the constant lift <m>[\bullet]: V^\flat \to W(V^\flat)</m> with the quotient map <m>W(V^\flat) \to V</m>.
-          It is customary to write the image of <m>x</m> under <m>sharp</m> as <m>x^\sharp</m> rather than <m>\sharp(x)</m>.
-        </p>
-        <p>
-          Suppose that <m>V</m> is a valuation ring. If <m>\Frac V</m> has characteristic <m>p</m>, then <m>V = V^\flat</m> and there is nothing more to check;
-          we may thus assume that <m>\Frac V</m> has characteristic 0. Since <m>V</m> is an integral domain, the <m>p</m>-power map on <m>V</m> is injective;
-          hence for <m>x \in V^\flat</m>, <m>x^\sharp = 0</m> if and only if <m>x = 0</m>.
-          This in turn implies that <m>V^\flat</m> is an integral domain (if <m>xy = 0</m> then <m>x^\sharp y^\sharp = 0</m>)
-          and that the principal ideals of <m>V^\flat</m> are totally ordered with respect to inclusion (if <m>x^\sharp</m> is divisible by <m>y^\sharp</m>, then the ratio admits a coherent sequence of <m>p</m>-power roots
-          and so is itself in the image of <m>\sharp</m>). Hence <m>V^\flat</m> is a valuation ring.
-        </p>
-        <p>
-          Conversely, suppose that <m>V^\flat</m> is a valuation ring. Again, we may assume that <m>p \neq 0</m> in <m>V</m>; since <m>V^\flat</m> is an integral domain, we may apply
-          <xref ref="exer-torsion-exchange"/> to deduce that <m>V</m> is <m>p</m>-torsion-free. Since <m>V^\flat</m> is a local ring, so are <m>W(V^\flat)</m> and its quotient <m>V</m>.
-          Choose <m>\varpi \in V</m> as per <xref ref="lem-refract-properties"/>. 
-        </p>
-        <p>
-          We need to show that given any two nonzero elements <m>x,y \in V</m>, one is a multiple of the other.
-          By dividing by powers of <m>\varpi</m> as needed, we may reduce to the case where <m>x</m> and <m>y</m> have nonzero images in <m>V/\varpi</m> and hence in <m>V/p = V^\flat/d</m>.
-          Since <m>V^\flat</m> is a valuation ring, after possibly swapping terms we can write <m>x = yz + pu</m> for some <m>z,u \in V</m>.
-          Similarly, we can write <m>\varpi \equiv yw + pv</m> for some <m>w,v \in V</m>.
-          Since <m>V</m> is classically <m>\varpi</m>-complete, <m>1 - (p/\varpi)v</m> is a unit in <m>V</m>; hence <m>\varpi</m> is divisible by <m>y</m>, as then is <m>p</m>.
-          Consequently, <m>x = yz + pu</m> is also divisible by <m>y</m>, as desired.
-        </p>
-      </proof>
-    </lemma>
-    <lemma xml:id="lem-valuation-ring-tilt-value-group">
-      <statement>
-        <p>
-          Let <m>V</m> be a lens which is a valuation ring.
-          Then <m>V</m> and <m>V^\flat</m> have residue fields isomorphic to each other (and to that of <m>W(V^\flat)</m>)
-          and <m>\sharp: V^\flat \to V</m> induces an isomorphism between the value groups of <m>V</m> and <m>V^\flat</m>.
-          In particular, <m>V</m> is eudoxian if and only if <m>V'</m> is.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          From the proof of <xref ref="lem-valuation-ring-lens"/>, we see that <m>\sharp</m> induces an injective map from the value group of <m>V^\flat</m> to that of <m>V</m>.
-          To prove surjectivity, we must check that every element <m>x</m> of <m>V</m> has an associate in the image of <m>V^\flat</m>.
-          As in the proof of <xref ref="lem-valuation-ring-lens"/>, we may prove this by first dividing by a suitable power of <m>\varpi</m> to ensure that <m>x \not\equiv 0 \pmod{\varpi}</m>,
-          then showing that in this case <m>x</m> is an associate of <m>[\overline{x}]</m> where <m>\overline{x} \in V/p</m> is the image of <m>x</m>. 
-        </p>
-      </proof>
-    </lemma>
-    <lemma xml:id="lem-aic-tilt">
-      <statement>
-        <p>
-          Let <m>V</m> be a lens. If <m>V</m> is an AIC valuation ring, then so is <m>V^\flat</m>.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          By <xref ref="lem-valuation-ring-lens"/>, <m>V</m> is a valuation ring if and only if <m>V^\flat</m> is; it thus remains to show that if <m>V^\flat</m> is not AIC,
-          then neither is <m>V</m>. We may assume that <m>V</m> has characteristic 0, as otherwise there is nothing to check.
-        </p>
-        <p>
-          Let <m>R</m> be the integral closure of <m>V^\flat</m> in a nontrivial finite Galois extension of its fraction field with Galois group <m>G</m>.
-          By <xref ref="thm-untilting-functor"/>, <m>V' = V \otimes_{W(V^\flat)} W(R)</m> is a lens with <m>V^{\prime \flat} \cong R</m> and, by <xref ref="lem-valuation-ring-lens"/>, again a valuation ring.
-        </p>
-        <p>
-          By construction, <m>G</m> acts on <m>V^{\prime \flat}</m> with fixed subring <m>V</m>. By functoriality, <m>G</m> also acts on <m>V'</m>; since <m>V'</m> is of characteristic <m>0</m>,          we can
-          we can see by averaging over the group action that the fixed subring <m>V'^{G}</m> is equal to <m>V</m>.
-        </p>
-        <p>
-          By the Artin and Dedekind lemmas in Galois theory, we see that <m>\Frac V'</m> is a finite Galois extension of <m>\Frac V</m> of degree <m>\#G \gt 1</m>. This proves
-          that <m>V</m> is not AIC.
-        </p>
-      </proof>
-    </lemma>
-    <remark>
-      <p>
-        The tilting correspondence for perfectoid fields (<xref ref="thm-field-of-norms"/>) implies the converse of <xref ref="lem-aic-tilt"/>:
-        if <m>V</m> is a lens and <m>V^\flat</m> is an AIC valuation ring, then so is <m>V</m>. We will recover this later as a corollary of the étale comparison theorem
-        (<xref ref="prop-aic-tilt"/>).
-      </p>
-    </remark>
-  </subsection>
-  <subsection xml:id="sec-arc-descent-for-lenses">
-    <title>Arc-descent for lenses</title>
-    <p>
-      Using the previous discussion of lenses and valuation rings, we establish a variation of arc-descent for lenses. This requires a slightly modified
-      notion of coverings.
-    </p>
-    <definition>
-      <p>
-        Let <m>f: A \to B</m> be a morphism of derived <m>p</m>-complete rings. We say that <m>f</m> is an <term>arc<m>_p</m>-covering</term> if 
-        the completion property from <xref ref="fig-arc-covering"/> (with <m>X = \Spec A</m>, <m>Y = \Spec B</m>) holds whenever the valuation ring <m>V</m>
-        is <m>p</m>-complete (and eudoxian). Note that we can then take <m>W</m> to also be <m>p</m>-complete (and eudoxian).
-      </p>
-    </definition>
-    <remark xml:id="rmk-arc-descent-criterion">
-      <p>
-        A sufficient (but not necessary) condition for a morphism <m>f: A \to B</m> to be an arc<m>_p</m>-covering is the following: for every 
-        <m>p</m>-complete AIC eudoxian valuation ring <m>V</m>, the map
-        <me>\Hom_{\Ring}(A, V) \to \Hom_{\Ring}(B, V)</me> is a bijection.
-      </p>
-    </remark>
-    <lemma xml:id="lem-arc-p-covering-lift">
-      <statement>
-        <p>
-          Let <m>R \to S</m> be an arc<m>_p</m>-covering of lenses. Write <m>R</m> as the slice of a perfect prism <m>(A,I)</m> with <m>I = (d)</m> (<xref ref="lem-perfect-prisms-structure"/>).
-          Then 
-          <me>
-            R^\flat \to R^\flat[d^{-1}] \oplus S^\flat
-          </me>
-          is an arc-covering.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          Let <m>R^\flat \to V</m> be a map to a eudoxian valuation ring, which we may assume is perfect. If <m>d</m> maps to a unit in <m>V</m>, then the map extends to
-          <m>R^\flat[d^{-1}]</m>. Otherwise, we may replace <m>V</m> with its <m>d</m>-adic completion; by <xref ref="thm-untilting-functor"/>, the map <m>R^\flat \to V</m> corresponds to a map
-          <m>R \to V^\sharp = A \otimes_R W(V)</m> whose target is a lens and (by <xref ref="lem-valuation-ring-lens"/>) a <m>p</m>-complete eudoxian valuation ring. Since <m>R \to S</m> is an arc-covering, we get an extension to a map
-          <m>S \to V'</m> for some eudoxian valuation ring <m>V'</m> containing <m>V^\sharp</m>, which we may take to be <m>p</m>-complete and AIC and hence a lens (<xref ref="lem-aic-p-complete-lens"/>). Then
-          <m>S^\flat \to V^{\prime \flat}</m> gives the desired extension.
-          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 8.9.)
-        </p>
-      </proof>
-    </lemma>
-    <theorem xml:id="thm-arc-descent-lens">
-      <statement>
-        <p>
-          Let <m>R \to S</m> be an arc<m>_p</m>-covering of lenses. Then the augmented Čech-Alexander complex
-          <me>
-            0 \to R \to S \to S \widehat{\otimes}_R S \to \cdots
-          </me>
-          is acyclic.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          Write <m>R</m> as the slice of a perfect prism <m>(A,I)</m>. By applying <xref ref="thm-arc-descent-perfect"/> to the arc-covering from 
-          <xref ref="lem-arc-p-covering-lift"/>, then taking derived <m>d</m>-completions (which kills all terms involving <m>R^\flat[d^{-1}]</m>), we deduce the stated result.
-          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 8.9.)
         </p>
       </proof>
     </theorem>

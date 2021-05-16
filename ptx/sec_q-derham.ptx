@@ -28,7 +28,7 @@
     </definition>
     <definition>
       <p>
-        The <term>basic hypergeometric series</term> (or <term><m>q</m>-hypergeometric series)</term>
+        For parameters <m>\alpha_1,\dots,\alpha_m, \beta_1,\dots,\beta_n</m>, the <term>basic hypergeometric series</term> (or <term><m>q</m>-hypergeometric series)</term>
         <me>
           {}_m\phi_n(\alpha_1,\dots,\alpha_m; \beta_1,\dots,\beta_n; z) = \sum_{k=0}^\infty \frac{(\alpha_1; q)_k \cdots (\alpha_m; q)_k}{(\beta_1; q)_k \cdots (\beta_n; q)_k (q; q)_k} 
           \left( (-1)^k q^{k(k-1)/2} \right)^{1+n-m} z^k
@@ -137,7 +137,7 @@
         (and so <m>\psi^i(q) = q^i</m> for all <m>i \gt 0</m>). Define
         <md>
           <mrow>[n]_q &amp;= \frac{q^n-1}{q-1} \in \ZZ[q]</mrow>
-          <mrow>[n]_q! &amp; [1]_q \cdots [n]_q.</mrow>
+          <mrow>[n]_q! &amp;= [1]_q \cdots [n]_q.</mrow>
         </md>
       </p>
     </definition>
@@ -145,7 +145,7 @@
       <p>
         For <m>R \in \Ring</m>, define the <term>framed <m>q</m>-de Rham complex</term> associated to <m>R[x]</m> as 
         <me>
-          q-\Omega^\bullet_{R[x]/R,\square} = \left( R[x]\llbracket q-1 \rrbracket \stackrel{\nabla_q}{\to} R[x]\llbracket q-1 \rrbracket \,dx \right)
+          q\Omega^\bullet_{R[x]/R,\square} = \left( R[x]\llbracket q-1 \rrbracket \stackrel{\nabla_q}{\to} R[x]\llbracket q-1 \rrbracket \,dx \right)
         </me>
         where <m>\nabla_q</m> denotes the <m>q</m>-differential
         <me>
@@ -156,28 +156,28 @@
       <p>
         We similarly define
         <me>
-          q-\Omega^\bullet_{R[x_1,\dots,x_n],\square} = q-\Omega^\bullet_{R[x_1]/R} \otimes_{R\llbracket q-1 \rrbracket} \cdots \otimes_{R \llbracket q-1 \rrbracket} q-\Omega^\bullet_{R[x_d]/R}.
+          q\Omega^\bullet_{R[x_1,\dots,x_n],\square} = q-\Omega^\bullet_{R[x_1]/R} \otimes_{R\llbracket q-1 \rrbracket} \cdots \otimes_{R \llbracket q-1 \rrbracket} q\Omega^\bullet_{R[x_d]/R}.
         </me>
         There is an evident isomorphism
         <me>
-          q-\Omega^\bullet_{R[x_1,\dots,x_n],\square}/(q-1) \cong \Omega^\bullet_{R[x_1,\dots,x_n]/R}.
+          q\Omega^\bullet_{R[x_1,\dots,x_n],\square}/(q-1) \cong \Omega^\bullet_{R[x_1,\dots,x_n]/R}.
         </me>
       </p>
     </definition>
     <remark>
       <p>
-        For <m>R \in \Ring_{\QQ}</m>, we can identify <m>q-\Omega^\bullet_{R[x]/R,\square}</m> with the usual de Rham complex by a Taylor series construction.
+        For <m>R \in \Ring_{\QQ}</m>, we can identify <m>q\Omega^\bullet_{R[x]/R,\square}</m> with the usual de Rham complex by a Taylor series construction.
         (Compare <xref ref="bib-Scholze-q"/>, Lemma 4.1.)
       </p>
     </remark>
     <definition>
       <p>
         To promote <m>q-\Omega^\bullet_{R[x_1,\dots,x_n]/R,\square}</m> to a <m>\ZZ \llbracket q-1 \rrbracket</m>-dga, we must account for the asymmetry in the product rule 
-        <xref ref="eq-q-product-rule"/>. To this end, we equip <m>q-\Omega^1_{R[x_1,\dots,x_n]/R,\square}</m> with the <m>q-\Omega^0_{R[x_1,\dots,x_n]/R,\square}</m>-bimodule structure
+        <xref ref="eq-q-product-rule"/>. To this end, we equip <m>q\Omega^1_{R[x_1,\dots,x_n]/R,\square}</m> with a <m>q\Omega^0_{R[x_1,\dots,x_n]/R,\square}</m>-bimodule structure
         using the standard action on the left and the action on the right via <m>f(x) \mapsto f(qx)</m>.
       </p>
       <p>
-        With this, we may view <m>q-\Omega^\bullet_{R[x_1,\dots,x_n]/R,\square}</m> as a <m>\ZZ \llbracket q-1 \rrbracket</m>-dga; however, the asymmetry we just introduced means
+        With this, we may view <m>q\Omega^\bullet_{R[x_1,\dots,x_n]/R,\square}</m> as a <m>\ZZ \llbracket q-1 \rrbracket</m>-dga; however, the asymmetry we just introduced means
         that this dga is not commutative.
       </p>
     </definition>
@@ -190,16 +190,24 @@
         <image width="75%">
           <latex-image>
             \xymatrix{
-              R\llbracket q-1 \rrbracket[x] \ar^{\nabla_q}[r] \ar^{x \mapsto x+1}[d] &amp; R\llbracket q-1 \rrbracket[x]\,dx \ar@{-->}[d] \\
+              R\llbracket q-1 \rrbracket[x] \ar^{\nabla_q}[r] \ar^{x \mapsto x+1}[d] &amp; R\llbracket q-1 \rrbracket[x]\,dx \ar@{-->}^f[d] \\
               R\llbracket q-1 \rrbracket[x] \ar^{\nabla_q}[r] &amp; R\llbracket q-1 \rrbracket[x]\,dx \\
             }
           </latex-image>
         </image>
       </figure>
+      <p>
+        To specify a vertical map <m>f</m> making the diagram commute, we must ensure that
+        <me>
+          f([n]_q x^{n-1}) = \sum_{i=1}^n \binom{n}{i} [i]_q x^{i-1};
+        </me>
+        that is, we must set
+        <me>
+          f(x^{n-1}) = \sum_{i=1}^n \binom{n}{i} \frac{[i]_q}{[n]_q} x^{i-1} = \sum_{i=1}^n \binom{n-1}{i-1} \frac{[i]_q}{i} \frac{n}{[n]_q} x^{i-1}.
+        </me>
+        However, this does not give results in <m>R \llbracket q-1 \rrbracket</m> unless <m>R</m> is a <m>\QQ</m>-algebra.
+      </p>
     </remark>
-  </subsection>
-  <subsection>
-    <title>Cyclotomic prisms</title>
   </subsection>
   <exercises>
     <exercise>
