@@ -1,5 +1,5 @@
 ﻿<section xml:id="sec_q-deRham">
-  <title><m>q</m>-de Rham cohomology (unstable)</title>
+  <title><m>q</m>-de Rham cohomology</title>
   <introduction>
     <paragraphs>
       <title>Reference</title>
@@ -35,7 +35,7 @@
         </me>
         where <m>(x; q)_k</m> denotes the <term><m>q</m>-Pochhammer symbol</term>
         <me>
-          <m>(x; q)_k = \prod_{i=0}^{k-1} (1 - x q^k)</m>.
+          (x; q)_k = \prod_{i=0}^{k-1} (1 - x q^k).
         </me>
         Note that the term <m>(q; q)_k</m> corresponds (up to signs and factors of <m>q</m>) to the factor <m>k!</m> in the ordinary hypergeometric series.
         For the Gaussian case (i.e., <m>m=2, n=1</m>) this was first introduced by Heine <xref ref="bib-Heine"/> in 1846.
@@ -70,16 +70,22 @@
             One is thus led to treat Weyl groups as <q>algebraic groups over the field with one element</q>.
           </p>
         </li>
+        <li>
+          <p>
+            Going in the opposite direction, it is quite common in combinatorics to look for statements about finite sets that can be promoted to statements about 
+            finite-dimensional vector spaces. One recent development in this direction is the <m>q</m>-analogue of a <term>matroid</term> (<xref ref="bib-Jurrius-Pellikaan"/>).
+          </p>
+        </li>
       </ol>
     </remark>
     <remark>
       <p>
         Note that Heine uses the letter <m>q</m> as we do nowadays for the deformation parameter. However, this was presumably following the model of Jacobi, who used the letter <m>q</m> in the notation for
-        the <term>Jacobi theta function</term>. This comes from the usage where <m>q</m> represents the value <m>e^{2 \pi i\tau}</m> where <m>\tau</m> is a value in the upper half-plane, as in the theory of
+        the <term>Jacobi theta function</term>. This comes from the usage where <m>q</m> stands for the value <m>e^{2 \pi i\tau}</m> where <m>\tau</m> is a value in the upper half-plane, as in the theory of
         elliptic functions.
       </p>
       <p>
-        The point of all this is that <m>q</m> does not stand for <q>quantum</q>, as it was entrenched in the notation a full 50 years before the first inklings of quantum mechanics.
+        The point of all this is that <m>q</m> does not stand for <q>quantum</q>, as it was entrenched in the notation a full 50 years before the first inklings of quantum mechanics!
       </p>
     </remark>
   </subsection>
@@ -128,19 +134,6 @@
   </subsection>
   <subsection>
     <title>The <m>q</m>-de Rham complex of Aomoto</title>
-    <p>
-      We initially follow <xref ref="bib-Pridham"/>.
-    </p>
-    <definition>
-      <p>
-        We regard <m>\ZZ[q]</m> and <m>\ZZ \llbracket q-1 \rrbracket</m> as <m>\Lambda</m>-rings (<xref ref="def-lambda-ring"/>) with <m>q</m> constant; that is, <m>\lambda^i(q) = 0</m> for all <m>i \gt 0</m>
-        (and so <m>\psi^i(q) = q^i</m> for all <m>i \gt 0</m>). Define
-        <md>
-          <mrow>[n]_q &amp;= \frac{q^n-1}{q-1} \in \ZZ[q]</mrow>
-          <mrow>[n]_q! &amp;= [1]_q \cdots [n]_q.</mrow>
-        </md>
-      </p>
-    </definition>
     <definition>
       <p>
         For <m>R \in \Ring</m>, define the <term>framed <m>q</m>-de Rham complex</term> associated to <m>R[x]</m> as 
@@ -156,76 +149,72 @@
       <p>
         We similarly define
         <me>
-          q\Omega^\bullet_{R[x_1,\dots,x_n],\square} = q-\Omega^\bullet_{R[x_1]/R} \otimes_{R\llbracket q-1 \rrbracket} \cdots \otimes_{R \llbracket q-1 \rrbracket} q\Omega^\bullet_{R[x_d]/R}.
+          q\Omega^\bullet_{R[x_1,\dots,x_r],\square} = q\Omega^\bullet_{R[x_1]/R} \otimes_{R\llbracket q-1 \rrbracket} \cdots \otimes_{R \llbracket q-1 \rrbracket} q\Omega^\bullet_{R[x_r]/R}.
         </me>
         There is an evident isomorphism
         <me>
-          q\Omega^\bullet_{R[x_1,\dots,x_n],\square}/(q-1) \cong \Omega^\bullet_{R[x_1,\dots,x_n]/R}.
+          q\Omega^\bullet_{R[x_1,\dots,x_r],\square}/(q-1) \cong \Omega^\bullet_{R[x_1,\dots,x_r]/R}.
         </me>
       </p>
     </definition>
-    <remark>
+    <remark xml:id="rmk-q-Taylor-series">
       <p>
-        For <m>R \in \Ring_{\QQ}</m>, we can identify <m>q\Omega^\bullet_{R[x]/R,\square}</m> with the usual de Rham complex by a Taylor series construction.
+        For <m>R \in \Ring_{\QQ}</m>, we can identify <m>q\Omega^\bullet_{R[x_1,\dots,x_r]/R,\square}</m> with the usual de Rham complex by a Taylor series construction.
+        In particular, in this case the construction is independent of the choice of coordinates.
         (Compare <xref ref="bib-Scholze-q"/>, Lemma 4.1.)
       </p>
     </remark>
     <definition>
       <p>
-        To promote <m>q-\Omega^\bullet_{R[x_1,\dots,x_n]/R,\square}</m> to a <m>\ZZ \llbracket q-1 \rrbracket</m>-dga, we must account for the asymmetry in the product rule 
-        <xref ref="eq-q-product-rule"/>. To this end, we equip <m>q\Omega^1_{R[x_1,\dots,x_n]/R,\square}</m> with a <m>q\Omega^0_{R[x_1,\dots,x_n]/R,\square}</m>-bimodule structure
+        To promote <m>q\Omega^\bullet_{R[x_1,\dots,x_r]/R,\square}</m> to a <m>\ZZ \llbracket q-1 \rrbracket</m>-dga, we must account for the asymmetry in the product rule 
+        <xref ref="eq-q-product-rule"/>. To this end, we equip <m>q\Omega^1_{R[x_1,\dots,x_r]/R,\square}</m> with a <m>q\Omega^0_{R[x_1,\dots,x_r]/R,\square}</m>-bimodule structure
         using the standard action on the left and the action on the right via <m>f(x) \mapsto f(qx)</m>.
       </p>
       <p>
-        With this, we may view <m>q\Omega^\bullet_{R[x_1,\dots,x_n]/R,\square}</m> as a <m>\ZZ \llbracket q-1 \rrbracket</m>-dga; however, the asymmetry we just introduced means
+        With this, we may view <m>q\Omega^\bullet_{R[x_1,\dots,x_r]/R,\square}</m> as a <m>\ZZ \llbracket q-1 \rrbracket</m>-dga; however, the asymmetry we just introduced means
         that this dga is not commutative.
       </p>
     </definition>
     <remark xml:id="rmk-q-change-of-coordinates">
       <p>
-        As an instance of the fact that the construction of <m>q \Omega^\bullet_{R[x]/R,\square}</m> really does depend on the choice of coordinates, let us consider the automorphism
-        <m>x \mapsto x+1</m> on <m>R[x]</m> and try to extend it as in <xref ref="fig-q-change-of-coordinates"/>.
+        We wish to emphasize that by contrast with the ordinary de Rham complex, the definition of the <m>q</m>-de Rham complex exhibits a genuine dependence on the choice of coordinates
+        (so in particular it is not functorial enough to admit a left Kan extension).
+        For example, there is no way to promote the automorphism <m>x \mapsto x+1</m> on <m>R[x]</m> to an <m>R\llbracket q-1 \rrbracket</m>-linear morphism of complexes as illustrated in <xref ref="fig-q-change-of-coordinates"/>.
       </p>
       <figure xml:id="fig-q-change-of-coordinates">
         <image width="75%">
           <latex-image>
             \xymatrix{
-              R\llbracket q-1 \rrbracket[x] \ar^{\nabla_q}[r] \ar^{x \mapsto x+1}[d] &amp; R\llbracket q-1 \rrbracket[x]\,dx \ar@{-->}^f[d] \\
+              R\llbracket q-1 \rrbracket[x] \ar^{\nabla_q}[r] \ar^{x \mapsto x+1}[d] &amp; R\llbracket q-1 \rrbracket[x]\,dx \ar@{-->}^{??}[d] \\
               R\llbracket q-1 \rrbracket[x] \ar^{\nabla_q}[r] &amp; R\llbracket q-1 \rrbracket[x]\,dx \\
             }
           </latex-image>
         </image>
       </figure>
       <p>
-        To specify a vertical map <m>f</m> making the diagram commute, we must ensure that
+        Namely, such a map would have to send <m>x^{n-1}</m> to
         <me>
-          f([n]_q x^{n-1}) = \sum_{i=1}^n \binom{n}{i} [i]_q x^{i-1};
+          \sum_{i=1}^n \binom{n}{i} \frac{[i]_q}{[n]_q} x^{i-1} = \sum_{i=1}^n \binom{n-1}{i-1} \frac{[i]_q}{i} \frac{n}{[n]_q} x^{i-1},
         </me>
-        that is, we must set
+        but the coefficients in the latter expression are not necessarily contained in <m>R \llbracket q-1 \rrbracket</m> unless <m>R</m> is a <m>\QQ</m>-algebra.
+      </p>
+      <p>
+        However, we can instead hope to prove that <m>q \Omega^\bullet_{R[x_1,\dots,x_r]/R,\square}</m> is indeed functorial in <m>R[x_1,\dots,x_r]</m>
+        as an object (and even a commutative algebra object) in <m>D(R \llbracket q-1 \rrbracket)</m>; this was conjectured by Scholze in <xref ref="bib-Scholze-q"/>.
+        To make this more explicit in the previous example, consider the isomorphisms
         <me>
-          f(x^{n-1}) = \sum_{i=1}^n \binom{n}{i} \frac{[i]_q}{[n]_q} x^{i-1} = \sum_{i=1}^n \binom{n-1}{i-1} \frac{[i]_q}{i} \frac{n}{[n]_q} x^{i-1}.
+          R[x,y]/(x+y-1) \to R[x], \qquad R[x,y]/(x+y-1) \to R[y];
         </me>
-        However, this does not give results in <m>R \llbracket q-1 \rrbracket</m> unless <m>R</m> is a <m>\QQ</m>-algebra.
+        the claim then is that the map
+        <me>
+          q \Omega^\bullet_{R[x,y]/R,\square} \to q \Omega^\bullet_{R[y]/R,\square}
+        </me>
+        becomes a quasi-isomorphism once we take the universal quotient that kills <m>x-y+1</m> in degree <m>0</m> (and similarly with the variables reversed).
+      </p>
+      <p>
+        Using <xref ref="rmk-q-Taylor-series"/>, one can reduce the claim to the corresponding statement after derived <m>p</m>-completion.
+        In this case, one can provide a coordinate-free interpretation of <m>q</m>-de Rham cohomology using prismatic cohomology; see <xref ref="thm-q-prismatic-to-crystalline"/>.
       </p>
     </remark>
   </subsection>
-  <exercises>
-    <exercise>
-      <statement>
-        <p>
-          View <m>\ZZ[x,y,q]</m> as a <m>\Lambda</m>-ring in such a way that <m>x,y,q</m> are all constant. Show that in the <m>\Lambda</m>-localization
-          <m>\ZZ_q[x,y,q]\{(q-1)^{-1}\}</m>, we have
-          <md>
-            <mrow>\lambda^k \left( \frac{y-x}{q-1} \right) &amp;= \frac{(y-x)(y-qx)\cdots(y-q^{k-1}x)}{(q-1)^k [k]_q!}</mrow>
-            <mrow>&amp;= \sum_{j=0}^k \frac{q^{j(j-1)/2} (-x)^j y^{k-j}}{[j]_q! [k-j]_q!}.</mrow>
-          </md>
-        </p>
-      </statement>
-      <hint>
-        <p>
-          Observe that it is enough to check the claim for <m>y = q^n x</m>. For omre details, see <xref ref="bib-Pridham"/>, Lemma 1.3.
-        </p>
-      </hint>
-    </exercise>
-  </exercises>
 </section>

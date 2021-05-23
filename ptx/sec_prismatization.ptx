@@ -1,15 +1,21 @@
 ﻿<section xml:id="sec_prismatization">
-  <title>Prismatization (unstable)</title>
+  <title>Further developments (unstable)</title>
   <introduction>
     <paragraphs>
       <title>Reference</title>
       <p>
-        <xref ref="bib-Drinfeld-prismatization"/>.
+        See the various sections below.
       </p>
     </paragraphs>
     <p>
-      In this section (still under construction!), we give a brief overview of an alternate approach to the construction of the prismatic topos via <term>prismatization</term>.
-      This was introduced by Bhatt and Lurie in an as-yet-unreleased preprint; we follow the treatment of Drinfeld cited above.
+      In this section, we survey some further developments
+       which provide <term>coefficient objects</term> for prismatic cohomology.
+      One approach to this is <term>prismatization</term>, introduced by Bhatt and Lurie in an as-yet-unreleased preprint; we follow the treatment of Drinfeld cited above.
+      Another approach involves the <term>Cartier-Witt stack</term>.
     </p>
   </introduction>
+  <subsection>
+    <title>Prismatization</title>
+      See <xref ref="bib-Drinfeld-prismatization"/>.
+  </subsection>
 </section>

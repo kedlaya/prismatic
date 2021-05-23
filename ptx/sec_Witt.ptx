@@ -378,14 +378,14 @@
     <p>
       The following examples show that the relationship between the perfection and coperfection can be a bit subtle.
     </p>
-    <example>
+    <example xml:id="exa-perfection-coperfection1">
       <p>
         For <m>A = \FF_p[x]</m>, the coperfection equals <m>\FF_p[x^{p^{-\infty}}]</m> while the perfection equals <m>\FF_p</m>.
       </p>
     </example>
-    <example>
+    <example xml:id="exa-perfection-coperfection2">
       <p>
-        For <m>A = \FF_p[x^{p^{-\infty}}]/(x)</m>, the coperfection equals <m>\FF_p[x^{p^{-\infty}}]</m> while the perfection equals 
+        For <m>A = \FF_p[x^{p^{-\infty}}]/(x)</m>, the coperfection equals <m>\FF_p</m> while the perfection equals 
         the <m>x</m>-adic completion of <m>\FF_p[x^{p^{-\infty}}]</m>. 
       </p>
     </example>

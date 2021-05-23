@@ -226,10 +226,10 @@
       <statement>
         <p>
           For any distinguished triangle <m>(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)</m>, the sequence
-          <me>
+          <men xml:id="eq-homological-functor">
             \cdots \to H^i(A^\bullet) \stackrel{\alpha}{\to} H^i(B^\bullet) \stackrel{\beta}{\to} H^i(C^\bullet) \stackrel{\delta}{\to} H^{i+1}(A^\bullet) \to \cdots
-          </me>
-          is exact. That is, <m>H^0</m> is a <term>homological functor</term>.
+          </men>
+          is exact. That is, <m>H^0</m> is a <term>homological functor</term>. (This will admit a converse in the derived category; see <xref ref="cor-distinguished-triangle-by-cohomology"/>.)
         </p>
       </statement>
       <proof>
@@ -444,7 +444,27 @@
         set-theoretic issues (see <xref ref="rmk-derived-category-ring"/>) we can still define <m>D^*(\calA)</m> for <m>* \in \{\emptyset, -, +, b\}</m>;
         we denote this also by <m>D^*(A)</m>.
       </p>
+      <p>
+        As in the homotopy category, we say that a triangle in <m>D(\calA)</m> is <term>distinguished</term> if it is isomorphic to the triangle associated to some mapping cone.
+      </p>
     </definition>
+    <p>
+      We now recover the promised converse to <xref ref="lem-homological-functor"/>.
+    </p>
+    <corollary xml:id="cor-distinguished-triangle-by-cohomology">
+      <statement>
+        <p>
+          A triangle <m>(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)</m> in <m>D(\calA)</m> is distinguished if and only if <xref ref="eq-homological-functor"/> is exact.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The <q>only if</q> direction is <xref ref="lem-homological-functor"/>. For the <q>if</q> direction, apply <xref ref="cor-mapping-cone-universal-property"/>
+          to the morphisms <m>\alpha, \beta</m> to factor <m>\beta</m> through a morphism <m>C^\bullet \to \Cone(\alpha)</m>,
+          which by hypothesis is a quasi-isomorphism. 
+        </p>
+      </proof>
+    </corollary>
     <remark xml:id="rmk-derived-category-ring">
       <p>
         To work around the fact that the derived category construction requires a small abelian category as input, one can view the full category <m>\Mod_A</m>

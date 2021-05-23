@@ -241,8 +241,8 @@
             </li>
             <li>
               <p>
-                The inclusion functor from derived <m>I</m>-complete <m>A</m>-modules to <m>A</m>-modules admits a left adjoint <m>M \mapsto \widehat{M}</m>, called
-                <term>derived <m>I</m>-completion</term>.
+                The inclusion functor from derived <m>I</m>-complete <m>A</m>-modules to <m>A</m>-modules admits a left adjoint <m>M \mapsto \widehat{M}</m>,
+                called <term>derived <m>I</m>-completion</term>. (We will often write <m>M^\wedge_I</m> for the derived <m>I</m>-completion so that we can specify the ideal <m>I</m> in the notation.)
               </p>
             </li>
             <li>
@@ -792,6 +792,20 @@
           First use <xref ref="exer-pic-reduction"/> to argue that <m>\Pic(A) \to \Pic(A/p)</m> is an isomorphism.
           Then show that <m>\phi</m> induces the <m>p</m>-power map on <m>\Pic(A/p)</m>, and apply <xref ref="lem-prism-ideal-generator"/> to conclude.
           See also <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.6.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>A \in \Ring</m> be noetherian and let <m>I</m> be an ideal of <m>A</m>.
+          Suppose that <m>M \in D(R)</m> is <m>I</m>-completely flat. Then the derived <m>I</m>-completion of <m>M</m> is concentrated in degree <m>0</m>,
+          where it is a flat <m>A</m>-module.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          See <xref ref="bib-Bhatt-AIC"/>, Lemma 5.15.
         </p>
       </hint>
     </exercise>

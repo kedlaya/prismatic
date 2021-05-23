@@ -420,6 +420,16 @@
         in the language of <m>\infty</m>-categories, but never mind.)
       </p>
     </remark>
+    <remark>
+      <p>
+        In what follows we will frequently use the following construction without explicit comment.
+        Let <m>G': \calC_1 \to \calC_3</m> be another functor admitting a left Kan extension <m>(L': \calC_2 \to \calC_3, \alpha: G' \to L' \circ F)</m>,
+        and suppose that <m>\gamma: G \to G'</m> is a natural transformation.
+        Then we obtain a natural transformation <m>\alpha \circ \gamma: G \to L' \circ F</m> to which we may apply the universal property of the left Kan extension of <m>L</m>,
+        so as to obtain a natural transformation <m>\sigma: L \to L'</m>. That is, a natural transformation between two functors from <m>\calC_2</m> to <m>\calC_3</m>
+        can be uniquely specified by giving its restriction (along <m>F</m>) to <m>\calC_1</m>.
+      </p>
+    </remark>
   </subsection>
   <subsection xml:id="subsec-derived-infinity-category">
     <title>Under the hood: <m>\infty</m>-categories</title>

@@ -36,7 +36,7 @@
           <image width="50%">
             <latex-image>
               \xymatrix{
-                Y' \ar^{g'}[r] \ar^{f'}[d] &amp;YX \ar^{f}[d] \\
+                Y' \ar^{g'}[r] \ar^{f'}[d] &amp; Y \ar^{f}[d] \\
                 X' \ar^{g}[r] &amp; X
               }
             </latex-image>
@@ -60,7 +60,7 @@
             <mrow>R\Gamma(X, K) \to R\Gamma(X \times_{V} V_{\frakp}, K) \oplus R\Gamma(X \times_{V} V/\frakp, K) \to </mrow>
             <mrow>R\Gamma(X \times_{V} \kappa(V), K) \to </mrow>
           </md>
-          is distinguished in <m>D(\ZZ)</m>.
+          is distinguished in <m>D(\FF_p)</m>.
         </p>
       </statement>
       <proof>
@@ -87,7 +87,7 @@
               <me>
                 R\Gamma(X_{\perf}, \calF) \to R\Gamma(Y_{\perf}, \calF) \oplus R\Gamma(Z_{\perf}, \calF) \to R\Gamma(E_{\perf}, \calF) \to
               </me>
-              is distinguished in <m>D(\ZZ)</m> (and similarly with the Zariski topology replaced by the fppf topology).
+              is distinguished in <m>D(\FF_p)</m> (and similarly with the Zariski topology replaced by the fppf topology).
             </p>
           </li>
           <li>
@@ -117,7 +117,8 @@
           <me>
             \ker(H^i(Y, \calO) \to H^i(E_n, \calO)) \subseteq I^{n-c} H^i (Y,\calO).
           </me>
-          For <m>n \gg 0</m>, <m>I^{n-c}</m> annihilates <m>H^i(Y, \calO)</m> (because <m>i \gt 0</m>) and so 
+          Note that <m>H^i(Y, \calO)</m> is a finitely generated <m>A</m>-module which, since <m>f</m> is a blowup and <m>i \gt 0</m>, is supported entirely on <m>Z</m>.
+          Hence for <m>n \gg 0</m>, <m>I^{n-c}</m> annihilates <m>H^i(Y, \calO)</m>  and so 
           <men xml:id="eq-h-coverings-perfect1">
             H^i(Y, \calO) \hookrightarrow H^i(E_n, \calO) \qquad (n \gg 0).
           </men>
@@ -148,9 +149,10 @@
           For (2), we follow <xref ref="bib-Bhatt-Scholze-grassmannian"/>, Lemma 4.6.
           By the Beauville-Laszlo theorem (see <xref ref="rmk-beauville-laszlo"/>), we may assume that <m>A</m> is (classically) <m>I</m>-complete.
           We may also assume that we start with an object in <m>\Vect(Y) \times_{\Vect(E)} \Vect(Z)</m>.
-          By Serre vanishing, we may choose some <m>n</m> such that
+          Let <m>\calI</m> be the inverse image ideal sheaf of <m>I</m>; by the construction of the blowup, <m>\calI</m> is an <em>ample</em> invertible sheaf on <m>Y</m>.
+          Consequently, by Serre vanishing, we may choose some <m>n</m> such that
           <men xml:id="eq-h-coverings-perfect3">
-            H^i(Y, I^k/I^{k+1}) = 0 \qquad (k \geq n).
+            H^i(Y, \calI^k/\calI^{k+1}) = 0 \qquad (k \geq n).
           </men>
           Since <m>X</m> is affine and complete along <m>Z</m>, <m>\Vect(X) \to \Vect(Z)</m> is an equivalence of categories (<xref ref="exer-vb-essentially-surjective"/>).
           We thus have objects <m>\calE \in \Vect(X)</m>, <m>\calF \in \Vect(Y)</m> and an isomorphism <m>\psi: f^* \calE|_E \cong \calF|_E</m>.
@@ -161,7 +163,7 @@
           can be promoted to an isomorphism <m>\psi_{m+1}: f^* \calE|_{(m+1)E} \cong \calF|_{(m+1)E}</m>:
           namely, the obstruction to lifting belongs to 
           <me>
-            H^1(Y, I^m/I^{m+1} \otimes \sheafHom(f^* \calE, \calF))
+            H^1(Y, \calI^m/\calI^{m+1} \otimes \sheafHom(f^* \calE, \calF))
           </me>
           which vanishes by <xref ref="eq-h-coverings-perfect3"/>. Since
           <me>
@@ -172,6 +174,16 @@
         </p>
       </proof>
     </lemma>
+    <remark>
+      <p>
+        Point (1) of <xref ref="lem-h-coverings-perfect"/> can also be formulated as follows: for <m>j: Z \to X</m> the inclusion and <m>g: E \to X</m> the induced map
+        (and reusing the names <m>f,g,j</m> for the images of these maps under the perfection functor), we have a distinguished triangle
+          <me>
+            \calF \to Rf_* f^* \calF \oplus Rj_* j^* \calF \to Rg_* g^* \calF \to
+          </me>
+          in the derived category of coherent sheaves on <m>X_{\perf}</m>.
+      </p>
+    </remark>
     <theorem xml:id="lem-v-descent-perfect">
       <statement>
         <ol>
@@ -370,8 +382,8 @@
     <remark>
       <p>
         In <xref ref="lem-glueing"/>, the hypothesis that <m>R \to R_1</m> and <m>R_2 \to R_{12}</m> are localizations at the same multiplicative subset is only needed
-        to ensure that <m>M \otimes_R R_1 \to M_1</m> is surjective. In some cases one can run the same argument with a different condition.
-        See for example <xref ref="bib-Kedlaya-Liu"/>, Theorem 2.7.7 for an application to vector bundles on adic spaces.
+        to ensure that <m>M \otimes_R R_1 \to M_1</m> is surjective. In some cases one can run the same argument with a different condition;
+        see for example <xref ref="bib-Kedlaya-Liu"/>, Theorem 2.7.7 for an application to vector bundles on adic spaces.
       </p>
     </remark>
   </subsection>

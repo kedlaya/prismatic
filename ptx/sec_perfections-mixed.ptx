@@ -47,6 +47,7 @@
         then <m>R</m> is regular if and only if it is a smooth <m>k</m>-algebra; see <xref ref="bib-Stacks"/>, tag 00TQ.)
         Since flatness is preserved by colimits, we see that if <m>R</m> is a noetherian regular <m>\FF_p</m>-algebra, then <m>R \to R_{\perf}</m> is flat;
         the converse is also true (see <xref ref="exer-frob-flat"/>).
+        For an analogue in mixed characteristic, see <xref ref="rmk-kunz-mixed"/>.
       </p>
     </remark>
     <p>
@@ -489,6 +490,22 @@
         </p>
       </proof>
     </corollary>
+    <p>
+      We have the following analogue of <xref ref="exa-perfection-coperfection2"/>.
+    </p>
+    <example>
+      <p>
+        Let <m>R</m> be a lens and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}]^\wedge_{(p)}/(x)</m>.
+        Then the lens coperfection of <m>S</m> is <m>R</m> via the map dividing by the closure of the ideal <m>(x^{p^{-\infty}})</m>.
+      </p>
+    </example>
+    <example>
+      <p>
+        Let <m>R</m> be a <m>p</m>-torsion-free lens and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}, y^{p^{-\infty}}]/(x-y)</m>.
+        In this case, the lens coperfection of <m>S</m> contains the closure of the ideal <m>(x^{p^{-n}} - y^{p^{-n}}: n=0,1,\dots)</m> but is somewhat complicated to describe
+        more explicitly; a similar calculation appears in <xref ref="bib-Matignon-Reversat"/>.
+      </p>
+    </example>
     <remark>
       <p>
         In the theory of perfectoid spaces, the surjectivity assertion in <xref ref="cor-strongly-zariski-closed"/> corresponds to the fact there is no difference between

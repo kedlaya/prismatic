@@ -373,6 +373,31 @@
         </p>
       </hint>
     </exercise>
+    <exercise xml:id="exer-finite-presentation-perfect">
+      <statement>
+        <p>
+          Let <m>f: A \to B</m> be a morphism of finite presentation between perfect <m>\FF_p</m>-algebras. Show that <m>f</m> is étale.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Apply <xref ref="exer-cotangent-complex-perfect"/>.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-regular-semiperfect-is-perfect">
+      <statement>
+        <p>
+          Let <m>R</m> be a perfect <m>\FF_p</m>-algebra and let <m>x_1,\dots,x_r \in R</m> be a regular sequence. Prove that the regular semiperfect ring
+          <m>S = R/(x_1,\dots,x_r)</m> is perfect if and only if <m>S</m> is a direct factor of <m>R</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          By <xref ref="exer-finite-presentation-perfect"/>, the map <m>R \to S</m> is both étale and surjective, and hence a closed-open immersion.
+        </p>
+      </hint>
+    </exercise>
     <exercise xml:id="exer-cotangent-complex-lens">
       <statement>
         <p>

@@ -1,5 +1,9 @@
 ﻿<references>
   <title>Bibliography</title>
+  <biblio type="raw" xml:id="bib-Achinger">
+    P. Achinger, <articletitle>Wild ramification and <m>K(\pi, 1)</m> spaces</articletitle>, <journal>Inventiones Mathematicae</journal> <volume>210</volume> <year>2017</year>,
+    453<ndash/>499.
+  </biblio>
   <biblio type="raw" xml:id="bib-Almkvist">
     G. Almkvist, <articletitle>The Grothendieck ring of the category of endomorphisms</articletitle>, <journal>Journal of Algebra</journal> <volume>28</volume> <year>1974</year>, 375<ndash/>388.
   </biblio>
@@ -39,11 +43,17 @@
   <biblio type="raw" xml:id="bib-Bhatt-DSC">
     B. Bhatt, <articletitle>On the direct summand conjecture and its derived variant</articletitle>, <journal>Inventiones Mathematicae</journal>  <volume>212</volume> <year>2018</year>, 297<ndash/>317.
   </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-AIC">
+    B. Bhatt, <articletitle>Cohen-Macaulyness of absolute integral closures</articletitle>, <url href="https://arxiv.org/abs/2008.08070">arXiv:2008.08070v1</url> <year>2020</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-course">
     B. Bhatt, <articletitle>Geometric aspects of prismatic cohomology</articletitle>, <url href="http://www-personal.umich.edu/~bhattb/teaching/prismatic-columbia/">Eilenberg lectures at Columbia University (fall 2018)</url>.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-deJong">
     B. Bhatt and A.J. de Jong, <articletitle>Crystalline cohomology and de Rham cohomology</articletitle>, <url href="https://www.math.columbia.edu/~dejong/papers/crystalline-comparison.pdf"/>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-Iyengar-Ma">
+    B. Bhatt, S. Iyengar, and L. Ma, <articletitle>Regular rings and perfect(oid) algebras</articletitle>, <journal>Communications in Algebra</journal> <volume>47</volume> <year>2019</year>, 2367<ndash/>2383.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Mathew">
     B. Bhatt and A. Mathew, <articletitle>The arc-topology</articletitle>, <url href="https://arxiv.org/abs/1807.04725">arXiv:1807.04725v4</url> <year>2020</year>.
@@ -191,6 +201,9 @@
   <biblio type="raw" xml:id="bib-Joyal2">
     A. Joyal, <articletitle><m>\delta</m>-anneau et <m>\lambda</m>-anneaux, II</articletitle>, <journal>C.R. Math. Rep. Acad. Sci. Canada</journal> <volume>7</volume> <year>1985</year>, 227<ndash/>232.
   </biblio>
+  <biblio type="raw" xml:id="bib-Jurrius-Pellikaan">
+    R. Jurrius and R. Pellikaan, <articletitle>Defining the <m>q</m>-analogue of a matroid</articletitle>, <url href="https://arxiv.org/abs/1610.09250">arXiv:1610.09250v1</url> <year>2016</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Katz-Turrittin">
     N.M. Katz, <articletitle>Nilpotent connections and the monodromy theorem: applications of a result of Turrittin</articletitle>,
     <pubtitle>Publications Mathématiques de l’I.H.É.S</pubtitle> <volume>39</volume> <year>1970</year>, 175<ndash/>232.
@@ -238,6 +251,9 @@
   </biblio>
   <biblio type="raw" xml:id="bib-Mathew-SCR">
     A. Mathew, <articletitle>Simplicial commutative rings, I</articletitle>, <url href="http://math.uchicago.edu/~amathew/SCR.pdf"/>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Matignon-Reversat">
+    M. Matignon and M. Reversat, <articletitle>Sous-corps fermés d'un corps valué</articletitle>, <journal>Journal of Algebra</journal> <volume>90</volume> <year>1984</year>, 491<ndash/>515.
   </biblio>
   <biblio type="raw" xml:id="bib-Milne-Suh">
     J.S. Milne and J. Suh, <articletitle>Nonhomeomorphic conjugates of connected Shimura varieties</articletitle>, <journal>American Journal of Mathematics</journal> <volume>132</volume> <year>2010</year>, 731<ndash/>750.

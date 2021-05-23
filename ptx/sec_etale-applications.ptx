@@ -59,6 +59,21 @@
   </subsection>
   <subsection>
     <title>Torsion in étale and de Rham cohomology</title>
+    <lemma xml:id="lem-rank-matrix-over-valuation-ring">
+      <statement>
+        <p>
+          Let <m>V</m> be a valuation ring with fraction field <m>F</m> and residue field <m>k</m>.
+          Then for any matrix <m>A</m> over <m>V</m>, the rank of <m>A</m> as a matrix over <m>F</m> is greater than or equal to the rank of <m>A</m> as a matrix over <m>k</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>r</m> be the rank of <m>A</m> as a matrix over <m>k</m>. Then there exists an <m>r \times r</m> submatrix of <m>A</m>
+          whose determinant has nonzero image in <m>k</m>. This determinant also has nonzero image in <m>A</m>, and so the rank of <m>A</m> as a matrix over <m>F</m>
+          is at least <m>r</m>.
+        </p>
+      </proof>
+    </lemma>
     <lemma xml:id="lem-perfect-complex-semicontinuity">
       <title>Semicontinuity for perfect complexes</title>
       <statement>
@@ -71,9 +86,20 @@
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Stacks"/>, tag 0BDI.
+          We may assume that <m>K^\bullet</m> is represented by a bounded complex of finite free <m>V</m>-modules. Fix bases of these modules
+          and let <m>A, B</m> be the matrices representing the differentials in and out of degree <m>i</m> in these bases.
+          By <xref ref="lem-rank-matrix-over-valuation-ring"/>, the rank of <m>A</m> does not increase when passing from <m>F</m> to <m>k</m>,
+          and the corank of <m>B</m> does not decrease; combining these two points yields the desired inequality.
+          (Compare <xref ref="bib-Stacks"/>, tag 0BDI.)
         </p>
       </proof>
+    <remark>
+      <p>
+        A minimal example of strict inequality in <xref ref="lem-perfect-complex-semicontinuity"/> is a two-term complex <m>V \stackrel{\times x}{\to} V</m>
+        placed in degrees 0 and 1, where <m>x \in V</m> is a nonzero element of the maximal ideal: over <m>F</m> the cohomology vanishes, but over <m>k</m>
+        we have a nonzero <m>H^1</m>.
+      </p>
+    </remark>
     </lemma>
     <lemma xml:id="lem-phi-invariants">
       <statement>
@@ -175,7 +201,9 @@
     <definition>
       <p>
         For any scheme <m>X</m> and any positive integer <m>n</m>, 
-        let <m>\mu_n</m> be the sheaf on <m>X_{\et}</m> which is the kernel of the multiplication-by-<m>n</m> map on <m>\GG_{m,X}</m>.
+        let <m>\mu_n</m> be the sheaf on <m>X</m> for the flat topology
+         which is the kernel of the multiplication-by-<m>n</m> map on <m>\GG_{m,X}</m>.
+         (If <m>n</m> is invertible on <m>X</m>, we may use instead the étale topology.)
         Define the pro-sheaf
         <me>
           \ZZ_p(1) = \lim_m \mu_{p^m};
@@ -206,7 +234,7 @@
         <p>
           By arc<m>_p</m>-descent and <xref ref="exa-v-cover"/>,
           we may reduce to the case where <m>R</m> is a product of <m>p</m>-complete AIC valuation rings, and then to the case of a single such ring.
-          In this case, the map <m>\phi^{-1}(d) A \stackrel{\phi/d - 1} A</m> is surjective modulo <m>p</m> (by the AIC property)
+          In this case, the map <m>\phi^{-1}(d) A \stackrel{\phi/d - 1}{\to} A</m> is surjective modulo <m>p</m> (by the AIC property)
           and hence surjective by derived Nakayama (<xref ref="prop-derived-complete-abelian"/>).
         </p>
         <p>
@@ -275,6 +303,16 @@
           Prove <xref ref="lem-phi-invariants"/>.
         </p>
       </statement>
+      <proof>
+        <p>
+          First work out the case of a singleton complex. For this case, we can separately treat the cases where <m>\phi</m> acts by zero (where there is nothing to check)
+          and where <m>\phi</m> acts bijectively. In the latter case, represent the action of <m>\phi</m> on some basis by an <m>n \times n</m> matrix <m>A</m>. For <m>\bv</m> the column vector
+          whose entries are the generators <m>x_1,\dots,x_n</m> of the polynomial ring <m>A[x_1,\dots,x_n]</m>, the matrix equation <m>A \varphi(\bv) = \bv</m> defines
+          a finite etale (by the Jacobian extension) ring map <m>A \to B</m> of degree <m>p^n</m>, which splits completely because <m>k</m> is algebraically closed.
+          Use this splitting to generate <m>n</m> <m>\FF_p</m>-linearly independent elements of <m>M^{\phi=1}</m>. Finally, show that these are <m>k</m>-linearly independent
+          by emulating the proof of Dedekind's lemma in Galois theory.
+        </p>
+      </proof>
     </exercise>
     <exercise>
       <statement>

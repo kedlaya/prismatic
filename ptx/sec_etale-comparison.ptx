@@ -417,7 +417,7 @@
         <p>
           Using arc<m>_p</m>-descent and the Artin-Schreier-Witt exact sequence (<xref ref="prop-artin-schreier-witt"/>), 
           we obtain a map (from left to right in <xref ref="eq-etale-comparison"/>) of the desired form.
-          To check that it is an isomorphism, we may apply arc<m>p</m>-descent again: using a v-covering as in <xref ref="exa-v-cover"/>, we may reduce to a case where
+          To check that it is an isomorphism, we may apply arc<m>_p</m>-descent again: using a v-covering as in <xref ref="exa-v-cover"/>, we may reduce to a case where
           <m>R = \prod_i R_i</m> is a product of <m>p</m>-complete AIC valuation rings (and in particular a lens, by <xref ref="lem-aic-p-complete-lens"/>).
           Note that by <xref ref="prop-aic-tilt"/>, each ring <m>R_i^\flat</m> is an AIC valuation ring.
         </p>
@@ -426,7 +426,7 @@
           As for the right-hand side, we have <m>\Prism_{R/A,\perf} \cong W(R^\flat)</m> concentrated in degree <m>0</m> (<xref ref="exa-coperfection-lens"/>).
           By <xref ref="prop-artin-schreier-witt"/>, for each <m>i \in I</m>, <m>\phi-1</m> is surjective on <m>W(R_i^\flat[d^{-1}])/p^n</m> with kernel <m>\ZZ/p^n</m>. We thus have a canonical exact sequence
           <me>
-            0 \to (\ZZ/p^n)^I \to W(R^\flat)/p^n \stackrel{\phi-1} W(R^\flat)/p^n \to 0
+            0 \to (\ZZ/p^n)^I \to W(R^\flat[d^{-1}])/p^n \stackrel{\phi-1}{\to} W(R^\flat[d^{-1}])/p^n \to 0
           </me>
           which is exactly what we needed.
         </p>
@@ -434,11 +434,16 @@
     </theorem>
     <remark xml:id="rmk-etale-comparison-integral">
       <p>
-        As per <xref ref="bib-Bhatt-Scholze"/>, Remark 9.3, we point out that a similar method can be used to obtain a (somewhat less interesting) variant of <xref ref="thm-etale-comparison"/> 
-        without inverting <m>p</m> or <m>d</m>: there is a canonical identification of étale sheaves
-          <me>
-            \underline{\ZZ/p^n} \cong (\Prism_{R/A}/p^n)^{\phi=1}.
-          </me>
+        As per <xref ref="bib-Bhatt-Scholze"/>, Remark 9.3, we point out that a similar method can be used to obtain a variant of <xref ref="thm-etale-comparison"/> 
+        without inverting <m>p</m> or <m>d</m>: there is a canonical identification of étale sheaves on <m>\Spec \overline{A}</m>:
+        <me>
+            \underline{\ZZ/p^n} \cong (\Prism_{R/A}/p^n)^{\phi=1}
+        </me>
+        (so in particular the right-hand side is concentrated in degree <m>0</m>).
+        The corresponding exact sequence in the proof would be
+        <me>
+            0 \to (\ZZ/p^n)^I \to W(R^\flat)/p^n \stackrel{\phi-1}{\to} W(R^\flat)/p^n \to 0.
+        </me>
       </p>
     </remark>
   </subsection>

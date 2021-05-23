@@ -14,342 +14,6 @@
     </p>
   </introduction>
   <subsection>
-    <title>A bit of motivation</title>
-    <p>
-      We first explain the term <term>purity</term> in this context.
-    </p>
-    <theorem>
-      <title>Zariski-Nagata purity of the branch locus</title>
-      <statement>
-        <p>
-          Let <m>X \to \overline{X}</m> be an open immersion of noetherian schemes such that <m>\overline{X} \setminus X</m> has codimension at least <m>2</m> in <m>\overline{X}</m>.
-          Then every finite étale cover of <m>X</m> extends uniquely to a finite étale cover of <m>\overline{X}</m>.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          See <xref ref="bib-Stacks"/>, tag 0BMB.
-        </p>
-      </proof>
-    </theorem>
-    <p>
-      We next give an example where purity of the branch locus does not apply, but something <q>almost</q> as good is true.
-    </p>
-    <proposition xml:id="prop-perfectoid-trace">
-      <statement>
-        <p>
-          Let <m>L/K</m> be a finite extension of perfectoid fields (<xref ref="def-perfectoid-field"/>).
-          Let <m>\frako_K, \frako_L</m> be the valuation rings of <m>K,L</m> and let <m>\frakm_K, \frakm_L</m> be the maximal ideals of <m>\frako_K, \frako_L</m>.
-          Then <m>\Trace: L \to K</m> induces a surjection <m>\frakm_L \to \frakm_K</m>.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          Exercise (<xref ref="exer-perfectoid-trace"/>).
-        </p>
-      </proof>
-    </proposition>
-    <remark>
-      <p>
-        A closely related phenomenon is the fact that a ramified base change can <q>weaken</q> the ramification of a covering. A classical instance of this is Abhyankar's lemma,
-        which can be used to eliminate tame ramification; see <xref ref="bib-Stacks"/>, tag 0EXT.
-      </p>
-    </remark>
-  </subsection>
-  <subsection>
-    <title>A context for almost commutative algebra</title>
-    <p>
-      The premise of <term>almost commutative algebra</term> is that in certain situations, one would like to treat certain types of <q>small</q> modules over a ring as if they were actually zero.
-      For the theory of modules over a ring, this is relatively straightforward to achieve using the notion of the quotient by a thick subcategory.
-      However, we would also like to define <q>almost</q> variants of some ring-theoretic concepts,
-      and this is somewhat more involved; we give only the necessary details here, restricted to the minimal level of generality sufficient for our purposes. 
-      See <xref ref="bib-Gabber-Ramero"/> for a more comprehensive initial development.
-    </p>
-    <definition>
-      <p>
-        By a <term>context</term> (more precisely a <term>context for almost commutative algebra</term>), we will mean a pair consisting of a base ring <m>V</m> and an ideal <m>\frakm</m>
-        such that <m>\frakm^2 = \frakm</m>.
-      </p>
-    </definition>
-    <example>
-      <p>
-        The pair <m>(\ZZ, (1))</m> is a context for almost commutative algebra. We call this the <term>classical limit</term>, where we expect to recover concepts in
-        ordinary commutative algebra.
-      </p>
-    </example>
-    <example>
-      <p>
-        For <m>V</m> a valuation ring with maximal ideal <m>\frakm</m>, the pair <m>(V, \frakm)</m> is a context for almost commutative algebra. Since <m>\frakm</m> is a colimit of principal ideals,
-        the <m>V</m>-module <m>\frakm \otimes_V \frakm</m> is flat; while adding this restriction to the definition of a context is needed for a deeper treatment
-        (for instance, in <xref ref="bib-Gabber-Ramero"/> it is required starting from the end of Chapter 2), we will not need it here.
-      </p>
-    </example>
-    <definition>
-      <p>
-        Fix a context <m>(V, \frakm)</m> for almost commutative algebra. A <m>V</m>-module <m>M</m> is <term>almost zero</term> if <m>\frakm M = 0</m>.
-        It is straightforward to check that the subcategory of almost zero <m>V</m>-modules is a thick tensor ideal in <m>\Mod_V</m>. It thus makes sense to say that a morphism in <m>\Mod_V</m>
-        is an <term>almost isomorphism</term> (i.e., its kernel and cokernel are almost zero).
-      </p>
-    </definition>
-    <definition>
-      <p>
-        Fix a context <m>(V, \frakm)</m>. Choose <m>A \in \Ring_V</m> and <m>M \in \Mod_A</m>.
-        The <term>module of almost elements</term> of <m>M</m> is the object <m>M_* = \Hom_A(\frakm, M) \in \Mod_A</m>; the natural map <m>A = \Hom_A(A,M) \to M_*</m> is an almost isomorphism.
-      </p>
-      <p>
-        We say that <m>M</m> is <term>almost finitely generated</term> if for every finitely generated ideal <m>\frakm_0 \subseteq \frakm</m>, there is a finitely generated A-submodule <m>M_0 \subseteq M</m>
-        with <m>\frakm_0 M \subseteq M_0</m>.
-      </p>
-      <p>
-        We say that <m>M</m> is <term>almost projective</term> if the functor on <m>\Mod_A</m> given by <m>N \mapsto \Hom_A(M, N)_*</m> is exact.
-        We write <term>almost finite projective</term> as shorthand for <term>almost finitely generated and almost projective</term>.
-        (Compare <xref ref="bib-Gabber-Ramero"/>, Proposition 2.3.10, Definition 2.4.4.)
-      </p>
-    </definition>
-    <remark>
-      <p>
-        While it is true that any <m>A</m>-module which is almost isomorphic to a finitely generated <m>A</m>-module is almost finitely generated, the converse is not true.
-        Moreover, an almost projective module is not projective in the category of almost modules; see <xref ref="bib-Gabber-Ramero"/>, Example 2.4.5.
-      </p>
-    </remark>
-    <definition>
-      <p>
-        Fix a context <m>(V, \frakm)</m>. A morphism <m>A \to B</m> in <m>\Ring_V</m> is <term>almost finite étale</term>
-        if <m>B</m> is an almost finite projective <m>A</m>-module and also an almost finite projective <m>(B \otimes_A B)</m>-module via the multiplication map.
-        (Note that this does define a finite étale morphism in the classical limit, by <xref ref="bib-Stacks"/>, tag 0CKP.)
-      </p>
-    </definition>
-  </subsection>
-  <subsection>
-    <title>Almost commutative algebra for lenses</title>
-    <p>
-      It is convenient to make a slightly different set of definitions when working with modules over lenses.
-    </p>
-    <definition xml:id="def-lens-almost-zero-context">
-      <p>
-        For <m>J</m> an ideal of a lens <m>R</m>, <xref ref="cor-strongly-zariski-closed"/> implies that the natural map from <m>R</m> to the lens coperfection <m>(R/J)_{\lens}</m>
-        is surjective. Denote its kernel by <m>J_{\lens}</m>; this means that <m>R/J_{\lens} = (R/J)_{\lens}</m>, allowing us to omit some parentheses in what follows.
-      </p>
-      <p>
-        Let <m>M</m> be a derived <m>p</m>-complete <m>R</m>-module. We say that <m>M</m> is <term><m>J</m>-almost zero</term> if <m>J_{lens}M = 0</m>.
-        We say that a derived <m>p</m>-complete complex <m>K^\bullet \in D(R)</m> is <term><m>J</m>-almost zero</term> if <m>H^i(M)</m> is <m>J</m>-almost zero for all <m>i</m>.
-        (Compare <xref ref="bib-Bhatt-Scholze"/>, Definition 10.1.)
-      </p>
-    </definition>
-    <example>
-      <p>
-        In <xref ref="def-lens-almost-zero-context"/>, in the case <m>J = (p)</m> we have <m>J_{\lens} = \sqrt{pR}</m>.
-      </p>
-    </example>
-    <lemma xml:id="lem-almost-ideal-tensor">
-      <statement>
-        <p>
-          Let <m>J</m> be an ideal of a lens <m>R</m>. 
-          The multiplication maps
-          <me>
-            J_{\lens} \widehat{\otimes}^L_R J_{\lens} \to J_{\lens}
-          </me>
-          and
-          <me>
-            R/J_{\lens} \widehat{\otimes}^L_{R} R/J_{\lens} \to R/J_{\lens}
-          </me>
-          are quasi-isomorphisms, and moreover
-          <me>
-            J_{\lens} \widehat{\otimes}^L_R R/J_{\lens} = 0.
-          </me>
-        </p>
-      </statement>
-      <proof>
-        <p>
-          The second equality is a direct consequence of <xref ref="prop-tensor-lens"/>, and the others follow from this.
-          (Compare <xref ref="bib-Bhatt-Scholze"/>, Lemma 10.3.)
-        </p>
-      </proof>
-    </lemma>
-    <definition>
-      <p>
-        Let <m>J</m> be an ideal of a lens <m>R</m>. 
-        For each positive integer <m>n</m>, let <m>J_{\lens,n}</m> be the image of <m>J_{\lens}</m> in <m>R/p^n</m>.
-        By <xref ref="lem-almost-ideal-tensor"/>, the pair <m>(R/p^n, J_{\lens,n})</m> is a context.
-      </p>
-    </definition>
-    <proposition xml:id="prop-J-almost-zero-category">
-      <statement>
-        <p>
-          Let <m>J</m> be an ideal of a lens <m>R</m>. 
-          Within the category of derived <m>p</m>-complete <m>R</m>-modules, the subcategory of <m>J</m>-almost zero modules is stable under kernels, cokernels, and extensions in the ambient category,
-          and is an ideal under <m>\otimes</m>. It is also equivalent to the category of derived <m>p</m>-complete <m>R/J_{\lens}</m>-modules.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          For <m>M,N</m> two derived <m>p</m>-complete <m>(R/J)_{\lens}</m>-modules,
-          <me>
-            R\Hom_R(M,N) = R\Hom_{R/J_{\lens}}(M \widehat{\otimes}^L_R R/J_{\lens}, N)
-          </me>
-          and by <xref ref="lem-almost-ideal-tensor"/> we have <m>M \widehat{\otimes}^L_R R/J_{\lens} \cong M</m> (reducing to the case <m>M = R/J_{\lens}</m>).
-          It follows that the restriction functor from derived <m>p</m>-complete <m>R/J_{lens}</m>-modules to derived <m>p</m>-complete <m>R</m>-modules, which evidently factors through 
-          the subcategory in question, defines an equivalence to this subcategory and preserves <m>\Ext^1</m>; this yields all of the claims.
-        </p>
-      </proof>
-    </proposition>
-    <corollary xml:id="cor-J-almost-zero-category">
-      <statement>
-        <p>
-          Let <m>J</m> be an ideal of a lens <m>R</m>. 
-          A derived <m>p</m>-complete complex <m>K^\bullet \in D(R)</m> is <m>J</m>-almost zero if and only if <m>J_{\lens} \widehat{\otimes}^L_R K^\bullet = 0</m>.
-          Within the category of derived <m>p</m>-complete complexes of <m>R</m>-modules, the subcategory of <m>J</m>-almost zero complexes forms a thick tensor ideal which is equivalent
-          to the category of derived <m>p</m>-complete complexes of <m>R/J_{\lens}</m>-modules.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          This is a direct consequence of <xref ref="prop-J-almost-zero-category"/>. (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 10.4.)
-        </p>
-      </proof>
-    </corollary>
-    <lemma xml:id="lem-almost-connective">
-      <statement>
-        <p>
-          Let <m>J</m> be an ideal of a lens <m>R</m>. 
-          Let <m>K^\bullet</m> be a derived <m>p</m>-complete complex of <m>R</m>-modules. Then <m>K</m> is concentrated in degrees <m>\leq 0</m> if and only if <m>K^\bullet \widehat{\otimes}^L_R R/J_{\lens}</m>
-          is concentrated in degrees <m>\leq 0</m> and <m>H^i(M)</m> is <m>J</m>-almost zero for all <m>i \gt 0</m>.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          The <q>only if</q> is clear because tensor products are right exact. For the converse, note that in the distinguished triangle
-          <me>
-            J_{\lens} \widehat{\otimes}^L_R \tau^{\leq 0} K^\bullet \to J_{\lens} \widehat{\otimes}^L_R K^\bullet \to J_{\lens} \widehat{\otimes}^L_R \tau^{>0} K^\bullet \to
-          </me>
-          the first term is concentrated in degrees <m>\leq 0</m> and the last term is zero by <xref ref="prop-J-almost-zero-category"/>. Combining this with the distinguished triangle
-          <me>
-            J_{\lens} \widehat{\otimes}^L_R K^\bullet \to K^\bullet \to R/J_{\lens} \widehat{\otimes}^L_R K^\bullet \to
-          </me>
-          yields the claim. (Compare <xref ref="bib-Bhatt-Scholze"/>, Lemma 10.5.)
-        </p>
-      </proof>
-    </lemma>
-  </subsection>
-  <subsection>
-    <title>Almost Galois extensions of rings</title>
-    <p>
-      Just as it is sometimes useful to study field extensions using Galois theory (see <xref ref="rmk-perfectoid-correspondence-derivation"/> for an example that we encountered recently),
-      we would like to study finite étale maps of rings using Galois actions.
-    </p>
-    <definition xml:id="def-almost-Galois">
-      <p>
-        Fix a context <m>(V, \frakm)</m>.
-        Let <m>A \to B</m> be a morphism in <m>\Ring_V</m>.
-        Let <m>G</m> be a finite group acting <m>A</m>-linearly on the ring <m>B</m>.
-        We say that <m>A \to B</m> is an <term>almost <m>G</m>-Galois extension</term> if the map <m>A \to B^G</m> is an almost isomorphism and the canonical map
-        <me>
-          B \otimes_A B \to \prod_{g \in G} B, \qquad b \otimes b' \mapsto (\gamma(b)b')_{\gamma \in G}
-        </me>
-        is an almost isomorphism. Note that this property persists under base change on <m>A</m>.
-      </p>
-    </definition>
-    <lemma xml:id="lem-almost-Galois-finite-etale">
-      <statement>
-        <p>
-          With notation as in <xref ref="def-almost-Galois"/>, the following statements hold.
-        </p>
-        <ol>
-          <li>
-            <p>
-              The morphism <m>A \to B</m> is almost finite étale.
-            </p>
-          </li>
-          <li>
-            <p>
-              Let <m>C</m> be the fixed subring of <m>B</m> under a subgroup <m>H</m> of <m>G</m>, and suppose that <m>B \to C</m> is an almost <m>H</m>-Galois extension.
-              Then <m>A \to C</m> is almost finite étale.
-            </p>
-          </li>
-        </ol>
-      </statement>
-      <proof>
-        <p>
-          To prove (1), we only need to check that <m>B</m> is an almost finite projective <m>A</m>-module.
-          Define the trace map <m>t_{B/A}: B_* \to A_*</m> as the sum over <m>G</m>-conjugates.
-          View <m>B</m> as a <m>(B \otimes_A B)</m>-algebra via the multiplication map <m>\mu</m>. Then <m>B_* \otimes_{A_*} B_* \to (B \otimes_A B)_*</m> is an almost isomorphism,
-          so for each <m>\eta \in \frakm</m> we have an element <m>e_\eta \in B_* \otimes_{A_*} B_*</m> with <m>e_\eta^2 = \eta e_\eta</m> which kills the kernel of <m>\mu</m>
-          and is mapped to <m>\eta \in B_*</m>. By writing <m>e_\eta = \sum_{i=1}^n b_i \otimes b'_i</m>, we obtain <m>\gamma(b_i)b_i' = 0</m> for <m>\gamma</m> not equal to the identity in <m>G</m>
-          and <m>\sum_i b_i b_i' = \eta</m>. We thus have
-          <me>
-            \eta b = \sum_i t_{B/A}(bb_i) b'_i \qquad (b \in B_*).
-          </me>
-          In other words, the composition
-          <me>
-            B_* \stackrel{b \mapsto (t_{B/A}(\bullet b_i))_i}{\to} A_*^n \stackrel{(a_i) \mapsto \sum a_i b'_i}{\to} B_*
-          </me>
-          is multiplication by <m>\eta</m>; this proves the claim.
-        </p>
-        <p>
-          To prove (2), we first apply (1) to deduce that <m>C \to B</m> is almost finite étale.
-          We then check that the canonical map <m>C \otimes_A B \to \prod_{G/H} B</m> is an almost isomorphism: we can check this after tensoring over <m>C</m> with <m>B</m>,
-          in which case we have almost isomorphisms
-          <me>
-            B \otimes_C (C \otimes_A B) = B \otimes_A B \to \prod_G B \to \prod_{G/H} (B \otimes_C B) = B \otimes_C \prod_{G/H} B.
-          </me>
-          Thus the map <m>A \to C</m> becomes almost finite étale after tensoring over <m>A</m> with <m>B</m>, and so is itself almost finite étale.
-          (Compare <xref ref="bib-Andre1"/>, Proposition 9.1.)
-        </p>
-      </proof>
-    </lemma>
-    <definition>
-      <p>
-        Let <m>J</m> be an ideal of a lens <m>R</m>.
-        We define a <term><m>J</m>-almost <m>G</m>-Galois extension</term> of <m>R</m>-algebras by analogy with <xref ref="def-almost-Galois"/>.
-      </p>
-    </definition>
-    <corollary xml:id="cor-almost-Galois-finite-etale">
-      <statement>
-        <p>
-          Let <m>J</m> be an ideal of a lens <m>R</m>. 
-          Let <m>S</m> be a derived <m>p</m>-complete <m>R</m>-algebra with an action by a finite group <m>G</m> which is a <m>J</m>-almost <m>G</m>-Galois cover.
-          Let <m>n</m> be a positive integer.
-        </p>
-        <ol>
-          <li>
-            <p>
-              The morphism <m>R/p^n \to S/p^n</m> is almost finite étale for the context <m>(R/p^n, J_{\lens,n})</m>.
-            </p>
-          </li>
-          <li>
-            <p>
-              Let <m>S'</m> be the fixed subring of <m>S</m> under a subgroup <m>H</m> of <m>G</m> and suppose that <m>S' \to S</m> is a <m>J</m>-almost <m>H</m>-Galois cover.
-              Then <m>R/p^n \to S'/p^n</m> is almost finite étale for the context <m>(R/p^n, J_{\lens,n})</m>.
-            </p>
-          </li>
-        </ol>
-      </statement>
-      <proof>
-        <p>
-          The map <m>R/p^n \to S/p^n</m> is again a <m>J</m>-almost <m>G</m>-Galois cover, so we may apply <xref ref="lem-almost-Galois-finite-etale"/> to conclude. 
-          (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 10.8.)
-        </p>
-      </proof>
-    </corollary>
-    <p> 
-      The construction of Galois closures of field extensions has the following analogue in this context.
-    </p>
-    <lemma xml:id="lem-Galois-closure-rings">
-      <statement>
-        <p>
-          Let <m>R \to S</m> be a finite étale morphism of constant rank <m>r</m>. Then there exists an <m>S_r</m>-Galois extension <m>R \to T</m> (for the classical context)
-          factoring through an <m>S_{r-1}</m>-Galois extension <m>S \to T</m>.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          Let <m>\Spec T</m> be the closed-open subscheme of the <m>r</m>-fold fiber product of <m>\Spec S</m> over <m>\Spec R</m> which is the complement of all of the partial diagonals;
-          this has the desired effect. (Compare <xref ref="bib-Andre1"/>, Lemma 1.9.2.)
-        </p>
-      </proof>
-    </lemma>
-  </subsection>
-  <subsection>
     <title>Almost purity (first version)</title>
     <lemma xml:id="lem-enlarge-away-from-J1">
       <statement>
@@ -574,7 +238,7 @@
     <lemma xml:id="lem-cohom-dim">
       <statement>
         <p>
-          Let <m>R</m> be a <m>p</m>-torsion-free lens. Let <m>R \to S</m> be the derived <m>p</m>-completion of a finitely presented morphism. Let <m>J</m> be a finitely generated ideal of <m>J</m>.
+          Let <m>R</m> be a <m>p</m>-torsion-free lens. Let <m>R \to S</m> be the derived <m>p</m>-completion of a finitely presented morphism. Let <m>J</m> be a finitely generated ideal of <m>S</m>.
           Then <m>\Cone(S_{\lens} \to (S/J)_{\lens})</m> is concentrated in degrees <m>\leq 0</m>.
         </p>
       </statement>
@@ -582,7 +246,7 @@
         <p>
           By <xref ref="thm-lens-perfection-integral-extension"/>, <m>S_{\lens}</m> and <m>(S/J)_{\lens}</m> are both lenses concentrated in degree <m>0</m>.
           By <xref ref="cor-strongly-zariski-closed"/>, the map <m>S_{\lens} \to (S_{\lens}/J S_{\lens})_{\lens} = (S/J)_{\lens}</m> is surjective.
-          This proves the claim.
+          This proves the claim: the cone is actually concentrated in degrees -1 and 0.
         </p>
       </proof>
     </lemma>
@@ -591,7 +255,7 @@
         <p>
           Let <m>R</m> be a <m>p</m>-torsion-free lens and put <m>X = \Spec R[p^{-1}]</m>.
           Then for every etale <m>\FF_p</m>-sheaf <m>\calF</m> on <m>X</m>, we have <m>H^i(X, \calF) = 0</m> for all <m>i \gt 0</m>.
-          That is, the <m>\FF_p</m>-etale cohomological dimension of <m>X</m> is at most <m>1</m>.
+          That is, the <m>\FF_p</m>-étale cohomological dimension of <m>X</m> is at most <m>1</m>.
         </p>
       </statement>
       <proof>
@@ -606,6 +270,14 @@
         with the Huber adic spectrum of the ring <m>R[p^{-1}]</m>; for example, the homotopy type of this space can contribute to cohomology in higher degrees.
       </p>
     </remark>
+    <remark>
+      <p>
+        In connection with <xref ref="thm-cohom-dim"/>, we should mention some results of Achinger (<xref ref="bib-Achinger"/>).
+        First, every connected affine scheme over <m>\FF_p</m> is a <m>K(\pi, 1)</m> space for the étale topology.
+        Second, every noetherian adic affinoid space over <m>\QQ_p</m>, and every perfectoid space over <m>\QQ_p</m>, is a <m>K(\pi, 1)</m> space.
+        Both of these results can be interpreted as saying that the fundamental groups of these space are so large as to <q>absorb</q> all higher homotopy groups.
+      </p>
+    </remark>
   </subsection>
   <subsection>
     <title>The direct summand conjecture</title>
@@ -616,7 +288,7 @@
     <theorem xml:id="thm-direct-summand">
       <statement>
         <p>
-          Put <m>R = \ZZ_p\llbracket x_1,\dots,x_r\llbracket</m> and let <m>R \to S</m> be an injective, module-finite ring homomorphism.
+          Put <m>R = \ZZ_p\llbracket x_1,\dots,x_r\rrbracket</m> and let <m>R \to S</m> be an injective, module-finite ring homomorphism.
           Then this map splits in <m>\Mod_R</m>.
         </p>
       </statement>
@@ -659,20 +331,22 @@
         if <m>X \to \Spec R</m> is a proper surjective morphism, then <m>R \to R\Gamma(X, \calO)</m> splits in <m>D(A_0)</m>.
       </p>
     </remark>
+    <remark xml:id="rmk-kunz-mixed">
+      <p>
+        Another result that can be deduced from almost purity is a mixed-characteristic analogue of the Kunz criterion of regularity in positive characteristic (<xref ref="rmk-kunz"/>):
+        a classically <m>p</m>-complete noetherian ring is regular if and only if it admits a faithfully flat morphism to some lens. See <xref ref="bib-Bhatt-Iyengar-Ma"/>.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        Yet another result in this context (but which requires methods beyond the scope of these notes) is the following.
+        Let <m>A</m> be an excellent noetherian integral domain. Let <m>A^+</m> be an absolute integral closure of <m>A</m>
+        (that is, take the integral closure of <m>A</m> in some algebraic closure of <m>\Frac A</m>). Then for every positive integer <m>n</m>,
+        the <m>A/p^n</m>-module <m>R^+/p^n</m> is Cohen-Macaulay (<xref ref="bib-Bhatt-AIC"/>, Theorem 1.1).
+      </p>
+    </remark>
   </subsection>
   <exercises>
-    <exercise xml:id="exer-perfectoid-trace">
-      <statement>
-        <p>
-          Prove <xref ref="prop-perfectoid-trace"/>.
-        </p>
-      </statement>
-      <hint>
-        <p>
-          Reduce to the case of characteristic <m>p</m>.
-        </p>
-      </hint>
-    </exercise>
     <exercise xml:id="exer-stratification-factorization">
       <statement>
         <p>
