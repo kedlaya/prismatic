@@ -41,6 +41,7 @@
     \DeclareMathOperator{\Cone}{Cone}
     \DeclareMathOperator{\Cor}{Cor}
     \DeclareMathOperator{\crys}{crys}
+    \DeclareMathOperator{\CW}{CW}
     \DeclareMathOperator{\cyc}{cyc}
     \DeclareMathOperator{\dcrys}{dcrys}
     \DeclareMathOperator{\dR}{dR}
@@ -71,6 +72,7 @@
     \DeclareMathOperator{\perf}{perf}
     \DeclareMathOperator{\Pic}{Pic}
     \DeclareMathOperator{\Poly}{\mathbf{Poly}}
+    \DeclareMathOperator{\prim}{prim}
     \DeclareMathOperator{\Prm}{\mathbf{Prism}}
     \DeclareMathOperator{\Pshv}{\mathbf{Pshv}}
     \DeclareMathOperator{\Rad}{Rad}
@@ -168,7 +170,7 @@
     <xi:include href="./sec_almost-purity.ptx"/>
     <xi:include href="./sec_q-derham.ptx"/>
     <xi:include href="./sec_q-crystalline.ptx"/>
-    <xi:include href="./sec_prismatization.ptx"/>
+    <xi:include href="./sec_further.ptx"/>
     <xi:include href="./sec_q-global.ptx"/>
     <backmatter>
       <xi:include href="./bibliography.ptx"/>

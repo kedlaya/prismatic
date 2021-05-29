@@ -13,6 +13,9 @@
   <biblio type="raw" xml:id="bib-Andre">
     Y. André, <articletitle>La conjecture du facteur direct</articletitle>, <journal>Publications Mathématiques de l’IHÉS</journal> <volume>127</volume> <year>2018</year>, 71<ndash/>93.
   </biblio>
+  <biblio type="raw" xml:id="bib-Anschutz-LeBras">
+    J. Anschütz and A.C. Le Bras, <articletitle>Prismatic Dieudonné theory</articletitle>, <url href="https://arxiv.org/abs/1907.10525">arXiv1907.10525v3</url> <year>2021</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Aomoto">
     K. Aomoto, <articletitle><m>q</m>-analogue of de Rham cohomology associated with Jackson integrals</articletitle>, <journal>Proceedings of the Japan Academy Series A</journal>
     <volume>66</volume> <year>1990</year>, 161<ndash/>164.
@@ -90,6 +93,9 @@
   <biblio type="raw" xml:id="bib-Borovoi-Cornulier">
     M. Borovoi and Y. Cornulier, <articletitle>Conjugate complex homogeneous spaces with non-isomorphic fundamental groups</articletitle>, <journal>C. R. Acad. Sci. Paris</journal> <volume>353</volume> <year>2015</year>, 1001<ndash/>1005.
   </biblio>
+  <biblio type="raw" xml:id="bib-Brinon-Conrad">
+    O. Brinon and B. Conrad, <pubtitle>CMI Summer School Notes on <m>p</m>-adic Hodge Theory</pubtitle>, <url href="https://math.stanford.edu/~conrad/papers/notes.pdf">authors' draft</url>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Buium1">
     A. Buium, <articletitle>Differential characters of abelian varieties over <m>p</m>-adic fields</articletitle>, <journal>Inventiones Mathematicae</journal> <volume>122</volume> <year>1995</year>, 309<ndash/>340.
   </biblio>
@@ -102,6 +108,10 @@
   </biblio>
   <biblio type="raw" xml:id="bib-Cais-Liu">
     B. Cais and T. Liu, <articletitle>On <m>F</m>-crystalline representations</articletitle>, <journal>Documenta Mathematica</journal> <volume>21</volume> <year>2016</year>, 223<ndash/>270.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Cesnavicius-Koshikawa">
+    K. Česnavičius and T. Koshikawa, <articletitle>The <m>A_{\mathrm{inf}}-cohomology</m> in the semistable case</articletitle>,
+    <journal>Compositio Mathematica</journal> <volume>155</volume> <year>2019</year>, 2039<ndash/>2128.
   </biblio>
   <biblio type="raw" xml:id="bib-Cherbonnier-Colmez">
     F. Cherbonnier and P. Colmez, <articletitle>Représentations <m>p</m>-adiques surconvergentes</articletitle>, <journal>Inventiones Mathematicae</journal> <volume>133</volume> <year>1998</year>, 581<ndash/>611.
@@ -117,14 +127,17 @@
   <biblio type="raw" xml:id="bib-Drinfeld-prismatization">
     V. Drinfeld, <articletitle>Prismatization</articletitle>, <url href="https://arxiv.org/pdf/2005.04746.pdf">arXiv:2005.04746v2</url> <year>2021</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Drinfeld-video">
+    V. Drinfeld, <articletitle>A stacky approach to crystalline (and prismatic) cohomology</articletitle>, <url href="https://www.youtube.com/watch?v=3wCk3qsFWLA">video</url> <year>2019</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Ducros-homotopy">
+    A. Ducros, <articletitle>About Hrushovski and Loeser's work on the homotopy type of Berkovich spaces</articletitle>, in <pubtitle>Nonarchimedean and Tropical Geometry</pubtitle>, Simons Symposia, Springer International <year>2016</year>, 99<ndash/>131.
+  </biblio>
   <biblio type="raw" xml:id="bib-Elkik">
     R. Elkik, <articletitle>Solutions d'équations à coefficients dans un anneau hensélien</articletitle>, <pubtitle>Annales Scientifiques de l'École Normale Superieure</pubtitle> <volume>6</volume> <year>1973</year>, 553<ndash/>603.
   </biblio>
   <biblio type="raw" xml:id="bib-Fargues-Fontaine">
     L. Fargues and J.-M. Fontaine, <articletitle>Courbes et fibrés vectoriels en théorie de Hodge <m>p</m>-adique</articletitle>, <journal>Astérisque</journal> <volume>406</volume> <year>2018</year>.
-  </biblio>
-  <biblio type="raw" xml:id="bib-Ducros-homotopy">
-    A. Ducros, <articletitle>About Hrushovski and Loeser's work on the homotopy type of Berkovich spaces</articletitle>, in <pubtitle>Nonarchimedean and Tropical Geometry</pubtitle>, Simons Symposia, Springer International <year>2016</year>, 99<ndash/>131.
   </biblio>
   <biblio type="raw" xml:id="bib-Fargues-Scholze">
     L. Fargues and P. Scholze, <articletitle>Geometrization of the local Langlands correspondence</articletitle>, <url href="https://arxiv.org/abs/2102.13459">arXiv:2102.13459v1</url> <year>2021</year>.
@@ -135,15 +148,21 @@
   <biblio type="raw" xml:id="bib-Fontaine1">
     J.-M. Fontaine, <articletitle>Représentations <m>p</m>-adiques des corps locaux, I</articletitle>, in <pubtitle>The Grothendieck Festschrift, volume II</pubtitle>, Progress in Mathematics 87, Birkhäuser, Boston <year>1990</year>, 249<ndash/>309.
   </biblio>
-  <biblio type="raw" xml:id="bib-Fontaine-Wintenberger">
-    J.-M. Fontaine and J.-P. Wintenberger, <articletitle>Le <q>corps des normes</q> de certaines extensions algébriques de corps locaux</articletitle>, <journal>C. R. Acad. Sci. Paris Sér. A B</journal> <volume>288</volume> <year>1979</year>, 367<ndash/>370.
-  </biblio>
   <biblio type="raw" xml:id="bib-Fontaine-Bourbaki">
     J.-M. Fontaine, <articletitle>Perfecto&#xef;des, presque pureté et monodromie-poids (d’après Peter Scholze)</articletitle>, 
     Séminaire Bourbaki, volume 2011/2012, <journal>Astérisque</journal> <volume>352</volume> <year>2013</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Fontaine-Ouyang">
+    J.-M. Fontaine and Y. Ouyang, <pubtitle>Theory of <m>p</m>-adic Galois Representations</pubtitle>, <url href="http://staff.ustc.edu.cn/~yiouyang/galoisrep.pdf">authors' draft</url>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Fontaine-Wintenberger">
+    J.-M. Fontaine and J.-P. Wintenberger, <articletitle>Le <q>corps des normes</q> de certaines extensions algébriques de corps locaux</articletitle>, <journal>C. R. Acad. Sci. Paris Sér. A B</journal> <volume>288</volume> <year>1979</year>, 367<ndash/>370.
+  </biblio>
   <biblio type="raw" xml:id="bib-Gabber-Ramero">
     O. Gabber and L. Ramero, <pubtitle>Almost Ring Theory</pubtitle>, Lecture Notes in Mathematics 1800, Springer-Verlag, Berlin <year>2003</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Gabber-Ramero2">
+    O. Gabber and L. Ramero, <articletitle>Foundations for almost ring theory<ndash/>Release 7.5</articletitle>, <url href="https://arxiv.org/abs/0409584">arXiv:0409584v13</url> <year>2018</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Ghrist">
     R. Ghrist, <articletitle>Three examples of applied and computational homology</articletitle>, <journal>Nieuw Archief voor Wiskunde</journal> <volume>9</volume>
@@ -159,7 +178,7 @@
     P. Griffiths and J. Harris, <pubtitle>Principles of Algebraic Geometry</pubtitle>, John Wiley &amp; Sons, New York <year>1978</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Grothendieck-deRham">
-    A. Grothendieck, <articletitle>On the de Rham cohomology of algebraic varieties</articletitle>, <journal>Publications mathématiques de l’IHÉS</journal> <volume>29</volume> <year>1966</year>, 95<ndash/>103.
+    A. Grothendieck, <articletitle>On the de Rham cohomology of algebraic varieties</articletitle>, <journal>Publications Mathématiques de l’IHÉS</journal> <volume>29</volume> <year>1966</year>, 95<ndash/>103.
   </biblio>
   <biblio type="raw" xml:id="bib-Grothendieck-infinitesimal">
     A. Grothendieck, <articletitle>Crystals and the de Rham cohomology of schemes</articletitle>, in <pubtitle>Dix Exposés sur la Cohomologie des Schemas</pubtitle>, North-Holland, Amsterdam <year>1968</year>, 306<ndash/>358.
@@ -173,6 +192,10 @@
   <biblio type="raw" xml:id="bib-Heine">
     E. Heine, <articletitle>Über die Reihe <m>1 + \frac{(q^\alpha-1)(q^\beta-1)}{(q-1)(q^\gamma-1)} x + \frac{(q^\alpha-1)(q^{\alpha+1}-1)(q^\beta-1)(q^{\beta+1}-1)}{(q-1)(q^2-1)(q^\gamma-1)(q^{\gamma+1}-1)} x^2 + \cdots</m></articletitle>,
     <journal>Journal für de reine und angewandte Mathematik</journal> <volume>32</volume> <year>1846</year>, 210<ndash/>212.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Hesselholt">
+    L. Hesselholt, <articletitle>On the topological cyclic homology of the algebraic closure of a local field</articletitle>, in <pubtitle>An Alpine Anthology of Homotopy Theory</pubtitle>,
+    Contemporary Mathematics 399, American Mathematical Society, Providence <year>2006</year>, 133<ndash/>162.
   </biblio>
   <biblio type="raw" xml:id="bib-Hochster">
     M. Hochster, <articletitle>Homological conjectures, old and new</articletitle>, <journal>Illinois Journal of Mathematics</journal> <volume>51</volume> <year>2007</year>, 151<ndash/>169.
@@ -203,6 +226,10 @@
   </biblio>
   <biblio type="raw" xml:id="bib-Jurrius-Pellikaan">
     R. Jurrius and R. Pellikaan, <articletitle>Defining the <m>q</m>-analogue of a matroid</articletitle>, <url href="https://arxiv.org/abs/1610.09250">arXiv:1610.09250v1</url> <year>2016</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Kato">
+    K. Kato, <articletitle>Logarithmic structures of Fontaine-Illusie</articletitle>, in <pubtitle>Algebraic Analysis, Geometry, and Number Theory (Baltimore, MD, 1988)</pubtitle>,
+    Johns Hopkins Univ. Press, Baltimore <year>1989</year>, 191<ndash/>224.
   </biblio>
   <biblio type="raw" xml:id="bib-Katz-Turrittin">
     N.M. Katz, <articletitle>Nilpotent connections and the monodromy theorem: applications of a result of Turrittin</articletitle>,
@@ -236,6 +263,15 @@
   </biblio>
   <biblio type="raw" xml:id="bib-Kontsevich-Zagier">
     M. Kontsevich and D. Zagier, <articletitle>Periods</articletitle>, in <pubtitle>Mathematics Unlimited<mdash/>2001 and Beyond</pubtitle>, Springer, Berlin <year>2001</year>, 771<ndash/>808.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Koshikawa">
+    T. Koshikawa, <articletitle>Logarithmic prismatic cohomology I</articletitle>, <url href="https://arxiv.org/abs/2007.14037">arXiv:2007.14037v2</url> <year>2021</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Lau1">
+    E. Lau, <articletitle>Dieudonné theory over semiperfect rings and perfectoid rings</articletitle>, <url href="https://arxiv.org/abs/1603.07831">arXiv:1603.07831v2</url> <year>2016</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Lau">
+    E. Lau, <articletitle>Divided Dieudonné crystals</articletitle>, <url href="https://arxiv.org/abs/1811.09439">arXiv:1811.09439v1</url> <year>2018</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-VLafforgue">
     V. Lafforgue, <articletitle>Chtoucas pour les groups réductifs et paramétrisaton de Langlands globale</articletitle>, <pubtitle>Journal of the American Mathematical Society</pubtitle> <volume>31</volume> <year>2018</year>, 719<ndash/>891.
@@ -291,6 +327,18 @@
   </biblio>
   <biblio type="raw" xml:id="bib-Scholze-diamonds">
     P. Scholze, <articletitle>Étale cohomology of diamonds</articletitle>, <url href="https://arxiv.org/abs/1709.07343">arXiv:arXiv:1709.07343v2</url> <year>2021</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Scholze-Rampage">
+    P. Scholze, <articletitle>Prismatic crystals and crystalline Galois representations</articletitle>, 
+    RAMpAGe seminar <url href="https://bostonu.zoom.us/rec/share/yPYqFa7TqVlOSIXR0BH-RI8AAbbVX6a81iNK_PpYnU7H8mYG5TuMTf-Sla-pGeu1">video</url>
+    and <url href="http://math.bu.edu/people/jsweinst/rampage/Scholze.pdf">notes</url> <year>2020</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Scholze-Weinstein1">
+    P. Scholze and J. Weinstein, <articletitle>Moduli of <m>p</m>-divisible groups</articletitle>, <journal>Cambridge Journal of Mathematics</journal> <volume>1</volume> <year>2013</year>,
+    145<ndash/>237.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Scholze-Weinstein-Berkeley">
+    P. Scholze and J. Weinstein, <pubtitle>Berkeley Lectures on <m>p</m>-adic Geometry</pubtitle>, Annals of Mathematics Studies 207, Princeton University Press, Princeton <year>2020</year>. 
   </biblio>
   <biblio type="raw" xml:id="bib-Serre-GAGA">
     J.-P. Serre, <articletitle>Géométrie algébrique et géométrie analytique</articletitle>, <journal>Annales de l’institut Fourier</journal> <volume>6</volume> <year>1956</year>, 1<ndash/>42.

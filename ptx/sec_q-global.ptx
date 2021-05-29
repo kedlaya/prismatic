@@ -1,0 +1,327 @@
+﻿<section xml:id="sec_q-global">
+  <title>Some global speculation (unstable)</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        <xref ref="bib-Pridham"/> for the basic setup of <m>q</m>-de Rham cohomology in the <m>\lambda</m>-ring context. Beyond that, we are into <em>terra incognita</em>.
+      </p>
+    </paragraphs>
+    <p>
+      We conclude with some wild speculation about a potential link back to <m>\lambda</m>-rings (<xref ref="sec_lambda-rings"/>),
+      particularly with regard to <m>q</m>-de Rham cohomology in the context of <m>\lambda</m>-rings.
+    </p>
+    <p>
+      Notational warning: in this lecture, we use the notation <m>R\{J\}</m> to denote a free object in the category of <m>\lambda</m>-rings, not <m>\delta</m>-rings.
+    </p>
+  </introduction>
+  <subsection>
+    <definition>
+      <p>
+        We regard <m>\ZZ[q]</m> and <m>\ZZ \llbracket q-1 \rrbracket</m> as <m>\lambda</m>-rings (<xref ref="def-lambda-ring"/>) with <m>q</m> constant; that is, <m>\lambda^i(q) = 0</m> for all <m>i \gt 0</m>
+        (and so <m>\psi^i(q) = q^i</m> for all <m>i \gt 0</m>). Define
+        <md>
+          <mrow>[n]_q &amp;= \frac{q^n-1}{q-1} \in \ZZ[q]</mrow>
+          <mrow>[n]_q! &amp;= [1]_q \cdots [n]_q.</mrow>
+        </md>
+      </p>
+    </definition>
+  </subsection>
+  <subsection>
+    <title>Divided power envelopes of <m>\lambda</m>-rings</title>
+    <p>
+      We revisit the discussion of divided power envelopes of <m>\delta</m>-rings from <xref ref="sec_hodge-tate-crystalline"/>,
+      starting by formulating a variant of <xref ref="lem-divided-power-envelope-delta1"/>,
+      in which we start with a larger ideal but do not require the base ring to be <m>p</m>-local.
+    </p>
+    <lemma xml:id="lem-divided-power-envelope-delta1-mod">
+      <statement>
+        <p>
+          Let <m>R_0 \in \Ring</m> be <m>\ZZ</m>-torsion-free.
+          Let <m>R</m> be the free <m>\delta</m>-ring over <m>R_0</m> on a single generator <m>x</m>, and put <m>J = (x, \delta(x), \delta^2(x), \dots)R</m>.
+          Then the map from <m>R</m> to the divided power envelope of <m>(R, J)</m> promotes to a morphism of <m>\delta</m>-rings.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>D</m> be the divided power envelope; it is the smallest subring of <m>R \otimes_{\ZZ} \QQ</m>
+          containing <m>R</m> and <m>\gamma_n(\delta^m(x))</m> for all <m>m \geq 0</m>, <m>n \geq 1</m>. 
+          The maximal ideal on which <m>D</m> admits divided powers includes <m>\delta^m(x)</m> for all <m>m \geq 0</m> by construction,
+          and hence also <m>\phi(\delta^m(x)) = \delta^m(x)^p + p \delta^{m+1}(x)</m> for all <m>m \geq 0</m>; consequently, for all <m>m \geq 0</m>, <m>n \geq 1</m>,
+          <me>
+            \phi(\gamma_n(\delta^m(x))) = \gamma_n(\phi(\delta^m(x))) \in D.
+          </me>
+          Hence <m>\phi</m> induces an endomorphism of <m>D</m>.
+        </p>
+        <p>
+          We next check that <m>\phi</m> induces a Frobenius lift on <m>D</m>; this amounts to checking that for all <m>m \geq 0</m>, <m>n \geq 1</m>,
+          <me>
+            \phi(\gamma_n(\delta^m(x))) \equiv \gamma_n(\delta^m(x))^p \pmod{pD}.
+          </me>
+          We will see that in fact both sides are divisible by <m>p</m>. For <m>\phi(\gamma_n(\delta^m(x))) = \gamma_n(\phi(\delta^m(x)))</m>, this holds by writing
+          <m>\phi(\delta^m(x)) = p(\delta^m(x)^p/p) + p \delta^{m+1}(x) \in pD</m>. For <m>\gamma_n(\delta^m(x))^p</m>, this holds by writing
+          <m>\gamma_n(\delta^m(x))^p = p! \gamma_p(\gamma_n(\delta^m(x)))</m> and applying <xref ref="eq-divided-power-composition"/>.
+        </p>
+        <p>
+          Since <m>D</m> is <m>p</m>-torsion-free, by <xref ref="lem-delta-ring-Frobenius-lift"/> we obtain a <m>\delta</m>-structure compatible with <m>R</m>, as desired.
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      This statement and its proof transpose naturally to the <m>\lambda</m>-ring setting.
+    </p>
+    <lemma xml:id="lem-divided-power-envelope-lambda">
+      <statement>
+        <p>
+          Let <m>R_0 \in \Ring</m> be <m>\ZZ</m>-torsion-free.
+          Put <m>R = R\{x\}</m> (the free <m>\lambda</m>-ring over <m>R</m> on a single generator <m>x</m>)
+          and put <m>J = (\lambda^m(x): m \geq 1)R</m>.
+          Then the map from <m>R</m> to the divided power envelope of <m>(R, J)</m> promotes to a morphism of <m>\lambda</m>-rings.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>D</m> be the divided power envelope; it is the smallest subring of <m>R \otimes_{\ZZ} \QQ</m>
+          containing <m>R</m> and <m>\gamma_n(\lambda^m(x))</m> for all <m>m,n \geq 1</m>.
+          The maximal ideal on which <m>D</m> admits divided powers includes <m>\delta^m(x)</m> for all <m>m \geq 0</m> by construction,
+          and hence also <m>\psi^p(\delta^m(x)) = \delta^m(x)^p + p \delta^{m+1}(x)</m> for each prime <m>p</m> and all <m>m \geq 0</m>; consequently, for each prime <m>p</m>
+          and all <m>m,n \geq 1</m>,
+          <me>
+            \psi^p(\gamma_n(\delta^m(x))) = \gamma_n(\psi^p(\delta^m(x))) \in D.
+          </me>
+          We thus obtain a commuting family of endomorphisms <m>\psi^j</m> for all <m>j \geq 1</m> satisfying <m>\psi^{j_1j_2} = \psi^{j_1} \circ \psi^{j_2}</m>.
+        </p>
+        <p>
+          As in the proof of <xref ref="lem-divided-power-envelope-delta1-mod"/>, we verify that for each prime <m>p</m>, <m>\psi^p</m> induces a <m>p</m>-Frobenius lift on <m>D</m>.
+          Since <m>D</m> is <m>\ZZ</m>-torsion-free, by Wilkerson's criterion (<xref ref="rmk-Adams-operation"/>) we obtain a <m>\lambda</m>-structure compatible with <m>R</m>, as desired.
+        </p>
+      </proof>
+    </lemma>
+    <p>
+      This in turn leads to a <m>\lambda</m>-analogue of <xref ref="lem-divided-power-envelope-delta"/>.
+    </p>
+    <corollary xml:id="lem-divided-power-envelope-delta-mod">
+      <statement>
+        <p>
+          In <xref ref="lem-divided-power-envelope-lambda"/>, 
+          the divided power envelope is generated as a <m>\lambda</m>-ring over <m>R_0</m> by the elements <m>\psi^p(x)/p</m> for <m>p</m> prime.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Let <m>D</m> be the divided power envelope and let <m>D'</m> be the subring of <m>D \otimes_\ZZ \QQ = R \otimes_\ZZ \QQ</m> 
+          which is the <m>\lambda</m>-subring over <m>R_0</m> generated by the elements <m>\psi^p(x)/p</m> for <m>p</m> prime.
+          By <xref ref="lem-divided-power-envelope-lambda"/>, we have <m>D' \subseteq D</m>; it thus remains to check the converse.
+        </p>
+        <p>
+          We check that <m>\gamma_n(\delta^m(x)) \in D'</m> for all <m>m \geq 0</m>, <m>n \geq 1</m> by induction on <m>n</m>, with trivial base case <m>n=1</m>.
+          The induction step is also trivial if <m>n</m> is not a prime power, as in this case <m>1/n!</m> belongs to the fractional ideal of <m>\ZZ</m> generated by
+          <m>1/i!</m> for <m>i \in \{1,\dots,n-1\}</m>. If on the other hand <m>n = p^\ell</m>, then the difference between the fractional ideal of <m>\ZZ</m> generated by <m>1/n!</m>
+          and the one generated by <m>1/i!</m> for <m>i \in \{1,\dots,n-1\}</m> is a factor of <m>n</m>; consequently, we may reduce to the case where <m>R_0</m> is <m>p</m>-local,
+          in which case <xref ref="lem-divided-power-envelope-delta"/> implies the claim.
+        </p>
+      </proof>
+    </corollary>
+    <remark>
+      <p>
+        At this point, we can formulate a striking but not immediately meaningful analogue of <xref ref="lem-prismatic-double-complex"/> as follows.
+        Let <m>R_0 \in \Ring</m> be arbitrary and put <m>R = R_0[x_1,\dots,x_r]</m>, viewed as a <m>\lambda</m>-ring with <m>x_1,\dots,x_r</m> constant.
+        For <m>n \geq 0</m>, put
+        <me> 
+          P^n = R_0\{x_{ij}: i=1,\dots,r; j=0,\dots,n\}
+        </me>
+        (remembering that now we mean the free <m>\lambda</m>-ring) 
+        and let <m>J^n</m> be the kernel of the morphism <m>P^n \to R</m> in <m>\Ring_\lambda</m> taking <m>x_{ij}</m> to <m>x_i</m> and <m>\lambda^m(x_{ij})</m> to <m>0</m>
+        for all <m>m \gt 0</m>. Now consider the double complex displayed in <xref ref="fig-double-complex-crystalline-lambda"/>.
+      </p>
+      <figure xml:id="fig-double-complex-crystalline-lambda">
+        <image width="100%">
+          <latex-image>
+            \xymatrix{
+              D_{J^0}(P^0) \ar[r] \ar[d] &amp; D_{J^1}(P^1) \ar[r] \ar[d] &amp; D_{J^2}(P^2) \ar[r] \ar[d] &amp; \cdots \\
+              D_{J^0}(P^0) \otimes_{P^0} \Omega^1_{P^0/R_0} \ar[r] \ar[d] &amp; D_{J^1}(P^1) \otimes_{P^1} \Omega^1_{P^1/R_0} \ar[r] \ar[d] &amp; D_{J^2}(P^2) \otimes_{P^2} \Omega^1_{P^2/R_0} \ar[r] \ar[d] &amp; \cdots \\
+              D_{J^0}(P^0) \otimes_{P^0} \Omega^2_{P^0/R_0} \ar[r] \ar[d] &amp; D_{J^1}(P^1) \otimes_{P^1} \Omega^2_{P^1/R_0} \ar[r] \ar[d] &amp; D_{J^2}(P^2) \otimes_{P^2} \Omega^2_{P^2/R_0} \ar[r] \ar[d] &amp; \cdots \\
+              \vdots &amp; \vdots &amp; \vdots &amp; 
+            }
+          </latex-image>
+        </image>
+      </figure>
+      <p>
+        In the diagram, we may argue as in <xref ref="lem-differentials-derived"/> to see that each row except the first is homotopic to zero.
+        We may then apply the Poincaré lemma (<xref ref="prop-poincare-lemma"/>) to deduce that each column is quasi-isomorphic to <m>\Omega^\bullet_{R/R_0}</m>,
+        and in particular each of the <m>n+1</m> morphisms between the <m>n</m>-th column and the <m>(n+1)</m>-st column induces the same isomorphism on cohomology groups.
+        By <xref ref="map-of-double-complex-first-column-qis"/>, we deduce that the top row of <xref ref="fig-double-complex-crystalline-lambda"/> is quasi-isomorphic to <m>\Omega^\bullet_{R/R_0}</m>.
+      </p>
+      <p>
+        Moreover, by <xref ref="lem-divided-power-envelope-delta-mod"/>, we may identify <m>D_{J^n}(P^n)</m> with <m>P^n\{\psi^p(J^n)/p\}</m>. Here is where we get stuck: the latter object
+        does not have any evident site-theoretic interpretation. However, in the <m>q</m>-analogue of this setup we will be able to provide such an interpretation.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title><m>q</m>-divided powers for <m>\lambda</m>-rings</title>
+    <p>
+      In the following discussion, view <m>A = \ZZ \llbracket q-1 \rrbracket</m> as a <m>\lambda</m>-ring so that <m>q</m> is constant.
+    </p>
+    <definition xml:id="def-q-divided-power-lambda">
+      <p>
+        For <m>D</m> an <m>A</m>-torsion-free <m>\lambda</m>-ring over <m>A</m>, for <m>p</m> prime and <m>x \in D</m> with <m>\psi^p(x) \in [p]_qD</m>, write
+        <me>
+          \gamma_{p,q}(x) = \frac{\psi^p(x)}{[p]_q} - \delta_p(x) \in D.
+        </me>
+      </p>
+    </definition>
+    <lemma xml:id="lem-q-divided-power-iterate-lambda">
+      <statement>
+        <p>
+          Let <m>D</m> be an <m>A</m>-torsion-free <m>\lambda</m>-ring over <m>A</m>.
+          Then for each prime <m>p</m>, the ideal <m>(\psi^p)^{-1}([p]_q D)</m> is stable under <m>\gamma_{p,q}</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          View <m>D</m> as a <m>\delta</m>-ring for the prime <m>p</m> and apply <xref ref="lem-q-divided-power-iterate"/>.
+        </p>
+      </proof>
+    </lemma>
+    <remark xml:id="rmk-q-divided-powers-on-ideal-lambda">
+      <p>
+        As in <xref ref="rmk-q-divided-powers-on-ideal"/>, for any ideal <m>I</m> of <m>D</m>, the set
+        <me>
+          J = \bigcap J_p, \qquad J_p = \{x \in I: \psi^p(x) \in [p]_q D, \gamma_{p,q}(x) \in I\}
+        </me>
+        is itself an ideal of <m>D</m>; hence to check that <m>J = I</m>, it suffices to check that <m>J</m> contains a generating set of <m>I</m>.
+      </p>
+    </remark>
+    <definition>
+      <p>
+        A <term><m>\lambda</m>-pair</term> over <m>A</m> is a pair <m>(D,I)</m> in which <m>D</m> is a <m>\lambda</m>-ring over <m>A</m> and <m>I</m> is an ideal of <m>D</m>.
+        A morphism <m>(D,I) \to (E,J)</m> of <m>\lambda</m>-pairs is a morphism <m>D \to E</m> of <m>\lambda</m>-rings carrying <m>I</m> into <m>J</m>.
+      </p>
+    </definition>
+    <definition>
+      <p>
+        A <term>global <m>q</m>-pd pair</term> is a pair <m>(D,I)</m> in which <m>D</m> is a derived <m>(q-1)</m>-complete
+        <m>\lambda</m>-ring over <m>A</m> and <m>I</m> is an ideal of <m>D</m> containing <m>q-1</m>
+        satisfying the following condition: 
+        for each prime <m>p</m>, <m>\psi^p(I) \subseteq [p]_q D</m> (so that <m>\gamma_{p,q}</m> is defined on <m>I</m>) and <m>\gamma_{p,q}(I) \subseteq I</m>.
+      </p>
+    </definition>
+    <example>
+      <p>
+        The <m>\lambda</m>-pair <m>(A, (q-1))</m> is the initial object in the category of global <m>q</m>-pd pairs.
+      </p>
+    </example>
+    <proposition xml:id="prop-q-divided-power-envelope-lambda">
+      <statement>
+        <p>
+          Let <m>P</m> be a <m>\lambda</m>-ring over <m>A</m> equipped with a surjection <m>P \to R = \ZZ[x_1,\dots,x_r]</m> with kernel <m>J = (q-1,y_1,y_2,\dots)</m>
+          where each initial segment <m>y_1,\dots,y_s</m> is a regular sequence in <m>P/(q-1)</m>. Define the <m>\lambda</m>-ring
+          <me>
+            D = P\{\psi_p(x_i)/[p]_q: i=1,\dots,r; p \mbox{ prime}\}^\wedge_{(q-1)}.
+          </me>
+          Let <m>I</m> be the kernel of <m>D \to D/(q-1) \to R</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              The map <m>P \to D</m> induces an isomorphism <m>P/J \cong D/I</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The ring <m>D/(q-1)</m> identifies with the divided power envelope of the map <m>P/(q-1) \to R</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The map <m>(P, J) \to (D,I)</m> of <m>\lambda</m>-pairs is universal for the target being a global <m>q</m>-pd pair.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      <proof>
+        <p>
+          Analogous to <xref ref="prop-q-divided-power-envelopes"/>,
+          using <xref ref="lem-divided-power-envelope-delta-mod"/>.
+        </p>
+      </proof>
+    </proposition>
+  </subsection>
+  <subsection>
+    <title>A global site</title>
+    <definition xml:id="def-global-site">
+      <p>
+        Put <m>R = \ZZ[x_1,\dots,x_r]\llbracket q-1 \rrbracket</m>, viewed as a <m>\lambda</m>-ring with <m>q,x_1,\dots,x_r</m> all constant.
+        For <m>n \geq 0</m>, put
+        <me> 
+          P^n = \ZZ\{x_{ij}: i=1,\dots,r; j=0,\dots,n\}\llbracket q-1 \rrbracket
+        </me>
+        and let <m>J^n</m> be the kernel of the morphism <m>P^n \to R</m> in <m>\Ring_\lambda</m> taking <m>x_{ij}</m> to <m>x_i</m> and <m>\lambda^m(x_{ij})</m> to <m>0</m>
+        for all <m>m \gt 0</m>. Let <m>D_{J^n,q}(P^n)</m> be the ring <m>D</m> obtained by applying <xref ref="prop-q-divided-power-envelope-lambda"/> to the pair
+        <m>(P^n, J^n)</m>.
+      </p>
+    </definition>
+    <lemma xml:id="lem-prismatic-double-complex-global-q">
+      <statement>
+        <p>
+          In <xref ref="fig-double-complex-q-crystalline-lambda"/>, the first row of the diagram is quasi-isomorphic to the left column, which is in turn quasi-isomorphic to
+          <m>q\widehat{\Omega}^\bullet_{R/\ZZ,\square}</m>. (Here all derived completions are with respect to <m>q-1</m>.)
+        </p>
+        <figure xml:id="fig-double-complex-q-crystalline-lambda">
+          <image width="100%">
+            <latex-image>
+              \xymatrix{
+                D_{J^0,q}(P^0) \ar[r] \ar[d] &amp; D_{J^1,q}(P^1) \ar[r] \ar[d] &amp; D_{J^2,q}(P^2) \ar[r] \ar[d] &amp; \cdots \\
+                D_{J^0,q}(P^0) \widehat{\otimes}_{P^0} \Omega^1_{P^0/\ZZ} \ar[r] \ar[d] &amp; D_{J^1,q}(P^1) \widehat{\otimes}_{P^1} \widehat{\Omega}^1_{P^1/\ZZ} \ar[r] \ar[d] &amp; D_{J^2,q}(P^2) \widehat{\otimes}_{P^2} \widehat{\Omega}^1_{P^2/R_0} \ar[r] \ar[d] &amp; \cdots \\
+                D_{J^0,q}(P^0) \widehat{\otimes}_{P^0} \Omega^2_{P^0/\ZZ} \ar[r] \ar[d] &amp; D_{J^1,q}(P^1) \widehat{\otimes}_{P^1} \widehat{\Omega}^2_{P^1/\ZZ} \ar[r] \ar[d] &amp; D_{J^2,q}(P^2) \widehat{\otimes}_{P^2} \widehat{\Omega}^2_{P^2/R_0} \ar[r] \ar[d] &amp; \cdots \\
+                \vdots &amp; \vdots &amp; \vdots &amp; 
+              }
+            </latex-image>
+          </image>
+        </figure>
+      </statement>
+      <proof>
+        <p>
+          In the following argument, all applications of derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/> will be modulo <m>q-1</m>.
+        </p>
+        <p>
+          In the diagram, by derived Nakayama plus <xref ref="lem-differentials-derived"/> (or a direct argument), each row except the first is homotopic to zero.
+          By derived Nakayama plus the Poincaré lemma (<xref ref="prop-poincare-lemma"/>, each column is quasi-isomorphic to <m>q\Omega^\bullet_{R/\ZZ,\square}</m>,
+          and in particular each of the <m>n+1</m> morphisms between the <m>n</m>-th column and the <m>(n+1)</m>-st column induces the same isomorphism on cohomology groups.
+          By <xref ref="map-of-double-complex-first-column-qis"/>, we deduce that the top row of <xref ref="fig-double-complex-q-crystalline-lambda"/> is quasi-isomorphic to 
+          <m>q\Omega^\bullet_{R/\ZZ,\square}</m>.
+        </p>
+      </proof>
+    </lemma>
+    <definition>
+      <p>
+        Put <m>R = \ZZ[x_1,\dots,x_r]</m>. Define the <term>global <m>q</m>-crystalline site</term> to be the opposite category to the category of global <m>q</m>-pd-pairs
+        <m>(P, J)</m> equipped with isomorphisms <m>P/J \cong R</m>, equipped with the indiscrete Grothendieck topology. 
+        By <xref ref="prop-q-divided-power-envelope-lambda"/>, the ring <m>D_{J^0,q}(P^0)</m> from
+        <xref ref="def-global-site"/> yields a weakly final object in this category, so by <xref ref="lem-cech-cohomology-indiscrete"/> we can compute the cohomology of this site
+        using the associated Čech-Alexander complex. This is precisely the top row of <xref ref="fig-double-complex-q-crystalline-lambda"/>,
+        so <xref ref="lem-prismatic-double-complex-global-q"/> gives us a quasi-isomorphism with <m>q\widehat{\Omega}^\bullet_{R/\ZZ,\square}</m>.
+      </p>
+    </definition>
+  </subsection>
+  <exercises>
+    <exercise>
+      <statement>
+        <p>
+          View <m>\ZZ[x,y,q]</m> as a <m>\Lambda</m>-ring in such a way that <m>x,y,q</m> are all constant. Show that in the <m>\Lambda</m>-localization
+          <m>\ZZ_q[x,y,q]\{(q-1)^{-1}\}</m>, we have
+          <md>
+            <mrow>\lambda^k \left( \frac{y-x}{q-1} \right) &amp;= \frac{(y-x)(y-qx)\cdots(y-q^{k-1}x)}{(q-1)^k [k]_q!}</mrow>
+            <mrow>&amp;= \sum_{j=0}^k \frac{q^{j(j-1)/2} (-x)^j y^{k-j}}{[j]_q! [k-j]_q!}.</mrow>
+          </md>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Observe that it is enough to check the claim for <m>y = q^n x</m>. For omre details, see <xref ref="bib-Pridham"/>, Lemma 1.3.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
+</section>

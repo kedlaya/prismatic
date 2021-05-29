@@ -493,13 +493,13 @@
     <p>
       We have the following analogue of <xref ref="exa-perfection-coperfection2"/>.
     </p>
-    <example>
+    <example xml:id="exa-zariski-closed1">
       <p>
         Let <m>R</m> be a lens and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}]^\wedge_{(p)}/(x)</m>.
         Then the lens coperfection of <m>S</m> is <m>R</m> via the map dividing by the closure of the ideal <m>(x^{p^{-\infty}})</m>.
       </p>
     </example>
-    <example>
+    <example xml:id="exa-zariski-closed2">
       <p>
         Let <m>R</m> be a <m>p</m>-torsion-free lens and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}, y^{p^{-\infty}}]/(x-y)</m>.
         In this case, the lens coperfection of <m>S</m> contains the closure of the ideal <m>(x^{p^{-n}} - y^{p^{-n}}: n=0,1,\dots)</m> but is somewhat complicated to describe

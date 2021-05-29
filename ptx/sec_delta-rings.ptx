@@ -626,12 +626,18 @@
           </li>
           <li>
             <p>
-              Show that <m>\Ring_\phi</m> does <em>not</em> admit equalizers (and hence does not admit arbitrary limits). This is a reason why to prefer the category
-              <m>\Ring_\delta</m> over <m>\Ring_\phi</m>.
+              Show that <m>\Ring_\phi</m> also admits equalizers (and hence arbitrary limits), but these do <em>not</em> commute with the forgetful functor to rings. 
+              This is a reason why to prefer the category <m>\Ring_\delta</m> over <m>\Ring_\phi</m>.
             </p>
           </li>
         </ol>
       </statement>
+      <proof>
+        <p>
+          For the construction of equalizers, show that given an object <m>A \in \Ring_\phi</m> and a subring <m>B</m> of <m>A</m>, 
+          there is a maximal subring of <m>B</m> on which <m>\phi</m> induces a Frobenius lift.
+        </p>
+      </proof>
     </exercise>
     <exercise xml:id="exer-delta-divided-power">
       <statement>

@@ -120,7 +120,7 @@
       <p>
         Without the <m>q</m>-deformation, hypergeometric series have long been viewed as solutions of the <term>hypergeometric differential equation</term>
         <me>
-          P(\underline{\alpha}; \underline{\beta})(y) = 0, \qquad P(\underline{\alpha}; \underline{\beta}) = z \prod_i (D + \alpha_i) - \prod_j (D + \beta_j - 1)
+          P(\underline{\alpha}; \underline{\beta})(y) = 0, \qquad P(\underline{\alpha}; \underline{\beta}) = z \prod_i (z\frac{d}{dz} + \alpha_i) - \prod_j (z \frac{d}{dz} + \beta_j - 1)
         </me>
         starting with the work of Gauss in the case <m>m=2,n=1</m>. In modern language, hypergeometric differential equations (particularly with <m>n = m-1</m>) provide important examples of
         <term>Picard-Fuchs equations</term> which describe the variation of algebraic periods on some family of algebraic varieties; in particular, there is a natural construction via which

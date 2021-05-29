@@ -1,0 +1,267 @@
+﻿<section xml:id="sec_prismatization">
+  <title>Further developments (unstable)</title>
+  <introduction>
+    <paragraphs>
+      <title>Reference</title>
+      <p>
+        See the various sections below.
+      </p>
+    </paragraphs>
+    <p>
+      In this section, we survey some further developments. This is primarily meant to serve as a point of departure for further reading;
+      as we have come nearly to the end of the course, we will not be able to provide much detail on any individual aspect.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Topological Hochschild homology</title>
+    <remark>
+      <p>
+        It has been anticipated for some time that there should be deep links between structures arising in <m>p</m>-adic Hodge theory and parallel structures arising in algebraic
+        topology, particularly with regard to <term>topological Hochschild homology</term> (THH), the analogue of classical Hochschild homology with rings replaced by ring spectra;
+        working with THH means that one takes tensor products over the sphere spectrum, which lies <q>below</q> the ordinary ring of integers and thus provides
+        a base more closely resembling the <q>field of one element</q>.
+        Much of the early work in this direction is due to Hesselholt; see for example <xref ref="bib-Hesselholt"/>.
+      </p>
+      <p>
+        A systematic link between THH and <m>p</m>-adic Hodge theory was developed more systematically in <xref ref="bib-Bhatt-Morrow-Scholze2"/>, 
+        in which the <m>A_{\mathrm{inf}}</m>-cohomology of <xref ref="bib-Bhatt-Morrow-Scholze1"/>
+        is reconstructed using THH. This link is revisited in <xref ref="bib-Bhatt-Scholze"/> using prismatic techniques.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>The absolute prismatic site</title>
+    <p>
+      This material comes from announcements by Bhatt and Scholze.
+      There is not yet a primary reference; in the interim, the recorded lecture <xref ref="bib-Scholze-Rampage"/> of Scholze will have to suffice.
+    </p>
+    <definition>
+      <p>
+        For <m>R</m> a derived <m>p</m>-complete ring, the <term>absolute prismatic oppo-site</term> of <m>R</m>, denoted <m>(\Spec R)^{\op}_{\Prism}</m>,
+        is the category in which an object is a prism <m>(B,J)</m> equipped with a ring homomorphism <m>R \to B/J</m>,
+        and a morphism is a morphism of underlying prisms <m>(B,J) \to (B', J')</m> for which the induced morphism <m>B/J \to B'/J'</m> is <m>R</m>-linear.
+        Taking the opposite category yields the <term>absolute prismatic site</term> of <m>R</m>, denoted <m>(\Spec R)_{\Prism}</m>,
+        which we equip with the indiscrete topology.
+        Note that there is <em>no base prism</em> in the definition.
+      </p>
+    </definition>
+    <definition>
+      <p>
+        Let <m>\calC</m> be a site equipped with a sheaf of rings <m>\calO</m> (or more generally a <term>ringed topos</term>).
+        A <term>crystal</term> on <m>(\calC, \calO)</m> is a sheaf of <m>\calO</m>-modules locally obtained by tensoring <m>\calO</m>
+        with a finite projective module over the ring of global sections.
+      </p>
+      <p>
+        We will typically apply this definition in a situation where descent of finite projective modules is effective.
+        In this case, a crystal can be specified by assigning to each <m>X \in \calC</m> to a finite projective <m>\calO(X)</m>-module <m>M(X)</m>
+        and to each morphism <m>Y \to X</m> in <m>\calC</m> an isomorphism <m>M(X) \otimes_{\calO(X)} \calO(Y) \cong M(Y)</m> in a manner compatible with composition.
+      </p>
+    </definition>
+    <definition>
+      <p>
+        For <m>R</m> a derived <m>p</m>-complete ring, a <term>prismatic <m>F</m>-crystal</term> on <m>R</m> is a crystal <m>M</m> on the absolute prismatic site of <m>X</m>
+        equipped with an isomorphism
+        <me>
+          F: \phi^* M[I^{-1}] \to M[I^{-1}].
+        </me>
+        That is, for each object <m>(B,J) \in (\Spec R)_{\Prism}</m>, we specify an isomorphism <m>\phi^* M(B)[J^{-1}] \to M(B)[J^{-1}]</m> compatible with the morphisms in the site
+        (where <m>M(B)[J^{-1}] = \colim_n M(B) \otimes_B J^{-n}</m>; this makes sense because <m>J</m> is an invertible ideal).
+      </p>
+    </definition>
+    <theorem xml:id="thm-prismatic-F-crystal">
+      <statement>
+        <p>
+          Let <m>K</m> be a completely valued field of mixed characteristics <m>(0,p)</m>
+          with perfect residue field <m>k</m>. Then the category of prismatic <m>F</m>-crystals on <m>\calO_K</m>
+          is equivalent to the category of <term>crystalline lattices</term>, i.e., finite free <m>\ZZ_p</m>-modules equipped with continuous <m>G_K</m>-action
+          whose base extensions from <m>\ZZ_p</m> to <m>\QQ_p</m> are crystalline Galois representations (see <xref ref="rmk-crystalline"/>).
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Unpublished result of Bhatt-Scholze; the key ingredients are the étale comparison theorem (<xref ref="thm-etale-comparison"/>),
+          Kisin's description of crystalline Galois representations via Breuil-Kisin modules (<xref ref="bib-Kisin"/>),
+          and Beauville-Laszlo glueing (<xref ref="rmk-beauville-laszlo"/>).
+        </p>
+      </proof>
+    </theorem>
+    <remark xml:id="rmk-crystalline">
+      <p>
+        It would take us well beyond the scope of these notes to explain enough of Fontaine's theory of <m>p</m>-adic representations and <m>p</m>-adic periods to define the notion of a
+        <term>crystalline</term> Galois representation. The motivating example is the étale cohomology <m>H^i_{\et}(X_{\overline{K}}, \QQ_p)</m> where <m>X</m> is a smooth proper <m>\calO_K</m>-scheme.
+        For <m>i \gt 0</m> such an extension cannot be unramified, as it would be if <m>\QQ_p</m> were replaced by <m>\QQ_\ell</m> for some prime <m>\ell \neq p</m>, because the kernel field of the Galois
+        representation contains the <m>p</m>-cyclotomic tower (the determinant of cohomology is a nonzero power of the cyclotomic character); the crystalline condition is a replacement.
+        For approachable treatments of this subject, see <xref ref="bib-Brinon-Conrad"/> or <xref ref="bib-Fontaine-Ouyang"/>.
+      </p>
+    </remark>
+  </subsection>
+  <subsection xml:id="sec-prismatization">
+    <title>Prismatization</title>
+      <p>
+        The primary reference for this topic is to be a preprint of Bhatt and Lurie which is not yet available;
+        however, in the meantime Drinfeld has produced an independent writeup <xref ref="bib-Drinfeld-prismatization"/>.
+      </p>
+      <definition>
+        <p>
+          Let <m>W</m> be the ring scheme of <m>p</m>-typical Witt vectors. That is, for any ring <m>A</m>, there is a natural (in <m>A</m>) bijection between the underlying set of the
+          ring <m>W(A)</m> and the set of morphisms <m>\Spec A \to W</m>.
+        </p>
+        <p>
+          Write <m>W</m> as <m>\Spec \ZZ[x_0, x_1,\dots]</m> in terms of the Witt coordinates, and let <m>W_n = \Spec \ZZ[x_0,\dots,x_{n-1}]</m> be the <m>n</m>-th truncation of <m>W</m>.
+          For <m>n \geq 1</m>, let <m>W_{\prim,n}</m> be the completion of <m>W_n</m>
+          along the locally closed subscheme defined by the conditions
+          <me>
+            p = x_0 = 0, \qquad x_1 \neq 0.
+          </me>
+          Since <m>W_n^\times</m> acts on <m>W_{\prim,n}</m> by multiplication, we can form the quotient
+          <me>
+            \CW_n = W_{\prim,n}/W_n^\times
+          </me>
+          in the category of sheaves on the category of <m>p</m>-adic formal schemes.
+          Similarly, we may form the sheaf <m>\CW = \lim_n \CW_n</m>, called the <term>Cartier-Witt stack</term>.
+        </p>
+        <p>
+          By definition, for any oriented prism <m>(A, (d))</m> we get a morphism <m>\Spec A \to W_{\prim}</m> under which the distinguished element <m>(x_0, x_1, \dots)</m>
+          of <m>\calO(W_{\prim})</m> pulls back to <m>d</m>. Consequently, for any prism <m>(A,I)</m>, we get a morphism <m>\Spec A \to \CW</m>.
+        </p>
+      </definition>
+      <remark>
+        <p>
+          Some caution is in order because the objects <m>\CW</m> and <m>\CW_n</m> are not algebraic stacks but rather <term>formal stacks</term>.
+          We will not elaborate on what this means; see <xref ref="bib-Drinfeld-prismatization"/>.
+        </p>
+      </remark>
+  </subsection>
+  <subsection>
+    <title>Prismatic Dieudonné theory</title>
+    <p>
+      The reference for this topic is <xref ref="bib-Anschutz-LeBras"/>.
+    </p>
+    <definition>
+      <p>
+        We say that <m>R \in \Ring</m> is <term>quasi-syntomic</term> if <m>R</m> is <m>p</m>-complete with bounded <m>p</m>-power torsion and the cotangent complex
+          <m>L_{R/\ZZ_p}</m> has <m>p</m>-complete Tor amplitude in <m>[-1,0]</m>. For example, a noetherian lci ring is quasi-syntomic,
+          as in a regular semilens (<xref ref="def-semilens"/>) with bounded <m>p</m>-power torsion.
+      </p>
+    </definition>
+    <theorem xml:id="thm-prismatic-dieudonne">
+      <statement>
+        <p>
+          For any quasi-syntomic ring <m>R</m>, there is an anti-equivalence betewen the category of <m>p</m>-divisible groups over <m>R</m>
+          and the category of <term>prismatic Dieudonné crystals</term> over <m>R</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          See <xref ref="bib-Anschutz-LeBras"/>.
+        </p>
+      </proof>
+    </theorem>
+    <remark>
+      <p>
+        <xref ref="thm-prismatic-dieudonne"/> builds upon a long history of describing <m>p</m>-divisible groups in terms of objects of semilinear algebra
+        (e.g., see <xref ref="bib-Lau"/>), as well as more recent work classifying <m>p</m>-divisible groups over perfectoid spaces
+        (<xref ref="bib-Scholze-Weinstein1"/>, <xref ref="bib-Lau1"/>; see also <xref ref="bib-Scholze-Weinstein-Berkeley"/>, Appendix to Lecture 17).
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Logarithmic prismatic cohomology</title>
+    <p>
+      The reference for this topic is <xref ref="bib-Koshikawa"/>.
+    </p>
+    <definition>
+      <p>
+        A <term>prelog structure</term> on a ring <m>A</m> consists of a monoid <m>M</m> and a morphism <m>\alpha: M \to A</m> of monoids.
+        In general, one prefers to <q>sheafify</q> this definition to define a <term>log structure</term>, as in <xref ref="bib-Kato"/>.
+      </p>
+    </definition>
+    <example>
+      <p>
+        Suppose that <m>Z</m> is an effective Cartier divisor on <m>\Spec A</m>. If the components of <m>Z</m> are cut out by some elements <m>x_1,\dots,x_r</m> of <m>A</m>,
+        we can use the monoid generated by these and its inclusion into <m>A</m> as a prelog structure. The resulting log structure will then depend only on <m>Z</m> and not on the
+        components, and also makes sense even when the components of <m>Z</m> are not globally cut out by regular functions (as this is always true locally).
+      </p>
+      <p>
+        Note that there is a difference between sheafifying with respect to the Zariski topology versus the étale topology, and we generally prefer the latter. For example, if <m>Z</m>
+        is a nodal cubic curve in the plane, we would like the monoid to have two independent generators corresponding to the two branches at the node, and this is true
+        étale-locally but not Zariski-locally.
+      </p>
+    </example>
+    <definition>
+      <p>
+        As per <xref ref="bib-Koshikawa"/>, Definition 2.2, a <term><m>\delta_{\log}</m>-ring</term> is a tuple <m>(A, \delta, \alpha, \delta_{\log})</m>
+        in which <m>(A, \delta)</m> is a <m>\delta</m>-ring, <m>\alpha: M \to A</m> defines a prelog structure on <m>A</m>, and <m>\delta_{\log}: M \to A</m> is a function satisfying the following conditions.
+      </p>
+      <ol>
+        <li>
+          <p>
+            For <m>e \in M</m> the identity element, <m>\delta_{\log}(e) = 0</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            For <m>m \in M</m>,
+            <me>
+              \delta(\alpha(m)) = \alpha(m)^p \delta_{\log}(m).
+            </me>
+          </p>
+        </li>
+        <li>
+          <p>
+            For <m>m,m' \in M</m>,
+            <me>
+              \delta_{\log}(mm') = \delta_{\log}(m) + \delta_{\log}(m') + p \delta_{\log}(m) \delta_{\log}(m').
+            </me>
+          </p>
+        </li>
+      </ol>
+      <p>
+        An important special case is when <m>\delta_{\log} = 0</m> identically. In this case, we say that the <m>\delta_{\log}</m>-ring in question is <term>constant</term> 
+        (or <term>of rank 1</term> in Koshikawa's terminology).
+      </p>
+    </definition>
+    <p>
+      We report some examples from <xref ref="bib-Koshikawa"/>, Example 2.4.
+    </p>
+    <example>
+      <p>
+        For <m>(A, \delta) \in \Ring_\delta</m>, consider the canonical log structure where <m>M = A^\times</m> and <m>\alpha: A^\times \to A</m> is the canonical inclusion.
+        There is then a unique <m>\delta_{\log}</m>-ring structure given by
+        <me>
+          \delta_{\log}(x) = \frac{\delta(x)}{x^p} \qquad (x \in A^\times).
+        </me>
+      </p>
+    </example>
+    <example>
+      <p>
+        Let <m>R \in \Ring_{\FF_p}</m> be perfect and view <m>W(R)</m> as a <m>\delta</m>-ring via the Witt vector Frobenius. 
+        The prelog structure given by the constant lift <m>[\bullet]: R \to W(R)</m> then admits a constant <m>\delta_{\log}</m>-structure.
+      </p>
+    </example>
+    <example>
+      <p>
+        For any monoid <m>M</m>, we may view the monoid ring <m>\ZZ_{(p)}[M]</m> as a <m>\delta</m>-ring in such a way that the elements of <m>M</m> are all constant.
+        The prelog structure given by the natural map <m>M \to \ZZ_{(p)}[M]</m> then admits a constant <m>\delta_{\log}</m>-structure.
+      </p>
+    </example>
+    <example>
+      <p>
+        Given a <m>\delta_{\log}</m>-ring <m>A</m> and a morphism <m>A \to B</m> of <m>\delta</m>-rings, we may upgrade to a morphism of <m>\delta_{\log}</m>-rings by equipping
+        <m>B</m> with the prelog structure <m>M \to A \to B</m> and the <m>\delta_{\log}</m>-structure <m>M \stackrel{\delta_{\log}}{\to} A \to B</m>.
+      </p>
+    </example>
+    <remark>
+      <p>
+        One can continue in this manner to extend much of the formalism of <m>\delta</m>-rings; define logarithmic prisms and logarthmic prismatic sites; 
+        establish crystalline and Hodge-Tate comparison theorems; and obtain <m>q</m>-analogues. The purpose of this (not yet fully realized) is to develop
+        a prismatic theory that provides a geometric construction of <term>semistable</term> Breuil-Kisin modules associated to the cohomology of smooth proper schemes over <m>p</m>-adic
+        fields that do not have good reduction, building on the adaptation of <xref ref="bib-Bhatt-Morrow-Scholze1"/> carried out in <xref ref="bib-Cesnavicius-Koshikawa"/>.
+      </p>
+      <p>
+        However, it may be possible to give an alternate development using the formalism of prismatization (<xref ref="sec-prismatization"/>) and the fact that logarithmic structures
+        on a given scheme <m>X</m> can be described locally in terms of morphisms from <m>X</m> to the quotient stack <m>\AA^1/\GG_m</m>.
+      </p>
+    </remark>
+  </subsection>
+</section>

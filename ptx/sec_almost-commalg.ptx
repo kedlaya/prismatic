@@ -4,7 +4,7 @@
     <paragraphs>
       <title>Reference</title>
       <p>
-        <xref ref="bib-Gabber-Ramero"/>; <xref ref="bib-Bhatt-Scholze"/>, section 10. 
+        <xref ref="bib-Gabber-Ramero"/> (not to be confused with the much longer <xref ref="bib-Gabber-Ramero2"/>); <xref ref="bib-Bhatt-Scholze"/>, section 10. 
       </p>
     </paragraphs>
     <p>
@@ -102,8 +102,33 @@
           M = \Hom_A(A,M) \to \Hom_A(\frakm, M) = M_*
         </me>
         is an almost isomorphism.
+        Note that for <m>N \in \Mod_A</m> a second object, we have natural isomorphisms
+        <mdn>
+          <mrow xml:id="eq-almost-hom-elements">\Hom_{A_*}(M_*, N_*) \cong \Hom_A(M_*, N_*) \cong \Hom_A(M, N)_*</mrow>
+          <mrow xml:id="eq-almost-tensor-elements">M_* \otimes_{A_*} N_* \cong M_* \otimes_A N_* \cong (M \otimes N)_*.</mrow>
+        </mdn>
       </p>
       <p>
+        To define the category of <term>almost <m>A</m>-modules</term>, take objects to be the objects of <m>\Mod_A</m>, with the morphisms from <m>M</m> to <m>N</m>
+        being <m>\Hom_A(M, N)_*</m>. This makes sense because by <xref ref="eq-almost-tensor-elements"/>, composition defines a morphism
+        <me>
+          \Hom_A(M, N)_* \otimes_A \Hom_A(N, P)_* \to \Hom_A(M, P)_*.
+        </me>
+      </p>
+    </definition>
+    <remark>
+      <p>
+        The category of almost <m>A</m>-modules can be identified with the localization of <m>\Mod_A</m> at the multiplicative system of almost isomorphisms.
+        The easiest way to check this is not to construct the latter directly, but to check that the former satisfies the universal property that characterizes the latter: the obvious functor
+        from <m>\Mod_A</m> to the category of almost <m>A</m>-modules is initial for the property that every almost isomorphism becomes a genuine isomorphism in the target.
+      </p>
+    </remark>
+    <p>
+      We now introduce some definitions which generalize from the classical limit in a perhaps unexpected manner.
+    </p>
+    <definition>
+      <p>
+        Fix a context <m>(V, \frakm)</m>. Choose <m>A \in \Ring_V</m> and <m>M \in \Mod_A</m>.
         We say that <m>M</m> is <term>almost finitely generated</term> if for every finitely generated ideal <m>\frakm_0 \subseteq \frakm</m>, there is a finitely generated A-submodule <m>M_0 \subseteq M</m>
         with <m>\frakm_0 M \subseteq M_0</m>.
       </p>
@@ -112,6 +137,8 @@
       </p>
       <p>
         We write <term>almost finite projective</term> as shorthand for <term>almost finitely generated and almost projective</term>.
+        Note that <m>M</m> is almost finite projective if and only if for each <m>\eta \in \frakm</m>, there exist a finite free <m>A</m>-module <m>F</m>
+        and a pair of morphisms <m>M \to F \to M</m> which compose to multiplication by <m>\eta</m>.
         (Compare <xref ref="bib-Gabber-Ramero"/>, Proposition 2.3.10, Definition 2.4.4.)
       </p>
     </definition>
@@ -128,6 +155,12 @@
         (Note that these conditions do characterize a finite étale morphism in the classical limit, by <xref ref="bib-Stacks"/>, tag 0CKP.)
       </p>
     </definition>
+    <remark xml:id="rmk-almost-faithfully-flat-descent">
+      <p>
+        We will use the following limited form of <q>almost faithfully flat descent</q>: if <m>A \to B</m> is an almost injective, almost finite étale morphism of rings
+        and <m>A \to C</m> is another morphism of rings, then <m>A \to C</m> is almost finite étale if and only if <m>B \to B \otimes_A C</m> is.
+      </p>
+    </remark>
   </subsection>
   <subsection>
     <title>Almost commutative algebra for lenses</title>
@@ -252,9 +285,9 @@
         Let <m>A \to B</m> be a morphism in <m>\Ring_V</m>.
         Let <m>G</m> be a finite group acting <m>A</m>-linearly on the ring <m>B</m>.
         We say that <m>A \to B</m> is an <term>almost <m>G</m>-Galois extension</term> if the map <m>A \to B^G</m> is an almost isomorphism and the canonical map
-        <me>
+        <men xml:id="eq-almost-Galois-extension">
           B \otimes_A B \to \prod_{g \in G} B, \qquad b \otimes b' \mapsto (\gamma(b)b')_{\gamma \in G}
-        </me>
+        </men>
         is an almost isomorphism. Note that this property persists under base change on <m>A</m>.
       </p>
     </definition>
@@ -271,7 +304,7 @@
           </li>
           <li>
             <p>
-              Let <m>C</m> be the fixed subring of <m>B</m> under a subgroup <m>H</m> of <m>G</m>, and suppose that <m>B \to C</m> is an almost <m>H</m>-Galois extension.
+              Let <m>C</m> be the fixed subring of <m>B</m> under a subgroup <m>H</m> of <m>G</m>, and suppose that <m>C \to B</m> is an almost <m>H</m>-Galois extension.
               Then <m>A \to C</m> is almost finite étale.
             </p>
           </li>
@@ -279,20 +312,23 @@
       </statement>
       <proof>
         <p>
-          To prove (1), we only need to check that <m>B</m> is an almost finite projective <m>A</m>-module.
-          Define the trace map <m>t_{B/A}: B_* \to A_*</m> as the sum over <m>G</m>-conjugates.
-          View <m>B</m> as a <m>(B \otimes_A B)</m>-algebra via the multiplication map <m>\mu</m>. Then <m>B_* \otimes_{A_*} B_* \to (B \otimes_A B)_*</m> is an almost isomorphism,
-          so for each <m>\eta \in \frakm</m> we have an element <m>e_\eta \in B_* \otimes_{A_*} B_*</m> with <m>e_\eta^2 = \eta e_\eta</m> which kills the kernel of <m>\mu</m>
-          and is mapped to <m>\eta \in B_*</m>. By writing <m>e_\eta = \sum_{i=1}^n b_i \otimes b'_i</m>, we obtain <m>\gamma(b_i)b_i' = 0</m> for <m>\gamma</m> not equal to the identity in <m>G</m>
-          and <m>\sum_i b_i b_i' = \eta</m>. We thus have
+          To prove (1), we only need to check that <m>B</m> is an almost finite projective <m>A</m>-module,
+          as <xref ref="eq-almost-Galois-extension"/> already implies that <m>B</m> is an almost finite projective <m>B \otimes_A B</m>-module.
+          By <xref ref="eq-almost-Galois-extension"/>, the idempotent element of <m>\prod_{g \in G} B</m> that picks out the identity component is an almost element of
+          <m>B \otimes_A B</m>. Consequently, for each <m>\eta \in \frakm</m>, we may multiply by <m>\eta</m> to get a genuine element <m>e_\eta \in B \otimes_A B</m>
+          satisfying <m>e_\eta^2 = e_\eta</m> that kills the kernel of <m>\mu</m> and projects to <m>\eta \in B</m>. Write <m>e_\eta = \sum_{i=1}^n b_i \otimes b'_i</m>
+          for some <m>b_i, b_i' \in B</m>; we then have <m>\sum_{i=1}^n \gamma(b_i) b_i' = 0</m> for <m>\gamma \in G \setminus \{e\}</m> and <m>\sum_{i=1}^n b_i b_i' = \eta</m>.
+        </p>
+        <p>
+          Define the trace map <m>t_{B/A}: B \to A</m> as the sum over <m>G</m>-conjugates. Then
           <me>
-            \eta b = \sum_i t_{B/A}(bb_i) b'_i \qquad (b \in B_*).
+            \sum_i t_{B/A}(bb_i) b'_i = \eta b \qquad (b \in B).
           </me>
           In other words, the composition
           <me>
-            B_* \stackrel{b \mapsto (t_{B/A}(\bullet b_i))_i}{\to} A_*^n \stackrel{(a_i) \mapsto \sum a_i b'_i}{\to} B_*
+            B \stackrel{b \mapsto (t_{B/A}(b b_i))_i}{\longrightarrow} A^n \stackrel{(a_i) \mapsto \sum a_i b'_i}{\longrightarrow} B
           </me>
-          is multiplication by <m>\eta</m>; this proves the claim.
+          is multiplication by <m>\eta</m>; since <m>\eta \in \frakm</m> was arbitrary, this proves that <m>B</m> is an almost finite projective <m>A</m>-module.
         </p>
         <p>
           To prove (2), we first apply (1) to deduce that <m>C \to B</m> is almost finite étale.
@@ -301,7 +337,8 @@
           <me>
             B \otimes_C (C \otimes_A B) = B \otimes_A B \to \prod_G B \to \prod_{G/H} (B \otimes_C B) = B \otimes_C \prod_{G/H} B.
           </me>
-          Thus the map <m>A \to C</m> becomes almost finite étale after tensoring over <m>A</m> with <m>B</m>, and so is itself almost finite étale.
+          Thus the map <m>A \to C</m> becomes almost finite étale after tensoring over <m>A</m> with <m>B</m>, and so by <xref ref="rmk-almost-faithfully-flat-descent"/>
+          is itself almost finite étale.
           (Compare <xref ref="bib-Andre1"/>, Proposition 9.1.)
         </p>
       </proof>
@@ -316,7 +353,8 @@
       <statement>
         <p>
           Let <m>J</m> be an ideal of a lens <m>R</m>. 
-          Let <m>S</m> be a derived <m>p</m>-complete <m>R</m>-algebra with an action by a finite group <m>G</m> which is a <m>J</m>-almost <m>G</m>-Galois cover.
+          Let <m>S</m> be a derived <m>p</m>-complete <m>R</m>-algebra with an action by a finite group <m>G</m>,
+          such that <m>R \to S</m> is a <m>J</m>-almost <m>G</m>-Galois cover.
           Let <m>n</m> be a positive integer.
         </p>
         <ol>
@@ -341,7 +379,8 @@
       </proof>
     </corollary>
     <p> 
-      The construction of Galois closures of field extensions has the following analogue in this context.
+      The construction of Galois closures of field extensions has the following analogue in this context. (One can give a version of this for almost commutative algebra,
+      but we will only need the classical limit.)
     </p>
     <lemma xml:id="lem-Galois-closure-rings">
       <statement>
@@ -359,6 +398,19 @@
     </lemma>
   </subsection>
   <exercises>
+    <exercise xml:id="exer-almost-Galois-H1">
+      <statement>
+        <p>
+          Prove that in the notation of <xref ref="def-almost-Galois"/>, the induced map <m>A \to R\Gamma(G, B)</m> is also an almost isomorphism; that is,
+          the groups <m>H^i(G, B)</m> are almost zero for all <m>i \gt 0</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          In the classical limit, <m>B</m> is an induced <m>A[G]</m>-module.
+        </p>
+      </hint>
+    </exercise>
     <exercise xml:id="exer-perfectoid-trace">
       <statement>
         <p>

@@ -14,12 +14,67 @@
     </p>
   </introduction>
   <subsection>
+    <title>Some initial remarks</title>
+    <p>
+      To clarify a potential apparent ambiguity in the statement of <xref ref="thm-almost-purity1"/>, we issue the following reminder.
+    </p>
+    <remark>
+      <p>
+        Let <m>R \to S</m> be a ring homomorphism such that <m>S</m> is finitely generated as an <m>R</m>-module;
+        such a homomorphism is usually said to be <term>finite</term>, but for added emphasis we will sometimes say that it is <term>module-finite</term>.
+        In any case, under this condition,
+        <m>S</m> is finitely presented as an <m>R</m>-module
+        if and only if <m>S</m> is finitely presented as an <m>R</m>-algebra (<xref ref="bib-Stacks"/>, tag 0D46).
+        That is, if we say that <m>S</m> is a <q>finitely presented, module-finite <m>R</m>-algebra</q>, the two possible interpretations of this statement are equivalent.
+      </p>
+    </remark>
+    <p>
+      We next give an indication of why almost purity is a highly nontrivial statement.
+    </p>
+    <remark>
+      <p>
+        A finitely presented, module-finite algebra <m>S</m> over a lens <m>R</m> is not necessarily a lens or even a regular semilens. 
+        One rather prosaic reason is that it may not be reduced (e.g., <m>R[x]/x^2</m>). Somewhat more serious examples
+        arise from taking quotients, as in <xref ref="exa-zariski-closed2"/>. See <xref ref="exa-lens-squareroot"/> for a different sort of example.
+      </p>
+      <p>
+        Nonetheless, we will see from the statements of <xref ref="thm-almost-purity1"/> and <xref ref="thm-almost-purity2"/> that <m>S</m> does inherit some
+        good properties; for instance, its lens coperfection is concentrated in degree <m>0</m>. We can thus think of a morphism of lenses as being <q>integral</q>
+        if it arises by lens coperfection from an integral morphism from a lens to some target.
+      </p>
+      <p>
+        To begin with, note that if <m>R</m> is itself an integral domain, then we can find some nonzero <m>f \in R</m> such that <m>R[f^{-1}] \to S[f^{-1}]</m> is finite
+        étale. Our strategy will be to do almost commutative algebra using the ideal <m>J = (f)</m> to derive constructions about <m>R \to S</m>.
+      </p>
+    </remark>
+    <example xml:id="exa-lens-squareroot">
+      <p>
+        Assume <m>p \neq 2</m>, and take <m>R = \ZZ_p[x^{p^{-\infty}}]^\wedge_{(p)}</m> and <m>S = R[x^{1/2}]</m>. In this case <m>S</m>
+        is not a lens, but the lens coperfection is easy to describe: it is <m>\ZZ_p[(x^{1/2})^{p^{-\infty}}]^\wedge_{(p)}</m> concentrated in degree <m>0</m>.
+      </p>
+    </example>
+  </subsection>
+  <subsection>
     <title>Almost purity (first version)</title>
+    <lemma xml:id="lem-lens-coperfection-arcp-sheaf">
+      <statement>
+        <p>
+          The functor <m>S \to S_{\lens}</m> on derived <m>p</m>-complete rings satisfies descent for the arc<m>_p</m>-topology.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          This is a direct consequence of <xref ref="thm-arc-descent-lens"/>.
+          Compare <xref ref="bib-Bhatt-Scholze"/>, Corollary 8.10.
+        </p>
+      </proof>
+    </lemma>
     <lemma xml:id="lem-enlarge-away-from-J1">
       <statement>
         <p>
           Let <m>S \to S'</m> be a integral morphism of derived <m>p</m>-complete rings such that for some derived <m>p</m>-complete ideal <m>J</m> of <m>S</m>,
-          for every <m>p</m>-complete valuation ring <m>V</m> of rank <m>1</m>, every morphism <m>S \to V</m> which does not kill <m>J</m> extends uniquely to <m>S'</m>.
+          for every <m>p</m>-complete eudoxian valuation ring <m>V</m>, every morphism <m>S \to V</m> which does not kill <m>J</m> extends uniquely to <m>S'</m>.
+          (Note that we do <em>not</em> allow replacing <m>V</m> with a larger valuation ring!)
           Then <xref ref="fig-enlarge-away-from-J"/> is a pullback square in the derived category of <m>S</m>-modules.
         </p>
         <figure xml:id="fig-enlarge-away-from-J">
@@ -35,7 +90,13 @@
       </statement>
       <proof>
         <p>
-          See <xref ref="bib-Bhatt-Scholze"/>, Corollary 8.11.
+          By replacing <m>S'</m> with <m>S' \times S/J</m>, we may reduce to the case where <m>S \to S'</m> is an arc<m>_p</m>-covering.
+          By the hypothesis on <m>J</m>, 
+          <me>
+            S' \widehat{\otimes}_S S' \to (S'/J \widehat{\otimes}_{S/J} S'/J) \times S'
+          </me>
+          is also an arc<m>_p</m>-covering. We may then deduce the claim from <xref ref="lem-lens-coperfection-arcp-sheaf"/> and the universal property of lens coperfection.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Corollary 8.11.)
         </p>
       </proof>
     </lemma>
@@ -53,18 +114,11 @@
         </p>
       </proof>
     </corollary>
-    <remark>
-      <p>
-        To clarify a potential apparent ambiguity in the statement of <xref ref="thm-almost-purity1"/>,
-        we point out that for a ring homomorphism <m>R \to S</m> such that <m>S</m> is finitely generated as an <m>R</m>-module, <m>S</m> is finitely presented as an <m>R</m>-module
-        if and only if <m>S</m> is finitely presented as an <m>R</m>-algebra (<xref ref="bib-Stacks"/>, tag 0D46).
-      </p>
-    </remark>
     <theorem xml:id="thm-almost-purity1">
       <statement>
         <p>
           Let <m>J</m> be a finitely generated ideal of a lens <m>R</m>. 
-          Let <m>S</m> be a finitely presented and module-finite <m>R</m>-algebra such that <m>\Spec(S) \to \Spec(R)</m> is finite étale away from <m>V(J)</m>.
+          Let <m>S</m> be a finitely presented and module-finite <m>R</m>-algebra such that <m>\Spec S \to \Spec R</m> is finite étale away from <m>V(J)</m>.
         </p>
         <ol>
           <li>
@@ -79,12 +133,12 @@
           </li>
           <li>
             <p>
-              For every <m>n \gt 0</m>, the morphism <m>R/p^n \to H^0(S_{\lens})/p^n</m> is almost finite projective and almost unramified with respect to the context <m>(R/p^n, J_{\lens,n})</m>.
+              For every <m>n \gt 0</m>, the morphism <m>R/p^n \to H^0(S_{\lens})/p^n</m> is almost finite étale with respect to the context <m>(R/p^n, J_{\lens,n})</m>.
             </p>
           </li>
           <li>
             <p>
-              Suppose that <m>S</m> admits an action of a finite group <m>G</m> such that <m>\Spec(S) \to \Spec(R)</m> is a <m>G</m>-Galois cover outside <m>V(J)</m>.
+              Suppose that <m>S</m> admits an action of a finite group <m>G</m> such that <m>\Spec S \to \Spec R</m> is a <m>G</m>-Galois cover outside <m>V(J)</m>.
               Then <m>R \to H^0(S_{\lens})</m> is a <m>J</m>-almost <m>G</m>-Galois extension.
             </p>
           </li>
@@ -103,7 +157,7 @@
           which is an <m>S_{r-1}</m>-Galois covering of <m>\Spec(S) \setminus V(J)</m>. Using <xref ref="cor-almost-Galois-finite-etale"/>, we may reduce to the previous case.
         </p>
         <p>
-          Now consider the general case. In this case, <m>\Spec(R) \setminus V(J)</m> can be partitioned as a finite union <m>\sqcup_i U_i</m> of closed-open subsets, on each of which the degree of <m>\Spec(S) \to \Spec(R)</m> is constant.
+          Now consider the general case. In this case, <m>\Spec(R) \setminus V(J)</m> can be partitioned as a finite union <m>\bigsqcup_i U_i</m> of closed-open subsets, on each of which the degree of <m>\Spec(S) \to \Spec(R)</m> is constant.
           For each <m>i</m>, let <m>R_i</m> be the image of <m>R</m> in <m>H^0(U_i, \calO)</m> and let <m>R_{i,\lens}</m> be the lens coperfection of <m>R_i</m>.
           The map <m>R \to \prod_i R_{i,\lens}</m> satisfies the condition of <xref ref="lem-enlarge-away-from-J1"/>, so we may reduce to the previous case.
         </p>
@@ -194,7 +248,7 @@
       <statement>
         <p>
           Let <m>J</m> be a finitely generated ideal of a lens <m>R</m>. 
-          Let <m>S</m> be a finitely presented and module-finite <m>R</m>-algebra such that <m>\Spec(S) \to \Spec(R)</m> is finite étale away from <m>V(J)</m>.
+          Let <m>S</m> be a finitely presented and module-finite <m>R</m>-algebra such that <m>\Spec S \to \Spec R</m> is finite étale away from <m>V(J)</m>.
         </p>
         <ol>
           <li>
@@ -209,12 +263,12 @@
           </li>
           <li>
             <p>
-              For every <m>n \gt 0</m>, the morphism <m>R/p^n \to S_{\lens}/p^n</m> is almost finite projective and almost unramified with respect to the context <m>(R/p^n, J_{\lens,n})</m>
+              For every <m>n \gt 0</m>, the morphism <m>R/p^n \to S_{\lens}/p^n</m> is almost finite étale with respect to the context <m>(R/p^n, J_{\lens,n})</m>
             </p>
           </li>
           <li>
             <p>
-              Suppose that <m>S</m> admits an action of a finite group <m>G</m> such that <m>\Spec(S) \to \Spec(R)</m> is a <m>G</m>-Galois cover outside <m>V(J)</m>.
+              Suppose that <m>S</m> admits an action of a finite group <m>G</m> such that <m>\Spec S \to \Spec R</m> is a <m>G</m>-Galois cover outside <m>V(J)</m>.
               Then <m>R \to S_{\lens}</m> is a <m>J</m>-almost <m>G</m>-Galois extension.
             </p>
           </li>
@@ -228,8 +282,9 @@
     </theorem>
     <remark>
       <p>
-        See <xref ref="bib-Bhatt-Scholze"/>, Remark 10.13 for an indication of how to apply <xref ref="thm-almost-purity2"/> to recover some results in commutative algebra,
-        such as the results of <xref ref="bib-Heitmann-Ma"/>.
+        In the case where <m>R</m> is a <m>p</m>-torsion-free lens and <m>J = (p)</m>, <xref ref="thm-almost-purity2"/> recovers the almost purity theorem for perfectoid spaces, as in
+        <xref ref="bib-Scholze-perfectoid1"/>, <xref ref="bib-Kedlaya-Liu"/>; the conclusion in this case includes the statement that <m>S[p^{-1}] \cong S_{\lens}[p^{-1}]</m>. 
+        The case where <m>J \neq (p)</m> incorporates the perfectoid Abhyankar lemma of <xref ref="bib-Andre1"/>.
       </p>
     </remark>
   </subsection>
@@ -250,6 +305,38 @@
         </p>
       </proof>
     </lemma>
+    <corollary xml:id="cor-cohom-dim">
+      <statement>
+        <p>
+          With notation as in <xref ref="lem-cohom-dim"/>, write <m>R</m> as the slice of the perfect prism <m>(A,I)</m>.
+          Then <m>\Cone(\Prism_{S/A,\perf} \to \Prism_{(S/J)/A,\perf})</m> is concentrated in degrees <m>\leq 0</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>), this reduces to the corresponding statement after reduction modulo <m>I</m>,
+          which is <xref ref="lem-cohom-dim"/>.
+        </p>
+      </proof>
+    </corollary>
+    <corollary xml:id="cor-cohom-dim2">
+      <statement>
+        <p>
+          Let <m>R</m> be a <m>p</m>-torsion-free lens. Let <m>R \to S</m> be a finitely presented morphism of rings.
+          Let <m>J</m> be a finitely generated ideal of <m>S</m>.
+          Put <m>Y = \Spec S[p^{-1}]</m>, let <m>U \subseteq Y</m> be the complement of <m>V(J)</m>,
+          and let <m>j: U \to Y</m> be the canonical open immersion. Then
+          <me>
+            R\Gamma_{\et}(Y, j_! \underline{\FF_p}) \in D^{\leq 1}(\FF_p).
+          </me>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Combine <xref ref="cor-cohom-dim"/> with the étale comparison theorem (<xref ref="thm-etale-comparison"/>).
+        </p>
+      </proof>
+    </corollary>
     <theorem xml:id="thm-cohom-dim">
       <statement>
         <p>
@@ -260,7 +347,7 @@
       </statement>
       <proof>
         <p>
-          This reduces to <xref ref="lem-cohom-dim"/> as in <xref ref="bib-Bhatt-Scholze"/>, Theorem 11.1.
+          This reduces to <xref ref="cor-cohom-dim2"/> using the <q>method of the trace</q> (<xref ref="bib-Stacks"/>, tag 03SH) as in <xref ref="bib-Bhatt-Scholze"/>, Theorem 11.1.
         </p>
       </proof>
     </theorem>
@@ -314,7 +401,8 @@
           By <xref ref="thm-almost-purity2"/>, <m>R_2/p^n \to S_{2,\lens}/p^n</m> is almost finite étale for the context <m>(R_2/p^n, J_{\lens}/p^n)</m>.
           Consequently, <m>\alpha_2/p^n</m> is <m>(J_{\lens}/p^n)</m>-almost zero;
           in particular, it is killed by <m>(p f)^{p^{-m}} \in R_2</m> for all <m>m \ge 0</m>.
-          (Note that we are using that <m>S_2</m> maps to <m>S_{2,\lens}</m> but not any closer relationship between these two objects.)
+          (Note that <m>f^{p^{-m}}</m> makes sense in <m>R_2</m> because the latter is AIC; this is why we didn't stop at <m>R_1</m>.
+          Also, we are using that <m>S_2</m> maps to <m>S_{2,\lens}</m> but not any closer relationship between these two objects.)
         </p>
         <p>
           Now suppose that <m>\alpha/p^n \neq 0</m> for some <m>n \geq 2</m>. By Krull's intersection theorem (<xref ref="bib-Stacks"/>, tag 00IP), 
@@ -342,7 +430,13 @@
         Yet another result in this context (but which requires methods beyond the scope of these notes) is the following.
         Let <m>A</m> be an excellent noetherian integral domain. Let <m>A^+</m> be an absolute integral closure of <m>A</m>
         (that is, take the integral closure of <m>A</m> in some algebraic closure of <m>\Frac A</m>). Then for every positive integer <m>n</m>,
-        the <m>A/p^n</m>-module <m>R^+/p^n</m> is Cohen-Macaulay (<xref ref="bib-Bhatt-AIC"/>, Theorem 1.1).
+        the <m>A/p^n</m>-module <m>A^+/p^n</m> is Cohen-Macaulay (<xref ref="bib-Bhatt-AIC"/>, Theorem 1.1).
+      </p>
+    </remark>
+    <remark>
+      <p>
+        See <xref ref="bib-Bhatt-Scholze"/>, Remark 10.13 for an indication of how to apply <xref ref="thm-almost-purity2"/> to recover some additional results in commutative algebra,
+        such as the results of <xref ref="bib-Heitmann-Ma"/>.
       </p>
     </remark>
   </subsection>

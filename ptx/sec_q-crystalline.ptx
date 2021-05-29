@@ -1,5 +1,5 @@
 ﻿<section xml:id="sec_q-crystalline">
-  <title><m>q</m>-crystalline cohomology (unstable)</title>
+  <title><m>q</m>-crystalline cohomology</title>
   <introduction>
     <paragraphs>
       <title>Reference</title>
@@ -12,6 +12,10 @@
       In this section, we introduce a <m>q</m>-analogue of crystalline cohomology, derive a comparison with prismatic cohomology,
       and use this to establish a statement about the functoriality of <m>q</m>-de Rham cohomology after <m>p</m>-completion. We follow closely our analysis of the Hodge-Tate comparison
       for crystalline prisms (<xref ref="sec_hodge-tate-crystalline"/>).
+    </p>
+    <p>
+      We will only present the affine part of the story, but one can globalize to obtain the <q>Wach module cohomology</q> of a smooth proper <m>\ZZ_p</m>-scheme.
+      This is a primary motivation for seeking a global analogue (<xref ref="sec_q-global"/>).
     </p>
     <p>
       To simplify the presentation, we only consider <m>q</m>-crystalline cohomology relative to <m>\ZZ_p</m>. A more general relative setup is described in <xref ref="bib-Bhatt-Scholze"/>.
@@ -76,7 +80,7 @@
           By inspection, the arrow <m>A \to A'</m> is faithfully flat; we are thus reduced to checking that <m>A' \to C'</m> is <m>(p,[p]_q)</m>-completely flat.
           This can be checked by inspection: it is clear that <m>A' \to A'\{\phi(x/[p]_q)\} \cong A'\{y\}</m> is faithfully flat,
           and the quotient of <m>C'</m> by the completion of <m>A'</m>-submodule is itself the completion of a free module on the basis consisting of products of the form
-          <m>x^{e_0} \delta(x)^{e_1} \delta^2(x)^{e_2} \cdots</m>, where <m>e_0, e_1, \dots \in \{0,\dots,p-1\}</m> are almost all zero.
+          <m>x^{e_0} \delta(x)^{e_1} \delta^2(x)^{e_2} \cdots</m>, where <m>e_0, e_1, \ldots \in \{0,\dots,p-1\}</m> are almost all zero.
           (Compare <xref ref="bib-Bhatt-Scholze"/>, Proposition 3.13, which gives a more general result.)
         </p>
       </proof>
@@ -209,7 +213,7 @@
           <m>J = (q-1,y_1,y_2,\dots)</m>
           where each initial segment <m>y_1,\dots,y_s</m> is a regular sequence on <m>P/(p,q-1)</m>. Define the <m>\delta</m>-ring
           <me>
-            D = P\{\phi(x_1)/[p]_q, \dots, \phi(x_r)/[p]_q \}^\wedge_{(p,[p]_q)}.
+            D = P\{\phi(y_1)/[p]_q, \dots, \phi(y_s)/[p]_q \}^\wedge_{(p,[p]_q)}.
           </me>
           Let <m>I</m> be the kernel of <m>D \to D/(q-1) \to R</m>.
         </p>
@@ -408,7 +412,7 @@
         </p>
       </proof>
     </corollary>
-    <definition>
+    <definition xml:id="def-q-de-Rham-left-Kan">
       <p>
         <xref ref="thm-q-prismatic-to-crystalline"/> gives us a way to regard <m>q \Omega^\bullet_{R/\ZZ_p, \square}</m> as a commutative ring object in <m>D_{\comp}(A)</m>
         functorially associated to <m>\ZZ_p[x_1,\dots,x_r]</m>. We can thus use left Kan extension (<xref ref="prop-left-derived-quillen"/>) to extend the definition
@@ -418,18 +422,28 @@
   </subsection>
   <subsection>
     <title>Frobenius is an isogeny</title>
-    <p>
-      Put <m>R = \ZZ_p[x]^\wedge_{(p)}</m> and view <m>R \llbracket q-1 \rrbracket </m> as a <m>\delta</m>-ring in which <m>q</m> and <m>x</m> are constant. Then
-      <m>q\Omega^\bullet_{R/\ZZ_p,\square}</m> carries an action of <m>\phi</m> given in degree <m>0</m> by <m>f \mapsto \phi(f)</m> and in degree <m>1</m> by
-      <m>g\,dx \mapsto \phi(g) x^{p-1} [p]_q\,dx</m>. A similar statement applies to <m>R = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m>.
-    </p>
-    <p>
-      It follows that for any derived <m>p</m>-complete <m>\ZZ_p</m>-algebra <m>R</m>, the linearized Frobenius <m>\phi_R: \phi_A^* \Prism_{R^{(1)}/A} \to \Prism_{R^{(1)}/A}</m>
-      is an isogeny, in that it becomes an isomorphism after inverting <m>[p]_q</m>. More precisely, because the action on cohomology in degree <m>i</m> 
-      factors through multiplication by <m>[p]_q^i</m>, one can apply the Berthelot-Ogus functor <m>\eta_{[p]_q}</m> (<xref ref="bib-Stacks"/>, tag 0F7N).
-    </p>
+    <remark>
+      <p>
+        Put <m>R = \ZZ_p[x]^\wedge_{(p)}</m> and view <m>R \llbracket q-1 \rrbracket </m> as a <m>\delta</m>-ring in which <m>q</m> and <m>x</m> are constant. Then
+        <m>q\Omega^\bullet_{R/\ZZ_p,\square}</m> carries an action of <m>\phi</m> given in degree <m>0</m> by <m>f \mapsto \phi(f)</m> and in degree <m>1</m> by
+        <m>g\,dx \mapsto \phi(g) x^{p-1} [p]_q\,dx</m>. A similar statement applies to <m>R = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m>.
+      </p>
+      <p>
+        It follows that for any derived <m>p</m>-complete <m>\ZZ_p</m>-algebra <m>R</m>, the linearized Frobenius <m>\phi_R: \phi_A^* \Prism_{R^{(1)}/A} \to \Prism_{R^{(1)}/A}</m>
+        is an isogeny, in that it becomes an isomorphism after inverting <m>[p]_q</m>. More precisely, because the action on cohomology in degree <m>i</m> 
+        factors through multiplication by <m>[p]_q^i</m>, one can apply the Berthelot-Ogus functor <m>\eta_{[p]_q}</m> (<xref ref="bib-Stacks"/>, tag 0F7N);
+        this is related to the discussion of the <term>Nygaard filtration</term> in <xref ref="bib-Bhatt-Scholze"/>.
+      </p>
+    </remark>
   </subsection>
   <subsection>
-    <title>Etale localization</title>
+    <title>Étale localization</title>
+    <remark>
+      <p>
+        One can establish a form of étale localization (<xref ref="lem-hodge-tate-etale-base-change"/>) in order to extend the preceding discussion to
+        the case where <m>R</m> is a <m>p</m>-completely smooth <m>\ZZ_p</m>-algebra. In particular, for such rings the left Kan extension of <xref ref="def-q-de-Rham-left-Kan"/>
+        can be computed by <q>naive</q> <m>q</m>-de Rham complexes using local coordinate choices.
+      </p>
+    </remark>
   </subsection>
 </section>
