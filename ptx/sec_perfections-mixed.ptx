@@ -196,7 +196,7 @@
       </statement>
       <proof>
         <p>
-          By derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>), the first statement implies the third.
+          By derived Nakayama (<xref ref="rmk-derived-nakayama-isomorphism"/>), the first statement implies the third.
           To check the first and second statements, 
           we may reduce to comparing graded pieces of the Hodge-Tate filtration. Using <xref ref="prop-derived-Hodge-Tate-comparison"/> to translate the statement
           in terms of cotangent complexes plus <xref ref="eq-cotangent-complex-sequence"/>, we reduce to checking that the derived <m>p</m>-completion of 
@@ -238,7 +238,7 @@
         <p>
           Write <m>R = \overline{B}</m> for some perfect prism <m>(B,J)</m>; by <xref ref="thm-untilting-functor"/>, the map <m>\overline{A} \to \overline{B}</m>
           promotes uniquely to a morphism of prisms <m>(A,I) \to (B,J)</m>. Now <m>(R \to B/J \leftarrow B)</m> is an object of <m>(R/A)_{\Prism}</m>, so we have
-          a natural map <m>\Prism_{R/A} \to B = W(R^\flat)</m>. To check that this is an isomorphism, by derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>)
+          a natural map <m>\Prism_{R/A} \to B = W(R^\flat)</m>. To check that this is an isomorphism, by derived Nakayama (<xref ref="rmk-derived-nakayama-isomorphism"/>)
           it suffices to do this after applying <m>\bullet \otimes_A^L \overline{A}</m>; that is, we must check that <m>\overline{\Prism}_{R/A} \cong R</m>.
           This follows from <xref ref="lem-base-independence-of-lens-coperfection"/>.
         </p>
@@ -502,7 +502,7 @@
     <example xml:id="exa-zariski-closed2">
       <p>
         Let <m>R</m> be a <m>p</m>-torsion-free lens and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}, y^{p^{-\infty}}]/(x-y)</m>.
-        In this case, the lens coperfection of <m>S</m> contains the closure of the ideal <m>(x^{p^{-n}} - y^{p^{-n}}: n=0,1,\dots)</m> but is somewhat complicated to describe
+        In this case, the kernel of the map to the lens coperfection of <m>S</m> contains the closure of the ideal <m>(x^{p^{-n}} - y^{p^{-n}}: n=0,1,\dots)</m> but is somewhat complicated to describe
         more explicitly; a similar calculation appears in <xref ref="bib-Matignon-Reversat"/>.
       </p>
     </example>

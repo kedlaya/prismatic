@@ -441,6 +441,7 @@
         We say that <m>M \in \Mod_A</m> is <term><m>I</m>-completely flat</term> (resp. <term><m>I</m>-completely faithfully flat</term>) if 
         <m>M/IM</m> is a flat (resp. faithfully flat) <m>A/I</m>-module and <m>\Tor_i^A(A/I, M) = 0</m> for <m>i \gt 0</m>.
         Equivalently, for any <m>N \in \Mod_{A/I}</m>, <m>\Tor_i^A(N,M) = 0</m> for <m>i \gt 0</m>.
+        If <m>M</m> is (faithfully) flat, then it is <m>I</m>-completely (faithfully) flat (<xref ref="exer-derived-completion-of-flat"/>), but not conversely.
       </p>
       <p>
         More generally, we say that <m>M</m> has <term>finite <m>I</m>-complete Tor amplitude</term>
@@ -502,6 +503,7 @@
       </p>
       <p>
         One immediate consequence of this definition is that if any two terms of a distinguished triangle are derived <m>I</m>-complete, then so is the third.
+        In particular, the mapping cone of a morphism between derived <m>I</m>-complete complexes is derived <m>I</m>-complete; see <xref ref="rmk-derived-nakayama-isomorphism"/>.
       </p>
     </definition>
     <proposition xml:id="prop-derived-complete-abelian-derived">
@@ -563,16 +565,23 @@
     <example xml:id="exa-derived-example-QZ">
       <p>
         Take <m>A = \ZZ, I = (p), M = \QQ/\ZZ</m>. Then the ordinary completion of <m>M</m> vanishes, as does the derived completion of <m>M</m>
-        <em>as a module</em>, but the derived completion of <m>M</m> <em>as a complex</em> is the group <m>\ZZ_p</m> concentrated in degree -1.
+        <em>as a module</em>, but the derived completion of <m>M</m> <em>as a complex</em> is the group <m>\ZZ_p</m> concentrated in degree <m>-1</m>.
       </p>
     </example>
+    <remark xml:id="rmk-derived-nakayama-isomorphism">
+      <p>
+        We will frequently used the derived Nakayama's lemma (<xref ref="prop-derived-complete-abelian-derived"/>) in the following form:
+        for <m>f: K^\bullet \to L^\bullet</m> a morphism of derived <m>I</m>-complete complexes, <m>f</m> is a quasi-isomorphism if and only if the induced morphism
+        <m>K^\bullet \otimes^L_A A/I \to L^\bullet \otimes^L_A A/I</m> of complexes over <m>A/I</m> is a quasi-isomorphism. To be precise, this will follow from applying
+        <xref ref="prop-derived-complete-abelian-derived"/> to the mapping cone of <m>f</m> (<xref ref="def-mapping-cone"/>).
+      </p>
+    </remark>
     <definition>
       <p>
         Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
         We say that a complex <m>K</m> of <m>A</m>-modules is <term><m>I</m>-completely flat</term> if for any <m>I</m>-torsion <m>A</m>-module <m>N</m>,
-        the derived tensor product <m>K \otimes_A^L N</m> is concentrated in degree 0. 
-        Equivalently, <m>K \otimes_A^L A/I</m> is concentrated in degree 0
-        where it is a flat <m>A/I</m>-module.
+        the derived tensor product <m>K \otimes_A^L N</m> is concentrated in degree <m>0</m>. 
+        Equivalently, <m>K \otimes_A^L A/I</m> is concentrated in degree <m>0</m> where it is a flat <m>A/I</m>-module.
         If in addition <m>K \otimes_A^L A/I</m> is faithfully flat as an <m>A/I</m>-module, we say that 
         <m>K</m> is <term><m>I</m>-completely faithfully flat</term>. Note that these definitions agree with the corresponding notions for modules
         (<xref ref="def-I-completely-flat"/>).
@@ -592,11 +601,11 @@
           the map <m>M \to \lim_n M/f^n M</m> is surjective. Prove that the map <m>M \to \lim_n M/I^n M</m> is surjective.
         </p>
       </statement>
-      <proof>
+      <hint>
         <p>
           See <xref ref="bib-Stacks"/>, tag 090S.
         </p>
-      </proof>
+      </hint>
     </exercise>
     <exercise>
       <statement>
@@ -669,12 +678,12 @@
     <exercise xml:id="exer-derived-complete-principal-cokernel">
       <statement>
         <p>
-          Let <m>A</m> be a ring and let <m>f \in A</m> be a non-zerodivisor. Show that an <m>A</m>-module <m>M</m> is derived <m>f</m>-complete
+          Let <m>f</m> be a non-zerodivisor in some <m>A \in \Ring</m>. Show that <m>M \in \Mod_A</m> is derived <m>f</m>-complete
           if and only if there exists a short exact sequence
           <me>
             0 \to K \to L \to M \to 0
           </me>
-          in which <m>K,L</m> are <m>f</m>-torsion-free, <m>f</m>-adically complete <m>A</m>-modules.
+          in which <m>K,L \in \Mod_A</m> are <m>f</m>-torsion-free and <m>f</m>-adically complete.
         </p>
       </statement>
       <hint>
@@ -683,10 +692,10 @@
         </p>
       </hint>
     </exercise>
-    <exercise>
+    <exercise xml:id="exer-derived-completion-of-flat">
       <statement>
         <p>
-          Let <m>A</m> be a ring and let <m>I</m> be a finitely generated ideal of <m>A</m>.
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
           Show that for any flat <m>A</m>-module <m>M</m>, the derived <m>I</m>-completion of <m>M</m> as a complex is <m>I</m>-completely flat.
         </p>
       </statement>
@@ -696,34 +705,17 @@
         </p>
       </hint>
     </exercise>
-    <exercise xml:id="exer-derived-completion-delta">
+    <exercise>
       <statement>
         <p>
-          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m> containing <m>p</m>.
-          Prove that the derived <m>I</m>-completion of <m>A</m> (as a module, viewed as an <m>A</m>-algebra
-          using <xref ref="def-derived-completion-of-algebras"/>) admits a unique <m>\delta</m>-ring structure compatible with <m>A</m>.
-          (That is, <xref ref="exer-delta-ring-completion"/> remains true when the classical completion is replaced by the derived completion.)
+          Let <m>A \in \Ring</m> be noetherian and let <m>I</m> be an ideal of <m>A</m>.
+          Suppose that <m>M \in D(R)</m> is <m>I</m>-completely flat. Then the derived <m>I</m>-completion of <m>M</m> is concentrated in degree <m>0</m>,
+          where it is a flat <m>A</m>-module.
         </p>
       </statement>
       <hint>
         <p>
-          Use the characterization of <m>\delta</m>-structures on <m>A</m> in terms of <m>W_2(A)</m> (<xref ref="rmk-W2-interpretation"/>).
-        </p>
-      </hint>
-    </exercise>
-    <exercise xml:id="exer-etale-completion">
-      <statement>
-        <p>
-          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring_\delta</m> containing <m>p</m>.
-          Let <m>A \to B</m> be a morphism in <m>\Ring</m> such that <m>B</m> is derived <m>I</m>-complete and <m>A \to B</m> is <m>I</m>-completely etale.
-          Then <m>A \to B</m> promotes uniquely to a morphism in <m>\Ring_\delta</m>.
-        </p>
-      </statement>
-      <hint>
-        <p>
-          Using <xref ref="rmk-W2-interpretation"/>, it suffices to lift <m>A \to B</m> to a morphism <m>W_2(A) \to W_2(B)</m>.
-          Achieve this by combining <xref ref="prop-Elkik-lifting"/> with <xref ref="prop-etale-Witt"/>.
-          (Compare <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.18.)
+          See <xref ref="bib-Bhatt-AIC"/>, Lemma 5.15.
         </p>
       </hint>
     </exercise>
@@ -773,6 +765,37 @@
         </p>
       </hint>
     </exercise>
+    <exercise xml:id="exer-etale-completion">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring_\delta</m> containing <m>p</m>.
+          Let <m>A \to B</m> be a morphism in <m>\Ring</m> such that <m>B</m> is derived <m>I</m>-complete and <m>A \to B</m> is <m>I</m>-completely etale.
+          Then <m>A \to B</m> promotes uniquely to a morphism in <m>\Ring_\delta</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Using <xref ref="rmk-W2-interpretation"/>, it suffices to lift <m>A \to B</m> to a morphism <m>W_2(A) \to W_2(B)</m>.
+          Achieve this by combining <xref ref="prop-Elkik-lifting"/> with <xref ref="prop-etale-Witt"/>.
+          (Compare <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.18.)
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-derived-completion-delta">
+      <statement>
+        <p>
+          Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m> containing <m>p</m>.
+          Prove that the derived <m>I</m>-completion of <m>A</m> (as a module, viewed as an <m>A</m>-algebra
+          using <xref ref="def-derived-completion-of-algebras"/>) admits a unique <m>\delta</m>-ring structure compatible with <m>A</m>.
+          (That is, <xref ref="exer-delta-ring-completion"/> remains true when the classical completion is replaced by the derived completion.)
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use the characterization of <m>\delta</m>-structures on <m>A</m> in terms of <m>W_2(A)</m> (<xref ref="rmk-W2-interpretation"/>).
+        </p>
+      </hint>
+    </exercise>
     <exercise>
       <statement>
         <p>
@@ -792,20 +815,6 @@
           First use <xref ref="exer-pic-reduction"/> to argue that <m>\Pic(A) \to \Pic(A/p)</m> is an isomorphism.
           Then show that <m>\phi</m> induces the <m>p</m>-power map on <m>\Pic(A/p)</m>, and apply <xref ref="lem-prism-ideal-generator"/> to conclude.
           See also <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.6.
-        </p>
-      </hint>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Let <m>A \in \Ring</m> be noetherian and let <m>I</m> be an ideal of <m>A</m>.
-          Suppose that <m>M \in D(R)</m> is <m>I</m>-completely flat. Then the derived <m>I</m>-completion of <m>M</m> is concentrated in degree <m>0</m>,
-          where it is a flat <m>A</m>-module.
-        </p>
-      </statement>
-      <hint>
-        <p>
-          See <xref ref="bib-Bhatt-AIC"/>, Lemma 5.15.
         </p>
       </hint>
     </exercise>

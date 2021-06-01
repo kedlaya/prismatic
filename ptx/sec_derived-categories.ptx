@@ -208,7 +208,7 @@
     <p>
       Here is a key family of examples.
     </p>
-    <definition>
+    <definition xml:id="def-mapping-cone">
       <p>
         For a morphism <m>f: K^\bullet \to L^\bullet</m> in <m>\Comp(\calA)</m>, the <term>cone</term> (or <term>mapping cone</term>) of <m>f</m> is the complex
         <me>

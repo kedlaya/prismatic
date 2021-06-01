@@ -147,7 +147,9 @@
       <proof>
         <p>
           Suppose first that <m>S</m> admits an action by a finite group <m>G</m> such that <m>R \to S</m> is a <m>J</m>-almost <m>G</m>-Galois cover.
-          It will then suffice to check that <m>R \to S_{\lens}</m> is a <m>J</m>-almost <m>G</m>-Galois cover. By <xref ref="thm-andre-flatness-strong"/>, we may assume that <m>R</m> is absolutely integrally closed.
+          It will then suffice to check that <m>R \to S_{\lens}</m> is a <m>J</m>-almost <m>G</m>-Galois cover. 
+          This assertion can be checked modulo <m>p</m> thanks to derived Nakayama (<xref ref="rmk-derived-nakayama-isomorphism"/>),
+          and hence after a <m>p</m>-completely faithfully flat base extension on <m>R</m>; by <xref ref="thm-andre-flatness-strong"/>, we may assume that <m>R</m> is absolutely integrally closed.
           We can then find generators <m>f_1,\dots,f_r</m> of <m>J</m> such that <m>R \to S</m> splits outside <m>V(f_i)</m> for <m>i=1,\dots,r</m>. Since being a <m>J</m>-almost isomorphism is equivalent
           to being an <m>(f_i)</m>-almost isomorphism for <m>i=1,\dots,r</m>, we may reduce to the case where <m>J = (f)</m> and <m>R[f^{-1}] \to S[f^{-1}]</m> splits.
           By <xref ref="lem-enlarge-away-from-J"/>, we may replace <m>S</m> with the split <m>G</m>-torsor, for which the claims are all evident.
