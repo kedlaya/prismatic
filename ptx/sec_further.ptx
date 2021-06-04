@@ -1,5 +1,5 @@
-﻿<section xml:id="sec_prismatization">
-  <title>Further developments (unstable)</title>
+﻿<section xml:id="sec_further">
+  <title>Some further developments: a whirlwind tour </title>
   <introduction>
     <paragraphs>
       <title>Reference</title>
@@ -14,10 +14,21 @@
   </introduction>
   <subsection>
     <title>Topological Hochschild homology</title>
+    <definition>
+      <p>
+        Let <m>A \to B</m> be a morphism in <m>\Ring</m>.
+        The <term>Hochschild homology</term> of <m>B</m> over <m>A</m> is the complex of <m>A</m>-modules associated to the simplicial object <m>K_\bullet</m> of <m>\Ring_A</m>
+        in which <m>K_n</m> is the <m>(n+1)</m>-fold tensor product of <m>B</m> over <m>A</m>
+        and the various maps <m>K_n \to K_{n-1}</m> act by taking the product of some pair of consecutive factors:
+        <me>
+          b_0 \otimes \cdots \otimes b_i \otimes b_{i+1} \otimes \cdots \otimes b_n \mapsto b_0 \otimes \cdots \otimes b_ib_{i+1} \otimes \cdots \otimes b_n.
+        </me>
+      </p>
+    </definition>
     <remark>
       <p>
         It has been anticipated for some time that there should be deep links between structures arising in <m>p</m>-adic Hodge theory and parallel structures arising in algebraic
-        topology, particularly with regard to <term>topological Hochschild homology</term> (THH), the analogue of classical Hochschild homology with rings replaced by ring spectra;
+        topology, particularly with regard to <term>topological Hochschild homology</term> (THH), the analogue of Hochschild homology with rings replaced by ring spectra;
         working with THH means that one takes tensor products over the sphere spectrum, which lies <q>below</q> the ordinary ring of integers and thus provides
         a base more closely resembling the <q>field of one element</q>.
         Much of the early work in this direction is due to Hesselholt; see for example <xref ref="bib-Hesselholt"/>.
@@ -59,7 +70,7 @@
     </definition>
     <definition>
       <p>
-        For <m>R</m> a derived <m>p</m>-complete ring, a <term>prismatic <m>F</m>-crystal</term> on <m>R</m> is a crystal <m>M</m> on the absolute prismatic site of <m>X</m>
+        For <m>R</m> a derived <m>p</m>-complete ring, a <term>prismatic <m>F</m>-crystal</term> on <m>R</m> is a crystal <m>M</m> on the absolute prismatic site of <m>R</m>
         equipped with an isomorphism
         <me>
           F: \phi^* M[I^{-1}] \to M[I^{-1}].

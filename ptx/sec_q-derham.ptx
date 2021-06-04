@@ -8,6 +8,11 @@
       </p>
     </paragraphs>
     <p>
+      We use the following notation frequently: for <m>n</m> a nonnegative integer,
+      <md>
+        <mrow>[n]_q &amp;= \frac{q^n-1}{q-1} = 1 + q + \cdots + q^{n-1}</mrow>
+        <mrow>[n]_q! &amp;= [1]_q \cdots [n]_q.</mrow>
+      </md>
     </p>
   </introduction>
   <subsection>

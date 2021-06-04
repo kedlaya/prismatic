@@ -59,7 +59,7 @@
     <lemma xml:id="lem-lens-coperfection-arcp-sheaf">
       <statement>
         <p>
-          The functor <m>S \to S_{\lens}</m> on derived <m>p</m>-complete rings satisfies descent for the arc<m>_p</m>-topology.
+          The functor <m>S \mapsto S_{\lens}</m> on derived <m>p</m>-complete rings satisfies descent for the arc<m>_p</m>-topology.
         </p>
       </statement>
       <proof>
@@ -100,17 +100,31 @@
         </p>
       </proof>
     </lemma>
+    <remark>
+      <p>
+        While <xref ref="lem-enlarge-away-from-J1"/> must be stated in the derived category <m>D(S)</m>
+        because that is the best we can prove right now,
+        once we finish the proof of almost purity (<xref ref="thm-almost-purity2"/>)
+        we will know that all of the objects in <xref ref="fig-enlarge-away-from-J"/>
+        will be concentrated in degree 0. Hence we will also end up with a pullback square in <m>\Ring</m>.
+      </p>
+    </remark>
     <corollary xml:id="lem-enlarge-away-from-J">
       <statement>
         <p>
           Let <m>S \to S'</m> be a integral morphism of derived <m>p</m>-complete rings such that for some derived <m>p</m>-complete ideal <m>J</m> of <m>S</m>,
-          <m>\Spec S' \to \Spec S</m> is an isomorphism outside <m>V(J)</m>. 
-          Then <m>S_{\lens} \to S'_{\lens}</m> is a <m>J</m>-almost isomorphism.
+          <m>\Spec S' \to \Spec S</m> is an isomorphism outside <m>V(J)</m>.
+          Then <m>S_{\lens} \to S'_{\lens}</m> is a <m>J</m>-almost isomorphism in <m>D(S)</m>.
         </p>
       </statement>
       <proof>
         <p>
-          This is immediate from <xref ref="lem-enlarge-away-from-J1"/>.
+          The hypothesis on <m>S \to S'</m> implies the hypothesis of 
+          <xref ref="lem-enlarge-away-from-J1"/>,
+          so <xref ref="fig-enlarge-away-from-J"/> is a pullback square in <m>D(S)</m>.
+          In particular, the cones of the two rows are isomorphic in <m>D(S)</m>.
+          The bottom row consists of two objects which by construction are <m>J</m>-almost zero (<xref ref="cor-J-almost-zero-category"/>),
+          so its cone is also <m>J</m>-almost zero; hence the top row is a <m>J</m>-almost isomorphism.
         </p>
       </proof>
     </corollary>
@@ -146,13 +160,19 @@
       </statement>
       <proof>
         <p>
+          We may assume from the outset that <m>p \in J</m>.
           Suppose first that <m>S</m> admits an action by a finite group <m>G</m> such that <m>R \to S</m> is a <m>J</m>-almost <m>G</m>-Galois cover.
-          It will then suffice to check that <m>R \to S_{\lens}</m> is a <m>J</m>-almost <m>G</m>-Galois cover. 
-          This assertion can be checked modulo <m>p</m> thanks to derived Nakayama (<xref ref="rmk-derived-nakayama-isomorphism"/>),
-          and hence after a <m>p</m>-completely faithfully flat base extension on <m>R</m>; by <xref ref="thm-andre-flatness-strong"/>, we may assume that <m>R</m> is absolutely integrally closed.
-          We can then find generators <m>f_1,\dots,f_r</m> of <m>J</m> such that <m>R \to S</m> splits outside <m>V(f_i)</m> for <m>i=1,\dots,r</m>. Since being a <m>J</m>-almost isomorphism is equivalent
-          to being an <m>(f_i)</m>-almost isomorphism for <m>i=1,\dots,r</m>, we may reduce to the case where <m>J = (f)</m> and <m>R[f^{-1}] \to S[f^{-1}]</m> splits.
-          By <xref ref="lem-enlarge-away-from-J"/>, we may replace <m>S</m> with the split <m>G</m>-torsor, for which the claims are all evident.
+          Note that this hypothesis is preserved by a <m>p</m>-completely flat base extension, as it can be checked modulo <m>p</m>
+          thanks to derived Nakayama (<xref ref="rmk-derived-nakayama-isomorphism"/>); moreover, all of the conclusions can also be checked after such a base extension.
+          By <xref ref="thm-andre-flatness-strong"/>, we may thus assume that <m>R</m> is absolutely integrally closed.
+          By <xref ref="lem-aic-splitting"/>,
+          we can then find generators <m>f_1,\dots,f_r</m> of <m>J</m> such that <m>R \to S</m> splits outside <m>V(f_i)</m> for <m>i=1,\dots,r</m>. 
+          Since being a <m>J</m>-almost isomorphism is equivalent
+          to being an <m>(f_i)</m>-almost isomorphism for <m>i=1,\dots,r</m>, we may reduce to the case where <m>J = (f)</m> and 
+          we have an <m>R</m>-algebra isomorphism <m>S[f^{-1}] \cong \prod_{i \in I} R[f^{-1}]</m> for some finite index set <m>I</m>.
+          Put <m>S' = \prod_{i \in I} R</m> and let <m>S'</m> be the integral closure of <m>R</m> in <m>S[f^{-1}]</m>; we then have maps
+          <m>S \to S'', S' \to S''</m> to which we may apply <xref ref="lem-enlarge-away-from-J"/>.
+          This allows us to equate all of the desired assertions about <m>S</m> to the corresponding statements about <m>S'</m>, which are self-evident.
         </p>
         <p>
           Assume next that <m>R \to S</m> has constant degree <m>r</m> outside <m>V(J)</m>. By <xref ref="lem-Galois-closure-rings"/>, we can find an <m>S_r</m>-Galois covering of <m>\Spec(R) \setminus V(J)</m>

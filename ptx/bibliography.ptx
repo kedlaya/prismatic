@@ -158,6 +158,9 @@
   <biblio type="raw" xml:id="bib-Fontaine-Wintenberger">
     J.-M. Fontaine and J.-P. Wintenberger, <articletitle>Le <q>corps des normes</q> de certaines extensions algébriques de corps locaux</articletitle>, <journal>C. R. Acad. Sci. Paris Sér. A B</journal> <volume>288</volume> <year>1979</year>, 367<ndash/>370.
   </biblio>
+  <biblio type="raw" xml:id="bib-Fresnel-deMathan">
+    J. Fresnel and B. de Mathan, <articletitle>Algèbres <m>L^1</m> <m>p</m>-adiques</articletitle>, <journal>Bulletin de la Société Mathématique de France</journal> <volume>106</volume> <year>1978</year>, 225<ndash/>260.
+  </biblio>
   <biblio type="raw" xml:id="bib-Gabber-Ramero">
     O. Gabber and L. Ramero, <pubtitle>Almost Ring Theory</pubtitle>, Lecture Notes in Mathematics 1800, Springer-Verlag, Berlin <year>2003</year>.
   </biblio>

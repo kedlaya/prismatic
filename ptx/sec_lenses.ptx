@@ -313,6 +313,12 @@
         (of characteristic <m>p</m>), denoted <m>K^\flat</m>.
       </p>
     </definition>
+    <remark>
+      <p>
+        We report an observation from <xref ref="bib-Kedlaya-AWS"/>, Remark 2.1.8: 
+        perfectoid fields are the same as the <term>hyperperfect fields</term> of <xref ref="bib-Matignon-Reversat"/>.
+      </p>
+    </remark>
     <lemma xml:id="lem-perfectoid-field-gives-lens">
       <statement>
         <p>

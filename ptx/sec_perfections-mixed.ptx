@@ -422,6 +422,27 @@
     <p>
       We next use prismatic coperfections to construct faithfully flat morphisms of prisms; this recovers an important assertion of mixed-characteristic commutative algebra.
     </p>
+    <definition xml:id="def-absolutely-integrally-closed">
+      <p>
+        A ring <m>R</m> is <term>absolutely integrally closed</term> if every monic polynomial over <m>R</m> has a root.
+        We often abbreviate this to <term>AIC</term>.
+      </p>
+    </definition>
+    <lemma xml:id="lem-aic-splitting">
+      <statement>
+        <p>
+          For <m>R \in \Ring</m> AIC, <m>f \in R</m> an element, and <m>R[f^{-1}] \to S</m> a finite étale morphism  in <m>\Ring</m>, 
+          there exist elements <m>g_1,\dots,g_r \in R</m> such that
+          <m>(f,g_1,\dots,g_r)R = R</m> and for <m>i=1,\dots,r</m>, the morphism <m>R[(fg_i)^{-1}] \to S[g_i^{-1}]</m> is totally split (that is,
+          as an <m>R[(fg_i)^{-1}]</m>-algebra we can split <m>S[g_i^{-1}]</m> as a finite product of copies of <m>R[(fg_i)^{-1}]</m>).
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By <xref ref="bib-Stacks"/>, tag 0DCS, the localization of <m>R</m> at any prime ideal is strictly henselian; this implies the claim at once.
+        </p>
+      </proof>
+    </lemma>
     <lemma xml:id="lem-lift-after-adding-root">
       <statement>
         <p>
@@ -452,9 +473,8 @@
       <title>André flatness lemma</title>
       <statement>
         <p>
-          Let <m>R</m> be a lens. Then there exists a <m>p</m>-completely faithfully flat morphism <m>R \to S</m> of lenses such that <m>S</m> is
-          <term>absolutely integrally closed</term>, meaning that every monic polynomial over <m>S</m> has a root. In particular, every element of <m>S</m>
-          admits a compatible system of <m>p</m>-power roots.
+          Let <m>R</m> be a lens. Then there exists a <m>p</m>-completely faithfully flat morphism <m>R \to S</m> of lenses such that <m>S</m> is AIC.
+          In particular, every element of <m>S</m> admits a compatible system of <m>p</m>-power roots.
         </p>
       </statement>
       <proof>
@@ -496,14 +516,26 @@
     <example xml:id="exa-zariski-closed1">
       <p>
         Let <m>R</m> be a lens and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}]^\wedge_{(p)}/(x)</m>.
-        Then the lens coperfection of <m>S</m> is <m>R</m> via the map dividing by the closure of the ideal <m>(x^{p^{-\infty}})</m>.
+        Then <m>S_{\lens} \cong R</m> with the kernel of <m>S \to S_{\lens}</m> being the closure of the ideal <m>(x^{p^{-\infty}})</m>.
       </p>
     </example>
     <example xml:id="exa-zariski-closed2">
       <p>
+        Let <m>R</m> be a completed algebraic integral closure of <m>\ZZ_p</m> and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}]/(x-1)</m>.
+        In this case, <m>S_{\lens} \cong R</m> via the map taking <m>x^{p^{-n}}</m> to a primitive <m>p^n</m>-th root of unity.
+        However, the kernel of the map <m>S \to S_{\lens}</m> is somewhat complicated to describe;
+        it contains the closure of the ideal <m>(x^{p^{-n}} - 1: n=0,1,\dots)</m> but is not equal to this closure.
+        A similar analysis (in older language) appears in <xref ref="bib-Fresnel-deMathan"/>.
+      </p>
+    </example>
+    <p>
+      Here is a variation of the previous example.
+    </p>
+    <example xml:id="exa-zariski-closed3">
+      <p>
         Let <m>R</m> be a <m>p</m>-torsion-free lens and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}, y^{p^{-\infty}}]/(x-y)</m>.
-        In this case, the kernel of the map to the lens coperfection of <m>S</m> contains the closure of the ideal <m>(x^{p^{-n}} - y^{p^{-n}}: n=0,1,\dots)</m> but is somewhat complicated to describe
-        more explicitly; a similar calculation appears in <xref ref="bib-Matignon-Reversat"/>.
+        In this case, <m>S_{\lens} \cong R[x^{p^{-\infty}}]^{\wedge}_{(p)}</m> via the map <m>y^{p^{-n}} \mapsto x^{p^{-n}}</m>.
+        The kernel of the map <m>S \to S_{\lens}</m> contains the closure of the ideal <m>(x^{p^{-n}} - y^{p^{-n}}: n=0,1,\dots)</m>.
       </p>
     </example>
     <remark>

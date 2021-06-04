@@ -71,10 +71,6 @@
         We say that <m>V</m> is <term>eudoxian</term> if its value group satisfies the equivalent conditions of <xref ref="lem-eudoxian"/>.
       </p>
       <p>
-        We say that a valuation ring <m>V</m> is <term>absolutely integrally closed</term> (or <term>AIC</term>) if its fraction field is algebraically closed.
-        Any (eudoxian) valuation ring can be embedded in an AIC (eudoxian) valuation ring.
-      </p>
-      <p>
         We define an <term>arc</term> to be a scheme of the form <m>\Spec(V)</m> where <m>V</m> is a eudoxian valuation ring. For example, a scheme which is the spectrum
         of a discrete valuation ring (sometimes called a <term>trait</term> or a <term>dash</term>) is an arc.
         (This terminology is hinted at in <xref ref="bib-Bhatt-Mathew"/> but not actually introduced there.)
@@ -142,6 +138,13 @@
         Condition (1) in <xref ref="lem-eudoxian"/> is commonly called the <term>archimedean property</term> of a totally ordered group. We prefer the adjective
         <term>eudoxian</term> both for historical accuracy and to avoid creating confusion with the use of the term <term>nonarchimedean</term> in reference to an associated
         absolute value of a eudoxian valuation.
+      </p>
+    </remark>
+    <remark>
+      <p>
+        Recall (<xref ref="def-absolutely-integrally-closed"/>) that a ring <m>R</m> is said to be <term>absolutely integrally closed</term> (or <term>AIC</term>)
+        if every monic polynomial over <m>R</m> has a root in <m>R</m>. When <m>R = V</m> is a valuation ring, this is equivalent to requiring that its fraction field
+        is algebraically closed. In particular, any (eudoxian) valuation ring can be embedded in an AIC (eudoxian) valuation ring.
       </p>
     </remark>
   </subsection>
