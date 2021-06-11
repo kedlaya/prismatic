@@ -506,7 +506,7 @@
         </p>
       </proof>
     </proposition>
-    <corollary>
+    <corollary xml:id="cor-lens-reduced">
       <statement>
         <p>
           Any lens is a reduced ring.

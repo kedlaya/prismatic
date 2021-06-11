@@ -138,9 +138,6 @@
           The course was closely modeled on <xref ref="bib-Bhatt-course"/>, which in turn presented material from <xref ref="bib-Bhatt-Scholze"/>.
           No claim of originality is made except for errors.
         </p>
-        <p>
-          Sections marked <q>unstable</q> are partially unwritten. I don't recommend reading these yet!
-        </p>
       </abstract>
     </frontmatter>
     <xi:include href="./sec_overview.ptx"/>

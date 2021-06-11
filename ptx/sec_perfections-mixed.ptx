@@ -136,7 +136,7 @@
   </subsection>
   <subsection>
     <title>The mixed characteristic case</title>
-    <definition>
+    <definition xml:id="def-prismatic-coperfection">
       <p>
         Let <m>(A,I)</m> be a perfect prism with slice <m>\overline{A}</m>. For <m>R \in \Ring_{\overline{A}}</m> derived <m>p</m>-complete, define the
         <term>prismatic coperfection</term>
@@ -510,34 +510,6 @@
         </p>
       </proof>
     </corollary>
-    <p>
-      We have the following analogue of <xref ref="exa-perfection-coperfection2"/>.
-    </p>
-    <example xml:id="exa-zariski-closed1">
-      <p>
-        Let <m>R</m> be a lens and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}]^\wedge_{(p)}/(x)</m>.
-        Then <m>S_{\lens} \cong R</m> with the kernel of <m>S \to S_{\lens}</m> being the closure of the ideal <m>(x^{p^{-\infty}})</m>.
-      </p>
-    </example>
-    <example xml:id="exa-zariski-closed2">
-      <p>
-        Let <m>R</m> be a completed algebraic integral closure of <m>\ZZ_p</m> and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}]/(x-1)</m>.
-        In this case, <m>S_{\lens} \cong R</m> via the map taking <m>x^{p^{-n}}</m> to a primitive <m>p^n</m>-th root of unity.
-        However, the kernel of the map <m>S \to S_{\lens}</m> is somewhat complicated to describe;
-        it contains the closure of the ideal <m>(x^{p^{-n}} - 1: n=0,1,\dots)</m> but is not equal to this closure.
-        A similar analysis (in older language) appears in <xref ref="bib-Fresnel-deMathan"/>.
-      </p>
-    </example>
-    <p>
-      Here is a variation of the previous example.
-    </p>
-    <example xml:id="exa-zariski-closed3">
-      <p>
-        Let <m>R</m> be a <m>p</m>-torsion-free lens and let <m>S</m> be the (regular) semilens <m>R[x^{p^{-\infty}}, y^{p^{-\infty}}]/(x-y)</m>.
-        In this case, <m>S_{\lens} \cong R[x^{p^{-\infty}}]^{\wedge}_{(p)}</m> via the map <m>y^{p^{-n}} \mapsto x^{p^{-n}}</m>.
-        The kernel of the map <m>S \to S_{\lens}</m> contains the closure of the ideal <m>(x^{p^{-n}} - y^{p^{-n}}: n=0,1,\dots)</m>.
-      </p>
-    </example>
     <remark>
       <p>
         In the theory of perfectoid spaces, the surjectivity assertion in <xref ref="cor-strongly-zariski-closed"/> corresponds to the fact there is no difference between
@@ -546,11 +518,63 @@
       </p>
     </remark>
   </subsection>
+  <subsection>
+    <title>Examples of lens coperfection</title>
+    <remark>
+      <p>
+        In each of the following examples, we exhibit the lens coperfection of a semilens <m>S</m> not from its definition (<xref ref="def-prismatic-coperfection"/>),
+        but from the adjunction property (<xref ref="cor-lens-semilens-left-adjoint"/>).
+      </p>
+    </remark>
+    <p>
+      We have the following analogue of <xref ref="exa-perfection-coperfection2"/>.
+    </p>
+    <example xml:id="exa-zariski-closed1">
+      <p>
+        Let <m>R</m> be a lens and let <m>S</m> be the regular semilens <m>R[x^{p^{-\infty}}]^\wedge_{(p)}/(x)</m>.
+        Then <m>S_{\lens} \cong R</m> with the kernel of <m>S \to S_{\lens}</m> being the closure of the ideal <m>(x^{p^{-\infty}})</m>.
+        We check this from the adjunction property (<xref ref="cor-lens-semilens-left-adjoint"/>): if <m>S \to T</m> is a morphism with <m>T</m> a lens,
+        then <m>T</m> is reduced (<xref ref="cor-lens-reduced"/>) and so <m>x^{p^{-n}} \in \ker(S \to T)</m> for all <m>n</m>.
+      </p>
+      <p>
+        In this case, it is easy to see that the kernel of <m>S \to S_{\lens}</m> is strictly larger than the radical of the ideal <m>x</m>. For example, 
+        if <m>R</m> is <m>p</m>-torsion-free, then the element
+        <me>
+          \sum_{n=1}^\infty p^n x^{p^{-n}}
+        </me>
+        belongs to the kernel but no power of it is divisible by <m>x</m>.
+      </p>
+    </example>
+    <example xml:id="exa-zariski-closed2">
+      <p>
+        Let <m>R</m> be a completed algebraic integral closure of <m>\ZZ_p</m> and let <m>S</m> be the regular semilens <m>R[x^{p^{-\infty}}]^{\wedge}_{(p)}/(x-1)</m>.
+        Fix a coherent sequence <m>(\zeta_{p^n})</m> of <m>p</m>-power roots of unity in <m>R</m>.
+        Then <m>S_{\lens}</m> can be described as the ring of continuous functions <m>\ZZ_p \to R</m>, viewed as a subring of the product <m>\prod_{c \in \ZZ_p} R</m>,
+        via the map taking <m>x^{p^{-n}}</m> to <m>(\zeta_{p^n}^c)_{c \in \ZZ_p}</m>.
+        As in <xref ref="exa-zariski-closed1"/>, this can be checked using the adjunction property of lens coperfection (<xref ref="cor-lens-semilens-left-adjoint"/>).
+      </p>
+      <p>
+        The kernel of the map <m>S \to S_{\lens}</m> has been analyzed in <xref ref="bib-Fresnel-deMathan"/>: it is the radical of the ideal <m>(x-1)</m>,
+        but is strictly larger than <m>(x-1)</m> itself. However, it is difficult to exhibit <q>explicit</q> elements witnessing the difference between the two ideals.
+      </p>
+    </example>
+    <p>
+      Here is a variation of the previous example.
+    </p>
+    <example xml:id="exa-zariski-closed3">
+      <p>
+        Let <m>R</m> be a <m>p</m>-torsion-free lens and let <m>S</m> be the nonregular semilens <m>R[x^{p^{-\infty}}, y^{p^{-\infty}}]^{\wedge}_{(p)}/(x^{p^{-n}} - y^{p^{-n}}: n =0,1,\dots)</m>.
+        In this case, <m>S_{\lens} \cong R[x^{p^{-\infty}}]^{\wedge}_{(p)}</m> via the map <m>y^{p^{-n}} \mapsto x^{p^{-n}}</m>.
+        By contrast, if we take the quotient of <m>R[x^{p^{-\infty}}, y^{p^{-\infty}}]^{\wedge}_{(p)}</m> by the ideal <m>(x-y)</m>, we end up with something more similar to
+        <xref ref="exa-zariski-closed2"/> (particularly if <m>R</m> contains a coherent <m>p</m>-power sequence of roots of unity).
+      </p>
+    </example>
+  </subsection>
  <exercises>
     <exercise xml:id="exer-frob-flat">
       <statement>
         <p>
-          Show that for <m>R \in \Ring_{\FF_p}</m>, the Frobenius map <m>\phi_R: R \to R</m> is flat if and only  if the canonical map from <m>R</m>
+          Show that for <m>R \in \Ring_{\FF_p}</m>, the Frobenius map <m>\phi_R: R \to R</m> is flat if and only if the canonical map from <m>R</m>
           to its coperfection <m>R_{\perf}</m> is flat.
         </p>
       </statement>
