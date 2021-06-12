@@ -2,7 +2,7 @@
 all: latex pdf images html install
 
 latex:
-	xsltproc --xinclude -o prismatic-ptx.tex ~/code/mathbook/xsl/pretext-latex.xsl ptx/index.ptx
+	xsltproc -stringparam publisher publication.xml --xinclude -o prismatic-ptx.tex ~/code/mathbook/xsl/pretext-latex.xsl ptx/index.ptx
 
 pdf:
 	pdflatex -halt-on-error prismatic-ptx || [$$? -eq 0];

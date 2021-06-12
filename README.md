@@ -2,17 +2,18 @@ Hints for processing PreTeXt:
 
 - To convert XML to LaTeX:
 ```
-xsltproc --xinclude -o prismatic-ptx.tex ~/code/mathbook/xsl/pretext-latex.xsl ptx/index.ptx
+make latex
 ```
 - To convert the resulting LaTeX to PDF:
 ```
-pdflatex prismatic-ptx
+make pdf
 ```
 - To prepare images:
 ```
-~/code/mathbook/pretext/pretext -c latex-image -f svg -d html/images/ ptx/index.ptx
+make images
 ```
 - To convert XML to HTML:
 ```
-xsltproc -xinclude -o html/ ~/code/mathbook/xsl/pretext-html.xsl ptx/index.ptx
+make html
 ```
+Ignore `make install`, this was set up for my own internal use.
