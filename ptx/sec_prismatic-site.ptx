@@ -192,7 +192,8 @@
         together with a morphism of <m>\overline{A}</m>-algebras <m>R \to B/IB</m>. 
         (Recall that by <xref ref="lem-prism-rigidity"/>, for any morphism <m>(A,I) \to (B, J)</m> of prisms we must have <m>J = IB</m>.)
         We will typically notate such an object as <m>(R \to B/IB \leftarrow B)</m> 
-        and depict such an object as a diagram as in <xref ref="fig-prismatic-site-object"/>; a morphism of objects will consist of a morphism between the corresponding diagrams.
+        and depict such an object as a diagram as in <xref ref="fig-prismatic-site-object"/> (where <m>\delta</m> indicates a morphism in <m>\Ring_\delta</m>); 
+        a morphism of objects will consist of a morphism between the corresponding diagrams.
         Taking the opposite category yields the <term>prismatic site</term> <m>(R/A)_{\Prism}</m>.
       </p>
       <figure xml:id="fig-prismatic-site-object">
@@ -201,7 +202,7 @@
             \xymatrix{
               B/IB &amp; B \ar[l]\\
               R \ar[u] \\
-              \overline{A} = A/I \ar[u] &amp; A \ar[l] \ar[uu]
+              \overline{A} = A/I \ar[u] &amp; A \ar[l] \ar^\delta[uu]
             }
           </latex-image>
         </image>
