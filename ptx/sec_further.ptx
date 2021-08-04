@@ -90,7 +90,7 @@
       </statement>
       <proof>
         <p>
-          Unpublished result of Bhatt-Scholze; the key ingredients are the étale comparison theorem (<xref ref="thm-etale-comparison"/>),
+          See <xref ref="bib-Bhatt-Scholze2"/>. The key ingredients are the étale comparison theorem (<xref ref="thm-etale-comparison"/>),
           Kisin's description of crystalline Galois representations via Breuil-Kisin modules (<xref ref="bib-Kisin"/>),
           and Beauville-Laszlo glueing (<xref ref="rmk-beauville-laszlo"/>).
         </p>

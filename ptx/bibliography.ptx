@@ -73,6 +73,9 @@
   <biblio type="raw" xml:id="bib-Bhatt-Scholze">
     B. Bhatt and P. Scholze, <articletitle>Prisms and prismatic cohomology</articletitle>, <url href="https://arxiv.org/abs/1905.08229">arXiv:1905.08229v2</url> <year>2019</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Bhatt-Scholze2">
+    B. Bhatt and P. Scholze, <articletitle>Prismatic <m>F</m>-crystals and crystalline Galois representations</articletitle>, <url href="https://arxiv.org/abs/2106.14735">arXiv:2106.14735v1</url> <year>2021</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Schwede-Takagi">
     B. Bhatt, K. Schwede, and S. Takagi, <articletitle>The weak ordinarity conjecture and <m>F</m>-singularities</articletitle>,
     <journal>Advanced Studies in Pure Mathematics</journal> <volume>74</volume> <year>2017</year>, 11<ndash/>39.
@@ -354,6 +357,9 @@
   </biblio>
   <biblio type="raw" xml:id="bib-Stacks">
     The Stacks Project Authors, <pubtitle>Stacks Project</pubtitle>, <url href="https://stacks.math.columbia.edu"/>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Swan">
+    R. Swan, <articletitle>On seminormality</articletitle>, <pubtitle>Journal of Algebra</pubtitle> <volume>67</volume> <year>1980</year>, 210<ndash/>229.
   </biblio>
   <biblio type="raw" xml:id="bib-Milnor-Stasheff">
     J. Milnor and J.D. Stasheff,  <pubtitle>Characteristic Classes</pubtitle>, Annals of Mathematics Studies 76, Princeton University Press, Princeton <year>1974</year>.

@@ -447,4 +447,22 @@
       </p>
     </remark>
   </subsection>
+  <exercises>
+    <exercise xml:id="exer-lens-seminormal">
+      <statement>
+        <p>
+          Let <m>R</m> be a lens. Prove that <m>R</m> is a <term>seminormal</term> ring in the sense of Swan <xref ref="bib-Swan"/>: that is, the map
+          <me>
+            R \to \{(y,z) \in R^2: y^3 = z^2\}, \qquad x \mapsto (x^2, x^3)
+          </me>
+          is a bijection.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use <xref ref="exa-v-cover"/> and <xref ref="thm-arc-descent-lens"/> to reduce to the case where <m>R</m> is an AIC valuation ring.
+        </p>
+      </hint>
+    </exercise>
+  </exercises>
 </section>
