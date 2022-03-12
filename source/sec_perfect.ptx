@@ -242,7 +242,7 @@
         </p>
         <p>
           By <xref ref="lem-perfect-prisms-structure"/>, <m>I</m> admits a generator <m>d</m> which is a distinguished element.
-          By definition, we have <m>A/p = \overline{A}/(p,d)</m>. For each positive integer <m>n</m>, the <m>n</m>-fold Frobenius
+          By definition, we have <m>\overline{A}/p = A/(p,d)</m>. For each positive integer <m>n</m>, the <m>n</m>-fold Frobenius
           <m>A/(p,d) \to A/(p,d)</m> identifies with the canonical map <m>A/(p,d^{p^n}) \to A/(p,d)</m> compatibly with <m>n</m>,
           so the limit <m>\lim_\phi \overline{A}/p</m> gets identified with <m>\lim_\phi A/(p, d^{p^n})</m>.
           The latter is naturally isomorphic to <m>A/(p)</m> because the latter is clasically <m>d</m>-complete

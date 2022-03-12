@@ -46,7 +46,8 @@
          </li>
         </ul>
         Let <m>\Rad(A)</m> denote the Jacobson radical of <m>A \in \Ring</m>.
-        For <m>I</m> an ideal of <m>A</m>, we say that <m>A</m> is <term><m>I</m>-local</term> (or <term><m>f</m>-local</term> if <m>I = (f)</m>) if <m>I \subseteq \Rad(A)</m>.
+        For <m>I</m> an ideal of <m>A</m>, we say that <m>A</m> is <term><m>I</m>-local</term> if <m>I \subseteq \Rad(A)</m>;
+        if <m>I = (f)</m>, we also say that <m>A</m> is <term><m>f</m>-local</term>.
       </p>
     </definition>
   </introduction>
@@ -389,7 +390,7 @@
       <proof>
         <p>
           For limits, this is pretty straightforward. For colimits, it is perhaps easiest to use <xref ref="rmk-W2-interpretation"/>: if <m>A</m>
-          is the colimit of a diagram <m>\{A_i\}</m>, then we get a map <m>\colim A_i \to \colim W_2(A_i) = W_2(\colim A_i)</m> splitting the projection map,
+          is the colimit of a diagram <m>\{A_i\}</m>, then we get maps <m>\colim A_i \to \colim W_2(A_i) \to W_2(\colim A_i)</m> whose composition splits the projection map,
           and then we recover a <m>\delta</m>-structure on <m>\colim A_i</m>.
         </p>
       </proof>
@@ -406,7 +407,7 @@
          (see <xref ref="bib-Maclane"/>, section V.8 or <xref ref="bib-Stacks"/>, tag 0AHM) and a set-theoretic consideration
          (see <xref ref="rmk-adjoint-functor-set-condition"/>),
         the forgetful functor <m>\Ring_\delta \to \Ring</m> admits both a left adjoint and a right adjoint.
-        (More precisely, existence of limits givesx the left adjoint, existence of colimits gives the right adjoint.)
+        (More precisely, existence of limits gives the left adjoint, existence of colimits gives the right adjoint.)
         The right adjoint gives rise to Witt vectors; see <xref ref="sec_Witt"/>.
       </p>
       <p>
@@ -418,8 +419,9 @@
         commutative rings and sets, and then take a quotient of the resulting free <m>\delta</m>-ring using <xref ref="lem-delta-ring-quotient"/>.)
       </p>
       <p>
-        An important corollary of this observation is that every <m>\delta</m>-ring can be written as a quotient of a <m>p</m>-torsion-free <m>\delta</m>-ring;
-        this will allow us to reduce many computations to the <m>p</m>-torsion-free case.
+        An important corollary of this observation is that every <m>\delta</m>-ring can be written as a quotient of some <m></m><m>p</m>-torsion-free <m>\delta</m>-ring
+        (e.g., if <m>R \in \Ring_\delta</m> then it is a quotient of <m>Z\{R\}</m>).
+        This will allow us to reduce many computations to the <m>p</m>-torsion-free case.
       </p>
     </definition>
     <remark>
@@ -680,6 +682,13 @@
         <p>
           Show that for the forgetful functor <m>\Ring_\delta \to \Ring</m>, the conditions in <xref ref="rmk-adjoint-functor-set-condition"/> are satisfied by taking
           all objects <m>x_i</m> with <m>|x_i| \leq \max\{|x|, \aleph_0\}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-W2-colimit">
+      <statement>
+        <p>
+          Show that the functor <m>W_2</m> on <m>\Ring</m> commutes with filtered colimits, but not with coequalizers.
         </p>
       </statement>
     </exercise>

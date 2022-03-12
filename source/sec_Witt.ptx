@@ -126,7 +126,7 @@
           The second assertion is a direct consequence of the first, but let us spell this out for clarity as the mechanism of the argument will recur in what follows.
           For a general ring <m>A</m>, each of the elements <m>x_0, x_1, \dots \in \ZZ\{x\}</m> defines a function <m>W(A) \to A</m> which is natural in <m>A</m>.
           Similarly, every element of <m>\ZZ\{x\}</m> can be viewed as a <q>polynomial function</q> on <m>W(A)</m> valued in <m>A</m> which is again natural in <m>A</m>;
-          that is, we have a map of sets <m>h: \ZZ\{x\} \to \Hom_{\Set}(W(A), A)</m>. This map has the property that
+          that is, we have a map of sets <m>h\colon \ZZ\{x\} \to \Hom_{\Set}(W(A), A)</m>. This map has the property that
           <me>
             h(\phi(t))(u) = \phi(h(t)(u)) \qquad (t \in \ZZ\{x\}, u \in W(A)).
           </me>
@@ -151,7 +151,7 @@
         In coordinates, this is the map <m>(x_0,x_1,\dots) \mapsto x_0</m>.
       </p>
       <p>
-        The identity map in <m>\Hom_{\Ring}(W(A), W(A))</m> corresponds via adjunction to a morphism <m>\Delta: W(A) \to W(W(A))</m> in <m>\Ring_\delta</m>
+        The identity map in <m>\Hom_{\Ring}(W(A), W(A))</m> corresponds via adjunction to a morphism <m>\Delta\colon W(A) \to W(W(A))</m> in <m>\Ring_\delta</m>
         which is moreover functorial in <m>A</m>. This map is sometimes called the <term>diagonal</term>.
       </p>
     </definition>
@@ -165,7 +165,7 @@
       </p>
       <p>
         That is, the <m>\delta</m>-constants are the image of the multiplicative (but <em>not additive</em>; see <xref ref="exer-ghost-map-multiplicative"/>) 
-        section <m>[\bullet]: A \to W(A)</m> of the projection
+        section <m>[\bullet]\colon A \to W(A)</m> of the projection
         <m>W(A) \to A</m> given by <m>[x] = (x, 0, 0, \dots)</m>. 
         We call <m>[x]</m> the <term>constant lift</term> (or the <term>multiplicative lift</term>) of <m>x \in A</m>.
       </p>
@@ -174,7 +174,7 @@
       <p>
         The constant lift is also known as the <term>Teichmüller lift</term>.
         While this terminology is (fairly) historically accurate, 
-        in light of Oswald Teichmüller's <url href="https://mathshistory.st-andrews.ac.uk/Biographies/Teichmuller/">role in the Nazi Party and in denunciation of Jewish mathematicians in Germany during the 1930s</url>,
+        in light of Oswald Teichmüller's <url visual="mathshistory.st-andrews.ac.uk/Biographies/Teichmuller/" href="https://mathshistory.st-andrews.ac.uk/Biographies/Teichmuller/">role in the Nazi Party and in denunciation of Jewish mathematicians in Germany during the 1930s</url>,
         I prefer to use a non-eponymous terminology in this instance.
       </p>
     </remark>
@@ -189,7 +189,7 @@
       <p>
         Define the elements <m>w_n \in \ZZ\{y\}</m> as in <xref ref="cor-phi-on-ghost"/>. These define a set-theoretic map
         <me>
-          w: W(A) \to A \times A \times \cdots, \qquad (x_n)_{n=0}^\infty \mapsto \left( \sum_{m=0}^n p^m x_m^{p^{n-m}} \right)_{n=0}^\infty.
+          w\colon W(A) \to A \times A \times \cdots, \qquad (x_n)_{n=0}^\infty \mapsto \left( \sum_{m=0}^n p^m x_m^{p^{n-m}} \right)_{n=0}^\infty.
         </me>
         which we call the <term>ghost map</term>.
       </p>
@@ -218,7 +218,7 @@
     </remark>
     <definition xml:id="def-Witt-Verchiebung">
       <p>
-        For any ring <m>A</m>, the <term>Verschiebung</term> map <m>V: W(A) \to W(A)</m> is defined by
+        For any ring <m>A</m>, the <term>Verschiebung</term> map <m>V\colon W(A) \to W(A)</m> is defined by
         <me>
           V(x_0, x_1, \dots) = (0, x_0, x_1, \dots).
         </me>
@@ -434,7 +434,7 @@
       <p>
         For <m>A</m> of characteristic <m>p</m>, the map <m>\phi</m> on <m>W(A)</m> is surjective if and only if it is surjective on <m>A</m>, i.e., if and only if <m>A</m>
         is <term>semiperfect</term>. However, by contrast with <xref ref="rmk-Witt-Frobenius-kernel"/>, there are many rings <m>A</m> not of characteristic <m>p</m>
-        for which <m>\phi</m> is surjective on <m>W(A)</m>. There are even more rings for which <m>\phi: W_{n+1}(A) \to W_n(A)</m> is surjective for each <m>n</m>;
+        for which <m>\phi</m> is surjective on <m>W(A)</m>. There are even more rings for which <m>\phi\colon W_{n+1}(A) \to W_n(A)</m> is surjective for each <m>n</m>;
         these rings are said to be <term>Witt-perfect</term> in <xref ref="bib-Davis-Kedlaya"/>, which see for additional characterizations.
       </p>
     </remark>
@@ -444,7 +444,7 @@
     <proposition xml:id="prop-etale-Witt">
       <statement>
         <p>
-          For any etale morphism <m>f: A \to B</m> and any positive integer <m>n</m>, the map <m>W_n(f): W_n(A) \to W_n(B)</m> is etale.
+          For any etale morphism <m>f\colon A \to B</m> and any positive integer <m>n</m>, the map <m>W_n(f)\colon W_n(A) \to W_n(B)</m> is etale.
         </p>
       </statement>
       <proof>
@@ -490,7 +490,7 @@
     <exercise xml:id="exer-ghost-map-multiplicative">
       <statement>
         <p>
-          Show that for any ring <m>A</m>, the map <m>[\bullet]: A \to W(A)</m> is multiplicative.
+          Show that for any ring <m>A</m>, the map <m>[\bullet]\colon A \to W(A)</m> is multiplicative.
         </p>
       </statement>
       <hint>
@@ -533,7 +533,7 @@
     <exercise xml:id="exer-witt-vector-frobenius-injective">
       <statement>
         <p>
-          Let <m>A</m> be a ring. Show that if <m>\phi: W(A) \to W(A)</m> is injective, then <m>p=0</m> in <m>A</m>.
+          Let <m>A</m> be a ring. Show that if <m>\phi\colon W(A) \to W(A)</m> is injective, then <m>p=0</m> in <m>A</m>.
         </p>
       </statement>
       <hint>
@@ -589,6 +589,29 @@
         <p>
           The corresponding statement with <m>\ZZ_p</m> replaced by <m>\widehat{\ZZ}</m> holds because the latter is faithfully flat over <m>\ZZ</m>.
           Now rewrite <m>\widehat{\ZZ}</m> as the product of <m>\ZZ_p</m> with a <m>\ZZ[p^{-1}]</m>-algebra and recall that for the latter, the ghost map is an isomorphism.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="exer-norm">
+      <statement>
+        <p>
+          Show that for <m>A \in \Ring</m>, the map
+          <me>
+            N\colon W(A) \to W(A), \qquad N(x) = x - V_p(\delta(x))
+          </me>
+          is multiplicative and satisfies 
+          <me>
+            (F \circ N)(x) = x^p \qquad (x \in W(A)).
+          </me>
+          This is called the <term>norm map</term> in <xref ref="bib-Angeltveit"/>; see also <xref ref="exer-norm-big"/>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Show that the effect on ghost coordinates is given by
+          <me>
+            (w_0, w_1, w_2, \dots) \mapsto (w_0, w_0^p, w_1^p, w_2^p, \dots).
+          </me>
         </p>
       </hint>
     </exercise>

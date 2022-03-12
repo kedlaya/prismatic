@@ -33,12 +33,12 @@
         <ul>
           <li>
             <p>
-              a <term>coaddition</term> morphism <m>\Delta^+: A \to A \otimes_{\ZZ} A</m>; and
+              a <term>coaddition</term> morphism <m>\Delta^+\colon A \to A \otimes_{\ZZ} A</m>; and
             </p>
           </li>
           <li>
             <p>
-              a <term>comultiplication</term> morphism <m>\Delta^\times: A \to A \otimes_{\ZZ} A</m>.
+              a <term>comultiplication</term> morphism <m>\Delta^\times\colon A \to A \otimes_{\ZZ} A</m>.
             </p>
           </li>
         </ul>
@@ -48,7 +48,7 @@
         (giving rise to additive inverses); the comultiplication map is cocommutative, coassociative, codistributive over coaddition, and admits a counit.
       </p>
       <p>
-        A shorter way to say this is that a biring is a commutative ring object in the category of affine schemes. (Remember that the functor <m>\Spec: \Ring \to \Sch</m> is contravariant!)
+        A shorter way to say this is that a biring is a commutative ring object in the category of affine schemes. (Remember that the functor <m>\Spec\colon \Ring \to \Sch</m> is contravariant!)
       </p>
     </definition>
     <proposition xml:id="prop-big-Witt">
@@ -121,7 +121,7 @@
         </li>
         <li>
           <p>
-            There is a family of commuting endomorphisms <m>\phi_n: \WW(A) \to \WW(A)</m> indexed by positive integers <m>n</m>,
+            There is a family of commuting endomorphisms <m>\phi_n\colon \WW(A) \to \WW(A)</m> indexed by positive integers <m>n</m>,
             which are natural in <m>A</m> and correspond via the ghost map to
             <me>
               (w_1, w_2, \dots) \mapsto (w_n, w_{2n}, \dots).
@@ -131,14 +131,14 @@
         </li>
         <li>
           <p>
-            The map <m>[\bullet]: A \to \WW(A)</m> given by <m>[x] = (x, 0, 0, \dots)</m> is multiplicative; 
+            The map <m>[\bullet]\colon A \to \WW(A)</m> given by <m>[x] = (x, 0, 0, \dots)</m> is multiplicative; 
             it corresponds via the ghost map to <m>x \mapsto (x, x^2, x^{3}, \dots)</m>. 
             We again refer to <m>[x]</m> as the <term>constant lift</term> of <m>x \in A</m> (see <xref ref="exer-big-Witt-constant-lifts"/>).
           </p>
         </li>
         <li>
           <p>
-            The <term>Verschiebung</term> maps <m>V_n: \WW(A) \to \WW(A)</m>, for <m>n</m> a positive integer, defined by 
+            The <term>Verschiebung</term> maps <m>V_n\colon \WW(A) \to \WW(A)</m>, for <m>n</m> a positive integer, defined by 
             <me>
               V_n((x_m)_{m=1}^\infty) = (y_m)_{m=1}^\infty, \qquad y_m = \begin{cases} x_{m/n} &amp; m \equiv 0 \pmod{n} \\ 0 &amp; m \not\equiv 0 \pmod{n} \end{cases}
             </me>
@@ -147,7 +147,7 @@
         </li>
         <li>
           <p>
-            There is a natural transformation <m>\Delta: \WW \to \WW \circ \WW</m> (the <term>diagonal</term>) such that <m>\Delta([x]) = [[x]]</m> for all <m>x \in A</m>,.
+            There is a natural transformation <m>\Delta\colon \WW \to \WW \circ \WW</m> (the <term>diagonal</term>) such that <m>\Delta([x]) = [[x]]</m> for all <m>x \in A</m>,.
           </p>
         </li>
       </ul>
@@ -182,7 +182,7 @@
     <definition xml:id="def-lambda-ring">
       <p>
         The interpretation from <xref ref="rmk-Almkvist-interpretation"/> leads naturally to the related notion of a <term><m>\lambda</m>-ring</term>.
-        This consists of a ring <m>A</m> together with operations <m>\lambda^n: A \to A</m> for <m>n=0,1,\dots</m> satisfying various conditions.
+        This consists of a ring <m>A</m> together with operations <m>\lambda^n\colon A \to A</m> for <m>n=0,1,\dots</m> satisfying various conditions.
         To begin with,
         <me>
           \lambda^0(x) = 1, \lambda^1(x) = x \quad (x \in A).
@@ -214,7 +214,7 @@
       </p>
       <p>
         The analogue of the adjunction property of the functor <m>W</m> is that <m>\WW</m> is a right adjoint of the forgetful functor from <m>\Ring_\lambda</m> to <m>\Ring</m>.
-        This follows from the existence of the diagonal transformation <m>\Delta: \WW \to \WW \circ \WW</m>.
+        This follows from the existence of the diagonal transformation <m>\Delta\colon \WW \to \WW \circ \WW</m>.
       </p>
     </definition>
     <remark xml:id="rmk-Adams-operation">
@@ -322,7 +322,7 @@
           <me>
             y_{mp^i} = \sum_{d|m} d x_{dp^i}^{m/d} + *
           </me>
-          where <m>* \in \ZZ_{(p)}[x_{dp^j}: d|m, j &lt; i]</m>.
+          where <m>* \in \ZZ_{(p)}[x_{dp^j}\colon d|m, j &lt; i]</m>.
        </p>
       </hint>
     </exercise>
@@ -411,11 +411,27 @@
       <statement>
         <p>
           Let <m>p_1,\dots,p_n</m> be distinct primes and let <m>S</m> be the set of positive integers of the form <m>p_1^{e_1} \cdots p_n^{e_n}</m> for some
-          nonnegative integers <m>e_1,\dots,e_n</m>. Let <m>W_{p_i}</m> denote the <m>p_i</m>-typical witt vector functor. Show that there exists a natural isomorphism
+          nonnegative integers <m>e_1,\dots,e_n</m>. Let <m>W_{p_i}</m> denote the <m>p_i</m>-typical Witt vector functor. Show that there exists a natural isomorphism
           <me>
             W_{p_1} \circ \cdots \circ W_{p_n}\cong \WW_S
           </me>
           of functors from <m>\Ring</m> to <m>\Ring</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer-norm-big">
+      <statement>
+        <p>
+          For <m>A \in \Ring</m> and <m>p</m> prime, define the <term><m>p</m>-norm map</term> <m>N_p\colon \WW(A) \to \WW(A)</m> by
+          <me>
+            N_p(x) = x - V_p(\delta_p(x)),
+          </me>
+          where <m>\delta_p</m> is the <m>p</m>-derivation associated functorially to the Frobenius lift <m>\psi^p</m> (see <xref ref="rmk-Adams-operation"/>).
+          Prove that the maps <m>N_p</m> are multiplicative, commute with each other, and satisfy
+          <me>
+            (\psi_p \circ N_p)(x) = x^p \qquad (x \in \WW(A)).
+          </me>
+          As in <xref ref="exer-norm"/>, see <xref ref="bib-Angeltveit"/> for some discussion of the role of this construction in algebraic topology.
         </p>
       </statement>
     </exercise>
