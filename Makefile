@@ -1,21 +1,18 @@
-.PHONY : all latex pdf images html install
-all: latex pdf images html install
-
-latex:
-	pretext build latex --clean
+.PHONY : all pdf images web install
+all: pdf web install
 
 pdf:
-	pretext build pdf
+	pretext build print --clean
 	
 images:
-	pretext build -d
+	pretext generate latex-image
 
-html:
-	pretext build html
+web:
+	pretext build web
 
 install:
-	cp output/pdf/index.pdf ~/www/papers/prismatic-ptx.pdf;
-	scp output/pdf/index.pdf web:www/papers/prismatic-ptx.pdf;
+	cp output/print/main.pdf ~/www/papers/prismatic-ptx.pdf;
+	scp output/print/main.pdf web:www/papers/prismatic-ptx.pdf;
 	rsync -au output/html/ ~/www/prismatic/;
 	rsync -au -e "ssh" output/html/ web:www/prismatic/
 

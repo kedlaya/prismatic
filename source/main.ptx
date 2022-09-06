@@ -1,43 +1,177 @@
-<?xml version='1.0' encoding='utf-8'?>
-<!-- This is the main file of the pretext template book provided -->
-<!-- by the `pretext new book` command.  The main.ptx here always-->
-<!-- starts with <pretext> tags.  In this example, the main file -->
-<!-- just imports other .ptx files which contain content. Open   -->
-<!-- those files to see more pretext features                    -->
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+<docinfo>
+  <macros>
+    \frenchspacing
+    \def\AA{\mathbb{A}}
+    \def\CC{\mathbb{C}}
+    \def\FF{\mathbb{F}}
+    \def\GG{\mathbb{G}}
+    \def\NN{\mathbb{N}}
+    \def\PP{\mathbb{P}}
+    \def\QQ{\mathbb{Q}}
+    \def\RR{\mathbb{R}}
+    \def\WW{\mathbb{W}}
+    \def\ZZ{\mathbb{Z}}
+    \def\calA{\mathcal{A}}
+    \def\calC{\mathcal{C}}
+    \def\calE{\mathcal{E}}
+    \def\calF{\mathcal{F}}
+    \def\calI{\mathcal{I}}
+    \def\calO{\mathcal{O}}
+    \def\frakm{\mathfrak{m}}
+    \def\frako{\mathfrak{o}}
+    \def\frakp{\mathfrak{p}}
+    \def\frakX{\mathfrak{X}}
+    \def\dual{\vee}
+    \def\Ainf{\mathbf{A}_{\mathrm{inf}}}
 
-<pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+    \DeclareMathOperator{\ab}{ab}
+    \DeclareMathOperator{\Ab}{\mathbf{Ab}}
+    \DeclareMathOperator{\an}{an}
+    \DeclareMathOperator{\Ann}{Ann}
+    \DeclareMathOperator{\Aut}{Aut}
+    \DeclareMathOperator{\Cl}{Cl}
+    \DeclareMathOperator{\coker}{coker}
+    \DeclareMathOperator{\colim}{colim}
+    \DeclareMathOperator{\comp}{comp}
+    \DeclareMathOperator{\Comp}{\mathbf{Comp}}
+    \DeclareMathOperator{\Cone}{Cone}
+    \DeclareMathOperator{\Cor}{Cor}
+    \DeclareMathOperator{\crys}{crys}
+    \DeclareMathOperator{\CW}{CW}
+    \DeclareMathOperator{\cyc}{cyc}
+    \DeclareMathOperator{\dcrys}{dcrys}
+    \DeclareMathOperator{\dR}{dR}
+    \DeclareMathOperator{\et}{et}
+    \DeclareMathOperator{\Ext}{Ext}
+    \DeclareMathOperator{\fin}{fin}
+    \DeclareMathOperator{\Fil}{Fil}
+    \DeclareMathOperator{\Fix}{Fix}
+    \DeclareMathOperator{\fppf}{fppf}
+    \DeclareMathOperator{\Frac}{Frac}
+    \DeclareMathOperator{\Frob}{Frob}
+    \DeclareMathOperator{\Gal}{Gal}
+    \DeclareMathOperator{\GL}{GL}
+    \DeclareMathOperator{\gr}{gr}
+    \DeclareMathOperator{\Hom}{Hom}
+    \DeclareMathOperator{\HT}{HT}
+    \DeclareMathOperator{\id}{id}
+    \DeclareMathOperator{\im}{im}
+    \DeclareMathOperator{\Ind}{Ind}
+    \DeclareMathOperator{\Inf}{Inf}
+    \DeclareMathOperator{\inv}{inv}
+    \DeclareMathOperator{\Kos}{Kos}
+    \DeclareMathOperator{\lcm}{lcm}
+    \DeclareMathOperator{\lens}{lens}
+    \DeclareMathOperator{\Mod}{\mathbf{Mod}}
+    \DeclareMathOperator{\Norm}{Norm}
+    \DeclareMathOperator{\op}{op}
+    \DeclareMathOperator{\perf}{perf}
+    \DeclareMathOperator{\Pic}{Pic}
+    \DeclareMathOperator{\Poly}{\mathbf{Poly}}
+    \DeclareMathOperator{\prim}{prim}
+    \DeclareMathOperator{\Prm}{\mathbf{Prism}}
+    \DeclareMathOperator{\Pshv}{\mathbf{Pshv}}
+    \DeclareMathOperator{\Rad}{Rad}
+    \DeclareMathOperator{\Real}{Re}
+    \DeclareMathOperator{\red}{red}
+    \DeclareMathOperator{\Res}{Res}
+    \DeclareMathOperator{\Ring}{\mathbf{Ring}}
+    \DeclareMathOperator{\sep}{sep}
+    \DeclareMathOperator{\Sch}{\mathbf{Sch}}
+    \DeclareMathOperator{\Set}{\mathbf{Set}}
+    \DeclareMathOperator{\sheafHom}{\mathcal{H}\!\mathit{om}}
+    \DeclareMathOperator{\sign}{sign}
+    \DeclareMathOperator{\Spec}{Spec}
+    \DeclareMathOperator{\Spf}{Spf}
+    \DeclareMathOperator{\Sym}{Sym}
+    \DeclareMathOperator{\Tor}{Tor}
+    \DeclareMathOperator{\Tot}{Tot}
+    \DeclareMathOperator{\Trace}{Trace}
+    \DeclareMathOperator{\unr}{unr}
+    \DeclareMathOperator{\Vect}{\mathbf{Vect}}
+    \DeclareMathOperator{\Ver}{Ver}
 
-  <!-- we first include a file which contains the docinfo element: -->
-  <xi:include href="./docinfo.ptx" />
+    % Replace this once MathJax catches up.
+    \def\Prism{\mathbf{\Delta}}
 
-  <!-- The <book> tags wrap all the content.  Change the @xml:id   -->
-  <!-- to some short (non-spaced) description of your book         -->
-  <book xml:id="my-great-book">
-    <!-- The book needs a title and can have a subtitle  -->
-    <title>My Great Book</title>
-    <subtitle>An example to be modified</subtitle>
+    % Replace these once MathJax catches up.
+    %\DeclareMathDelimiter\llbracket{\mathopen}{stmry}{"4A}{stmry}{"71}
+    %\DeclareMathDelimiter\rrbracket{\mathclose}{stmry}{"4B}{stmry}{"79}
+    \def\llbracket{[\![}
+    \def\rrbracket{]\!]}
 
-    <!-- Now we include files containing each main devision.       -->
-
-    <!-- First a frontmatter for prefaces and such. Maybe comment  -->
-    <!-- out for now and write this when the book is more complete -->
-    <xi:include href="./frontmatter.ptx" />
-
-    <!-- The first chapter will be bare bones to illustrate the    -->
-    <!-- possible structure of the book.  Once you know what the   -->
-    <!-- title of the chapter is, rename the file something based  -->
-    <!-- on the title (ch-shorttitle.ptx) both here and on disk    -->
-    <xi:include href="./ch_first-chapter.ptx" />
-    <xi:include href="./ch_empty.ptx"/>
-    <!-- Of course you will want to add more chapters as you proceed-->
-
-    <!-- The final chapter contains a wide variety of elements to  -->
-    <!-- illustrate what pretext can do, plus links to more help.  -->
-    <!-- We recommend keeping this handy, and commenting it out    -->
-    <!-- when you show off your own work.                          -->
-    <xi:include href="./ch_pretext-features.ptx" />
-
-    <!-- Finaly we place the backmatter in its own file and inlcude-->
-    <xi:include href="./backmatter.ptx" />
-  </book>
+  </macros>
+  <latex-image-preamble>
+    \usepackage{tikz}
+    \usetikzlibrary{patterns}
+    \usepackage[all]{xy}
+  </latex-image-preamble>
+</docinfo>
+  
+  <article xml:id="prismatic">
+    <title>Notes on prismatic cohomology</title>
+    <frontmatter>
+      <titlepage>
+        <author>
+          <personname>Kiran S. Kedlaya</personname>
+          <department>Department of Mathematics</department>
+          <institution>
+            <line>University of California San Diego</line>
+            <line>La Jolla, CA, USA</line>
+          </institution>
+          <email>kedlaya@ucsd.edu</email>
+        </author>
+        <date><today /></date>
+      </titlepage>
+      <abstract>
+        <p>
+          These are notes from a <url visual="kskedlaya.org/math206a-spr21/" href="https://kskedlaya.org/math206a-spr21/">graduate topics course</url> given at UC San Diego 
+          during the spring 2021 quarter; recordings of the lectures can be found at the same web site.
+          The notes were typeset using <url visual="pretextbook.org" href="pretextbook.org/"><pretext /></url> so as to produce matching <url visual="kskedlaya.org/prismatic/" href="https://kskedlaya.org/prismatic/">HTML</url> and 
+          <url visual="kskedlaya.org/papers/prismatic-ptx.pdf" href="https://kskedlaya.org/papers/prismatic-ptx.pdf">PDF</url> versions.
+        </p>
+        <p>
+          The course was closely modeled on <xref ref="bib-Bhatt-course"/>, which in turn presented material from <xref ref="bib-Bhatt-Scholze"/>.
+          No claim of originality is made except for errors.
+        </p>
+        <p>
+          These notes have benefited greatly from comments from many people, including participants in the original course. I plan to add a detailed list later.
+        </p>
+      </abstract>
+    </frontmatter>
+    <xi:include href="./sec_overview.ptx"/>
+    <xi:include href="./sec_delta-rings.ptx"/>
+    <xi:include href="./sec_Witt.ptx"/>
+    <xi:include href="./sec_lambda-rings.ptx"/>
+    <xi:include href="./sec_prisms.ptx"/>
+    <xi:include href="./sec_derived-complete.ptx"/>
+    <xi:include href="./sec_perfect.ptx"/>
+    <xi:include href="./sec_lenses.ptx"/>
+    <xi:include href="./sec_homotopy-categories.ptx"/>
+    <xi:include href="./sec_derived-categories.ptx"/>
+    <xi:include href="./sec_prismatic-site.ptx"/>
+    <xi:include href="./sec_hodge-tate.ptx"/>
+    <xi:include href="./sec_double-complexes.ptx"/>
+    <xi:include href="./sec_hodge-tate-crystalline.ptx"/>
+    <xi:include href="./sec_hodge-tate-proof.ptx"/>
+    <xi:include href="./sec_nonabelian-derived.ptx"/>
+    <xi:include href="./sec_derived-deRham.ptx"/>
+    <xi:include href="./sec_derived-prismatic.ptx"/>
+    <xi:include href="./sec_perfections-mixed.ptx"/>
+    <xi:include href="./sec_arc-topology.ptx"/>
+    <xi:include href="./sec_arc-descent.ptx"/>
+    <xi:include href="./sec_etale-comparison.ptx"/>
+    <xi:include href="./sec_etale-applications.ptx"/>
+    <xi:include href="./sec_almost-commalg.ptx"/>
+    <xi:include href="./sec_almost-purity.ptx"/>
+    <xi:include href="./sec_q-derham.ptx"/>
+    <xi:include href="./sec_q-crystalline.ptx"/>
+    <xi:include href="./sec_further.ptx"/>
+    <xi:include href="./sec_q-global.ptx"/>
+    <backmatter>
+      <xi:include href="./bibliography.ptx"/>
+    </backmatter>
+  </article>
 </pretext>

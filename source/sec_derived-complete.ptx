@@ -40,7 +40,10 @@
           See <xref ref="bib-Stacks"/>, tag 05JF and also <xref ref="exa-bad-completion"/>.
         </li>
         <li>
-          The completion of a flat module (or even a flat <m>A</m>-algebra) need not be flat. See <xref ref="bib-Stacks"/>, tag 0AL8.
+          <p>
+          The completion of a flat module (or even a flat <m>A</m>-algebra) need not be flat; see <xref ref="exa-completion-not-flat"/>.
+          This phenomenon will force us to adopt <xref ref="def-I-completely-flat"/>.
+          </p>
         </li>
       </ul>
       <p>
@@ -48,6 +51,18 @@
         For example, completion is no longer an idempotent operation; see <xref ref="bib-Stacks"/>, tag 05JA.
       </p>
     </remark>
+    <example xml:id="exa-completion-not-flat">
+      <p>
+        For <m>A \in \Ring</m>, <m>A\llbracket x \rrbracket</m> is the <m>x</m>-adic completion of the flat <m>A</m>-algebra <m>A[x]</m>,
+        but is flat over <m>A</m> if and only if <m>A</m> is <term>coherent</term> (every finitely generated ideal is finitely presented); see <xref ref="bib-Stacks"/>, tag 0ALB.
+        See <xref ref="bib-Stacks"/>, tag 0AL8 for a concrete example.
+      </p>
+      <p>
+        On a related note, one can construct  a ring <m>A</m> and an element <m>f \in A</m>
+        such that <m>A_f \llbracket x \rrbracket</m>, which is the <m>x</m>-adic completion of the flat <m>A \llbracket x \rrbracket</m>-algebra <m>A \llbracket x \rrbracket_f</m>,
+        is not itself flat over <m>A \llbracket x \rrbracket</m>. See again <xref ref="bib-Stacks"/>, tag 0AL8.
+      </p>
+    </example>
     <p>
       One can see some additional issues with classical completion from the following basic example (adapted from <xref ref="bib-Yekutieli"/>, Example 3.20;
       see also <xref ref="bib-Stacks"/>, tag 0G3F).
@@ -441,7 +456,8 @@
         We say that <m>M \in \Mod_A</m> is <term><m>I</m>-completely flat</term> (resp. <term><m>I</m>-completely faithfully flat</term>) if 
         <m>M/IM</m> is a flat (resp. faithfully flat) <m>A/I</m>-module and <m>\Tor_i^A(A/I, M) = 0</m> for <m>i \gt 0</m>.
         Equivalently, for any <m>N \in \Mod_{A/I}</m>, <m>\Tor_i^A(N,M) = 0</m> for <m>i \gt 0</m>.
-        If <m>M</m> is (faithfully) flat, then it is <m>I</m>-completely (faithfully) flat (<xref ref="exer-derived-completion-of-flat"/>), but not conversely.
+        If <m>M</m> is (faithfully) flat, then it is <m>I</m>-completely (faithfully) flat (<xref ref="exer-derived-completion-of-flat"/>), but not conversely
+        (see <xref ref="rmk-completions-behaving-badly"/>).
       </p>
       <p>
         More generally, we say that <m>M</m> has <term>finite <m>I</m>-complete Tor amplitude</term>

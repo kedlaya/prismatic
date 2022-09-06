@@ -66,7 +66,8 @@
     </p>
     <definition xml:id="def-frobenius-fixed-points">
       <p>
-        Fix an <m>\FF_p</m>-algebra <m>B</m> and an element <m>t \in B</m>. Write <m>D_{\comp}(B)</m> for the <m>t</m>-complete derived category of <m>B</m>.
+        Fix an <m>\FF_p</m>-algebra <m>B</m> and an element <m>t \in B</m>.
+        Write <m>D_{\comp}(B)</m> for the <m>t</m>-complete derived category of <m>B</m>.
       </p>
       <p>
         Let <m>D(B[F])</m> be the <term>derived category of Frobenius <m>B</m>-modules</term>; objects in this category are pairs <m>(M, \phi)</m> where <m>M \in D(B)</m>
@@ -74,9 +75,9 @@
         with <m>M \in D_{\comp}(B)</m>.
       </p>
       <p>
-        Given <m>(M, \phi) \in D_{\comp}(B[F])</m>, define
+        Given <m>(M, \phi) \in D_{\comp}(B[F])</m>, define <m>M^{\phi-1}</m> as the cocone of <m>\phi</m> (see <xref ref="def-mapping-cone"/>); that is,
         <me>
-          M^{\phi=1} = \Cone(M \stackrel{\phi-1}{\to} M) = R\Hom_{D(B[F])}((B, \phi), (M, \phi)).
+          M^{\phi=1} = \Cone(M \stackrel{\phi-1}{\to} M)[-1] = R\Hom_{D(B[F])}((B, \phi), (M, \phi))[-1].
         </me>
         We call this object the <term>Frobenius fixed points</term> of <m>M</m>.
       </p>

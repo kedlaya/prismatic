@@ -282,7 +282,8 @@
       <p>
         The <term>prismatic complex</term> of <m>R</m> relative to <m>A</m> (or more precisely, relative to <m>(A/I)</m>)
         is the object <m>\Prism_{R/A} = R\Gamma((R/A)_{\Prism}, \calO_\Prism) \in D(A)</m>.
-        This is a derived <m>(p, I)</m>-complete commutative algebra object in <m>D(A)</m>; the Frobenius action on <m>\calO_{\Prism}</m>
+        This is a derived <m>(p, I)</m>-complete commutative algebra object in <m>D(A)</m>; 
+        the Frobenius action on <m>\calO_{\Prism}</m>
         induces a <m>\phi</m>-semilinear map <m>\Prism_{R/A} \to \Prism_{R/A}</m>.
       </p>
       <p>

@@ -221,6 +221,13 @@
         where the maps in and out of <m>\Cone(f)^\bullet</m> are the obvious ones.
         Any triangle isomorphic to one of this form is said to be <term>distinguished</term>.
       </p>
+      <p>
+        The previous triangle can be reinterpreted as
+        <me>
+           L^\bullet[-1] \to \Cone(f)^\bullet[-1] \to K^\bullet \stackrel{f}{\to} L^\bullet.
+        </me>
+        That is, we can interpret <m>\Cone(f)^\bullet[-1]</m> as the <term>cocone</term> (or <term>mapping cocone</term>) of <m>f</m>.
+      </p>
     </definition>
     <lemma xml:id="lem-homological-functor">
       <statement>
