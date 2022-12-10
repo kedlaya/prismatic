@@ -240,39 +240,41 @@
   </subsection>
   <subsection>
     <title>Totalization in the derived category</title>
-    <corollary>
-      <statement>
-        <p>
-          Let <m>K^0 \to K^1 \to \cdots</m> be a sequence of morphisms in <m>D(A)</m> for some <m>A \in \Ring</m>, with every two consecutive arrows composing to zero
-          (that is, it is a <q>complex consisting of objects of <m>D(A)</m></q>).
-        </p>
-        <ol>
-          <li>
-            <p>
-              There exists a way to choose representatives in <m>K(A)</m> so that the terms <m>K^\bullet</m> fit into a double complex.
-            </p>
-          </li>
-          <li>
-            <p>
-              Given a second such sequence <m>L^\bullet</m> and a morphism <m>K^\bullet \to L^\bullet</m> (i.e., a family of maps forming commuting diagrams in <m>D(A)</m>),
-              we can (simultaneously) choose representatives for everything in <m>K(A)</m> so that there exists a morphism of double complexes inducing the given morphism.
-            </p>
-          </li>
-          <li>
-            <p>
-              The induced map of totalizations is independent of all choices, and is an isomorphism if the original map is an isomorphism.
-            </p>
-          </li>
-        </ol>
-      </statement>
-      <proof>
-        <p>
-          The key point is to show that given a double complex <m>K^{\bullet,\bullet}</m> in which the second argument is bounded in the range <m>0,\dots,n</m>
-          and a map from <m>K^{\bullet,n} \to L^\bullet</m> in <m>D(A)</m>, we can change <m>L^\bullet</m> to another representative in <m>D(A)</m>
-          <em>without changing <m>K^{\bullet,\bullet}</m></em> so that we can add a new column to the complex. We leave the details of this to the reader.
-          (Once everything else is done, the very last point follows from <xref ref="map-of-double-complex-total-qis"/>.)
-        </p>
-      </proof>
-    </corollary>
+    <remark xml:id="rmk-totalization-derived">
+      <p>
+        Let <m>K^0 \to K^1 \to \cdots</m> be a sequence of morphisms in <m>D(A)</m> for some <m>A \in \Ring</m>, with every two consecutive arrows composing to zero;
+        that is, it is a <q>complex consisting of objects of <m>D(A)</m></q>.
+      </p>
+      <p>
+        In order to work with this sequence, one would like to choose representatives in <m>K(A)</m> so that the terms <m>K^\bullet</m> 
+        fit into a double complex. In practice, this is obstructed by the construction of <term>Toda brackets</term>.
+        To illustrate this point, suppose that we have managed to represent each <m>K^i</m> as a complex and each morphism
+        <m>K^i \to K^{i+1}</m> as a morphism of complexes (without localization). We then have a diagram
+        <figure xml:id="fig-Toda-bracket">
+          <image width="75%">
+            <latex-image>
+              \xymatrix{
+                K^0 \ar^{d^0}[r] \ar@/_1.5pc/^{\Uparrow \alpha}_0[rr] &amp; K^1 \ar^{d^1}[r] \ar@/^1.5pc/_{\Downarrow \beta}^0[rr] &amp; K^2 \ar^{d^2}[r] &amp; K^3
+              }
+            </latex-image>
+          </image>
+        </figure>
+        in which <m>\alpha</m> represents some homotopy witnessing the vanishing of <m>d^1 \circ d^0</m> in <m>K(A)</m>
+        and <m>\beta</m> represents some homotopy witnessing the vanishing of <m>d^2 \circ d^1</m> in <m>K(A)</m>. Then 
+        <m>d^2 \circ \alpha</m> and <m>\beta \circ d^0</m> are both homotopies that witness the vanishing of 
+        <m>d^2 \circ d^1 \circ d^0</m> in <m>K(A)</m>, but it may not be possible to choose <m>\alpha</m> and <m>\beta</m>
+        to make them equal. In fact, these two homotopies together define a loop in the <m>\pi_1</m> of the space of maps
+        between simplicial realizations of <m>K^0</m> and <m>K^3</m>; the Toda bracket is the isotopy class of this loop,
+        whose nonvanishing provides an obstruction to choosing the morphisms so that the compositions <m>d^1 \circ d^0</m>
+        and <m>d^2 \circ d^1</m> vanish on the nose. (One can similarly make
+        <term>higher Toda brackets</term> by considering longer chunks of the sequence, conditionally on the vanishing of the
+        lower-order brackets.)
+      </p>
+      <p>
+        This gives an example of why it is easier in the long run to work with <m>D(A)</m> in the framework of stable <m>\infty</m>-categories.
+        See <xref ref="bib-Ariotta"/> in particular for a description of totalization in this framework that properly accounts
+        for the Toda brackets.
+      </p>
+    </remark>
   </subsection>
 </section>

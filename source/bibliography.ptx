@@ -30,6 +30,10 @@
   <biblio type="raw" xml:id="bib-Arabia">
     A. Arabia, <articletitle>Relèvements des algèbres lisses et de leurs morphismes</articletitle>, <journal>Commentarii Mathematici Helvetici</journal> <volume>76</volume> <year>2001</year>, 607<ndash/>639.
   </biblio>
+  <biblio type="raw" xml:id="bib-Ariotta">
+    S. Ariotta, <articletitle>Coherent cochain complexes and Beilinson <m>t</m>-structures, with an appendix by Achim Krause</articletitle>,
+    <url visual="arxiv.org/abs/2109.01017" href="https://arxiv.org/abs/2109.01017">arXiv:2109.01017v1</url> <year>2021</year>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Ax">
     J. Ax, <articletitle>Zeros of polynomials over local fields<mdash/>the Galois action</articletitle>, <journal>Journal of Algebra</journal> <volume>15</volume> <year>1970</year>, 417<ndash/>428.
   </biblio>
@@ -62,7 +66,8 @@
     B. Bhatt, S. Iyengar, and L. Ma, <articletitle>Regular rings and perfect(oid) algebras</articletitle>, <journal>Communications in Algebra</journal> <volume>47</volume> <year>2019</year>, 2367<ndash/>2383.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Mathew">
-    B. Bhatt and A. Mathew, <articletitle>The arc-topology</articletitle>, <url visual="arxiv.org/abs/1807.04725" href="https://arxiv.org/abs/1807.04725">arXiv:1807.04725v4</url> <year>2020</year>.
+    B. Bhatt and A. Mathew, <articletitle>The arc-topology</articletitle>, <journal>Duke Mathematical Journal</journal>
+    <volume>170</volume> <year>2021</year>, 1899<ndash/>1988.
   </biblio>
   <biblio type="raw" xml:id="bib-Bhatt-Morrow-Scholze1">
     B. Bhatt, M. Morrow, and P. Scholze, <articletitle>Integral <m>p</m>-adic Hodge theory</articletitle>, <journal>Publications Mathématiques de l'IHÉS</journal> <volume>128</volume> <year>2018</year>, 219<ndash/>397.

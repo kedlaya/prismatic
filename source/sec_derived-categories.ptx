@@ -14,7 +14,8 @@
     </p>
     <p>
       Here we take a <q>classical</q> point of view on derived categories; however, it is better in the long run to express the construction in the language of
-      <term><m>\infty</m>-categories</term>. See <xref ref="subsec-derived-infinity-category"/> for a further remark in this vein.
+      <term><m>\infty</m>-categories</term>. See <xref ref="subsec-derived-infinity-category"/> and <xref ref="rmk-totalization-derived"/> 
+      for further remarks in this vein.
     </p>
   </introduction>
   <subsection>
