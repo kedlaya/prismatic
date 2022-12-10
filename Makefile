@@ -13,6 +13,6 @@ web:
 install:
 	cp output/print/main.pdf ~/www/papers/prismatic-ptx.pdf;
 	scp output/print/main.pdf web:www/papers/prismatic-ptx.pdf;
-	rsync -au output/html/ ~/www/prismatic/;
-	rsync -au -e "ssh" output/html/ web:www/prismatic/
+	rsync -au output/web/ ~/www/prismatic/;
+	rsync -au -e "ssh" output/web/ web:www/prismatic/
 
