@@ -23,7 +23,7 @@
     <lemma xml:id="lem-frobenius-on-de-rham">
       <statement>
         <p>
-          For any morphism <m>R \to S</m> in <m>\Ring_{\FF_p}</m>, the map <m>\phi_S: \Omega^i_{S/R} \to \Omega^i_{S/R}</m> is zero for all <m>i \gt 0</m>.
+          For any morphism <m>R \to S</m> in <m>\Ring_{\FF_p}</m>, the map <m>\phi_S\colon \Omega^i_{S/R} \to \Omega^i_{S/R}</m> is zero for all <m>i \gt 0</m>.
         </p>
       </statement>
       <proof>
@@ -38,7 +38,7 @@
     </lemma>
     <definition xml:id="def-relative-Frobenius">
       <p>
-        For <m>R \to S</m> a morphism in <m>\Ring_{\FF_p}</m>, the map <m>\phi_S: S \to S</m> factors through an <m>R</m>-linear map <m>\phi_{S/R}: S^{(1)} \to S</m>
+        For <m>R \to S</m> a morphism in <m>\Ring_{\FF_p}</m>, the map <m>\phi_S\colon S \to S</m> factors through an <m>R</m>-linear map <m>\phi_{S/R}\colon S^{(1)} \to S</m>
         where <m>S^{(1)} = S \otimes_{R,\phi_R} R</m>.
         We call <m>\phi_{S/R}</m> the <term>relative Frobenius</term> for the map <m>R \to S</m>.
       </p>
@@ -61,7 +61,7 @@
     <corollary xml:id="cor-relative-frobenius-de-rham">
       <statement>
         <p>
-          For any morphism <m>R \to S</m> in <m>\Ring_{\FF_p}</m>, the map <m>\phi_{S/R}: \Omega^i_{S^{(1)}/R} \to \Omega^i_{S/R}</m> is zero for all <m>i \gt 0</m>.
+          For any morphism <m>R \to S</m> in <m>\Ring_{\FF_p}</m>, the map <m>\phi_{S/R}\colon \Omega^i_{S^{(1)}/R} \to \Omega^i_{S/R}</m> is zero for all <m>i \gt 0</m>.
         </p>
       </statement>
       <proof>
@@ -78,7 +78,7 @@
     </corollary>
     <remark>
       <p>
-        As indicated in <xref ref="fig-relative-Frobenius"/>, the construction of relative Frobenius extends to an arbitrary morphism of schemes <m>f: Y \to X</m>
+        As indicated in <xref ref="fig-relative-Frobenius"/>, the construction of relative Frobenius extends to an arbitrary morphism of schemes <m>f\colon Y \to X</m>
         in characteristic <m>p</m>. The example of a polynomial ring, and its description in the proof of <xref ref="cor-relative-frobenius-de-rham"/>,
         may be misleading: in general <m>Y</m> and <m>Y^{(1)}</m> will not be isomorphic over <m>X</m>.
         For example, if <m>X</m> is the spectrum of an algebraically closed field <m>k</m>
@@ -90,7 +90,7 @@
       <title>Cartier isomorphism for affine space</title>
       <statement>
         <p>
-          Choose <m>R \in \Ring_{\FF_p}</m>, put <m>S = R[x_1,\dots,x_r]</m>, and let <m>\phi_{S/R}: S^{(1)} \to S</m> be the relative Frobenius. Then there is 
+          Choose <m>R \in \Ring_{\FF_p}</m>, put <m>S = R[x_1,\dots,x_r]</m>, and let <m>\phi_{S/R}\colon S^{(1)} \to S</m> be the relative Frobenius. Then there is 
           a quasi-isomorphism
           <me>
             (\Omega^\bullet_{S^{(1)}/R}, 0) \to (\Omega^\bullet_{S/R}, d_{\dR})
@@ -104,13 +104,13 @@
           To check that this map is a quasi-isomorphism, we form a decomposition
           <men xml:id="eq-cartier-splitting">
             \Omega^i_{S/R} = \bigoplus_{e_1,\dots,e_r \in \{0,\dots,p-1\}} \bigoplus_{1 \leq j_1 \lt \cdots \lt j_i \leq r} x_1^{e_1} \cdots x_r^{e_r} 
-            S^{(1)} dx_{j_1} \wedge \cdots \wedge dx_{j_i}.
-          </men>
+            S^{(1)} dx_{j_1} \wedge \cdots \wedge dx_{j_i}
+          </men>.
           We obtain a morphism <m>(\Omega^\bullet_{S/R}, d_{\dR}) \to (\Omega^\bullet_{S^{(1)}/R}, 0)</m> of complexes (not respecting the multiplicative structure)
           taking <m>x_1^{e_1} \cdots x_r^{e_r} dx_{j_1} \wedge \cdots \wedge dx_{j_i}</m> to <m>dx_{j_1} \wedge \cdots \wedge dx_{j_i}</m> for
           <me>
-            e_j = \begin{cases} p-1 &amp; j \in \{j_1,\dots,j_i\} \\ 0 &amp; j \notin \{j_1,\dots,j_i\} \end{cases}.
-          </me>
+            e_j = \begin{cases} p-1 &amp; j \in \{j_1,\dots,j_i\} \\ 0 &amp; j \notin \{j_1,\dots,j_i\} \end{cases}
+          </me>.
           We must show that the composition of these maps is homotopic to the identity on <m>\Omega^\bullet_{S/R}</m>.
           By proceeding by induction, we may reduce to the case <m>r=1</m>. In this case, for <m>e_1 = 1,\dots,p-1</m>, <m>d_{\dR}</m> maps
           <m>x_1^{e_1} S^{(1)}</m> to <m>x_1^{e_1-1} S^{(1)}\,dx_1</m> taking <m>x_1^{e_1} f</m> to <m>e_1 x_1^{e_1-1} f\,dx</m>,
@@ -154,14 +154,14 @@
     </p>
     <definition xml:id="def-divided-power-envelope">
       <p>
-        For <m>R \in \Ring</m> flat over <m>\ZZ</m>, the <term>divided power operations</term> <m>\gamma_n: R \to R \otimes_{\ZZ} \QQ</m> are the maps
+        For <m>R \in \Ring</m> flat over <m>\ZZ</m>, the <term>divided power operations</term> <m>\gamma_n\colon R \to R \otimes_{\ZZ} \QQ</m> are the maps
         <me>
-          \gamma_n(x) = \frac{x^n}{n!} \qquad (x \in R, n \geq 0).
-        </me>
+          \gamma_n(x) = \frac{x^n}{n!} \qquad (x \in R, n \geq 0)
+        </me>.
         From the identities
         <me>
-          \gamma_n(x+y) = \sum_{i=0}^n \gamma_i(x) \gamma_{n-i}(y), \qquad \gamma_n(xy) = x^n \gamma_n(y),
-        </me>
+          \gamma_n(x+y) = \sum_{i=0}^n \gamma_i(x) \gamma_{n-i}(y), \qquad \gamma_n(xy) = x^n \gamma_n(y)
+        </me>,
         we see that the set of <m>x \in R</m> for which <m>\gamma_n(x) \in R</m> for all <m>n \geq 0</m> is an ideal of <m>R</m>.
         For <m>J</m> an ideal contained in this ideal, we say that <m>R</m> <term>admits divided powers</term> on <m>J</m>.
       </p>
@@ -170,8 +170,8 @@
       <p>
         The ring <m>\ZZ_{(p)}</m> admits divided powers on <m>(p)</m> because
         <men xml:id="eq-zp-divided-powers">
-          \frac{p^{n-1}}{n!} \in \ZZ_{(p)} \qquad (n \geq 1).
-        </men>
+          \frac{p^{n-1}}{n!} \in \ZZ_{(p)} \qquad (n \geq 1)
+        </men>.
       </p>
     </example>
     <remark xml:id="rmk-strong-divided-powers">
@@ -212,7 +212,7 @@
           Set <m>P = A[x]</m> and let <m>D</m> be the divided power envelope of <m>(P, (x))</m>.
           Then the morphism
           <me>
-            d: D \to D \otimes_P \Omega^1_{P/A} = D\,dx
+            d\colon D \to D \otimes_P \Omega^1_{P/A} = D\,dx
           </me>
           is surjective with kernel <m>A</m>; the same remains true if we replace <m>D</m> with its <m>p</m>-adic completion.
         </p>
@@ -257,8 +257,8 @@
             </me>
             and hence a quasi-isomorphism
             <me>
-              \Omega_{R/\FF_p} \cong (D \widehat{\otimes}_P \widehat{\Omega}^{\bullet}_{P/\ZZ_p}) \otimes^L_{\ZZ_p} \FF_p.
-            </me>
+              \Omega_{R/\FF_p} \cong (D \widehat{\otimes}_P \widehat{\Omega}^{\bullet}_{P/\ZZ_p}) \otimes^L_{\ZZ_p} \FF_p
+            </me>.
           </p>
         </statement>
         <proof>
@@ -293,15 +293,15 @@
           The maximal ideal on which <m>D</m> admits divided powers includes both <m>x</m> (by construction) and <m>p</m> (by <xref ref="exa-Zp-divided-powers"/>),
           and hence also <m>\phi(x)</m>; consequently, for all <m>n \geq 1</m>,
           <me>
-            \phi(\gamma_n(x)) = \gamma_n(\phi(x)) \in D.
-          </me>
+            \phi(\gamma_n(x)) = \gamma_n(\phi(x)) \in D
+          </me>.
           Hence <m>\phi</m> induces an endomorphism of <m>D</m>.
         </p>
         <p>
           We next check that <m>\phi</m> induces a Frobenius lift on <m>D</m>; this amounts to checking that for all <m>n \geq 1</m>,
           <me>
-            \phi(\gamma_n(x)) \equiv \gamma_n(x)^p \pmod{pD}.
-          </me>
+            \phi(\gamma_n(x)) \equiv \gamma_n(x)^p \pmod{pD}
+          </me>.
           We will see that in fact both sides are divisible by <m>p</m>. For <m>\phi(\gamma_n(x)) = \gamma_n(\phi(x))</m>, this holds by writing
           <m>\phi(x) = p(x^p/p + \delta(x)) \in pD</m> and invoking <xref ref="eq-zp-divided-powers"/>. For <m>\gamma_n(x)^p</m>, this holds by writing
           <m>\gamma_n(x)^p = p! \gamma_p(\gamma_n(x))</m> and applying <xref ref="eq-divided-power-composition"/>.
@@ -413,17 +413,20 @@
           Let <m>(A,I)</m> be the prism <m>(\ZZ_p, (p))</m> and put <m>R = \FF_p[x_1,\dots,x_r]</m>.
           Let <m>P</m> be the classical <m>p</m>-completion of <m>\ZZ_p\{x_1,\dots,x_r\}</m>. 
           Let <m>J</m> be the kernel of the map <m>P \to R</m> taking <m>x_i</m> to <m>x_i</m> and <m>\delta^m(x_i)</m> to <m>0</m> for all <m>m \gt 0</m>.
-          Write <m>P\{J/p\}^\wedge_{(p)}</m> for the classical <m>p</m>-completion of <m>P\{f/p: f \in J\}</m>.
+          Write <m>P\{J/p\}^\wedge_{(p)}</m> for the classical <m>p</m>-completion of <m>P\{f/p\colon f \in J\}</m>.
           Then <m>(P\{J/p\}^\wedge_{(p)}, (p))</m> is a weakly final object of <m>(R/A)_{\Prism}</m>.
         </p>
       </statement>
       <proof>
         <p>
-          We check that we get a weakly initial object of <m>(R/A)^{\op}_{\Prism}</m>. Let <m>(B, pB) \in (R/A)^{\op}_{\Prism}</m> be any object.
-          The elements <m>x_1,\dots,x_r \in R</m> map to some elements of <m>B/pB</m>; choosing lifts of those then defines a map
-          <m>\ZZ_{(p)}\{x_1,\dots,x_r\} \to B</m>, which then extends to the <m>p</m>-adic completion <m>P</m>.
-          Applying <xref ref="lem-adjoint-delta-rings-to-prisms"/> to the morphism <m>P \to B</m> of <m>\delta</m>-rings
-          yields a morphism <m>(P\{J/p\}^\wedge_{(p)}, (p)) \to (B, (p))</m> of prisms.
+          By <xref ref="exer-delta-ring-completion"/>, <m>(P, J)</m> is a <m>\delta</m>-pair.
+          As in the proof of <xref ref="prop-prismatic-site-weakly-final-object"/>.
+          we may apply <xref ref="lem-adjoint-delta-rings-to-prisms"/> to <m>(P, J)</m>
+          to obtain a weakly final object of <m>(R/A)_{\Prism}</m>.
+          To identify the result explicitly, we step through the proof of <xref ref="lem-adjoint-delta-rings-to-prisms"/>.
+          We first take the derived <m>p</m>-completion of <m>P\{f/p\colon f \in J\}</m>;
+          as this object is <m>p</m>-adically separated this is in fact a classical <m>p</m>-completion.
+          In addition the result is <m>p</m>-torsion-free, so there is no need to iterate the construction.
           (Compare <xref ref="bib-Bhatt-course"/>, Lecture VI, Corollary 2.3.)
         </p>
       </proof>
@@ -440,23 +443,22 @@
         <p>
           With notation as in <xref ref="lem-crystalline-weakly-final"/>, for <m>n \geq 0</m>, identify
           <me>
-            P^n = \ZZ_p\{x_{ij}: i=1,\dots,r; j=0,\dots,n\}^\wedge_{(p)}
+            P^n = \ZZ_p\{x_{ij}\colon i=1,\dots,r; j=0,\dots,n\}^\wedge_{(p)}
           </me>
           with the <m>(n+1)</m>-fold completed tensor product of <m>P</m> over <m>\ZZ_p</m>. Let <m>J^n</m> be the kernel of the morphism <m>P^n \to R</m>
           in <m>\Ring_\delta</m> taking <m>x_{ij}</m> to <m>x_i</m> and <m>\delta^m(x_{ij})</m> to <m>0</m> for all <m>m \gt 0</m>, 
-          and write <m>P^n\{J^n/p\}^\wedge_{(p)}</m> for the classical <m>p</m>-completion of <m>P^n\{f/p: f \in J^n\}</m>.
+          and write <m>P^n\{J^n/p\}^\wedge_{(p)}</m> for the classical <m>p</m>-completion of <m>P^n\{f/p\colon f \in J^n\}</m>.
           Then <m>\Prism_{R/A}</m> is quasi-isomorphic to the Čech-Alexander complex
           <me>
-            0 \to P^0\{J^0/p\}^\wedge_{(p)} \to P^1\{J^1/p\}^\wedge_{(p)} \to P^2\{J^2/p\}^\wedge_{(p)} \to \cdots.
-          </me>
+            0 \to P^0\{J^0/p\}^\wedge_{(p)} \to P^1\{J^1/p\}^\wedge_{(p)} \to P^2\{J^2/p\}^\wedge_{(p)} \to \cdots
+          </me>.
         </p>
       </statement>
       <proof>
         <p>
           By <xref ref="lem-crystalline-weakly-final"/>, <m>P^0\{J^0/p\}^\wedge_{(p)}</m> is a weakly final object of <m>(R/A)_{\Prism}</m>.
           Now note that <m>(P^n\{J^n/p\}^\wedge_{(p)}, (p))</m> is the <m>(n+1)</m>-fold product of <m>(P^0\{J^0/p\}^\wedge_{(p)}, (p))</m> in <m>\Prism_{R/A}</m>.
-          Hence we are in the setting
-          described in <xref ref="rem-prismatic-cohomology-via-cosimplicial"/>.
+          Hence we are in the setting described in <xref ref="rem-prismatic-cohomology-via-cosimplicial"/>.
         </p>
       </proof>
     </corollary>
@@ -470,11 +472,11 @@
       <p>
         With notation as in <xref ref="lem-crystalline-weakly-final"/> and <xref ref="cor-crystalline-weakly-final"/>,
         the map <m>\phi</m> on <m>A = \ZZ_p</m> is an isomorphism.
-        By <xref ref="rmk-cech-alexander-formal-schemes"/>, <m>\phi_{P*}: P^\bullet \to P^\bullet</m> is a quasi-isomorphism (and a homotopy equivalence), 
+        By <xref ref="rmk-cech-alexander-formal-schemes"/>, <m>\phi_{P*}\colon P^\bullet \to P^\bullet</m> is a quasi-isomorphism (and a homotopy equivalence), 
         yielding isomorphisms in <m>K(\ZZ_p)</m> of the form
         <me>
-          P^\bullet\{J^\bullet/p\}^\wedge_{(p)} \to \phi_{P^\bullet}^*(P^\bullet\{J^\bullet/p\})^\wedge_{(p)} = P^\bullet\{\phi(J^\bullet)/p\}^\wedge_{(p)}.
-        </me>
+          P^\bullet\{J^\bullet/p\}^\wedge_{(p)} \to \phi_{P^\bullet}^*(P^\bullet\{J^\bullet/p\})^\wedge_{(p)} = P^\bullet\{\phi(J^\bullet)/p\}^\wedge_{(p)}
+        </me>.
         By <xref ref="cor-regular-sequence-divided-power-envelope"/>, the latter coincides with the <m>p</m>-completed 
         divided power envelope <m>D_{J^\bullet}(P^\bullet)</m>
         of <m>(P^\bullet, J^\bullet)</m>. (More precisely, these are homotopy equivalences of cosimplicial <m>\ZZ_p</m>-algebras; see again <xref ref="def-homotopy-equivalence"/>.)
@@ -524,8 +526,8 @@
           the identity map on cohomology.
           Hence the horizontal differentials between the columns (which are alternating sums of the induced maps) are represented by
           <me>
-            H^m \stackrel{0}{\to} H^m \stackrel{1}{\to} H^m \stackrel{0}{\to} H^m \stackrel{1}{\to} \cdots.
-          </me>
+            H^m \stackrel{0}{\to} H^m \stackrel{1}{\to} H^m \stackrel{0}{\to} H^m \stackrel{1}{\to} \cdots
+          </me>.
           At the next page of the spectral sequence, 
           we end up with the groups <m>H^m(D_{J^0}(P^0) \widehat{\otimes}_{P^0} \widehat{\Omega}^\bullet_{P^0/\ZZ_p})</m> in column 0 
           and zeroes elsewhere. By <xref ref="map-of-double-complex-first-column-qis"/>, the map from the first column to the totalization is a quasi-isomorphism.
@@ -588,8 +590,8 @@
           corresponds to the Cartier isomorphism; it suffices to do this in degree 1.
           As in <xref ref="def-Breuil-Kisin-twist"/>, consider the exact sequence
           <me>
-            0 \to p T / p^2 T\to T / p^2 T \to T / p T \to 0, \qquad T = P^0\{J^0/p\}^\wedge_{(p)}.
-          </me>
+            0 \to p T / p^2 T\to T / p^2 T \to T / p T \to 0, \qquad T = P^0\{J^0/p\}^\wedge_{(p)}
+          </me>.
           Viewing the element <m>x_i \in P^0\{J^0/p\}^\wedge_{(p)}</m> as representing a class in <m>H^0(\overline{\Prism}_{R/A})</m>, 
           we find that its image under the Bockstein differential is represented by <m>(x_{i0} - x_{i1})/p</m>.
           This is then the image of <m>dx_i \in \Omega_{R/\FF_p}</m> under <m>\eta_R</m>, and it remains to transfer the answer via <xref ref="eq-prismatic-to-derham-map"/>.
@@ -599,8 +601,8 @@
           Going down the vertical arrow <m>D_{J^1}(P^1) \to D_{J^1}(P^1) \widehat{\otimes}_{P^1} \widehat{\Omega}^1_{P^1/\ZZ_p}</m> 
           in <xref ref="fig-double-complex-crystalline"/> yields 
           <me>
-            d((x_{i0}^p - x_{i1}^p)/p) = x_{i0}^{p-1} dx_{i0} - x_{i1}^{p-1} dx_{i1}.
-          </me>
+            d((x_{i0}^p - x_{i1}^p)/p) = x_{i0}^{p-1} dx_{i0} - x_{i1}^{p-1} dx_{i1}
+          </me>.
           This is the image of <m>x_i^{p-1}\,dx_i</m> along the horizontal arrow 
           <m> D_{J^0}(P^0) \widehat{\otimes}_{P^0} \widehat{\Omega}^1_{P^0/\ZZ_p} \to D_{J^1}(P^1) \widehat{\otimes}_{P^1} \widehat{\Omega}^1_{P^1/\ZZ_p}</m>
           in <xref ref="fig-double-complex-crystalline"/>. When we reduce mod <m>p</m>, we get exactly the image of <m>dx_i</m> under the Cartier map, proving the claim.

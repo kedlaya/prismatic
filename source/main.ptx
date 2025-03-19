@@ -113,7 +113,7 @@
   <article xml:id="prismatic">
     <title>Notes on prismatic cohomology</title>
     <frontmatter>
-      <titlepage>
+      <bibinfo>
         <author>
           <personname>Kiran S. Kedlaya</personname>
           <department>Department of Mathematics</department>
@@ -124,7 +124,7 @@
           <email>kedlaya@ucsd.edu</email>
         </author>
         <date><today /></date>
-      </titlepage>
+      </bibinfo>
       <abstract>
         <p>
           These are notes from a <url visual="kskedlaya.org/math206a-spr21/" href="https://kskedlaya.org/math206a-spr21/">graduate topics course</url> given at UC San Diego 
@@ -137,7 +137,9 @@
           No claim of originality is made except for errors.
         </p>
         <p>
-          These notes have benefited greatly from comments from many people, including participants in the original course. I plan to add a detailed list later.
+          These notes have benefited greatly from comments from participants in the original course,
+          as well as subsequent feedback from Pierre Deligne, Peng Du, Elías Guisado, Shane Kelly, Ruochuan Liu, Devlin Delaney Mallory,
+          Akhil Mathew, J.P. Pridham, David Savitt, Tobias Shin, and Yuri Sulyma.
         </p>
       </abstract>
     </frontmatter>

@@ -198,8 +198,8 @@
           Let <m>R \to S</m> be a module-finite and finitely presented morphism in <m>\Ring_{\ZZ_{(p)}}</m>.
           Then there exist elements <m>g_1,\dots,g_n \in R</m> such that for 
           <me>
-            R_i = R/(g_1,\dots,g_{i-1})_{\red}[g_i^{-1}], S_i = S/(g_1,\dots,g_{i-1})_{\red}[g_i^{-1}],
-          </me>
+            R_i = R/(g_1,\dots,g_{i-1})_{\red}[g_i^{-1}], S_i = S/(g_1,\dots,g_{i-1})_{\red}[g_i^{-1}]
+          </me>,
           the following statements hold.
         </p>
         <ol>
@@ -347,10 +347,10 @@
           Let <m>R</m> be a <m>p</m>-torsion-free lens. Let <m>R \to S</m> be a finitely presented morphism of rings.
           Let <m>J</m> be a finitely generated ideal of <m>S</m>.
           Put <m>Y = \Spec S[p^{-1}]</m>, let <m>U \subseteq Y</m> be the complement of <m>V(J)</m>,
-          and let <m>j: U \to Y</m> be the canonical open immersion. Then
+          and let <m>j\colon U \to Y</m> be the canonical open immersion. Then
           <me>
-            R\Gamma_{\et}(Y, j_! \underline{\FF_p}) \in D^{\leq 1}(\FF_p).
-          </me>
+            R\Gamma_{\et}(Y, j_! \underline{\FF_p}) \in D^{\leq 1}(\FF_p)
+          </me>.
         </p>
       </statement>
       <proof>

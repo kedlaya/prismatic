@@ -30,8 +30,8 @@
           <mrow>W(A) &amp;= \Hom_{\Ring}(\ZZ[y], W(A))</mrow> 
           <mrow> &amp;= \Hom_{\Ring_\delta}(\ZZ\{y\}, W(A))</mrow> 
           <mrow>     &amp;= \Hom_{\Ring}(\ZZ[y_0, y_1, \dots], A)</mrow> 
-          <mrow>     &amp;= A \times A \times \cdots.</mrow>
-        </md>
+          <mrow>     &amp;= A \times A \times \cdots</mrow>
+        </md>.
         This means that each element of <m>W(A)</m> has a unique expansion <m>(y_0, y_1, \dots)</m> with each <m>y_n \in A</m>; we call the <m>y_n</m> 
         the <term><m>y</m>-coordinates</term> (or <term>Joyal coordinates</term>) of this element of <m>W(A)</m>.
         (This presentation does not directly describe the ring structure on <m>W(A)</m>; see <xref ref="rmk-plethory"/>.)
@@ -54,8 +54,8 @@
         </men>
         In particular,
         <men xml:id="eq-promote-congruence2">
-          x \equiv y \pmod{p^m} \Rightarrow x^p \equiv y^p \pmod{p^{m+1}}.
-        </men>
+          x \equiv y \pmod{p^m} \Rightarrow x^p \equiv y^p \pmod{p^{m+1}}
+        </men>.
        </p>
     </remark>
     <lemma xml:id="lem-unipotent-Witt">
@@ -67,8 +67,8 @@
           </me>
           such that <m>x_0 = y_0, x_1 = y_1</m>, and 
           <men xml:id="eq-ghost-internal"> 
-            \phi^n(x_0) = x_0^{p^n} + p x_1^{p^{n-1}} + \cdots + p^n x_n \qquad (n=0,1,\dots).
-          </men>
+            \phi^n(x_0) = x_0^{p^n} + p x_1^{p^{n-1}} + \cdots + p^n x_n \qquad (n=0,1,\dots)
+          </men>.
         </p>
       </statement>
       <proof>
@@ -99,8 +99,8 @@
         <p>
           For <m>w_n = \sum_{m=0}^n p^m x_m^{p^{n-m}} \in \ZZ\{y\}</m>, we have
           <me>
-            \phi^n(w_m) = w_{n+m} \qquad (m,n \geq 0).
-          </me>
+            \phi^n(w_m) = w_{n+m} \qquad (m,n \geq 0)
+          </me>.
         </p>
       </statement>
       <proof>
@@ -114,8 +114,8 @@
         <p>
           In the ring <m>\ZZ\{y\}</m>, we have
           <me>
-            \phi(x_n) \equiv x_n^p \pmod{p}.
-          </me>
+            \phi(x_n) \equiv x_n^p \pmod{p}
+          </me>.
           Consequently, for <m>A</m> a ring of characteristic <m>p</m>, the map <m>\phi</m> on <m>W(A)</m> coincides with the map induced by functoriality by the Frobenius on <m>A</m>.
           (This is also true in the <m>y</m>-coordinates.)
         </p>
@@ -124,21 +124,23 @@
         <p>
           The first assertion is a consequence of the fact that <m>\phi</m> is a Frobenius lift (because <m>\ZZ\{y\}</m> is a <m>\delta</m>-ring).
           The second assertion is a direct consequence of the first, but let us spell this out for clarity as the mechanism of the argument will recur in what follows.
+        </p>
+        <p>
           For a general ring <m>A</m>, each of the elements <m>x_0, x_1, \dots \in \ZZ\{x\}</m> defines a function <m>W(A) \to A</m> which is natural in <m>A</m>.
           Similarly, every element of <m>\ZZ\{x\}</m> can be viewed as a <q>polynomial function</q> on <m>W(A)</m> valued in <m>A</m> which is again natural in <m>A</m>;
           that is, we have a map of sets <m>h\colon \ZZ\{x\} \to \Hom_{\Set}(W(A), A)</m>. This map has the property that
           <me>
-            h(\phi(t))(u) = \phi(h(t)(u)) \qquad (t \in \ZZ\{x\}, u \in W(A)).
-          </me>
+            h(\phi(t))(u) = h(t)(\phi(u)) \qquad (t \in \ZZ\{x\}, u \in W(A))
+          </me>.
           In the case where <m>A</m> is of characteristic <m>p</m>, we have <m>\phi(x_n) = x_n^p + p \delta(x_n)</m>
           and so  for any <m>u \in W(A)</m>,
           <md>
-            <mrow>\phi(h(x_n)(u)) &amp;= h(\phi(x_n))(u) </mrow>
+            <mrow>h(x_n)(\phi(u)) &amp;= h(\phi(x_n))(u) </mrow>
             <mrow>&amp;= h(x_n^p + p \delta(x_n))(u)</mrow>
             <mrow>&amp;= h(x_n^p)(u) + p h(\delta(x_n))(u)</mrow> 
-            <mrow>&amp;= h(x_n)(u)^p.</mrow>
-          </md>
-          This shows that the <m>\phi</m> acts via the functorial Frobenius.
+            <mrow>&amp;= h(x_n)(u)^p</mrow>
+          </md>.
+          This shows that <m>\phi</m> acts via the functorial Frobenius.
         </p>
       </proof>
     </corollary>
@@ -189,7 +191,7 @@
       <p>
         Define the elements <m>w_n \in \ZZ\{y\}</m> as in <xref ref="cor-phi-on-ghost"/>. These define a set-theoretic map
         <me>
-          w\colon W(A) \to A \times A \times \cdots, \qquad (x_n)_{n=0}^\infty \mapsto \left( \sum_{m=0}^n p^m x_m^{p^{n-m}} \right)_{n=0}^\infty.
+          w\colon W(A) \to A \times A \times \cdots, \qquad (x_n)_{n=0}^\infty \mapsto \left( \sum_{m=0}^n p^m x_m^{p^{n-m}} \right)_{n=0}^\infty
         </me>
         which we call the <term>ghost map</term>.
       </p>
@@ -220,12 +222,12 @@
       <p>
         For any ring <m>A</m>, the <term>Verschiebung</term> map <m>V\colon W(A) \to W(A)</m> is defined by
         <me>
-          V(x_0, x_1, \dots) = (0, x_0, x_1, \dots).
-        </me>
+          V(x_0, x_1, \dots) = (0, x_0, x_1, \dots)
+        </me>.
         Note that this corresponds to the map on ghost coordinates given by
         <me>
-          (w_0, w_1, \dots) \mapsto (0, pw_0, pw_1, \dots).
-        </me>
+          (w_0, w_1, \dots) \mapsto (0, pw_0, pw_1, \dots)
+        </me>.
         Using the ghost map as per <xref ref="rmk-Witt-structures-p-typical"/>, we may deduce that <m>V</m> is additive (but not multiplicative)
         and that  <m>\phi \circ V</m> acts via multiplication by <m>p</m>.
       </p>
@@ -248,8 +250,8 @@
         <xref ref="lem-char-p-Witt-frob"/> applies). However, it does induce a homomorphism <m>W_{n+1}(A) \to W_n(A)</m>
         (the <term>Witt vector Frobenius</term>), from which we can recover <m>\phi</m> as the induced map 
         <me>
-          \lim_n W_n(A) = \lim_n W_{n+1}(A) \to \lim_n W_n(A).
-        </me>
+          \lim_n W_n(A) = \lim_n W_{n+1}(A) \to \lim_n W_n(A)
+        </me>.
       </p>
     </definition>
     <remark>
@@ -601,8 +603,8 @@
           </me>
           is multiplicative and satisfies 
           <me>
-            (F \circ N)(x) = x^p \qquad (x \in W(A)).
-          </me>
+            (F \circ N)(x) = x^p \qquad (x \in W(A))
+          </me>.
           This is called the <term>norm map</term> in <xref ref="bib-Angeltveit"/>; see also <xref ref="exer-norm-big"/>.
         </p>
       </statement>
@@ -610,8 +612,8 @@
         <p>
           Show that the effect on ghost coordinates is given by
           <me>
-            (w_0, w_1, w_2, \dots) \mapsto (w_0, w_0^p, w_1^p, w_2^p, \dots).
-          </me>
+            (w_0, w_1, w_2, \dots) \mapsto (w_0, w_0^p, w_1^p, w_2^p, \dots)
+          </me>.
         </p>
       </hint>
     </exercise>

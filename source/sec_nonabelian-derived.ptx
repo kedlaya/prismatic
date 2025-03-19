@@ -37,7 +37,7 @@
         The construction of nonabelian derived functors allows us to do something similar starting from the category <m>\Ring_A</m>.
         The free objects in this case (i.e., the essential image of the left adjoint of the forgetful functor to <m>\Set</m>) are polynomial rings.
         In order to replace modules to rings, we need to reconceptualize some familiar constructions without reference to the additive structure of the category
-        <m>\Mod_A</m>; for example, in <m>\Mod_A</m> we can form the equalizer of two maps <m>f_1, f_2: M \to N</m> as the kernel of the difference <m>f_1 - f_2</m>,
+        <m>\Mod_A</m>; for example, in <m>\Mod_A</m> we can form the equalizer of two maps <m>f_1, f_2\colon M \to N</m> as the kernel of the difference <m>f_1 - f_2</m>,
         but now we need to forgo this shortcut.
       </p>
       <p>
@@ -54,8 +54,8 @@
       <p>
         Let <m>\Delta</m> be the category of finite ordered sets (<xref ref="def-category-finite-ordered-sets"/>).
         Recall (from <xref ref="def-simplicial-object"/>) that for <m>\calC</m> an arbitrary category, a
-        <term>simplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U: \Delta^{\op} \to \calC</m>,
-        while a <term>cosimplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U: \Delta \to \calC</m>.
+        <term>simplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U\colon \Delta^{\op} \to \calC</m>,
+        while a <term>cosimplicial object</term> of a category <m>\calC</m> is a covariant functor <m>U\colon \Delta \to \calC</m>.
         For a simplicial object <m>U</m>, we will usually write <m>U_n</m> as a shorthand for the image object <m>U([n])</m>.
       </p>
     </definition>
@@ -66,8 +66,8 @@
       <p>
         For <m>n \geq 0</m>, let <m>\Delta[n]</m> denote the simplicial set
         <me>
-          \Delta^{\op} \to \Set, \qquad [k] \mapsto \Hom_{\Delta}([k], [n]).
-        </me>
+          \Delta^{\op} \to \Set, \qquad [k] \mapsto \Hom_{\Delta}([k], [n])
+        </me>.
         For any simplicial set <m>U</m>, the morphisms of simplicial sets from <m>\Delta[n]</m> to <m>U</m> are naturally in bijection with <m>U_n</m>.
       </p>
     </definition>
@@ -83,18 +83,18 @@
         <me>
           \coprod_{v \in V_n} U_n \to \coprod_{v' \in V_m} U_m
         </me>
-        corresponding to <m>\phi: [m] \to [n]</m> carries the component indexed by <m>v</m> to the component indexed by <m>v' = V(\phi)(v)</m> via <m>U(\phi)</m>.
+        corresponding to <m>\phi\colon [m] \to [n]</m> carries the component indexed by <m>v</m> to the component indexed by <m>v' = V(\phi)(v)</m> via <m>U(\phi)</m>.
         (Compare <xref ref="bib-Stacks"/>, tag 017C.)
       </p>
     </definition>
     <example xml:id="exa-homotopy-setup">
       <p>
         In <xref ref="def-homotopy-equivalence"/>, we will consider the special case of <xref ref="def-product-of-simplicial-sets"/> in which <m>V = \Delta[1]</m>.
-        In this case, the two maps <m>e_0, e_1: \Delta[0] \to \Delta[1]</m> corresponding to the two morphisms <m>[0] \to [1]</m>
+        In this case, the two maps <m>e_0, e_1\colon \Delta[0] \to \Delta[1]</m> corresponding to the two morphisms <m>[0] \to [1]</m>
         induce morphisms 
         <me>
-          e_0, e_1: U \to U \times \Delta[1].
-        </me>
+          e_0, e_1\colon U \to U \times \Delta[1]
+        </me>.
       </p>
     </example>
     <remark>
@@ -109,8 +109,8 @@
     <title>Simplicial resolutions</title>
     <definition>
       <p>
-        A <term>simplicial resolution</term> of an object <m>X \in \calC</m> is a simplicial object <m>U: \Delta^{\op} \to \calC</m>
-        with colimit <m>X</m>. A <term>cosimplicial resolution</term> of <m>X</m> is a cosimplicial object <m>U: \Delta \to \calC</m>
+        A <term>simplicial resolution</term> of an object <m>X \in \calC</m> is a simplicial object <m>U\colon \Delta^{\op} \to \calC</m>
+        with colimit <m>X</m>. A <term>cosimplicial resolution</term> of <m>X</m> is a cosimplicial object <m>U\colon \Delta \to \calC</m>
         with limit <m>X</m>.
       </p>
     </definition>
@@ -152,28 +152,28 @@
     </p>
     <definition xml:id="def-homotopy-equivalence">
       <p>
-        Suppose that the category <m>\calC</m> has finite coproducts. Let <m>U,V</m> be simplicial objects of <m>\calC</m> and let <m>a,b: U \to V</m> be two morphisms.
+        Suppose that the category <m>\calC</m> has finite coproducts. Let <m>U,V</m> be simplicial objects of <m>\calC</m> and let <m>a,b\colon U \to V</m> be two morphisms.
         A <term>homotopy</term> from <m>a</m> to <m>b</m> is a morphism 
-        <me>h: U \times \Delta[1] \to V</me>
+        <me>h\colon U \times \Delta[1] \to V</me>
         (interpreting the source as per <xref ref="def-product-of-simplicial-sets"/>)
         such that <m>a = h \circ e_0</m> and <m>b = h \circ e_1</m>. The property that such a homotopy exists, for a given pair <m>a,b</m> is reflexive but not necessarily
         symmetric or transitive.
       </p>
       <p>
         We say that <m>a</m> and <m>b</m> are <term>homotopic</term> if they belong to the same equivalence class under the equivalence relation generated by homotopies.
-        We say that a single morphism <m>a: U \to V</m> is a <term>homotopy equivalence</term> if there exists a second morphism <m>b: V \to U</m>
+        We say that a single morphism <m>a\colon U \to V</m> is a <term>homotopy equivalence</term> if there exists a second morphism <m>b\colon V \to U</m>
         such that <m>b \circ a</m> is homotopic to <m>\id_U</m> and <m>a \circ b</m> is homotopic to <m>\id_V</m>.
       </p>
     </definition>
     <example>
       <p>
-        In <xref ref="def-homotopy-equivalence"/>, the maps <m>e_0, e_1: U \times \Delta[1] \to U</m> are themselves homotopy equivalences.
+        In <xref ref="def-homotopy-equivalence"/>, the maps <m>e_0, e_1\colon U \times \Delta[1] \to U</m> are themselves homotopy equivalences.
         See <xref ref="exer-relative-shift-homotopy-inverse"/>.
       </p>
     </example>
     <example>
       <p>
-        Take <m>\calC = \Mod_A</m> with <m>A \in \Ring</m>. Then a homotopy between morphisms <m>a,b: U \to V</m> of simplicial objects gives rise to a homotopy
+        Take <m>\calC = \Mod_A</m> with <m>A \in \Ring</m>. Then a homotopy between morphisms <m>a,b\colon U \to V</m> of simplicial objects gives rise to a homotopy
         of the corresponding complexes in <m>\Comp(A)</m>. In particular, if two simplicial objects <m>U,V</m> are homotopy equivalent, then the corresponding objects in <m>K(A)</m> are isomorphic
         (and similarly for cosimplicial objects). For a converse to this assertion, see <xref ref="bib-Stacks"/>, tag 01A1.
       </p>
@@ -204,11 +204,11 @@
     </p>
     <definition xml:id="def-standard-resolution">
       <p>
-        Let <m>V: \calC_1 \to \calC_2</m> be a functor with a left adjoint <m>U: \calC_2 \to \calC_1</m>.
+        Let <m>V\colon \calC_1 \to \calC_2</m> be a functor with a left adjoint <m>U\colon \calC_2 \to \calC_1</m>.
         By definition, 
         this means we have natural transformations
         <me>
-          \eta: \id_{C_2} \to V \circ U, \qquad \epsilon: U \circ V \to \id_{C_1}
+          \eta\colon \id_{C_2} \to V \circ U, \qquad \epsilon\colon U \circ V \to \id_{C_1}
         </me>
         (the <term>unit</term> and <term>counit</term>).
       </p>
@@ -265,7 +265,7 @@
         <p>
           In <xref ref="lem-standard-resolution"/>, the maps
           <me>
-            \id_V \star \epsilon: V \circ X \to V, \qquad \epsilon \star \id_U: X \circ U \to U
+            \id_V \star \epsilon\colon V \circ X \to V, \qquad \epsilon \star \id_U\colon X \circ U \to U
           </me>
           are homotopy equivalences.
         </p>
@@ -303,10 +303,10 @@
     </p>
     <definition xml:id="def-left-Kan-extension">
       <p>
-        Given covariant functors <m>F: \calC_1 \to \calC_2, G: \calC_1 \to \calC_3</m>, the <term>left Kan extension</term> of <m>G</m> along <m>F</m> consists of a covariant functor
-        <m>L: \calC_2 \to \calC_3</m> and a natural transformation <m>\alpha: G \to L \circ F</m> which are universal for this property: that is,
-        if <m>M: \calC_2 \to \calC_3</m> is another functor and <m>\beta: G \to M \circ F</m> is a natural transformation, 
-        then there is a unique natural transformation <m>\sigma: L \to M</m>
+        Given covariant functors <m>F\colon \calC_1 \to \calC_2, G\colon \calC_1 \to \calC_3</m>, the <term>left Kan extension</term> of <m>G</m> along <m>F</m> consists of a covariant functor
+        <m>L\colon \calC_2 \to \calC_3</m> and a natural transformation <m>\alpha\colon G \to L \circ F</m> which are universal for this property: that is,
+        if <m>M\colon \calC_2 \to \calC_3</m> is another functor and <m>\beta\colon G \to M \circ F</m> is a natural transformation, 
+        then there is a unique natural transformation <m>\sigma\colon L \to M</m>
         making the second diagram in <xref ref="fig-left-Kan-extension"/> commute.
       </p>
       <figure xml:id="fig-left-Kan-extension">
@@ -346,10 +346,10 @@
     </p>
     <example xml:id="exa-derived-functor-as-left-Kan">
       <p>
-        Let <m>G: \Mod_A \to \calA</m> be a right exact covariant functor to an abelian category.
+        Let <m>G\colon \Mod_A \to \calA</m> be a right exact covariant functor to an abelian category.
         Let <m>\calC</m> be the subcategory of <m>K^-(A)</m> consisting of complexes of projective modules.
         Using the fact that simplicial resolutions by projective modules give rise to projective resolutions (<xref ref="exa-standard-resolution-modules"/>),
-        we may check that the usual left derived functor of <m>G</m> is the left Kan extension of <m>G: \calC \to K^-(\calA)</m>
+        we may check that the usual left derived functor of <m>G</m> is the left Kan extension of <m>G\colon \calC \to K^-(\calA)</m>
         along the inclusion <m>\calC \to K^-(A)</m>. The point is that the formation of projective resolutions corresponds to 
         replacing general objects of <m>K^-(A)</m> by <term>cofibrant objects</term>.
       </p>
@@ -368,7 +368,7 @@
     <proposition xml:id="prop-left-derived-quillen">
       <statement>
         <p>
-          For <m>A \in \Ring</m> and <m>F: \Poly_A \to D(\Ab)</m> a covariant functor, the functor <m>F</m> admits a left Kan extension <m>LF: \Ring_A \to D(\Ab)</m>
+          For <m>A \in \Ring</m> and <m>F\colon \Poly_A \to D(\Ab)</m> a covariant functor, the functor <m>F</m> admits a left Kan extension <m>LF\colon \Ring_A \to D(\Ab)</m>
           along the inclusion <m>\Poly_A \to \Ring_A</m>, which moreover has the following properties.
           (We call <m>LF</m> the <term>left derived functor</term> of <m>F</m>.)
         </p>
@@ -401,21 +401,21 @@
     </proposition>
     <remark xml:id="rmk-left-derived-without-lift">
       <p>
-        In practice, we will be considering cases in which <m>F</m> can be lifted to a functor <m>\tilde{F}: \Poly_A \to \Comp(\Ab)</m>,
+        In practice, we will be considering cases in which <m>F</m> can be lifted to a functor <m>\tilde{F}\colon \Poly_A \to \Comp(\Ab)</m>,
         in which case the colimit in part (2) of <xref ref="prop-left-derived-quillen"/> can be interpreted as the totalization of a double complex made
         out of the terms <m>L\tilde{F}(P^\bullet)</m>.
         Otherwise, one should replace the derived category <m>D(\Ab)</m> with its <m>\infty</m>-categorical analogue and take the colimit
         there (where it can be reinterpreted as the <term>geometric realization</term>).
       </p>
       <p>
-        To give a concrete example of the effect of the colimit, note that if <m>B</m> is the coequalizer of two maps <m>f_0, f_1: P_1 \to P_0</m>,
+        To give a concrete example of the effect of the colimit, note that if <m>B</m> is the coequalizer of two maps <m>f_0, f_1\colon P_1 \to P_0</m>,
         then <m>LF(B) = \Cone(f_0 - f_1)</m>.
       </p>
     </remark>
     <remark>
       <p>
-        An important basic example will be given by the exterior power <m>\wedge^i: \Mod_A \to \Mod_A</m>, which will give us the 
-        derived exterior power <m>L\wedge^i: \Mod_A \to D(A)</m>. This in turn extends to a functor <m>L\wedge^i: D^{\leq 0}(A) \to D(A)</m>.
+        An important basic example will be given by the exterior power <m>\wedge^i\colon \Mod_A \to \Mod_A</m>, which will give us the 
+        derived exterior power <m>L\wedge^i\colon \Mod_A \to D(A)</m>. This in turn extends to a functor <m>L\wedge^i\colon D^{\leq 0}(A) \to D(A)</m>.
         (As indicated in <xref ref="bib-Bhatt-course"/>, Lecture VII, Remark 1.4, this is a point at which we are forced to be a bit sloppy by not working
         in the language of <m>\infty</m>-categories, but never mind.)
       </p>
@@ -423,10 +423,10 @@
     <remark>
       <p>
         In what follows we will frequently use the following construction without explicit comment.
-        Let <m>G': \calC_1 \to \calC_3</m> be another functor admitting a left Kan extension <m>(L': \calC_2 \to \calC_3, \alpha: G' \to L' \circ F)</m>,
-        and suppose that <m>\gamma: G \to G'</m> is a natural transformation.
-        Then we obtain a natural transformation <m>\alpha \circ \gamma: G \to L' \circ F</m> to which we may apply the universal property of the left Kan extension of <m>L</m>,
-        so as to obtain a natural transformation <m>\sigma: L \to L'</m>. That is, a natural transformation between two functors from <m>\calC_2</m> to <m>\calC_3</m>
+        Let <m>G'\colon \calC_1 \to \calC_3</m> be another functor admitting a left Kan extension <m>(L'\colon \calC_2 \to \calC_3, \alpha\colon G' \to L' \circ F)</m>,
+        and suppose that <m>\gamma\colon G \to G'</m> is a natural transformation.
+        Then we obtain a natural transformation <m>\alpha \circ \gamma\colon G \to L' \circ F</m> to which we may apply the universal property of the left Kan extension of <m>L</m>,
+        so as to obtain a natural transformation <m>\sigma\colon L \to L'</m>. That is, a natural transformation between two functors from <m>\calC_2</m> to <m>\calC_3</m>
         can be uniquely specified by giving its restriction (along <m>F</m>) to <m>\calC_1</m>.
       </p>
     </remark>
@@ -467,7 +467,7 @@
       <statement>
         <p>
           Let <m>\calC</m> be a category admitting finite nonempty coproducts. 
-          Prove that for any simplicial object <m>U</m> in <m>\calC</m>, the maps <m>e_0, e_1: U \times \Delta[1] \to U</m> are homotopy equivalences.
+          Prove that for any simplicial object <m>U</m> in <m>\calC</m>, the maps <m>e_0, e_1\colon U \times \Delta[1] \to U</m> are homotopy equivalences.
         </p>
       </statement>
     </exercise>

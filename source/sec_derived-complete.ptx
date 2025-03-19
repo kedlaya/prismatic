@@ -99,8 +99,8 @@
         For <m>A \in \Ring</m> and <m>I</m> a finitely generated ideal of <m>A</m>,
         an <m>A</m>-module <m>M</m> is <term>derived <m>I</m>-complete</term> if for each <m>f \in I</m>, 
         <men xml:id="eq-map-to-derived-inverse-limit">
-          \Hom_A (A_f, M) = 0 \mbox{ and } \Ext^1_A(A_f, M) = 0.
-        </men>
+          \Hom_A (A_f, M) = 0 \mbox{ and } \Ext^1_A(A_f, M) = 0
+        </men>.
         By <xref ref="lem-derived-f-limit-ideal"/>, it will suffice to check this condition for <m>f</m> running over a generating set of <m>I</m>
         (or of any ideal with the same radical as <m>I</m>).
       </p>
@@ -114,8 +114,8 @@
         Consequently, for any <m>A</m>-module <m>M</m>, <m>\Ext^n_A(A_f, M) = 0</m> for <m>n \geq 2</m>.
         Since <m>\Hom_A = \Ext^0_A</m>, this means that <xref ref="eq-map-to-derived-inverse-limit"/> can be reformulated as
         <men xml:id="eq-map-to-derived-inverse-limit2">
-          \Ext^n_A(A_f, M) = 0 \qquad (n \geq 0).
-        </men>
+          \Ext^n_A(A_f, M) = 0 \qquad (n \geq 0)
+        </men>.
         For example, this makes it clear that if any two terms in a short exact sequence are derived <m>I</m>-complete, then so is the third.
        </p>
     </remark>
@@ -131,8 +131,8 @@
           Let <m>I</m> be the set in question. For <m>f \in I, g \in A</m>,
           the functor <m>\Hom_A(A_{fg}, \bullet)</m> factors as
           <me>
-            M \mapsto \Hom_A(A_f, M) \mapsto \Hom_A(A_g, \Hom_A(A_f, M)).
-          </me>
+            M \mapsto \Hom_A(A_f, M) \mapsto \Hom_A(A_g, \Hom_A(A_f, M))
+          </me>.
           From the spectral sequence for a composition of functors (or more elementary considerations), we see that
           if <m>\Ext^n_A(A_f, M) = 0</m> for all <m>n \geq 0</m>, then <m>\Ext^n_A(A_{gf}, M) = 0</m> for all <m>n \geq 0</m>; hence <m>fg \in I</m>.
         </p>
@@ -174,18 +174,18 @@
         <p>
           If <m>M</m> is classically <m>I</m>-complete, we have 
           <me>
-            \Hom_A(A_f, M) = \Hom_A(A_f, \lim_n M/I^n M) = 0.
-          </me>
+            \Hom_A(A_f, M) = \Hom_A(A_f, \lim_n M/I^n M) = 0
+          </me>.
           To show that <m>\Ext^1_A(A_f, M) = 0</m>, consider an extension
           <men xml:id="eq-complete-from-derived-ext"> 
-            0 \to M \to E \to A_f \to 0.
-          </men>
+            0 \to M \to E \to A_f \to 0
+          </men>.
           For each <m>n \geq 0</m>, pick <m>e_n \in E</m> mapping to <m>f^{-n} \in A_f</m> and set <m>\delta_n = fe_{n+1} - e_n \in M</m>.
           Since <m>M</m> is complete, we may define the elements
           <me>
             e_n' = e_n + \delta_n + f \delta_{n+1} + f^2 \delta_{n+2} + \cdots
           </me>
-          which satisfy <m>f e_{n+1}' = fe_n'</m>; we thus obtain a map <m>A_f \to E</m> splitting the sequence by mapping <m>f^{-n}</m> to <m>e_n'</m>.
+          which satisfy <m>f e_{n+1}' = e_n'</m>; we thus obtain a map <m>A_f \to E</m> splitting the sequence by mapping <m>f^{-n}</m> to <m>e_n'</m>.
         </p>
         <p>
           In the converse direction, by an elementary argument (<xref ref="exer-Stacks-090S"/>) we can reduce to the case where <m>I = (f)</m>.
@@ -200,8 +200,8 @@
           Since the extension splits by hypothesis, there is an element <m>x + e_0 \in E</m>
           which generates a copy of <m>A_f</m> in <m>E</m>. We then have
           <me>
-            x + e_0 = x - x_0 + fe_1 = x - x_0 + x_1 + f^2 e_2 = \cdots;
-          </me>
+            x + e_0 = x - x_0 + fe_1 = x - x_0 + x_1 + f^2 e_2 = \cdots
+          </me>;
           this yields the desired result.
           (Compare <xref ref="bib-Stacks"/>, tag 091R.)
         </p>
@@ -363,23 +363,23 @@
     <lemma xml:id="lem-derived-completion-principal">
       <statement>
         <p>
-          Choose <m>A \in \Ring</m> and <m>f \in A</m>.
+          Choose <m>A \in \Ring</m> and <m>f \in A</m> a non-zerodivisor.
         </p>
         <ol>
           <li>
             <p>
               The derived <m>f</m>-completion functor (<xref ref="prop-derived-complete-abelian"/>) is given by 
               <me>
-                M \mapsto \widehat{M} = \Ext_A^1(A_f/A, M).
-              </me>
+                M \mapsto \widehat{M} = \Ext_A^1(A_f/A, M)
+              </me>.
             </p>
           </li>
           <li>
             <p>
               For any <m>A</m>-module <m>M</m>, we have a natural (in <m>M</m>) exact sequence
               <men xml:id="eq-derived-completion-sequence">
-                0 \to R^1\lim_n M[f^n] \to \widehat{M} \to \lim_n M/f^n M \to 0,
-              </men>
+                0 \to R^1\lim_n M[f^n] \to \widehat{M} \to \lim_n M/f^n M \to 0
+              </men>,
               in which the modules <m>M[f^n]</m> form a projective system via multiplication by <m>f</m>;
               compare <xref ref="bib-Stacks"/>, tag 0BKG.
               (Note that if <m>M = \widehat{M}</m>, then the last map is the surjection from <xref ref="lem-complete-from-derived"/>.)
@@ -512,8 +512,8 @@
         Let <m>I</m> be a finitely generated ideal of <m>A \in \Ring</m>.
         An object <m>K</m> in the derived category <m>D(A)</m> of <m>A</m>-modules is <term>derived <m>I</m>-complete</term> if for each <m>f \in I</m>, 
         <me>
-          R\Hom_A(A_f, K) = 0.
-        </me>
+          R\Hom_A(A_f, K) = 0
+        </me>.
         The argument of <xref ref="lem-derived-f-limit-ideal"/> carries over to show that it suffices to check this condition at a generating set of <m>I</m>,
         or of any other ideal with the same radical.
       </p>
@@ -529,25 +529,19 @@
           <ol>
             <li>
               <title>Derived Nakayama's lemma</title>
-              <p>
-                Let <m>K \in D(A)</m> be a derived <m>I</m>-complete object. Then <m>K = 0</m> if and only if <m>K \otimes_A^L A/I = 0</m>.
-              </p>
+              Let <m>K \in D(A)</m> be a derived <m>I</m>-complete object. Then <m>K = 0</m> if and only if <m>K \otimes_A^L A/I = 0</m>.
             </li>
             <li>
-              <p>
-                The derived <m>I</m>-complete objects of <m>D(A)</m> form a full triangulated subcategory <m>D_{\comp}(A)</m>which is closed under derived inverse limits.
-                This inclusion has a left adjoint <m>K \mapsto \widehat{K}</m> (the <term>derived <m>I</m>-completion</term>)
-                which can be computed as follows: for <m>I = (f_1,\dots,f_r)</m>,
-                <me>
-                  \widehat{K} = R\lim_n (K \otimes_{\ZZ[x_1,\dots,x_r]}^L \ZZ[x_1,\dots,x_r]/(x_1^n,\dots,x_r^n))
-                </me>
-                for the action of <m>\ZZ[x_1,\dots,x_r]</m> on <m>K</m> with <m>x_i</m> acting via <m>f_i</m>.
-              </p>
+              The derived <m>I</m>-complete objects of <m>D(A)</m> form a full triangulated subcategory <m>D_{\comp}(A)</m>which is closed under derived inverse limits.
+              This inclusion has a left adjoint <m>K \mapsto \widehat{K}</m> (the <term>derived <m>I</m>-completion</term>)
+              which can be computed as follows: for <m>I = (f_1,\dots,f_r)</m>,
+              <me>
+                \widehat{K} = R\lim_n (K \otimes_{\ZZ[x_1,\dots,x_r]}^L \ZZ[x_1,\dots,x_r]/(x_1^n,\dots,x_r^n))
+              </me>
+              for the action of <m>\ZZ[x_1,\dots,x_r]</m> on <m>K</m> with <m>x_i</m> acting via <m>f_i</m>.
             </li>
             <li>
-              <p>
-                An object <m>K \in D(A)</m> is derived <m>I</m>-complete if and only if <m>H^i(K)</m> is derived <m>I</m>-complete for each <m>i \in \ZZ</m>.
-              </p>
+              An object <m>K \in D(A)</m> is derived <m>I</m>-complete if and only if <m>H^i(K)</m> is derived <m>I</m>-complete for each <m>i \in \ZZ</m>.
             </li>
           </ol>
         </p>
@@ -587,7 +581,7 @@
     <remark xml:id="rmk-derived-nakayama-isomorphism">
       <p>
         We will frequently used the derived Nakayama's lemma (<xref ref="prop-derived-complete-abelian-derived"/>) in the following form:
-        for <m>f: K^\bullet \to L^\bullet</m> a morphism of derived <m>I</m>-complete complexes, <m>f</m> is a quasi-isomorphism if and only if the induced morphism
+        for <m>f\colon K^\bullet \to L^\bullet</m> a morphism of derived <m>I</m>-complete complexes, <m>f</m> is a quasi-isomorphism if and only if the induced morphism
         <m>K^\bullet \otimes^L_A A/I \to L^\bullet \otimes^L_A A/I</m> of complexes over <m>A/I</m> is a quasi-isomorphism. To be precise, this will follow from applying
         <xref ref="prop-derived-complete-abelian-derived"/> to the mapping cone of <m>f</m> (<xref ref="def-mapping-cone"/>).
       </p>
@@ -677,7 +671,7 @@
           <li>
             <p>
               Let <m>M</m> be an <m>A</m>-module which can be written as the cokernel of a morphism between classically <m>I</m>-complete <m>A</m>-modules.
-              Show that for any classically <m>I</m>-complete <m>A</m>-module <m>N</m> and any surjective morphism <m>f: N \to M</m> of <m>A</m>-modules,
+              Show that for any classically <m>I</m>-complete <m>A</m>-module <m>N</m> and any surjective morphism <m>f\colon N \to M</m> of <m>A</m>-modules,
               <m>\ker(f)</m> is classically <m>I</m>-complete.
             </p>
           </li>
@@ -760,8 +754,8 @@
       <hint>
         <p>
           Start with a finite projective <m>A/I</m>-module <m>\overline{M}</m>. Choose a finite free <m>A/I</m>-module <m>\overline{F}</m>
-          and a projector <m>\overline{U}: \overline{F} \to \overline{F}</m> whose image is isomorphic to <m>\overline{M}</m>. View <m>\overline{F}</m> as the reduction
-          of a finite free <m>A</m>-module <m>F</m> and choose an endomorphism <m>U_0: F \to F</m> lifting <m>\overline{U}</m>. Show by induction that
+          and a projector <m>\overline{U}\colon \overline{F} \to \overline{F}</m> whose image is isomorphic to <m>\overline{M}</m>. View <m>\overline{F}</m> as the reduction
+          of a finite free <m>A</m>-module <m>F</m> and choose an endomorphism <m>U_0\colon F \to F</m> lifting <m>\overline{U}</m>. Show by induction that
           for each positive integer <m>n</m>, <m>U_0</m> is congruent modulo <m>I</m> to an endomorphism <m>U_n</m> such that <m>U_n^2 \equiv U_n \pmod{I^{n+1}}</m>.
           Take the limit to lift to the classical <m>I</m>-completion of <m>A</m>, then use the fact that the kernel of the map from <m>A</m> to the classical
           completion has square zero (<xref ref="exer-no-surjection-from-classical"/>) to lift to <m>A</m>. Conclude that we have produced a projector on <m>F</m> whose image has base extension isomorphic to <m>\overline{M}</m>.

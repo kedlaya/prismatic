@@ -223,6 +223,9 @@
   <biblio type="raw" xml:id="bib-Illusie-cotangent2">
     L. Illusie, <pubtitle>Complexe Cotangent et Déformations II</pubtitle>, Lecture Notes in Mathematics 283, Springer-Verlag, Berlin <year>1972</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Ishizuka">
+    R. Ishizuka, <articletitle>A calculation of the perfectoidization of semiperfectoid rings</articletitle>, <journal>Nagoya Mathematical Journal</journal>, to appear.
+  </biblio>
   <biblio type="raw" xml:id="bib-Jackson">
     F.H. Jackson, <articletitle>On <m>q</m>-functions and a certain difference operator</articletitle>, <journal>Transactions of the Royal Society of Edinburgh</journal> <volume>46</volume> <year>1908</year>, 253<ndash/>281.
   </biblio>
@@ -299,6 +302,10 @@
   <biblio type="raw" xml:id="bib-Maclane">
     S. Mac Lane, <pubtitle>Categories for the Working Mathematician</pubtitle>, second edition, Graduate Texts in Mathematics 5, Springer, New York <year>1978</year>.
   </biblio>
+  <biblio type="raw" xml:id="bib-Masullo">
+    A.M. Masullo, <pubtitle>Arithmetic deformations of crystalline cohomology</pubtitle>, PhD thesis, Stanford University, 
+    <year>2019</year>, available via <url href="https://purl.stanford.edu/kp533pz4708">Stanford Digital Repository</url>.
+  </biblio>
   <biblio type="raw" xml:id="bib-Mathew-SCR">
     A. Mathew, <articletitle>Simplicial commutative rings, I</articletitle>, <url visual="math.uchicago.edu/~amathew/SCR.pdf" href="http://math.uchicago.edu/~amathew/SCR.pdf"/>.
   </biblio>
@@ -326,6 +333,9 @@
   </biblio>
   <biblio type="raw" xml:id="bib-Rezk">
     C. Rezk, <articletitle>Etale extensions of <m>\lambda</m>-rings</articletitle>, <href visual="faculty.math.illinois.edu/~rezk/etale-lambda.pdf" url="https://faculty.math.illinois.edu/~rezk/etale-lambda.pdf"/> <year>2019</year>.
+  </biblio>
+  <biblio type="raw" xml:id="bib-Roberts">
+    P. Roberts, <articletitle>The root closure of a ring of mixed characteristic</articletitle>, <url visual="arxiv.org/abs/0810.0215" href="https://arxiv.org/abs/0810.0215">arXiv:0810.0215v1</url> <year>2008</year>.
   </biblio>
   <biblio type="raw" xml:id="bib-Rydh">
     D. Rydh, <articletitle>Submersions and effective descent of étale morphisms</articletitle>, <journal>Bulletin de la Société Mathématique de France</journal> <volume>138</volume> <year>2010</year>, 181<ndash/>230.

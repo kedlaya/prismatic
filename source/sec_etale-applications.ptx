@@ -80,8 +80,8 @@
         <p>
           Let <m>V</m> be a valuation ring with fraction field <m>F</m> and residue field <m>k</m>. Let <m>K^\bullet</m> be a perfect complex in <m>D(V)</m>. Then for each <m>i</m>,
           <me>
-            \dim_F H^i(K^\bullet \otimes_V^L F) \leq \dim_k H^i(K^\bullet \otimes_V^L k).
-          </me>
+            \dim_F H^i(K^\bullet \otimes_V^L F) \leq \dim_k H^i(K^\bullet \otimes_V^L k)
+          </me>.
         </p>
       </statement>
       <proof>
@@ -109,7 +109,7 @@
           <me>
             H^i(M^{\phi=1}) \otimes_{\FF_p} k \to H^i(M)
           </me>
-          is injective. Moreover, for each <m>i</m>, the map is bijective if and only if <m>\phi: H^i(M) \to H^i(M)</m> is bijective.
+          is injective. Moreover, for each <m>i</m>, the map is bijective if and only if <m>\phi\colon H^i(M) \to H^i(M)</m> is bijective.
         </p>
       </statement>
       <proof>
@@ -128,8 +128,8 @@
           Let <m>\frako_\CC</m> be the valuation ring of <m>\CC</m> and let <m>k</m> be the residue field of <m>\frako_\CC</m>.
           Let <m>X</m> be a smooth proper formal scheme over <m>\frako_\CC</m> with generic fiber <m>X_\eta</m> and special fiber <m>X_k</m>. Then for all <m>i \geq 0</m>,
           <men xml:id="eq-torsion-cohom-comparison1">
-            \dim_{\FF_p} H^i_{\et}(X_\eta, \underline{\FF_p}) \leq \dim_k H^i_{\dR}(X_k/k).
-          </men>
+            \dim_{\FF_p} H^i_{\et}(X_\eta, \underline{\FF_p}) \leq \dim_k H^i_{\dR}(X_k/k)
+          </men>.
         </p>
       </statement>
       <proof>
@@ -150,8 +150,8 @@
         <p>
           Define 
           <me>
-            R\Gamma_A(X) = R\Gamma(X, \Prism_{X/A}) \in D(A).
-          </me>
+            R\Gamma_A(X) = R\Gamma(X, \Prism_{X/A}) \in D(A)
+          </me>.
           Since <m>R\Gamma(X, \bullet)</m> preserves limits, <m>R \Gamma_A(X)</m> is a derived <m>(p,I)</m>-complete object of <m>D(A)</m>. By the Hodge-Tate comparison and the usual finiteness property of coherent
           cohomology on a proper scheme (<xref ref="bib-Stacks"/>, tag 02O5), <m>R\Gamma_A(X) \otimes_A^L \frako_\CC</m> is a perfect complex of <m>\frako_\CC</m>-modules. By derived Nakayama (<xref ref="prop-derived-complete-abelian-derived"/>)
           applied to suitable truncations, we deduce that <m>R \Gamma_A(X)</m> is a perfect complex of <m>A</m>-modules.
@@ -160,20 +160,20 @@
           In particular, <m>R \Gamma_A(X) \otimes_A^L V</m> is a perfect complex of <m>V</m>-modules.
           By <xref ref="lem-perfect-complex-semicontinuity"/>, we obtain
           <men xml:id="eq-torsion-cohom-comparison2">
-            \dim_{\CC^\flat} H^i(R\Gamma_A(X) \otimes_A^L \CC^\flat) \leq \dim_k H^i(R\Gamma_A(X) \otimes_A^L k).
-          </men>
+            \dim_{\CC^\flat} H^i(R\Gamma_A(X) \otimes_A^L \CC^\flat) \leq \dim_k H^i(R\Gamma_A(X) \otimes_A^L k)
+          </men>.
           We will deduce <xref ref="eq-torsion-cohom-comparison1"/> by comparing its terms with <xref ref="eq-torsion-cohom-comparison2"/>.
         </p>
         <p>
           We first check that the right-hand sides of <xref ref="eq-torsion-cohom-comparison1"/> and <xref ref="eq-torsion-cohom-comparison2"/> coincide. 
           From <xref ref="eq-torsion-cohom-comparison3"/> we obtain
           <me>
-            R\Gamma_A(X) \widehat{\otimes}_A^L W \cong R \Gamma_W(X_k).
-          </me>
+            R\Gamma_A(X) \widehat{\otimes}_A^L W \cong R \Gamma_W(X_k)
+          </me>.
           Reduce  modulo <m>p</m> (which gets rid of the completion) and applying the crystalline comparison theorem (<xref ref="cor-prismatic-to-crystalline"/>) yields
           <me>
-            R\Gamma_A(X) \otimes_A^L k \cong R\Gamma_W(X_k) \otimes_W^L k \cong \phi_* R\Gamma_{\dR}(X_k/k).
-          </me>
+            R\Gamma_A(X) \otimes_A^L k \cong R\Gamma_W(X_k) \otimes_W^L k \cong \phi_* R\Gamma_{\dR}(X_k/k)
+          </me>.
           Since <m>k</m> is perfect, the Frobenius twist <m>\phi_*</m> has no effect on <m>k</m>-dimensions; we thus deduce the desired equality.
         </p>
         <p>
@@ -184,12 +184,12 @@
           (in fact equality will hold as perf <xref ref="bib-Bhatt-course"/>, Lecture IX, Remark 5.3, but this will suffice for now).
           Apply the étale comparison theorem (<xref ref="thm-etale-comparison"/>) to the terms of an open affine cover of <m>X</m> to obtain an identification
           <me>
-            R\Gamma_{\et}(X_\eta, \FF_p) \cong (R\Gamma_A(X) \otimes_A^L \CC^\flat)^{\phi=1},
-          </me>
+            R\Gamma_{\et}(X_\eta, \FF_p) \cong (R\Gamma_A(X) \otimes_A^L \CC^\flat)^{\phi=1}
+          </me>,
           then apply <xref ref="lem-phi-invariants"/> to obtain for each <m>i</m> an injective linear map
           <me>
-            H^i_{\et}(X_\eta, \FF_p) \otimes_{\FF_p} \CC^\flat \to H^i( R\Gamma_A(X) \otimes_A^L \CC^\flat).
-          </me>
+            H^i_{\et}(X_\eta, \FF_p) \otimes_{\FF_p} \CC^\flat \to H^i( R\Gamma_A(X) \otimes_A^L \CC^\flat)
+          </me>.
           This yields the desired inequality.
           (Compare <xref ref="bib-Bhatt-course"/>, Lecture IX, Theorem 5.1.)
         </p>
@@ -206,8 +206,8 @@
          (If <m>n</m> is invertible on <m>X</m>, we may use instead the étale topology.)
         Define the pro-sheaf
         <me>
-          \ZZ_p(1) = \lim_m \mu_{p^m};
-        </me>
+          \ZZ_p(1) = \lim_m \mu_{p^m}
+        </me>;
         for <m>n \in \ZZ</m>, set <m>\ZZ_p(n) = \ZZ_p(1)^{\otimes n}</m> (taking the tensor product over the constant pro-sheaf <m>\ZZ_p</m>).
       </p>
       <p>
@@ -252,8 +252,8 @@
           In this case, we must check that the action of <m>\Gal(\QQ_p(\mu_{p^\infty}))</m> on <m>(q-1)\ZZ_p</m>
           matches the action on <m>\lim_n \mu_{p^n}</m>; this follows from the fact that 
           <me>
-            q^m - 1 \equiv m(q-1) \pmod{d(q-1)} \qquad (m \in \ZZ).
-          </me>
+            q^m - 1 \equiv m(q-1) \pmod{d(q-1)} \qquad (m \in \ZZ)
+          </me>.
         </p>
       </proof>
     </lemma>
@@ -268,25 +268,21 @@
       <statement>
         <p>
           Let <m>R</m> be a lens.
-        </p>
-        <ol>
-          <li>
-            <p>
+          <ol>
+            <li>
               We have a canonical identification
               <me>
-                \ZZ_p(0)_{\lens}(R) \cong R\Gamma_{\et}(\Spec R, \ZZ_p(0)).
-              </me>
-            </p>
-          </li>
-          <li>
-            <p>
+                \ZZ_p(0)_{\lens}(R) \cong R\Gamma_{\et}(\Spec R, \ZZ_p(0))
+              </me>.
+            </li>
+            <li>
               For <m>n \gt 0</m>, we have a canonical identification
               <me>
-                \ZZ_p(n)_{\lens}(R) \cong R\Gamma_{\et}(\Spec R[1/p], \ZZ_p(n)).
-              </me>
-            </p>
-          </li>
-        </ol>
+                \ZZ_p(n)_{\lens}(R) \cong R\Gamma_{\et}(\Spec R[1/p], \ZZ_p(n))
+              </me>.
+            </li>
+          </ol>
+        </p>
       </statement>
     </theorem>
     <proof>

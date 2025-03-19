@@ -32,14 +32,10 @@
         addition and multiplication maps. These structures are:
         <ul>
           <li>
-            <p>
-              a <term>coaddition</term> morphism <m>\Delta^+\colon A \to A \otimes_{\ZZ} A</m>; and
-            </p>
+            a <term>coaddition</term> morphism <m>\Delta^+\colon A \to A \otimes_{\ZZ} A</m>; and
           </li>
           <li>
-            <p>
-              a <term>comultiplication</term> morphism <m>\Delta^\times\colon A \to A \otimes_{\ZZ} A</m>.
-            </p>
+            a <term>comultiplication</term> morphism <m>\Delta^\times\colon A \to A \otimes_{\ZZ} A</m>.
           </li>
         </ul>
         A ring <m>A</m> equipped with these structures represents a functor from rings to sets equipped with two binary operations <m>+, \times</m>.
@@ -55,27 +51,21 @@
       <statement>
         <p>
           There is a unique functor <m>\WW</m> from <m>\Ring</m> to <m>\Ring</m> characterized by the following conditions.
-        </p>
-        <ul>
-          <li>
-            <p>
+          <ul>
+            <li>
               The underlying functor to sets is 
               <me>
-                \WW(A) = A \times A \times \cdots.
-              </me>
-            </p>
-          </li>
-          <li>
-            <p>
+                \WW(A) = A \times A \times \cdots
+              </me>.
+            </li>
+            <li>
               There is a natural transformation <m>w</m> from <m>\WW</m> to the ordinary product <m>A \mapsto A^{\NN}</m> given by the <term>ghost map</term>:
               <me>
-                (x_n)_{n=1}^\infty \mapsto (w_n)_{n=1}^\infty, \qquad w_n = \sum_{d|n} d x_d^{n/d}.
-              </me>
+                (x_n)_{n=1}^\infty \mapsto (w_n)_{n=1}^\infty, \qquad w_n = \sum_{d|n} d x_d^{n/d}
+              </me>.
               (Again, the individual factors of this map are called <term>ghost components</term>.)
-            </p>
-          </li>
-        </ul> 
-        <p>
+            </li>
+          </ul> 
           The ring <m>\WW(A)</m> is called the <term>ring of big Witt vectors</term> over <m>A</m>.
         </p>
       </statement>
@@ -91,8 +81,8 @@
           Define the family of elements <m>y_n</m> of <m>\QQ[x_1, x_2, \dots]</m> as follows: for each positive integer <m>m</m> coprime to <m>p</m>
           and each nonnegative integer <m>i</m>,
           <me>
-            w_{mp^i} = \sum_{j=0}^i p^j y_{mp^j}^{p^{i-j}}.
-          </me>
+            w_{mp^i} = \sum_{j=0}^i p^j y_{mp^j}^{p^{i-j}}
+          </me>.
           By a calculation which we omit (see <xref ref="exer-big-Witt-basis"/>), we see that <m>\ZZ_{(p)}[y_1,y_2,\dots] = \ZZ_{(p)}[x_1,x_2,\dots]</m>.
           In the <m>y</m>-coordinates,
           <m>\WW(A)</m> splits into a collection of copies of <m>W(A)</m> indexed by positive integers coprime to <m>p</m>;
@@ -124,8 +114,8 @@
             There is a family of commuting endomorphisms <m>\phi_n\colon \WW(A) \to \WW(A)</m> indexed by positive integers <m>n</m>,
             which are natural in <m>A</m> and correspond via the ghost map to
             <me>
-              (w_1, w_2, \dots) \mapsto (w_n, w_{2n}, \dots).
-            </me>
+              (w_1, w_2, \dots) \mapsto (w_n, w_{2n}, \dots)
+            </me>.
             The map <m>\phi_n</m> induces a map <m>\WW_S(A) \to \WW_{S'}(A)</m> on truncated Witt vectors whenever <m>nS' \subseteq S</m>.
           </p>
         </li>
@@ -160,20 +150,20 @@
         Another interpretation of <m>\WW(A)</m> (also due to Witt)
         can be given starting with the bijection of <m>\WW(A)</m> with <m>1 + T A \llbracket T \rrbracket</m> given by
         <men xml:id="eq-Witt-series-mult">
-          (x_1, x_2, \dots) \mapsto \prod_{n=1}^\infty (1 - x_n T^n)^{-1}.
-        </men>
+          (x_1, x_2, \dots) \mapsto \prod_{n=1}^\infty (1 - x_n T^n)^{-1}
+        </men>.
         When <m>A</m> is a <m>\QQ</m>-algebra, the addition operation on <m>\WW(A)</m> imposed by the ghost map corresponds to the multiplication
         of formal power series in <m>1 + T A \llbracket T \rrbracket</m>. This gives us the underlying additive group on <m>\WW(A)</m>.
         One then shows that there is a <m>T</m>-adically continuous map <m>\otimes</m> which is natural in <m>A</m>, distributes over addition, and satisfies
         <men xml:id="eq-Witt-series-Frobenius-product">
-          (1-aT)^{-1} \otimes (1-bT)^{-1} = (1-abT)^{-1}.
-        </men>
+          (1-aT)^{-1} \otimes (1-bT)^{-1} = (1-abT)^{-1}
+        </men>.
       </p>
       <p>
         A more conceptual way to express <xref ref="eq-Witt-series-Frobenius-product"/> is that given two finite projective <m>A</m>-modules <m>M_1, M_2</m> equipped with <m>A</m>-linear endomorphisms <m>S_1, S_2</m>,
         <me>
-          \det(1 - T S_1, M_1)^{-1} \otimes \det(1 - T S_2, M_2)^{-1} = \det(1 - T (S_1 \otimes S_2), M_1 \otimes M_2)^{-1}.
-        </me>
+          \det(1 - T S_1, M_1)^{-1} \otimes \det(1 - T S_2, M_2)^{-1} = \det(1 - T (S_1 \otimes S_2), M_1 \otimes M_2)^{-1}
+        </me>.
         This point of view appears in work of Almkvist <xref ref="bib-Almkvist"/>
         and Grayson <xref ref="bib-Grayson1"/>, <xref ref="bib-Grayson"/> in the context of <m>K</m>-theory of endomorphisms.
         See also <xref ref="exer-big-Witt-Almkvist"/>.
@@ -185,12 +175,12 @@
         This consists of a ring <m>A</m> together with operations <m>\lambda^n\colon A \to A</m> for <m>n=0,1,\dots</m> satisfying various conditions.
         To begin with,
         <me>
-          \lambda^0(x) = 1, \lambda^1(x) = x \quad (x \in A).
-        </me>
+          \lambda^0(x) = 1, \lambda^1(x) = x \quad (x \in A)
+        </me>.
         To state the remaining conditions, define the object
         <me>
-          \Lambda(x) = (1 - \lambda_1(x) T + \lambda_2(x) T^2 - \cdots)^{-1} \in 1 + T A \llbracket T \rrbracket.
-        </me>
+          \Lambda(x) = (1 - \lambda_1(x) T + \lambda_2(x) T^2 - \cdots)^{-1} \in 1 + T A \llbracket T \rrbracket
+        </me>.
         In this notation, we impose the conditions
         <md>
           <mrow>\Lambda(x + y) = \Lambda(x) \Lambda(y)</mrow>
@@ -200,8 +190,8 @@
         where <m>\otimes</m> is the map described in <xref ref="rmk-Almkvist-interpretation"/> and <m>\wedge^m</m> is similar;
         it is the <m>T</m>-adically continuous map characterized by
         <me>
-          \wedge^m \det(1 - T S, M)^{-1} = \det(1 - T (\wedge^m S), \wedge^m M)^{-1}.
-        </me>
+          \wedge^m \det(1 - T S, M)^{-1} = \det(1 - T (\wedge^m S), \wedge^m M)^{-1}
+        </me>.
         (The last condition implies that <m>\lambda^n(1) = 0</m> for all <m>n \geq 2</m>.)
         We define in the obvious way a morphism of <m>\lambda</m>-rings (as a morphism of underlying rings which commute with the maps <m>\lambda^n</m>),
         and hence the category <m>\Ring_\lambda</m> of <m>\lambda</m>-rings.
@@ -223,12 +213,12 @@
         called <term>Adams operations</term>. In the case of <m>\WW(A)</m>, these are characterized by
         <m>T</m>-adic continuity and the property
         <me>
-            \psi^n \det(1 - T S, M)^{-1} = \det(1 - T S^n, M)^{-1};
-        </me>
+            \psi^n \det(1 - T S, M)^{-1} = \det(1 - T S^n, M)^{-1}
+        </me>;
         this implies that
         <me>
-          \psi^n([x]) = [x^n],
-        </me>
+          \psi^n([x]) = [x^n]
+        </me>,
         from which we can deduce that in fact <m>\psi^n = \phi_n</m>.
       </p>
       <p>
@@ -248,7 +238,7 @@
       <p>
         If one wishes to avoid the <m>(q-1)</m>-adic completion, the ring
         <me>
-         \ZZ[q, (q-1)^{-1}, (q^2-1)^{-1}, \dots]
+          \ZZ[q, (q-1)^{-1}, (q^2-1)^{-1}, \dots]
         </me>
         also admits a <m>\lambda</m>-ring structure.
       </p>
@@ -308,16 +298,16 @@
         <p>
           Complete the proof of <xref ref="prop-big-Witt"/> by proving that 
           <me>
-            \ZZ_{(p)}[y_1,y_2,\dots] = \ZZ_{(p)}[x_1,x_2,\dots].
-          </me>
+            \ZZ_{(p)}[y_1,y_2,\dots] = \ZZ_{(p)}[x_1,x_2,\dots]
+          </me>.
         </p>
       </statement>
       <hint>
         <p>
           Using the equality
           <me>
-            \sum_{j=0}^i p^j y_{mp^j}^{p^{i-j}} = w_{mp^i} = \sum_{j=0}^i p^j \sum_{d|m} d x_{dp^j}^{p^{i-j} m/d},
-          </me>
+            \sum_{j=0}^i p^j y_{mp^j}^{p^{i-j}} = w_{mp^i} = \sum_{j=0}^i p^j \sum_{d|m} d x_{dp^j}^{p^{i-j} m/d}
+          </me>,
           show by induction on <m>i</m> that 
           <me>
             y_{mp^i} = \sum_{d|m} d x_{dp^i}^{m/d} + *
@@ -341,23 +331,19 @@
           Let <m>Z(X/\FF_q,T)</m> and <m>Z(Y/\FF_q,T)</m> be the zeta functions of <m>X</m> and <m>Y</m>, respectively. 
           <ol>
             <li>
-              <p>
-                Prove that 
-                <me>
-                  Z((X \times_{\FF_q} Y)/\FF_q, T) = Z(X/\FF_q, T) \otimes Z(Y/\FF_q, T)
-                </me>
-                where <m>\otimes</m> is the operation on <m>1 + T \ZZ \llbracket T \rrbracket</m> corresponding to multiplication in <m>\WW(\ZZ)</m> 
-                via the isomorphism <xref ref="eq-Witt-series-mult"/>.
-              </p>
+              Prove that 
+              <me>
+                Z((X \times_{\FF_q} Y)/\FF_q, T) = Z(X/\FF_q, T) \otimes Z(Y/\FF_q, T)
+              </me>
+              where <m>\otimes</m> is the operation on <m>1 + T \ZZ \llbracket T \rrbracket</m> corresponding to multiplication in <m>\WW(\ZZ)</m> 
+              via the isomorphism <xref ref="eq-Witt-series-mult"/>.
             </li>
             <li>
-              <p>
-                Prove that for any positive integer <m>n</m>,
-                <me>
-                  Z((X \times_{\FF_q} \FF_{q^n})/\FF_{q^n}) = \psi^n(Z(X,T))
-                </me>
-                where <m>\psi^n</m> is the <m>n</m>-th Adams operation (<xref ref="rmk-Adams-operation"/>).
-              </p>
+              Prove that for any positive integer <m>n</m>,
+              <me>
+                Z((X \times_{\FF_q} \FF_{q^n})/\FF_{q^n}) = \psi^n(Z(X,T))
+              </me>
+              where <m>\psi^n</m> is the <m>n</m>-th Adams operation (<xref ref="rmk-Adams-operation"/>).
             </li>
           </ol>
         </p>
@@ -424,13 +410,13 @@
         <p>
           For <m>A \in \Ring</m> and <m>p</m> prime, define the <term><m>p</m>-norm map</term> <m>N_p\colon \WW(A) \to \WW(A)</m> by
           <me>
-            N_p(x) = x - V_p(\delta_p(x)),
-          </me>
+            N_p(x) = x - V_p(\delta_p(x))
+          </me>,
           where <m>\delta_p</m> is the <m>p</m>-derivation associated functorially to the Frobenius lift <m>\psi^p</m> (see <xref ref="rmk-Adams-operation"/>).
           Prove that the maps <m>N_p</m> are multiplicative, commute with each other, and satisfy
           <me>
-            (\psi_p \circ N_p)(x) = x^p \qquad (x \in \WW(A)).
-          </me>
+            (\psi_p \circ N_p)(x) = x^p \qquad (x \in \WW(A))
+          </me>.
           As in <xref ref="exer-norm"/>, see <xref ref="bib-Angeltveit"/> for some discussion of the role of this construction in algebraic topology.
         </p>
       </statement>

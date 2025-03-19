@@ -78,8 +78,8 @@
           we have natural isomorphisms
           <me>
             \Prism_{R/A} \widehat{\otimes}^L_A A' \cong \Prism_{R'/A'}, \qquad
-            \overline{\Prism}_{R/A} \widehat{\otimes}^L_A A' \cong \overline{\Prism}_{R'/A'}.
-          </me>
+            \overline{\Prism}_{R/A} \widehat{\otimes}^L_A A' \cong \overline{\Prism}_{R'/A'}
+          </me>.
         </p>
       </statement>
       <proof>
@@ -168,7 +168,7 @@
     <lemma xml:id="lem-universal-oriented-prism-completion2">
       <statement>
         <p>
-          With notation as in <xref ref="lem-universal-oriented-prism-completion"/>, let <m>\alpha: A \to B</m> be the composition of <m>\phi: A \to A</m> with the natural map <m>A \to B</m>.
+          With notation as in <xref ref="lem-universal-oriented-prism-completion"/>, let <m>\alpha\colon A \to B</m> be the composition of <m>\phi\colon A \to A</m> with the natural map <m>A \to B</m>.
         </p>
         <ul>
           <li>
@@ -182,7 +182,7 @@
           </li>
           <li>
             <p>
-              The functor <m>\widehat{\alpha^*}: D_{\comp}(A) \to D_{\comp}(B)</m> is conservative (i.e., reflects isomorphisms). Here <m>D_{\comp}(*)</m> denotes the subcategory of derived <m>(p,d)</m>-complete objects of <m>D(*)</m>.
+              The functor <m>\widehat{\alpha^*}\colon D_{\comp}(A) \to D_{\comp}(B)</m> is conservative (i.e., reflects isomorphisms). Here <m>D_{\comp}(*)</m> denotes the subcategory of derived <m>(p,d)</m>-complete objects of <m>D(*)</m>.
             </p>
           </li>
           <li>
@@ -261,13 +261,13 @@
             <latex-image>
               \xymatrix{
                 &amp; A_0 \ar[r]\ar^{\alpha}[d] &amp; A \ar^{\beta}[d]\\
-                \ZZ_p \ar[r] &amp; D_0 \ar[r] &amp; E = A \widehat{\otimes}^L_{A_0} D_0.
+                \ZZ_p \ar[r] &amp; D_0 \ar[r] &amp; E = A \widehat{\otimes}^L_{A_0} D_0
               }
             </latex-image>
           </image>
         </figure>
         <p>
-          The arrow <m>\ZZ_p \to D_0</m> promotes to a map <m>(\ZZ_p, (p)) \to (D_0, (p))</m> of prisms, so we also have a map <m>\gamma: (\ZZ_p,(p)) \to (E, (p))</m> of oriented prisms.
+          The arrow <m>\ZZ_p \to D_0</m> promotes to a map <m>(\ZZ_p, (p)) \to (D_0, (p))</m> of prisms, so we also have a map <m>\gamma\colon (\ZZ_p,(p)) \to (E, (p))</m> of oriented prisms.
           Using the explicit description of prismatic cohomology given in <xref ref="cor-crystalline-weakly-final"/>, we may produce a natural isomorphism
           <m>\widehat{\beta^*} \overline{\Prism}_{R/A} \cong \widehat{\gamma^*} \overline{\Prism}_{\FF_p[x_1,\dots,x_r]/\ZZ_p}</m>.
           By <xref ref="thm-Hodge-Tate-crystalline-affine-space"/>, we know that the Hodge-Tate comparison map is an isomorphism for the prism <m>(\ZZ_p,(p))</m> and the ring <m>\FF_p[x_1,\dots,x_r]</m>;
@@ -291,7 +291,7 @@
         <p>
           Assume that <m>(A,(p))</m> is a crystalline prism and let <m>J</m> be an ideal of <m>A</m> containing <m>p</m> on which <m>A</m> admits divided powers
           valued in <m>I</m> (that is, <m>J</m> is a <term>pd-ideal</term> of <m>A</m>).
-          Let <m>\psi: A/J \to A/p</m> be the morphism induced by the Frobenius on <m>A/p</m>.
+          Let <m>\psi\colon A/J \to A/p</m> be the morphism induced by the Frobenius on <m>A/p</m>.
           Let <m>R</m> be a smooth <m>A/J</m>-algebra and put <m>R^{(1)} = R \otimes_{A/I, \psi} A/p</m>. Then there is a canonical isomorphism
           of <m>\Prism_{R^{(1)}/A}</m> with the crystalline cohomology of <m>\Spf(R)</m> relative to the pd-thickening <m>\Spec(A/J) \subset \Spf(A)</m>;
           more precisely, this is an isomorphism of <m>E_\infty-A</m>-algebras compatible with Frobenius.
@@ -312,7 +312,7 @@
         We may thus apply adjunction to the canonical map <m>A \to \overline{A}</m> to obtain a morphism <m>A \to W(\overline{A})</m> in <m>\Ring_\delta</m>.
       </p>
       <p>
-        Now let <m>\psi: A \to W(\overline{A})</m> be the composition of the resulting map with the Frobenius <m>\phi</m> on <m>W(\overline{A})</m>. This map carries <m>I</m> into <m>(p)</m>:
+        Now let <m>\psi\colon A \to W(\overline{A})</m> be the composition of the resulting map with the Frobenius <m>\phi</m> on <m>W(\overline{A})</m>. This map carries <m>I</m> into <m>(p)</m>:
         the original map <m>A \to W(\overline{A})</m> carries <m>I</m> into the image of the Verschiebung <m>V</m> on <m>W(\overline{A})</m>, and the composition <m>\phi \circ V</m>
         is multiplication by <m>p</m> (<xref ref="def-Witt-Verchiebung"/>). Hence the map <m>\psi</m> induces a morphism
         <m>(A, I) \to (W(\overline{A}), (p))</m> of prisms provided that <m>W(\overline{A})</m> is <m>p</m>-torsion-free (so that the target is actually a prism).

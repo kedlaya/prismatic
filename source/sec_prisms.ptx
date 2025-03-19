@@ -66,8 +66,8 @@
         Take <m>A = \ZZ_p \llbracket q-1 \rrbracket</m> with the <m>\delta</m>-structure for which <m>\phi(q) = q^p</m>,
         and define <m>d</m> to be the <q><m>q</m>-analogue of <m>p</m></q>:
         <me>
-          d = [p]_q = \frac{q^p-1}{q-1} = \sum_{i=0}^{p-1} q^i.
-        </me>
+          d = [p]_q = \frac{q^p-1}{q-1} = \sum_{i=0}^{p-1} q^i
+        </me>.
         Under the map <m>A \to \ZZ_p</m> taking <m>q</m> to 1, <m>d</m> maps to <m>p</m> which is distinguished in the target;
         it follows that <m>d</m> is itself distinguished.
       </p>
@@ -141,8 +141,8 @@
           Suppose first that <m>fh</m> is distinguished.
           By <xref ref="eq-delta-ring-product"/>,
           <men xml:id="eq-distinguished-times-unit-congruence">
-            \delta(fh) = h^p \delta(f) + f^p \delta(h) + p \delta(h) \delta(f) \equiv h^p \delta(f) \pmod{(p,f)}.
-          </men>
+            \delta(fh) = h^p \delta(f) + f^p \delta(h) + p \delta(h) \delta(f) \equiv h^p \delta(f) \pmod{(p,f)}
+          </men>.
           If <m>fh</m> is distinguished, then <m>\delta(fh)</m> is a unit modulo <m>(p,fh)</m> and hence also modulo <m>(p,f)</m>;
           we deduce that both <m>\delta(f)</m> and <m>h</m> are invertible modulo <m>(p,f)</m>. This means that <m>f</m> is distinguished and 
           <m>(p,f,h)</m> is the unit ideal; by symmetry, <m>h</m> is also distinguished.
@@ -183,8 +183,8 @@
           where <m>p,f,\delta(f) \subseteq \Rad(A)</m> (and <m>A \neq 0</m>). In this case, <m>p \in (f, \phi(f))</m>, so there exist <m>a,b \in A</m>
           such that <m>p = af + b \phi(f)</m>; that is,
           <me>
-            p(1 - b \delta(f)) = af + b f^p = f(a + bf^{p-1}).
-          </me>
+            p(1 - b \delta(f)) = af + b f^p = f(a + bf^{p-1})
+          </me>.
           Since <m>p</m> is distinguished (<xref ref="exa-crystalline-prism"/>), so is <m>f</m> by two applications of <xref ref="lem-distiguished-times-unit"/> (one in each direction);
           this yields the desired contradiction.
         </p>
@@ -326,7 +326,7 @@
         By <xref ref="lem-delta-ring-localization"/>, the localization <m>A_1 = S^{-1} A_0</m> is also a <m>\delta</m>-ring.
         Let <m>A</m> be the derived <m>(p,d)</m>-completion of <m>A_1</m>; since <m>A_1</m> is <m>p</m>-torsion-free, <m>A</m> is classically <m>p</m>-complete.
         By construction, <m>d</m> is a distinguished element of <m>A</m> and <m>(A, dA)</m> is a bounded prism.
-        Moreover, <m>p,d</m> is a regular sequence in <m>A</m> and <m>\phi: \overline{A} \to \overline{A}</m> is <m>p</m>-completely flat
+        Moreover, <m>p,d</m> is a regular sequence in <m>A</m> and <m>\phi\colon \overline{A} \to \overline{A}</m> is <m>p</m>-completely flat
         (see <xref ref="def-I-completely-flat"/>).
       </p>
     </example>
@@ -356,8 +356,8 @@
           Suppose the contrary; using <xref ref="rmk-delta-ring-localization"/>, we may choose a further localization <m>A' \to A''</m> of <m>\delta</m>-rings
           such that <m>pA'' + IA'' + yA'' \subseteq \Rad(A'')</m>. The equation <m>p = a+b = xd^p + y\phi(d)</m> yields
           <me>
-            p(1 - y\delta(d)) = a + (b - py\delta(d)) = d^p(x+y) = d(d^{p-1}(x+y)).
-          </me>
+            p(1 - y\delta(d)) = a + (b - py\delta(d)) = d^p(x+y) = d(d^{p-1}(x+y))
+          </me>.
           Since <m>1-y\delta(d)</m> is a unit in <m>A''</m> and <m>p</m> is distinguished, we may apply <xref ref="lem-distiguished-times-unit"/> twice to 
           deduce that <m>d</m> is distinguished in <m>A''</m> and <m>d^{p-1}(x+y)</m> is a unit; this is impossible because <m>d \in \Rad(A'')</m>.
           (Compare <xref ref="bib-Bhatt-course"/>, Lecture III, Lemma 3.5 or <xref ref="bib-Bhatt-Scholze"/>, Lemma 3.6.)
@@ -375,7 +375,7 @@
     <title>The category of prisms</title>
     <definition>
       <p>
-        The category of <m>\delta</m>-pairs is defined so that a morphism <m>(A,I) \to (B,J)</m> is a morphism <m>f: A \to B</m> of <m>\delta</m>-rings such that <m>f(I) \subseteq J</m>.
+        The category of <m>\delta</m>-pairs is defined so that a morphism <m>(A,I) \to (B,J)</m> is a morphism <m>f\colon A \to B</m> of <m>\delta</m>-rings such that <m>f(I) \subseteq J</m>.
         The category of prisms, denoted <m>\Prm</m>, is defined as the full subcategory of the category of <m>\delta</m>-pairs consisting of prisms.
       </p>
     </definition>

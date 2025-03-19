@@ -39,7 +39,7 @@
         <p>
           Let <m>L/K</m> be a finite extension of perfectoid fields (<xref ref="def-perfectoid-field"/>).
           Let <m>\frako_K, \frako_L</m> be the valuation rings of <m>K,L</m> and let <m>\frakm_K, \frakm_L</m> be the maximal ideals of <m>\frako_K, \frako_L</m>.
-          Then <m>\Trace: L \to K</m> induces a surjection <m>\frakm_L \to \frakm_K</m>.
+          Then <m>\Trace\colon L \to K</m> induces a surjection <m>\frakm_L \to \frakm_K</m>.
         </p>
       </statement>
       <proof>
@@ -112,8 +112,8 @@
         To define the category of <term>almost <m>A</m>-modules</term>, take objects to be the objects of <m>\Mod_A</m>, with the morphisms from <m>M</m> to <m>N</m>
         being <m>\Hom_A(M, N)_*</m>. This makes sense because by <xref ref="eq-almost-tensor-elements"/>, composition defines a morphism
         <me>
-          \Hom_A(M, N)_* \otimes_A \Hom_A(N, P)_* \to \Hom_A(M, P)_*.
-        </me>
+          \Hom_A(M, N)_* \otimes_A \Hom_A(N, P)_* \to \Hom_A(M, P)_*
+        </me>.
       </p>
     </definition>
     <remark>
@@ -197,8 +197,8 @@
           </me>
           are quasi-isomorphisms, and moreover
           <me>
-            J_{\lens} \widehat{\otimes}^L_R R/J_{\lens} = 0.
-          </me>
+            J_{\lens} \widehat{\otimes}^L_R R/J_{\lens} = 0
+          </me>.
         </p>
       </statement>
       <proof>
@@ -320,10 +320,10 @@
           for some <m>b_i, b_i' \in B</m>; we then have <m>\sum_{i=1}^n \gamma(b_i) b_i' = 0</m> for <m>\gamma \in G \setminus \{e\}</m> and <m>\sum_{i=1}^n b_i b_i' = \eta</m>.
         </p>
         <p>
-          Define the trace map <m>t_{B/A}: B \to A</m> as the sum over <m>G</m>-conjugates. Then
+          Define the trace map <m>t_{B/A}\colon B \to A</m> as the sum over <m>G</m>-conjugates. Then
           <me>
-            \sum_i t_{B/A}(bb_i) b'_i = \eta b \qquad (b \in B).
-          </me>
+            \sum_i t_{B/A}(bb_i) b'_i = \eta b \qquad (b \in B)
+          </me>.
           In other words, the composition
           <me>
             B \stackrel{b \mapsto (t_{B/A}(b b_i))_i}{\longrightarrow} A^n \stackrel{(a_i) \mapsto \sum a_i b'_i}{\longrightarrow} B
@@ -335,8 +335,8 @@
           We then check that the canonical map <m>C \otimes_A B \to \prod_{G/H} B</m> is an almost isomorphism: we can check this after tensoring over <m>C</m> with <m>B</m>,
           in which case we have almost isomorphisms
           <me>
-            B \otimes_C (C \otimes_A B) = B \otimes_A B \to \prod_G B \to \prod_{G/H} (B \otimes_C B) = B \otimes_C \prod_{G/H} B.
-          </me>
+            B \otimes_C (C \otimes_A B) = B \otimes_A B \to \prod_G B \to \prod_{G/H} (B \otimes_C B) = B \otimes_C \prod_{G/H} B
+          </me>.
           Thus the map <m>A \to C</m> becomes almost finite étale after tensoring over <m>A</m> with <m>B</m>, and so by <xref ref="rmk-almost-faithfully-flat-descent"/>
           is itself almost finite étale.
           (Compare <xref ref="bib-Andre1"/>, Proposition 9.1.)

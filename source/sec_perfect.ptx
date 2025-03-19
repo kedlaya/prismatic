@@ -35,19 +35,15 @@
           Let <m>A</m> be a <m>p</m>-local, <m>p</m>-torsion-free, <m>p</m>-adically separated <m>\delta</m>-ring in which <m>A/p</m> is reduced
           (e.g., <m>W(R)</m> where <m>R</m> is a perfect <m>\FF_p</m>-algebra).
           Suppose that <m>d \in \Rad(A)</m> is a distinguished element.
-        </p>
-        <ol>
-          <li>
-            <p>
+          <ol>
+            <li>
               In the ring <m>A</m>, <m>d</m> is a non-zerodivisor.
-            </p>
-          </li>
-          <li>
-            <p>
+            </li>
+            <li>
               We have <m>(A/d)[p^\infty] = (A/d)[p]</m>.
-            </p>
-          </li>
-        </ol>
+            </li>
+          </ol>
+        </p>
       </statement>
       <proof>
         <p>
@@ -55,12 +51,12 @@
           Since <m>A</m> is <m>p</m>-torsion-free and <m>p</m>-adically separated, we may divide <m>f</m>
           by a suitable power of <m>p</m> to reduce to the case where <m>f \notin pA</m>. Now
           <me>
-            0 = \delta(df) = f^p \delta(d) + \delta(f) \phi(d).
-          </me>
+            0 = \delta(df) = f^p \delta(d) + \delta(f) \phi(d)
+          </me>.
           Multiplying by <m>\phi(f)</m> and using that <m>\phi</m> is a ring homomorphism, we obtain
           <me>
-            0 = f^p \phi(f) \delta(d) + \delta(f) \phi(df) = f^p \phi(f) \delta(d).
-          </me>
+            0 = f^p \phi(f) \delta(d) + \delta(f) \phi(df) = f^p \phi(f) \delta(d)
+          </me>.
           Since <m>A</m> is <m>(p,d)</m>-local, <m>\delta(d)</m> is a unit in <m>A</m>, so 
           <m>f^p \phi(f) = 0</m>. Reducing modulo <m>p</m>, we obtain 
           <m>f^{2p} \equiv 0 \pmod{p}</m>. Since <m>A/p</m> is reduced, this implies <m>f \equiv 0 \pmod{p}</m>,
@@ -203,7 +199,7 @@
       <p>
         Suppose that <m>(A,I)</m> is bounded, so that <m>\overline{A}</m> is classically <m>p</m>-complete.
         Using <xref ref="lem-maps-from-Witt-rings"/>, we may lift the projection map <m>\overline{A}^\flat \to \overline{A}/p</m> uniquely to a map 
-        <m>\theta_A: W(\overline{A}^\flat) \to \overline{A}</m>.
+        <m>\theta_A\colon W(\overline{A}^\flat) \to \overline{A}</m>.
       </p>
     </definition>
     <remark>
@@ -259,9 +255,9 @@
       <proof>
         <p>
           It will suffice to explain how to recover <m>A</m> and <m>I</m> functorially from <m>\overline{A}</m>.
-          Since <m>\overline{A}</m> is in the essential image of the functor, <m>\phi: \overline{A}/p \to \overline{A}/p</m> is surjective
+          Since <m>\overline{A}</m> is in the essential image of the functor, <m>\phi\colon \overline{A}/p \to \overline{A}/p</m> is surjective
           and so <m>\overline{A}^\flat \to \overline{A}/p</m> is surjective.
-          Consequently, <m>\theta_A: W(\overline{A}^\flat) \to \overline{A}</m> is also surjective.
+          Consequently, <m>\theta_A\colon W(\overline{A}^\flat) \to \overline{A}</m> is also surjective.
           We can now reconstruct the diagram of <xref ref="fig-tilting-diagram"/> to recover <m>A = W(\overline{A}^\flat)</m> 
           and <m>I = \ker(A \to \overline{A})</m>.
         </p>

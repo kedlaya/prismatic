@@ -58,13 +58,13 @@
     </p>
     <definition xml:id="def-delta-ring">
       <p>
-        Following Joyal, we define a <term><m>\delta</m>-ring</term> to be a pair <m>(A, \delta)</m> in which <m>A \in \Ring</m> and <m>\delta: A \to A</m>
+        Following Joyal, we define a <term><m>\delta</m>-ring</term> to be a pair <m>(A, \delta)</m> in which <m>A \in \Ring</m> and <m>\delta\colon A \to A</m>
         is a map of sets satisfying the following conditions for all <m>x,y \in A</m>.
         <mdn>
           <mrow xml:id="eq-delta-ring-value-at-1">\delta(1) = 0;</mrow>
           <mrow xml:id="eq-delta-ring-product">\delta(xy) = x^p \delta(y) + y^p \delta(x) + p \delta(x) \delta(y);</mrow>
-          <mrow xml:id="eq-delta-ring-sum">\delta(x+y) = \delta(x) + \delta(y) - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x^i y^{p-i}.</mrow>
-        </mdn>
+          <mrow xml:id="eq-delta-ring-sum">\delta(x+y) = \delta(x) + \delta(y) - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x^i y^{p-i}</mrow>
+        </mdn>.
         The last condition implies that
         <me>
           p (\delta(x+y) - \delta(x) - \delta(y)) = x^p + y^p - (x+y)^p
@@ -93,8 +93,8 @@
         <ol>
           <li>
             <p>
-              Suppose that <m>\delta: A \to A</m> is a <m>p</m>-derivation (that is, <m>(A, \delta)</m> is a <m>\delta</m>-ring).
-              Then the map <m>\phi: A \to A</m> given by 
+              Suppose that <m>\delta\colon A \to A</m> is a <m>p</m>-derivation (that is, <m>(A, \delta)</m> is a <m>\delta</m>-ring).
+              Then the map <m>\phi\colon A \to A</m> given by 
               <me>
                 \phi(x) = x^p + p \delta(x)
               </me>
@@ -122,14 +122,14 @@
     <remark xml:id="rmk-delta-ring-obstruction">
       <p>
         It is possible for a <m>p</m>-torsion-free ring to admit no <m>\delta</m>-ring structures, and hence no Frobenius lifts. A simple example 
-        (taken from <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.35) is <m>A = \ZZ_{(p)}[x, x^p/p]</m>: if <m>\delta: A \to A</m> were a <m>p</m>-derivation
+        (taken from <xref ref="bib-Bhatt-Scholze"/>, Lemma 2.35) is <m>A = \ZZ_{(p)}[x, x^p/p]</m>: if <m>\delta\colon A \to A</m> were a <m>p</m>-derivation
         with associated Frobenius lift <m>\phi</m>, we would have
         <md>
           <mrow>\frac{1}{p} (x^p/p)^p &amp;= \frac{1}{p} (\phi(x^p/p) - p \delta(x^p/p))</mrow>
           <mrow>&amp;= \frac{\phi(x)^p}{p^2} - \delta(x^p/p)</mrow>
           <mrow>&amp;= \frac{(x^p + p \delta(x))^p}{p^2} - \delta(x^p/p)</mrow>
-          <mrow>&amp;= p^{p-2} (x^p/p + \delta(x))^p - \delta(x^p/p) \in A,</mrow>
-        </md>
+          <mrow>&amp;= p^{p-2} (x^p/p + \delta(x))^p - \delta(x^p/p) \in A</mrow>
+        </md>,
         a contradiction. See <xref ref="exer-delta-divided-power"/> for a consequence of this calculation.
       </p>
     </remark>
@@ -167,8 +167,8 @@
       <p>
         By <xref ref="lem-delta-ring-Frobenius-lift"/>, there is a unique way to equip <m>\ZZ</m> with the structure of a <m>\delta</m>-ring, namely via the map
         <men xml:id="eq-delta-on-Z">
-          \delta(x) = \frac{x-x^p}{p}.
-        </men>
+          \delta(x) = \frac{x-x^p}{p}
+        </men>.
         The <m>\delta</m>-constant elements are <m>\{0,1\}</m> if <m>p = 2</m> and <m>\{0,1,-1\}</m> if <m>p \gt 2</m>.
       </p>
       <p>
@@ -189,14 +189,14 @@
         that is, <m>\delta</m> <q>lowers the <m>p</m>-adic order of vanishing by 1</q>.
         By the same token, for any <m>x \in A</m>,
         <me>
-          \delta(p^n x) = p^{np} \delta(x) + x^p \delta(p^n) + p \delta(x) \delta(p^n) \equiv p^{n-1} x^p \pmod{p^n}.
-        </me>
+          \delta(p^n x) = p^{np} \delta(x) + x^p \delta(p^n) + p \delta(x) \delta(p^n) \equiv p^{n-1} x^p \pmod{p^n}
+        </me>.
         See <xref ref="exer-phi-congruence"/> for a related observation.
       </p>
     </remark>
     <example xml:id="exa-delta-ring-cyclotomic">
       <p>
-        Building on <xref ref="exa-delta-ring-Z"/>, take <m>A = \ZZ[\mu_n: \gcd(n,p) = 1]</m>. The automorphism <m>\phi: A \to A</m> taking <m>\zeta_n</m>
+        Building on <xref ref="exa-delta-ring-Z"/>, take <m>A = \ZZ[\mu_n\colon \gcd(n,p) = 1]</m>. The automorphism <m>\phi\colon A \to A</m> taking <m>\zeta_n</m>
         to <m>\zeta_n^p</m> for every positive integer <m>n</m> coprime to <m>p</m> is a Frobenius lift; for <m>\delta</m> the corresponding <m>p</m>-derivation, the
         <m>\delta</m>-constant elements are <m>\{0\} \cup \bigcup_{\gcd(n,p)=1} \mu_n</m>.
       </p>
@@ -256,12 +256,12 @@
           Since <m>x</m> maps to zero in <m>A[p^{-1}]</m>, so then does <m>\phi(x)</m>. It is thus sufficient to check the claim after localizing at <m>(p)</m>,
           that is, we may assume that <m>A</m> is a <m>\ZZ_{(p)}</m>-algebra. Now apply <xref ref="eq-delta-ring-product"/> to write
           <me>
-            0 = \delta(0) = \delta(px) = x^p \delta(p) + p^p \delta(x) + p \delta(x) \delta(p) = p^p \delta(x) + \phi(x) \delta(p).
-          </me>
+            0 = \delta(0) = \delta(px) = x^p \delta(p) + p^p \delta(x) + p \delta(x) \delta(p) = p^p \delta(x) + \phi(x) \delta(p)
+          </me>.
           By <xref ref="rmk-delta-ring-image-of-Z"/>, <m>\delta(p)</m> is a unit in <m>A</m>; it will thus suffice to check that <m>p^p \delta(x) = 0</m>. This follows by writing
           <me>
-            p^p \delta(x) = p^{p-1} (\phi(x) - x^p) = p^{p-2} (\phi(px) - px^p) = 0.
-          </me>
+            p^p \delta(x) = p^{p-1} (\phi(x) - x^p) = p^{p-2} (\phi(px) - px^p) = 0
+          </me>.
         </p>
       </proof>
     </lemma>
@@ -276,8 +276,8 @@
         For <m>A</m> a ring, let <m>W_2(A)</m> be the set <m>A \times A</m> equipped with binary operations <m>+, \times</m> defined as follows:
         <md>
           <mrow>(x_0, x_1) + (y_0, y_1) &amp;= (x_0+y_0, x_1+y_1 - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x_0^i y_0^{p-i})</mrow>
-          <mrow>(x_0, x_1) \times (y_0, y_1) &amp;= (x_0 y_0, x_0^p y_1 + y_0^p x_1 + p x_1 y_1).</mrow> 
-        </md>
+          <mrow>(x_0, x_1) \times (y_0, y_1) &amp;= (x_0 y_0, x_0^p y_1 + y_0^p x_1 + p x_1 y_1)</mrow> 
+        </md>.
         Note the relationship between these formulas to the definition of a <m>\delta</m>-ring (<xref ref="def-delta-ring"/>);
         see <xref ref="rmk-W2-interpretation"/>.
       </p>
@@ -333,21 +333,21 @@
     </lemma>
     <remark xml:id="rmk-W2-interpretation">
       <p>
-        There are two natural (in <m>A</m>) ring homomorphisms <m>\epsilon_1, \epsilon_2: W_2(A) \to A</m> given by
+        There are two natural (in <m>A</m>) ring homomorphisms <m>\epsilon_1, \epsilon_2\colon W_2(A) \to A</m> given by
         <me>
-          \epsilon_1((x_0, x_1)) = x_0, \qquad \epsilon_2((x_0, x_1)) = x_0^p + px_1.
-        </me>
+          \epsilon_1((x_0, x_1)) = x_0, \qquad \epsilon_2((x_0, x_1)) = x_0^p + px_1
+        </me>.
         In this notation, a <m>\delta</m>-ring structure on <m>A</m>
-        corresponds to a ring homomorphism <m>w: A \to W_2(A)</m> such that <m>\epsilon_1 \circ w = \id_A</m>.
+        corresponds to a ring homomorphism <m>w\colon A \to W_2(A)</m> such that <m>\epsilon_1 \circ w = \id_A</m>.
         In this way, the ring <m>W_2(A)</m> plays a role comparable to that of the <term>ring of dual numbers</term> <m>k[\epsilon]/(\epsilon^2)</m> over a field <m>k</m>.
       </p>
       <p>
-        On a related note, for <m>A \in \Ring_\delta</m>, <m>B \in \Ring</m>, and <m>f: A \to B</m> a morphism in <m>\Ring</m>,
+        On a related note, for <m>A \in \Ring_\delta</m>, <m>B \in \Ring</m>, and <m>f\colon A \to B</m> a morphism in <m>\Ring</m>,
         the formula
         <me>
           a \mapsto (f(a), f(\delta(a)))
         </me>
-        defines a homomorphism <m>A \to W_2(B)</m> in <m>\Ring</m>: namely, this is the composition of <m>w: A \to W_2(A)</m> with the functorial map <m>W_2(A) \to W_2(B)</m>.
+        defines a homomorphism <m>A \to W_2(B)</m> in <m>\Ring</m>: namely, this is the composition of <m>w\colon A \to W_2(A)</m> with the functorial map <m>W_2(A) \to W_2(B)</m>.
         This map will reappear later via the adjunction property of Witt vectors (<xref ref="def-delta-ring-right-adjoint"/>).
       </p>
     </remark>
@@ -360,7 +360,7 @@
       </p>
       <p>
         In <xref ref="bib-Bhatt-course"/>, Lecture II, Remark 3.4, Bhatt also suggests a version of this statement without the <m>p</m>-torsion-free condition:
-        for a general ring <m>A</m>, a <m>\delta</m>-structure on <m>A</m> corresponds to an endomorphism <m>\phi: A \to A</m> which is a <q>derived Frobenius lift</q>.
+        for a general ring <m>A</m>, a <m>\delta</m>-structure on <m>A</m> corresponds to an endomorphism <m>\phi\colon A \to A</m> which is a <q>derived Frobenius lift</q>.
         That is, for <m>\overline{A} = A \otimes^L_{\ZZ} \ZZ/(p)</m>,
         there exists (and is specified!) a homotopy between the composition <m>A \stackrel{\phi}{\to} A \to \overline{A}</m>
         and the composition <m>A \to \overline{A} \stackrel{\mathrm{Frob}}{\to} \overline{A}</m>. This description follows from the previous discussion by interpreting
@@ -372,7 +372,7 @@
     <title>The category of <m>\delta</m>-rings</title>
     <definition>
       <p>
-        A <term>morphism</term> of <m>\delta</m>-rings <m>(A, \delta) \to (A', \delta')</m> is a homomorphism <m>f: A \to A'</m> of rings such that <m>f \circ \delta = \delta' \circ f</m>  (again as maps of sets only).
+        A <term>morphism</term> of <m>\delta</m>-rings <m>(A, \delta) \to (A', \delta')</m> is a homomorphism <m>f\colon A \to A'</m> of rings such that <m>f \circ \delta = \delta' \circ f</m>  (again as maps of sets only).
         It is evident that with this definition, <m>\delta</m>-rings form a category, denoted <m>\Ring_\delta</m>.
       </p>
     </definition>
@@ -467,8 +467,8 @@
       </statement>
       <proof>
         <p>
-          Suppose first that <m>A</m> is <m>p</m>-torsion-free; then so is <m>S^{-1} A</m>. Since <m>\phi(S) \subseteq S</m>, the map <m>\phi: A \to A</m>
-          extends uniquely to a morphism <m>\phi: S^{-1} A \to S^{-1} A</m> which is again a Frobenius lift. We thus recover a unique <m>\delta</m>-structure
+          Suppose first that <m>A</m> is <m>p</m>-torsion-free; then so is <m>S^{-1} A</m>. Since <m>\phi(S) \subseteq S</m>, the map <m>\phi\colon A \to A</m>
+          extends uniquely to a morphism <m>\phi\colon S^{-1} A \to S^{-1} A</m> which is again a Frobenius lift. We thus recover a unique <m>\delta</m>-structure
           on <m>S^{-1} A</m>.
         </p>
         <p>
@@ -509,16 +509,16 @@
     <remark xml:id="rmk-adjoint-functor-set-condition">
       <p>
         We fill in the missing set-theoretic consideration from <xref ref="def-delta-ring-left-adjoint"/>. In order to apply the adjoint functor theorem
-        to a functor <m>F: \calC \to \calC'</m> to get the left adjoint, one must know that for every <m>y \in \calC'</m>, there is a set of elements <m>x_i \in \calC</m>
-        such that for any <m>x \in \calC</m>, any morphism <m>f: y \to F(x)</m> factors as
-        <m>F(g) \circ f_i</m> for some <m>i</m>, some <m>f_i: y \to F(x_i)</m>, and some <m>g: x_i \to x</m>.
+        to a functor <m>F\colon \calC \to \calC'</m> to get the left adjoint, one must know that for every <m>y \in \calC'</m>, there is a set of elements <m>x_i \in \calC</m>
+        such that for any <m>x \in \calC</m>, any morphism <m>f\colon y \to F(x)</m> factors as
+        <m>F(g) \circ f_i</m> for some <m>i</m>, some <m>f_i\colon y \to F(x_i)</m>, and some <m>g\colon x_i \to x</m>.
         This is needed to ensure that when we construct the image of an object under the
         adjoint functor, we are not trying to take a limit indexed by a class which is too large to be a set.
       </p>
       <p>
         Similarly, to get the right adjoint, one must know that for every <m>y \in \calC'</m>, there is a set of elements <m>x_i \in \calC</m>
-        such that for any <m>x \in \calC</m>, any morphism <m>f: F(x) \to y</m> factors as
-        <m>f_i \circ F(g)</m> for some <m>i</m>, some <m>g: x \to x_i</m>, and some <m>f_i: F(x_i) \to F(y)</m>.
+        such that for any <m>x \in \calC</m>, any morphism <m>f\colon F(x) \to y</m> factors as
+        <m>f_i \circ F(g)</m> for some <m>i</m>, some <m>g\colon x \to x_i</m>, and some <m>f_i\colon F(x_i) \to F(y)</m>.
       </p>
       <p>
         Typically conditions like these are established by taking all of the pairs <m>(x_i, f_i)</m> which satisfy some cardinality bound.
@@ -576,8 +576,8 @@
         <p>
           (Emerton) Prove that for any <m>\delta</m>-ring <m>A</m> and any <m>x \in A</m>, 
           <me>
-            \phi(x) = p^{p-1} x^p + \delta(px).
-          </me>
+            \phi(x) = p^{p-1} x^p + \delta(px)
+          </me>.
         </p>
       </statement>
       <hint>
@@ -654,10 +654,10 @@
     <exercise xml:id="exer-delta-divided-power">
       <statement>
         <p>
-          Let <m>A</m> be a <m>p</m>-torsion-free <m>\delta</m>-ring over <m>\ZZ_{(p)}</m>. Define the <term>divided power operations</term> <m>\gamma_n: A \to A[p^{-1}]</m> by
+          Let <m>A</m> be a <m>p</m>-torsion-free <m>\delta</m>-ring over <m>\ZZ_{(p)}</m>. Define the <term>divided power operations</term> <m>\gamma_n\colon A \to A[p^{-1}]</m> by
           <me>
-            \gamma_n(x) = \frac{x^n}{n!}.
-          </me>
+            \gamma_n(x) = \frac{x^n}{n!}
+          </me>.
           Show that if <m>x \in A</m> satisfies <m>\gamma_p(x) \in A</m>, then <m>\gamma_n(x) \in A</m> for all <m>n \geq 0</m>.
           In particular, this conclusion does not depend on the <m>\delta</m>-ring structure, so it can be used to exhibit an obstruction to the existence of Frobenius
           lifts on some rings, as in <xref ref="rmk-delta-ring-obstruction"/>.
@@ -696,10 +696,18 @@
       </statement>
       <hint>
         <p>
-          Let <m>f: A \to B</m> be a morphism in <m>\Ring</m> with <m>B \in \Ring_\delta</m>.
+          Let <m>f\colon A \to B</m> be a morphism in <m>\Ring</m> with <m>B \in \Ring_\delta</m>.
           Then the <m>\delta</m>-subring of <m>B</m> generated by <m>f(A)</m> has cardinality at most <m>\max\{|A|, \aleph_0\}</m>.
         </p>
       </hint>
+    </exercise>
+    <exercise xml:id="exer-ideal-delta-image">
+      <statement>
+        <p>
+          Let <m>A</m> be a <m>\delta</m>-ring. Let <m>I</m> be an ideal of <m>A</m>.
+          Show that the set of <m>x \in A</m> such that both <m>x</m> and <m>\delta(x)</m> belong to <m>I</m> is also an ideal of <m>A</m>.
+        </p>
+      </statement>
     </exercise>
     <exercise xml:id="exer-adjoint-functor-cardinality-right">
       <statement>
@@ -710,9 +718,9 @@
       </statement>
       <hint>
         <p>
-          Let <m>f: A \to B</m> be a morphism in <m>\Ring</m> with <m>A \in \Ring_\delta</m>.
+          Let <m>f\colon A \to B</m> be a morphism in <m>\Ring</m> with <m>A \in \Ring_\delta</m>.
           Let <m>I</m> be the set of <m>x \in A</m> for which <m>\delta^m(x) \in \ker(f)</m> for all <m>m \geq 0</m>.
-          Then <m>I</m> is a <m>\delta</m>-stable ideal of <m>A</m> and the map
+          Then <m>I</m> is a <m>\delta</m>-stable ideal of <m>A</m> (by repeated application of <xref ref="exer-ideal-delta-image"/>) and the map
           <me>
              A/I \to B \times B \times \cdots, \qquad x \mapsto (f(x), f(\delta(x)), f(\delta^2(x)), \dots)
           </me>

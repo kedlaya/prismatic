@@ -21,8 +21,8 @@
         in which <m>K_n</m> is the <m>(n+1)</m>-fold tensor product of <m>B</m> over <m>A</m>
         and the various maps <m>K_n \to K_{n-1}</m> act by taking the product of some pair of consecutive factors:
         <me>
-          b_0 \otimes \cdots \otimes b_i \otimes b_{i+1} \otimes \cdots \otimes b_n \mapsto b_0 \otimes \cdots \otimes b_ib_{i+1} \otimes \cdots \otimes b_n.
-        </me>
+          b_0 \otimes \cdots \otimes b_i \otimes b_{i+1} \otimes \cdots \otimes b_n \mapsto b_0 \otimes \cdots \otimes b_ib_{i+1} \otimes \cdots \otimes b_n
+        </me>.
       </p>
     </definition>
     <remark>
@@ -73,8 +73,8 @@
         For <m>R</m> a derived <m>p</m>-complete ring, a <term>prismatic <m>F</m>-crystal</term> on <m>R</m> is a crystal <m>M</m> on the absolute prismatic site of <m>R</m>
         equipped with an isomorphism
         <me>
-          F: \phi^* M[I^{-1}] \to M[I^{-1}].
-        </me>
+          F\colon \phi^* M[I^{-1}] \to M[I^{-1}]
+        </me>.
         That is, for each object <m>(B,J) \in (\Spec R)_{\Prism}</m>, we specify an isomorphism <m>\phi^* M(B)[J^{-1}] \to M(B)[J^{-1}]</m> compatible with the morphisms in the site
         (where <m>M(B)[J^{-1}] = \colim_n M(B) \otimes_B J^{-n}</m>; this makes sense because <m>J</m> is an invertible ideal).
       </p>
@@ -122,8 +122,8 @@
           For <m>n \geq 1</m>, let <m>W_{\prim,n}</m> be the completion of <m>W_n</m>
           along the locally closed subscheme defined by the conditions
           <me>
-            p = x_0 = 0, \qquad x_1 \neq 0.
-          </me>
+            p = x_0 = 0, \qquad x_1 \neq 0
+          </me>.
           Since <m>W_n^\times</m> acts on <m>W_{\prim,n}</m> by multiplication, we can form the quotient
           <me>
             \CW_n = W_{\prim,n}/W_n^\times
@@ -151,8 +151,8 @@
     <definition>
       <p>
         We say that <m>R \in \Ring</m> is <term>quasi-syntomic</term> if <m>R</m> is <m>p</m>-complete with bounded <m>p</m>-power torsion and the cotangent complex
-          <m>L_{R/\ZZ_p}</m> has <m>p</m>-complete Tor amplitude in <m>[-1,0]</m>. For example, a noetherian lci ring is quasi-syntomic,
-          as in a regular semilens (<xref ref="def-semilens"/>) with bounded <m>p</m>-power torsion.
+        <m>L_{R/\ZZ_p}</m> has <m>p</m>-complete Tor amplitude in <m>[-1,0]</m>. For example, a noetherian lci ring is quasi-syntomic,
+        as in a regular semilens (<xref ref="def-semilens"/>) with bounded <m>p</m>-power torsion.
       </p>
     </definition>
     <theorem xml:id="thm-prismatic-dieudonne">
@@ -183,7 +183,7 @@
     </p>
     <definition>
       <p>
-        A <term>prelog structure</term> on a ring <m>A</m> consists of a monoid <m>M</m> and a morphism <m>\alpha: M \to A</m> of monoids.
+        A <term>prelog structure</term> on a ring <m>A</m> consists of a monoid <m>M</m> and a morphism <m>\alpha\colon M \to A</m> of monoids.
         In general, one prefers to <q>sheafify</q> this definition to define a <term>log structure</term>, as in <xref ref="bib-Kato"/>.
       </p>
     </definition>
@@ -202,7 +202,7 @@
     <definition>
       <p>
         As per <xref ref="bib-Koshikawa"/>, Definition 2.2, a <term><m>\delta_{\log}</m>-ring</term> is a tuple <m>(A, \delta, \alpha, \delta_{\log})</m>
-        in which <m>(A, \delta)</m> is a <m>\delta</m>-ring, <m>\alpha: M \to A</m> defines a prelog structure on <m>A</m>, and <m>\delta_{\log}: M \to A</m> is a function satisfying the following conditions.
+        in which <m>(A, \delta)</m> is a <m>\delta</m>-ring, <m>\alpha\colon M \to A</m> defines a prelog structure on <m>A</m>, and <m>\delta_{\log}\colon M \to A</m> is a function satisfying the following conditions.
       </p>
       <ol>
         <li>
@@ -214,16 +214,16 @@
           <p>
             For <m>m \in M</m>,
             <me>
-              \delta(\alpha(m)) = \alpha(m)^p \delta_{\log}(m).
-            </me>
+              \delta(\alpha(m)) = \alpha(m)^p \delta_{\log}(m)
+            </me>.
           </p>
         </li>
         <li>
           <p>
             For <m>m,m' \in M</m>,
             <me>
-              \delta_{\log}(mm') = \delta_{\log}(m) + \delta_{\log}(m') + p \delta_{\log}(m) \delta_{\log}(m').
-            </me>
+              \delta_{\log}(mm') = \delta_{\log}(m) + \delta_{\log}(m') + p \delta_{\log}(m) \delta_{\log}(m')
+            </me>.
           </p>
         </li>
       </ol>
@@ -237,17 +237,17 @@
     </p>
     <example>
       <p>
-        For <m>(A, \delta) \in \Ring_\delta</m>, consider the canonical log structure where <m>M = A^\times</m> and <m>\alpha: A^\times \to A</m> is the canonical inclusion.
+        For <m>(A, \delta) \in \Ring_\delta</m>, consider the canonical log structure where <m>M = A^\times</m> and <m>\alpha\colon A^\times \to A</m> is the canonical inclusion.
         There is then a unique <m>\delta_{\log}</m>-ring structure given by
         <me>
-          \delta_{\log}(x) = \frac{\delta(x)}{x^p} \qquad (x \in A^\times).
-        </me>
+          \delta_{\log}(x) = \frac{\delta(x)}{x^p} \qquad (x \in A^\times)
+        </me>.
       </p>
     </example>
     <example>
       <p>
         Let <m>R \in \Ring_{\FF_p}</m> be perfect and view <m>W(R)</m> as a <m>\delta</m>-ring via the Witt vector Frobenius. 
-        The prelog structure given by the constant lift <m>[\bullet]: R \to W(R)</m> then admits a constant <m>\delta_{\log}</m>-structure.
+        The prelog structure given by the constant lift <m>[\bullet]\colon R \to W(R)</m> then admits a constant <m>\delta_{\log}</m>-structure.
       </p>
     </example>
     <example>

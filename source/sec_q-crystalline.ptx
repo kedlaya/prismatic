@@ -5,6 +5,7 @@
       <title>Reference</title>
       <p>
         <xref ref="bib-Bhatt-course"/>, lecture X; <xref ref="bib-Bhatt-Scholze"/>, section 16.
+        Some of this material was developed independently in the PhD thesis of Masullo <xref ref="bib-Masullo"/>.
         However, we diverge significantly in form from these references; see below.
       </p>
     </paragraphs>
@@ -39,20 +40,20 @@
       <p>
         We will also use on several occasions the congruence
         <men xml:id="eq-frob-q-cong"> 
-          \phi([p]_q) = q^{p(p-1)} + \cdots + q^p + 1 \equiv p \pmod{[p]_q}.
-        </men>
+          \phi([p]_q) = q^{p(p-1)} + \cdots + q^p + 1 \equiv p \pmod{[p]_q}
+        </men>.
       </p>
     </definition>
     <remark xml:id="rmk-q-divided-powers">
       <p>
         To see the difficulty at work here, imagine trying to define <m>q</m>-divided power operations <m>\gamma_{n,q}</m> using the formula
         <me>
-          \gamma_{n,q}(x) = \frac{x^n}{[n]_q!}.
-        </me>
+          \gamma_{n,q}(x) = \frac{x^n}{[n]_q!}
+        </me>.
         We would then have the rather awkward formula
         <me>
-          \gamma_{n,q}(x+y) = \sum_{i=0}^n \frac{n! [i]_q! [n-i]_q!}{[n]_q! i! (n-i)!} \gamma_{i,q}(x) \gamma_{n-i,q}(y),
-        </me>
+          \gamma_{n,q}(x+y) = \sum_{i=0}^n \frac{n! [i]_q! [n-i]_q!}{[n]_q! i! (n-i)!} \gamma_{i,q}(x) \gamma_{n-i,q}(y)
+        </me>,
         from which it is no longer apparent that being able to take <m>q</m>-divided powers of <m>x</m> and <m>y</m> implies the same for <m>x+y</m>.
       </p>
     </remark>
@@ -100,23 +101,23 @@
         With this in mind, 
         for <m>D</m> a <m>[p]_q</m>-torsion-free <m>\delta</m>-ring over <m>A</m>, for any <m>x \in D</m> with <m>\phi(x) \in [p]_qD</m>, write
         <me>
-          \gamma(x) = \frac{\phi(x)}{[p]_q} - \delta(x) \in D.
-        </me>
+          \gamma(x) = \frac{\phi(x)}{[p]_q} - \delta(x) \in D
+        </me>.
       </p>
     </definition>
     <remark xml:id="rmk-q-divided-powers-on-ideal">
       <p>
         With notation as in <xref ref="def-q-divided-power"/>, for <m>x,y \in \phi^{-1}([p]_qD)</m> we have
         <me>
-          \gamma(x+y) = \gamma(x) + \gamma(y) - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x^i y^{p-i};
-        </me>
+          \gamma(x+y) = \gamma(x) + \gamma(y) - \sum_{i=1}^{p-1} \frac{(p-1)!}{i!(p-i)!} x^i y^{p-i}
+        </me>;
         for <m>x \in \phi^{-1}([p]_q D)</m> and <m>y \in D</m>, we have
         <me>
-          \gamma(xy) = \phi(y) \gamma(x) - x^p \delta(y).
-        </me>
+          \gamma(xy) = \phi(y) \gamma(x) - x^p \delta(y)
+        </me>.
         Consequently, for any ideal <m>I</m> of <m>D</m>, the set
         <me>
-          J = \{x \in I: \phi(x) \in [p]_q D, \gamma(x) \in I\}
+          J = \{x \in I\colon \phi(x) \in [p]_q D, \gamma(x) \in I\}
         </me>
         is itself an ideal of <m>D</m>; hence to check that <m>J = I</m>, it suffices to check that <m>J</m> contains a generating set of <m>I</m>.
         (Compare <xref ref="bib-Bhatt-Scholze"/>, Remark 16.6.)
@@ -146,8 +147,8 @@
             <mrow>\phi([p]_q) \phi(\gamma(x)) &amp;= \phi^2(x) - \phi([p]_q \delta(x))</mrow>
             <mrow>&amp;= \phi(x)^p + p \phi(\delta(x)) - \phi([p]_q) \phi(\delta(x))</mrow>
             <mrow>&amp;= [p]_q^p (\phi(x)/[p]_q)^p + (p-\phi([p]_q)) \phi(\delta(x))</mrow>
-            <mrow>&amp;\equiv 0 \pmod{[p]_q D}</mrow>,
-          </md>
+            <mrow>&amp;\equiv 0 \pmod{[p]_q D}</mrow>
+          </md>,
           where we use <xref ref="eq-frob-q-cong"/> again in the last line.
           (Compare <xref ref="bib-Bhatt-Scholze"/>, Lemma 16.7.)
         </p>
@@ -221,32 +222,24 @@
           <m>J = (q-1,y_1,y_2,\dots)</m>
           where each initial segment <m>y_1,\dots,y_s</m> is a regular sequence on <m>P/(p,q-1)</m>. Define the <m>\delta</m>-ring
           <me>
-            D = P\{\phi(y_1)/[p]_q, \dots, \phi(y_s)/[p]_q \}^\wedge_{(p,[p]_q)}.
-          </me>
+            D = P\{\phi(y_1)/[p]_q, \dots, \phi(y_s)/[p]_q \}^\wedge_{(p,[p]_q)}
+          </me>.
           Let <m>I</m> be the kernel of <m>D \to D/(q-1) \to R</m>.
-        </p>
-        <ol>
-          <li>
-            <p>
+          <ol>
+            <li>
               The ring <m>D</m> is <m>(p,[p]_q)</m>-completely flat over <m>A</m>.
-            </p>
-          </li>
-          <li>
-            <p>
+            </li>
+            <li>
               The map <m>P \to D</m> induces an isomorphism <m>P/J \cong D/I</m>.
-            </p>
-          </li>
-          <li>
-            <p>
+            </li>
+            <li>
               The ring <m>D/(q-1)</m> identifies with the <m>p</m>-completed divided power envelope of the map <m>P/(q-1) \to R</m>.
-            </p>
-          </li>
-          <li>
-            <p>
+            </li>
+            <li>
               The map <m>(P, J) \to (D,I)</m> of <m>\delta</m>-pairs is universal for the target being a <m>q</m>-pd pair.
-            </p>
-          </li>
-        </ol>
+            </li>
+          </ol>
+        </p>
       </statement>
       <proof>
         <p>
@@ -439,7 +432,7 @@
         <m>g\,dx \mapsto \phi(g) x^{p-1} [p]_q\,dx</m>. A similar statement applies to <m>R = \ZZ_p[x_1,\dots,x_r]^\wedge_{(p)}</m>.
       </p>
       <p>
-        It follows that for any derived <m>p</m>-complete <m>\ZZ_p</m>-algebra <m>R</m>, the linearized Frobenius <m>\phi_R: \phi_A^* \Prism_{R^{(1)}/A} \to \Prism_{R^{(1)}/A}</m>
+        It follows that for any derived <m>p</m>-complete <m>\ZZ_p</m>-algebra <m>R</m>, the linearized Frobenius <m>\phi_R\colon \phi_A^* \Prism_{R^{(1)}/A} \to \Prism_{R^{(1)}/A}</m>
         is an isogeny, in that it becomes an isomorphism after inverting <m>[p]_q</m>. More precisely, because the action on cohomology in degree <m>i</m> 
         factors through multiplication by <m>[p]_q^i</m>, one can apply the Berthelot-Ogus functor <m>\eta_{[p]_q}</m> (<xref ref="bib-Stacks"/>, tag 0F7N);
         this is related to the discussion of the <term>Nygaard filtration</term> in <xref ref="bib-Bhatt-Scholze"/>.

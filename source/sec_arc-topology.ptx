@@ -46,11 +46,11 @@
           A category equipped with a Grothendieck topology is called a <term>site</term>.
         </p>
         <p>
-          A <term>presheaf</term> on a site valued in <m>\Set</m> is a contravariant functor <m>F: \calC \to \Set</m>. A <term>sheaf</term>
+          A <term>presheaf</term> on a site valued in <m>\Set</m> is a contravariant functor <m>F\colon \calC \to \Set</m>. A <term>sheaf</term>
           is a presheaf such that for every covering <m>\{U_i \to U\}_{i \in I}</m>, <m>F(U)</m> is the limit of the diagram
           <me>
-            \prod_{i \in I} F(U_i) \rightrightarrows \prod_{(i_0, i_1) \in I \times I} F(U_{i_0} \times_U U_{i_1}).
-          </me>
+            \prod_{i \in I} F(U_i) \rightrightarrows \prod_{(i_0, i_1) \in I \times I} F(U_{i_0} \times_U U_{i_1})
+          </me>.
           The category of sheaves of sets on the site is called the <term>topos</term> associated to the site; it is in many ways a more canonical object,
           in that there are usually many different ways to construct families of coverings (or even underlying categories) that give rise to equivalent topoi.
           In particular, one can <q>sheafify</q> the definition of a morphism of sites to obtain morphisms of topoi, some of which do not arise from morphisms
@@ -98,9 +98,9 @@
       <proof>
         <p>
           It is obvious that (2) implies (1). Conversely, if (1) holds and <m>\Gamma</m> is nontrivial (as otherwise there is nothing to check), 
-          we can fix a single <m>\alpha \in \Gamma</m> and define a function <m>f: \Gamma \to \RR</m> by the formula
+          we can fix a single <m>\alpha \in \Gamma</m> and define a function <m>f\colon \Gamma \to \RR</m> by the formula
           <me>
-            f(\beta) = \sup\left\{\frac{r}{s}: r,s \in \ZZ, s \gt 0, s \beta \gt r \alpha\right\}
+            f(\beta) = \sup\left\{\frac{r}{s}\colon r,s \in \ZZ, s \gt 0, s \beta \gt r \alpha\right\}
           </me>
           (condition (1) guaranteeing that the set in question is bounded above). We leave it to the reader to verify that this indeed gives
           an injective order-preserving homomorphism (<xref ref="exer-eudoxian"/>).
@@ -153,7 +153,7 @@
     <definition>
       <p>
         As per <xref ref="bib-Bhatt-Mathew"/> (and an as yet unavailable sequel to <xref ref="bib-Rydh"/>), we say that a 
-        morphism <m>f: Y \to X</m> of schemes is an <term>arc-covering</term> if for any morphism <m>\Spec(V) \to X</m> from an arc into <m>X</m>,
+        morphism <m>f\colon Y \to X</m> of schemes is an <term>arc-covering</term> if for any morphism <m>\Spec(V) \to X</m> from an arc into <m>X</m>,
         there exists a commuting diagram as in <xref ref="fig-arc-covering"/> in which <m>\Spec(W) \to \Spec(V)</m> is a faithfully flat morphism of arcs.
         (We <em>do not</em> require the map <m>V \to W</m> to be integral.)
       </p>
@@ -171,7 +171,7 @@
     <lemma xml:id="lem-h-coverings-to-arc">
       <statement>
         <p>
-          Let <m>f: Y \to X</m> be a morphism of schemes.
+          Let <m>f\colon Y \to X</m> be a morphism of schemes.
         </p>
         <ol>
           <li>
@@ -206,17 +206,17 @@
     </example>
     <example>
       <p>
-        Let <m>X = \Spec(k[x,y])</m> be the affine plane over a field <m>k</m>, let <m>\tilde{f}: \tilde{Y} \to X</m> be the blowup at the origin,
-        let <m>Y</m> be the complement in <m>\tilde{Y}</m> of a single closed point in the exceptional locus, and let <m>f: Y \to X</m> be the induced morphism.
-        Then <m>f: Y \to X</m> is surjective but not an arc-covering: we can choose an arc whose special point maps to the origin in <m>X</m> and whose
+        Let <m>X = \Spec(k[x,y])</m> be the affine plane over a field <m>k</m>, let <m>\tilde{f}\colon \tilde{Y} \to X</m> be the blowup at the origin,
+        let <m>Y</m> be the complement in <m>\tilde{Y}</m> of a single closed point in the exceptional locus, and let <m>f\colon Y \to X</m> be the induced morphism.
+        Then <m>f\colon Y \to X</m> is surjective but not an arc-covering: we can choose an arc whose special point maps to the origin in <m>X</m> and whose
         generic point maps to the direction corresponding to the missing point in the exceptional locus, and such an arc will not lift to <m>Y</m>.
         (Again, compare <xref ref="bib-Rydh"/>, Remark 2.5 or <xref ref="bib-Bhatt-Scholze-grassmannian"/>, Example 2.3.)
       </p>
     </example>
     <definition>
       <p>
-        The <term>arc-topology</term> on the category of schemes is the Grothendieck topology in which a family <m>\{f_i: Y_i \to X\}_{i \in I}</m> of morphisms is considered to be a covering
-        if for any open affine <m>V \subseteq X</m>, there exists a map <m>t: K \to I</m> of sets with <m>K</m> finite and some affine opens <m>U_k \subseteq f_{t(k)}^{-1}(V)</m>
+        The <term>arc-topology</term> on the category of schemes is the Grothendieck topology in which a family <m>\{f_i\colon Y_i \to X\}_{i \in I}</m> of morphisms is considered to be a covering
+        if for any open affine <m>V \subseteq X</m>, there exists a map <m>t\colon K \to I</m> of sets with <m>K</m> finite and some affine opens <m>U_k \subseteq f_{t(k)}^{-1}(V)</m>
         for each <m>k \in K</m> such that the induced map <m>\sqcup_k U_k \to V</m> is an arc-covering.
       </p>
     </definition>
@@ -242,7 +242,7 @@
       <p>
         Let <m>A</m> be a ring. Let <m>(A \to V_i)_{i \in I}</m> be a set of isomorphism class representatives of <m>A</m>-algebras which are AIC valuation rings
         of cardinality at most <m>\max\{\aleph_0, \#A\}</m> and put <m>B = \prod_{i \in I} V_i</m>. 
-        The map <m>A \to B</m> is a v-covering: any morphism <m>f: A \to V</m> to a valuation ring factors through the intersection <m>\Frac(f(A)) \cap V</m>
+        The map <m>A \to B</m> is a v-covering: any morphism <m>f\colon A \to V</m> to a valuation ring factors through the intersection <m>\Frac(f(A)) \cap V</m>
         within <m>\Frac(V)</m>, and hence through some <m>V_i</m>. (Compare <xref ref="bib-Bhatt-Mathew"/>, Proposition 3.30.)
       </p>
     </example>
@@ -264,6 +264,19 @@
         Let <m>V</m> be a valuation ring which is not eudoxian. Let <m>\frakp</m> be a prime ideal which is neither zero nor the maximal ideal
         (see <xref ref="cor-arc-two-points"/>). Then for any <m>f \in V \setminus \frakp</m>, 
         <m>V \to V_f \times V/f</m> is an arc-covering but not a v-covering. (Compare <xref ref="bib-Bhatt-Mathew"/>, Example 1.3.)
+      </p>
+    </remark>
+    <p>
+      We record some variations on <xref ref="exa-v-cover"/>.
+    </p>
+    <remark xml:id="exa-arc-covering-height-1">
+      <p>
+        In <xref ref="exa-v-cover"/>, let <m>J</m> be the subset of <m>i \in I</m> for which <m>V_i</m> is eudoxian.
+        Then <m>C = \prod_{j \in J} V_j</m> is an arc-covering, but not in general a v-covering as per <xref ref="exa-excision-for-valuation"/>.
+      </p>
+      <p>
+        This remains true if we replace each <m>V_j</m> with a larger valuation ring. In particular, we can ensure that each factor is not a field,
+        and even complete with respect to its valuation.
       </p>
     </remark>
     <remark>
@@ -291,7 +304,7 @@
     <exercise xml:id="exer-v-cover-universally-submersive">
       <statement>
         <p>
-          Let <m>f: Y \to X</m> be a v-covering of qcqs schemes. Show that <m>f</m> is <term>universally submersive</term>: for every morphism <m>X' \to X</m> of qcqs
+          Let <m>f\colon Y \to X</m> be a v-covering of qcqs schemes. Show that <m>f</m> is <term>universally submersive</term>: for every morphism <m>X' \to X</m> of qcqs
           schemes, the map <m>Y \times_X X' \to X'</m> induces a quotient map on underlying topological spaces.
         </p>
       </statement>

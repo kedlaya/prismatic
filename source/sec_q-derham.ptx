@@ -11,8 +11,8 @@
       We use the following notation frequently: for <m>n</m> a nonnegative integer,
       <md>
         <mrow>[n]_q &amp;= \frac{q^n-1}{q-1} = 1 + q + \cdots + q^{n-1}</mrow>
-        <mrow>[n]_q! &amp;= [1]_q \cdots [n]_q.</mrow>
-      </md>
+        <mrow>[n]_q! &amp;= [1]_q \cdots [n]_q</mrow>
+      </md>.
     </p>
   </introduction>
   <subsection>
@@ -25,8 +25,8 @@
         </me>
         where <m>(x)_k</m> denotes the <term>Pochhammer symbol</term>
         <me>
-          (x)_k = x(x+1)\cdots(x+k-1).
-        </me>
+          (x)_k = x(x+1)\cdots(x+k-1)
+        </me>.
         These were first considered in the case <m>m=2,n=1</m> by Wallis in 1655, and later by Euler and more systematically by Gauss.
         The case <m>m=3,n=3</m> was considered by Clausen in 1828; the general case was introduced by Thomae <xref ref="bib-Thomae"/> in 1870.
       </p>
@@ -40,8 +40,8 @@
         </me>
         where <m>(x; q)_k</m> denotes the <term><m>q</m>-Pochhammer symbol</term>
         <me>
-          (x; q)_k = \prod_{i=0}^{k-1} (1 - x q^k).
-        </me>
+          (x; q)_k = \prod_{i=0}^{k-1} (1 - x q^k)
+        </me>.
         Note that the term <m>(q; q)_k</m> corresponds (up to signs and factors of <m>q</m>) to the factor <m>k!</m> in the ordinary hypergeometric series.
         For the Gaussian case (i.e., <m>m=2, n=1</m>) this was first introduced by Heine <xref ref="bib-Heine"/> in 1846.
       </p>
@@ -103,12 +103,12 @@
       <p>
         Given a function <m>f(x)</m> and a parameter <m>q</m>, the <term><m>q</m>-derivative</term> of <m>f(x)</m> is defined as
         <me>
-          D_q f(x) = \frac{f(qx)-f(x)}{qx - x}.
-        </me>
+          D_q f(x) = \frac{f(qx)-f(x)}{qx - x}
+        </me>.
         It is obviously additive and satisfies a modified product rule
         <men xml:id="eq-q-product-rule">
-          D_q(f(x)g(x)) = f(x) D_q(g(x)) + g(qx) D_q(f(x)).
-        </men>
+          D_q(f(x)g(x)) = f(x) D_q(g(x)) + g(qx) D_q(f(x))
+        </men>.
       </p>
     </definition>
     <definition>
@@ -147,19 +147,19 @@
         </me>
         where <m>\nabla_q</m> denotes the <m>q</m>-differential
         <me>
-          \nabla_q(f(x)) = D_q(f(x))\,dx = \frac{f(qx)-f(x)}{qx-x}\,dx.
-        </me>
+          \nabla_q(f(x)) = D_q(f(x))\,dx = \frac{f(qx)-f(x)}{qx-x}\,dx
+        </me>.
         We refer to this as a <q>framed</q> construction because it depends implicitly on the choice of the polynomial generator <m>x</m>; see <xref ref="rmk-q-change-of-coordinates"/>.
       </p>
       <p>
         We similarly define
         <me>
-          q\Omega^\bullet_{R[x_1,\dots,x_r],\square} = q\Omega^\bullet_{R[x_1]/R} \otimes_{R\llbracket q-1 \rrbracket} \cdots \otimes_{R \llbracket q-1 \rrbracket} q\Omega^\bullet_{R[x_r]/R}.
-        </me>
+          q\Omega^\bullet_{R[x_1,\dots,x_r],\square} = q\Omega^\bullet_{R[x_1]/R} \otimes_{R\llbracket q-1 \rrbracket} \cdots \otimes_{R \llbracket q-1 \rrbracket} q\Omega^\bullet_{R[x_r]/R}
+        </me>.
         There is an evident isomorphism
         <me>
-          q\Omega^\bullet_{R[x_1,\dots,x_r],\square}/(q-1) \cong \Omega^\bullet_{R[x_1,\dots,x_r]/R}.
-        </me>
+          q\Omega^\bullet_{R[x_1,\dots,x_r],\square}/(q-1) \cong \Omega^\bullet_{R[x_1,\dots,x_r]/R}
+        </me>.
       </p>
     </definition>
     <remark xml:id="rmk-q-Taylor-series">
@@ -199,8 +199,8 @@
       <p>
         Namely, such a map would have to send <m>x^{n-1}</m> to
         <me>
-          \sum_{i=1}^n \binom{n}{i} \frac{[i]_q}{[n]_q} x^{i-1} = \sum_{i=1}^n \binom{n-1}{i-1} \frac{[i]_q}{i} \frac{n}{[n]_q} x^{i-1},
-        </me>
+          \sum_{i=1}^n \binom{n}{i} \frac{[i]_q}{[n]_q} x^{i-1} = \sum_{i=1}^n \binom{n-1}{i-1} \frac{[i]_q}{i} \frac{n}{[n]_q} x^{i-1}
+        </me>,
         but the coefficients in the latter expression are not necessarily contained in <m>R \llbracket q-1 \rrbracket</m> unless <m>R</m> is a <m>\QQ</m>-algebra.
       </p>
       <p>
@@ -208,8 +208,8 @@
         as an object (and even a commutative algebra object) in <m>D(R \llbracket q-1 \rrbracket)</m>; this was conjectured by Scholze in <xref ref="bib-Scholze-q"/>.
         To make this more explicit in the previous example, consider the isomorphisms
         <me>
-          R[x,y]/(x+y-1) \to R[x], \qquad R[x,y]/(x+y-1) \to R[y];
-        </me>
+          R[x,y]/(x+y-1) \to R[x], \qquad R[x,y]/(x+y-1) \to R[y]
+        </me>;
         the claim then is that the map
         <me>
           q \Omega^\bullet_{R[x,y]/R,\square} \to q \Omega^\bullet_{R[y]/R,\square}

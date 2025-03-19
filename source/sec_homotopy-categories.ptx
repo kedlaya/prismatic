@@ -26,38 +26,38 @@
     </p>
     <definition>
       <p>
-         Let <m>\calA'</m> be a second abelian category. A covariant functor <m>F: \calA \to \calA'</m> is <term>left exact</term> if every exact sequence
-         <me>
-         0 \to M_1 \to M \to M_2
-         </me>
-         yields an exact sequence
-         <me>
-         0 \to F(M_1) \to F(M) \to F(M_2).
-         </me>
-         Under suitable conditions (namely, that <m>\calA</m> <term>has enough injectives</term>), 
-         we can <q>fill in the gap</q> on the right: if the original sequence extends to an exact sequence
-         <me>
-         0 \to M_1 \to M \to M_2 \to 0,
-         </me>
-         then we get a long exact sequence
-         <me>
-         0 \to R^0 F(M_1) \to R^0F (M) \to R^0F(M_2) \to R^1 F(M_1) \to R^1 F(M) \to R^1 F(M_2) \to R^1 F(M_1) \to \cdots
-         </me>
-         where <m>R^i F</m> are the <term>right derived functors</term>  of <m>F</m> (with <m>R^0 F = F</m>). These functors can be evaluated at <m>M</m> by forming an
-         <term>injective resolution</term> of <m>M</m>, i.e., a complex
-         <men xml:id="eq-injective-resolution">
-           0 \to I^0 \to I^1 \to \dots
-         </men>
-         in which each object <m>I^j \in \calA</m> is <term>injective</term> (that is, <m>\Hom(N, I^j) \to \Hom(N', I^j)</m> is surjective whenever <m>N' \to N</m> is a monomorphism)
-         and the augmented sequence
-         <me>
-           0 \to M \to I^0 \to I^1 \to \cdots
-         </me>
-         is exact; then <m>RF^i</m> is the cohomology at <m>i</m> of the complex
-         <me>
-           0 \to F(I^0) \to F(I^1) \to \cdots.
-         </me>
-         However, there is some work to be done to confirm that these are well-defined functors.
+        Let <m>\calA'</m> be a second abelian category. A covariant functor <m>F\colon \calA \to \calA'</m> is <term>left exact</term> if every exact sequence
+        <me>
+          0 \to M_1 \to M \to M_2
+        </me>
+        yields an exact sequence
+        <me>
+          0 \to F(M_1) \to F(M) \to F(M_2)
+        </me>.
+        Under suitable conditions (namely, that <m>\calA</m> <term>has enough injectives</term>), 
+        we can <q>fill in the gap</q> on the right: if the original sequence extends to an exact sequence
+        <me>
+          0 \to M_1 \to M \to M_2 \to 0
+        </me>,
+        then we get a long exact sequence
+        <me>
+          0 \to R^0 F(M_1) \to R^0F (M) \to R^0F(M_2) \to R^1 F(M_1) \to R^1 F(M) \to R^1 F(M_2) \to R^1 F(M_1) \to \cdots
+        </me>
+        where <m>R^i F</m> are the <term>right derived functors</term>  of <m>F</m> (with <m>R^0 F = F</m>). These functors can be evaluated at <m>M</m> by forming an
+        <term>injective resolution</term> of <m>M</m>, i.e., a complex
+        <men xml:id="eq-injective-resolution">
+          0 \to I^0 \to I^1 \to \dots
+        </men>
+        in which each object <m>I^j \in \calA</m> is <term>injective</term> (that is, <m>\Hom(N, I^j) \to \Hom(N', I^j)</m> is surjective whenever <m>N' \to N</m> is a monomorphism)
+        and the augmented sequence
+        <me>
+          0 \to M \to I^0 \to I^1 \to \cdots
+        </me>
+        is exact; then <m>RF^i</m> is the cohomology at <m>i</m> of the complex
+        <me>
+          0 \to F(I^0) \to F(I^1) \to \cdots
+        </me>.
+        However, there is some work to be done to confirm that these are well-defined functors.
       </p>
     </definition>
     <remark xml:id="rmk-derived-motivation">
@@ -113,7 +113,7 @@
     <definition>
       <p>
         We view chain complexes as forming a category <m>\Comp(\calA)</m>
-        in which a morphism <m>f^\bullet: K_1^\bullet \to K_2^\bullet</m> is given by a commutative diagram
+        in which a morphism <m>f^\bullet\colon K_1^\bullet \to K_2^\bullet</m> is given by a commutative diagram
         <figure xml:id="fig-morphism-of-complexes">
           <image width="75%">
             <latex-image>
@@ -127,27 +127,27 @@
         such a morphism induces morphisms on cohomology groups <m>h^n(K_1^\bullet) \to h^n(K_2^\bullet)</m>. 
         Let <m>\Comp^+(\calA), \Comp^-(\calA), \Comp^b(\calA)</m> be the full subcategories of <m>\Comp(\calA)</m>
         consisting of bounded below complexes, bounded above complexes, or bounded complexes, respectively.
-        Any functor <m>F: \calA \to \calA'</m> of abelian categories induces functors <m>\Comp^*(\calA) \to \Comp^*(\calA')</m>
+        Any functor <m>F\colon \calA \to \calA'</m> of abelian categories induces functors <m>\Comp^*(\calA) \to \Comp^*(\calA')</m>
         for each of <m>* \in \{\emptyset, +, -, b\}</m>.
       </p>
     </definition>
     <definition>
       <p>
-        For each integer <m>i \in \ZZ</m>, we have a functor <m>[i]: \calA \to \Comp^b(\calA)</m> taking <m>M \in \calA</m> to the complex <m>K^\bullet</m> with
+        For each integer <m>i \in \ZZ</m>, we have a functor <m>[i]\colon \calA \to \Comp^b(\calA)</m> taking <m>M \in \calA</m> to the complex <m>K^\bullet</m> with
         <me>
           K^n = \begin{cases} M &amp; n=-i \\ 0 &amp; n \neq i. \end{cases}
         </me>
-        (note the minus sign). This extends to a functor <m>[i]: \Comp^*(\calA) \to \Comp^*(\calA)</m> given by
+        (note the minus sign). This extends to a functor <m>[i]\colon \Comp^*(\calA) \to \Comp^*(\calA)</m> given by
         <me>
-          K[i]^n = K^{n+i}.
-        </me>
+          K[i]^n = K^{n+i}
+        </me>.
       </p>
       <p>
-        In the other direction, we have a functor <m>H^i: \Comp(\calA) \to \calA</m> (the <term><m>i</m>-th cohomology</term> given by
+        In the other direction, we have a functor <m>H^i\colon \Comp(\calA) \to \calA</m> (the <term><m>i</m>-th cohomology</term> given by
         <me>
-          H^i(K^\bullet) = \ker(d^{i})/\im(d^{i-1}).
-        </me>
-        The composition <m>H^i \circ [-i]</m> is an equivalence of categories. In particular, each functor <m>[i]:\calA \to \Comp^b(\calA)</m> defines a full embedding.
+          H^i(K^\bullet) = \ker(d^{i})/\im(d^{i-1})
+        </me>.
+        The composition <m>H^i \circ [-i]</m> is an equivalence of categories. In particular, each functor <m>[i]\colon \calA \to \Comp^b(\calA)</m> defines a full embedding.
       </p>
       <p>
         A morphism in <m>\Comp(\calA)</m> is a <term>quasi-isomorphism</term> if its image under each <m>h^i</m> is an isomorphism.
@@ -179,17 +179,17 @@
       <ol>
         <li>
           <p>
-            There exists a morphism <m>t: N \to M</m> such that <m>t \circ f = \id_M</m>.
+            There exists a morphism <m>t\colon N \to M</m> such that <m>t \circ f = \id_M</m>.
           </p>
         </li>
         <li>
           <p>
-            There exists a morphism <m>s: P \to N</m> such that <m>g \circ s = \id_P</m>.
+            There exists a morphism <m>s\colon P \to N</m> such that <m>g \circ s = \id_P</m>.
           </p>
         </li>
       </ol>
       <p>
-        The existence of a splitting guarantees that for any functor <m>F: \calA \to \calA'</m>, the sequence
+        The existence of a splitting guarantees that for any functor <m>F\colon \calA \to \calA'</m>, the sequence
         <me>
           0 \to F(M) \stackrel{F(f)}{\to} F(N) \stackrel{F(g)}{\to} F(P) \to 0
         </me>
@@ -211,13 +211,13 @@
     </p>
     <definition>
       <p>
-        A <term>chain homotopy</term> for a morphism <m>f: K_1^\bullet \to K_2^\bullet</m> in <m>\Comp(\calA)</m>
-        is a collection of morphisms <m>h_n: K_1^n \to K_2^{n-1}</m> such that
+        A <term>chain homotopy</term> for a morphism <m>f\colon K_1^\bullet \to K_2^\bullet</m> in <m>\Comp(\calA)</m>
+        is a collection of morphisms <m>h_n\colon K_1^n \to K_2^{n-1}</m> such that
         <me>
-          d^{n-1}_2 \circ h_n + h_{n+1} \circ d^n_1 = f^n \qquad (n \in \ZZ).
-        </me>
+          d^{n-1}_2 \circ h_n + h_{n+1} \circ d^n_1 = f^n \qquad (n \in \ZZ)
+        </me>.
         This implies that <m>f</m> maps to the zero morphism via each cohomology functor <m>h^n</m>.
-        If such a homotopy exists, we say that <m>f</m> is <term>homotopic to <m>0</m></term>; similarly, if <m>f, g: K_1^\bullet \to K_2^\bullet</m>
+        If such a homotopy exists, we say that <m>f</m> is <term>homotopic to <m>0</m></term>; similarly, if <m>f, g\colon K_1^\bullet \to K_2^\bullet</m>
         are two morphisms and <m>f-g</m> is homotopic to 0, we say that <m>f</m> and <m>g</m> are <term>homotopic (to each other)</term>.
       </p>
       <p>
@@ -230,10 +230,10 @@
         of <m>\calA</m>.
       </p>
       <p>
-        The functors <m>H^i: \Comp(\calA) \to \calA</m> factor through <m>K(\calA)</m> and satisfy
+        The functors <m>H^i\colon \Comp(\calA) \to \calA</m> factor through <m>K(\calA)</m> and satisfy
         <me>
-          H^i = H^0 \circ [i].
-        </me>
+          H^i = H^0 \circ [i]
+        </me>.
         In particular, any isomorphism in <m>K(\calA)</m> induces isomorphisms of cohomology groups.
         Any functor <m>\calA \to \calA'</m> induces a corresponding functor <m>K^*(\calA) \to K^*(\calA')</m>.
       </p>
@@ -281,17 +281,17 @@
         an injective resolution.
       </p>
       <p>
-        Now let <m>F: \calA \to \calA'</m> be a left exact (covariant) functor. The right derived functors <m>R^i F</m> can then be evaluated on <m>M</m>
+        Now let <m>F\colon \calA \to \calA'</m> be a left exact (covariant) functor. The right derived functors <m>R^i F</m> can then be evaluated on <m>M</m>
         by taking cohomology of the object <m>F(I^\bullet)</m>; in fact, we can think of <m>M \mapsto F(I^\bullet)</m> as defining a single <term>derived functor</term>
-        <m>RF: \calA \to K^+(\calA)</m>.
+        <m>RF\colon \calA \to K^+(\calA)</m>.
       </p>
       <p>
         In fact, every object of <m>K^+(\calA)</m> can likewise be resolved by injectives, so we can extend the derived functor
-        to <m>RF: K^+(\calA) \to K^+(\calA)</m>. For example, we have the <term>derived Hom</term> <m>R\Hom_A(M, \bullet) </m> which computes <m>\Ext</m> groups.
+        to <m>RF\colon K^+(\calA) \to K^+(\calA)</m>. For example, we have the <term>derived Hom</term> <m>R\Hom_A(M, \bullet) </m> which computes <m>\Ext</m> groups.
       </p>
       <p>
         Similarly, if <m>\calA</m> has enough projectives and <m>F</m> is a right exact covariant functor, we can define a left derived functor
-        <m>LF: K^-(\calA) \to K^-(\calA)</m>. For example, we have the <term>derived tensor product</term> <m>M \otimes^L_A \bullet</m> 
+        <m>LF\colon K^-(\calA) \to K^-(\calA)</m>. For example, we have the <term>derived tensor product</term> <m>M \otimes^L_A \bullet</m> 
         which computes <m>\Tor</m> groups.
       </p>
     </definition>

@@ -22,7 +22,7 @@
     </p>
     <definition>
       <p>
-        For <m>A \in \Ring</m>, the <term>cotangent complex</term> is the functor <m>L_{\bullet/A}: \Ring_A \to D(A)</m> taking
+        For <m>A \in \Ring</m>, the <term>cotangent complex</term> is the functor <m>L_{\bullet/A}\colon \Ring_A \to D(A)</m> taking
         obtained by taking the left derived functor of the functor <m>\Poly_A \to D(A)</m> given by <m>B \mapsto \Omega^1_{B/A}[0]</m>.
         It is straightforward to check that in fact <m>L_{B/A} \in D^{\leq 0}(B)</m>.
       </p>
@@ -53,8 +53,8 @@
           <p>
             For any morphisms <m>A \to B \to C</m>, we have a distinguished triangle in <m>D(C)</m>
             <men xml:id="eq-cotangent-complex-sequence">
-              L_{B/A} \otimes^L_B C \to L_{C/A} \to L_{C/B} \to.
-            </men>
+              L_{B/A} \otimes^L_B C \to L_{C/A} \to L_{C/B} \to
+            </men>.
             This extends the usual low-degree exact sequence for differentials.
           </p>
         </li>
@@ -112,7 +112,7 @@
     </p>
     <definition xml:id="def-derived-de-Rham">
       <p>
-        For <m>k \in \Ring_{\FF_p}</m>, the <term>derived de Rham cohomology</term> functor <m>\dR_{\bullet/k}: \Ring_k \to D(k)</m> is the left derived functor of
+        For <m>k \in \Ring_{\FF_p}</m>, the <term>derived de Rham cohomology</term> functor <m>\dR_{\bullet/k}\colon \Ring_k \to D(k)</m> is the left derived functor of
         the functor <m>\Poly_k \to D(k)</m> given by <m>R \mapsto \Omega^\bullet_{R/k}</m>.
       </p>
       <p>
@@ -150,8 +150,8 @@
           For <m>k \in \Ring_{\FF_p}</m> and <m>R \in \Ring_k</m>, there is a functorial (in <m>R</m>) increasing exhaustive filtration on <m>\dR_{R/k}</m> in <m>D(R^{(1)})</m>,
           called the <term>conjugate filtration</term>, equipped with canonical identifications 
           <me>
-            \gr^i \dR_{R/k} \cong \left( \bigwedge^i L_{R^{(1)}/k} \right) [-i].
-          </me>
+            \gr^i \dR_{R/k} \cong \left( \bigwedge^i L_{R^{(1)}/k} \right) [-i]
+          </me>.
         </p>
       </statement>
       <proof>
@@ -244,8 +244,8 @@
       <p>
         A typical example of a regular semiperfect <m>k</m>-algebra is
         <me>
-          S = k[x_1^{p^{-\infty}}, \dots, x_r^{p^{-\infty}}]/(x_1,\dots,x_r).
-        </me>
+          S = k[x_1^{p^{-\infty}}, \dots, x_r^{p^{-\infty}}]/(x_1,\dots,x_r)
+        </me>.
         Note that there are many ways to write <m>S</m> as <m>R/I</m>; for instance, we may take <m>R = k[x_1^{p^{-\infty}}, \dots, x_r^{p^{-\infty}}]</m>
         and <m>I = (x_1,\dots,x_r)</m>, but we can also replace <m>R</m> with its classical <m>I</m>-completion (or anything between). One can recover the completion
         from <m>S</m>; see <xref ref="exer-perfection-of-regular-semiperfect"/>.
@@ -308,14 +308,14 @@
       </statement>
       <proof>
         <p>
-          Since <m>R</m> is a smooth <m>k</m>-algebra and <m>k</m> is perfect, the Frobenius map <m>\phi_R: R \to R</m>
+          Since <m>R</m> is a smooth <m>k</m>-algebra and <m>k</m> is perfect, the Frobenius map <m>\phi_R\colon R \to R</m>
           is flat (see <xref ref="rmk-kunz"/>). It follows that <m>R \to S</m> is flat.
         </p>
         <p>
           To see that <m>S^n</m> is regular semiperfect, we may work étale locally to reduce to the case where <m>R = k[x_1,\dots,x_r]</m>.
           In this case, we may write
           <me>
-            S^n = k[x_{ij}^{p^{-\infty}}: i=1,\dots,r; j=0,\dots,n]/(x_{ij} - x_{ij'}: i=1,\dots,r; 1 \leq j \lt j' \leq n)
+            S^n = k[x_{ij}^{p^{-\infty}}\colon i=1,\dots,r; j=0,\dots,n]/(x_{ij} - x_{ij'}\colon i=1,\dots,r; 1 \leq j \lt j' \leq n)
           </me>
           to see that it is regular semiperfect.
         </p>
@@ -337,18 +337,18 @@
       <title>Derived crystalline cohomology</title>
       <p>
         Let <m>k \in \Ring_{\FF_p}</m> be perfect and let <m>A \in \Ring</m> be a classically <m>p</m>-complete ring with <m>A/p \cong k</m>.
-        We wish to derive a <term>crystalline cohomology</term> functor <m>R\Gamma_{\crys}: \Poly_k \to D(A)</m> taking <m>R = k[x_1,\dots,x_r]</m>
+        We wish to derive a <term>crystalline cohomology</term> functor <m>R\Gamma_{\crys}\colon \Poly_k \to D(A)</m> taking <m>R = k[x_1,\dots,x_r]</m>
         to <m>\widehat{\Omega}^{\bullet}_{P/A}</m> for <m>P = A[x_1,\dots,x_r]</m>; however, we need to make sure that this construction does not depend on the choice
         of coordinates on <m>R</m>. Fortunately, we can deduce this from our proof of the Hodge-Tate comparison, which gives us a canonical isomorphism
         of <m>\widehat{\Omega}^{\bullet}_{P/A}</m> with <m>\phi_A^* \Prism_{R/k}</m> (<xref ref="cor-prismatic-to-crystalline"/>).
       </p>
       <p>
-        We define the <term>derived crystalline cohomology</term> functor <m>R\Gamma_{\dcrys}: \Ring_k \to D(A)</m> by taking the left derived functor of the
+        We define the <term>derived crystalline cohomology</term> functor <m>R\Gamma_{\dcrys}\colon \Ring_k \to D(A)</m> by taking the left derived functor of the
         ordinary crystalline cohomology <m>R\Gamma_{\crys}</m>. From the comparison of crystalline cohomology with de Rham cohomology 
         (<xref ref="prop-crystalline-cohomology-affine-space"/>), we obtain a natural isomorphism 
         <me>
-          R\Gamma_{\dcrys}(\bullet/A) \otimes_A^L k \cong \dR_{\bullet/k}.
-        </me>
+          R\Gamma_{\dcrys}(\bullet/A) \otimes_A^L k \cong \dR_{\bullet/k}
+        </me>.
       </p>
     </definition>
     <remark>
@@ -376,7 +376,7 @@
     <exercise xml:id="exer-finite-presentation-perfect">
       <statement>
         <p>
-          Let <m>f: A \to B</m> be a morphism of finite presentation between perfect <m>\FF_p</m>-algebras. Show that <m>f</m> is étale.
+          Let <m>f\colon A \to B</m> be a morphism of finite presentation between perfect <m>\FF_p</m>-algebras. Show that <m>f</m> is étale.
         </p>
       </statement>
       <hint>

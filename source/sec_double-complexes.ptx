@@ -16,8 +16,8 @@
     <title>Double complexes and totalization</title>
     <definition>
       <p>
-        A <term>double complex</term> in <m>\calA</m> consists of a collection of objects <m>K^{p,q}</m> together with morphisms <m>d_1^{p,q}: K^{p,q} \to K^{p+1,q}</m> 
-        and <m>d_2^{p,q}: K^{p,q} \to K^{p,q+1}</m> such that the resulting diagram commutes and each row and column is itself a complex.
+        A <term>double complex</term> in <m>\calA</m> consists of a collection of objects <m>K^{p,q}</m> together with morphisms <m>d_1^{p,q}\colon K^{p,q} \to K^{p+1,q}</m> 
+        and <m>d_2^{p,q}\colon K^{p,q} \to K^{p,q+1}</m> such that the resulting diagram commutes and each row and column is itself a complex.
       </p>
     </definition>
     <figure xml:id="fig-double-complex">
@@ -50,8 +50,8 @@
         </me>
         with differential
         <men xml:id="eq-differential-totalization">
-          d^n = \sum_{n=p+q} (d_1^{p,q} + (-1)^p d_2^{p,q}).
-        </men>
+          d^n = \sum_{n=p+q} (d_1^{p,q} + (-1)^p d_2^{p,q})
+        </men>.
       </p>
       <p>
         More precisely, this should be called the <term>direct sum totalization</term> as distinct from the <term>direct product totalization</term>,
@@ -113,12 +113,12 @@
         <ol>
           <li>
             <p>
-              We have <m>E^{p,q}_0 = K^{p,q}</m> for all <m>p,q.</m>
+              We have <m>E^{p,q}_0 = K^{p,q}</m> for all <m>p,q</m>.
             </p>
           </li>
           <li>
             <p>
-              For each <m>i</m>, there exist maps <m>d_{(i)}^{p,q}: E_i^{p,q} \to E_i^{p+i,q+1-i}</m> such that the maps in and out of <m>E_i^{p,q}</m> compose to zero
+              For each <m>i</m>, there exist maps <m>d_{(i)}^{p,q}\colon E_i^{p,q} \to E_i^{p+i,q+1-i}</m> such that the maps in and out of <m>E_i^{p,q}</m> compose to zero
               and the cohomology of the resulting complex there is <m>E_{i+1}^{p,q}</m>. In particular, for any given <m>p,q</m>, the terms <m>E_i^{p,q}</m> for 
               <m>i \gg 0</m> stabilize to an object we call <m>E_\infty^{p,q}</m>.
             </p>
@@ -148,8 +148,8 @@
         <p>
           We define a filtration on <m>\Tot(K^{\bullet,\bullet})^n</m> by taking
           <me>
-            \Fil^p \Tot(K^{\bullet,\bullet})^n = \bigoplus_{i+j=n,i \geq p} K^{i,j}.
-          </me>
+            \Fil^p \Tot(K^{\bullet,\bullet})^n = \bigoplus_{i+j=n,i \geq p} K^{i,j}
+          </me>.
           We then construct the spectral sequence associated to this filtration as per <xref ref="bib-Stacks"/>, tag 012K.
         </p>
       </proof>

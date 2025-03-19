@@ -38,23 +38,23 @@
           The maximal ideal on which <m>D</m> admits divided powers includes <m>\delta^m(x)</m> for all <m>m \geq 0</m> by construction,
           and hence also <m>\phi(\delta^m(x)) = \delta^m(x)^p + p \delta^{m+1}(x)</m> for all <m>m \geq 0</m>; consequently, for all <m>m \geq 0</m>, <m>n \geq 1</m>,
           <me>
-            \phi(\gamma_n(\delta^m(x))) = \gamma_n(\phi(\delta^m(x))) \in D.
-          </me>
+            \phi(\gamma_n(\delta^m(x))) = \gamma_n(\phi(\delta^m(x))) \in D
+          </me>.
           Hence <m>\phi</m> induces an endomorphism of <m>D</m>.
         </p>
         <p>
           We next check that <m>\phi</m> induces a Frobenius lift on <m>D</m>; this amounts to checking that for all <m>m \geq 0</m>, <m>n \geq 1</m>,
           <me>
-            \phi(\gamma_n(\delta^m(x))) \equiv \gamma_n(\delta^m(x))^p \pmod{pD}.
-          </me>
+            \phi(\gamma_n(\delta^m(x))) \equiv \gamma_n(\delta^m(x))^p \pmod{pD}
+          </me>.
           We will see that in fact both sides are divisible by <m>p</m>. For <m>\phi(\gamma_n(\delta^m(x))) = \gamma_n(\phi(\delta^m(x)))</m>, this holds by writing
           <me>
             \phi(\delta^m(x))) = p(\delta^m(x)^p/p) + p \delta^{m+1}(x) \in pD
           </me>
           and 
           <me>
-            \phi(\gamma_n(\delta^m(x))) = \gamma_n(\phi(\delta^m(x))) = p^n \gamma_n(\phi(\delta^m(x))/p).
-          </me>
+            \phi(\gamma_n(\delta^m(x))) = \gamma_n(\phi(\delta^m(x))) = p^n \gamma_n(\phi(\delta^m(x))/p)
+          </me>.
           For <m>\gamma_n(\delta^m(x))^p</m>, this holds by writing
           <m>\gamma_n(\delta^m(x))^p = p! \gamma_p(\gamma_n(\delta^m(x)))</m> and applying <xref ref="eq-divided-power-composition"/>.
         </p>
@@ -83,8 +83,8 @@
           and hence also <m>\psi^p(\delta^m(x)) = \delta^m(x)^p + p \delta^{m+1}(x)</m> for each prime <m>p</m> and all <m>m \geq 0</m>; consequently, for each prime <m>p</m>
           and all <m>m,n \geq 1</m>,
           <me>
-            \psi^p(\gamma_n(\delta^m(x))) = \gamma_n(\psi^p(\delta^m(x))) \in D.
-          </me>
+            \psi^p(\gamma_n(\delta^m(x))) = \gamma_n(\psi^p(\delta^m(x))) \in D
+          </me>.
           We thus obtain a commuting family of endomorphisms <m>\psi^j</m> for all <m>j \geq 1</m> satisfying <m>\psi^{j_1j_2} = \psi^{j_1} \circ \psi^{j_2}</m>.
         </p>
         <p>
@@ -124,7 +124,7 @@
         Let <m>R_0 \in \Ring</m> be arbitrary and put <m>R = R_0[x_1,\dots,x_r]</m>, viewed as a <m>\lambda</m>-ring with <m>x_1,\dots,x_r</m> constant.
         For <m>n \geq 0</m>, put
         <me> 
-          P^n = R_0\{x_{ij}: i=1,\dots,r; j=0,\dots,n\}
+          P^n = R_0\{x_{ij}\colon i=1,\dots,r; j=0,\dots,n\}
         </me>
         (remembering that now we mean the free <m>\lambda</m>-ring) 
         and let <m>J^n</m> be the kernel of the morphism <m>P^n \to R</m> in <m>\Ring_\lambda</m> taking <m>x_{ij}</m> to <m>x_i</m> and <m>\lambda^m(x_{ij})</m> to <m>0</m>
@@ -171,8 +171,8 @@
       <p>
         For <m>D</m> an <m>A</m>-torsion-free <m>\lambda</m>-ring over <m>A</m>, for <m>p</m> prime and <m>x \in D</m> with <m>\psi^p(x) \in [p]_qD</m>, write
         <me>
-          \gamma_{p,q}(x) = \frac{\psi^p(x)}{[p]_q} - \delta_p(x) \in D.
-        </me>
+          \gamma_{p,q}(x) = \frac{\psi^p(x)}{[p]_q} - \delta_p(x) \in D
+        </me>.
       </p>
     </definition>
     <lemma xml:id="lem-q-divided-power-iterate-lambda">
@@ -192,7 +192,7 @@
       <p>
         As in <xref ref="rmk-q-divided-powers-on-ideal"/>, for any ideal <m>I</m> of <m>D</m>, the set
         <me>
-          J = \bigcap J_p, \qquad J_p = \{x \in I: \psi^p(x) \in [p]_q D, \gamma_{p,q}(x) \in I\}
+          J = \bigcap J_p, \qquad J_p = \{x \in I\colon \psi^p(x) \in [p]_q D, \gamma_{p,q}(x) \in I\}
         </me>
         is itself an ideal of <m>D</m>; hence to check that <m>J = I</m>, it suffices to check that <m>J</m> contains a generating set of <m>I</m>.
       </p>
@@ -221,27 +221,21 @@
           Let <m>P</m> be a <m>\lambda</m>-ring over <m>A</m> equipped with a surjection <m>P \to R = \ZZ[x_1,\dots,x_r]</m> with kernel <m>J = (q-1,y_1,y_2,\dots)</m>
           where each initial segment <m>y_1,\dots,y_s</m> is a regular sequence in <m>P/(q-1)</m>. Define the <m>\lambda</m>-ring
           <me>
-            D = P\{\psi_p(y_i)/[p]_q: i=1,2,\dots; p \mbox{ prime}\}^\wedge_{(q-1)}.
-          </me>
+            D = P\{\psi_p(y_i)/[p]_q\colon i=1,2,\dots; p \mbox{ prime}\}^\wedge_{(q-1)}
+          </me>.
           Let <m>I</m> be the kernel of <m>D \to D/(q-1) \to R</m>.
-        </p>
-        <ol>
-          <li>
-            <p>
+          <ol>
+            <li>
               The map <m>P \to D</m> induces an isomorphism <m>P/J \cong D/I</m>.
-            </p>
-          </li>
-          <li>
-            <p>
+            </li>
+            <li>
               The ring <m>D/(q-1)</m> identifies with the divided power envelope of the map <m>P/(q-1) \to R</m>.
-            </p>
-          </li>
-          <li>
-            <p>
+            </li>
+            <li>
               The map <m>(P, J) \to (D,I)</m> of <m>\lambda</m>-pairs is universal for the target being a global <m>q</m>-pd pair.
-            </p>
-          </li>
-        </ol>
+            </li>
+          </ol>
+        </p>
       </statement>
       <proof>
         <p>
@@ -261,7 +255,7 @@
         Put <m>R = \ZZ[x_1,\dots,x_r]\llbracket q-1 \rrbracket</m>, viewed as a <m>\lambda</m>-ring over <m>A</m> with <m>q,x_1,\dots,x_r</m> all constant.
         For <m>n \geq 0</m>, put
         <me> 
-          P^n = \ZZ\{x_{ij}: i=1,\dots,r; j=0,\dots,n\}\llbracket q-1 \rrbracket
+          P^n = \ZZ\{x_{ij}\colon i=1,\dots,r; j=0,\dots,n\}\llbracket q-1 \rrbracket
         </me>
         and let <m>J^n</m> be the kernel of the morphism <m>P^n \to R</m> in <m>\Ring_\lambda</m> taking <m>x_{ij}</m> to <m>x_i</m> and <m>\lambda^m(x_{ij})</m> to <m>0</m>
         for all <m>m \gt 1</m>. Let <m>D_{J^n,q}(P^n)</m> be the ring <m>D</m> obtained by applying <xref ref="prop-q-divided-power-envelope-lambda"/> to the pair
@@ -333,8 +327,8 @@
           <m>\ZZ[x,y,q]\{(q-1)^{-1}\}</m>, we have
           <md>
             <mrow>\lambda^k \left( \frac{y-x}{q-1} \right) &amp;= \frac{(y-x)(y-qx)\cdots(y-q^{k-1}x)}{(q-1)^k [k]_q!}</mrow>
-            <mrow>&amp;= \sum_{j=0}^k \frac{q^{j(j-1)/2} (-x)^j y^{k-j}}{[j]_q! [k-j]_q!}.</mrow>
-          </md>
+            <mrow>&amp;= \sum_{j=0}^k \frac{q^{j(j-1)/2} (-x)^j y^{k-j}}{[j]_q! [k-j]_q!}</mrow>
+          </md>.
         </p>
       </statement>
       <hint>

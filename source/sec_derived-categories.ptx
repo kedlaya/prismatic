@@ -68,19 +68,19 @@
             </image>
           </figure>
           <p>
-            You should think of this as saying that the <q>formal composition</q> <m>g \circ t^{-1}: Z \to Y</m> can be refactored as <m>s^{-1} \circ f</m>,
+            You should think of this as saying that the <q>formal composition</q> <m>g \circ t^{-1}\colon Z \to Y</m> can be refactored as <m>s^{-1} \circ f</m>,
             with the formal inverse moved from the right to the left.
           </p>
         </li>
         <li>
           <p>
-            For every pair of morphisms <m>f,g: X \to Y</m> and every <m>t \in S</m> with target <m>X</m> such that <m>f \circ t = g \circ t</m>,
+            For every pair of morphisms <m>f,g\colon X \to Y</m> and every <m>t \in S</m> with target <m>X</m> such that <m>f \circ t = g \circ t</m>,
             there exists a morphism <m>s \in S</m> with source <m>Y</m> (and unspecified target) such that <m>s \circ f = s \circ g</m>.
             (In this case, the morphisms <m>f</m> and <m>g</m> are going to be conflated in the localization, and we want that to make sense with respect to composition on both sides.)
           </p>
           <p>
             If <m>\calC</m> is an additive category, it is equivalent to require that for every morphism 
-            <m>f: X \to Y</m> and every <m>t \in S</m> with target <m>X</m> such that <m>f \circ t = 0</m>,
+            <m>f\colon X \to Y</m> and every <m>t \in S</m> with target <m>X</m> such that <m>f \circ t = 0</m>,
             there exists a morphism <m>s \in S</m> with source <m>Y</m> (and unspecified target) such that <m>s \circ f = 0</m>.
           </p>
         </li>
@@ -106,10 +106,10 @@
           </li>
           <li>
             <p>
-              For <m>X,Y \in \calC</m> two objects, the morphisms <m>X \to Y</m> in <m>\calC</m> are given by pairs <m>(f: X \to Y', s: Y \to Y')</m>
+              For <m>X,Y \in \calC</m> two objects, the morphisms <m>X \to Y</m> in <m>\calC</m> are given by pairs <m>(f\colon X \to Y', s\colon Y \to Y')</m>
               where <m>Y' \in \calC</m> is a third object
               modulo the following equivalence relation: two pairs
-              <me>(f_i: X \to Y_i, s_i: Y \to Y_i)</me> for <m>i=1,2</m> are equivalent if there is a third pair with <m>i=3</m> fitting into a diagram as in
+              <me>(f_i\colon X \to Y_i, s_i\colon Y \to Y_i)</me> for <m>i=1,2</m> are equivalent if there is a third pair with <m>i=3</m> fitting into a diagram as in
               <xref ref="fig-localization-category-equivalence"/> for some morphisms <m>Y_i \to Y_3</m> in <m>\calC</m> (not necessarily in <m>S</m>).
             </p>
             <figure xml:id="fig-localization-category-equivalence">
@@ -129,8 +129,8 @@
           </li>
           <li>
             <p>
-              The composition of a pair  <m>(f: X \to Y', s: Y \to Y')</m> with a pair <m>(g: Y \to Z', t: Z \to Z')</m> is defined to be the equivalence class of a pair
-              <m>(h \circ f: X \to Z'', u \circ t: Z \to Z'')</m> where <m>h</m> and <m>u \in S</m> are chosen (using the definition of a left multiplicative system)
+              The composition of a pair  <m>(f\colon X \to Y', s\colon Y \to Y')</m> with a pair <m>(g\colon Y \to Z', t\colon Z \to Z')</m> is defined to be the equivalence class of a pair
+              <m>(h \circ f\colon X \to Z'', u \circ t\colon Z \to Z'')</m> where <m>h</m> and <m>u \in S</m> are chosen (using the definition of a left multiplicative system)
               to fill in the commutative square <xref ref="fig-localization-categories1"/>.
             </p>
             <figure xml:id="fig-localization-categories1">
@@ -211,7 +211,7 @@
     </p>
     <definition xml:id="def-mapping-cone">
       <p>
-        For a morphism <m>f: K^\bullet \to L^\bullet</m> in <m>\Comp(\calA)</m>, the <term>cone</term> (or <term>mapping cone</term>) of <m>f</m> is the complex
+        For a morphism <m>f\colon K^\bullet \to L^\bullet</m> in <m>\Comp(\calA)</m>, the <term>cone</term> (or <term>mapping cone</term>) of <m>f</m> is the complex
         <me>
           \Cone(f)^n = L^n \oplus K^{n+1}, \qquad d^n_{\Cone(f)} = \begin{pmatrix} d^n_L &amp; f^{n+1} \\ 0 &amp; -d^{n+1}_K \end{pmatrix}.
         </me>
@@ -225,8 +225,8 @@
       <p>
         The previous triangle can be reinterpreted as
         <me>
-           L^\bullet[-1] \to \Cone(f)^\bullet[-1] \to K^\bullet \stackrel{f}{\to} L^\bullet.
-        </me>
+           L^\bullet[-1] \to \Cone(f)^\bullet[-1] \to K^\bullet \stackrel{f}{\to} L^\bullet
+        </me>.
         That is, we can interpret <m>\Cone(f)^\bullet[-1]</m> as the <term>cocone</term> (or <term>mapping cocone</term>) of <m>f</m>.
       </p>
     </definition>
@@ -237,7 +237,7 @@
           <men xml:id="eq-homological-functor">
             \cdots \to H^i(A^\bullet) \stackrel{\alpha}{\to} H^i(B^\bullet) \stackrel{\beta}{\to} H^i(C^\bullet) \stackrel{\delta}{\to} H^{i+1}(A^\bullet) \to \cdots
           </men>
-          is exact. That is, <m>H^0</m> is a <term>homological functor</term>. (This will admit a converse in the derived category; see <xref ref="cor-distinguished-triangle-by-cohomology"/>.)
+          is exact. That is, <m>H^0</m> is a <term>homological functor</term>.
         </p>
       </statement>
       <proof>
@@ -322,9 +322,9 @@
         <p>
           We may assume at once that <m>C = \Cone(f), C' = \Cone(f')</m>.
           In this case, commutativity of the square in <m>K(\calA)</m> implies the existence of a homotopy <m>h</m> for the map 
-          <m>b \circ f - f' \circ a</m>. We may then write down a morphism <m>c: \Cone(f) \to \Cone(f')</m> by the formula
+          <m>b \circ f - f' \circ a</m>. We may then write down a morphism <m>c\colon \Cone(f) \to \Cone(f')</m> by the formula
           <me>
-            c^n = \begin{pmatrix} b^n &amp; h^{n+1} \\ 0 &amp; a^{n+1} \end{pmatrix}: B^n \oplus A^{n+1} \to B^{\prime n} \oplus A^{\prime (n+1)}
+            c^n = \begin{pmatrix} b^n &amp; h^{n+1} \\ 0 &amp; a^{n+1} \end{pmatrix}\colon B^n \oplus A^{n+1} \to B^{\prime n} \oplus A^{\prime (n+1)}
           </me>
           and verify that this yields a morphism of triangles.
           (Compare <xref ref="bib-Stacks"/>, tag 014F.)
@@ -337,8 +337,8 @@
     <corollary xml:id="cor-mapping-cone-universal-property">
       <statement>
         <p>
-          Let <m>f: X^\bullet \to Y^\bullet</m> be a morphism in <m>K(\calC)</m>.
-          Then every morphism <m>h: Y^\bullet \to Z^\bullet</m> such that <m>h \circ f = 0</m> in <m>K(\calC)</m> can be factored
+          Let <m>f\colon X^\bullet \to Y^\bullet</m> be a morphism in <m>K(\calC)</m>.
+          Then every morphism <m>h\colon Y^\bullet \to Z^\bullet</m> such that <m>h \circ f = 0</m> in <m>K(\calC)</m> can be factored
           through <m>Y^\bullet \to \Cone(f)^\bullet</m>.
         </p>
       </statement>
@@ -377,7 +377,7 @@
     <lemma xml:id="lem-quasi-isomorphism-from-triangle">
       <statement>
         <p>
-          A morphism <m>f: K^\bullet \to L^\bullet</m> in <m>K(\calA)</m> is a quasi-isomorphism if and only if there exists a distinguished triangle
+          A morphism <m>f\colon K^\bullet \to L^\bullet</m> in <m>K(\calA)</m> is a quasi-isomorphism if and only if there exists a distinguished triangle
           <m>(K^\bullet, L^\bullet, M^\bullet, f, g, h)</m> in which <m>M^\bullet</m> is acyclic.
         </p>
       </statement>
@@ -416,9 +416,9 @@
           </image>
         </figure>
         <p>
-          To check the third condition, start with a morphism <m>f: X \to Y</m> and a quasi-isomorphism <m>t: Z \to X</m> such that <m>f \circ t = 0</m>,
+          To check the third condition, start with a morphism <m>f\colon X \to Y</m> and a quasi-isomorphism <m>t\colon Z \to X</m> such that <m>f \circ t = 0</m>,
           Apply <xref ref="cor-extend-to-distinguished-triangle"/> to fit <m>t</m> into a distinguished triangle <m>(Z, X, Q, t, d, h)</m>.
-          By <xref ref="cor-mapping-cone-universal-property"/>, we can choose a morphism <m>i: Q \to Y</m> such that <m>i \circ d = f</m>.
+          By <xref ref="cor-mapping-cone-universal-property"/>, we can choose a morphism <m>i\colon Q \to Y</m> such that <m>i \circ d = f</m>.
           Apply  <xref ref="cor-extend-to-distinguished-triangle"/> again to fit <m>i</m> into a distinguished triangle <m>(Q, Y, W, i, j, k)</m>;
           then <m>j \circ f = j \circ i \circ d = 0 \circ d = 0</m>.
           By <xref ref="lem-quasi-isomorphism-from-triangle"/>, <m>t</m> being a quasi-isomorphism implies that <m>Q</m> is acyclic,
@@ -457,22 +457,29 @@
       </p>
     </definition>
     <p>
-      We now recover the promised converse to <xref ref="lem-homological-functor"/>.
+      The following example shows that <xref ref="lem-homological-functor"/> does not admit a converse.
     </p>
-    <corollary xml:id="cor-distinguished-triangle-by-cohomology">
-      <statement>
-        <p>
-          A triangle <m>(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)</m> in <m>D(\calA)</m> is distinguished if and only if <xref ref="eq-homological-functor"/> is exact.
-        </p>
-      </statement>
-      <proof>
-        <p>
-          The <q>only if</q> direction is <xref ref="lem-homological-functor"/>. For the <q>if</q> direction, apply <xref ref="cor-mapping-cone-universal-property"/>
-          to the morphisms <m>\alpha, \beta</m> to factor <m>\beta</m> through a morphism <m>C^\bullet \to \Cone(\alpha)</m>,
-          which by hypothesis is a quasi-isomorphism. 
-        </p>
-      </proof>
-    </corollary>
+    <example xml:id="exa-distinguished-homological">
+      <p>
+        Let <m>f\colon \ZZ \to \ZZ</m> be the multiplication-by-<m>p</m> map for some prime <m>p</m>.
+        In <m>D(\Ab)</m> the cone of <m>f</m> is isomorphic to <m>\ZZ/p\ZZ</m> placed in degree <m>0</m>,
+        so we obtain a distinguished triangle of the form
+        <me>
+          \ZZ \stackrel{f}\to \ZZ \to \ZZ/p\ZZ \stackrel{\delta}{\to} \ZZ[1]
+        </me>.
+        By contrast, the triangle
+        <me>
+          \ZZ \stackrel{f}\to \ZZ \to \ZZ/p\ZZ \stackrel{0}{\to} \ZZ[1]
+        </me>
+        gives rise to the same long exact sequence
+        <me>
+          \cdots \to 0 \to \ZZ \stackrel{\times p}{\to} \ZZ \to \ZZ/p\ZZ \to 0 \to \cdots
+        </me>
+        but is not distinguished in <m>D(\Ab)</m>: 
+        otherwise we could apply <xref ref="cor-distinguished-triangle-fillin"/> to compare the two triangles, yielding
+        a contradiction.
+      </p>
+    </example>
     <remark xml:id="rmk-derived-category-ring">
       <p>
         To work around the fact that the derived category construction requires a small abelian category as input, one can view the full category <m>\Mod_A</m>
@@ -494,9 +501,9 @@
     <proposition>
       <statement>
         <p>
-          Assume that <m>\calA</m> has enough injectives and let <m>F: \calA \to \calA'</m> be a left exact functor. Then the
-          right derived functor <m>RF: K^+(\calA) \to K^+(\calA')</m> (see <xref ref="def-derived-functions-homotopy-category"/>)
-          takes acyclic objects to acyclic objects, and so induces a functor <m>RF: D^+(\calA) \to D^+(\calA')</m>.
+          Assume that <m>\calA</m> has enough injectives and let <m>F\colon \calA \to \calA'</m> be a left exact functor. Then the
+          right derived functor <m>RF\colon K^+(\calA) \to K^+(\calA')</m> (see <xref ref="def-derived-functions-homotopy-category"/>)
+          takes acyclic objects to acyclic objects, and so induces a functor <m>RF\colon D^+(\calA) \to D^+(\calA')</m>.
         </p>
       </statement>
       <proof>
@@ -587,8 +594,8 @@
     </remark>
     <remark>
       <p>
-        By <xref ref="lem-truncation-complexes"/> applied with <m>I = \{0\}</m>, the essential image of the functor <m>[0]: \calA \to D(\calA)</m> is precisely the 
-        intersection of the essential images of the functors <m>\tau^{\geq 0}, \tau^{\leq 0}: D(\calA) \to D(\calA)</m>.
+        By <xref ref="lem-truncation-complexes"/> applied with <m>I = \{0\}</m>, the essential image of the functor <m>[0]\colon \calA \to D(\calA)</m> is precisely the 
+        intersection of the essential images of the functors <m>\tau^{\geq 0}, \tau^{\leq 0}\colon D(\calA) \to D(\calA)</m>.
       </p>
       <p>
         In the more general framework of triangulated categories, one can define a <term>t-structure</term> (short for <term>truncation structure</term>)

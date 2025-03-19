@@ -50,8 +50,8 @@
       These two constructions are closely related via integration: for <m>C</m> a homology class of dimension <m>k</m> and <m>\omega</m> a <m>k</m>-form on a complex manifold <m>X</m>,
       there is a well-defined integral <m>\int_C \omega</m>. Stokes's theorem then asserts that
       <me>
-        \int_C d\omega = \int_{\delta(C)} \omega;
-      </me>
+        \int_C d\omega = \int_{\delta(C)} \omega
+      </me>;
       we thus obtain a pairing
       <me>
          H_i(X, \CC) \times H^i_{\dR}(X) \to \CC
@@ -128,8 +128,8 @@
           Let <m>X</m> be a smooth projective variety over <m>\QQ</m>. Choose a prime number <m>p</m> for which <m>X</m> can be extended to a smooth proper scheme <m>\frakX</m> over <m>\ZZ_{(p)}</m>,
           and put <m>X_p = \frakX \times_{\ZZ_{(p)}} \FF_p</m>. Then
           <me>
-            \dim_{\FF_p} H^i(X^{\an}, \ZZ/p\ZZ) \leq \dim_{\FF_p} H^i_{\dR}(X_p).
-          </me>
+            \dim_{\FF_p} H^i(X^{\an}, \ZZ/p\ZZ) \leq \dim_{\FF_p} H^i_{\dR}(X_p)
+          </me>.
         </p>
       </statement>
       <proof>
@@ -192,8 +192,8 @@
     <definition>
       <p>
         Fix a prime <m>p</m> and define the ring <m>A = \ZZ_p \llbracket u \rrbracket</m>; this is a regular noetherian local ring of dimension 2 with residue field <m>\FF_p</m>.
-        Let <m>\phi: A \to A</m> be the continuous homomorphism with <m>\phi(u) = u^p</m>; this lifts the Frobenius endomorphism on <m>A/(p)</m>.
-        Let <m>I</m> be the ideal <m>(u-p)</m> of <m>A</m>; let <m>\theta: A \to \ZZ_p</m> be the identification of <m>A/I</m> with <m>\ZZ_p</m> taking <m>u</m> to <m>p</m>.
+        Let <m>\phi\colon A \to A</m> be the continuous homomorphism with <m>\phi(u) = u^p</m>; this lifts the Frobenius endomorphism on <m>A/(p)</m>.
+        Let <m>I</m> be the ideal <m>(u-p)</m> of <m>A</m>; let <m>\theta\colon A \to \ZZ_p</m> be the identification of <m>A/I</m> with <m>\ZZ_p</m> taking <m>u</m> to <m>p</m>.
         The triple <m>(A, \phi, I)</m> will later form a basic example of a <term>prism</term>; see <xref ref="sec_prisms"/> for the general definition.
       </p>
       <p>
@@ -206,7 +206,7 @@
         <p>
           For <m>R</m> the <m>p</m>-adic completion of a smooth <m>\ZZ_p</m>-algebra, we can functorially define a complex <m>\Prism_{R/A}</m> consisting of
           <m>(p, u)</m>-adically complete <m>A</m>-modules, as an object in the derived category <m>D(A)</m> of <m>A</m>-modules; together with a morphism
-          <m>\phi_{R/A}: \phi^* \Prism_{R/A} \to \Prism_{R/A}</m> in <m>D(A)</m> (so in particular <m>\phi^*</m> is an operation in <m>D(A)</m>). Moreover, the pair
+          <m>\phi_{R/A}\colon \phi^* \Prism_{R/A} \to \Prism_{R/A}</m> in <m>D(A)</m> (so in particular <m>\phi^*</m> is an operation in <m>D(A)</m>). Moreover, the pair
           <m>(\Prism_{R/A}, \phi_{R/A})</m> will have the following additional properties.
         </p>
         <ol>
@@ -219,8 +219,8 @@
             <p>
               There is a natural quasi-isomorphism
               <me>
-                \phi^* \Prism_{R/A} \widehat{\otimes}^L_A \FF_p \cong \Omega^*_{R_{\FF_p}/\FF_p}.
-              </me>
+                \phi^* \Prism_{R/A} \widehat{\otimes}^L_A \FF_p \cong \Omega^*_{R_{\FF_p}/\FF_p}
+              </me>.
               That is, at the closed point of <m>\Spec A</m>, <m>\phi^* \Prism_{R/A}</m> computes de Rham cohomology of <m>R_{\FF_p}</m>.
               (There is also a version over <m>\ZZ_p</m> using continuous differentials, 
               which amounts to working at the point <m>(u-p^p)</m>.)
@@ -245,8 +245,8 @@
             <p>
               There is a natural identification
               <me>
-                H^i(\Prism_{R/A} \widehat{\otimes}^L_{A,\theta} \ZZ_p) \cong \Omega^i_{R/\ZZ_p}.
-              </me>
+                H^i(\Prism_{R/A} \widehat{\otimes}^L_{A,\theta} \ZZ_p) \cong \Omega^i_{R/\ZZ_p}
+              </me>.
               That is, at the point <m>(u-p)</m> of <m>\Spec A</m>, <m>\Prism_{R/A}</m> computes the Hodge cohomology of <m>R</m>.
               (A more robust version of this statement would include a twist; we'll come back to this later.)
             </p>
